@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<Financas>
+	
+	<Servidor valor="DESKTOP-VH369CI\SQLEXPRESS"/>
+									 DESKTOP-VH369CI\SQLEXPRESS
+	<!--<Servidor valor="DESKTOP-6K5LRMH\SQLEXPRESS"/>-->
+  <Usuario valor="sa"/>
+	<Senha valor="tTctvYwv0Bc="/>
+	<!--Senha valor="/06EDmpVT6k="/>-->
+  <Banco valor="GerenciamentoFinancas"/>
+
+</Financas>
