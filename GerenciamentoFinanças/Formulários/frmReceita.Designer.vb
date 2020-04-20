@@ -40,7 +40,6 @@ Partial Class frmReceita
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dtInicialFiltro = New GFT.Util.SuperDatePicker()
         Me.lvConsulta = New GFT.Util.SuperLV()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.tbConsulta.SuspendLayout()
         Me.tpPesquisa.SuspendLayout()
         Me.gbBotoes.SuspendLayout()
@@ -53,23 +52,22 @@ Partial Class frmReceita
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbConsulta.Controls.Add(Me.tpPesquisa)
-        Me.tbConsulta.Controls.Add(Me.TabPage1)
+        Me.tbConsulta.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbConsulta.Location = New System.Drawing.Point(12, 12)
         Me.tbConsulta.Name = "tbConsulta"
         Me.tbConsulta.Padding = New System.Drawing.Point(50, 5)
         Me.tbConsulta.SelectedIndex = 0
-        Me.tbConsulta.Size = New System.Drawing.Size(923, 650)
+        Me.tbConsulta.Size = New System.Drawing.Size(923, 543)
         Me.tbConsulta.TabIndex = 4
         '
         'tpPesquisa
         '
-        Me.tpPesquisa.Controls.Add(Me.gbBotoes)
         Me.tpPesquisa.Controls.Add(Me.gbFiltro)
         Me.tpPesquisa.Controls.Add(Me.lvConsulta)
-        Me.tpPesquisa.Location = New System.Drawing.Point(4, 26)
+        Me.tpPesquisa.Location = New System.Drawing.Point(4, 30)
         Me.tpPesquisa.Name = "tpPesquisa"
         Me.tpPesquisa.Padding = New System.Windows.Forms.Padding(5)
-        Me.tpPesquisa.Size = New System.Drawing.Size(915, 620)
+        Me.tpPesquisa.Size = New System.Drawing.Size(915, 509)
         Me.tpPesquisa.TabIndex = 0
         Me.tpPesquisa.Text = "Pesquisa"
         Me.tpPesquisa.UseVisualStyleBackColor = True
@@ -82,7 +80,7 @@ Partial Class frmReceita
         Me.gbBotoes.Controls.Add(Me.btnPesquisar)
         Me.gbBotoes.Controls.Add(Me.btnFechar)
         Me.gbBotoes.Controls.Add(Me.btnEditar)
-        Me.gbBotoes.Location = New System.Drawing.Point(39, 504)
+        Me.gbBotoes.Location = New System.Drawing.Point(65, 557)
         Me.gbBotoes.Name = "gbBotoes"
         Me.gbBotoes.Size = New System.Drawing.Size(858, 54)
         Me.gbBotoes.TabIndex = 8
@@ -212,6 +210,8 @@ Partial Class frmReceita
         '
         'gbFiltro
         '
+        Me.gbFiltro.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gbFiltro.Controls.Add(Me.Label3)
         Me.gbFiltro.Controls.Add(Me.cbStatusFiltro)
         Me.gbFiltro.Controls.Add(Me.dtFinalFiltro)
@@ -230,7 +230,7 @@ Partial Class frmReceita
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(337, 20)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(40, 13)
+        Me.Label3.Size = New System.Drawing.Size(54, 17)
         Me.Label3.TabIndex = 8
         Me.Label3.Text = "Status:"
         '
@@ -238,9 +238,9 @@ Partial Class frmReceita
         '
         Me.cbStatusFiltro.Alterado = False
         Me.cbStatusFiltro.FormattingEnabled = True
-        Me.cbStatusFiltro.Location = New System.Drawing.Point(340, 35)
+        Me.cbStatusFiltro.Location = New System.Drawing.Point(340, 40)
         Me.cbStatusFiltro.Name = "cbStatusFiltro"
-        Me.cbStatusFiltro.Size = New System.Drawing.Size(121, 21)
+        Me.cbStatusFiltro.Size = New System.Drawing.Size(121, 25)
         Me.cbStatusFiltro.SuperObrigatorio = False
         Me.cbStatusFiltro.SuperTxtObrigatorio = ""
         Me.cbStatusFiltro.TabIndex = 7
@@ -250,9 +250,9 @@ Partial Class frmReceita
         Me.dtFinalFiltro.Alterado = False
         Me.dtFinalFiltro.BackColor = System.Drawing.Color.White
         Me.dtFinalFiltro.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtFinalFiltro.Location = New System.Drawing.Point(184, 36)
+        Me.dtFinalFiltro.Location = New System.Drawing.Point(184, 40)
         Me.dtFinalFiltro.Name = "dtFinalFiltro"
-        Me.dtFinalFiltro.Size = New System.Drawing.Size(108, 20)
+        Me.dtFinalFiltro.Size = New System.Drawing.Size(108, 25)
         Me.dtFinalFiltro.TabIndex = 4
         '
         'Label2
@@ -260,7 +260,7 @@ Partial Class frmReceita
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(181, 20)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(26, 13)
+        Me.Label2.Size = New System.Drawing.Size(33, 17)
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "Até:"
         '
@@ -269,7 +269,7 @@ Partial Class frmReceita
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(28, 20)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(24, 13)
+        Me.Label1.Size = New System.Drawing.Size(31, 17)
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "De:"
         '
@@ -278,9 +278,9 @@ Partial Class frmReceita
         Me.dtInicialFiltro.Alterado = False
         Me.dtInicialFiltro.BackColor = System.Drawing.Color.White
         Me.dtInicialFiltro.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtInicialFiltro.Location = New System.Drawing.Point(31, 36)
+        Me.dtInicialFiltro.Location = New System.Drawing.Point(31, 40)
         Me.dtInicialFiltro.Name = "dtInicialFiltro"
-        Me.dtInicialFiltro.Size = New System.Drawing.Size(108, 20)
+        Me.dtInicialFiltro.Size = New System.Drawing.Size(108, 25)
         Me.dtInicialFiltro.TabIndex = 3
         '
         'lvConsulta
@@ -290,28 +290,19 @@ Partial Class frmReceita
         Me.lvConsulta.HabilitaOrdem = True
         Me.lvConsulta.HideSelection = False
         Me.lvConsulta.HoverSelection = True
-        Me.lvConsulta.Location = New System.Drawing.Point(8, 143)
+        Me.lvConsulta.Location = New System.Drawing.Point(8, 118)
         Me.lvConsulta.Name = "lvConsulta"
         Me.lvConsulta.SelecionaVarios = False
-        Me.lvConsulta.Size = New System.Drawing.Size(899, 355)
+        Me.lvConsulta.Size = New System.Drawing.Size(899, 380)
         Me.lvConsulta.TabIndex = 0
         Me.lvConsulta.UseCompatibleStateImageBehavior = False
-        '
-        'TabPage1
-        '
-        Me.TabPage1.Location = New System.Drawing.Point(4, 26)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(915, 620)
-        Me.TabPage1.TabIndex = 1
-        Me.TabPage1.Text = "Cadastrar"
-        Me.TabPage1.UseVisualStyleBackColor = True
         '
         'frmReceita
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(947, 674)
+        Me.Controls.Add(Me.gbBotoes)
         Me.Controls.Add(Me.tbConsulta)
         Me.Name = "frmReceita"
         Me.Text = "frmReceita"
@@ -341,5 +332,4 @@ Partial Class frmReceita
     Friend WithEvents btnEditar As GFT.Util.SuperButton
     Friend WithEvents SuperButton2 As GFT.Util.SuperButton
     Friend WithEvents btnAddReceita As GFT.Util.SuperButton
-    Friend WithEvents TabPage1 As TabPage
 End Class

@@ -20,6 +20,56 @@ Public Module SubUtil
         Nao = 2
 
     End Enum
+    Public Enum Collor
+        Preto = 1
+        VerdeEscuro = 2
+        VerdeClaro = 3
+        Amarelo = 4
+        Marrom = 5
+    End Enum
+
+    'Cores
+    Public Sub Cor(ByRef Controle As Control, ByVal Cor As Collor)
+
+        If Cor = Collor.Preto Then
+            Controle.BackColor = Color.FromArgb(64, 62, 63)
+
+        ElseIf Cor = Collor.VerdeEscuro Then
+            Controle.BackColor = Color.FromArgb(28, 89, 54)
+
+        ElseIf Cor = Collor.VerdeClaro Then
+            Controle.BackColor = Color.FromArgb(3, 166, 74)
+
+        ElseIf Cor = Collor.Amarelo Then
+            Controle.BackColor = Color.FromArgb(242, 192, 41)
+
+        ElseIf Cor = Collor.Marrom Then
+            Controle.BackColor = Color.FromArgb(115, 100, 56)
+
+        End If
+
+
+        '    Control.BackColor = Color.FromArgb(64, 62, 63)
+    End Sub
+    'Public Sub CorTab(ByRef tab As TabControl, ByVal Cor As Collor)
+    '    If Cor = Collor.Preto Then
+    '        tab.s
+    '        '    tab.SelectedTab.BackColor = Color.FromArgb(64, 62, 63)
+
+    '        'ElseIf Cor = Collor.VerdeEscuro Then
+    '        '    tab.BackColor = Color.FromArgb(28, 89, 54)
+
+    '        'ElseIf Cor = Collor.VerdeClaro Then
+    '        '    tab.BackColor = Color.FromArgb(3, 166, 74)
+
+    '        'ElseIf Cor = Collor.Amarelo Then
+    '        '    tab.BackColor = Color.FromArgb(242, 192, 41)
+
+    '        'ElseIf Cor = Collor.Marrom Then
+    '        '    tab.BackColor = Color.FromArgb(115, 100, 56)
+
+    '    End If
+    'End Sub
     Public Sub restaurarMDI()
         Lixeiro()
         frmPrincipal.txtCaption.Text = ""

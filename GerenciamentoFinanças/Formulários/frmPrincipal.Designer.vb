@@ -25,15 +25,6 @@ Partial Class frmPrincipal
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPrincipal))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.SScima = New System.Windows.Forms.StatusStrip()
-        Me.SsBaixo = New System.Windows.Forms.StatusStrip()
-        Me.txtCaptionHora = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.txtCaption = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.btnMaximizar = New System.Windows.Forms.Button()
-        Me.btnMinimizar = New System.Windows.Forms.Button()
-        Me.btnFechar = New System.Windows.Forms.Button()
         Me.CadastroToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FormasDePagamentoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -44,7 +35,18 @@ Partial Class frmPrincipal
         Me.DespesasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoginToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.JanelasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LoginToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SScima = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.SsBaixo = New System.Windows.Forms.StatusStrip()
+        Me.txtCaptionHora = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.txtCaption = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.btnMaximizar = New System.Windows.Forms.Button()
+        Me.btnMinimizar = New System.Windows.Forms.Button()
+        Me.btnFechar = New System.Windows.Forms.Button()
+        Me.TesteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SScima.SuspendLayout()
         Me.SsBaixo.SuspendLayout()
@@ -55,135 +57,13 @@ Partial Class frmPrincipal
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(89, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CadastroToolStripMenuItem, Me.ConsultaToolStripMenuItem, Me.ReceitasToolStripMenuItem, Me.DespesasToolStripMenuItem, Me.LoginToolStripMenuItem, Me.JanelasToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CadastroToolStripMenuItem, Me.ConsultaToolStripMenuItem, Me.ReceitasToolStripMenuItem, Me.DespesasToolStripMenuItem, Me.LoginToolStripMenuItem, Me.JanelasToolStripMenuItem, Me.LoginToolStripMenuItem1, Me.TesteToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 43)
         Me.MenuStrip1.MdiWindowListItem = Me.JanelasToolStripMenuItem
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(892, 56)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1073, 56)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'SScima
-        '
-        Me.SScima.AutoSize = False
-        Me.SScima.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.SScima.Dock = System.Windows.Forms.DockStyle.Top
-        Me.SScima.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.SScima.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
-        Me.SScima.Location = New System.Drawing.Point(0, 0)
-        Me.SScima.Name = "SScima"
-        Me.SScima.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode
-        Me.SScima.Size = New System.Drawing.Size(892, 43)
-        Me.SScima.SizingGrip = False
-        Me.SScima.TabIndex = 2
-        Me.SScima.Text = "StatusStrip1"
-        '
-        'SsBaixo
-        '
-        Me.SsBaixo.AutoSize = False
-        Me.SsBaixo.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.SsBaixo.Font = New System.Drawing.Font("Arial Black", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SsBaixo.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.txtCaptionHora})
-        Me.SsBaixo.Location = New System.Drawing.Point(0, 573)
-        Me.SsBaixo.Name = "SsBaixo"
-        Me.SsBaixo.Size = New System.Drawing.Size(892, 43)
-        Me.SsBaixo.SizingGrip = False
-        Me.SsBaixo.TabIndex = 3
-        Me.SsBaixo.Text = "StatusStrip2"
-        '
-        'txtCaptionHora
-        '
-        Me.txtCaptionHora.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner
-        Me.txtCaptionHora.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.txtCaptionHora.Font = New System.Drawing.Font("Arial Rounded MT Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCaptionHora.ForeColor = System.Drawing.Color.White
-        Me.txtCaptionHora.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.txtCaptionHora.Name = "txtCaptionHora"
-        Me.txtCaptionHora.Size = New System.Drawing.Size(877, 38)
-        Me.txtCaptionHora.Spring = True
-        Me.txtCaptionHora.Text = "ToolStripStatusLabel1"
-        Me.txtCaptionHora.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.txtCaptionHora.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay
-        '
-        'Timer1
-        '
-        Me.Timer1.Enabled = True
-        Me.Timer1.Interval = 1000
-        '
-        'StatusStrip1
-        '
-        Me.StatusStrip1.AutoSize = False
-        Me.StatusStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(41, Byte), Integer))
-        Me.StatusStrip1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.StatusStrip1.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.txtCaption})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 99)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(892, 43)
-        Me.StatusStrip1.SizingGrip = False
-        Me.StatusStrip1.TabIndex = 6
-        Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'txtCaption
-        '
-        Me.txtCaption.ActiveLinkColor = System.Drawing.Color.FromArgb(CType(CType(3, Byte), Integer), CType(CType(166, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.txtCaption.AutoSize = False
-        Me.txtCaption.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(41, Byte), Integer))
-        Me.txtCaption.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter
-        Me.txtCaption.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.txtCaption.Font = New System.Drawing.Font("Arial Rounded MT Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCaption.ForeColor = System.Drawing.Color.Black
-        Me.txtCaption.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.txtCaption.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.txtCaption.Margin = New System.Windows.Forms.Padding(10, 3, 0, 2)
-        Me.txtCaption.Name = "txtCaption"
-        Me.txtCaption.Size = New System.Drawing.Size(867, 38)
-        Me.txtCaption.Spring = True
-        Me.txtCaption.Text = "HOME"
-        Me.txtCaption.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay
-        Me.txtCaption.ToolTipText = "Você está aqui"
-        '
-        'btnMaximizar
-        '
-        Me.btnMaximizar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnMaximizar.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnMaximizar.FlatAppearance.BorderSize = 0
-        Me.btnMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnMaximizar.ForeColor = System.Drawing.Color.Transparent
-        Me.btnMaximizar.Image = CType(resources.GetObject("btnMaximizar.Image"), System.Drawing.Image)
-        Me.btnMaximizar.Location = New System.Drawing.Point(808, 4)
-        Me.btnMaximizar.Name = "btnMaximizar"
-        Me.btnMaximizar.Size = New System.Drawing.Size(39, 39)
-        Me.btnMaximizar.TabIndex = 9
-        Me.btnMaximizar.UseVisualStyleBackColor = False
-        '
-        'btnMinimizar
-        '
-        Me.btnMinimizar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnMinimizar.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnMinimizar.FlatAppearance.BorderSize = 0
-        Me.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnMinimizar.ForeColor = System.Drawing.Color.Transparent
-        Me.btnMinimizar.Image = CType(resources.GetObject("btnMinimizar.Image"), System.Drawing.Image)
-        Me.btnMinimizar.Location = New System.Drawing.Point(763, 4)
-        Me.btnMinimizar.Name = "btnMinimizar"
-        Me.btnMinimizar.Size = New System.Drawing.Size(39, 39)
-        Me.btnMinimizar.TabIndex = 8
-        Me.btnMinimizar.UseVisualStyleBackColor = False
-        '
-        'btnFechar
-        '
-        Me.btnFechar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnFechar.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnFechar.FlatAppearance.BorderSize = 0
-        Me.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnFechar.ForeColor = System.Drawing.Color.Transparent
-        Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
-        Me.btnFechar.Location = New System.Drawing.Point(853, 4)
-        Me.btnFechar.Name = "btnFechar"
-        Me.btnFechar.Size = New System.Drawing.Size(39, 39)
-        Me.btnFechar.TabIndex = 7
-        Me.btnFechar.UseVisualStyleBackColor = False
         '
         'CadastroToolStripMenuItem
         '
@@ -272,20 +152,154 @@ Partial Class frmPrincipal
         Me.JanelasToolStripMenuItem.Size = New System.Drawing.Size(120, 52)
         Me.JanelasToolStripMenuItem.Text = "Janelas"
         '
+        'LoginToolStripMenuItem1
+        '
+        Me.LoginToolStripMenuItem1.Name = "LoginToolStripMenuItem1"
+        Me.LoginToolStripMenuItem1.Size = New System.Drawing.Size(61, 52)
+        Me.LoginToolStripMenuItem1.Text = "Login"
+        '
+        'SScima
+        '
+        Me.SScima.AutoSize = False
+        Me.SScima.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.SScima.Dock = System.Windows.Forms.DockStyle.Top
+        Me.SScima.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.SScima.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
+        Me.SScima.Location = New System.Drawing.Point(0, 0)
+        Me.SScima.Name = "SScima"
+        Me.SScima.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode
+        Me.SScima.Size = New System.Drawing.Size(1073, 43)
+        Me.SScima.SizingGrip = False
+        Me.SScima.TabIndex = 2
+        Me.SScima.Text = "StatusStrip1"
+        '
         'ToolStripStatusLabel1
         '
         Me.ToolStripStatusLabel1.Image = Global.GerenciamentoFinanças.My.Resources.Resources.LOGO1_2_fw
         Me.ToolStripStatusLabel1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripStatusLabel1.Margin = New System.Windows.Forms.Padding(0, 3, 20, 2)
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(424, 36)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(424, 38)
         Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'SsBaixo
+        '
+        Me.SsBaixo.AutoSize = False
+        Me.SsBaixo.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.SsBaixo.Font = New System.Drawing.Font("Arial Black", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SsBaixo.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.txtCaptionHora})
+        Me.SsBaixo.Location = New System.Drawing.Point(0, 573)
+        Me.SsBaixo.Name = "SsBaixo"
+        Me.SsBaixo.Size = New System.Drawing.Size(1073, 43)
+        Me.SsBaixo.SizingGrip = False
+        Me.SsBaixo.TabIndex = 3
+        Me.SsBaixo.Text = "StatusStrip2"
+        '
+        'txtCaptionHora
+        '
+        Me.txtCaptionHora.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner
+        Me.txtCaptionHora.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.txtCaptionHora.Font = New System.Drawing.Font("Arial Rounded MT Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCaptionHora.ForeColor = System.Drawing.Color.White
+        Me.txtCaptionHora.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.txtCaptionHora.Name = "txtCaptionHora"
+        Me.txtCaptionHora.Size = New System.Drawing.Size(1058, 38)
+        Me.txtCaptionHora.Spring = True
+        Me.txtCaptionHora.Text = "ToolStripStatusLabel1"
+        Me.txtCaptionHora.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.txtCaptionHora.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay
+        '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 1000
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.AutoSize = False
+        Me.StatusStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(41, Byte), Integer))
+        Me.StatusStrip1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.StatusStrip1.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.txtCaption})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 99)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(1073, 43)
+        Me.StatusStrip1.SizingGrip = False
+        Me.StatusStrip1.TabIndex = 6
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'txtCaption
+        '
+        Me.txtCaption.ActiveLinkColor = System.Drawing.Color.FromArgb(CType(CType(3, Byte), Integer), CType(CType(166, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.txtCaption.AutoSize = False
+        Me.txtCaption.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(41, Byte), Integer))
+        Me.txtCaption.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter
+        Me.txtCaption.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.txtCaption.Font = New System.Drawing.Font("Arial Rounded MT Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCaption.ForeColor = System.Drawing.Color.Black
+        Me.txtCaption.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.txtCaption.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.txtCaption.Margin = New System.Windows.Forms.Padding(10, 3, 0, 2)
+        Me.txtCaption.Name = "txtCaption"
+        Me.txtCaption.Size = New System.Drawing.Size(1048, 38)
+        Me.txtCaption.Spring = True
+        Me.txtCaption.Text = "HOME"
+        Me.txtCaption.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay
+        Me.txtCaption.ToolTipText = "Você está aqui"
+        '
+        'btnMaximizar
+        '
+        Me.btnMaximizar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnMaximizar.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnMaximizar.FlatAppearance.BorderSize = 0
+        Me.btnMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnMaximizar.ForeColor = System.Drawing.Color.Transparent
+        Me.btnMaximizar.Image = CType(resources.GetObject("btnMaximizar.Image"), System.Drawing.Image)
+        Me.btnMaximizar.Location = New System.Drawing.Point(989, 4)
+        Me.btnMaximizar.Name = "btnMaximizar"
+        Me.btnMaximizar.Size = New System.Drawing.Size(39, 39)
+        Me.btnMaximizar.TabIndex = 9
+        Me.btnMaximizar.UseVisualStyleBackColor = False
+        '
+        'btnMinimizar
+        '
+        Me.btnMinimizar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnMinimizar.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnMinimizar.FlatAppearance.BorderSize = 0
+        Me.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnMinimizar.ForeColor = System.Drawing.Color.Transparent
+        Me.btnMinimizar.Image = CType(resources.GetObject("btnMinimizar.Image"), System.Drawing.Image)
+        Me.btnMinimizar.Location = New System.Drawing.Point(944, 4)
+        Me.btnMinimizar.Name = "btnMinimizar"
+        Me.btnMinimizar.Size = New System.Drawing.Size(39, 39)
+        Me.btnMinimizar.TabIndex = 8
+        Me.btnMinimizar.UseVisualStyleBackColor = False
+        '
+        'btnFechar
+        '
+        Me.btnFechar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnFechar.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnFechar.FlatAppearance.BorderSize = 0
+        Me.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnFechar.ForeColor = System.Drawing.Color.Transparent
+        Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
+        Me.btnFechar.Location = New System.Drawing.Point(1034, 4)
+        Me.btnFechar.Name = "btnFechar"
+        Me.btnFechar.Size = New System.Drawing.Size(39, 39)
+        Me.btnFechar.TabIndex = 7
+        Me.btnFechar.UseVisualStyleBackColor = False
+        '
+        'TesteToolStripMenuItem
+        '
+        Me.TesteToolStripMenuItem.Name = "TesteToolStripMenuItem"
+        Me.TesteToolStripMenuItem.Size = New System.Drawing.Size(56, 52)
+        Me.TesteToolStripMenuItem.Text = "Teste"
         '
         'frmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(892, 616)
+        Me.ClientSize = New System.Drawing.Size(1073, 616)
         Me.Controls.Add(Me.btnMaximizar)
         Me.Controls.Add(Me.btnMinimizar)
         Me.Controls.Add(Me.btnFechar)
@@ -334,4 +348,6 @@ Partial Class frmPrincipal
     Friend WithEvents btnFechar As Button
     Friend WithEvents btnMinimizar As Button
     Friend WithEvents btnMaximizar As Button
+    Friend WithEvents LoginToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents TesteToolStripMenuItem As ToolStripMenuItem
 End Class

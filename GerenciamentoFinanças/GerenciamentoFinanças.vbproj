@@ -76,10 +76,23 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Cores.vb" />
     <Compile Include="Classes\SubUtil.vb" />
     <Compile Include="DAL\pConsulta.vb" />
     <Compile Include="DAL\pDespesa.vb" />
     <Compile Include="DAL\pReceita.vb" />
+    <Compile Include="Formulários\frmLogin.Designer.vb">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\frmNovaDespesa.Designer.vb">
+      <DependentUpon>frmNovaDespesa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmNovaDespesa.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formulários\frmNovaReceita.Designer.vb">
       <DependentUpon>frmNovaReceita.vb</DependentUpon>
     </Compile>
@@ -141,6 +154,12 @@
     <EmbeddedResource Include="Formulários\frmDespesa.resx">
       <DependentUpon>frmDespesa.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmLogin.resx">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmNovaDespesa.resx">
+      <DependentUpon>frmNovaDespesa.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmNovaReceita.resx">
       <DependentUpon>frmNovaReceita.vb</DependentUpon>
     </EmbeddedResource>
@@ -183,25 +202,20 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="iconFinanceiro4.ico" />
-    <None Include="Resources\icoMAX.png" />
-    <None Include="Resources\pagers_windows_9541.png" />
+    <None Include="Resources\iconLogin32.png" />
     <None Include="Resources\iconJanelas.png" />
-    <None Include="Resources\icon_MaximizarWhiteBlack.png" />
     <None Include="Resources\icon_Salvar.png.png" />
     <None Include="Resources\iconAddReceita.png" />
     <None Include="Resources\iconNovoReceita.png" />
     <None Include="Resources\iconCartao1.png" />
     <None Include="Resources\User.png" />
     <None Include="Resources\Banco2.png" />
-    <None Include="Resources\Banco1.png" />
     <None Include="Resources\iconBanco.fw.png" />
     <None Include="Resources\iconUser.png" />
     <None Include="Resources\iconCartao.png" />
     <None Include="Resources\iconEngrenagem32x.png" />
     <None Include="Resources\iconEngrenagem.png" />
     <None Include="Resources\LOGO1.2.fw.png" />
-    <None Include="Resources\LOGO 1.0.1.fw.png" />
-    <None Include="Resources\LOGO 1.0.1.png" />
     <None Include="Resources\iconMOneyGreen.png" />
     <None Include="Resources\iconMoneyRed.fw.png" />
     <None Include="Resources\iconExplorer.png" />

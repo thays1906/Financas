@@ -66,4 +66,16 @@ Public Class frmPrincipal
     Private Sub SScima_KeyDown(sender As Object, e As KeyEventArgs) Handles SScima.KeyDown
 
     End Sub
+
+    Private Sub LoginToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LoginToolStripMenuItem1.Click
+        Dim log As frmLogin
+        log = New frmLogin
+        log.Show()
+    End Sub
+
+    Private Sub TesteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TesteToolStripMenuItem.Click
+        Dim teste As frmNovaDespesa
+        teste = New frmNovaDespesa
+        teste.Show()
+    End Sub
 End Class
