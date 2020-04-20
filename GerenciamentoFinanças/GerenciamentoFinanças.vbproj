@@ -47,6 +47,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>iconFinanceiro4.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -73,9 +76,16 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\SubUtil.vb" />
     <Compile Include="DAL\pConsulta.vb" />
     <Compile Include="DAL\pDespesa.vb" />
     <Compile Include="DAL\pReceita.vb" />
+    <Compile Include="Formulários\frmNovaReceita.Designer.vb">
+      <DependentUpon>frmNovaReceita.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmNovaReceita.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formulários\frmPrincipal.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +105,12 @@
     <Compile Include="Formulários\frmDespesa.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formulários\frmProc.designer.vb">
+      <DependentUpon>frmProc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmProc.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formulários\frmReceita.Designer.vb">
       <DependentUpon>frmReceita.vb</DependentUpon>
     </Compile>
@@ -105,6 +121,7 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -121,8 +138,20 @@
     <EmbeddedResource Include="Formulários\frmConsulta.resx">
       <DependentUpon>frmConsulta.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmDespesa.resx">
+      <DependentUpon>frmDespesa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmNovaReceita.resx">
+      <DependentUpon>frmNovaReceita.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmProc.resx">
+      <DependentUpon>frmProc.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmReceita.resx">
+      <DependentUpon>frmReceita.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -144,13 +173,51 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\..\..\Downloads\GFT.Util\GFT.Util\GFT.Util.vbproj">
       <Project>{c66b31c1-df9d-4b76-9675-2f54b72378cb}</Project>
       <Name>GFT.Util</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="iconFinanceiro4.ico" />
+    <None Include="Resources\icoMAX.png" />
+    <None Include="Resources\pagers_windows_9541.png" />
+    <None Include="Resources\iconJanelas.png" />
+    <None Include="Resources\icon_MaximizarWhiteBlack.png" />
+    <None Include="Resources\icon_Salvar.png.png" />
+    <None Include="Resources\iconAddReceita.png" />
+    <None Include="Resources\iconNovoReceita.png" />
+    <None Include="Resources\iconCartao1.png" />
+    <None Include="Resources\User.png" />
+    <None Include="Resources\Banco2.png" />
+    <None Include="Resources\Banco1.png" />
+    <None Include="Resources\iconBanco.fw.png" />
+    <None Include="Resources\iconUser.png" />
+    <None Include="Resources\iconCartao.png" />
+    <None Include="Resources\iconEngrenagem32x.png" />
+    <None Include="Resources\iconEngrenagem.png" />
+    <None Include="Resources\LOGO1.2.fw.png" />
+    <None Include="Resources\LOGO 1.0.1.fw.png" />
+    <None Include="Resources\LOGO 1.0.1.png" />
+    <None Include="Resources\iconMOneyGreen.png" />
+    <None Include="Resources\iconMoneyRed.fw.png" />
+    <None Include="Resources\iconExplorer.png" />
+    <None Include="Resources\iconLogout_48.png" />
+    <None Include="Resources\iconLogout.png" />
+    <None Include="Resources\iconFileExplorer.png" />
+    <None Include="Resources\iconClose.png" />
+    <None Include="Resources\iconEditar.png" />
+    <None Include="Resources\iconExcel.png" />
+    <None Include="Resources\iconReceita.fw.png" />
+    <None Include="Resources\iconDespesa.png" />
+    <None Include="Resources\Icon_search.png" />
+    <None Include="Resources\IconSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Imagens\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
