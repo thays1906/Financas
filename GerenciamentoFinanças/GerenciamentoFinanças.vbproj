@@ -180,6 +180,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="BD\GerenciamentoFinancas.bak" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -198,6 +199,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BD\Procedures.sql" />
+    <Content Include="BD\Tabelast.sql" />
     <Content Include="Config.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
