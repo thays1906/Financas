@@ -15,7 +15,7 @@ Public Class pReceita
         Public Shared rLog As Campo = New Campo("rLog", DbType.String, -1)
     End Class
 
-    Public Function InserirReceita(ByVal _dtRec As Date,
+    Shared Function InserirReceita(ByVal _dtRec As Date,
                                    ByVal _rDescricao As String,
                                    ByVal _cValor As Decimal,
                                    ByVal _cConta As Decimal,
@@ -44,7 +44,7 @@ Public Class pReceita
             Return False
         End Try
     End Function
-    Public Sub AlterarReceita(ByVal _cReceita As Decimal,
+    Shared Sub AlterarReceita(ByVal _cReceita As Decimal,
                               ByVal _rDescricao As String,
                               ByVal _cValor As Decimal,
                               ByVal _cConta As Decimal,
@@ -69,7 +69,7 @@ Public Class pReceita
             MessageBox.Show(ex.Message)
         End Try
     End Sub
-    Public Sub DeletarReceita(ByVal _cReceita As Decimal)
+    Shared Sub DeletarReceita(ByVal _cReceita As Decimal)
         Dim bDados As BancoDados
         Try
             bDados = New BancoDados()
@@ -84,7 +84,7 @@ Public Class pReceita
             MessageBox.Show(ex.Message)
         End Try
     End Sub
-    Public Function PesquisarReceita() As SuperDataSet
+    Shared Function PesquisarReceita() As SuperDataSet
         Dim bDados As BancoDados
         Dim oDataset As SuperDataSet
         Try
@@ -105,7 +105,7 @@ Public Class pReceita
             Return Nothing
         End Try
     End Function
-    Public Function ObterReceita(ByVal _cReceita As Decimal) As SuperDataSet
+    Shared Function ObterReceita(ByVal _cReceita As Decimal) As SuperDataSet
         Dim bDados As BancoDados
         Dim oDataset As SuperDataSet
 
