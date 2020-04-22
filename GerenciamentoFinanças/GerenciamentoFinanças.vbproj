@@ -79,8 +79,16 @@
     <Compile Include="Classes\Cores.vb" />
     <Compile Include="Classes\SubUtil.vb" />
     <Compile Include="DAL\pConsulta.vb" />
+    <Compile Include="DAL\pContaBancaria.vb" />
     <Compile Include="DAL\pDespesa.vb" />
     <Compile Include="DAL\pReceita.vb" />
+    <Compile Include="DAL\pTipoReceita.vb" />
+    <Compile Include="Formulários\frmContaBancaria.Designer.vb">
+      <DependentUpon>frmContaBancaria.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmContaBancaria.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formulários\frmLogin.Designer.vb">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
@@ -150,6 +158,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Formulários\frmConsulta.resx">
       <DependentUpon>frmConsulta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmContaBancaria.resx">
+      <DependentUpon>frmContaBancaria.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmDespesa.resx">
       <DependentUpon>frmDespesa.vb</DependentUpon>

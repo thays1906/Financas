@@ -12,6 +12,7 @@ Public Module SubUtil
         Despesa = 102
 
         nova_Receita = 200
+        conta_Bancaria = 201
 
     End Enum
 
@@ -28,6 +29,10 @@ Public Module SubUtil
         Marrom = 5
     End Enum
 
+    Public Enum eStatusDespesa
+        Pago = 1
+        Pendente = 2
+    End Enum
     'Cores
     Public Sub Cor(ByRef Controle As Control, ByVal Cor As Collor)
 
@@ -136,7 +141,10 @@ Public Module SubUtil
             collNomeTela.Add(New String() {"frmConsulta", "Consulta"}, Int(eTela.Consulta).ToString)
             collNomeTela.Add(New String() {"frmReceita", "Receitas"}, Int(eTela.Receita).ToString)
             collNomeTela.Add(New String() {"frmDespesa", "Despesas"}, Int(eTela.Despesa).ToString)
+
             collNomeTela.Add(New String() {"frmNovaReceita", "Nova receita"}, Int(eTela.nova_Receita).ToString)
+            collNomeTela.Add(New String() {"frmContaBancaria", "Contas"}, Int(eTela.conta_Bancaria).ToString)
+
 
         Catch ex As Exception
             LogaErro("Erro em " & NomeMetodo("Util") & ": " & ex.Message)

@@ -78,4 +78,10 @@ Public Class frmPrincipal
         teste = New frmNovaDespesa
         teste.Show()
     End Sub
+
+    Private Sub ContasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContasToolStripMenuItem.Click
+        Dim oForm As Form
+        oForm = New frmContaBancaria
+        controleFormulario(Me, oForm, eTela.conta_Bancaria)
+    End Sub
 End Class

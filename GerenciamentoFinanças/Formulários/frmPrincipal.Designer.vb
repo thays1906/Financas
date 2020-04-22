@@ -25,6 +25,17 @@ Partial Class frmPrincipal
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPrincipal))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.LoginToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TesteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SScima = New System.Windows.Forms.StatusStrip()
+        Me.SsBaixo = New System.Windows.Forms.StatusStrip()
+        Me.txtCaptionHora = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.txtCaption = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.btnMaximizar = New System.Windows.Forms.Button()
+        Me.btnMinimizar = New System.Windows.Forms.Button()
+        Me.btnFechar = New System.Windows.Forms.Button()
         Me.CadastroToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FormasDePagamentoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -35,18 +46,7 @@ Partial Class frmPrincipal
         Me.DespesasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoginToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.JanelasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LoginToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SScima = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.SsBaixo = New System.Windows.Forms.StatusStrip()
-        Me.txtCaptionHora = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.txtCaption = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.btnMaximizar = New System.Windows.Forms.Button()
-        Me.btnMinimizar = New System.Windows.Forms.Button()
-        Me.btnFechar = New System.Windows.Forms.Button()
-        Me.TesteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SScima.SuspendLayout()
         Me.SsBaixo.SuspendLayout()
@@ -65,98 +65,17 @@ Partial Class frmPrincipal
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
-        'CadastroToolStripMenuItem
-        '
-        Me.CadastroToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContasToolStripMenuItem, Me.FormasDePagamentoToolStripMenuItem, Me.UsuárioSenhaToolStripMenuItem, Me.ServiçoDeEmailToolStripMenuItem})
-        Me.CadastroToolStripMenuItem.ForeColor = System.Drawing.Color.White
-        Me.CadastroToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconEngrenagem
-        Me.CadastroToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.CadastroToolStripMenuItem.Name = "CadastroToolStripMenuItem"
-        Me.CadastroToolStripMenuItem.ShowShortcutKeys = False
-        Me.CadastroToolStripMenuItem.Size = New System.Drawing.Size(170, 52)
-        Me.CadastroToolStripMenuItem.Text = "Configurações"
-        '
-        'ContasToolStripMenuItem
-        '
-        Me.ContasToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.Banco2
-        Me.ContasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ContasToolStripMenuItem.Name = "ContasToolStripMenuItem"
-        Me.ContasToolStripMenuItem.Size = New System.Drawing.Size(276, 54)
-        Me.ContasToolStripMenuItem.Text = "Contas"
-        '
-        'FormasDePagamentoToolStripMenuItem
-        '
-        Me.FormasDePagamentoToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconCartao
-        Me.FormasDePagamentoToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.FormasDePagamentoToolStripMenuItem.Name = "FormasDePagamentoToolStripMenuItem"
-        Me.FormasDePagamentoToolStripMenuItem.Size = New System.Drawing.Size(276, 54)
-        Me.FormasDePagamentoToolStripMenuItem.Text = "Formas de Pagamento"
-        '
-        'UsuárioSenhaToolStripMenuItem
-        '
-        Me.UsuárioSenhaToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.User
-        Me.UsuárioSenhaToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.UsuárioSenhaToolStripMenuItem.Name = "UsuárioSenhaToolStripMenuItem"
-        Me.UsuárioSenhaToolStripMenuItem.Size = New System.Drawing.Size(276, 54)
-        Me.UsuárioSenhaToolStripMenuItem.Text = "Usuário/Senha"
-        '
-        'ServiçoDeEmailToolStripMenuItem
-        '
-        Me.ServiçoDeEmailToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconCartao1
-        Me.ServiçoDeEmailToolStripMenuItem.Name = "ServiçoDeEmailToolStripMenuItem"
-        Me.ServiçoDeEmailToolStripMenuItem.Size = New System.Drawing.Size(276, 54)
-        Me.ServiçoDeEmailToolStripMenuItem.Text = "Serviço de E-mail"
-        '
-        'ConsultaToolStripMenuItem
-        '
-        Me.ConsultaToolStripMenuItem.ForeColor = System.Drawing.Color.White
-        Me.ConsultaToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconFileExplorer
-        Me.ConsultaToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ConsultaToolStripMenuItem.Name = "ConsultaToolStripMenuItem"
-        Me.ConsultaToolStripMenuItem.Size = New System.Drawing.Size(131, 52)
-        Me.ConsultaToolStripMenuItem.Text = "Consulta"
-        '
-        'ReceitasToolStripMenuItem
-        '
-        Me.ReceitasToolStripMenuItem.ForeColor = System.Drawing.Color.White
-        Me.ReceitasToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconMOneyGreen
-        Me.ReceitasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ReceitasToolStripMenuItem.Name = "ReceitasToolStripMenuItem"
-        Me.ReceitasToolStripMenuItem.Size = New System.Drawing.Size(121, 52)
-        Me.ReceitasToolStripMenuItem.Text = "Receitas"
-        '
-        'DespesasToolStripMenuItem
-        '
-        Me.DespesasToolStripMenuItem.ForeColor = System.Drawing.Color.White
-        Me.DespesasToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconMoneyRed_fw
-        Me.DespesasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.DespesasToolStripMenuItem.Name = "DespesasToolStripMenuItem"
-        Me.DespesasToolStripMenuItem.Size = New System.Drawing.Size(129, 52)
-        Me.DespesasToolStripMenuItem.Text = "Despesas"
-        '
-        'LoginToolStripMenuItem
-        '
-        Me.LoginToolStripMenuItem.ForeColor = System.Drawing.Color.White
-        Me.LoginToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconLogout
-        Me.LoginToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.LoginToolStripMenuItem.Name = "LoginToolStripMenuItem"
-        Me.LoginToolStripMenuItem.Size = New System.Drawing.Size(103, 52)
-        Me.LoginToolStripMenuItem.Text = "Logout"
-        '
-        'JanelasToolStripMenuItem
-        '
-        Me.JanelasToolStripMenuItem.ForeColor = System.Drawing.Color.White
-        Me.JanelasToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconJanelas
-        Me.JanelasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.JanelasToolStripMenuItem.Name = "JanelasToolStripMenuItem"
-        Me.JanelasToolStripMenuItem.Size = New System.Drawing.Size(120, 52)
-        Me.JanelasToolStripMenuItem.Text = "Janelas"
-        '
         'LoginToolStripMenuItem1
         '
         Me.LoginToolStripMenuItem1.Name = "LoginToolStripMenuItem1"
         Me.LoginToolStripMenuItem1.Size = New System.Drawing.Size(61, 52)
         Me.LoginToolStripMenuItem1.Text = "Login"
+        '
+        'TesteToolStripMenuItem
+        '
+        Me.TesteToolStripMenuItem.Name = "TesteToolStripMenuItem"
+        Me.TesteToolStripMenuItem.Size = New System.Drawing.Size(56, 52)
+        Me.TesteToolStripMenuItem.Text = "Teste"
         '
         'SScima
         '
@@ -172,15 +91,6 @@ Partial Class frmPrincipal
         Me.SScima.SizingGrip = False
         Me.SScima.TabIndex = 2
         Me.SScima.Text = "StatusStrip1"
-        '
-        'ToolStripStatusLabel1
-        '
-        Me.ToolStripStatusLabel1.Image = Global.GerenciamentoFinanças.My.Resources.Resources.LOGO1_2_fw
-        Me.ToolStripStatusLabel1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ToolStripStatusLabel1.Margin = New System.Windows.Forms.Padding(0, 3, 20, 2)
-        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(424, 38)
-        Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'SsBaixo
         '
@@ -289,11 +199,101 @@ Partial Class frmPrincipal
         Me.btnFechar.TabIndex = 7
         Me.btnFechar.UseVisualStyleBackColor = False
         '
-        'TesteToolStripMenuItem
+        'CadastroToolStripMenuItem
         '
-        Me.TesteToolStripMenuItem.Name = "TesteToolStripMenuItem"
-        Me.TesteToolStripMenuItem.Size = New System.Drawing.Size(56, 52)
-        Me.TesteToolStripMenuItem.Text = "Teste"
+        Me.CadastroToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContasToolStripMenuItem, Me.FormasDePagamentoToolStripMenuItem, Me.UsuárioSenhaToolStripMenuItem, Me.ServiçoDeEmailToolStripMenuItem})
+        Me.CadastroToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.CadastroToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconEngrenagem
+        Me.CadastroToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.CadastroToolStripMenuItem.Name = "CadastroToolStripMenuItem"
+        Me.CadastroToolStripMenuItem.ShowShortcutKeys = False
+        Me.CadastroToolStripMenuItem.Size = New System.Drawing.Size(170, 52)
+        Me.CadastroToolStripMenuItem.Text = "Configurações"
+        '
+        'ContasToolStripMenuItem
+        '
+        Me.ContasToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.Banco2
+        Me.ContasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ContasToolStripMenuItem.Name = "ContasToolStripMenuItem"
+        Me.ContasToolStripMenuItem.Size = New System.Drawing.Size(276, 54)
+        Me.ContasToolStripMenuItem.Text = "Contas"
+        '
+        'FormasDePagamentoToolStripMenuItem
+        '
+        Me.FormasDePagamentoToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconCartao
+        Me.FormasDePagamentoToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.FormasDePagamentoToolStripMenuItem.Name = "FormasDePagamentoToolStripMenuItem"
+        Me.FormasDePagamentoToolStripMenuItem.Size = New System.Drawing.Size(276, 54)
+        Me.FormasDePagamentoToolStripMenuItem.Text = "Formas de Pagamento"
+        '
+        'UsuárioSenhaToolStripMenuItem
+        '
+        Me.UsuárioSenhaToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.User
+        Me.UsuárioSenhaToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.UsuárioSenhaToolStripMenuItem.Name = "UsuárioSenhaToolStripMenuItem"
+        Me.UsuárioSenhaToolStripMenuItem.Size = New System.Drawing.Size(276, 54)
+        Me.UsuárioSenhaToolStripMenuItem.Text = "Usuário/Senha"
+        '
+        'ServiçoDeEmailToolStripMenuItem
+        '
+        Me.ServiçoDeEmailToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconCartao1
+        Me.ServiçoDeEmailToolStripMenuItem.Name = "ServiçoDeEmailToolStripMenuItem"
+        Me.ServiçoDeEmailToolStripMenuItem.Size = New System.Drawing.Size(276, 54)
+        Me.ServiçoDeEmailToolStripMenuItem.Text = "Serviço de E-mail"
+        '
+        'ConsultaToolStripMenuItem
+        '
+        Me.ConsultaToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.ConsultaToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconFileExplorer
+        Me.ConsultaToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ConsultaToolStripMenuItem.Name = "ConsultaToolStripMenuItem"
+        Me.ConsultaToolStripMenuItem.Size = New System.Drawing.Size(131, 52)
+        Me.ConsultaToolStripMenuItem.Text = "Consulta"
+        '
+        'ReceitasToolStripMenuItem
+        '
+        Me.ReceitasToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.ReceitasToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconMOneyGreen
+        Me.ReceitasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ReceitasToolStripMenuItem.Name = "ReceitasToolStripMenuItem"
+        Me.ReceitasToolStripMenuItem.Size = New System.Drawing.Size(121, 52)
+        Me.ReceitasToolStripMenuItem.Text = "Receitas"
+        '
+        'DespesasToolStripMenuItem
+        '
+        Me.DespesasToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.DespesasToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconMoneyRed_fw
+        Me.DespesasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.DespesasToolStripMenuItem.Name = "DespesasToolStripMenuItem"
+        Me.DespesasToolStripMenuItem.Size = New System.Drawing.Size(129, 52)
+        Me.DespesasToolStripMenuItem.Text = "Despesas"
+        '
+        'LoginToolStripMenuItem
+        '
+        Me.LoginToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.LoginToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconLogout
+        Me.LoginToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.LoginToolStripMenuItem.Name = "LoginToolStripMenuItem"
+        Me.LoginToolStripMenuItem.Size = New System.Drawing.Size(103, 52)
+        Me.LoginToolStripMenuItem.Text = "Logout"
+        '
+        'JanelasToolStripMenuItem
+        '
+        Me.JanelasToolStripMenuItem.ForeColor = System.Drawing.Color.White
+        Me.JanelasToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconJanelas
+        Me.JanelasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.JanelasToolStripMenuItem.Name = "JanelasToolStripMenuItem"
+        Me.JanelasToolStripMenuItem.Size = New System.Drawing.Size(120, 52)
+        Me.JanelasToolStripMenuItem.Text = "Janelas"
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Image = Global.GerenciamentoFinanças.My.Resources.Resources.LOGO1_2_fw
+        Me.ToolStripStatusLabel1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripStatusLabel1.Margin = New System.Windows.Forms.Padding(0, 3, 20, 2)
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(424, 36)
+        Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'frmPrincipal
         '

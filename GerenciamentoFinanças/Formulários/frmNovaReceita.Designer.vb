@@ -23,37 +23,37 @@ Partial Class frmNovaReceita
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNovaReceita))
-        Me.SuperTextBox1 = New GFT.Util.SuperTextBox()
+        Me.txtValor = New GFT.Util.SuperTextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.SuperDatePicker1 = New GFT.Util.SuperDatePicker()
-        Me.SuperTabControl1 = New GFT.Util.SuperTabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.dtReceita = New GFT.Util.SuperDatePicker()
+        Me.tabAddReceita = New GFT.Util.SuperTabControl()
+        Me.tpAddReceita = New System.Windows.Forms.TabPage()
         Me.btnFechar = New GFT.Util.SuperButton()
         Me.btnSalvar = New GFT.Util.SuperButton()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.SuperComboBox2 = New GFT.Util.SuperComboBox()
+        Me.cbTipoReceita = New GFT.Util.SuperComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.SuperComboBox1 = New GFT.Util.SuperComboBox()
+        Me.cbConta = New GFT.Util.SuperComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.SuperTabControl1.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
+        Me.tabAddReceita.SuspendLayout()
+        Me.tpAddReceita.SuspendLayout()
         Me.SuspendLayout()
         '
-        'SuperTextBox1
+        'txtValor
         '
-        Me.SuperTextBox1.Alterado = False
-        Me.SuperTextBox1.BackColor = System.Drawing.Color.White
-        Me.SuperTextBox1.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
-        Me.SuperTextBox1.Location = New System.Drawing.Point(15, 92)
-        Me.SuperTextBox1.Name = "SuperTextBox1"
-        Me.SuperTextBox1.Size = New System.Drawing.Size(151, 20)
-        Me.SuperTextBox1.SuperMascara = "0.00"
-        Me.SuperTextBox1.SuperObrigatorio = False
-        Me.SuperTextBox1.SuperTravaErrors = False
-        Me.SuperTextBox1.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
-        Me.SuperTextBox1.SuperTxtObrigatorio = ""
-        Me.SuperTextBox1.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosReais
-        Me.SuperTextBox1.TabIndex = 0
+        Me.txtValor.Alterado = False
+        Me.txtValor.BackColor = System.Drawing.Color.White
+        Me.txtValor.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
+        Me.txtValor.Location = New System.Drawing.Point(15, 92)
+        Me.txtValor.Name = "txtValor"
+        Me.txtValor.Size = New System.Drawing.Size(151, 20)
+        Me.txtValor.SuperMascara = "0.00"
+        Me.txtValor.SuperObrigatorio = False
+        Me.txtValor.SuperTravaErrors = False
+        Me.txtValor.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
+        Me.txtValor.SuperTxtObrigatorio = ""
+        Me.txtValor.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosReais
+        Me.txtValor.TabIndex = 0
         '
         'Label1
         '
@@ -64,44 +64,44 @@ Partial Class frmNovaReceita
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Valor"
         '
-        'SuperDatePicker1
+        'dtReceita
         '
-        Me.SuperDatePicker1.Alterado = False
-        Me.SuperDatePicker1.BackColor = System.Drawing.Color.White
-        Me.SuperDatePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.SuperDatePicker1.Location = New System.Drawing.Point(15, 37)
-        Me.SuperDatePicker1.Name = "SuperDatePicker1"
-        Me.SuperDatePicker1.Size = New System.Drawing.Size(97, 20)
-        Me.SuperDatePicker1.TabIndex = 2
+        Me.dtReceita.Alterado = False
+        Me.dtReceita.BackColor = System.Drawing.Color.White
+        Me.dtReceita.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtReceita.Location = New System.Drawing.Point(15, 37)
+        Me.dtReceita.Name = "dtReceita"
+        Me.dtReceita.Size = New System.Drawing.Size(97, 20)
+        Me.dtReceita.TabIndex = 2
         '
-        'SuperTabControl1
+        'tabAddReceita
         '
-        Me.SuperTabControl1.Controls.Add(Me.TabPage1)
-        Me.SuperTabControl1.Location = New System.Drawing.Point(12, 12)
-        Me.SuperTabControl1.Name = "SuperTabControl1"
-        Me.SuperTabControl1.SelectedIndex = 0
-        Me.SuperTabControl1.Size = New System.Drawing.Size(443, 296)
-        Me.SuperTabControl1.TabIndex = 3
+        Me.tabAddReceita.Controls.Add(Me.tpAddReceita)
+        Me.tabAddReceita.Location = New System.Drawing.Point(12, 12)
+        Me.tabAddReceita.Name = "tabAddReceita"
+        Me.tabAddReceita.SelectedIndex = 0
+        Me.tabAddReceita.Size = New System.Drawing.Size(443, 296)
+        Me.tabAddReceita.TabIndex = 3
         '
-        'TabPage1
+        'tpAddReceita
         '
-        Me.TabPage1.Controls.Add(Me.btnFechar)
-        Me.TabPage1.Controls.Add(Me.btnSalvar)
-        Me.TabPage1.Controls.Add(Me.Label4)
-        Me.TabPage1.Controls.Add(Me.SuperComboBox2)
-        Me.TabPage1.Controls.Add(Me.Label3)
-        Me.TabPage1.Controls.Add(Me.SuperComboBox1)
-        Me.TabPage1.Controls.Add(Me.Label2)
-        Me.TabPage1.Controls.Add(Me.SuperDatePicker1)
-        Me.TabPage1.Controls.Add(Me.SuperTextBox1)
-        Me.TabPage1.Controls.Add(Me.Label1)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(435, 270)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Adicionar Receita"
-        Me.TabPage1.UseVisualStyleBackColor = True
+        Me.tpAddReceita.Controls.Add(Me.btnFechar)
+        Me.tpAddReceita.Controls.Add(Me.btnSalvar)
+        Me.tpAddReceita.Controls.Add(Me.Label4)
+        Me.tpAddReceita.Controls.Add(Me.cbTipoReceita)
+        Me.tpAddReceita.Controls.Add(Me.Label3)
+        Me.tpAddReceita.Controls.Add(Me.cbConta)
+        Me.tpAddReceita.Controls.Add(Me.Label2)
+        Me.tpAddReceita.Controls.Add(Me.dtReceita)
+        Me.tpAddReceita.Controls.Add(Me.txtValor)
+        Me.tpAddReceita.Controls.Add(Me.Label1)
+        Me.tpAddReceita.Location = New System.Drawing.Point(4, 22)
+        Me.tpAddReceita.Name = "tpAddReceita"
+        Me.tpAddReceita.Padding = New System.Windows.Forms.Padding(3)
+        Me.tpAddReceita.Size = New System.Drawing.Size(435, 270)
+        Me.tpAddReceita.TabIndex = 0
+        Me.tpAddReceita.Text = "Adicionar Receita"
+        Me.tpAddReceita.UseVisualStyleBackColor = True
         '
         'btnFechar
         '
@@ -148,20 +148,20 @@ Partial Class frmNovaReceita
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(258, 76)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(55, 13)
+        Me.Label4.Size = New System.Drawing.Size(86, 13)
         Me.Label4.TabIndex = 7
-        Me.Label4.Text = "Categoria:"
+        Me.Label4.Text = "Tipo de Receita:"
         '
-        'SuperComboBox2
+        'cbTipoReceita
         '
-        Me.SuperComboBox2.Alterado = False
-        Me.SuperComboBox2.FormattingEnabled = True
-        Me.SuperComboBox2.Location = New System.Drawing.Point(261, 92)
-        Me.SuperComboBox2.Name = "SuperComboBox2"
-        Me.SuperComboBox2.Size = New System.Drawing.Size(168, 21)
-        Me.SuperComboBox2.SuperObrigatorio = False
-        Me.SuperComboBox2.SuperTxtObrigatorio = ""
-        Me.SuperComboBox2.TabIndex = 6
+        Me.cbTipoReceita.Alterado = False
+        Me.cbTipoReceita.FormattingEnabled = True
+        Me.cbTipoReceita.Location = New System.Drawing.Point(261, 92)
+        Me.cbTipoReceita.Name = "cbTipoReceita"
+        Me.cbTipoReceita.Size = New System.Drawing.Size(168, 21)
+        Me.cbTipoReceita.SuperObrigatorio = False
+        Me.cbTipoReceita.SuperTxtObrigatorio = ""
+        Me.cbTipoReceita.TabIndex = 6
         '
         'Label3
         '
@@ -172,16 +172,16 @@ Partial Class frmNovaReceita
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Conta:"
         '
-        'SuperComboBox1
+        'cbConta
         '
-        Me.SuperComboBox1.Alterado = False
-        Me.SuperComboBox1.FormattingEnabled = True
-        Me.SuperComboBox1.Location = New System.Drawing.Point(261, 40)
-        Me.SuperComboBox1.Name = "SuperComboBox1"
-        Me.SuperComboBox1.Size = New System.Drawing.Size(168, 21)
-        Me.SuperComboBox1.SuperObrigatorio = False
-        Me.SuperComboBox1.SuperTxtObrigatorio = ""
-        Me.SuperComboBox1.TabIndex = 4
+        Me.cbConta.Alterado = False
+        Me.cbConta.FormattingEnabled = True
+        Me.cbConta.Location = New System.Drawing.Point(261, 40)
+        Me.cbConta.Name = "cbConta"
+        Me.cbConta.Size = New System.Drawing.Size(168, 21)
+        Me.cbConta.SuperObrigatorio = False
+        Me.cbConta.SuperTxtObrigatorio = ""
+        Me.cbConta.TabIndex = 4
         '
         'Label2
         '
@@ -198,29 +198,29 @@ Partial Class frmNovaReceita
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(467, 320)
-        Me.Controls.Add(Me.SuperTabControl1)
+        Me.Controls.Add(Me.tabAddReceita)
         Me.ForeColor = System.Drawing.SystemColors.ControlText
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmNovaReceita"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Receita"
-        Me.SuperTabControl1.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage1.PerformLayout()
+        Me.tabAddReceita.ResumeLayout(False)
+        Me.tpAddReceita.ResumeLayout(False)
+        Me.tpAddReceita.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents SuperTextBox1 As GFT.Util.SuperTextBox
+    Friend WithEvents txtValor As GFT.Util.SuperTextBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents SuperDatePicker1 As GFT.Util.SuperDatePicker
-    Friend WithEvents SuperTabControl1 As GFT.Util.SuperTabControl
-    Friend WithEvents TabPage1 As TabPage
+    Friend WithEvents dtReceita As GFT.Util.SuperDatePicker
+    Friend WithEvents tabAddReceita As GFT.Util.SuperTabControl
+    Friend WithEvents tpAddReceita As TabPage
     Friend WithEvents btnSalvar As GFT.Util.SuperButton
     Friend WithEvents Label4 As Label
-    Friend WithEvents SuperComboBox2 As GFT.Util.SuperComboBox
+    Friend WithEvents cbTipoReceita As GFT.Util.SuperComboBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents SuperComboBox1 As GFT.Util.SuperComboBox
+    Friend WithEvents cbConta As GFT.Util.SuperComboBox
     Friend WithEvents Label2 As Label
     Friend WithEvents btnFechar As GFT.Util.SuperButton
 End Class

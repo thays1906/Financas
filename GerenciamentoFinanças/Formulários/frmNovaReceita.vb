@@ -11,4 +11,25 @@ Public Class frmNovaReceita
             MessageBox.Show(ex.Message)
         End Try
     End Sub
+    Private Sub CarregarCombos()
+        Dim conta As SuperDataSet
+        Dim tipoReceita As SuperDataSet
+        Try
+            conta = pContaBancaria.CarregarConta()
+
+            cbConta.PreencheComboDS(conta, "rBanco", "cConta")
+
+            tipoReceita = pTipoReceita.ObterTipoReceita()
+            cbTipoReceita.PreencheComboDS(tipoReceita, "rTipo", "cTipoReceita")
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+
+
+    End Sub
+
+    Private Sub frmNovaReceita_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CarregarCombos()
+    End Sub
 End Class
