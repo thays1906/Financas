@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="SuperButton2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnExcluir.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlh0QBVAIcAANbW1tfX19nZ2dzc3N7e3t/f3+Hh4ePj4+Tk5OXl5ebm5ufn5+rq6u3t7e/v7/Dw
         8PLy8vX19ff39/j39/j4+Pr6+vz5+f76+v38/P79/f///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA

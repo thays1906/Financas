@@ -5,7 +5,6 @@ Public Class frmPrincipal
 
         Dim oform As Form
         oform = frmConsulta
-        '    frmConsulta.MdiParent = Me
         controleFormulario(Me, oform, eTela.Consulta)
     End Sub
 
@@ -18,13 +17,13 @@ Public Class frmPrincipal
     Private Sub DespesasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DespesasToolStripMenuItem.Click
         Dim oform As Form
         oform = frmDespesa
-        '     frmDespesa.MdiParent = Me
         controleFormulario(Me, oform, eTela.Despesa)
     End Sub
 
     Private Sub frmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtCaptionHora.Text = ""
         InicializaTelas()
+        Cor(StatusStrip1, Collor.Preto)
 
     End Sub
 

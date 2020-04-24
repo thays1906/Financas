@@ -15,7 +15,6 @@ Public Module SubUtil
         conta_Bancaria = 201
 
     End Enum
-
     Public Enum eSimNao
         Sim = 1
         Nao = 2

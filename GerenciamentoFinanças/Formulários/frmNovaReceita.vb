@@ -1,45 +1,65 @@
 ﻿Imports GFT.Util
 Public Class frmNovaReceita
-    Private Sub btnFechar_Click(sender As Object, e As EventArgs) Handles btnFechar.Click
-        Me.Close()
+    Public cod As Decimal
+    Private Sub frmNovaReceita_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CarregaCombo()
     End Sub
+
+
 
     Private Sub btnSalvar_Click(sender As Object, e As EventArgs) Handles btnSalvar.Click
         Dim logErro As String
         Try
             If VerificaCampos() = True Then
 
-                logErro = Now.ToString & "- Inclusão de receita"
+                If cod = 0 Then
 
-                pReceita.InserirReceita(dtReceita.Value,
-                                        txtDescricao.Text, txtValor.Text,
-                                        cbConta.ObterChaveCombo,
-                                        cbTipoReceita.ObterChaveCombo,
-                                        logErro)
+                    logErro = Now.ToString & "- Inclusão de receita"
 
-                clsMsgBox.S_MsgBox("Receita lançada com sucesso", clsMsgBox.eBotoes.Ok,, clsMsgBox.eImagens.Ok)
-            Else
-                clsMsgBox.S_MsgBox("Falha o salvar receita.", clsMsgBox.eBotoes.Ok,,, clsMsgBox.eImagens.Cancel)
+                    pReceita.InserirReceita(dtReceita.Value,
+                                            txtDescricao.Text, txtValor.Text,
+                                            cbConta.ObterChaveCombo,
+                                            cbTipoReceita.ObterChaveCombo,
+                                            logErro)
+
+                    clsMsgBox.S_MsgBox("Receita adicionada com sucesso", clsMsgBox.eBotoes.Ok,, clsMsgBox.eImagens.Ok)
+
+                Else
+
+                    logErro = Now.ToString & "Dados da Receita alterada."
+
+                    pReceita.AlterarReceita(cod,
+                                            txtDescricao.Text,
+                                            txtValor.Text,
+                                            cbConta.ObterChaveCombo(),
+                                            cbTipoReceita.ObterChaveCombo(),
+                                            logErro)
+                    clsMsgBox.S_MsgBox("Dados alterado com sucesso", clsMsgBox.eBotoes.Ok,, clsMsgBox.eImagens.Ok)
+
+                End If
+                LimpaCampos()
+                frmReceita.Pesquisar()
+                Me.Close()
+
+
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
     End Sub
-    Private Sub CarregarCombos()
+    Private Sub CarregaCombo()
         Dim conta As SuperDataSet
         Dim tipoReceita As SuperDataSet
         Try
             conta = pContaBancaria.CarregarConta()
-            cbConta.PreencheComboDS(conta, "rBanco", "cConta")
+            cbConta.PreencheComboDS(conta, "rBanco", "cConta", SuperComboBox.PrimeiroValor.Selecione)
 
             tipoReceita = pTipoReceita.ObterTipoReceita()
-            cbTipoReceita.PreencheComboDS(tipoReceita, "rTipo", "cTipoReceita")
+            cbTipoReceita.PreencheComboDS(tipoReceita, "rTipo", "cTipoReceita", SuperComboBox.PrimeiroValor.Selecione)
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-
-
     End Sub
     Private Function VerificaCampos() As Boolean
 
@@ -54,19 +74,37 @@ Public Class frmNovaReceita
         End If
 
         Return True
-
     End Function
 
-    Private Sub frmNovaReceita_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        CarregarCombos()
+    Public Sub PreencheCampo(ByVal rs As SuperDataSet)
+        Try
+            dtReceita.Value = rs("dtRec").ToString
+            txtValor.Text = rs("cValor").ToString()
+            cbConta.PosicionaRegistroCombo(rs("cConta"))
+            cbTipoReceita.PosicionaRegistroCombo(rs("cTipo"))
+            txtDescricao.Text = rs("rDescricao").ToString
 
+            cod = CDec(rs("cReceita"))
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
     End Sub
-
+    Private Sub LimpaCampos()
+        dtReceita.Value = Now.ToString
+        txtDescricao.Text = ""
+        txtValor.Text = ""
+        cbConta.SelectedIndex = 0
+        cbTipoReceita.SelectedIndex = 0
+    End Sub
     Private Sub txtValor_Leave(sender As Object, e As EventArgs) Handles txtValor.Leave
 
         If IsNumeric(txtValor.Text) Then
             txtValor.Text = CDec(txtValor.Text).ToString("C")
         End If
+    End Sub
+    Private Sub btnFechar_Click(sender As Object, e As EventArgs) Handles btnFechar.Click
+        Me.Close()
     End Sub
 
 End Class

@@ -93,7 +93,7 @@ Public Class pReceita
             bDados.LimpaParametros()
             bDados.AdicionaParametro(OPERACAO, "GRID")
 
-            oDataset = bDados.ObterQuery(PROCEDURE)
+            oDataset = bDados.Obter(PROCEDURE)
             If oDataset IsNot Nothing Then
                 Return oDataset
             Else
@@ -116,7 +116,7 @@ Public Class pReceita
             bDados.AdicionaParametro(OPERACAO, "OBTE")
             bDados.AdicionaParametro(pReceita.cReceita, _cReceita)
 
-            oDataset = bDados.ObterQuery(PROCEDURE)
+            oDataset = bDados.Obter(PROCEDURE)
             If oDataset IsNot Nothing Then
                 Return oDataset
             Else

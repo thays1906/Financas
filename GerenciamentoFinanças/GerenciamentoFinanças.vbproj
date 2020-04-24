@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="Classes\Cores.vb" />
     <Compile Include="Classes\SubUtil.vb" />
+    <Compile Include="DAL\pCategoria.vb" />
     <Compile Include="DAL\pConsulta.vb" />
     <Compile Include="DAL\pContaBancaria.vb" />
     <Compile Include="DAL\pDespesa.vb" />
