@@ -212,7 +212,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BD\Procedures.sql" />
-    <Content Include="BD\Tabelast.sql" />
     <Content Include="Config.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
