@@ -192,7 +192,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="BD\GerenciamentoFinancas.bak" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -205,13 +204,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Downloads\GFT.Util\GFT.Util\GFT.Util.vbproj">
-      <Project>{c66b31c1-df9d-4b76-9675-2f54b72378cb}</Project>
-      <Name>GFT.Util</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="BD\Procedures.sql" />
     <Content Include="Config.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -245,7 +237,18 @@
     <None Include="Resources\IconSearch.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="BD\" />
     <Folder Include="Imagens\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="EPPlus\EPPlus.csproj">
+      <Project>{7b288026-5502-4a39-bf41-77e086f3e4a3}</Project>
+      <Name>EPPlus</Name>
+    </ProjectReference>
+    <ProjectReference Include="GFT.Util\GFT.Util.vbproj">
+      <Project>{c66b31c1-df9d-4b76-9675-2f54b72378cb}</Project>
+      <Name>GFT.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

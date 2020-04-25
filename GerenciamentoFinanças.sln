@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GerenciamentoFinanças", "GerenciamentoFinanças\GerenciamentoFinanças.vbproj", "{45B2F70D-F1D1-4892-94FF-B867CB6F905D}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GFT.Util", "..\..\..\Downloads\GFT.Util\GFT.Util\GFT.Util.vbproj", "{C66B31C1-DF9D-4B76-9675-2F54B72378CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPPlus", "GerenciamentoFinanças\EPPlus\EPPlus.csproj", "{7B288026-5502-4A39-BF41-77E086F3E4A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPPlus", "..\RPAD\EPPlus\EPPlus.csproj", "{7B288026-5502-4A39-BF41-77E086F3E4A3}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GFT.Util", "GerenciamentoFinanças\GFT.Util\GFT.Util.vbproj", "{C66B31C1-DF9D-4B76-9675-2F54B72378CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{45B2F70D-F1D1-4892-94FF-B867CB6F905D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45B2F70D-F1D1-4892-94FF-B867CB6F905D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45B2F70D-F1D1-4892-94FF-B867CB6F905D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C66B31C1-DF9D-4B76-9675-2F54B72378CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C66B31C1-DF9D-4B76-9675-2F54B72378CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C66B31C1-DF9D-4B76-9675-2F54B72378CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C66B31C1-DF9D-4B76-9675-2F54B72378CB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7B288026-5502-4A39-BF41-77E086F3E4A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7B288026-5502-4A39-BF41-77E086F3E4A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B288026-5502-4A39-BF41-77E086F3E4A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B288026-5502-4A39-BF41-77E086F3E4A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C66B31C1-DF9D-4B76-9675-2F54B72378CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C66B31C1-DF9D-4B76-9675-2F54B72378CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C66B31C1-DF9D-4B76-9675-2F54B72378CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C66B31C1-DF9D-4B76-9675-2F54B72378CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
