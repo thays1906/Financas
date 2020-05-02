@@ -189,7 +189,6 @@ Public Class BancoDados
         Try
 
             Return "Server=" & strServer &
-                   "," & SQL_SERVER_DEFAULT_PORT &
                    ";Database=" & strDatabase &
                    ";User Id=" & strUserID &
                    ";Password=" & strPassword &

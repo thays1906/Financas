@@ -21,10 +21,10 @@ Public Class frmPrincipal
     End Sub
 
     Private Sub frmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         txtCaptionHora.Text = ""
         InicializaTelas()
         Cor(StatusStrip1, Collor.Preto)
-
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
