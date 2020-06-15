@@ -8,6 +8,7 @@ Public Class frmReceita
     Private Sub frmReceita_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         centralizarGrupoBotoes(gbBotoes)
         centralizarGrupoTab(tbConsulta)
+        Pesquisar()
     End Sub
     Private Sub frmReceita_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         restaurarMDI()
@@ -42,12 +43,27 @@ Public Class frmReceita
             MessageBox.Show(ex.Message)
         End Try
     End Sub
-    Public Shared Sub Pesquisar()
+    Public Sub Pesquisar()
         Try
             oDataset = pReceita.PesquisarReceita()
 
-            frmReceita.lvConsulta.PreencheGridDS2(oDataset, True, True, False, True)
-            frmReceita.lvConsulta.GridLines = False
+            Dim TOTAL As String = oDataset("total", 0, 1).ToString
+
+            txtTotalReceita.Text = TOTAL
+
+            txtTotalReceita.Text = Convert.ToDouble(txtTotalReceita.Text).ToString("C")
+
+
+            lvConsulta.PreencheGridDS(oDataset, True, True, False, True, 0, True)
+            For i = 0 To oDataset.TotalRegistros - 1
+
+                lvConsulta.Items(i).SubItems(2).ForeColor = Color.Green
+
+
+            Next
+
+
+            lvConsulta.GridLines = False
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
@@ -87,6 +103,4 @@ Public Class frmReceita
         End Try
     End Sub
 
-    Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
-    End Sub
 End Class

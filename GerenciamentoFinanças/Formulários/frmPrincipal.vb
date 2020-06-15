@@ -24,7 +24,7 @@ Public Class frmPrincipal
 
         txtCaptionHora.Text = ""
         InicializaTelas()
-        Cor(StatusStrip1, Collor.Preto)
+        Cor(CType(StatusStrip1, Control), Collor.Preto)
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -73,14 +73,14 @@ Public Class frmPrincipal
     End Sub
 
     Private Sub TesteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TesteToolStripMenuItem.Click
-        Dim teste As frmNovaDespesa
-        teste = New frmNovaDespesa
-        teste.Show()
+        'Dim teste As frmNovaDespesa
+        'teste = New frmNovaDespesa
+        'teste.Show()
     End Sub
 
-    Private Sub ContasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContasToolStripMenuItem.Click
+    Private Sub CategoriasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CategoriasToolStripMenuItem.Click
         Dim oForm As Form
-        oForm = New frmContaBancaria
-        controleFormulario(Me, oForm, eTela.conta_Bancaria)
+        oForm = New frmConfiguracao
+        controleFormulario(Me, oForm, eTela.Configuracao)
     End Sub
 End Class

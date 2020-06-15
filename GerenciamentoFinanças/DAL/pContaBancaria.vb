@@ -89,7 +89,7 @@ Public Class pContaBancaria
             bDados.LimpaParametros()
             bDados.AdicionaParametro(OPERACAO, "GRID")
 
-            oDataset = bDados.ObterQuery(PROCEDURE)
+            oDataset = bDados.Obter(PROCEDURE)
 
             If oDataset IsNot Nothing Then
                 Return oDataset

@@ -24,6 +24,7 @@ Option Strict On
 Imports System.ComponentModel
 Imports GFT.Util.clsMsgBox
 Imports System.Reflection
+Imports System.Drawing
 
 Public Class SuperComboBox
     Inherits ComboBox
@@ -31,6 +32,10 @@ Public Class SuperComboBox
     Private Obrigatorio As Boolean = False
     Private txtObrigatorio As String = ""
     Private bAlterado As Boolean = False
+    Private _corfundo As Color = Color.White
+    Private _corTexto As Color = Color.Black
+    Private _corFundoSelecionado As Color = Color.White
+    Private _cortextoSelecionado As Color = Color.Black
     Dim oErrorProvider As ErrorProvider
 
     Enum PrimeiroValor
@@ -39,6 +44,48 @@ Public Class SuperComboBox
         Selecione
         Nenhum
     End Enum
+    Public Property CorFundo As Color
+        Get
+            Return _corfundo
+        End Get
+
+        Set(ByVal value As Color)
+            _corfundo = value
+
+        End Set
+    End Property
+    Public Property CorTexto As Color
+        Get
+            Return _corTexto
+        End Get
+
+        Set(ByVal value As Color)
+            _corTexto = value
+
+        End Set
+    End Property
+    Public Property CorFundoSelecionado As Color
+
+        Get
+            Return _corFundoSelecionado
+
+        End Get
+        Set(value As Color)
+            _corFundoSelecionado = value
+
+        End Set
+    End Property
+    Public Property CorTextoSelecionado As Color
+        Get
+            Return _cortextoSelecionado
+        End Get
+
+        Set(ByVal value As Color)
+            _cortextoSelecionado = value
+
+        End Set
+    End Property
+
 
 
     <Category("SuperComboBox"), Description("")>
@@ -130,7 +177,8 @@ Public Class SuperComboBox
     Protected Overrides Sub OnGotFocus(ByVal e As System.EventArgs)
         Try
             Me.SelectAll()
-            Me.BackColor = corObjSelecionado
+            Me.BackColor = CorFundoSelecionado
+            Me.ForeColor = CorTextoSelecionado
 
             If oErrorProvider.GetError(Me) <> "" Then
                 Treme()
@@ -144,7 +192,8 @@ Public Class SuperComboBox
 
     Protected Overrides Sub OnLostFocus(ByVal e As System.EventArgs)
         Try
-            Me.BackColor = corObjNaoSelecionado
+            Me.BackColor = CorFundo
+            Me.ForeColor = CorTexto
             MyBase.OnLostFocus(e)
         Catch ex As Exception
             LogaErro("Erro em SuperComboBox::OnLostFocus: " & ex.Message)
@@ -219,7 +268,8 @@ Public Class SuperComboBox
                 LogaErro("Preenhendo ComboBox [" & Me.Name & "] - N.Registros [" & rs.TotalRegistros.ToString & "]")
             End If
 
-            Me.DropDownStyle = ComboBoxStyle.DropDownList
+            Me.FlatStyle = FlatStyle.Standard
+            Me.DropDownStyle = ComboBoxStyle.DropDown
             Me.Items.Clear()
 
             'Prepara campos Todos/Selecione
@@ -285,8 +335,8 @@ Public Class SuperComboBox
                                       Optional ByVal pValor As PrimeiroValor = PrimeiroValor.Nada) As Boolean
 
         Try
-
-            Me.DropDownStyle = ComboBoxStyle.DropDownList
+            Me.FlatStyle = FlatStyle.Standard
+            Me.DropDownStyle = ComboBoxStyle.DropDown
             Me.Items.Clear()
 
             'Prepara campos Todos/Selecione
@@ -409,7 +459,7 @@ Public Class SuperComboBox
 
     Sub Limpa()
         Try
-            Me.DropDownStyle = ComboBoxStyle.DropDownList
+            Me.DropDownStyle = ComboBoxStyle.DropDown
             Me.Items.Clear()
             Me.Alterado = False
         Catch ex As Exception

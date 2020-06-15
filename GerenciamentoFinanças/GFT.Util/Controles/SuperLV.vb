@@ -48,7 +48,7 @@ Public Class SuperLV
         End Try
     End Sub
 
-    <Category("SuperLV"), Description("Deixa selecionar varias linhas na grid")> _
+    <Category("SuperLV"), Description("Deixa selecionar varias linhas na grid")>
     Public Property SelecionaVarios As Boolean
         Get
             Return _mSelect
@@ -59,7 +59,7 @@ Public Class SuperLV
         End Set
     End Property
 
-    <Category("SuperLV"), Description("Habilita Ordenação")> _
+    <Category("SuperLV"), Description("Habilita Ordenação")>
     Public Property HabilitaOrdem As Boolean
         Get
             Return _bOrdena
@@ -81,6 +81,10 @@ Public Class SuperLV
                 Dim i As Integer
                 If ice.NewValue = CheckState.Checked Then
                     For i = 0 To Me.Items.Count - 1
+                        If Me.Items(i) Is Nothing Then
+                            Continue For
+                        End If
+
                         If Me.Items(i).Checked = True Then
                             Me.Items(i).Checked = False
                         End If
@@ -506,7 +510,8 @@ Public Class SuperLV
                               Optional ByVal BarraTitulo As Boolean = True,
                               Optional ByVal Contador As Boolean = False,
                               Optional ByVal Zebrado As Boolean = True,
-                              Optional ByVal nTabela As Integer = 0)
+                              Optional ByVal nTabela As Integer = 0,
+                              Optional ByVal Fill As Boolean = False)
 
         Dim idxColuna As Integer
         Dim clmX As ColumnHeader
@@ -517,6 +522,9 @@ Public Class SuperLV
         Dim strCampo As String
         Dim posReg As Integer
         Dim ValorCampo As Object
+        Dim iContFill As Integer
+        Dim tamanhoFill As Double
+
 
         Try
 
@@ -538,7 +546,7 @@ Public Class SuperLV
             Me.AllowColumnReorder = False                       'Permite o usuario rearranjar as colunas
             Me.CheckBoxes = chk_box                             'Exibe as caixas de marcacao (check boxes.)
             Me.FullRowSelect = True                             'Seleciona um item e subitem quando a seleção é feita
-            Me.GridLines = True                                 'Exibe as linhas
+            Me.GridLines = False                                 'Exibe as linhas
             Me.Sorting = SortOrder.None                         'Ordena os itens na list na ordem ascendente
             Me.MultiSelect = False                              'Deixa selecionar celula individual
             Me.BackgroundImageTiled = True                      'Liga fundo com imagem
@@ -574,6 +582,23 @@ Public Class SuperLV
             ''#############################################
             ''#####     FOR pra montar as colunas.    #####
             ''#############################################
+
+            For i = 0 To rs1.TotalColunas(nTabela) - 1 'FieldCount() - 1
+
+                strCampo = rs1.NomeColuna(i, nTabela)
+
+                If (strCampo.Substring(0, 3) = "as_") Or
+                  (strCampo.Substring(0, 3) = "me_") Or
+                  (strCampo.Substring(0, 3) = "nu_") Then
+                    iContFill += 1
+                End If
+
+            Next
+
+            If Fill Then
+                tamanhoFill = Me.Width / iContFill
+            End If
+
             For i = 0 To rs1.TotalColunas(nTabela) - 1 'FieldCount() - 1
 
                 strCampo = rs1.NomeColuna(i, nTabela)
@@ -582,11 +607,16 @@ Public Class SuperLV
                 strTamanho = strCampo.Substring(strCampo.IndexOf("#") + 1, strCampo.Length - strCampo.IndexOf("#") - 1)
 
                 'se deu certo o comando anterior OK, senao faz calculo (tam * 10)
-                If IsNumeric(strTamanho) = True Then
-                    intTamanho = CInt(Val(strTamanho))
+                If Fill Then
+                    intTamanho = Convert.ToInt32(tamanhoFill)
                 Else
-                    intTamanho = Len(strCampo) * 10
+                    If IsNumeric(strTamanho) = True Then
+                        intTamanho = CInt(Val(strTamanho))
+                    Else
+                        intTamanho = Len(strCampo) * 10
+                    End If
                 End If
+
 
                 'So entra no grid se for as_ , me_ , nu_
                 If (strCampo.Substring(0, 3) = "as_") Or
@@ -596,6 +626,7 @@ Public Class SuperLV
                     clmX = New ColumnHeader()
                     clmX.Text = Formata_Coluna(strCampo)
                     clmX.Width = intTamanho
+                    iContFill += 1
 
                     'Se for numérico/moeda então alinha à direita
                     If strCampo.Substring(0, 3) = "me_" Or strCampo.Substring(0, 3) = "nu_" Then
@@ -636,6 +667,9 @@ Public Class SuperLV
                     idxColuna = idxColuna + 1 'aumenta o indice se entrar na grid ("id_" , "as_", "me_", "nu_", "ch_")
                 End If
             Next i
+
+
+
             '#############################################
             '#####  FIM FOR pra montar as colunas.   #####
             '#############################################

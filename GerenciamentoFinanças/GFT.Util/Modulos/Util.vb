@@ -77,6 +77,8 @@ Public Module Util
 
     Dim oCrypto As New clsCrypto()
 
+
+
     Public Function Encripta(ByVal strTexto As String) As String
         Try
             Return oCrypto.Encripta(strTexto)
@@ -120,7 +122,7 @@ Public Module Util
 
             formulario.MdiParent = oMdiContainer
             formulario.Left = 0
-            formulario.BackColor = Color.WhiteSmoke
+            'formulario.BackColor = Color.WhiteSmoke
             formulario.AutoScaleMode = Windows.Forms.AutoScaleMode.None
             formulario.ControlBox = False
             formulario.FormBorderStyle = Windows.Forms.FormBorderStyle.None

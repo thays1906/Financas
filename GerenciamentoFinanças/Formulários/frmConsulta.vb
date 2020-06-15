@@ -3,7 +3,7 @@
 Public Class frmConsulta
     Private Sub btnPesquisar_Click(sender As Object, e As EventArgs) Handles btnPesquisar.Click
         Try
-            Dim oDataset
+            Dim oDataset As SuperDataSet
 
             oDataset = pConsulta.Pesquisar()
 

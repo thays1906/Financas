@@ -10,11 +10,18 @@ Public Module SubUtil
         Consulta = 100
         Receita = 101
         Despesa = 102
+        Configuracao = 103
 
         nova_Receita = 200
         conta_Bancaria = 201
 
     End Enum
+    Public Enum eCadastroCategoria
+        FormaPagamento = 1
+        CategoriaDespesa = 2
+        CategoriaReceita = 3
+    End Enum
+
     Public Enum eSimNao
         Sim = 1
         Nao = 2
@@ -26,12 +33,25 @@ Public Module SubUtil
         VerdeClaro = 3
         Amarelo = 4
         Marrom = 5
+        Branco = 6
     End Enum
 
     Public Enum eStatusDespesa
         Pago = 1
         Pendente = 2
+        Atrasado = 3
     End Enum
+
+    Public Enum eStatus
+        Ativo = 1
+        Inativo = 2
+    End Enum
+
+    Public Enum eTipoConta
+        Corrente = 1
+        Poupanca = 2
+    End Enum
+
     'Cores
     Public Sub Cor(ByRef Controle As Control, ByVal Cor As Collor)
 
@@ -49,12 +69,23 @@ Public Module SubUtil
 
         ElseIf Cor = Collor.Marrom Then
             Controle.BackColor = Color.FromArgb(115, 100, 56)
+        ElseIf Cor = Collor.Branco Then
+            Controle.BackColor = Color.White
 
         End If
 
 
         '    Control.BackColor = Color.FromArgb(64, 62, 63)
     End Sub
+    Public Sub CorList(ByRef lv As SuperLV)
+
+        lv.BackColor = Color.WhiteSmoke
+        lv.GridLines = False
+        lv.FullRowSelect = True
+        lv.Font = New Font(FontFamily.GenericSansSerif, 12, FontStyle.Regular)
+
+    End Sub
+
     'Public Sub CorTab(ByRef tab As TabControl, ByVal Cor As Collor)
     '    If Cor = Collor.Preto Then
     '        tab.s
@@ -140,6 +171,7 @@ Public Module SubUtil
             collNomeTela.Add(New String() {"frmConsulta", "Consulta"}, Int(eTela.Consulta).ToString)
             collNomeTela.Add(New String() {"frmReceita", "Receitas"}, Int(eTela.Receita).ToString)
             collNomeTela.Add(New String() {"frmDespesa", "Despesas"}, Int(eTela.Despesa).ToString)
+            collNomeTela.Add(New String() {"frmConfiguracao", "Configurações"}, Int(eTela.Configuracao).ToString)
 
             collNomeTela.Add(New String() {"frmNovaReceita", "Nova receita"}, Int(eTela.nova_Receita).ToString)
             collNomeTela.Add(New String() {"frmContaBancaria", "Contas"}, Int(eTela.conta_Bancaria).ToString)

@@ -4,17 +4,9 @@ Option Strict On
 Imports GFT.Util
 Imports GFT.Util.clsMsgBox
 Imports GFT.Util.SuperComboBox
-Imports GFT.Correio
-Imports GFT.Correio.clsCorreio
-Imports GFT.Correio.clsCorreioExchange
 Imports System
 Imports System.IO
 Imports System.Text
-Imports RPAD
-Imports RPAD.RPAD_pProdutoDocto
-Imports RPAD.cls3270
-Imports RPAD.clsComum
-Imports Newtonsoft.Json
 Imports System.Drawing.Printing
 
 #Const ATRIBUI_SE = True
@@ -142,11 +134,11 @@ Public Class frmProc
 
     Private Sub Pesquisar(imrpimir As Boolean)
 
-        Dim oDataSet As SuperDataSet
-        'Dim oXLS As SuperXLS
-        Dim Contrato As Decimal
-        Dim Agencia As Decimal
-        Dim Conta As Decimal
+        'Dim oDataSet As SuperDataSet
+        ''Dim oXLS As SuperXLS
+        'Dim Contrato As Decimal
+        'Dim Agencia As Decimal
+        ''Dim Conta As Decimal
 
         Try
         Catch ex As Exception

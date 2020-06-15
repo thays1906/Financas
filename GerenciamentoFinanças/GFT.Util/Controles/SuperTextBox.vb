@@ -244,7 +244,7 @@ Public Class SuperTextBox
 
     Protected Overrides Sub OnLostFocus(ByVal e As System.EventArgs)
         Try
-            Me.BackColor = corObjNaoSelecionado
+            Me.BackColor = CorFundoSelecionado
             MyBase.OnLostFocus(e)
         Catch ex As Exception
             LogaErro("Erro em SuperTextBox::OnLostFocus: " & ex.Message)

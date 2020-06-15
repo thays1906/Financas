@@ -22,6 +22,7 @@ Partial Class frmReceita
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmReceita))
         Me.gbBotoes = New System.Windows.Forms.GroupBox()
         Me.btnExcluir = New GFT.Util.SuperButton()
@@ -32,16 +33,17 @@ Partial Class frmReceita
         Me.btnEditar = New GFT.Util.SuperButton()
         Me.tbConsulta = New GFT.Util.SuperTabControl()
         Me.tpPesquisa = New System.Windows.Forms.TabPage()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtTotalReceita = New GFT.Util.SuperTextBox()
         Me.gbFiltro = New System.Windows.Forms.GroupBox()
+        Me.lblMes = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cbTipoFiltro = New GFT.Util.SuperComboBox()
+        Me.cbMes = New GFT.Util.SuperComboBox()
         Me.lblContaFiltro = New System.Windows.Forms.Label()
         Me.cbContaFiltro = New GFT.Util.SuperComboBox()
         Me.lvConsulta = New GFT.Util.SuperLV()
-        Me.lblMes = New System.Windows.Forms.Label()
-        Me.cbMes = New GFT.Util.SuperComboBox()
-        Me.txtTotalReceita = New GFT.Util.SuperTextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.gbBotoes.SuspendLayout()
         Me.tbConsulta.SuspendLayout()
         Me.tpPesquisa.SuspendLayout()
@@ -57,16 +59,19 @@ Partial Class frmReceita
         Me.gbBotoes.Controls.Add(Me.btnPesquisar)
         Me.gbBotoes.Controls.Add(Me.btnFechar)
         Me.gbBotoes.Controls.Add(Me.btnEditar)
-        Me.gbBotoes.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.gbBotoes.Location = New System.Drawing.Point(80, 546)
+        Me.gbBotoes.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.gbBotoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.gbBotoes.Location = New System.Drawing.Point(0, 710)
+        Me.gbBotoes.Margin = New System.Windows.Forms.Padding(4)
         Me.gbBotoes.Name = "gbBotoes"
-        Me.gbBotoes.Size = New System.Drawing.Size(848, 50)
+        Me.gbBotoes.Padding = New System.Windows.Forms.Padding(4)
+        Me.gbBotoes.Size = New System.Drawing.Size(1315, 62)
         Me.gbBotoes.TabIndex = 8
         Me.gbBotoes.TabStop = False
         '
         'btnExcluir
         '
-        Me.btnExcluir.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnExcluir.BackColor = System.Drawing.Color.Transparent
         Me.btnExcluir.BackgroundImage = CType(resources.GetObject("btnExcluir.BackgroundImage"), System.Drawing.Image)
         Me.btnExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
@@ -77,9 +82,10 @@ Partial Class frmReceita
         Me.btnExcluir.ForeColor = System.Drawing.Color.Black
         Me.btnExcluir.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
         Me.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnExcluir.Location = New System.Drawing.Point(428, 8)
+        Me.btnExcluir.Location = New System.Drawing.Point(667, 7)
+        Me.btnExcluir.Margin = New System.Windows.Forms.Padding(4)
         Me.btnExcluir.Name = "btnExcluir"
-        Me.btnExcluir.Size = New System.Drawing.Size(137, 40)
+        Me.btnExcluir.Size = New System.Drawing.Size(208, 55)
         Me.btnExcluir.TabIndex = 11
         Me.btnExcluir.Text = "  &Excluir"
         Me.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -87,7 +93,7 @@ Partial Class frmReceita
         '
         'btnAddReceita
         '
-        Me.btnAddReceita.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnAddReceita.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnAddReceita.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.btnAddReceita.BackgroundImage = CType(resources.GetObject("btnAddReceita.BackgroundImage"), System.Drawing.Image)
         Me.btnAddReceita.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
@@ -98,9 +104,10 @@ Partial Class frmReceita
         Me.btnAddReceita.ForeColor = System.Drawing.Color.Black
         Me.btnAddReceita.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconAddReceita
         Me.btnAddReceita.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnAddReceita.Location = New System.Drawing.Point(144, 8)
+        Me.btnAddReceita.Location = New System.Drawing.Point(235, 7)
+        Me.btnAddReceita.Margin = New System.Windows.Forms.Padding(4)
         Me.btnAddReceita.Name = "btnAddReceita"
-        Me.btnAddReceita.Size = New System.Drawing.Size(137, 40)
+        Me.btnAddReceita.Size = New System.Drawing.Size(208, 55)
         Me.btnAddReceita.TabIndex = 10
         Me.btnAddReceita.Text = "  &Receita"
         Me.btnAddReceita.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -108,7 +115,7 @@ Partial Class frmReceita
         '
         'btnExportar
         '
-        Me.btnExportar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnExportar.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnExportar.BackColor = System.Drawing.Color.Transparent
         Me.btnExportar.BackgroundImage = CType(resources.GetObject("btnExportar.BackgroundImage"), System.Drawing.Image)
         Me.btnExportar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
@@ -119,9 +126,10 @@ Partial Class frmReceita
         Me.btnExportar.ForeColor = System.Drawing.Color.Black
         Me.btnExportar.Image = CType(resources.GetObject("btnExportar.Image"), System.Drawing.Image)
         Me.btnExportar.ImageAlign = System.Drawing.ContentAlignment.TopRight
-        Me.btnExportar.Location = New System.Drawing.Point(570, 8)
+        Me.btnExportar.Location = New System.Drawing.Point(883, 7)
+        Me.btnExportar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnExportar.Name = "btnExportar"
-        Me.btnExportar.Size = New System.Drawing.Size(137, 40)
+        Me.btnExportar.Size = New System.Drawing.Size(208, 55)
         Me.btnExportar.TabIndex = 9
         Me.btnExportar.Text = "  &Exportar"
         Me.btnExportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -129,7 +137,7 @@ Partial Class frmReceita
         '
         'btnPesquisar
         '
-        Me.btnPesquisar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnPesquisar.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnPesquisar.BackColor = System.Drawing.Color.Transparent
         Me.btnPesquisar.BackgroundImage = CType(resources.GetObject("btnPesquisar.BackgroundImage"), System.Drawing.Image)
         Me.btnPesquisar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
@@ -140,9 +148,10 @@ Partial Class frmReceita
         Me.btnPesquisar.ForeColor = System.Drawing.Color.Black
         Me.btnPesquisar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.Icon_search
         Me.btnPesquisar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnPesquisar.Location = New System.Drawing.Point(2, 8)
+        Me.btnPesquisar.Location = New System.Drawing.Point(13, 7)
+        Me.btnPesquisar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnPesquisar.Name = "btnPesquisar"
-        Me.btnPesquisar.Size = New System.Drawing.Size(137, 40)
+        Me.btnPesquisar.Size = New System.Drawing.Size(208, 55)
         Me.btnPesquisar.TabIndex = 1
         Me.btnPesquisar.Text = "  &Pesquisar"
         Me.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -150,7 +159,7 @@ Partial Class frmReceita
         '
         'btnFechar
         '
-        Me.btnFechar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnFechar.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnFechar.BackColor = System.Drawing.Color.Transparent
         Me.btnFechar.BackgroundImage = CType(resources.GetObject("btnFechar.BackgroundImage"), System.Drawing.Image)
         Me.btnFechar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
@@ -161,9 +170,10 @@ Partial Class frmReceita
         Me.btnFechar.ForeColor = System.Drawing.Color.Black
         Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
         Me.btnFechar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnFechar.Location = New System.Drawing.Point(711, 8)
+        Me.btnFechar.Location = New System.Drawing.Point(1099, 7)
+        Me.btnFechar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnFechar.Name = "btnFechar"
-        Me.btnFechar.Size = New System.Drawing.Size(137, 40)
+        Me.btnFechar.Size = New System.Drawing.Size(208, 55)
         Me.btnFechar.TabIndex = 2
         Me.btnFechar.Text = "  &Fechar"
         Me.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -171,7 +181,7 @@ Partial Class frmReceita
         '
         'btnEditar
         '
-        Me.btnEditar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnEditar.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnEditar.BackColor = System.Drawing.Color.Transparent
         Me.btnEditar.BackgroundImage = CType(resources.GetObject("btnEditar.BackgroundImage"), System.Drawing.Image)
         Me.btnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
@@ -182,9 +192,10 @@ Partial Class frmReceita
         Me.btnEditar.ForeColor = System.Drawing.Color.Black
         Me.btnEditar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconEditar
         Me.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnEditar.Location = New System.Drawing.Point(286, 8)
+        Me.btnEditar.Location = New System.Drawing.Point(451, 7)
+        Me.btnEditar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnEditar.Name = "btnEditar"
-        Me.btnEditar.Size = New System.Drawing.Size(137, 40)
+        Me.btnEditar.Size = New System.Drawing.Size(208, 55)
         Me.btnEditar.TabIndex = 8
         Me.btnEditar.Text = "  &Editar"
         Me.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -192,15 +203,16 @@ Partial Class frmReceita
         '
         'tbConsulta
         '
-        Me.tbConsulta.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tbConsulta.Controls.Add(Me.tpPesquisa)
+        Me.tbConsulta.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tbConsulta.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbConsulta.Location = New System.Drawing.Point(37, 1)
+        Me.tbConsulta.ImageList = Me.ImageList1
+        Me.tbConsulta.Location = New System.Drawing.Point(0, 0)
+        Me.tbConsulta.Margin = New System.Windows.Forms.Padding(4)
         Me.tbConsulta.Name = "tbConsulta"
-        Me.tbConsulta.Padding = New System.Drawing.Point(50, 5)
+        Me.tbConsulta.Padding = New System.Drawing.Point(50, 6)
         Me.tbConsulta.SelectedIndex = 0
-        Me.tbConsulta.Size = New System.Drawing.Size(923, 543)
+        Me.tbConsulta.Size = New System.Drawing.Size(1315, 772)
         Me.tbConsulta.TabIndex = 4
         '
         'tpPesquisa
@@ -209,13 +221,48 @@ Partial Class frmReceita
         Me.tpPesquisa.Controls.Add(Me.txtTotalReceita)
         Me.tpPesquisa.Controls.Add(Me.gbFiltro)
         Me.tpPesquisa.Controls.Add(Me.lvConsulta)
-        Me.tpPesquisa.Location = New System.Drawing.Point(4, 30)
+        Me.tpPesquisa.ImageIndex = 1
+        Me.tpPesquisa.Location = New System.Drawing.Point(4, 53)
+        Me.tpPesquisa.Margin = New System.Windows.Forms.Padding(4)
         Me.tpPesquisa.Name = "tpPesquisa"
-        Me.tpPesquisa.Padding = New System.Windows.Forms.Padding(5)
-        Me.tpPesquisa.Size = New System.Drawing.Size(915, 509)
+        Me.tpPesquisa.Padding = New System.Windows.Forms.Padding(7, 6, 7, 6)
+        Me.tpPesquisa.Size = New System.Drawing.Size(1307, 715)
         Me.tpPesquisa.TabIndex = 0
-        Me.tpPesquisa.Text = "Pesquisa"
+        Me.tpPesquisa.Text = "Receitas"
         Me.tpPesquisa.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(40, 158)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(171, 22)
+        Me.Label1.TabIndex = 9
+        Me.Label1.Text = "Total das Receitas:"
+        '
+        'txtTotalReceita
+        '
+        Me.txtTotalReceita.Alterado = False
+        Me.txtTotalReceita.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.txtTotalReceita.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtTotalReceita.CorFundoSelecionado = System.Drawing.SystemColors.Control
+        Me.txtTotalReceita.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTotalReceita.ForeColor = System.Drawing.Color.Green
+        Me.txtTotalReceita.Location = New System.Drawing.Point(219, 143)
+        Me.txtTotalReceita.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtTotalReceita.Multiline = True
+        Me.txtTotalReceita.Name = "txtTotalReceita"
+        Me.txtTotalReceita.ReadOnly = True
+        Me.txtTotalReceita.Size = New System.Drawing.Size(197, 37)
+        Me.txtTotalReceita.SuperMascara = ""
+        Me.txtTotalReceita.SuperObrigatorio = False
+        Me.txtTotalReceita.SuperTravaErrors = False
+        Me.txtTotalReceita.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
+        Me.txtTotalReceita.SuperTxtObrigatorio = ""
+        Me.txtTotalReceita.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NENHUMA
+        Me.txtTotalReceita.TabIndex = 8
+        Me.txtTotalReceita.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'gbFiltro
         '
@@ -227,49 +274,89 @@ Partial Class frmReceita
         Me.gbFiltro.Controls.Add(Me.cbMes)
         Me.gbFiltro.Controls.Add(Me.lblContaFiltro)
         Me.gbFiltro.Controls.Add(Me.cbContaFiltro)
-        Me.gbFiltro.Location = New System.Drawing.Point(8, 19)
+        Me.gbFiltro.Location = New System.Drawing.Point(44, 23)
+        Me.gbFiltro.Margin = New System.Windows.Forms.Padding(4)
         Me.gbFiltro.Name = "gbFiltro"
-        Me.gbFiltro.Size = New System.Drawing.Size(899, 83)
+        Me.gbFiltro.Padding = New System.Windows.Forms.Padding(4)
+        Me.gbFiltro.Size = New System.Drawing.Size(1219, 102)
         Me.gbFiltro.TabIndex = 7
         Me.gbFiltro.TabStop = False
         Me.gbFiltro.Text = "Filtro"
         '
+        'lblMes
+        '
+        Me.lblMes.AutoSize = True
+        Me.lblMes.Location = New System.Drawing.Point(75, 25)
+        Me.lblMes.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblMes.Name = "lblMes"
+        Me.lblMes.Size = New System.Drawing.Size(51, 22)
+        Me.lblMes.TabIndex = 12
+        Me.lblMes.Text = "Mês:"
+        '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(545, 21)
+        Me.Label3.Location = New System.Drawing.Point(727, 26)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(102, 17)
+        Me.Label3.Size = New System.Drawing.Size(134, 22)
         Me.Label3.TabIndex = 10
         Me.Label3.Text = "Tipo de Conta:"
         '
         'cbTipoFiltro
         '
         Me.cbTipoFiltro.Alterado = False
+        Me.cbTipoFiltro.CorFundo = System.Drawing.Color.White
+        Me.cbTipoFiltro.CorFundoSelecionado = System.Drawing.Color.White
+        Me.cbTipoFiltro.CorTexto = System.Drawing.Color.Black
+        Me.cbTipoFiltro.CorTextoSelecionado = System.Drawing.Color.Black
         Me.cbTipoFiltro.FormattingEnabled = True
-        Me.cbTipoFiltro.Location = New System.Drawing.Point(548, 40)
+        Me.cbTipoFiltro.Location = New System.Drawing.Point(731, 49)
+        Me.cbTipoFiltro.Margin = New System.Windows.Forms.Padding(4)
         Me.cbTipoFiltro.Name = "cbTipoFiltro"
-        Me.cbTipoFiltro.Size = New System.Drawing.Size(144, 25)
+        Me.cbTipoFiltro.Size = New System.Drawing.Size(191, 30)
         Me.cbTipoFiltro.SuperObrigatorio = False
         Me.cbTipoFiltro.SuperTxtObrigatorio = ""
         Me.cbTipoFiltro.TabIndex = 9
         '
+        'cbMes
+        '
+        Me.cbMes.Alterado = False
+        Me.cbMes.CorFundo = System.Drawing.Color.White
+        Me.cbMes.CorFundoSelecionado = System.Drawing.Color.White
+        Me.cbMes.CorTexto = System.Drawing.Color.Black
+        Me.cbMes.CorTextoSelecionado = System.Drawing.Color.Black
+        Me.cbMes.FormattingEnabled = True
+        Me.cbMes.Location = New System.Drawing.Point(79, 49)
+        Me.cbMes.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbMes.Name = "cbMes"
+        Me.cbMes.Size = New System.Drawing.Size(324, 30)
+        Me.cbMes.SuperObrigatorio = False
+        Me.cbMes.SuperTxtObrigatorio = ""
+        Me.cbMes.TabIndex = 11
+        '
         'lblContaFiltro
         '
         Me.lblContaFiltro.AutoSize = True
-        Me.lblContaFiltro.Location = New System.Drawing.Point(363, 20)
+        Me.lblContaFiltro.Location = New System.Drawing.Point(484, 25)
+        Me.lblContaFiltro.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblContaFiltro.Name = "lblContaFiltro"
-        Me.lblContaFiltro.Size = New System.Drawing.Size(51, 17)
+        Me.lblContaFiltro.Size = New System.Drawing.Size(65, 22)
         Me.lblContaFiltro.TabIndex = 8
         Me.lblContaFiltro.Text = "Conta:"
         '
         'cbContaFiltro
         '
         Me.cbContaFiltro.Alterado = False
+        Me.cbContaFiltro.CorFundo = System.Drawing.Color.White
+        Me.cbContaFiltro.CorFundoSelecionado = System.Drawing.Color.White
+        Me.cbContaFiltro.CorTexto = System.Drawing.Color.Black
+        Me.cbContaFiltro.CorTextoSelecionado = System.Drawing.Color.Black
         Me.cbContaFiltro.FormattingEnabled = True
-        Me.cbContaFiltro.Location = New System.Drawing.Point(366, 40)
+        Me.cbContaFiltro.Location = New System.Drawing.Point(488, 49)
+        Me.cbContaFiltro.Margin = New System.Windows.Forms.Padding(4)
         Me.cbContaFiltro.Name = "cbContaFiltro"
-        Me.cbContaFiltro.Size = New System.Drawing.Size(164, 25)
+        Me.cbContaFiltro.Size = New System.Drawing.Size(217, 30)
         Me.cbContaFiltro.SuperObrigatorio = False
         Me.cbContaFiltro.SuperTxtObrigatorio = ""
         Me.cbContaFiltro.TabIndex = 7
@@ -277,76 +364,42 @@ Partial Class frmReceita
         'lvConsulta
         '
         Me.lvConsulta.Alignment = System.Windows.Forms.ListViewAlignment.Left
-        Me.lvConsulta.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.lvConsulta.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lvConsulta.BackColor = System.Drawing.SystemColors.Window
         Me.lvConsulta.FullRowSelect = True
         Me.lvConsulta.HabilitaOrdem = True
         Me.lvConsulta.HideSelection = False
         Me.lvConsulta.HoverSelection = True
-        Me.lvConsulta.Location = New System.Drawing.Point(8, 133)
+        Me.lvConsulta.Location = New System.Drawing.Point(44, 184)
+        Me.lvConsulta.Margin = New System.Windows.Forms.Padding(4)
         Me.lvConsulta.Name = "lvConsulta"
         Me.lvConsulta.SelecionaVarios = False
-        Me.lvConsulta.Size = New System.Drawing.Size(899, 365)
+        Me.lvConsulta.Size = New System.Drawing.Size(1219, 423)
         Me.lvConsulta.TabIndex = 0
         Me.lvConsulta.TileSize = New System.Drawing.Size(400, 38)
         Me.lvConsulta.UseCompatibleStateImageBehavior = False
         Me.lvConsulta.View = System.Windows.Forms.View.Tile
         '
-        'lblMes
+        'ImageList1
         '
-        Me.lblMes.AutoSize = True
-        Me.lblMes.Location = New System.Drawing.Point(56, 20)
-        Me.lblMes.Name = "lblMes"
-        Me.lblMes.Size = New System.Drawing.Size(39, 17)
-        Me.lblMes.TabIndex = 12
-        Me.lblMes.Text = "Mês:"
-        '
-        'cbMes
-        '
-        Me.cbMes.Alterado = False
-        Me.cbMes.FormattingEnabled = True
-        Me.cbMes.Location = New System.Drawing.Point(59, 40)
-        Me.cbMes.Name = "cbMes"
-        Me.cbMes.Size = New System.Drawing.Size(244, 25)
-        Me.cbMes.SuperObrigatorio = False
-        Me.cbMes.SuperTxtObrigatorio = ""
-        Me.cbMes.TabIndex = 11
-        '
-        'txtTotalReceita
-        '
-        Me.txtTotalReceita.Alterado = False
-        Me.txtTotalReceita.BackColor = System.Drawing.Color.White
-        Me.txtTotalReceita.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
-        Me.txtTotalReceita.Location = New System.Drawing.Point(762, 108)
-        Me.txtTotalReceita.Name = "txtTotalReceita"
-        Me.txtTotalReceita.Size = New System.Drawing.Size(145, 25)
-        Me.txtTotalReceita.SuperMascara = ""
-        Me.txtTotalReceita.SuperObrigatorio = False
-        Me.txtTotalReceita.SuperTravaErrors = False
-        Me.txtTotalReceita.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
-        Me.txtTotalReceita.SuperTxtObrigatorio = ""
-        Me.txtTotalReceita.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NENHUMA
-        Me.txtTotalReceita.TabIndex = 8
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(624, 111)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(132, 17)
-        Me.Label1.TabIndex = 9
-        Me.Label1.Text = "Total das Receitas:"
+        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList1.Images.SetKeyName(0, "iconReceita.fw.png")
+        Me.ImageList1.Images.SetKeyName(1, "iconMOneyGreen.png")
         '
         'frmReceita
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
-        Me.ClientSize = New System.Drawing.Size(986, 627)
+        Me.BackColor = System.Drawing.Color.LightSeaGreen
+        Me.ClientSize = New System.Drawing.Size(1315, 772)
         Me.Controls.Add(Me.gbBotoes)
         Me.Controls.Add(Me.tbConsulta)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmReceita"
         Me.Text = "frmReceita"
         Me.gbBotoes.ResumeLayout(False)
@@ -378,4 +431,5 @@ Partial Class frmReceita
     Friend WithEvents txtTotalReceita As GFT.Util.SuperTextBox
     Friend WithEvents lblMes As Label
     Friend WithEvents cbMes As GFT.Util.SuperComboBox
+    Friend WithEvents ImageList1 As ImageList
 End Class

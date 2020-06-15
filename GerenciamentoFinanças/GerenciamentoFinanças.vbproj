@@ -23,7 +23,9 @@
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>GerenciamentoFinanças.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,7 +35,9 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>GerenciamentoFinanças.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -42,7 +46,7 @@
     <OptionCompare>Binary</OptionCompare>
   </PropertyGroup>
   <PropertyGroup>
-    <OptionStrict>Off</OptionStrict>
+    <OptionStrict>On</OptionStrict>
   </PropertyGroup>
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
@@ -78,16 +82,25 @@
   <ItemGroup>
     <Compile Include="Classes\Cores.vb" />
     <Compile Include="Classes\SubUtil.vb" />
-    <Compile Include="DAL\pCategoria.vb" />
+    <Compile Include="DAL\pCategoriaDespesa.vb" />
     <Compile Include="DAL\pConsulta.vb" />
     <Compile Include="DAL\pContaBancaria.vb" />
+    <Compile Include="DAL\pControleParcelamento.vb" />
     <Compile Include="DAL\pDespesa.vb" />
+    <Compile Include="DAL\pFormaPagamento.vb" />
+    <Compile Include="DAL\pParcelamento.vb" />
     <Compile Include="DAL\pReceita.vb" />
     <Compile Include="DAL\pTipoReceita.vb" />
-    <Compile Include="Formulários\frmContaBancaria.Designer.vb">
-      <DependentUpon>frmContaBancaria.vb</DependentUpon>
+    <Compile Include="Formulários\frmConfiguracao.Designer.vb">
+      <DependentUpon>frmConfiguracao.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\frmContaBancaria.vb">
+    <Compile Include="Formulários\frmConfiguracao.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\frmCadastroCategoria.Designer.vb">
+      <DependentUpon>frmCadastroCategoria.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmCadastroCategoria.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formulários\frmLogin.Designer.vb">
@@ -157,14 +170,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Formulários\frmConfiguracao.resx">
+      <DependentUpon>frmConfiguracao.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmConsulta.resx">
       <DependentUpon>frmConsulta.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\frmContaBancaria.resx">
-      <DependentUpon>frmContaBancaria.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmDespesa.resx">
       <DependentUpon>frmDespesa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmCadastroCategoria.resx">
+      <DependentUpon>frmCadastroCategoria.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
@@ -208,6 +224,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="iconFinanceiro4.ico" />
+    <None Include="Resources\iconOk.png" />
     <None Include="Resources\iconLogin32.png" />
     <None Include="Resources\iconJanelas.png" />
     <None Include="Resources\icon_Salvar.png.png" />

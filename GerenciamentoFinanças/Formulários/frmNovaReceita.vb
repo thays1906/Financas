@@ -1,4 +1,6 @@
 ﻿Imports GFT.Util
+Imports GFT.Util.SuperComboBox
+
 Public Class frmNovaReceita
     Public cod As Decimal
     Private Sub frmNovaReceita_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -17,9 +19,10 @@ Public Class frmNovaReceita
                     logErro = Now.ToString & "- Inclusão de receita"
 
                     pReceita.InserirReceita(dtReceita.Value,
-                                            txtDescricao.Text, txtValor.Text,
-                                            cbConta.ObterChaveCombo,
-                                            cbTipoReceita.ObterChaveCombo,
+                                            txtDescricao.Text,
+                                            CDec(txtValor.Text),
+                                            CDec(cbConta.ObterChaveCombo),
+                                            CDec(cbTipoReceita.ObterChaveCombo),
                                             logErro)
 
                     clsMsgBox.S_MsgBox("Receita adicionada com sucesso", clsMsgBox.eBotoes.Ok,, clsMsgBox.eImagens.Ok)
@@ -30,9 +33,9 @@ Public Class frmNovaReceita
 
                     pReceita.AlterarReceita(cod,
                                             txtDescricao.Text,
-                                            txtValor.Text,
-                                            cbConta.ObterChaveCombo(),
-                                            cbTipoReceita.ObterChaveCombo(),
+                                            CDec(txtValor.Text),
+                                            CDec(cbConta.ObterChaveCombo()),
+                                            CDec(cbTipoReceita.ObterChaveCombo()),
                                             logErro)
                     clsMsgBox.S_MsgBox("Dados alterado com sucesso", clsMsgBox.eBotoes.Ok,, clsMsgBox.eImagens.Ok)
 
@@ -54,8 +57,14 @@ Public Class frmNovaReceita
             conta = pContaBancaria.CarregarConta()
             cbConta.PreencheComboDS(conta, "rBanco", "cConta", SuperComboBox.PrimeiroValor.Selecione)
 
-            tipoReceita = pTipoReceita.ObterTipoReceita()
+            tipoReceita = pTipoReceita.CarregarCombo()
             cbTipoReceita.PreencheComboDS(tipoReceita, "rTipo", "cTipoReceita", SuperComboBox.PrimeiroValor.Selecione)
+
+            Dim col As New Collection
+            col.Add(New DuplaCombo(eTipoConta.Corrente, "Corrente"))
+            col.Add(New DuplaCombo(eTipoConta.Poupanca, "Poupança"))
+
+            cbTipoConta.PreencheComboColl(col, PrimeiroValor.Nada)
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
@@ -78,7 +87,7 @@ Public Class frmNovaReceita
 
     Public Sub PreencheCampo(ByVal rs As SuperDataSet)
         Try
-            dtReceita.Value = rs("dtRec").ToString
+            dtReceita.Value = CDate(rs("dtRec").ToString)
             txtValor.Text = rs("cValor").ToString()
             cbConta.PosicionaRegistroCombo(rs("cConta"))
             cbTipoReceita.PosicionaRegistroCombo(rs("cTipo"))
@@ -91,7 +100,7 @@ Public Class frmNovaReceita
         End Try
     End Sub
     Private Sub LimpaCampos()
-        dtReceita.Value = Now.ToString
+        dtReceita.Value = Now
         txtDescricao.Text = ""
         txtValor.Text = ""
         cbConta.SelectedIndex = 0
@@ -107,4 +116,7 @@ Public Class frmNovaReceita
         Me.Close()
     End Sub
 
+    Protected Overrides Sub Finalize()
+        MyBase.Finalize()
+    End Sub
 End Class

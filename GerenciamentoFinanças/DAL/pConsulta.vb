@@ -29,6 +29,7 @@ Public Class pConsulta
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
+            Return Nothing
         End Try
     End Function
 End Class
