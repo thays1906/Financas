@@ -25,13 +25,6 @@ Partial Class frmDespesa
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmDespesa))
         Me.gbBotoes = New System.Windows.Forms.GroupBox()
-        Me.btnStatusPago = New GFT.Util.SuperButton()
-        Me.btnFechar = New GFT.Util.SuperButton()
-        Me.btnExcluir = New GFT.Util.SuperButton()
-        Me.btnAddDespesa = New GFT.Util.SuperButton()
-        Me.btnExportar = New GFT.Util.SuperButton()
-        Me.btnPesquisar = New GFT.Util.SuperButton()
-        Me.btnEditar = New GFT.Util.SuperButton()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.tbConsulta = New GFT.Util.SuperTabControl()
         Me.tpPesquisa = New System.Windows.Forms.TabPage()
@@ -43,9 +36,16 @@ Partial Class frmDespesa
         Me.cbStatusFiltro = New GFT.Util.SuperComboBox()
         Me.lvConsulta = New GFT.Util.SuperLV()
         Me.txtTotalDespesa = New GFT.Util.SuperTextBox()
+        Me.tabDespesaFixa = New System.Windows.Forms.TabPage()
         Me.tabDetalhe = New System.Windows.Forms.TabPage()
         Me.SuperGroupBox1 = New GFT.Util.SuperGroupBox()
-        Me.tabDespesaFixa = New System.Windows.Forms.TabPage()
+        Me.btnStatusPago = New GFT.Util.SuperButton()
+        Me.btnFechar = New GFT.Util.SuperButton()
+        Me.btnExcluir = New GFT.Util.SuperButton()
+        Me.btnAddDespesa = New GFT.Util.SuperButton()
+        Me.btnExportar = New GFT.Util.SuperButton()
+        Me.btnPesquisar = New GFT.Util.SuperButton()
+        Me.btnEditar = New GFT.Util.SuperButton()
         Me.gbBotoes.SuspendLayout()
         Me.tbConsulta.SuspendLayout()
         Me.tpPesquisa.SuspendLayout()
@@ -64,168 +64,13 @@ Partial Class frmDespesa
         Me.gbBotoes.Controls.Add(Me.btnPesquisar)
         Me.gbBotoes.Controls.Add(Me.btnEditar)
         Me.gbBotoes.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.gbBotoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.gbBotoes.Location = New System.Drawing.Point(0, 722)
+        Me.gbBotoes.Location = New System.Drawing.Point(0, 702)
         Me.gbBotoes.Margin = New System.Windows.Forms.Padding(4)
         Me.gbBotoes.Name = "gbBotoes"
         Me.gbBotoes.Padding = New System.Windows.Forms.Padding(4)
-        Me.gbBotoes.Size = New System.Drawing.Size(1450, 70)
+        Me.gbBotoes.Size = New System.Drawing.Size(1450, 90)
         Me.gbBotoes.TabIndex = 9
         Me.gbBotoes.TabStop = False
-        '
-        'btnStatusPago
-        '
-        Me.btnStatusPago.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnStatusPago.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.btnStatusPago.BackgroundImage = CType(resources.GetObject("btnStatusPago.BackgroundImage"), System.Drawing.Image)
-        Me.btnStatusPago.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnStatusPago.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnStatusPago.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder
-        Me.btnStatusPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnStatusPago.Font = New System.Drawing.Font("Verdana", 9.0!)
-        Me.btnStatusPago.ForeColor = System.Drawing.Color.Black
-        Me.btnStatusPago.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconOk
-        Me.btnStatusPago.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnStatusPago.Location = New System.Drawing.Point(866, 10)
-        Me.btnStatusPago.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnStatusPago.Name = "btnStatusPago"
-        Me.btnStatusPago.Size = New System.Drawing.Size(208, 55)
-        Me.btnStatusPago.TabIndex = 13
-        Me.btnStatusPago.Text = "  &Pagar"
-        Me.btnStatusPago.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnStatusPago.UseVisualStyleBackColor = False
-        '
-        'btnFechar
-        '
-        Me.btnFechar.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnFechar.BackColor = System.Drawing.Color.Transparent
-        Me.btnFechar.BackgroundImage = CType(resources.GetObject("btnFechar.BackgroundImage"), System.Drawing.Image)
-        Me.btnFechar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnFechar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder
-        Me.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnFechar.Font = New System.Drawing.Font("Verdana", 9.0!)
-        Me.btnFechar.ForeColor = System.Drawing.Color.Black
-        Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
-        Me.btnFechar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnFechar.Location = New System.Drawing.Point(1298, 10)
-        Me.btnFechar.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnFechar.Name = "btnFechar"
-        Me.btnFechar.Size = New System.Drawing.Size(208, 55)
-        Me.btnFechar.TabIndex = 2
-        Me.btnFechar.Text = "  &Fechar"
-        Me.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnFechar.UseVisualStyleBackColor = False
-        '
-        'btnExcluir
-        '
-        Me.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnExcluir.BackColor = System.Drawing.Color.Transparent
-        Me.btnExcluir.BackgroundImage = CType(resources.GetObject("btnExcluir.BackgroundImage"), System.Drawing.Image)
-        Me.btnExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnExcluir.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnExcluir.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder
-        Me.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnExcluir.Font = New System.Drawing.Font("Verdana", 9.0!)
-        Me.btnExcluir.ForeColor = System.Drawing.Color.Black
-        Me.btnExcluir.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
-        Me.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnExcluir.Location = New System.Drawing.Point(650, 10)
-        Me.btnExcluir.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnExcluir.Name = "btnExcluir"
-        Me.btnExcluir.Size = New System.Drawing.Size(208, 55)
-        Me.btnExcluir.TabIndex = 11
-        Me.btnExcluir.Text = "  &Excluir"
-        Me.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnExcluir.UseVisualStyleBackColor = False
-        '
-        'btnAddDespesa
-        '
-        Me.btnAddDespesa.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnAddDespesa.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.btnAddDespesa.BackgroundImage = CType(resources.GetObject("btnAddDespesa.BackgroundImage"), System.Drawing.Image)
-        Me.btnAddDespesa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnAddDespesa.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnAddDespesa.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder
-        Me.btnAddDespesa.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAddDespesa.Font = New System.Drawing.Font("Verdana", 9.0!)
-        Me.btnAddDespesa.ForeColor = System.Drawing.Color.Black
-        Me.btnAddDespesa.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconAddReceita
-        Me.btnAddDespesa.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnAddDespesa.Location = New System.Drawing.Point(218, 10)
-        Me.btnAddDespesa.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnAddDespesa.Name = "btnAddDespesa"
-        Me.btnAddDespesa.Size = New System.Drawing.Size(208, 55)
-        Me.btnAddDespesa.TabIndex = 10
-        Me.btnAddDespesa.Text = "  &Despesa"
-        Me.btnAddDespesa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnAddDespesa.UseVisualStyleBackColor = False
-        '
-        'btnExportar
-        '
-        Me.btnExportar.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnExportar.BackColor = System.Drawing.Color.Transparent
-        Me.btnExportar.BackgroundImage = CType(resources.GetObject("btnExportar.BackgroundImage"), System.Drawing.Image)
-        Me.btnExportar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnExportar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnExportar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder
-        Me.btnExportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnExportar.Font = New System.Drawing.Font("Verdana", 9.0!)
-        Me.btnExportar.ForeColor = System.Drawing.Color.Black
-        Me.btnExportar.Image = CType(resources.GetObject("btnExportar.Image"), System.Drawing.Image)
-        Me.btnExportar.ImageAlign = System.Drawing.ContentAlignment.TopRight
-        Me.btnExportar.Location = New System.Drawing.Point(1082, 10)
-        Me.btnExportar.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnExportar.Name = "btnExportar"
-        Me.btnExportar.Size = New System.Drawing.Size(208, 55)
-        Me.btnExportar.TabIndex = 9
-        Me.btnExportar.Text = "  &Exportar"
-        Me.btnExportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnExportar.UseVisualStyleBackColor = False
-        '
-        'btnPesquisar
-        '
-        Me.btnPesquisar.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnPesquisar.BackColor = System.Drawing.Color.Transparent
-        Me.btnPesquisar.BackgroundImage = CType(resources.GetObject("btnPesquisar.BackgroundImage"), System.Drawing.Image)
-        Me.btnPesquisar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnPesquisar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder
-        Me.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPesquisar.Font = New System.Drawing.Font("Verdana", 9.0!)
-        Me.btnPesquisar.ForeColor = System.Drawing.Color.Black
-        Me.btnPesquisar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.Icon_search
-        Me.btnPesquisar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnPesquisar.Location = New System.Drawing.Point(2, 10)
-        Me.btnPesquisar.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnPesquisar.Name = "btnPesquisar"
-        Me.btnPesquisar.Size = New System.Drawing.Size(208, 55)
-        Me.btnPesquisar.TabIndex = 1
-        Me.btnPesquisar.Text = "  &Pesquisar"
-        Me.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnPesquisar.UseVisualStyleBackColor = False
-        '
-        'btnEditar
-        '
-        Me.btnEditar.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnEditar.BackColor = System.Drawing.Color.Transparent
-        Me.btnEditar.BackgroundImage = CType(resources.GetObject("btnEditar.BackgroundImage"), System.Drawing.Image)
-        Me.btnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnEditar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder
-        Me.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnEditar.Font = New System.Drawing.Font("Verdana", 9.0!)
-        Me.btnEditar.ForeColor = System.Drawing.Color.Black
-        Me.btnEditar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconEditar
-        Me.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnEditar.Location = New System.Drawing.Point(434, 10)
-        Me.btnEditar.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnEditar.Name = "btnEditar"
-        Me.btnEditar.Size = New System.Drawing.Size(208, 55)
-        Me.btnEditar.TabIndex = 8
-        Me.btnEditar.Text = "  &Editar"
-        Me.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnEditar.UseVisualStyleBackColor = False
         '
         'ImageList1
         '
@@ -247,7 +92,7 @@ Partial Class frmDespesa
         Me.tbConsulta.Name = "tbConsulta"
         Me.tbConsulta.Padding = New System.Drawing.Point(50, 6)
         Me.tbConsulta.SelectedIndex = 0
-        Me.tbConsulta.Size = New System.Drawing.Size(1450, 722)
+        Me.tbConsulta.Size = New System.Drawing.Size(1450, 702)
         Me.tbConsulta.TabIndex = 4
         '
         'tpPesquisa
@@ -261,7 +106,7 @@ Partial Class frmDespesa
         Me.tpPesquisa.Margin = New System.Windows.Forms.Padding(4)
         Me.tpPesquisa.Name = "tpPesquisa"
         Me.tpPesquisa.Padding = New System.Windows.Forms.Padding(7, 6, 7, 6)
-        Me.tpPesquisa.Size = New System.Drawing.Size(1442, 657)
+        Me.tpPesquisa.Size = New System.Drawing.Size(1442, 637)
         Me.tpPesquisa.TabIndex = 0
         Me.tpPesquisa.Text = "Despesas"
         Me.tpPesquisa.UseVisualStyleBackColor = True
@@ -359,7 +204,7 @@ Partial Class frmDespesa
         Me.lvConsulta.Margin = New System.Windows.Forms.Padding(4)
         Me.lvConsulta.Name = "lvConsulta"
         Me.lvConsulta.SelecionaVarios = True
-        Me.lvConsulta.Size = New System.Drawing.Size(1416, 489)
+        Me.lvConsulta.Size = New System.Drawing.Size(1416, 469)
         Me.lvConsulta.TabIndex = 0
         Me.lvConsulta.UseCompatibleStateImageBehavior = False
         '
@@ -370,7 +215,7 @@ Partial Class frmDespesa
         Me.txtTotalDespesa.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
         Me.txtTotalDespesa.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTotalDespesa.ForeColor = System.Drawing.Color.Red
-        Me.txtTotalDespesa.Location = New System.Drawing.Point(184, 123)
+        Me.txtTotalDespesa.Location = New System.Drawing.Point(190, 123)
         Me.txtTotalDespesa.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTotalDespesa.Name = "txtTotalDespesa"
         Me.txtTotalDespesa.ReadOnly = True
@@ -382,6 +227,16 @@ Partial Class frmDespesa
         Me.txtTotalDespesa.SuperTxtObrigatorio = ""
         Me.txtTotalDespesa.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NENHUMA
         Me.txtTotalDespesa.TabIndex = 8
+        '
+        'tabDespesaFixa
+        '
+        Me.tabDespesaFixa.Location = New System.Drawing.Point(4, 61)
+        Me.tabDespesaFixa.Name = "tabDespesaFixa"
+        Me.tabDespesaFixa.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabDespesaFixa.Size = New System.Drawing.Size(1442, 657)
+        Me.tabDespesaFixa.TabIndex = 2
+        Me.tabDespesaFixa.Text = "Despesas Fixas"
+        Me.tabDespesaFixa.UseVisualStyleBackColor = True
         '
         'tabDetalhe
         '
@@ -405,15 +260,159 @@ Partial Class frmDespesa
         Me.SuperGroupBox1.TabStop = False
         Me.SuperGroupBox1.Text = "SuperGroupBox1"
         '
-        'tabDespesaFixa
+        'btnStatusPago
         '
-        Me.tabDespesaFixa.Location = New System.Drawing.Point(4, 61)
-        Me.tabDespesaFixa.Name = "tabDespesaFixa"
-        Me.tabDespesaFixa.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabDespesaFixa.Size = New System.Drawing.Size(1442, 657)
-        Me.tabDespesaFixa.TabIndex = 2
-        Me.tabDespesaFixa.Text = "Despesas Fixas"
-        Me.tabDespesaFixa.UseVisualStyleBackColor = True
+        Me.btnStatusPago.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnStatusPago.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.btnStatusPago.BackgroundImage = CType(resources.GetObject("btnStatusPago.BackgroundImage"), System.Drawing.Image)
+        Me.btnStatusPago.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnStatusPago.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnStatusPago.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder
+        Me.btnStatusPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnStatusPago.Font = New System.Drawing.Font("Verdana", 9.0!)
+        Me.btnStatusPago.ForeColor = System.Drawing.Color.Black
+        Me.btnStatusPago.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconOk
+        Me.btnStatusPago.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnStatusPago.Location = New System.Drawing.Point(866, 23)
+        Me.btnStatusPago.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnStatusPago.Name = "btnStatusPago"
+        Me.btnStatusPago.Size = New System.Drawing.Size(208, 55)
+        Me.btnStatusPago.TabIndex = 13
+        Me.btnStatusPago.Text = "  &Pagar"
+        Me.btnStatusPago.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnStatusPago.UseVisualStyleBackColor = False
+        '
+        'btnFechar
+        '
+        Me.btnFechar.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnFechar.BackColor = System.Drawing.Color.Transparent
+        Me.btnFechar.BackgroundImage = CType(resources.GetObject("btnFechar.BackgroundImage"), System.Drawing.Image)
+        Me.btnFechar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnFechar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder
+        Me.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnFechar.Font = New System.Drawing.Font("Verdana", 9.0!)
+        Me.btnFechar.ForeColor = System.Drawing.Color.Black
+        Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
+        Me.btnFechar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnFechar.Location = New System.Drawing.Point(1298, 23)
+        Me.btnFechar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnFechar.Name = "btnFechar"
+        Me.btnFechar.Size = New System.Drawing.Size(208, 55)
+        Me.btnFechar.TabIndex = 2
+        Me.btnFechar.Text = "  &Fechar"
+        Me.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnFechar.UseVisualStyleBackColor = False
+        '
+        'btnExcluir
+        '
+        Me.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnExcluir.BackColor = System.Drawing.Color.Transparent
+        Me.btnExcluir.BackgroundImage = CType(resources.GetObject("btnExcluir.BackgroundImage"), System.Drawing.Image)
+        Me.btnExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnExcluir.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnExcluir.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder
+        Me.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnExcluir.Font = New System.Drawing.Font("Verdana", 9.0!)
+        Me.btnExcluir.ForeColor = System.Drawing.Color.Black
+        Me.btnExcluir.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
+        Me.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnExcluir.Location = New System.Drawing.Point(650, 23)
+        Me.btnExcluir.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnExcluir.Name = "btnExcluir"
+        Me.btnExcluir.Size = New System.Drawing.Size(208, 55)
+        Me.btnExcluir.TabIndex = 11
+        Me.btnExcluir.Text = "  &Excluir"
+        Me.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnExcluir.UseVisualStyleBackColor = False
+        '
+        'btnAddDespesa
+        '
+        Me.btnAddDespesa.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnAddDespesa.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.btnAddDespesa.BackgroundImage = CType(resources.GetObject("btnAddDespesa.BackgroundImage"), System.Drawing.Image)
+        Me.btnAddDespesa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnAddDespesa.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnAddDespesa.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder
+        Me.btnAddDespesa.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAddDespesa.Font = New System.Drawing.Font("Verdana", 9.0!)
+        Me.btnAddDespesa.ForeColor = System.Drawing.Color.Black
+        Me.btnAddDespesa.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconAddReceita
+        Me.btnAddDespesa.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnAddDespesa.Location = New System.Drawing.Point(218, 23)
+        Me.btnAddDespesa.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnAddDespesa.Name = "btnAddDespesa"
+        Me.btnAddDespesa.Size = New System.Drawing.Size(208, 55)
+        Me.btnAddDespesa.TabIndex = 10
+        Me.btnAddDespesa.Text = "  &Despesa"
+        Me.btnAddDespesa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnAddDespesa.UseVisualStyleBackColor = False
+        '
+        'btnExportar
+        '
+        Me.btnExportar.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnExportar.BackColor = System.Drawing.Color.Transparent
+        Me.btnExportar.BackgroundImage = CType(resources.GetObject("btnExportar.BackgroundImage"), System.Drawing.Image)
+        Me.btnExportar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnExportar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnExportar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder
+        Me.btnExportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnExportar.Font = New System.Drawing.Font("Verdana", 9.0!)
+        Me.btnExportar.ForeColor = System.Drawing.Color.Black
+        Me.btnExportar.Image = CType(resources.GetObject("btnExportar.Image"), System.Drawing.Image)
+        Me.btnExportar.ImageAlign = System.Drawing.ContentAlignment.TopRight
+        Me.btnExportar.Location = New System.Drawing.Point(1082, 23)
+        Me.btnExportar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnExportar.Name = "btnExportar"
+        Me.btnExportar.Size = New System.Drawing.Size(208, 55)
+        Me.btnExportar.TabIndex = 9
+        Me.btnExportar.Text = "  &Exportar"
+        Me.btnExportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnExportar.UseVisualStyleBackColor = False
+        '
+        'btnPesquisar
+        '
+        Me.btnPesquisar.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnPesquisar.BackColor = System.Drawing.Color.Transparent
+        Me.btnPesquisar.BackgroundImage = CType(resources.GetObject("btnPesquisar.BackgroundImage"), System.Drawing.Image)
+        Me.btnPesquisar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnPesquisar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder
+        Me.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPesquisar.Font = New System.Drawing.Font("Verdana", 9.0!)
+        Me.btnPesquisar.ForeColor = System.Drawing.Color.Black
+        Me.btnPesquisar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.Icon_search
+        Me.btnPesquisar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnPesquisar.Location = New System.Drawing.Point(2, 23)
+        Me.btnPesquisar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnPesquisar.Name = "btnPesquisar"
+        Me.btnPesquisar.Size = New System.Drawing.Size(208, 55)
+        Me.btnPesquisar.TabIndex = 1
+        Me.btnPesquisar.Text = "  &Pesquisar"
+        Me.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnPesquisar.UseVisualStyleBackColor = False
+        '
+        'btnEditar
+        '
+        Me.btnEditar.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnEditar.BackColor = System.Drawing.Color.Transparent
+        Me.btnEditar.BackgroundImage = CType(resources.GetObject("btnEditar.BackgroundImage"), System.Drawing.Image)
+        Me.btnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnEditar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder
+        Me.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnEditar.Font = New System.Drawing.Font("Verdana", 9.0!)
+        Me.btnEditar.ForeColor = System.Drawing.Color.Black
+        Me.btnEditar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconEditar
+        Me.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnEditar.Location = New System.Drawing.Point(434, 23)
+        Me.btnEditar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnEditar.Name = "btnEditar"
+        Me.btnEditar.Size = New System.Drawing.Size(208, 55)
+        Me.btnEditar.TabIndex = 8
+        Me.btnEditar.Text = "  &Editar"
+        Me.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnEditar.UseVisualStyleBackColor = False
         '
         'frmDespesa
         '

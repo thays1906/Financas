@@ -61,11 +61,11 @@ Partial Class frmReceita
         Me.gbBotoes.Controls.Add(Me.btnEditar)
         Me.gbBotoes.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.gbBotoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.gbBotoes.Location = New System.Drawing.Point(0, 710)
+        Me.gbBotoes.Location = New System.Drawing.Point(0, 682)
         Me.gbBotoes.Margin = New System.Windows.Forms.Padding(4)
         Me.gbBotoes.Name = "gbBotoes"
         Me.gbBotoes.Padding = New System.Windows.Forms.Padding(4)
-        Me.gbBotoes.Size = New System.Drawing.Size(1315, 62)
+        Me.gbBotoes.Size = New System.Drawing.Size(1315, 90)
         Me.gbBotoes.TabIndex = 8
         Me.gbBotoes.TabStop = False
         '
@@ -82,7 +82,7 @@ Partial Class frmReceita
         Me.btnExcluir.ForeColor = System.Drawing.Color.Black
         Me.btnExcluir.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
         Me.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnExcluir.Location = New System.Drawing.Point(667, 7)
+        Me.btnExcluir.Location = New System.Drawing.Point(667, 21)
         Me.btnExcluir.Margin = New System.Windows.Forms.Padding(4)
         Me.btnExcluir.Name = "btnExcluir"
         Me.btnExcluir.Size = New System.Drawing.Size(208, 55)
@@ -104,7 +104,7 @@ Partial Class frmReceita
         Me.btnAddReceita.ForeColor = System.Drawing.Color.Black
         Me.btnAddReceita.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconAddReceita
         Me.btnAddReceita.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnAddReceita.Location = New System.Drawing.Point(235, 7)
+        Me.btnAddReceita.Location = New System.Drawing.Point(235, 21)
         Me.btnAddReceita.Margin = New System.Windows.Forms.Padding(4)
         Me.btnAddReceita.Name = "btnAddReceita"
         Me.btnAddReceita.Size = New System.Drawing.Size(208, 55)
@@ -126,7 +126,7 @@ Partial Class frmReceita
         Me.btnExportar.ForeColor = System.Drawing.Color.Black
         Me.btnExportar.Image = CType(resources.GetObject("btnExportar.Image"), System.Drawing.Image)
         Me.btnExportar.ImageAlign = System.Drawing.ContentAlignment.TopRight
-        Me.btnExportar.Location = New System.Drawing.Point(883, 7)
+        Me.btnExportar.Location = New System.Drawing.Point(883, 21)
         Me.btnExportar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnExportar.Name = "btnExportar"
         Me.btnExportar.Size = New System.Drawing.Size(208, 55)
@@ -148,7 +148,7 @@ Partial Class frmReceita
         Me.btnPesquisar.ForeColor = System.Drawing.Color.Black
         Me.btnPesquisar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.Icon_search
         Me.btnPesquisar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnPesquisar.Location = New System.Drawing.Point(13, 7)
+        Me.btnPesquisar.Location = New System.Drawing.Point(8, 21)
         Me.btnPesquisar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnPesquisar.Name = "btnPesquisar"
         Me.btnPesquisar.Size = New System.Drawing.Size(208, 55)
@@ -170,7 +170,7 @@ Partial Class frmReceita
         Me.btnFechar.ForeColor = System.Drawing.Color.Black
         Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
         Me.btnFechar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnFechar.Location = New System.Drawing.Point(1099, 7)
+        Me.btnFechar.Location = New System.Drawing.Point(1099, 21)
         Me.btnFechar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnFechar.Name = "btnFechar"
         Me.btnFechar.Size = New System.Drawing.Size(208, 55)
@@ -192,7 +192,7 @@ Partial Class frmReceita
         Me.btnEditar.ForeColor = System.Drawing.Color.Black
         Me.btnEditar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconEditar
         Me.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnEditar.Location = New System.Drawing.Point(451, 7)
+        Me.btnEditar.Location = New System.Drawing.Point(451, 21)
         Me.btnEditar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnEditar.Name = "btnEditar"
         Me.btnEditar.Size = New System.Drawing.Size(208, 55)

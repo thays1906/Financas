@@ -109,6 +109,12 @@
     <Compile Include="Formulários\frmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formulários\frmNovaConta.Designer.vb">
+      <DependentUpon>frmNovaConta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmNovaConta.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formulários\frmNovaDespesa.Designer.vb">
       <DependentUpon>frmNovaDespesa.vb</DependentUpon>
     </Compile>
@@ -184,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmNovaConta.resx">
+      <DependentUpon>frmNovaConta.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmNovaDespesa.resx">
       <DependentUpon>frmNovaDespesa.vb</DependentUpon>

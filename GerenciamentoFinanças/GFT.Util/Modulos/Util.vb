@@ -122,7 +122,7 @@ Public Module Util
 
             formulario.MdiParent = oMdiContainer
             formulario.Left = 0
-            'formulario.BackColor = Color.WhiteSmoke
+            formulario.BackColor = Color.LightSeaGreen
             formulario.AutoScaleMode = Windows.Forms.AutoScaleMode.None
             formulario.ControlBox = False
             formulario.FormBorderStyle = Windows.Forms.FormBorderStyle.None

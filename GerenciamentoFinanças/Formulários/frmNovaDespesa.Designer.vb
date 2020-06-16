@@ -25,6 +25,10 @@ Partial Class frmNovaDespesa
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNovaDespesa))
         Me.tabDespesa = New GFT.Util.SuperTabControl()
         Me.tpAddDespesa = New System.Windows.Forms.TabPage()
+        Me.lblValorParcela = New System.Windows.Forms.Label()
+        Me.txtValorParcela = New GFT.Util.SuperTextBox()
+        Me.lblParcela = New System.Windows.Forms.Label()
+        Me.txtParcela = New GFT.Util.SuperTextBox()
         Me.cbParcelamento = New GFT.Util.SuperComboBox()
         Me.chkParcela = New System.Windows.Forms.CheckBox()
         Me.lblStatus = New System.Windows.Forms.Label()
@@ -43,10 +47,6 @@ Partial Class frmNovaDespesa
         Me.lblValor = New System.Windows.Forms.Label()
         Me.btnFechar = New GFT.Util.SuperButton()
         Me.btnSalvar = New GFT.Util.SuperButton()
-        Me.txtParcela = New GFT.Util.SuperTextBox()
-        Me.lblParcela = New System.Windows.Forms.Label()
-        Me.lblValorParcela = New System.Windows.Forms.Label()
-        Me.txtValorParcela = New GFT.Util.SuperTextBox()
         Me.tabDespesa.SuspendLayout()
         Me.tpAddDespesa.SuspendLayout()
         Me.SuspendLayout()
@@ -95,6 +95,58 @@ Partial Class frmNovaDespesa
         Me.tpAddDespesa.TabIndex = 0
         Me.tpAddDespesa.Text = "Adicionar Despesa"
         Me.tpAddDespesa.UseVisualStyleBackColor = True
+        '
+        'lblValorParcela
+        '
+        Me.lblValorParcela.AutoSize = True
+        Me.lblValorParcela.Location = New System.Drawing.Point(242, 212)
+        Me.lblValorParcela.Name = "lblValorParcela"
+        Me.lblValorParcela.Size = New System.Drawing.Size(153, 23)
+        Me.lblValorParcela.TabIndex = 21
+        Me.lblValorParcela.Text = "Valor da parcela:"
+        '
+        'txtValorParcela
+        '
+        Me.txtValorParcela.Alterado = False
+        Me.txtValorParcela.BackColor = System.Drawing.Color.White
+        Me.txtValorParcela.CorFundoSelecionado = System.Drawing.SystemColors.Control
+        Me.txtValorParcela.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtValorParcela.Location = New System.Drawing.Point(246, 239)
+        Me.txtValorParcela.Name = "txtValorParcela"
+        Me.txtValorParcela.Size = New System.Drawing.Size(149, 32)
+        Me.txtValorParcela.SuperMascara = ""
+        Me.txtValorParcela.SuperObrigatorio = False
+        Me.txtValorParcela.SuperTravaErrors = False
+        Me.txtValorParcela.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
+        Me.txtValorParcela.SuperTxtObrigatorio = ""
+        Me.txtValorParcela.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosReais
+        Me.txtValorParcela.TabIndex = 20
+        '
+        'lblParcela
+        '
+        Me.lblParcela.AutoSize = True
+        Me.lblParcela.Location = New System.Drawing.Point(425, 212)
+        Me.lblParcela.Name = "lblParcela"
+        Me.lblParcela.Size = New System.Drawing.Size(77, 23)
+        Me.lblParcela.TabIndex = 19
+        Me.lblParcela.Text = "Parcela:"
+        '
+        'txtParcela
+        '
+        Me.txtParcela.Alterado = False
+        Me.txtParcela.BackColor = System.Drawing.Color.White
+        Me.txtParcela.CorFundoSelecionado = System.Drawing.SystemColors.Control
+        Me.txtParcela.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtParcela.Location = New System.Drawing.Point(429, 239)
+        Me.txtParcela.Name = "txtParcela"
+        Me.txtParcela.Size = New System.Drawing.Size(100, 32)
+        Me.txtParcela.SuperMascara = ""
+        Me.txtParcela.SuperObrigatorio = False
+        Me.txtParcela.SuperTravaErrors = False
+        Me.txtParcela.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
+        Me.txtParcela.SuperTxtObrigatorio = ""
+        Me.txtParcela.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NENHUMA
+        Me.txtParcela.TabIndex = 18
         '
         'cbParcelamento
         '
@@ -351,63 +403,11 @@ Partial Class frmNovaDespesa
         Me.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnSalvar.UseVisualStyleBackColor = False
         '
-        'txtParcela
-        '
-        Me.txtParcela.Alterado = False
-        Me.txtParcela.BackColor = System.Drawing.Color.White
-        Me.txtParcela.CorFundoSelecionado = System.Drawing.SystemColors.Control
-        Me.txtParcela.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtParcela.Location = New System.Drawing.Point(429, 239)
-        Me.txtParcela.Name = "txtParcela"
-        Me.txtParcela.Size = New System.Drawing.Size(100, 32)
-        Me.txtParcela.SuperMascara = ""
-        Me.txtParcela.SuperObrigatorio = False
-        Me.txtParcela.SuperTravaErrors = False
-        Me.txtParcela.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
-        Me.txtParcela.SuperTxtObrigatorio = ""
-        Me.txtParcela.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NENHUMA
-        Me.txtParcela.TabIndex = 18
-        '
-        'lblParcela
-        '
-        Me.lblParcela.AutoSize = True
-        Me.lblParcela.Location = New System.Drawing.Point(425, 212)
-        Me.lblParcela.Name = "lblParcela"
-        Me.lblParcela.Size = New System.Drawing.Size(77, 23)
-        Me.lblParcela.TabIndex = 19
-        Me.lblParcela.Text = "Parcela:"
-        '
-        'lblValorParcela
-        '
-        Me.lblValorParcela.AutoSize = True
-        Me.lblValorParcela.Location = New System.Drawing.Point(242, 212)
-        Me.lblValorParcela.Name = "lblValorParcela"
-        Me.lblValorParcela.Size = New System.Drawing.Size(153, 23)
-        Me.lblValorParcela.TabIndex = 21
-        Me.lblValorParcela.Text = "Valor da parcela:"
-        '
-        'txtValorParcela
-        '
-        Me.txtValorParcela.Alterado = False
-        Me.txtValorParcela.BackColor = System.Drawing.Color.White
-        Me.txtValorParcela.CorFundoSelecionado = System.Drawing.SystemColors.Control
-        Me.txtValorParcela.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtValorParcela.Location = New System.Drawing.Point(246, 239)
-        Me.txtValorParcela.Name = "txtValorParcela"
-        Me.txtValorParcela.Size = New System.Drawing.Size(149, 32)
-        Me.txtValorParcela.SuperMascara = ""
-        Me.txtValorParcela.SuperObrigatorio = False
-        Me.txtValorParcela.SuperTravaErrors = False
-        Me.txtValorParcela.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
-        Me.txtValorParcela.SuperTxtObrigatorio = ""
-        Me.txtValorParcela.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosReais
-        Me.txtValorParcela.TabIndex = 20
-        '
         'frmNovaDespesa
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.Tomato
+        Me.BackColor = System.Drawing.Color.DimGray
         Me.ClientSize = New System.Drawing.Size(781, 556)
         Me.Controls.Add(Me.tabDespesa)
         Me.Controls.Add(Me.btnSalvar)
