@@ -268,8 +268,9 @@ Public Class SuperComboBox
                 LogaErro("Preenhendo ComboBox [" & Me.Name & "] - N.Registros [" & rs.TotalRegistros.ToString & "]")
             End If
 
-            Me.FlatStyle = FlatStyle.Standard
-            Me.DropDownStyle = ComboBoxStyle.DropDown
+            Me.FlatStyle = FlatStyle.Popup
+
+            Me.DropDownStyle = ComboBoxStyle.DropDownList
             Me.Items.Clear()
 
             'Prepara campos Todos/Selecione
@@ -335,8 +336,8 @@ Public Class SuperComboBox
                                       Optional ByVal pValor As PrimeiroValor = PrimeiroValor.Nada) As Boolean
 
         Try
-            Me.FlatStyle = FlatStyle.Standard
-            Me.DropDownStyle = ComboBoxStyle.DropDown
+            Me.FlatStyle = FlatStyle.Popup
+            Me.DropDownStyle = ComboBoxStyle.DropDownList
             Me.Items.Clear()
 
             'Prepara campos Todos/Selecione

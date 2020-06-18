@@ -5,6 +5,9 @@ Public Class frmNovaReceita
     Public cod As Decimal
     Private Sub frmNovaReceita_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CarregaCombo()
+        Cor(Me, Collor.CinzaEscuro)
+        CorButton(btnSalvar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
+        CorButton(btnFechar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
     End Sub
 
 

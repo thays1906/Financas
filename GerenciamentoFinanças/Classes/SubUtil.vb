@@ -34,6 +34,17 @@ Public Module SubUtil
         Amarelo = 4
         Marrom = 5
         Branco = 6
+        DarkTurquoise = 7
+        DarkSlateGray = 8
+        DimGray = 9
+        CinzaMedio = 10
+        CinzaAzulado = 11
+        Gelo = 12
+        Azul = 13
+        Azul4 = 16
+        CinzaClaro
+        CinzaBranco
+        CinzaEscuro
     End Enum
 
     Public Enum eStatusDespesa
@@ -50,6 +61,17 @@ Public Module SubUtil
     Public Enum eTipoConta
         Corrente = 1
         Poupanca = 2
+        Digital = 3
+    End Enum
+    Public Enum eAcao
+        Novo = 1
+        Editar = 2
+        Excluir = 3
+    End Enum
+    Public Enum eTipoMensagem
+        OK = 1
+        Question = 2
+        Erro = 3
     End Enum
 
     'Cores
@@ -66,17 +88,70 @@ Public Module SubUtil
 
         ElseIf Cor = Collor.Amarelo Then
             Controle.BackColor = Color.FromArgb(242, 192, 41)
+            Controle.BackColor = Color.Goldenrod
 
         ElseIf Cor = Collor.Marrom Then
             Controle.BackColor = Color.FromArgb(115, 100, 56)
         ElseIf Cor = Collor.Branco Then
-            Controle.BackColor = Color.White
-
+            Controle.BackColor = Color.WhiteSmoke
+        ElseIf Cor = Collor.DarkTurquoise Then
+            Controle.BackColor = Color.DarkTurquoise
+        ElseIf Cor = Collor.DarkSlateGray Then
+            Controle.BackColor = Color.DarkSlateGray
+        ElseIf Cor = Collor.CinzaMedio Then
+            Controle.BackColor = Color.FromArgb(96, 122, 143)
+        ElseIf Cor = Collor.CinzaAzulado Then
+            Controle.BackColor = Color.FromArgb(113, 143, 168)
+        ElseIf Cor = Collor.Azul Then
+            Controle.BackColor = Color.FromArgb(0, 55, 105)
+        ElseIf Cor = Collor.Azul4 Then
+            Controle.BackColor = Color.Teal
+        ElseIf Cor = Collor.CinzaClaro Then
+            Controle.BackColor = Color.FromArgb(223, 223, 223)
+        ElseIf Cor = Collor.CinzaBranco Then
+            Controle.BackColor = Color.FromArgb(248, 248, 255)
+        ElseIf Cor = Collor.CinzaEscuro Then
+            Controle.BackColor = Color.FromArgb(80, 87, 86)
         End If
 
 
         '    Control.BackColor = Color.FromArgb(64, 62, 63)
     End Sub
+    Public Sub CorButton(ByRef button As Button,
+                         ByVal Cor As Collor,
+                         ByVal corText As Color,
+                         ByVal corHover As Color,
+                         ByVal corDown As Color)
+
+        button.ForeColor = corText
+        button.FlatStyle = FlatStyle.Flat
+        button.FlatAppearance.BorderSize = 0
+        button.FlatAppearance.MouseOverBackColor = corHover
+        button.FlatAppearance.MouseDownBackColor = corDown
+
+        If Cor = Collor.DarkSlateGray Then
+            button.BackColor = Color.DarkSlateGray
+        ElseIf Cor = Collor.DarkTurquoise Then
+            button.BackColor = Color.DarkTurquoise
+        ElseIf Cor = Collor.VerdeEscuro Then
+            button.BackColor = Color.FromArgb(28, 89, 54)
+        ElseIf Cor = Collor.Amarelo Then
+            button.BackColor = Color.FromArgb(242, 192, 41)
+        ElseIf Cor = Collor.DimGray Then
+            button.BackColor = Color.DimGray
+        ElseIf Cor = Collor.Preto Then
+            button.BackColor = Color.Black
+        ElseIf Cor = Collor.CinzaMedio Then
+            button.BackColor = Color.FromArgb(96, 122, 143)
+        ElseIf Cor = Collor.CinzaAzulado Then
+            button.BackColor = Color.FromArgb(113, 143, 168)
+        ElseIf Cor = Collor.Gelo Then
+            button.BackColor = Color.WhiteSmoke
+        ElseIf Cor = collor.Branco Then
+            button.BackColor = Color.White
+        End If
+    End Sub
+
     Public Sub CorList(ByRef lv As SuperLV)
 
         lv.BackColor = Color.WhiteSmoke

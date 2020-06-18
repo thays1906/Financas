@@ -1,14 +1,19 @@
 ﻿Imports GFT.Util
 Imports GFT.Util.clsMsgBox
+Imports GFT.Util.SuperComboBox
+
 Public Class frmReceita
     Dim oform As frmNovaReceita = New frmNovaReceita
     Public Shared cReceita As Decimal
     Public Shared oDataset As SuperDataSet
 
     Private Sub frmReceita_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Cor(Me, Collor.CinzaEscuro)
         centralizarGrupoBotoes(gbBotoes)
         centralizarGrupoTab(tbConsulta)
+        CarregaCombo()
         Pesquisar()
+
     End Sub
     Private Sub frmReceita_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         restaurarMDI()
@@ -45,7 +50,8 @@ Public Class frmReceita
     End Sub
     Public Sub Pesquisar()
         Try
-            oDataset = pReceita.PesquisarReceita()
+
+            oDataset = pReceita.PesquisarReceita(CDec(cbMes.ObterChaveCombo()))
 
             Dim TOTAL As String = oDataset("total", 0, 1).ToString
 
@@ -102,5 +108,25 @@ Public Class frmReceita
             MessageBox.Show(ex.Message)
         End Try
     End Sub
+    Private Sub CarregaCombo()
+        Dim col As Collection
+        Dim mes As Date
+        Dim oDataSet As SuperDataSet
+        Try
+            col = New Collection
 
+            For i = 1 To 12
+                col.Add(New DuplaCombo(i, mes.AddMonths(i - 1).ToString("MMMM").ToUpper))
+            Next
+            cbMes.PreencheComboColl(col, PrimeiroValor.Selecione)
+
+            col.Clear()
+
+            oDataSet = pContaBancaria.CarregarConta()
+
+            cbContaFiltro.PreencheComboDS(oDataSet, "rBanco", "cConta", PrimeiroValor.Selecione)
+        Catch ex As Exception
+
+        End Try
+    End Sub
 End Class

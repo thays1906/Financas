@@ -311,6 +311,7 @@ Public Class SuperTextBox
         If SuperUsaMascara <> TipoMascara_.NENHUMA Then
 
             Dim strRegexReg As String = ""
+            Dim texto As String = ""
 
             If Me.Text.Trim <> "" Then
 
@@ -333,8 +334,14 @@ Public Class SuperTextBox
                         strRegexReg = ""
                 End Select
 
+                texto = Me.Text
+
+                If SuperUsaMascara = TipoMascara_.NumerosReais Then
+                    texto = texto.Replace("R$ ", "")
+                End If
+
                 If strRegexReg <> "" Then
-                    If Regex.IsMatch(Me.Text, strRegexReg) = False Then
+                    If Regex.IsMatch(texto, strRegexReg) = False Then
                         oErrorProvider.SetError(Me, colDescricaoErros(SuperUsaMascara.ToString).ToString)
                         If bTravaErros = True Then
                             S_MsgBox(colDescricaoErros(SuperUsaMascara.ToString).ToString, eBotoes.Ok, , , eImagens.Atencao)

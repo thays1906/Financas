@@ -65,4 +65,28 @@ Public Class pControleParcelamento
             Return Nothing
         End Try
     End Function
+    Shared Function ObterTodas(ByVal _cControleParcelamento As Decimal) As SuperDataSet
+        Dim bDados As BancoDados
+        Dim oDataSet As SuperDataSet
+        Try
+            bDados = New BancoDados()
+
+            bDados.LimpaParametros()
+            bDados.AdicionaParametro(OPERACAO, "OBTT")
+            bDados.AdicionaParametro(pControleParcelamento.cControleParcelamento, _cControleParcelamento)
+            oDataSet = bDados.Obter(PROCEDURE)
+
+            If oDataSet IsNot Nothing Then
+                Return oDataSet
+            Else
+                Return Nothing
+            End If
+
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+            Return Nothing
+        End Try
+
+    End Function
 End Class

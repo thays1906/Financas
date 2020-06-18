@@ -4,7 +4,6 @@ Imports GFT.Util.clsMsgBox
 Public Class frmConfiguracao
     Public form As frmCadastroCategoria
     Public codigo As Decimal
-
     Public agencia As Decimal
     Public conta As Decimal
     Public saldo As Decimal
@@ -18,6 +17,8 @@ Public Class frmConfiguracao
     End Sub
 
     Private Sub frmConfiguracao_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Cor(Me, Collor.CinzaBranco)
+        CorButton(btnFecharConfig, Collor.CinzaClaro, Color.Black, Color.Gainsboro, Color.LightGray)
         centralizarGrupoTab(tabCtrlConfig)
         centralizarGrupoBotoes(gbCadastroDespesa)
         centralizarGrupoBotoes(gbTodasDespesa)
@@ -26,24 +27,19 @@ Public Class frmConfiguracao
         CarregarList()
         CarregarListParcelas()
         PesquisarConta()
-
     End Sub
-
 
     Public Sub CarregarCategoria()
         Dim rsCategoria As SuperDataSet
-
         Try
             rsCategoria = pCategoriaDespesa.CarregarCategoria()
 
             If rsCategoria.TotalRegistros > 0 Then
+
                 lvCategoriaDespesa.PreencheGridDS(rsCategoria, True, True, False, True)
 
                 CorList(lvCategoriaDespesa)
             End If
-
-
-
 
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
@@ -235,8 +231,12 @@ Public Class frmConfiguracao
     Private Sub btnAddConta_Click(sender As Object, e As EventArgs) Handles btnAddConta.Click
         Dim conta As frmNovaConta
         Try
+            'Dim teste = New Form1
+            'teste.Show()
+            Me.Enabled = False
             conta = New frmNovaConta(0)
             conta.ShowDialog()
+            Me.Enabled = True
 
             PesquisarConta()
 
@@ -465,5 +465,19 @@ Public Class frmConfiguracao
 
     Private Sub btnFecharConfig_Click(sender As Object, e As EventArgs) Handles btnFecharConfig.Click
         Me.Close()
+    End Sub
+
+    Private Sub tabCtrlConfig_SelectedIndexChanged(sender As Object, e As EventArgs) Handles tabCtrlConfig.SelectedIndexChanged
+        Dim tab As Integer
+        tab = tabCtrlConfig.SelectedIndex
+        If tab <> 0 Then
+            btnFecharConfig.Visible = True
+        Else
+            btnFecharConfig.Visible = False
+        End If
+    End Sub
+
+    Private Sub frmConfiguracao_HandleDestroyed(sender As Object, e As EventArgs) Handles Me.HandleDestroyed
+
     End Sub
 End Class

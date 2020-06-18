@@ -6,14 +6,12 @@ Public Class pConsulta
     Public Const PROCEDURE As String = "pConsulta"
 
     Class pConsulta
-        Public Shared cConsulta As Campo = New Campo("cConsulta", DbType.Decimal, 10, 0)
-        Public Shared dtCriacao As Campo = New Campo("dtCriacao", DbType.DateTime, 10)
-        Public Shared rReceita As Campo = New Campo("rReceita", DbType.String, 50)
-        Public Shared cValorReceita As Campo = New Campo("cValorReceita", DbType.Decimal, 18, 0)
-        Public Shared rDespesa As Campo = New Campo("rDespesa", DbType.String, 50)
-        Public Shared cValorDespesa As Campo = New Campo("cValorDespesa", DbType.Decimal, 18, 0)
+        Public Shared dtInicio As Campo = New Campo("dtInicio", DbType.DateTime, 10)
+        Public Shared dtFim As Campo = New Campo("dtFim", DbType.DateTime, 10)
+        Public Shared cValor As Campo = New Campo("cValor", DbType.Decimal, 18, 0)
+        Public Shared cConta As Campo = New Campo("cConta", DbType.Decimal, 10, 0)
     End Class
-    Public Shared Function Pesquisar() As SuperDataSet
+    Public Shared Function Pesquisar(ByVal _dtInicio As Date, ByVal _dtFim As Date, ByVal _cConta As Decimal) As SuperDataSet
         Dim bDados As BancoDados
         Dim oDataset As SuperDataSet
         Try
@@ -21,8 +19,10 @@ Public Class pConsulta
 
             bDados.LimpaParametros()
             bDados.AdicionaParametro(OPERACAO, "GRID")
+            bDados.AdicionaParametro(pConsulta.dtInicio, _dtInicio)
+            bDados.AdicionaParametro(pConsulta.dtFim, _dtFim)
+            bDados.AdicionaParametro(pConsulta.cConta, _cConta)
 
-            'oDataset = bDados.Obter(PROCEDURE)
             oDataset = bDados.Obter("pConsulta")
 
             Return oDataset

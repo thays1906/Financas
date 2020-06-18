@@ -13,6 +13,7 @@ Public Class pReceita
         Public Shared cConta As Campo = New Campo("cConta", DbType.Decimal, 10, 0)
         Public Shared cTipo As Campo = New Campo("cTipo", DbType.Decimal, 10, 0)
         Public Shared rLog As Campo = New Campo("rLog", DbType.String, -1)
+        Public Shared dtMes As Campo = New Campo("dtMes", DbType.Decimal, 2, 0)
     End Class
 
     Shared Function InserirReceita(ByVal _dtRec As Date,
@@ -84,7 +85,7 @@ Public Class pReceita
             MessageBox.Show(ex.Message)
         End Try
     End Sub
-    Shared Function PesquisarReceita() As SuperDataSet
+    Shared Function PesquisarReceita(ByVal _dtMes As Decimal) As SuperDataSet
         Dim bDados As BancoDados
         Dim oDataset As SuperDataSet
         Try
@@ -92,6 +93,9 @@ Public Class pReceita
 
             bDados.LimpaParametros()
             bDados.AdicionaParametro(OPERACAO, "GRID")
+            If _dtMes > 0 Then
+                bDados.AdicionaParametro(pReceita.dtMes, _dtMes)
+            End If
 
             oDataset = bDados.Obter(PROCEDURE)
             If oDataset IsNot Nothing Then

@@ -16,6 +16,7 @@ Public Class frmPrincipal
 
     Private Sub DespesasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DespesasToolStripMenuItem.Click
         Dim oform As Form
+
         oform = frmDespesa
         controleFormulario(Me, oform, eTela.Despesa)
     End Sub

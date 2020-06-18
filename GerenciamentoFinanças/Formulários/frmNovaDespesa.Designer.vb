@@ -22,14 +22,15 @@ Partial Class frmNovaDespesa
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNovaDespesa))
         Me.tabDespesa = New GFT.Util.SuperTabControl()
         Me.tpAddDespesa = New System.Windows.Forms.TabPage()
+        Me.lblMesReferente = New System.Windows.Forms.Label()
+        Me.txtMesReferente = New GFT.Util.SuperTextBox()
         Me.lblValorParcela = New System.Windows.Forms.Label()
         Me.txtValorParcela = New GFT.Util.SuperTextBox()
         Me.lblParcela = New System.Windows.Forms.Label()
-        Me.txtParcela = New GFT.Util.SuperTextBox()
         Me.cbParcelamento = New GFT.Util.SuperComboBox()
+        Me.txtParcela = New GFT.Util.SuperTextBox()
         Me.chkParcela = New System.Windows.Forms.CheckBox()
         Me.lblStatus = New System.Windows.Forms.Label()
         Me.cbStatus = New GFT.Util.SuperComboBox()
@@ -43,10 +44,11 @@ Partial Class frmNovaDespesa
         Me.cbConta = New GFT.Util.SuperComboBox()
         Me.lblData = New System.Windows.Forms.Label()
         Me.dtDespesa = New GFT.Util.SuperDatePicker()
-        Me.txtValor = New GFT.Util.SuperTextBox()
+        Me.txtValorTotal = New GFT.Util.SuperTextBox()
         Me.lblValor = New System.Windows.Forms.Label()
-        Me.btnFechar = New GFT.Util.SuperButton()
-        Me.btnSalvar = New GFT.Util.SuperButton()
+        Me.btnFechar = New System.Windows.Forms.Button()
+        Me.btnSalvar = New System.Windows.Forms.Button()
+        Me.btnDetalhe = New System.Windows.Forms.Button()
         Me.tabDespesa.SuspendLayout()
         Me.tpAddDespesa.SuspendLayout()
         Me.SuspendLayout()
@@ -56,22 +58,23 @@ Partial Class frmNovaDespesa
         Me.tabDespesa.Controls.Add(Me.tpAddDespesa)
         Me.tabDespesa.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabDespesa.HotTrack = True
-        Me.tabDespesa.Location = New System.Drawing.Point(34, 13)
-        Me.tabDespesa.Margin = New System.Windows.Forms.Padding(4)
+        Me.tabDespesa.Location = New System.Drawing.Point(32, 34)
         Me.tabDespesa.Name = "tabDespesa"
         Me.tabDespesa.Padding = New System.Drawing.Point(50, 10)
         Me.tabDespesa.SelectedIndex = 0
-        Me.tabDespesa.Size = New System.Drawing.Size(706, 463)
+        Me.tabDespesa.Size = New System.Drawing.Size(563, 369)
         Me.tabDespesa.TabIndex = 4
         '
         'tpAddDespesa
         '
         Me.tpAddDespesa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.tpAddDespesa.Controls.Add(Me.lblMesReferente)
+        Me.tpAddDespesa.Controls.Add(Me.txtMesReferente)
         Me.tpAddDespesa.Controls.Add(Me.lblValorParcela)
         Me.tpAddDespesa.Controls.Add(Me.txtValorParcela)
         Me.tpAddDespesa.Controls.Add(Me.lblParcela)
-        Me.tpAddDespesa.Controls.Add(Me.txtParcela)
         Me.tpAddDespesa.Controls.Add(Me.cbParcelamento)
+        Me.tpAddDespesa.Controls.Add(Me.txtParcela)
         Me.tpAddDespesa.Controls.Add(Me.chkParcela)
         Me.tpAddDespesa.Controls.Add(Me.lblStatus)
         Me.tpAddDespesa.Controls.Add(Me.cbStatus)
@@ -85,35 +88,68 @@ Partial Class frmNovaDespesa
         Me.tpAddDespesa.Controls.Add(Me.cbConta)
         Me.tpAddDespesa.Controls.Add(Me.lblData)
         Me.tpAddDespesa.Controls.Add(Me.dtDespesa)
-        Me.tpAddDespesa.Controls.Add(Me.txtValor)
+        Me.tpAddDespesa.Controls.Add(Me.txtValorTotal)
         Me.tpAddDespesa.Controls.Add(Me.lblValor)
-        Me.tpAddDespesa.Location = New System.Drawing.Point(4, 45)
-        Me.tpAddDespesa.Margin = New System.Windows.Forms.Padding(4)
+        Me.tpAddDespesa.Location = New System.Drawing.Point(4, 40)
         Me.tpAddDespesa.Name = "tpAddDespesa"
-        Me.tpAddDespesa.Padding = New System.Windows.Forms.Padding(4)
-        Me.tpAddDespesa.Size = New System.Drawing.Size(698, 414)
+        Me.tpAddDespesa.Padding = New System.Windows.Forms.Padding(3)
+        Me.tpAddDespesa.Size = New System.Drawing.Size(555, 325)
         Me.tpAddDespesa.TabIndex = 0
         Me.tpAddDespesa.Text = "Adicionar Despesa"
         Me.tpAddDespesa.UseVisualStyleBackColor = True
         '
+        'lblMesReferente
+        '
+        Me.lblMesReferente.AutoSize = True
+        Me.lblMesReferente.Location = New System.Drawing.Point(186, 10)
+        Me.lblMesReferente.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblMesReferente.Name = "lblMesReferente"
+        Me.lblMesReferente.Size = New System.Drawing.Size(77, 18)
+        Me.lblMesReferente.TabIndex = 23
+        Me.lblMesReferente.Text = "Referente:"
+        Me.lblMesReferente.Visible = False
+        '
+        'txtMesReferente
+        '
+        Me.txtMesReferente.Alterado = False
+        Me.txtMesReferente.BackColor = System.Drawing.Color.White
+        Me.txtMesReferente.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
+        Me.txtMesReferente.Location = New System.Drawing.Point(189, 32)
+        Me.txtMesReferente.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtMesReferente.Name = "txtMesReferente"
+        Me.txtMesReferente.ReadOnly = True
+        Me.txtMesReferente.Size = New System.Drawing.Size(156, 25)
+        Me.txtMesReferente.SuperMascara = ""
+        Me.txtMesReferente.SuperObrigatorio = False
+        Me.txtMesReferente.SuperTravaErrors = False
+        Me.txtMesReferente.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
+        Me.txtMesReferente.SuperTxtObrigatorio = ""
+        Me.txtMesReferente.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NENHUMA
+        Me.txtMesReferente.TabIndex = 22
+        Me.txtMesReferente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.txtMesReferente.Visible = False
+        '
         'lblValorParcela
         '
         Me.lblValorParcela.AutoSize = True
-        Me.lblValorParcela.Location = New System.Drawing.Point(242, 212)
+        Me.lblValorParcela.Location = New System.Drawing.Point(176, 137)
+        Me.lblValorParcela.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblValorParcela.Name = "lblValorParcela"
-        Me.lblValorParcela.Size = New System.Drawing.Size(153, 23)
+        Me.lblValorParcela.Size = New System.Drawing.Size(117, 18)
         Me.lblValorParcela.TabIndex = 21
         Me.lblValorParcela.Text = "Valor da parcela:"
+        Me.lblValorParcela.Visible = False
         '
         'txtValorParcela
         '
         Me.txtValorParcela.Alterado = False
         Me.txtValorParcela.BackColor = System.Drawing.Color.White
-        Me.txtValorParcela.CorFundoSelecionado = System.Drawing.SystemColors.Control
+        Me.txtValorParcela.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
         Me.txtValorParcela.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtValorParcela.Location = New System.Drawing.Point(246, 239)
+        Me.txtValorParcela.Location = New System.Drawing.Point(179, 158)
+        Me.txtValorParcela.Margin = New System.Windows.Forms.Padding(2)
         Me.txtValorParcela.Name = "txtValorParcela"
-        Me.txtValorParcela.Size = New System.Drawing.Size(149, 32)
+        Me.txtValorParcela.Size = New System.Drawing.Size(139, 27)
         Me.txtValorParcela.SuperMascara = ""
         Me.txtValorParcela.SuperObrigatorio = False
         Me.txtValorParcela.SuperTravaErrors = False
@@ -121,32 +157,18 @@ Partial Class frmNovaDespesa
         Me.txtValorParcela.SuperTxtObrigatorio = ""
         Me.txtValorParcela.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosReais
         Me.txtValorParcela.TabIndex = 20
+        Me.txtValorParcela.Visible = False
         '
         'lblParcela
         '
         Me.lblParcela.AutoSize = True
-        Me.lblParcela.Location = New System.Drawing.Point(425, 212)
+        Me.lblParcela.Location = New System.Drawing.Point(326, 137)
+        Me.lblParcela.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblParcela.Name = "lblParcela"
-        Me.lblParcela.Size = New System.Drawing.Size(77, 23)
+        Me.lblParcela.Size = New System.Drawing.Size(59, 18)
         Me.lblParcela.TabIndex = 19
         Me.lblParcela.Text = "Parcela:"
-        '
-        'txtParcela
-        '
-        Me.txtParcela.Alterado = False
-        Me.txtParcela.BackColor = System.Drawing.Color.White
-        Me.txtParcela.CorFundoSelecionado = System.Drawing.SystemColors.Control
-        Me.txtParcela.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtParcela.Location = New System.Drawing.Point(429, 239)
-        Me.txtParcela.Name = "txtParcela"
-        Me.txtParcela.Size = New System.Drawing.Size(100, 32)
-        Me.txtParcela.SuperMascara = ""
-        Me.txtParcela.SuperObrigatorio = False
-        Me.txtParcela.SuperTravaErrors = False
-        Me.txtParcela.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
-        Me.txtParcela.SuperTxtObrigatorio = ""
-        Me.txtParcela.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NENHUMA
-        Me.txtParcela.TabIndex = 18
+        Me.lblParcela.Visible = False
         '
         'cbParcelamento
         '
@@ -157,21 +179,38 @@ Partial Class frmNovaDespesa
         Me.cbParcelamento.CorTextoSelecionado = System.Drawing.SystemColors.MenuText
         Me.cbParcelamento.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbParcelamento.FormattingEnabled = True
-        Me.cbParcelamento.Location = New System.Drawing.Point(20, 178)
-        Me.cbParcelamento.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbParcelamento.Location = New System.Drawing.Point(127, 98)
         Me.cbParcelamento.Name = "cbParcelamento"
-        Me.cbParcelamento.Size = New System.Drawing.Size(153, 30)
+        Me.cbParcelamento.Size = New System.Drawing.Size(116, 25)
         Me.cbParcelamento.SuperObrigatorio = False
         Me.cbParcelamento.SuperTxtObrigatorio = ""
         Me.cbParcelamento.TabIndex = 17
         '
+        'txtParcela
+        '
+        Me.txtParcela.Alterado = False
+        Me.txtParcela.BackColor = System.Drawing.Color.White
+        Me.txtParcela.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
+        Me.txtParcela.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtParcela.Location = New System.Drawing.Point(329, 158)
+        Me.txtParcela.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtParcela.Name = "txtParcela"
+        Me.txtParcela.Size = New System.Drawing.Size(76, 27)
+        Me.txtParcela.SuperMascara = ""
+        Me.txtParcela.SuperObrigatorio = False
+        Me.txtParcela.SuperTravaErrors = False
+        Me.txtParcela.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
+        Me.txtParcela.SuperTxtObrigatorio = ""
+        Me.txtParcela.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NENHUMA
+        Me.txtParcela.TabIndex = 18
+        Me.txtParcela.Visible = False
+        '
         'chkParcela
         '
         Me.chkParcela.AutoSize = True
-        Me.chkParcela.Location = New System.Drawing.Point(20, 147)
-        Me.chkParcela.Margin = New System.Windows.Forms.Padding(4)
+        Me.chkParcela.Location = New System.Drawing.Point(15, 100)
         Me.chkParcela.Name = "chkParcela"
-        Me.chkParcela.Size = New System.Drawing.Size(145, 27)
+        Me.chkParcela.Size = New System.Drawing.Size(115, 22)
         Me.chkParcela.TabIndex = 16
         Me.chkParcela.Text = "Parcelamento"
         Me.chkParcela.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -180,10 +219,9 @@ Partial Class frmNovaDespesa
         'lblStatus
         '
         Me.lblStatus.AutoSize = True
-        Me.lblStatus.Location = New System.Drawing.Point(378, 15)
-        Me.lblStatus.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblStatus.Location = New System.Drawing.Point(392, 10)
         Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(69, 23)
+        Me.lblStatus.Size = New System.Drawing.Size(54, 18)
         Me.lblStatus.TabIndex = 15
         Me.lblStatus.Text = "Status:"
         '
@@ -196,10 +234,9 @@ Partial Class frmNovaDespesa
         Me.cbStatus.CorTextoSelecionado = System.Drawing.SystemColors.MenuText
         Me.cbStatus.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbStatus.FormattingEnabled = True
-        Me.cbStatus.Location = New System.Drawing.Point(382, 39)
-        Me.cbStatus.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbStatus.Location = New System.Drawing.Point(395, 31)
         Me.cbStatus.Name = "cbStatus"
-        Me.cbStatus.Size = New System.Drawing.Size(200, 30)
+        Me.cbStatus.Size = New System.Drawing.Size(151, 25)
         Me.cbStatus.SuperObrigatorio = True
         Me.cbStatus.SuperTxtObrigatorio = "Selecione um Status "
         Me.cbStatus.TabIndex = 14
@@ -207,10 +244,9 @@ Partial Class frmNovaDespesa
         'lblFormaPagamento
         '
         Me.lblFormaPagamento.AutoSize = True
-        Me.lblFormaPagamento.Location = New System.Drawing.Point(425, 275)
-        Me.lblFormaPagamento.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblFormaPagamento.Location = New System.Drawing.Point(12, 256)
         Me.lblFormaPagamento.Name = "lblFormaPagamento"
-        Me.lblFormaPagamento.Size = New System.Drawing.Size(197, 23)
+        Me.lblFormaPagamento.Size = New System.Drawing.Size(155, 18)
         Me.lblFormaPagamento.TabIndex = 13
         Me.lblFormaPagamento.Text = "Forma de Pagamento:"
         '
@@ -223,10 +259,9 @@ Partial Class frmNovaDespesa
         Me.cbPagamento.CorTextoSelecionado = System.Drawing.SystemColors.MenuText
         Me.cbPagamento.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbPagamento.FormattingEnabled = True
-        Me.cbPagamento.Location = New System.Drawing.Point(429, 302)
-        Me.cbPagamento.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbPagamento.Location = New System.Drawing.Point(15, 278)
         Me.cbPagamento.Name = "cbPagamento"
-        Me.cbPagamento.Size = New System.Drawing.Size(264, 30)
+        Me.cbPagamento.Size = New System.Drawing.Size(218, 25)
         Me.cbPagamento.SuperObrigatorio = True
         Me.cbPagamento.SuperTxtObrigatorio = "Selecione a Forma de Pagamento"
         Me.cbPagamento.TabIndex = 12
@@ -235,11 +270,10 @@ Partial Class frmNovaDespesa
         '
         Me.txtDescricao.Alterado = False
         Me.txtDescricao.BackColor = System.Drawing.Color.White
-        Me.txtDescricao.CorFundoSelecionado = System.Drawing.SystemColors.Control
-        Me.txtDescricao.Location = New System.Drawing.Point(20, 110)
-        Me.txtDescricao.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtDescricao.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
+        Me.txtDescricao.Location = New System.Drawing.Point(15, 219)
         Me.txtDescricao.Name = "txtDescricao"
-        Me.txtDescricao.Size = New System.Drawing.Size(562, 29)
+        Me.txtDescricao.Size = New System.Drawing.Size(303, 25)
         Me.txtDescricao.SuperMascara = "0.00"
         Me.txtDescricao.SuperObrigatorio = False
         Me.txtDescricao.SuperTravaErrors = False
@@ -251,20 +285,18 @@ Partial Class frmNovaDespesa
         'lblDescricao
         '
         Me.lblDescricao.AutoSize = True
-        Me.lblDescricao.Location = New System.Drawing.Point(20, 82)
-        Me.lblDescricao.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblDescricao.Location = New System.Drawing.Point(12, 197)
         Me.lblDescricao.Name = "lblDescricao"
-        Me.lblDescricao.Size = New System.Drawing.Size(97, 23)
+        Me.lblDescricao.Size = New System.Drawing.Size(75, 18)
         Me.lblDescricao.TabIndex = 11
         Me.lblDescricao.Text = "Descrição:"
         '
         'lblCategoria
         '
         Me.lblCategoria.AutoSize = True
-        Me.lblCategoria.Location = New System.Drawing.Point(20, 275)
-        Me.lblCategoria.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblCategoria.Location = New System.Drawing.Point(326, 197)
         Me.lblCategoria.Name = "lblCategoria"
-        Me.lblCategoria.Size = New System.Drawing.Size(96, 23)
+        Me.lblCategoria.Size = New System.Drawing.Size(74, 18)
         Me.lblCategoria.TabIndex = 7
         Me.lblCategoria.Text = "Categoria:"
         '
@@ -277,10 +309,9 @@ Partial Class frmNovaDespesa
         Me.cbCategoria.CorTextoSelecionado = System.Drawing.SystemColors.MenuText
         Me.cbCategoria.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbCategoria.FormattingEnabled = True
-        Me.cbCategoria.Location = New System.Drawing.Point(20, 302)
-        Me.cbCategoria.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbCategoria.Location = New System.Drawing.Point(328, 219)
         Me.cbCategoria.Name = "cbCategoria"
-        Me.cbCategoria.Size = New System.Drawing.Size(290, 30)
+        Me.cbCategoria.Size = New System.Drawing.Size(218, 25)
         Me.cbCategoria.SuperObrigatorio = False
         Me.cbCategoria.SuperTxtObrigatorio = ""
         Me.cbCategoria.TabIndex = 6
@@ -288,12 +319,11 @@ Partial Class frmNovaDespesa
         'lblConta
         '
         Me.lblConta.AutoSize = True
-        Me.lblConta.Location = New System.Drawing.Point(20, 337)
-        Me.lblConta.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblConta.Location = New System.Drawing.Point(326, 256)
         Me.lblConta.Name = "lblConta"
-        Me.lblConta.Size = New System.Drawing.Size(65, 23)
+        Me.lblConta.Size = New System.Drawing.Size(111, 18)
         Me.lblConta.TabIndex = 5
-        Me.lblConta.Text = "Conta:"
+        Me.lblConta.Text = "Conta Báncaria:"
         '
         'cbConta
         '
@@ -304,21 +334,19 @@ Partial Class frmNovaDespesa
         Me.cbConta.CorTextoSelecionado = System.Drawing.SystemColors.MenuText
         Me.cbConta.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbConta.FormattingEnabled = True
-        Me.cbConta.Location = New System.Drawing.Point(20, 364)
-        Me.cbConta.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbConta.Location = New System.Drawing.Point(328, 278)
         Me.cbConta.Name = "cbConta"
-        Me.cbConta.Size = New System.Drawing.Size(290, 30)
+        Me.cbConta.Size = New System.Drawing.Size(218, 25)
         Me.cbConta.SuperObrigatorio = True
-        Me.cbConta.SuperTxtObrigatorio = "Selecione uma Conta"
+        Me.cbConta.SuperTxtObrigatorio = "Conta Báncaria"
         Me.cbConta.TabIndex = 4
         '
         'lblData
         '
         Me.lblData.AutoSize = True
-        Me.lblData.Location = New System.Drawing.Point(20, 15)
-        Me.lblData.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblData.Location = New System.Drawing.Point(12, 10)
         Me.lblData.Name = "lblData"
-        Me.lblData.Size = New System.Drawing.Size(56, 23)
+        Me.lblData.Size = New System.Drawing.Size(44, 18)
         Me.lblData.TabIndex = 3
         Me.lblData.Text = "Data:"
         '
@@ -327,93 +355,91 @@ Partial Class frmNovaDespesa
         Me.dtDespesa.Alterado = False
         Me.dtDespesa.BackColor = System.Drawing.Color.White
         Me.dtDespesa.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtDespesa.Location = New System.Drawing.Point(20, 39)
-        Me.dtDespesa.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtDespesa.Location = New System.Drawing.Point(15, 32)
         Me.dtDespesa.Name = "dtDespesa"
-        Me.dtDespesa.Size = New System.Drawing.Size(179, 29)
+        Me.dtDespesa.Size = New System.Drawing.Size(135, 25)
         Me.dtDespesa.TabIndex = 2
         '
-        'txtValor
+        'txtValorTotal
         '
-        Me.txtValor.Alterado = False
-        Me.txtValor.BackColor = System.Drawing.Color.White
-        Me.txtValor.CorFundoSelecionado = System.Drawing.SystemColors.Control
-        Me.txtValor.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtValor.Location = New System.Drawing.Point(20, 239)
-        Me.txtValor.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtValor.Name = "txtValor"
-        Me.txtValor.Size = New System.Drawing.Size(200, 32)
-        Me.txtValor.SuperMascara = "0.00"
-        Me.txtValor.SuperObrigatorio = False
-        Me.txtValor.SuperTravaErrors = False
-        Me.txtValor.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
-        Me.txtValor.SuperTxtObrigatorio = "Preencha o valor da Despesa"
-        Me.txtValor.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosReais
-        Me.txtValor.TabIndex = 0
+        Me.txtValorTotal.Alterado = False
+        Me.txtValorTotal.BackColor = System.Drawing.Color.White
+        Me.txtValorTotal.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
+        Me.txtValorTotal.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtValorTotal.Location = New System.Drawing.Point(15, 159)
+        Me.txtValorTotal.Name = "txtValorTotal"
+        Me.txtValorTotal.Size = New System.Drawing.Size(151, 27)
+        Me.txtValorTotal.SuperMascara = "R$0.00"
+        Me.txtValorTotal.SuperObrigatorio = True
+        Me.txtValorTotal.SuperTravaErrors = False
+        Me.txtValorTotal.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
+        Me.txtValorTotal.SuperTxtObrigatorio = "VALOR"
+        Me.txtValorTotal.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosReais
+        Me.txtValorTotal.TabIndex = 0
         '
         'lblValor
         '
         Me.lblValor.AutoSize = True
-        Me.lblValor.Location = New System.Drawing.Point(20, 212)
-        Me.lblValor.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblValor.Location = New System.Drawing.Point(12, 137)
         Me.lblValor.Name = "lblValor"
-        Me.lblValor.Size = New System.Drawing.Size(106, 23)
+        Me.lblValor.Size = New System.Drawing.Size(83, 18)
         Me.lblValor.TabIndex = 1
         Me.lblValor.Text = "Valor Total:"
         '
         'btnFechar
         '
-        Me.btnFechar.BackColor = System.Drawing.Color.Transparent
-        Me.btnFechar.BackgroundImage = CType(resources.GetObject("btnFechar.BackgroundImage"), System.Drawing.Image)
-        Me.btnFechar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnFechar.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnFechar.Font = New System.Drawing.Font("Verdana", 9.0!)
-        Me.btnFechar.ForeColor = System.Drawing.Color.Black
+        Me.btnFechar.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnFechar.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
-        Me.btnFechar.Location = New System.Drawing.Point(373, 484)
-        Me.btnFechar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnFechar.Location = New System.Drawing.Point(577, 1)
+        Me.btnFechar.Margin = New System.Windows.Forms.Padding(2)
         Me.btnFechar.Name = "btnFechar"
-        Me.btnFechar.Size = New System.Drawing.Size(183, 49)
-        Me.btnFechar.TabIndex = 9
-        Me.btnFechar.Text = "  &Fechar"
+        Me.btnFechar.Size = New System.Drawing.Size(53, 41)
+        Me.btnFechar.TabIndex = 11
         Me.btnFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnFechar.UseVisualStyleBackColor = False
+        Me.btnFechar.UseVisualStyleBackColor = True
         '
         'btnSalvar
         '
-        Me.btnSalvar.BackColor = System.Drawing.Color.Transparent
-        Me.btnSalvar.BackgroundImage = CType(resources.GetObject("btnSalvar.BackgroundImage"), System.Drawing.Image)
-        Me.btnSalvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnSalvar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnSalvar.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSalvar.Font = New System.Drawing.Font("Verdana", 9.0!)
-        Me.btnSalvar.ForeColor = System.Drawing.Color.Black
+        Me.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnSalvar.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSalvar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.icon_Salvar_png
-        Me.btnSalvar.Location = New System.Drawing.Point(140, 484)
-        Me.btnSalvar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnSalvar.Location = New System.Drawing.Point(164, 419)
+        Me.btnSalvar.Margin = New System.Windows.Forms.Padding(2)
         Me.btnSalvar.Name = "btnSalvar"
-        Me.btnSalvar.Size = New System.Drawing.Size(183, 49)
-        Me.btnSalvar.TabIndex = 8
-        Me.btnSalvar.Text = "  &Salvar"
+        Me.btnSalvar.Size = New System.Drawing.Size(203, 42)
+        Me.btnSalvar.TabIndex = 10
+        Me.btnSalvar.Text = " &Salvar"
         Me.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnSalvar.UseVisualStyleBackColor = False
+        Me.btnSalvar.UseVisualStyleBackColor = True
+        '
+        'btnDetalhe
+        '
+        Me.btnDetalhe.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDetalhe.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconDetalheFiles
+        Me.btnDetalhe.Location = New System.Drawing.Point(392, 419)
+        Me.btnDetalhe.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnDetalhe.Name = "btnDetalhe"
+        Me.btnDetalhe.Size = New System.Drawing.Size(203, 42)
+        Me.btnDetalhe.TabIndex = 13
+        Me.btnDetalhe.Text = " &Detalhar"
+        Me.btnDetalhe.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnDetalhe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnDetalhe.UseVisualStyleBackColor = True
         '
         'frmNovaDespesa
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DimGray
-        Me.ClientSize = New System.Drawing.Size(781, 556)
-        Me.Controls.Add(Me.tabDespesa)
-        Me.Controls.Add(Me.btnSalvar)
+        Me.ClientSize = New System.Drawing.Size(630, 483)
+        Me.Controls.Add(Me.btnDetalhe)
         Me.Controls.Add(Me.btnFechar)
+        Me.Controls.Add(Me.btnSalvar)
+        Me.Controls.Add(Me.tabDespesa)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmNovaDespesa"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmNovaDespesa"
@@ -426,15 +452,13 @@ Partial Class frmNovaDespesa
 
     Friend WithEvents tabDespesa As GFT.Util.SuperTabControl
     Friend WithEvents tpAddDespesa As TabPage
-    Friend WithEvents btnFechar As GFT.Util.SuperButton
-    Friend WithEvents btnSalvar As GFT.Util.SuperButton
     Friend WithEvents lblCategoria As Label
     Friend WithEvents cbCategoria As GFT.Util.SuperComboBox
     Friend WithEvents lblConta As Label
     Friend WithEvents cbConta As GFT.Util.SuperComboBox
     Friend WithEvents lblData As Label
     Friend WithEvents dtDespesa As GFT.Util.SuperDatePicker
-    Friend WithEvents txtValor As GFT.Util.SuperTextBox
+    Friend WithEvents txtValorTotal As GFT.Util.SuperTextBox
     Friend WithEvents lblValor As Label
     Friend WithEvents txtDescricao As GFT.Util.SuperTextBox
     Friend WithEvents lblDescricao As Label
@@ -448,4 +472,9 @@ Partial Class frmNovaDespesa
     Friend WithEvents txtParcela As GFT.Util.SuperTextBox
     Friend WithEvents lblValorParcela As Label
     Friend WithEvents txtValorParcela As GFT.Util.SuperTextBox
+    Friend WithEvents lblMesReferente As Label
+    Friend WithEvents txtMesReferente As GFT.Util.SuperTextBox
+    Friend WithEvents btnSalvar As Button
+    Friend WithEvents btnFechar As Button
+    Friend WithEvents btnDetalhe As Button
 End Class

@@ -13,7 +13,7 @@ Public Class frmNovaDespesa
     Public cParcelamento As Decimal
     Public cQtdeParcela As Decimal
     Public cNumeroParcela As Decimal
-    Public cValorParcela As Decimal
+    Public cValor As Decimal
     Public bParcelado As Boolean = False
     Public erro As Decimal
     Public logErro As String
@@ -32,6 +32,9 @@ Public Class frmNovaDespesa
     Private Sub frmNovaDespesa_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Cor(Me, Collor.Preto)
+        CorButton(btnSalvar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
+        CorButton(btnFechar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
+        CorButton(btnDetalhe, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
 
         CarregarCombo()
 
@@ -41,6 +44,7 @@ Public Class frmNovaDespesa
 
             PreencheCampo()
         Else
+            tabDespesa.TabPages(0).Text = "Adicionar Despesa"
             cbParcelamento.Enabled = False
             txtParcela.Visible = False
             lblParcela.Visible = False
@@ -92,7 +96,7 @@ Public Class frmNovaDespesa
                     End If
 
                     If erro = 0 Then
-                        S_MsgBox("Despesa adicionada com sucesso", clsMsgBox.eBotoes.Ok,, clsMsgBox.eImagens.Ok)
+                        S_MsgBox("Despesa adicionada com sucesso", clsMsgBox.eBotoes.Ok,, clsMsgBox.eImagens.FileOK)
                     Else
                         S_MsgBox("Erro ao lançar despesa.", clsMsgBox.eBotoes.Ok,, clsMsgBox.eImagens.Cancel)
                     End If
@@ -126,18 +130,15 @@ Public Class frmNovaDespesa
         Try
             'Se nao for parcelamento, pegar date da tela
 
-            If bParcelado = True Then
-                cValorParcela = CDec(txtValorParcela.Text)
-
-            Else
+            If bParcelado = False Then
                 dtRegistro = dtDespesa.Value
-                cValorParcela = 0
                 cParcelamento = 0
                 cNumeroParcela = 0
+                cValor = CDec(txtValorTotal.Text)
             End If
 
             If pDespesa.InserirDespesa(txtDescricao.Text,
-                                       cValorParcela,
+                                       cValor,
                                        CDec(cbConta.ObterChaveCombo()),
                                        CDec(cbCategoria.ObterChaveCombo()),
                                        CDec(cbPagamento.ObterChaveCombo()),
@@ -145,7 +146,6 @@ Public Class frmNovaDespesa
                                        CType(cbStatus.ObterChaveCombo(), eStatusDespesa),
                                        cParcelamento,
                                        cNumeroParcela,
-                                       cValorParcela,
                                        logErro) = True Then
                 Return 0
             Else
@@ -165,7 +165,7 @@ Public Class frmNovaDespesa
 
             If pDespesa.AlterarDespesa(cDespesa,
                                        txtDescricao.Text,
-                                       CDec(txtValor.Text),
+                                       CDec(txtValorTotal.Text),
                                        CDec(cbConta.ObterChaveCombo()),
                                        CDec(cbCategoria.ObterChaveCombo()),
                                        CDec(cbPagamento.ObterChaveCombo()),
@@ -190,7 +190,7 @@ Public Class frmNovaDespesa
         If cbCategoria.VerificaObrigatorio() = False Then
             Return False
         End If
-        If txtValor.Text = Nothing Then
+        If txtValorTotal.Text = Nothing Then
             Return False
         End If
 
@@ -198,28 +198,35 @@ Public Class frmNovaDespesa
     End Function
     Private Sub PreencheCampo()
         Try
+            tabDespesa.TabPages(0).Text = "Alterar Despesa"
             chkParcela.Visible = False
             cbParcelamento.Visible = False
             txtValorParcela.Visible = False
             lblValorParcela.Visible = False
+            txtMesReferente.Visible = True
+            lblMesReferente.Visible = True
+            btnDetalhe.Enabled = False
 
             If CDec(rsDespesa("cControleParcelamento")) <> 0 Then
+
                 txtParcela.Visible = True
                 txtParcela.Enabled = False
                 lblParcela.Visible = True
                 txtValorParcela.Visible = True
                 lblValorParcela.Visible = True
+                btnDetalhe.Enabled = True
 
-                txtParcela.Text = rsDespesa("cNumeroParcela").ToString &
-                                 "/" & rsDespesa("cQtdeParcela").ToString
+                cQtdeParcela = CDec(rsDespesa("cNumeroParcela"))
+                cNumeroParcela = CDec(rsDespesa("cQtdeParcela"))
+                cValor = CDec(rsDespesa("cValor"))
 
-                txtValorParcela.Text = rsDespesa("cValorParcela").ToString
+                txtParcela.Text = cQtdeParcela.ToString & "/" & cNumeroParcela.ToString
 
-
+                txtValorParcela.Text = Convert.ToDouble(cValor).ToString("C")
             End If
-
+            txtMesReferente.Text = CDate(rsDespesa("dtRegistro")).ToString("MMMM").ToUpper
+            txtValorTotal.Text = Convert.ToDouble(cNumeroParcela * cValor).ToString("C")
             dtDespesa.Value = CDate(rsDespesa("dtRegistro").ToString)
-            txtValor.Text = rsDespesa("cValor").ToString()
             cbConta.PosicionaRegistroCombo(rsDespesa("cConta"))
             cbCategoria.PosicionaRegistroCombo(rsDespesa("cCategoria"))
             txtDescricao.Text = rsDespesa("rDescricao").ToString
@@ -233,7 +240,7 @@ Public Class frmNovaDespesa
     Private Sub LimpaCampos()
         dtDespesa.Value = Now
         txtDescricao.Text = ""
-        txtValor.Text = ""
+        txtValorTotal.Text = ""
         cbConta.SelectedIndex = 0
         cbCategoria.SelectedIndex = 0
         cbPagamento.SelectedIndex = 0
@@ -251,7 +258,8 @@ Public Class frmNovaDespesa
     '    End Try
     'End Sub
     Private Sub CarregarCombo()
-        Dim qtdeParcela As Decimal
+        Dim qtde As New Collection
+        Dim col As New Collection
 
         Try
             rsDespesaConta = pContaBancaria.CarregarConta()
@@ -263,20 +271,20 @@ Public Class frmNovaDespesa
 
             rsDespesaParcelamento = pParcelamento.CarregarCombo()
 
-            qtdeParcela = CDec(rsDespesaParcelamento("cQtdeParcela"))
-            Dim qtde As New Collection
-            For i = 1 To qtdeParcela - 1
-
+            cQtdeParcela = CDec(rsDespesaParcelamento("cQtdeParcela"))
+            For i = 1 To cQtdeParcela - 1
                 qtde.Add(New DuplaCombo(i, i + 1 & "x"))
-
             Next
 
             cbParcelamento.PreencheComboColl(qtde, SuperComboBox.PrimeiroValor.Selecione)
 
             rsDespesaPagamento = pFormaPagamento.CarregarCombo()
-            cbPagamento.PreencheComboDS(rsDespesaPagamento, "rPagamento", "cFormaPagamento", SuperComboBox.PrimeiroValor.Selecione)
 
-            Dim col As New Collection
+            cbPagamento.PreencheComboDS(rsDespesaPagamento,
+                                        "rPagamento",
+                                        "cFormaPagamento",
+                                        SuperComboBox.PrimeiroValor.Selecione)
+
 
             col.Add(New DuplaCombo(eStatusDespesa.Pendente, "Pendente"))
             col.Add(New DuplaCombo(eStatusDespesa.Pago, "Pago"))
@@ -284,18 +292,15 @@ Public Class frmNovaDespesa
 
             cbStatus.PreencheComboColl(col, SuperComboBox.PrimeiroValor.Nada)
 
-
-
-
         Catch ex As Exception
             MessageBox.Show(ex.Message)
 
         End Try
     End Sub
 
-    Private Sub txtValor_Leave(sender As Object, e As EventArgs) Handles txtValor.Leave
-        If IsNumeric(txtValor.Text) Then
-            txtValor.Text = CDec(txtValor.Text).ToString("C")
+    Private Sub txtValor_Leave(sender As Object, e As EventArgs) Handles txtValorTotal.Leave
+        If IsNumeric(txtValorTotal.Text) Then
+            txtValorTotal.Text = Convert.ToDouble(txtValorTotal.Text).ToString("C")
         End If
     End Sub
     Private Sub btnFechar_Click(sender As Object, e As EventArgs) Handles btnFechar.Click
@@ -306,12 +311,15 @@ Public Class frmNovaDespesa
         Try
             If chkParcela.Checked = True Then
 
+                txtValorParcela.Visible = True
+                lblValorParcela.Visible = True
                 cbParcelamento.Enabled = True
 
                 cbPagamento.PosicionaRegistroCombo(rsDespesaPagamento("cFormaPagamento", 1))
 
             ElseIf chkParcela.Checked = False Then
-
+                txtValorParcela.Visible = False
+                lblValorParcela.Visible = False
                 cbParcelamento.Enabled = False
 
                 cbPagamento.PosicionaRegistroCombo(rsDespesaPagamento("cFormaPagamento", 0))
@@ -328,11 +336,11 @@ Public Class frmNovaDespesa
 
                 cQtdeParcela = CDec(cbParcelamento.ObterDescricaoCombo().Replace("x", ""))
 
-                If IsNumeric(txtValor.Text) Then
-                    If CDec(txtValor.Text) > 0 Then
-                        cValorParcela = CDec(txtValor.Text.Replace("R$", "")) / cQtdeParcela
+                If IsNumeric(txtValorTotal.Text) Then
+                    If CDec(txtValorTotal.Text) > 0 Then
+                        cValor = CDec(txtValorTotal.Text.Replace("R$", "")) / cQtdeParcela
 
-                        txtValorParcela.Text = cValorParcela.ToString
+                        txtValorParcela.Text = Convert.ToDouble(cValor).ToString("C")
                     End If
                 End If
             End If
@@ -342,24 +350,49 @@ Public Class frmNovaDespesa
         End Try
     End Sub
 
-    Private Sub txtValor_TextChanged(sender As Object, e As EventArgs) Handles txtValor.TextChanged
+    Private Sub txtValor_TextChanged(sender As Object, e As EventArgs) Handles txtValorTotal.TextChanged
         Try
             If chkParcela.Checked = True Then
 
                 cQtdeParcela = CDec(cbParcelamento.ObterDescricaoCombo().Replace("x", ""))
 
-                If IsNumeric(txtValor.Text) Then
-                    If CDec(txtValor.Text) > 0 Then
+                If IsNumeric(txtValorTotal.Text) Then
+                    If CDec(txtValorTotal.Text) > 0 Then
 
-                        cValorParcela = CDec(txtValor.Text.Replace("R$", "")) / cQtdeParcela
+                        cValor = CDec(txtValorTotal.Text.Replace("R$", "")) / cQtdeParcela
 
-                        txtValorParcela.Text = cValorParcela.ToString
+                        txtValorParcela.Text = cValor.ToString
                     End If
                 End If
 
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub txtValorParcela_Leave(sender As Object, e As EventArgs) Handles txtValorParcela.Leave
+        If IsNumeric(txtValorParcela.Text) Then
+            txtValorParcela.Text = Convert.ToDouble(txtParcela.Text).ToString("C")
+        End If
+    End Sub
+
+    Private Sub btnDetalhe_Click(sender As Object, e As EventArgs) Handles btnDetalhe.Click
+        Dim cControleParc As Decimal
+        Dim desp As frmDespesa
+        Try
+            cControleParc = CDec(rsDespesa("cControleParcelamento"))
+
+            If cControleParc <> 0 Then
+                Me.Close()
+
+                desp = New frmDespesa(cControleParc)
+                desp.tabCtrlDespesa.SelectedIndex = 2
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+
         End Try
     End Sub
 End Class

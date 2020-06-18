@@ -31,7 +31,6 @@ Public Class pDespesa
                                    ByVal _cStatus As eStatusDespesa,
                                    ByVal _cControleParcelamento As Decimal,
                                    ByVal _cNumeroParcela As Decimal,
-                                   ByVal _cValorParcela As Decimal,
                                    ByVal _rLog As String) As Boolean
         Dim bDados As BancoDados
         Try
@@ -50,7 +49,6 @@ Public Class pDespesa
             bDados.AdicionaParametro(pDespesa.cStatus, _cStatus)
             bDados.AdicionaParametro(pDespesa.cControleParcelamento, _cControleParcelamento)
             bDados.AdicionaParametro(pDespesa.cNumeroParcela, _cNumeroParcela)
-            bDados.AdicionaParametro(pDespesa.cValorParcela, _cValorParcela)
             bDados.AdicionaParametro(pDespesa.rLog, _rLog)
 
             If bDados.Executar(PROCEDURE) = True Then

@@ -18,6 +18,7 @@ Public Class clsMsgBox
         Cancel
         Interrogacao
         Atencao
+        FileOK
     End Enum
 
     Enum eRet
@@ -85,8 +86,11 @@ Public Class clsMsgBox
                     frm_msgbox.imgMsgBox.Image = My.Resources.Resources.btnQuestion
                 Case eImagens.Atencao
                     frm_msgbox.imgMsgBox.Image = My.Resources.Resources.btnWarning
+                Case eImagens.FileOK
+                    frm_msgbox.imgMsgBox.Image = My.Resources.Resources.iconFileOK
                 Case eImagens.Nenhuma
                     frm_msgbox.imgMsgBox.Image = Nothing
+
                 Case Else
                     frm_msgbox.imgMsgBox.Image = Nothing
             End Select

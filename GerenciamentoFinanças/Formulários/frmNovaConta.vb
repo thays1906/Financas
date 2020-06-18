@@ -9,7 +9,9 @@ Public Class frmNovaConta
     Dim saldo As Decimal
 
     Private Sub frmNovaConta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Cor(Me, Collor.Preto)
+        Cor(Me, Collor.CinzaClaro)
+        CorButton(btnSalvar, Collor.Branco, Color.Black, Color.Gainsboro, Color.LightGray)
+        CorButton(btnFechar, Collor.Branco, Color.Black, Color.Gainsboro, Color.LightGray)
         CarregarCombo()
 
         If cCodigo <> 0 Then
@@ -74,7 +76,7 @@ Public Class frmNovaConta
         End If
         Return True
     End Function
-    Private Sub txtSaldo_Leave(sender As Object, e As EventArgs) Handles txtSaldo.Leave
+    Private Sub txtSaldo_Leave(sender As Object, e As EventArgs) Handles txtSaldo.TextChanged
         If IsNumeric(txtSaldo.Text) Then
             txtSaldo.Text = CDec(txtSaldo.Text).ToString("C")
         End If
@@ -116,11 +118,11 @@ Public Class frmNovaConta
 
             col.Add(New DuplaCombo(eTipoConta.Corrente, "Corrente"))
             col.Add(New DuplaCombo(eTipoConta.Poupanca, "Poupança"))
+            col.Add(New DuplaCombo(eTipoConta.Digital, "Cateira Digital"))
 
             cbTipoConta.PreencheComboColl(col, PrimeiroValor.Selecione)
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
         End Try
     End Sub
-
 End Class

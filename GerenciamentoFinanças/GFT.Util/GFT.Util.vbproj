@@ -232,6 +232,7 @@
   <ItemGroup>
     <Content Include="DLLs\IBM.Data.DB2.dll" />
     <Content Include="Imagens\fundo_msgbox.jpg" />
+    <Content Include="Imagens\iconFileOK.png" />
     <None Include="Resources\LOGO1.2.fw.png" />
     <None Include="Resources\LOGO 1.1.jpg" />
     <None Include="Imagens\m_like_icon.gif" />
