@@ -42,9 +42,6 @@ Public Class frmPrincipal
 
     End Sub
 
-    Private Sub CadastroToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CadastroToolStripMenuItem.Click
-
-    End Sub
 
     Private Sub btnFechar_Click(sender As Object, e As EventArgs) Handles btnFechar.Click
         Me.Close()
@@ -63,9 +60,6 @@ Public Class frmPrincipal
         End If
     End Sub
 
-    Private Sub SScima_KeyDown(sender As Object, e As KeyEventArgs) Handles SScima.KeyDown
-
-    End Sub
 
     Private Sub LoginToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LoginToolStripMenuItem1.Click
         Dim log As frmLogin
@@ -83,5 +77,11 @@ Public Class frmPrincipal
         Dim oForm As Form
         oForm = New frmConfiguracao
         controleFormulario(Me, oForm, eTela.Configuracao)
+    End Sub
+
+    Private Sub ContasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContasToolStripMenuItem.Click
+        Dim oForm As Form
+        oForm = New frmConta
+        controleFormulario(Me, oForm, eTela.conta_Bancaria)
     End Sub
 End Class

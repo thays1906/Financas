@@ -45,25 +45,16 @@ Partial Class frmDespesa
         Me.txtTotalDespesa = New GFT.Util.SuperTextBox()
         Me.tabDespesaFixa = New System.Windows.Forms.TabPage()
         Me.tabDetalhe = New System.Windows.Forms.TabPage()
-        Me.SuperGroupBox1 = New GFT.Util.SuperGroupBox()
+        Me.gbDetalhe = New GFT.Util.SuperGroupBox()
         Me.dtDespesaDetalhe = New System.Windows.Forms.DateTimePicker()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.chk = New System.Windows.Forms.CheckBox()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.btnPagar = New System.Windows.Forms.Button()
         Me.txtTitulo = New GFT.Util.SuperTextBox()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.txtValor3 = New GFT.Util.SuperTextBox()
-        Me.txtValor4 = New GFT.Util.SuperTextBox()
-        Me.txtValor1 = New GFT.Util.SuperTextBox()
-        Me.txtValor2 = New GFT.Util.SuperTextBox()
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.gbBotoes.SuspendLayout()
         Me.tabCtrlDespesa.SuspendLayout()
         Me.tpPesquisa.SuspendLayout()
         Me.gbFiltro.SuspendLayout()
         Me.tabDetalhe.SuspendLayout()
-        Me.SuperGroupBox1.SuspendLayout()
+        Me.gbDetalhe.SuspendLayout()
         Me.SuspendLayout()
         '
         'gbBotoes
@@ -237,11 +228,11 @@ Partial Class frmDespesa
         '
         Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList1.Images.SetKeyName(0, "iconMoneyRed.fw.png")
-        Me.ImageList1.Images.SetKeyName(1, "Files_26987.png")
-        Me.ImageList1.Images.SetKeyName(2, "iconRotacao.png")
-        Me.ImageList1.Images.SetKeyName(3, "iconCalandar.png")
-        Me.ImageList1.Images.SetKeyName(4, "Files_26987 (1).png")
+        Me.ImageList1.Images.SetKeyName(0, "Files_26987.png")
+        Me.ImageList1.Images.SetKeyName(1, "iconCalandar.png")
+        Me.ImageList1.Images.SetKeyName(2, "iconDespesaMensal.png")
+        Me.ImageList1.Images.SetKeyName(3, "icon_Despesa.png")
+        Me.ImageList1.Images.SetKeyName(4, "iconSearchFile.png")
         '
         'tabCtrlDespesa
         '
@@ -260,12 +251,11 @@ Partial Class frmDespesa
         '
         'tpPesquisa
         '
-        Me.tpPesquisa.Controls.Add(Me.Button4)
         Me.tpPesquisa.Controls.Add(Me.Label4)
         Me.tpPesquisa.Controls.Add(Me.gbFiltro)
         Me.tpPesquisa.Controls.Add(Me.lvConsulta)
         Me.tpPesquisa.Controls.Add(Me.txtTotalDespesa)
-        Me.tpPesquisa.ImageIndex = 0
+        Me.tpPesquisa.ImageIndex = 3
         Me.tpPesquisa.Location = New System.Drawing.Point(4, 61)
         Me.tpPesquisa.Name = "tpPesquisa"
         Me.tpPesquisa.Padding = New System.Windows.Forms.Padding(5)
@@ -359,7 +349,7 @@ Partial Class frmDespesa
         Me.lvConsulta.Location = New System.Drawing.Point(8, 128)
         Me.lvConsulta.Name = "lvConsulta"
         Me.lvConsulta.SelecionaVarios = True
-        Me.lvConsulta.Size = New System.Drawing.Size(1063, 361)
+        Me.lvConsulta.Size = New System.Drawing.Size(1063, 371)
         Me.lvConsulta.TabIndex = 0
         Me.lvConsulta.UseCompatibleStateImageBehavior = False
         '
@@ -368,7 +358,7 @@ Partial Class frmDespesa
         Me.txtTotalDespesa.Alterado = False
         Me.txtTotalDespesa.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtTotalDespesa.BackColor = System.Drawing.Color.White
-        Me.txtTotalDespesa.CorFundoSelecionado = System.Drawing.SystemColors.Control
+        Me.txtTotalDespesa.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
         Me.txtTotalDespesa.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTotalDespesa.ForeColor = System.Drawing.Color.Red
         Me.txtTotalDespesa.Location = New System.Drawing.Point(905, 97)
@@ -386,7 +376,7 @@ Partial Class frmDespesa
         '
         'tabDespesaFixa
         '
-        Me.tabDespesaFixa.ImageIndex = 3
+        Me.tabDespesaFixa.ImageIndex = 2
         Me.tabDespesaFixa.Location = New System.Drawing.Point(4, 61)
         Me.tabDespesaFixa.Margin = New System.Windows.Forms.Padding(2)
         Me.tabDespesaFixa.Name = "tabDespesaFixa"
@@ -398,7 +388,7 @@ Partial Class frmDespesa
         '
         'tabDetalhe
         '
-        Me.tabDetalhe.Controls.Add(Me.SuperGroupBox1)
+        Me.tabDetalhe.Controls.Add(Me.gbDetalhe)
         Me.tabDetalhe.ImageIndex = 4
         Me.tabDetalhe.Location = New System.Drawing.Point(4, 61)
         Me.tabDetalhe.Margin = New System.Windows.Forms.Padding(2)
@@ -409,83 +399,52 @@ Partial Class frmDespesa
         Me.tabDetalhe.Text = "Detalhamento da Dívida"
         Me.tabDetalhe.UseVisualStyleBackColor = True
         '
-        'SuperGroupBox1
+        'gbDetalhe
         '
-        Me.SuperGroupBox1.BorderCollor = System.Drawing.Color.Empty
-        Me.SuperGroupBox1.Controls.Add(Me.dtDespesaDetalhe)
-        Me.SuperGroupBox1.Controls.Add(Me.CheckBox1)
-        Me.SuperGroupBox1.Controls.Add(Me.chk)
-        Me.SuperGroupBox1.Controls.Add(Me.Button3)
-        Me.SuperGroupBox1.Controls.Add(Me.txtTitulo)
-        Me.SuperGroupBox1.Controls.Add(Me.Button2)
-        Me.SuperGroupBox1.Controls.Add(Me.Button1)
-        Me.SuperGroupBox1.Controls.Add(Me.txtValor3)
-        Me.SuperGroupBox1.Controls.Add(Me.txtValor4)
-        Me.SuperGroupBox1.Controls.Add(Me.txtValor1)
-        Me.SuperGroupBox1.Controls.Add(Me.txtValor2)
-        Me.SuperGroupBox1.Location = New System.Drawing.Point(29, 21)
-        Me.SuperGroupBox1.Margin = New System.Windows.Forms.Padding(2)
-        Me.SuperGroupBox1.Name = "SuperGroupBox1"
-        Me.SuperGroupBox1.Padding = New System.Windows.Forms.Padding(2)
-        Me.SuperGroupBox1.Size = New System.Drawing.Size(1031, 354)
-        Me.SuperGroupBox1.TabIndex = 0
-        Me.SuperGroupBox1.TabStop = False
-        Me.SuperGroupBox1.Text = "Dados da Despesa"
+        Me.gbDetalhe.BorderCollor = System.Drawing.Color.Empty
+        Me.gbDetalhe.Controls.Add(Me.dtDespesaDetalhe)
+        Me.gbDetalhe.Controls.Add(Me.btnPagar)
+        Me.gbDetalhe.Controls.Add(Me.txtTitulo)
+        Me.gbDetalhe.Location = New System.Drawing.Point(73, 35)
+        Me.gbDetalhe.Margin = New System.Windows.Forms.Padding(2)
+        Me.gbDetalhe.Name = "gbDetalhe"
+        Me.gbDetalhe.Padding = New System.Windows.Forms.Padding(2)
+        Me.gbDetalhe.Size = New System.Drawing.Size(1031, 435)
+        Me.gbDetalhe.TabIndex = 0
+        Me.gbDetalhe.TabStop = False
+        Me.gbDetalhe.Text = "Dados da Despesa"
         '
         'dtDespesaDetalhe
         '
         Me.dtDespesaDetalhe.CalendarFont = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtDespesaDetalhe.Enabled = False
+        Me.dtDespesaDetalhe.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right
         Me.dtDespesaDetalhe.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtDespesaDetalhe.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtDespesaDetalhe.Location = New System.Drawing.Point(30, 78)
+        Me.dtDespesaDetalhe.Location = New System.Drawing.Point(129, 78)
         Me.dtDespesaDetalhe.Name = "dtDespesaDetalhe"
         Me.dtDespesaDetalhe.Size = New System.Drawing.Size(143, 26)
         Me.dtDespesaDetalhe.TabIndex = 10
         '
-        'CheckBox1
+        'btnPagar
         '
-        Me.CheckBox1.FlatAppearance.BorderColor = System.Drawing.Color.Red
-        Me.CheckBox1.FlatAppearance.BorderSize = 10
-        Me.CheckBox1.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox1.Location = New System.Drawing.Point(51, 185)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(16, 16)
-        Me.CheckBox1.TabIndex = 9
-        Me.CheckBox1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.CheckBox1.UseVisualStyleBackColor = True
-        '
-        'chk
-        '
-        Me.chk.FlatAppearance.BorderColor = System.Drawing.Color.Red
-        Me.chk.FlatAppearance.BorderSize = 10
-        Me.chk.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chk.Location = New System.Drawing.Point(51, 141)
-        Me.chk.Name = "chk"
-        Me.chk.Size = New System.Drawing.Size(16, 16)
-        Me.chk.TabIndex = 8
-        Me.chk.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.chk.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconOk
-        Me.Button3.Location = New System.Drawing.Point(391, 296)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(250, 42)
-        Me.Button3.TabIndex = 7
-        Me.Button3.Text = " &Pagar"
-        Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnPagar.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.btnPagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPagar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconOk
+        Me.btnPagar.Location = New System.Drawing.Point(380, 379)
+        Me.btnPagar.Name = "btnPagar"
+        Me.btnPagar.Size = New System.Drawing.Size(250, 42)
+        Me.btnPagar.TabIndex = 7
+        Me.btnPagar.Text = " &Pagar"
+        Me.btnPagar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnPagar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnPagar.UseVisualStyleBackColor = True
         '
         'txtTitulo
         '
         Me.txtTitulo.Alterado = False
         Me.txtTitulo.BackColor = System.Drawing.Color.White
-        Me.txtTitulo.CorFundoSelecionado = System.Drawing.SystemColors.Control
-        Me.txtTitulo.Location = New System.Drawing.Point(179, 78)
+        Me.txtTitulo.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
+        Me.txtTitulo.Location = New System.Drawing.Point(291, 78)
         Me.txtTitulo.Name = "txtTitulo"
         Me.txtTitulo.Size = New System.Drawing.Size(523, 25)
         Me.txtTitulo.SuperMascara = ""
@@ -495,105 +454,6 @@ Partial Class frmDespesa
         Me.txtTitulo.SuperTxtObrigatorio = ""
         Me.txtTitulo.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NENHUMA
         Me.txtTitulo.TabIndex = 6
-        '
-        'Button2
-        '
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconOk
-        Me.Button2.Location = New System.Drawing.Point(179, 177)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(35, 33)
-        Me.Button2.TabIndex = 5
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconOk
-        Me.Button1.Location = New System.Drawing.Point(179, 138)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(35, 33)
-        Me.Button1.TabIndex = 4
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'txtValor3
-        '
-        Me.txtValor3.Alterado = False
-        Me.txtValor3.BackColor = System.Drawing.Color.White
-        Me.txtValor3.CorFundoSelecionado = System.Drawing.SystemColors.Control
-        Me.txtValor3.Location = New System.Drawing.Point(531, 132)
-        Me.txtValor3.Name = "txtValor3"
-        Me.txtValor3.ReadOnly = True
-        Me.txtValor3.Size = New System.Drawing.Size(100, 25)
-        Me.txtValor3.SuperMascara = ""
-        Me.txtValor3.SuperObrigatorio = False
-        Me.txtValor3.SuperTravaErrors = False
-        Me.txtValor3.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
-        Me.txtValor3.SuperTxtObrigatorio = ""
-        Me.txtValor3.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosReais
-        Me.txtValor3.TabIndex = 3
-        '
-        'txtValor4
-        '
-        Me.txtValor4.Alterado = False
-        Me.txtValor4.BackColor = System.Drawing.Color.White
-        Me.txtValor4.CorFundoSelecionado = System.Drawing.SystemColors.Control
-        Me.txtValor4.Location = New System.Drawing.Point(531, 176)
-        Me.txtValor4.Name = "txtValor4"
-        Me.txtValor4.ReadOnly = True
-        Me.txtValor4.Size = New System.Drawing.Size(100, 25)
-        Me.txtValor4.SuperMascara = ""
-        Me.txtValor4.SuperObrigatorio = False
-        Me.txtValor4.SuperTravaErrors = False
-        Me.txtValor4.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
-        Me.txtValor4.SuperTxtObrigatorio = ""
-        Me.txtValor4.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosReais
-        Me.txtValor4.TabIndex = 2
-        '
-        'txtValor1
-        '
-        Me.txtValor1.Alterado = False
-        Me.txtValor1.BackColor = System.Drawing.Color.White
-        Me.txtValor1.CorFundoSelecionado = System.Drawing.SystemColors.Control
-        Me.txtValor1.Location = New System.Drawing.Point(73, 138)
-        Me.txtValor1.Name = "txtValor1"
-        Me.txtValor1.ReadOnly = True
-        Me.txtValor1.Size = New System.Drawing.Size(100, 25)
-        Me.txtValor1.SuperMascara = ""
-        Me.txtValor1.SuperObrigatorio = False
-        Me.txtValor1.SuperTravaErrors = False
-        Me.txtValor1.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
-        Me.txtValor1.SuperTxtObrigatorio = ""
-        Me.txtValor1.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosReais
-        Me.txtValor1.TabIndex = 1
-        '
-        'txtValor2
-        '
-        Me.txtValor2.Alterado = False
-        Me.txtValor2.BackColor = System.Drawing.Color.White
-        Me.txtValor2.CorFundoSelecionado = System.Drawing.SystemColors.Control
-        Me.txtValor2.Location = New System.Drawing.Point(531, 207)
-        Me.txtValor2.Name = "txtValor2"
-        Me.txtValor2.ReadOnly = True
-        Me.txtValor2.Size = New System.Drawing.Size(100, 25)
-        Me.txtValor2.SuperMascara = ""
-        Me.txtValor2.SuperObrigatorio = False
-        Me.txtValor2.SuperTravaErrors = False
-        Me.txtValor2.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
-        Me.txtValor2.SuperTxtObrigatorio = ""
-        Me.txtValor2.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosReais
-        Me.txtValor2.TabIndex = 0
-        '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(730, 172)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 10
-        Me.Button4.Text = "Button4"
-        Me.Button4.UseVisualStyleBackColor = True
         '
         'frmDespesa
         '
@@ -613,8 +473,8 @@ Partial Class frmDespesa
         Me.gbFiltro.ResumeLayout(False)
         Me.gbFiltro.PerformLayout()
         Me.tabDetalhe.ResumeLayout(False)
-        Me.SuperGroupBox1.ResumeLayout(False)
-        Me.SuperGroupBox1.PerformLayout()
+        Me.gbDetalhe.ResumeLayout(False)
+        Me.gbDetalhe.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -639,18 +499,9 @@ Partial Class frmDespesa
     Friend WithEvents ImageList1 As ImageList
     Friend WithEvents btnStatusPago As GFT.Util.SuperButton
     Friend WithEvents tabDetalhe As TabPage
-    Friend WithEvents SuperGroupBox1 As GFT.Util.SuperGroupBox
+    Friend WithEvents gbDetalhe As GFT.Util.SuperGroupBox
     Friend WithEvents tabDespesaFixa As TabPage
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents chk As CheckBox
-    Friend WithEvents Button3 As Button
+    Friend WithEvents btnPagar As Button
     Friend WithEvents txtTitulo As GFT.Util.SuperTextBox
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button1 As Button
-    Friend WithEvents txtValor3 As GFT.Util.SuperTextBox
-    Friend WithEvents txtValor4 As GFT.Util.SuperTextBox
-    Friend WithEvents txtValor1 As GFT.Util.SuperTextBox
-    Friend WithEvents txtValor2 As GFT.Util.SuperTextBox
     Friend WithEvents dtDespesaDetalhe As DateTimePicker
-    Friend WithEvents Button4 As Button
 End Class

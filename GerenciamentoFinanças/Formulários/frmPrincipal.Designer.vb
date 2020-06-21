@@ -26,12 +26,18 @@ Partial Class frmPrincipal
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPrincipal))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.CadastroToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CategoriasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ContasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ServiçoDeEmailToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.CategoriasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.UsuárioSenhaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ConsultaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReceitasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DespesasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RelatórioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.JanelasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoginToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoginToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -57,77 +63,125 @@ Partial Class frmPrincipal
         Me.MenuStrip1.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CadastroToolStripMenuItem, Me.ConsultaToolStripMenuItem, Me.ReceitasToolStripMenuItem, Me.DespesasToolStripMenuItem, Me.JanelasToolStripMenuItem, Me.LoginToolStripMenuItem, Me.LoginToolStripMenuItem1, Me.TesteToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CadastroToolStripMenuItem, Me.ConsultaToolStripMenuItem, Me.ReceitasToolStripMenuItem, Me.DespesasToolStripMenuItem, Me.RelatórioToolStripMenuItem, Me.JanelasToolStripMenuItem, Me.LoginToolStripMenuItem, Me.LoginToolStripMenuItem1, Me.TesteToolStripMenuItem})
         Me.MenuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 43)
         Me.MenuStrip1.MdiWindowListItem = Me.JanelasToolStripMenuItem
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1073, 56)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1073, 62)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'CadastroToolStripMenuItem
         '
-        Me.CadastroToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CategoriasToolStripMenuItem, Me.ServiçoDeEmailToolStripMenuItem, Me.UsuárioSenhaToolStripMenuItem})
+        Me.CadastroToolStripMenuItem.AutoSize = False
+        Me.CadastroToolStripMenuItem.AutoToolTip = True
+        Me.CadastroToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContasToolStripMenuItem, Me.ToolStripSeparator3, Me.ServiçoDeEmailToolStripMenuItem, Me.ToolStripSeparator2, Me.CategoriasToolStripMenuItem, Me.ToolStripSeparator4, Me.UsuárioSenhaToolStripMenuItem, Me.ToolStripSeparator1})
         Me.CadastroToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CadastroToolStripMenuItem.ForeColor = System.Drawing.Color.Black
         Me.CadastroToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconEngrenagem
         Me.CadastroToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.CadastroToolStripMenuItem.Name = "CadastroToolStripMenuItem"
-        Me.CadastroToolStripMenuItem.ShowShortcutKeys = False
-        Me.CadastroToolStripMenuItem.Size = New System.Drawing.Size(183, 52)
+        Me.CadastroToolStripMenuItem.Padding = New System.Windows.Forms.Padding(0)
+        Me.CadastroToolStripMenuItem.Size = New System.Drawing.Size(200, 58)
         Me.CadastroToolStripMenuItem.Text = "Configurações"
         '
-        'CategoriasToolStripMenuItem
+        'ContasToolStripMenuItem
         '
-        Me.CategoriasToolStripMenuItem.Name = "CategoriasToolStripMenuItem"
-        Me.CategoriasToolStripMenuItem.Size = New System.Drawing.Size(376, 50)
-        Me.CategoriasToolStripMenuItem.Text = "Contas / Forma de Pagamento "
+        Me.ContasToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ContasToolStripMenuItem.AutoToolTip = True
+        Me.ContasToolStripMenuItem.Image = CType(resources.GetObject("ContasToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.ContasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ContasToolStripMenuItem.Name = "ContasToolStripMenuItem"
+        Me.ContasToolStripMenuItem.Size = New System.Drawing.Size(238, 54)
+        Me.ContasToolStripMenuItem.Text = " &Contas"
+        Me.ContasToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(235, 6)
         '
         'ServiçoDeEmailToolStripMenuItem
         '
-        Me.ServiçoDeEmailToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconCartao1
+        Me.ServiçoDeEmailToolStripMenuItem.Image = CType(resources.GetObject("ServiçoDeEmailToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.ServiçoDeEmailToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ServiçoDeEmailToolStripMenuItem.Name = "ServiçoDeEmailToolStripMenuItem"
-        Me.ServiçoDeEmailToolStripMenuItem.Size = New System.Drawing.Size(376, 50)
-        Me.ServiçoDeEmailToolStripMenuItem.Text = "Serviço de E-mail"
+        Me.ServiçoDeEmailToolStripMenuItem.Size = New System.Drawing.Size(238, 54)
+        Me.ServiçoDeEmailToolStripMenuItem.Text = " &Envio de E-mail"
+        Me.ServiçoDeEmailToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(235, 6)
+        '
+        'CategoriasToolStripMenuItem
+        '
+        Me.CategoriasToolStripMenuItem.AutoSize = False
+        Me.CategoriasToolStripMenuItem.Image = CType(resources.GetObject("CategoriasToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.CategoriasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.CategoriasToolStripMenuItem.Name = "CategoriasToolStripMenuItem"
+        Me.CategoriasToolStripMenuItem.ShortcutKeyDisplayString = ""
+        Me.CategoriasToolStripMenuItem.Size = New System.Drawing.Size(235, 54)
+        Me.CategoriasToolStripMenuItem.Text = " &Parâmetros"
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(235, 6)
         '
         'UsuárioSenhaToolStripMenuItem
         '
-        Me.UsuárioSenhaToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.User
+        Me.UsuárioSenhaToolStripMenuItem.Image = CType(resources.GetObject("UsuárioSenhaToolStripMenuItem.Image"), System.Drawing.Image)
         Me.UsuárioSenhaToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.UsuárioSenhaToolStripMenuItem.Name = "UsuárioSenhaToolStripMenuItem"
-        Me.UsuárioSenhaToolStripMenuItem.Size = New System.Drawing.Size(376, 50)
-        Me.UsuárioSenhaToolStripMenuItem.Text = "Usuário/Senha"
+        Me.UsuárioSenhaToolStripMenuItem.Size = New System.Drawing.Size(238, 54)
+        Me.UsuárioSenhaToolStripMenuItem.Text = " &Usuário/Senha"
+        Me.UsuárioSenhaToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(235, 6)
         '
         'ConsultaToolStripMenuItem
         '
         Me.ConsultaToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ConsultaToolStripMenuItem.ForeColor = System.Drawing.Color.Black
-        Me.ConsultaToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconFile
+        Me.ConsultaToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconExtract
         Me.ConsultaToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ConsultaToolStripMenuItem.Name = "ConsultaToolStripMenuItem"
-        Me.ConsultaToolStripMenuItem.Size = New System.Drawing.Size(129, 52)
+        Me.ConsultaToolStripMenuItem.Size = New System.Drawing.Size(129, 58)
         Me.ConsultaToolStripMenuItem.Text = "Extrato"
         '
         'ReceitasToolStripMenuItem
         '
         Me.ReceitasToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ReceitasToolStripMenuItem.ForeColor = System.Drawing.Color.Black
-        Me.ReceitasToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconMOneyGreen
+        Me.ReceitasToolStripMenuItem.Image = CType(resources.GetObject("ReceitasToolStripMenuItem.Image"), System.Drawing.Image)
         Me.ReceitasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ReceitasToolStripMenuItem.Name = "ReceitasToolStripMenuItem"
-        Me.ReceitasToolStripMenuItem.Size = New System.Drawing.Size(132, 52)
+        Me.ReceitasToolStripMenuItem.Size = New System.Drawing.Size(138, 58)
         Me.ReceitasToolStripMenuItem.Text = "Receitas"
         '
         'DespesasToolStripMenuItem
         '
         Me.DespesasToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DespesasToolStripMenuItem.ForeColor = System.Drawing.Color.Black
-        Me.DespesasToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconMoneyRed_fw
+        Me.DespesasToolStripMenuItem.Image = CType(resources.GetObject("DespesasToolStripMenuItem.Image"), System.Drawing.Image)
         Me.DespesasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.DespesasToolStripMenuItem.Name = "DespesasToolStripMenuItem"
-        Me.DespesasToolStripMenuItem.Size = New System.Drawing.Size(141, 52)
+        Me.DespesasToolStripMenuItem.Size = New System.Drawing.Size(147, 58)
         Me.DespesasToolStripMenuItem.Text = "Despesas"
+        '
+        'RelatórioToolStripMenuItem
+        '
+        Me.RelatórioToolStripMenuItem.Image = CType(resources.GetObject("RelatórioToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.RelatórioToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.RelatórioToolStripMenuItem.Name = "RelatórioToolStripMenuItem"
+        Me.RelatórioToolStripMenuItem.Size = New System.Drawing.Size(149, 58)
+        Me.RelatórioToolStripMenuItem.Text = "Relatório"
         '
         'JanelasToolStripMenuItem
         '
@@ -136,7 +190,7 @@ Partial Class frmPrincipal
         Me.JanelasToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconJanelas
         Me.JanelasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.JanelasToolStripMenuItem.Name = "JanelasToolStripMenuItem"
-        Me.JanelasToolStripMenuItem.Size = New System.Drawing.Size(129, 52)
+        Me.JanelasToolStripMenuItem.Size = New System.Drawing.Size(129, 58)
         Me.JanelasToolStripMenuItem.Text = "Janelas"
         '
         'LoginToolStripMenuItem
@@ -146,19 +200,19 @@ Partial Class frmPrincipal
         Me.LoginToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconLogout
         Me.LoginToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.LoginToolStripMenuItem.Name = "LoginToolStripMenuItem"
-        Me.LoginToolStripMenuItem.Size = New System.Drawing.Size(109, 52)
+        Me.LoginToolStripMenuItem.Size = New System.Drawing.Size(109, 58)
         Me.LoginToolStripMenuItem.Text = "Logout"
         '
         'LoginToolStripMenuItem1
         '
         Me.LoginToolStripMenuItem1.Name = "LoginToolStripMenuItem1"
-        Me.LoginToolStripMenuItem1.Size = New System.Drawing.Size(61, 52)
+        Me.LoginToolStripMenuItem1.Size = New System.Drawing.Size(61, 58)
         Me.LoginToolStripMenuItem1.Text = "Login"
         '
         'TesteToolStripMenuItem
         '
         Me.TesteToolStripMenuItem.Name = "TesteToolStripMenuItem"
-        Me.TesteToolStripMenuItem.Size = New System.Drawing.Size(56, 52)
+        Me.TesteToolStripMenuItem.Size = New System.Drawing.Size(56, 58)
         Me.TesteToolStripMenuItem.Text = "Teste"
         '
         'SScima
@@ -227,7 +281,7 @@ Partial Class frmPrincipal
         Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.StatusStrip1.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.txtCaption})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 99)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 105)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(1073, 28)
         Me.StatusStrip1.SizingGrip = False
@@ -350,4 +404,10 @@ Partial Class frmPrincipal
     Friend WithEvents LoginToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents TesteToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CategoriasToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RelatórioToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
+    Friend WithEvents ContasToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
 End Class

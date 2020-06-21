@@ -15,8 +15,7 @@ Public Class frmDespesa
         InitializeComponent()
 
         cControleParcelamento = _cControle
-        DetalharParcelamento()
-
+        'DetalharParcelamento()
     End Sub
     Sub New()
 
@@ -27,12 +26,13 @@ Public Class frmDespesa
 
     End Sub
     Private Sub frmDespesa_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Cor(Me, Collor.Preto)
+        Cor(Me, Collor.CinzaEscuro)
         centralizarGrupoBotoes(gbBotoes)
         centralizarGrupoTab(tabCtrlDespesa)
         CarregarCombo()
         Pesquisar()
         ControleFormulario()
+        CorButton(btnPagar, Collor.Gelo, Color.Black, Color.WhiteSmoke, Color.LightGray)
     End Sub
     Private Sub btnFechar_Click(sender As Object, e As EventArgs) Handles btnFechar.Click
         Me.Close()
@@ -204,6 +204,7 @@ Public Class frmDespesa
                 Pesquisar()
             End If
             If btn = eAcao.Editar Then
+
                 If lvConsulta.CheckedItems.Count = 1 Then
 
                     cDespesa = lvConsulta.ObterChave()
@@ -211,6 +212,8 @@ Public Class frmDespesa
                     If cDespesa <> 0 Then
                         Despesa = New frmNovaDespesa(cDespesa)
                         Despesa.ShowDialog()
+                        cControleParcelamento = CDec(Despesa.cControleParcelamento)
+                        DetalharParcelamento()
                         Pesquisar()
                     Else
                         S_MsgBox("Erro ao carregar registro.", eBotoes.Ok,,, eImagens.Cancel)
@@ -292,49 +295,178 @@ Public Class frmDespesa
     End Sub
     Private Sub DetalharParcelamento()
         Dim rs As SuperDataSet
+        Dim gbParcela As GroupBox
         Dim txt As TextBox
-        Dim text As TextBox
-        Dim Qtde As Decimal
+        Dim chk As CheckBox
+        Dim btn As Button
+        Dim data As Label
+        Dim parcela As Label
+        Dim Qtde As Integer
+        Dim cStatus As Integer
+        Dim cNumParcela As Integer
+        Dim yy As Integer
+        Dim X As Integer
+        Dim xGb As Integer
+        Dim Y As Integer
         Try
+            'Status = 1 Pago Status = 2 Pendente - 3 Atrasado
+
             tabCtrlDespesa.SelectedIndex = 2
-            tabCtrlDespesa.SelectedTab = tabDetalhe
 
-            'If cControleParcelamento <> 0 Then
-            '    rs = pControleParcelamento.ObterTodas(cControleParcelamento)
-            '    If rs.TotalRegistros > 0 Then
+            If cControleParcelamento <> 0 Then
 
-            '        tabCtrlDespesa.SelectedTab = tabDetalhe
-            '        text = New TextBox
-            '        text.Name = "blabla"
-            '        text.SetBounds(408, 132, 100, 20)
+                rs = pControleParcelamento.ObterTodas(cControleParcelamento)
 
-            '        Me.Controls.Add(text)
+                If rs.TotalRegistros > 0 Then
 
-            '        Qtde = CDec(rs("cQtdeParcela"))
+                    txtTitulo.Text = rs("rDescricao").ToString
+                    dtDespesaDetalhe.Value = CDate(rs("dtRegistro"))
 
-            '        For i = 0 To Qtde - 1
-            '            txt = New TextBox
-            '            'Controls.Add(txt)
-            '            txt.Name = btn & i
-            '            txt.Text = "ESTOU AQUI"
-            '            txt.BackColor = Color.Black
-            '            txt.ForeColor = Color.White
-            '            txt.SetBounds(txtValor1.Location.X, txtValor1.Location.Y + 39, 100, 25)
-            '            tabCtrlDespesa.TabPages(2).Controls.Add(txt)
+                    Qtde = CInt(rs("cQtdeParcela"))
 
-            '            txt.Visible = True
-            '            i = 4
-            '        Next
-            '    End If
-            'End If
+                    'CRIAR UM IF PARA VER QUANTOS TEXT VAI GERAR DE ACORDOR COMAS PARCELAS
+
+                    gbParcela = New GroupBox
+
+                    For i = 0 To Qtde - 1
+                        chk = New CheckBox
+                        btn = New Button
+                        txt = New TextBox
+                        data = New Label
+                        parcela = New Label
+
+
+
+
+                        CorButton(btn, Collor.Nenhuma, Color.Transparent,
+                                  Color.Transparent, Color.Transparent)
+
+                        cStatus = CInt(rs("cStatus", i))
+                        cNumParcela = CInt(rs("cNumeroParcela", i))
+
+                        If cStatus = 1 Then
+                            btn.Image = My.Resources.iconPago
+                        ElseIf cStatus = 2 Then
+                            btn.Image = My.Resources.iconPendente
+                        ElseIf cStatus = 3 Then
+                            btn.Image = My.Resources.iconAtrasado
+                        End If
+
+                        If i > 0 Then
+                            Y = yy
+                        Else
+                            X = 30
+                            Y = 41
+                        End If
+
+                        If Qtde > 6 Then
+
+                            gbDetalhe.Height = 600
+
+                            If i > 5 Then
+                                X = 317
+                            End If
+
+                            If i > 11 Then
+                                X = 572
+                            End If
+
+                            If i > 17 Then
+                                X = 816
+                            End If
+                        End If
+
+                        'GROUPBOX
+                        gbParcela.Name = "gbParcela" & i.ToString
+                        gbParcela.SetBounds(57, 139, 210, 200)
+                        gbParcela.Text = ""
+                        gbParcela.BackColor = Color.WhiteSmoke
+                        gbParcela.Visible = True
+
+                        'LABEL DATA
+
+                        data.Name = "lblData" & i.ToString
+                        data.Text = rs("dtRegistro", i).ToString
+                        data.Font = New Font(Font.FontFamily, FontStyle.Bold)
+                        data.SetBounds(X - 10, Y - 20, 100, 25)
+                        data.Visible = True
+                        gbParcela.Controls.Add(data)
+                        data.BringToFront()
+
+                        'LABEL PARCELA
+                        parcela.Name = "lblparcela" & cNumParcela.ToString
+                        parcela.Text = "(" & cNumParcela.ToString & "/" & Qtde.ToString & ")"
+                        parcela.Font = New Font(Font.FontFamily, FontStyle.Bold)
+                        parcela.SetBounds(X + 30, Y - 20, 100, 25)
+                        parcela.Visible = True
+                        gbParcela.Controls.Add(parcela)
+                        parcela.BringToFront()
+
+                        'CHK
+                        chk.Name = CInt(rs("cDespesa", i)).ToString
+                        chk.SetBounds(X - 10, Y + 5, 16, 16)
+                        chk.Visible = True
+                        gbParcela.Controls.Add(chk)
+                        chk.BringToFront()
+
+
+                        'BOTAO STATUS PAGO (OK)
+                        btn.Name = "btn" & i
+                        btn.SetBounds(X + 90, Y - 5, 35, 33)
+                        btn.Visible = True
+                        gbParcela.Controls.Add(btn)
+                        btn.BringToFront()
+
+
+                        'TEXT PARCELA
+                        txt.Name = "Parcela" & CInt(rs("cNumeroParcela", i)).ToString
+                        txt.Text = Convert.ToDouble(rs("cValor", i)).ToString("C")
+                        txt.ForeColor = Color.Black
+                        txt.TabIndex = CInt(2 + i)
+                        txt.SetBounds(X, Y, 100, 25)
+                        txt.Visible = True
+                        gbParcela.Controls.Add(txt)
+                        txt.BringToFront()
+
+
+
+
+                        If i = 5 Then
+                            yy = 139 + 55
+                            gbParcela = New GroupBox
+                        ElseIf i = 11 Then
+                            yy = 139 + 55
+                            gbParcela = New GroupBox
+                        ElseIf i = 17 Then
+                            yy = 139 + 55
+                            gbParcela = New GroupBox
+                        Else
+                            yy = txt.Location.Y + 55
+                        End If
+                        gbDetalhe.Controls.Add(gbParcela)
+                    Next
+                End If
+            End If
 
         Catch ex As Exception
-
+            S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
         End Try
-
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        tabCtrlDespesa.SelectedTab = tabDetalhe
+    Private Sub btnPagar_Click(sender As Object, e As EventArgs) Handles btnPagar.Click
+        Dim codigo As Decimal
+        Dim chk As CheckBox
+        For Each item As Control In gbDetalhe.Controls
+
+            If item.GetType().Name.ToUpper = "CHECKBOX" Then
+                chk = CType(item, CheckBox)
+                If chk.Checked Then
+                    codigo = CDec(item.Name)
+                    If codigo <> 0 Then
+                        pDespesa.Pagar(codigo)
+                    End If
+                End If
+            End If
+        Next
     End Sub
 End Class

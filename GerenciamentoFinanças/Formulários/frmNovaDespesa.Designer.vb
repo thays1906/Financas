@@ -405,7 +405,7 @@ Partial Class frmNovaDespesa
         Me.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnSalvar.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSalvar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.icon_Salvar_png
-        Me.btnSalvar.Location = New System.Drawing.Point(164, 419)
+        Me.btnSalvar.Location = New System.Drawing.Point(164, 421)
         Me.btnSalvar.Margin = New System.Windows.Forms.Padding(2)
         Me.btnSalvar.Name = "btnSalvar"
         Me.btnSalvar.Size = New System.Drawing.Size(203, 42)
@@ -419,7 +419,7 @@ Partial Class frmNovaDespesa
         '
         Me.btnDetalhe.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDetalhe.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconDetalheFiles
-        Me.btnDetalhe.Location = New System.Drawing.Point(392, 419)
+        Me.btnDetalhe.Location = New System.Drawing.Point(392, 421)
         Me.btnDetalhe.Margin = New System.Windows.Forms.Padding(2)
         Me.btnDetalhe.Name = "btnDetalhe"
         Me.btnDetalhe.Size = New System.Drawing.Size(203, 42)

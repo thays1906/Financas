@@ -45,6 +45,7 @@ Public Module SubUtil
         CinzaClaro
         CinzaBranco
         CinzaEscuro
+        Nenhuma
     End Enum
 
     Public Enum eStatusDespesa
@@ -149,6 +150,8 @@ Public Module SubUtil
             button.BackColor = Color.WhiteSmoke
         ElseIf Cor = collor.Branco Then
             button.BackColor = Color.White
+        ElseIf Cor = Collor.Nenhuma Then
+            button.BackColor = Color.Transparent
         End If
     End Sub
 

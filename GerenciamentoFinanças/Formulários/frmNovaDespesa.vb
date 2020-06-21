@@ -17,6 +17,7 @@ Public Class frmNovaDespesa
     Public bParcelado As Boolean = False
     Public erro As Decimal
     Public logErro As String
+    Public Property cControleParcelamento() As Decimal
 
 
     Sub New(ByVal _cDespesa As Decimal)
@@ -24,6 +25,7 @@ Public Class frmNovaDespesa
             InitializeComponent()
 
             cDespesa = _cDespesa
+
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
@@ -35,11 +37,12 @@ Public Class frmNovaDespesa
         CorButton(btnSalvar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnFechar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnDetalhe, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
-
+        btnDetalhe.Visible = False
         CarregarCombo()
 
         If cDespesa > 0 Then
 
+            btnDetalhe.Visible = True
             rsDespesa = pDespesa.ObterDespesa(cDespesa)
 
             PreencheCampo()
@@ -48,6 +51,7 @@ Public Class frmNovaDespesa
             cbParcelamento.Enabled = False
             txtParcela.Visible = False
             lblParcela.Visible = False
+            btnSalvar.SetBounds(210, 420, 203, 42)
         End If
     End Sub
 
@@ -378,21 +382,16 @@ Public Class frmNovaDespesa
     End Sub
 
     Private Sub btnDetalhe_Click(sender As Object, e As EventArgs) Handles btnDetalhe.Click
-        Dim cControleParc As Decimal
-        Dim desp As frmDespesa
+
         Try
-            cControleParc = CDec(rsDespesa("cControleParcelamento"))
+            cControleParcelamento = CDec(rsDespesa("cControleParcelamento"))
 
-            If cControleParc <> 0 Then
+            If cControleParcelamento <> 0 Then
+                Me.cControleParcelamento.ToString()
                 Me.Close()
-
-                desp = New frmDespesa(cControleParc)
-                desp.tabCtrlDespesa.SelectedIndex = 2
             End If
-
         Catch ex As Exception
             MessageBox.Show(ex.Message)
-
         End Try
     End Sub
 End Class

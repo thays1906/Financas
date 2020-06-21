@@ -108,6 +108,12 @@
     <Compile Include="Formulários\frmCadastroCategoria.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formulários\frmConta.Designer.vb">
+      <DependentUpon>frmConta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmConta.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formulários\frmLogin.Designer.vb">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
@@ -186,9 +192,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmConfiguracao.resx">
       <DependentUpon>frmConfiguracao.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmConsulta.resx">
       <DependentUpon>frmConsulta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmConta.resx">
+      <DependentUpon>frmConta.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmDespesa.resx">
       <DependentUpon>frmDespesa.vb</DependentUpon>
@@ -241,6 +251,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="iconFinanceiro4.ico" />
+    <Content Include="Resources\iconAtrasado.bmp" />
+    <None Include="Resources\iconPago.png" />
+    <Content Include="Resources\iconPendente.png" />
+    <None Include="Resources\icone_Email.png" />
+    <None Include="Resources\iconExtract.png" />
     <None Include="Resources\iconDetalheFiles.png" />
     <None Include="Resources\iconExcluir.png" />
     <None Include="Resources\iconSearchFile.png" />

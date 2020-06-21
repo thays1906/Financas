@@ -130,6 +130,12 @@
   <data name="iconNovoReceita" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconNovoReceita.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="iconExtract" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconExtract.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconDetalheFiles" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconDetalheFiles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icon_Salvar.png" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_Salvar.png.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -178,6 +184,9 @@
   <data name="LOGO1.2.fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LOGO1.2.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="iconAtrasado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconAtrasado.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="iconExplorer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconExplorer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -208,7 +217,13 @@
   <data name="iconExcluir" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconExcluir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconDetalheFiles" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconDetalheFiles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icone_Email" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_Email.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconPendente" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\iconpendente.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconPago" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconPago.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

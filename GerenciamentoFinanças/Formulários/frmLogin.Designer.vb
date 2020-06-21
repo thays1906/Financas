@@ -40,7 +40,7 @@ Partial Class frmLogin
         'lblUsuario
         '
         Me.lblUsuario.AutoSize = True
-        Me.lblUsuario.Location = New System.Drawing.Point(52, 38)
+        Me.lblUsuario.Location = New System.Drawing.Point(84, 23)
         Me.lblUsuario.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblUsuario.Name = "lblUsuario"
         Me.lblUsuario.Size = New System.Drawing.Size(62, 17)
@@ -50,7 +50,7 @@ Partial Class frmLogin
         'lblSenha
         '
         Me.lblSenha.AutoSize = True
-        Me.lblSenha.Location = New System.Drawing.Point(52, 72)
+        Me.lblSenha.Location = New System.Drawing.Point(84, 76)
         Me.lblSenha.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSenha.Name = "lblSenha"
         Me.lblSenha.Size = New System.Drawing.Size(54, 17)
@@ -62,7 +62,7 @@ Partial Class frmLogin
         Me.txtUsuario.Alterado = False
         Me.txtUsuario.BackColor = System.Drawing.Color.White
         Me.txtUsuario.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
-        Me.txtUsuario.Location = New System.Drawing.Point(122, 38)
+        Me.txtUsuario.Location = New System.Drawing.Point(87, 40)
         Me.txtUsuario.Margin = New System.Windows.Forms.Padding(4)
         Me.txtUsuario.Name = "txtUsuario"
         Me.txtUsuario.Size = New System.Drawing.Size(169, 25)
@@ -79,7 +79,7 @@ Partial Class frmLogin
         Me.txtSenha.Alterado = False
         Me.txtSenha.BackColor = System.Drawing.Color.White
         Me.txtSenha.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
-        Me.txtSenha.Location = New System.Drawing.Point(122, 68)
+        Me.txtSenha.Location = New System.Drawing.Point(87, 97)
         Me.txtSenha.Margin = New System.Windows.Forms.Padding(4)
         Me.txtSenha.Name = "txtSenha"
         Me.txtSenha.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
@@ -115,7 +115,7 @@ Partial Class frmLogin
         'StatusStrip2
         '
         Me.StatusStrip2.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.StatusStrip2.Location = New System.Drawing.Point(0, 319)
+        Me.StatusStrip2.Location = New System.Drawing.Point(0, 276)
         Me.StatusStrip2.Name = "StatusStrip2"
         Me.StatusStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode
         Me.StatusStrip2.Size = New System.Drawing.Size(452, 22)
@@ -125,14 +125,14 @@ Partial Class frmLogin
         '
         'GroupBox1
         '
-        Me.GroupBox1.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.GroupBox1.BackColor = System.Drawing.Color.WhiteSmoke
         Me.GroupBox1.Controls.Add(Me.txtUsuario)
         Me.GroupBox1.Controls.Add(Me.lblUsuario)
         Me.GroupBox1.Controls.Add(Me.lblSenha)
         Me.GroupBox1.Controls.Add(Me.txtSenha)
-        Me.GroupBox1.Location = New System.Drawing.Point(49, 60)
+        Me.GroupBox1.Location = New System.Drawing.Point(59, 60)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(337, 124)
+        Me.GroupBox1.Size = New System.Drawing.Size(337, 146)
         Me.GroupBox1.TabIndex = 8
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Login"
@@ -140,7 +140,7 @@ Partial Class frmLogin
         'btnFechar
         '
         Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
-        Me.btnFechar.Location = New System.Drawing.Point(249, 190)
+        Me.btnFechar.Location = New System.Drawing.Point(60, 212)
         Me.btnFechar.Name = "btnFechar"
         Me.btnFechar.Size = New System.Drawing.Size(137, 40)
         Me.btnFechar.TabIndex = 5
@@ -152,7 +152,7 @@ Partial Class frmLogin
         'btnAcessar
         '
         Me.btnAcessar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconLogin32
-        Me.btnAcessar.Location = New System.Drawing.Point(70, 190)
+        Me.btnAcessar.Location = New System.Drawing.Point(259, 212)
         Me.btnAcessar.Name = "btnAcessar"
         Me.btnAcessar.Size = New System.Drawing.Size(137, 40)
         Me.btnAcessar.TabIndex = 4
@@ -166,7 +166,7 @@ Partial Class frmLogin
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(89, Byte), Integer), CType(CType(54, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(452, 341)
+        Me.ClientSize = New System.Drawing.Size(452, 298)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.StatusStrip2)
         Me.Controls.Add(Me.StatusStrip1)

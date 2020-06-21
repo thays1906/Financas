@@ -25,16 +25,9 @@ Partial Class frmConfiguracao
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConfiguracao))
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.btnFecharConfig = New System.Windows.Forms.Button()
+        Me.btnFechar = New System.Windows.Forms.Button()
         Me.tabCtrlConfig = New GFT.Util.SuperTabControl()
-        Me.tabConta = New System.Windows.Forms.TabPage()
-        Me.lvConsulta = New GFT.Util.SuperLV()
-        Me.gbBotoes = New System.Windows.Forms.GroupBox()
-        Me.btnExcluir = New GFT.Util.SuperButton()
-        Me.btnAddConta = New GFT.Util.SuperButton()
-        Me.btnPesquisar = New GFT.Util.SuperButton()
-        Me.btnEditar = New GFT.Util.SuperButton()
-        Me.lblContas = New System.Windows.Forms.Label()
-        Me.gbDadosConta = New System.Windows.Forms.GroupBox()
         Me.tabReceita = New System.Windows.Forms.TabPage()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.gbBotoesReceita = New System.Windows.Forms.GroupBox()
@@ -74,11 +67,7 @@ Partial Class frmConfiguracao
         Me.btnCadastrarParc = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtQtdeParcela = New GFT.Util.SuperTextBox()
-        Me.btnFecharConfig = New System.Windows.Forms.Button()
-        Me.btnFechar = New System.Windows.Forms.Button()
         Me.tabCtrlConfig.SuspendLayout()
-        Me.tabConta.SuspendLayout()
-        Me.gbBotoes.SuspendLayout()
         Me.tabReceita.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.gbBotoesReceita.SuspendLayout()
@@ -100,22 +89,58 @@ Partial Class frmConfiguracao
         '
         Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImageList1.TransparentColor = System.Drawing.Color.Orange
-        Me.ImageList1.Images.SetKeyName(0, "1486564399-close_81512.png")
-        Me.ImageList1.Images.SetKeyName(1, "iconCartao1.png")
-        Me.ImageList1.Images.SetKeyName(2, "iconEngrenagem.png")
-        Me.ImageList1.Images.SetKeyName(3, "iconMoneyRed.fw.png")
-        Me.ImageList1.Images.SetKeyName(4, "1495815224-jd15_84582.png")
-        Me.ImageList1.Images.SetKeyName(5, "1495815224-jd15_84582 (1).png")
-        Me.ImageList1.Images.SetKeyName(6, "Banco2.png")
-        Me.ImageList1.Images.SetKeyName(7, "1495815224-jd15_84582 (2).png")
-        Me.ImageList1.Images.SetKeyName(8, "iconMOneyGreen.png")
+        Me.ImageList1.Images.SetKeyName(0, "iconMoneyRed.fw.png")
+        Me.ImageList1.Images.SetKeyName(1, "Banco2.png")
+        Me.ImageList1.Images.SetKeyName(2, "icon_Receita.png")
+        Me.ImageList1.Images.SetKeyName(3, "iconePArcela.png")
+        Me.ImageList1.Images.SetKeyName(4, "icon_Despesa.png")
+        Me.ImageList1.Images.SetKeyName(5, "icon_Parcela.png")
+        Me.ImageList1.Images.SetKeyName(6, "iconCartaoCredito.png")
+        '
+        'btnFecharConfig
+        '
+        Me.btnFecharConfig.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.btnFecharConfig.BackColor = System.Drawing.Color.DarkSlateGray
+        Me.btnFecharConfig.FlatAppearance.BorderSize = 0
+        Me.btnFecharConfig.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkCyan
+        Me.btnFecharConfig.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Teal
+        Me.btnFecharConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnFecharConfig.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFecharConfig.ForeColor = System.Drawing.Color.White
+        Me.btnFecharConfig.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
+        Me.btnFecharConfig.Location = New System.Drawing.Point(382, 593)
+        Me.btnFecharConfig.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnFecharConfig.Name = "btnFecharConfig"
+        Me.btnFecharConfig.Size = New System.Drawing.Size(196, 46)
+        Me.btnFecharConfig.TabIndex = 12
+        Me.btnFecharConfig.Text = " &Fechar "
+        Me.btnFecharConfig.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnFecharConfig.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnFecharConfig.UseVisualStyleBackColor = False
+        '
+        'btnFechar
+        '
+        Me.btnFechar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnFechar.BackColor = System.Drawing.Color.Transparent
+        Me.btnFechar.FlatAppearance.BorderSize = 0
+        Me.btnFechar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack
+        Me.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
+        Me.btnFechar.Location = New System.Drawing.Point(958, -1)
+        Me.btnFechar.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnFechar.Name = "btnFechar"
+        Me.btnFechar.Size = New System.Drawing.Size(73, 50)
+        Me.btnFechar.TabIndex = 11
+        Me.btnFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnFechar.UseVisualStyleBackColor = False
         '
         'tabCtrlConfig
         '
         Me.tabCtrlConfig.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tabCtrlConfig.Controls.Add(Me.tabConta)
         Me.tabCtrlConfig.Controls.Add(Me.tabReceita)
         Me.tabCtrlConfig.Controls.Add(Me.tabCategoriaDespesa)
         Me.tabCtrlConfig.Controls.Add(Me.tabFormaPagamento)
@@ -123,7 +148,7 @@ Partial Class frmConfiguracao
         Me.tabCtrlConfig.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabCtrlConfig.ImageList = Me.ImageList1
         Me.tabCtrlConfig.Location = New System.Drawing.Point(0, 0)
-        Me.tabCtrlConfig.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabCtrlConfig.Margin = New System.Windows.Forms.Padding(2)
         Me.tabCtrlConfig.Multiline = True
         Me.tabCtrlConfig.Name = "tabCtrlConfig"
         Me.tabCtrlConfig.Padding = New System.Drawing.Point(30, 5)
@@ -131,167 +156,15 @@ Partial Class frmConfiguracao
         Me.tabCtrlConfig.Size = New System.Drawing.Size(1028, 592)
         Me.tabCtrlConfig.TabIndex = 0
         '
-        'tabConta
-        '
-        Me.tabConta.Controls.Add(Me.lvConsulta)
-        Me.tabConta.Controls.Add(Me.gbBotoes)
-        Me.tabConta.Controls.Add(Me.lblContas)
-        Me.tabConta.Controls.Add(Me.gbDadosConta)
-        Me.tabConta.ImageIndex = 6
-        Me.tabConta.Location = New System.Drawing.Point(4, 118)
-        Me.tabConta.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.tabConta.Name = "tabConta"
-        Me.tabConta.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.tabConta.Size = New System.Drawing.Size(1020, 470)
-        Me.tabConta.TabIndex = 3
-        Me.tabConta.Text = "Contas Bancárias"
-        Me.tabConta.UseVisualStyleBackColor = True
-        '
-        'lvConsulta
-        '
-        Me.lvConsulta.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lvConsulta.HabilitaOrdem = True
-        Me.lvConsulta.HideSelection = False
-        Me.lvConsulta.Location = New System.Drawing.Point(36, 205)
-        Me.lvConsulta.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.lvConsulta.Name = "lvConsulta"
-        Me.lvConsulta.SelecionaVarios = False
-        Me.lvConsulta.Size = New System.Drawing.Size(944, 207)
-        Me.lvConsulta.TabIndex = 24
-        Me.lvConsulta.UseCompatibleStateImageBehavior = False
-        '
-        'gbBotoes
-        '
-        Me.gbBotoes.BackColor = System.Drawing.Color.White
-        Me.gbBotoes.Controls.Add(Me.btnExcluir)
-        Me.gbBotoes.Controls.Add(Me.btnAddConta)
-        Me.gbBotoes.Controls.Add(Me.btnPesquisar)
-        Me.gbBotoes.Controls.Add(Me.btnEditar)
-        Me.gbBotoes.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.gbBotoes.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.gbBotoes.Location = New System.Drawing.Point(2, 395)
-        Me.gbBotoes.Name = "gbBotoes"
-        Me.gbBotoes.Size = New System.Drawing.Size(1016, 73)
-        Me.gbBotoes.TabIndex = 23
-        Me.gbBotoes.TabStop = False
-        '
-        'btnExcluir
-        '
-        Me.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnExcluir.BackColor = System.Drawing.Color.Transparent
-        Me.btnExcluir.BackgroundImage = CType(resources.GetObject("btnExcluir.BackgroundImage"), System.Drawing.Image)
-        Me.btnExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnExcluir.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnExcluir.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder
-        Me.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnExcluir.Font = New System.Drawing.Font("Verdana", 9.0!)
-        Me.btnExcluir.ForeColor = System.Drawing.Color.Black
-        Me.btnExcluir.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
-        Me.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnExcluir.Location = New System.Drawing.Point(651, 17)
-        Me.btnExcluir.Name = "btnExcluir"
-        Me.btnExcluir.Size = New System.Drawing.Size(137, 40)
-        Me.btnExcluir.TabIndex = 11
-        Me.btnExcluir.Text = "  &Excluir"
-        Me.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnExcluir.UseVisualStyleBackColor = False
-        '
-        'btnAddConta
-        '
-        Me.btnAddConta.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnAddConta.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.btnAddConta.BackgroundImage = CType(resources.GetObject("btnAddConta.BackgroundImage"), System.Drawing.Image)
-        Me.btnAddConta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnAddConta.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnAddConta.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder
-        Me.btnAddConta.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAddConta.Font = New System.Drawing.Font("Verdana", 9.0!)
-        Me.btnAddConta.ForeColor = System.Drawing.Color.Black
-        Me.btnAddConta.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconAddReceita
-        Me.btnAddConta.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnAddConta.Location = New System.Drawing.Point(364, 17)
-        Me.btnAddConta.Name = "btnAddConta"
-        Me.btnAddConta.Size = New System.Drawing.Size(137, 40)
-        Me.btnAddConta.TabIndex = 10
-        Me.btnAddConta.Text = "  &Conta"
-        Me.btnAddConta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnAddConta.UseVisualStyleBackColor = False
-        '
-        'btnPesquisar
-        '
-        Me.btnPesquisar.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnPesquisar.BackColor = System.Drawing.Color.Transparent
-        Me.btnPesquisar.BackgroundImage = CType(resources.GetObject("btnPesquisar.BackgroundImage"), System.Drawing.Image)
-        Me.btnPesquisar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnPesquisar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder
-        Me.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPesquisar.Font = New System.Drawing.Font("Verdana", 9.0!)
-        Me.btnPesquisar.ForeColor = System.Drawing.Color.Black
-        Me.btnPesquisar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.Icon_search
-        Me.btnPesquisar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnPesquisar.Location = New System.Drawing.Point(222, 17)
-        Me.btnPesquisar.Name = "btnPesquisar"
-        Me.btnPesquisar.Size = New System.Drawing.Size(137, 40)
-        Me.btnPesquisar.TabIndex = 1
-        Me.btnPesquisar.Text = "  &Pesquisar"
-        Me.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnPesquisar.UseVisualStyleBackColor = False
-        '
-        'btnEditar
-        '
-        Me.btnEditar.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnEditar.BackColor = System.Drawing.Color.Transparent
-        Me.btnEditar.BackgroundImage = CType(resources.GetObject("btnEditar.BackgroundImage"), System.Drawing.Image)
-        Me.btnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnEditar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder
-        Me.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnEditar.Font = New System.Drawing.Font("Verdana", 9.0!)
-        Me.btnEditar.ForeColor = System.Drawing.Color.Black
-        Me.btnEditar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconEditar
-        Me.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnEditar.Location = New System.Drawing.Point(507, 17)
-        Me.btnEditar.Name = "btnEditar"
-        Me.btnEditar.Size = New System.Drawing.Size(137, 40)
-        Me.btnEditar.TabIndex = 8
-        Me.btnEditar.Text = "  &Editar"
-        Me.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnEditar.UseVisualStyleBackColor = False
-        '
-        'lblContas
-        '
-        Me.lblContas.AutoSize = True
-        Me.lblContas.Location = New System.Drawing.Point(33, 183)
-        Me.lblContas.Name = "lblContas"
-        Me.lblContas.Size = New System.Drawing.Size(63, 19)
-        Me.lblContas.TabIndex = 13
-        Me.lblContas.Text = "Contas:"
-        '
-        'gbDadosConta
-        '
-        Me.gbDadosConta.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.gbDadosConta.Location = New System.Drawing.Point(36, 15)
-        Me.gbDadosConta.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.gbDadosConta.Name = "gbDadosConta"
-        Me.gbDadosConta.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.gbDadosConta.Size = New System.Drawing.Size(943, 147)
-        Me.gbDadosConta.TabIndex = 0
-        Me.gbDadosConta.TabStop = False
-        Me.gbDadosConta.Text = "Conta Principal"
-        '
         'tabReceita
         '
         Me.tabReceita.Controls.Add(Me.GroupBox4)
         Me.tabReceita.Controls.Add(Me.gbAddReceita)
-        Me.tabReceita.ImageIndex = 8
+        Me.tabReceita.ImageIndex = 2
         Me.tabReceita.Location = New System.Drawing.Point(4, 118)
-        Me.tabReceita.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabReceita.Margin = New System.Windows.Forms.Padding(2)
         Me.tabReceita.Name = "tabReceita"
-        Me.tabReceita.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabReceita.Padding = New System.Windows.Forms.Padding(2)
         Me.tabReceita.Size = New System.Drawing.Size(1020, 470)
         Me.tabReceita.TabIndex = 5
         Me.tabReceita.Text = "Categorias de Receita"
@@ -302,9 +175,9 @@ Partial Class frmConfiguracao
         Me.GroupBox4.Controls.Add(Me.gbBotoesReceita)
         Me.GroupBox4.Controls.Add(Me.lvReceita)
         Me.GroupBox4.Location = New System.Drawing.Point(34, 164)
-        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(2)
         Me.GroupBox4.Size = New System.Drawing.Size(801, 313)
         Me.GroupBox4.TabIndex = 1
         Me.GroupBox4.TabStop = False
@@ -315,9 +188,9 @@ Partial Class frmConfiguracao
         Me.gbBotoesReceita.Controls.Add(Me.btnEditarReceita)
         Me.gbBotoesReceita.Controls.Add(Me.btnExcluirReceita)
         Me.gbBotoesReceita.Location = New System.Drawing.Point(284, 33)
-        Me.gbBotoesReceita.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbBotoesReceita.Margin = New System.Windows.Forms.Padding(2)
         Me.gbBotoesReceita.Name = "gbBotoesReceita"
-        Me.gbBotoesReceita.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbBotoesReceita.Padding = New System.Windows.Forms.Padding(2)
         Me.gbBotoesReceita.Size = New System.Drawing.Size(65, 127)
         Me.gbBotoesReceita.TabIndex = 4
         Me.gbBotoesReceita.TabStop = False
@@ -330,7 +203,7 @@ Partial Class frmConfiguracao
         Me.btnEditarReceita.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEditarReceita.Image = CType(resources.GetObject("btnEditarReceita.Image"), System.Drawing.Image)
         Me.btnEditarReceita.Location = New System.Drawing.Point(4, 11)
-        Me.btnEditarReceita.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnEditarReceita.Margin = New System.Windows.Forms.Padding(2)
         Me.btnEditarReceita.Name = "btnEditarReceita"
         Me.btnEditarReceita.Size = New System.Drawing.Size(56, 58)
         Me.btnEditarReceita.TabIndex = 1
@@ -344,7 +217,7 @@ Partial Class frmConfiguracao
         Me.btnExcluirReceita.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnExcluirReceita.Image = CType(resources.GetObject("btnExcluirReceita.Image"), System.Drawing.Image)
         Me.btnExcluirReceita.Location = New System.Drawing.Point(4, 73)
-        Me.btnExcluirReceita.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnExcluirReceita.Margin = New System.Windows.Forms.Padding(2)
         Me.btnExcluirReceita.Name = "btnExcluirReceita"
         Me.btnExcluirReceita.Size = New System.Drawing.Size(50, 49)
         Me.btnExcluirReceita.TabIndex = 2
@@ -355,7 +228,7 @@ Partial Class frmConfiguracao
         Me.lvReceita.HabilitaOrdem = True
         Me.lvReceita.HideSelection = False
         Me.lvReceita.Location = New System.Drawing.Point(24, 41)
-        Me.lvReceita.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.lvReceita.Margin = New System.Windows.Forms.Padding(2)
         Me.lvReceita.Name = "lvReceita"
         Me.lvReceita.SelecionaVarios = False
         Me.lvReceita.Size = New System.Drawing.Size(258, 244)
@@ -368,9 +241,9 @@ Partial Class frmConfiguracao
         Me.gbAddReceita.Controls.Add(Me.Label2)
         Me.gbAddReceita.Controls.Add(Me.txtNovaReceita)
         Me.gbAddReceita.Location = New System.Drawing.Point(34, 20)
-        Me.gbAddReceita.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbAddReceita.Margin = New System.Windows.Forms.Padding(2)
         Me.gbAddReceita.Name = "gbAddReceita"
-        Me.gbAddReceita.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbAddReceita.Padding = New System.Windows.Forms.Padding(2)
         Me.gbAddReceita.Size = New System.Drawing.Size(801, 116)
         Me.gbAddReceita.TabIndex = 0
         Me.gbAddReceita.TabStop = False
@@ -379,7 +252,7 @@ Partial Class frmConfiguracao
         'btnAdicionarReceita
         '
         Me.btnAdicionarReceita.Location = New System.Drawing.Point(344, 67)
-        Me.btnAdicionarReceita.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnAdicionarReceita.Margin = New System.Windows.Forms.Padding(2)
         Me.btnAdicionarReceita.Name = "btnAdicionarReceita"
         Me.btnAdicionarReceita.Size = New System.Drawing.Size(130, 26)
         Me.btnAdicionarReceita.TabIndex = 2
@@ -400,9 +273,9 @@ Partial Class frmConfiguracao
         '
         Me.txtNovaReceita.Alterado = False
         Me.txtNovaReceita.BackColor = System.Drawing.Color.White
-        Me.txtNovaReceita.CorFundoSelecionado = System.Drawing.SystemColors.Control
+        Me.txtNovaReceita.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
         Me.txtNovaReceita.Location = New System.Drawing.Point(38, 67)
-        Me.txtNovaReceita.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtNovaReceita.Margin = New System.Windows.Forms.Padding(2)
         Me.txtNovaReceita.Name = "txtNovaReceita"
         Me.txtNovaReceita.Size = New System.Drawing.Size(302, 27)
         Me.txtNovaReceita.SuperMascara = ""
@@ -417,11 +290,11 @@ Partial Class frmConfiguracao
         '
         Me.tabCategoriaDespesa.Controls.Add(Me.gbCadastroDespesa)
         Me.tabCategoriaDespesa.Controls.Add(Me.gbTodasDespesa)
-        Me.tabCategoriaDespesa.ImageIndex = 3
+        Me.tabCategoriaDespesa.ImageIndex = 4
         Me.tabCategoriaDespesa.Location = New System.Drawing.Point(4, 118)
-        Me.tabCategoriaDespesa.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabCategoriaDespesa.Margin = New System.Windows.Forms.Padding(2)
         Me.tabCategoriaDespesa.Name = "tabCategoriaDespesa"
-        Me.tabCategoriaDespesa.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabCategoriaDespesa.Padding = New System.Windows.Forms.Padding(2)
         Me.tabCategoriaDespesa.Size = New System.Drawing.Size(1020, 470)
         Me.tabCategoriaDespesa.TabIndex = 1
         Me.tabCategoriaDespesa.Text = "Categorias de Despesa"
@@ -435,9 +308,9 @@ Partial Class frmConfiguracao
         Me.gbCadastroDespesa.Controls.Add(Me.txtNovaCategoriaDespesa)
         Me.gbCadastroDespesa.Controls.Add(Me.btnAdd)
         Me.gbCadastroDespesa.Location = New System.Drawing.Point(34, 24)
-        Me.gbCadastroDespesa.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbCadastroDespesa.Margin = New System.Windows.Forms.Padding(2)
         Me.gbCadastroDespesa.Name = "gbCadastroDespesa"
-        Me.gbCadastroDespesa.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbCadastroDespesa.Padding = New System.Windows.Forms.Padding(2)
         Me.gbCadastroDespesa.Size = New System.Drawing.Size(951, 89)
         Me.gbCadastroDespesa.TabIndex = 8
         Me.gbCadastroDespesa.TabStop = False
@@ -458,9 +331,9 @@ Partial Class frmConfiguracao
         '
         Me.txtNovaCategoriaDespesa.Alterado = False
         Me.txtNovaCategoriaDespesa.BackColor = System.Drawing.Color.White
-        Me.txtNovaCategoriaDespesa.CorFundoSelecionado = System.Drawing.SystemColors.Control
+        Me.txtNovaCategoriaDespesa.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
         Me.txtNovaCategoriaDespesa.Location = New System.Drawing.Point(60, 41)
-        Me.txtNovaCategoriaDespesa.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtNovaCategoriaDespesa.Margin = New System.Windows.Forms.Padding(2)
         Me.txtNovaCategoriaDespesa.Multiline = True
         Me.txtNovaCategoriaDespesa.Name = "txtNovaCategoriaDespesa"
         Me.txtNovaCategoriaDespesa.Size = New System.Drawing.Size(162, 32)
@@ -484,7 +357,7 @@ Partial Class frmConfiguracao
         Me.btnAdd.ForeColor = System.Drawing.Color.Black
         Me.btnAdd.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconAddReceita
         Me.btnAdd.Location = New System.Drawing.Point(251, 33)
-        Me.btnAdd.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnAdd.Margin = New System.Windows.Forms.Padding(2)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(130, 39)
         Me.btnAdd.TabIndex = 3
@@ -500,9 +373,9 @@ Partial Class frmConfiguracao
         Me.gbTodasDespesa.Controls.Add(Me.gbBotoesCategoriaDespesa)
         Me.gbTodasDespesa.Controls.Add(Me.lvCategoriaDespesa)
         Me.gbTodasDespesa.Location = New System.Drawing.Point(34, 129)
-        Me.gbTodasDespesa.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbTodasDespesa.Margin = New System.Windows.Forms.Padding(2)
         Me.gbTodasDespesa.Name = "gbTodasDespesa"
-        Me.gbTodasDespesa.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbTodasDespesa.Padding = New System.Windows.Forms.Padding(2)
         Me.gbTodasDespesa.Size = New System.Drawing.Size(951, 353)
         Me.gbTodasDespesa.TabIndex = 7
         Me.gbTodasDespesa.TabStop = False
@@ -513,9 +386,9 @@ Partial Class frmConfiguracao
         Me.gbBotoesCategoriaDespesa.Controls.Add(Me.btnEditarDespesa)
         Me.gbBotoesCategoriaDespesa.Controls.Add(Me.btnExcluirDespesa)
         Me.gbBotoesCategoriaDespesa.Location = New System.Drawing.Point(276, 24)
-        Me.gbBotoesCategoriaDespesa.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbBotoesCategoriaDespesa.Margin = New System.Windows.Forms.Padding(2)
         Me.gbBotoesCategoriaDespesa.Name = "gbBotoesCategoriaDespesa"
-        Me.gbBotoesCategoriaDespesa.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbBotoesCategoriaDespesa.Padding = New System.Windows.Forms.Padding(2)
         Me.gbBotoesCategoriaDespesa.Size = New System.Drawing.Size(65, 127)
         Me.gbBotoesCategoriaDespesa.TabIndex = 3
         Me.gbBotoesCategoriaDespesa.TabStop = False
@@ -528,7 +401,7 @@ Partial Class frmConfiguracao
         Me.btnEditarDespesa.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEditarDespesa.Image = CType(resources.GetObject("btnEditarDespesa.Image"), System.Drawing.Image)
         Me.btnEditarDespesa.Location = New System.Drawing.Point(4, 11)
-        Me.btnEditarDespesa.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnEditarDespesa.Margin = New System.Windows.Forms.Padding(2)
         Me.btnEditarDespesa.Name = "btnEditarDespesa"
         Me.btnEditarDespesa.Size = New System.Drawing.Size(56, 58)
         Me.btnEditarDespesa.TabIndex = 1
@@ -542,7 +415,7 @@ Partial Class frmConfiguracao
         Me.btnExcluirDespesa.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnExcluirDespesa.Image = CType(resources.GetObject("btnExcluirDespesa.Image"), System.Drawing.Image)
         Me.btnExcluirDespesa.Location = New System.Drawing.Point(4, 73)
-        Me.btnExcluirDespesa.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnExcluirDespesa.Margin = New System.Windows.Forms.Padding(2)
         Me.btnExcluirDespesa.Name = "btnExcluirDespesa"
         Me.btnExcluirDespesa.Size = New System.Drawing.Size(50, 49)
         Me.btnExcluirDespesa.TabIndex = 2
@@ -554,7 +427,7 @@ Partial Class frmConfiguracao
         Me.lvCategoriaDespesa.HabilitaOrdem = True
         Me.lvCategoriaDespesa.HideSelection = False
         Me.lvCategoriaDespesa.Location = New System.Drawing.Point(15, 32)
-        Me.lvCategoriaDespesa.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.lvCategoriaDespesa.Margin = New System.Windows.Forms.Padding(2)
         Me.lvCategoriaDespesa.Name = "lvCategoriaDespesa"
         Me.lvCategoriaDespesa.SelecionaVarios = False
         Me.lvCategoriaDespesa.Size = New System.Drawing.Size(258, 302)
@@ -565,11 +438,11 @@ Partial Class frmConfiguracao
         '
         Me.tabFormaPagamento.Controls.Add(Me.gbCadastroPagamento)
         Me.tabFormaPagamento.Controls.Add(Me.gbConsultaPagamento)
-        Me.tabFormaPagamento.ImageIndex = 7
+        Me.tabFormaPagamento.ImageIndex = 6
         Me.tabFormaPagamento.Location = New System.Drawing.Point(4, 118)
-        Me.tabFormaPagamento.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabFormaPagamento.Margin = New System.Windows.Forms.Padding(2)
         Me.tabFormaPagamento.Name = "tabFormaPagamento"
-        Me.tabFormaPagamento.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabFormaPagamento.Padding = New System.Windows.Forms.Padding(2)
         Me.tabFormaPagamento.Size = New System.Drawing.Size(1020, 470)
         Me.tabFormaPagamento.TabIndex = 2
         Me.tabFormaPagamento.Text = "Formas de Pagamento"
@@ -583,9 +456,9 @@ Partial Class frmConfiguracao
         Me.gbCadastroPagamento.Controls.Add(Me.txtNovaFormaPag)
         Me.gbCadastroPagamento.Controls.Add(Me.btnAddPag)
         Me.gbCadastroPagamento.Location = New System.Drawing.Point(24, 18)
-        Me.gbCadastroPagamento.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbCadastroPagamento.Margin = New System.Windows.Forms.Padding(2)
         Me.gbCadastroPagamento.Name = "gbCadastroPagamento"
-        Me.gbCadastroPagamento.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbCadastroPagamento.Padding = New System.Windows.Forms.Padding(2)
         Me.gbCadastroPagamento.Size = New System.Drawing.Size(951, 89)
         Me.gbCadastroPagamento.TabIndex = 10
         Me.gbCadastroPagamento.TabStop = False
@@ -606,9 +479,9 @@ Partial Class frmConfiguracao
         '
         Me.txtNovaFormaPag.Alterado = False
         Me.txtNovaFormaPag.BackColor = System.Drawing.Color.White
-        Me.txtNovaFormaPag.CorFundoSelecionado = System.Drawing.SystemColors.Control
+        Me.txtNovaFormaPag.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
         Me.txtNovaFormaPag.Location = New System.Drawing.Point(60, 41)
-        Me.txtNovaFormaPag.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtNovaFormaPag.Margin = New System.Windows.Forms.Padding(2)
         Me.txtNovaFormaPag.Multiline = True
         Me.txtNovaFormaPag.Name = "txtNovaFormaPag"
         Me.txtNovaFormaPag.Size = New System.Drawing.Size(162, 32)
@@ -632,7 +505,7 @@ Partial Class frmConfiguracao
         Me.btnAddPag.ForeColor = System.Drawing.Color.Black
         Me.btnAddPag.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconAddReceita
         Me.btnAddPag.Location = New System.Drawing.Point(251, 33)
-        Me.btnAddPag.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnAddPag.Margin = New System.Windows.Forms.Padding(2)
         Me.btnAddPag.Name = "btnAddPag"
         Me.btnAddPag.Size = New System.Drawing.Size(130, 39)
         Me.btnAddPag.TabIndex = 3
@@ -646,9 +519,9 @@ Partial Class frmConfiguracao
         Me.gbConsultaPagamento.Controls.Add(Me.gbBotoesPagamento)
         Me.gbConsultaPagamento.Controls.Add(Me.lvFormaPagamento)
         Me.gbConsultaPagamento.Location = New System.Drawing.Point(24, 123)
-        Me.gbConsultaPagamento.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbConsultaPagamento.Margin = New System.Windows.Forms.Padding(2)
         Me.gbConsultaPagamento.Name = "gbConsultaPagamento"
-        Me.gbConsultaPagamento.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbConsultaPagamento.Padding = New System.Windows.Forms.Padding(2)
         Me.gbConsultaPagamento.Size = New System.Drawing.Size(951, 363)
         Me.gbConsultaPagamento.TabIndex = 9
         Me.gbConsultaPagamento.TabStop = False
@@ -659,9 +532,9 @@ Partial Class frmConfiguracao
         Me.gbBotoesPagamento.Controls.Add(Me.btnEditarPag)
         Me.gbBotoesPagamento.Controls.Add(Me.btnExcluirPag)
         Me.gbBotoesPagamento.Location = New System.Drawing.Point(290, 25)
-        Me.gbBotoesPagamento.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbBotoesPagamento.Margin = New System.Windows.Forms.Padding(2)
         Me.gbBotoesPagamento.Name = "gbBotoesPagamento"
-        Me.gbBotoesPagamento.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbBotoesPagamento.Padding = New System.Windows.Forms.Padding(2)
         Me.gbBotoesPagamento.Size = New System.Drawing.Size(67, 119)
         Me.gbBotoesPagamento.TabIndex = 9
         Me.gbBotoesPagamento.TabStop = False
@@ -674,7 +547,7 @@ Partial Class frmConfiguracao
         Me.btnEditarPag.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEditarPag.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconEditar
         Me.btnEditarPag.Location = New System.Drawing.Point(4, 13)
-        Me.btnEditarPag.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnEditarPag.Margin = New System.Windows.Forms.Padding(2)
         Me.btnEditarPag.Name = "btnEditarPag"
         Me.btnEditarPag.Size = New System.Drawing.Size(54, 48)
         Me.btnEditarPag.TabIndex = 6
@@ -688,7 +561,7 @@ Partial Class frmConfiguracao
         Me.btnExcluirPag.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnExcluirPag.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
         Me.btnExcluirPag.Location = New System.Drawing.Point(4, 66)
-        Me.btnExcluirPag.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnExcluirPag.Margin = New System.Windows.Forms.Padding(2)
         Me.btnExcluirPag.Name = "btnExcluirPag"
         Me.btnExcluirPag.Size = New System.Drawing.Size(54, 50)
         Me.btnExcluirPag.TabIndex = 8
@@ -700,7 +573,7 @@ Partial Class frmConfiguracao
         Me.lvFormaPagamento.HabilitaOrdem = True
         Me.lvFormaPagamento.HideSelection = False
         Me.lvFormaPagamento.Location = New System.Drawing.Point(21, 34)
-        Me.lvFormaPagamento.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.lvFormaPagamento.Margin = New System.Windows.Forms.Padding(2)
         Me.lvFormaPagamento.Name = "lvFormaPagamento"
         Me.lvFormaPagamento.SelecionaVarios = False
         Me.lvFormaPagamento.Size = New System.Drawing.Size(258, 307)
@@ -712,11 +585,11 @@ Partial Class frmConfiguracao
         '
         Me.tabParcelamento.Controls.Add(Me.GroupBox2)
         Me.tabParcelamento.Controls.Add(Me.GroupBox1)
-        Me.tabParcelamento.ImageIndex = 1
+        Me.tabParcelamento.ImageIndex = 5
         Me.tabParcelamento.Location = New System.Drawing.Point(4, 118)
-        Me.tabParcelamento.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabParcelamento.Margin = New System.Windows.Forms.Padding(2)
         Me.tabParcelamento.Name = "tabParcelamento"
-        Me.tabParcelamento.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabParcelamento.Padding = New System.Windows.Forms.Padding(2)
         Me.tabParcelamento.Size = New System.Drawing.Size(1020, 470)
         Me.tabParcelamento.TabIndex = 4
         Me.tabParcelamento.Text = "Parcelamento"
@@ -728,9 +601,9 @@ Partial Class frmConfiguracao
         Me.GroupBox2.Controls.Add(Me.btnSalvarParcela)
         Me.GroupBox2.Controls.Add(Me.lvParcela)
         Me.GroupBox2.Location = New System.Drawing.Point(31, 162)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(2)
         Me.GroupBox2.Size = New System.Drawing.Size(368, 297)
         Me.GroupBox2.TabIndex = 2
         Me.GroupBox2.TabStop = False
@@ -746,7 +619,7 @@ Partial Class frmConfiguracao
         Me.btnExcluirParcela.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.btnExcluirParcela.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
         Me.btnExcluirParcela.Location = New System.Drawing.Point(214, 224)
-        Me.btnExcluirParcela.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnExcluirParcela.Margin = New System.Windows.Forms.Padding(2)
         Me.btnExcluirParcela.Name = "btnExcluirParcela"
         Me.btnExcluirParcela.Size = New System.Drawing.Size(149, 44)
         Me.btnExcluirParcela.TabIndex = 3
@@ -765,7 +638,7 @@ Partial Class frmConfiguracao
         Me.btnSalvarParcela.ForeColor = System.Drawing.Color.Black
         Me.btnSalvarParcela.Image = Global.GerenciamentoFinanças.My.Resources.Resources.icon_Salvar_png
         Me.btnSalvarParcela.Location = New System.Drawing.Point(24, 224)
-        Me.btnSalvarParcela.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnSalvarParcela.Margin = New System.Windows.Forms.Padding(2)
         Me.btnSalvarParcela.Name = "btnSalvarParcela"
         Me.btnSalvarParcela.Size = New System.Drawing.Size(149, 44)
         Me.btnSalvarParcela.TabIndex = 3
@@ -779,7 +652,7 @@ Partial Class frmConfiguracao
         Me.lvParcela.HabilitaOrdem = True
         Me.lvParcela.HideSelection = False
         Me.lvParcela.Location = New System.Drawing.Point(24, 32)
-        Me.lvParcela.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.lvParcela.Margin = New System.Windows.Forms.Padding(2)
         Me.lvParcela.Name = "lvParcela"
         Me.lvParcela.SelecionaVarios = False
         Me.lvParcela.Size = New System.Drawing.Size(258, 172)
@@ -794,9 +667,9 @@ Partial Class frmConfiguracao
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.txtQtdeParcela)
         Me.GroupBox1.Location = New System.Drawing.Point(31, 26)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2)
         Me.GroupBox1.Size = New System.Drawing.Size(815, 112)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
@@ -813,7 +686,7 @@ Partial Class frmConfiguracao
         Me.btnCadastrarParc.ForeColor = System.Drawing.Color.Black
         Me.btnCadastrarParc.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconAddReceita
         Me.btnCadastrarParc.Location = New System.Drawing.Point(302, 48)
-        Me.btnCadastrarParc.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnCadastrarParc.Margin = New System.Windows.Forms.Padding(2)
         Me.btnCadastrarParc.Name = "btnCadastrarParc"
         Me.btnCadastrarParc.Size = New System.Drawing.Size(149, 44)
         Me.btnCadastrarParc.TabIndex = 2
@@ -836,9 +709,9 @@ Partial Class frmConfiguracao
         '
         Me.txtQtdeParcela.Alterado = False
         Me.txtQtdeParcela.BackColor = System.Drawing.Color.White
-        Me.txtQtdeParcela.CorFundoSelecionado = System.Drawing.SystemColors.Control
+        Me.txtQtdeParcela.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
         Me.txtQtdeParcela.Location = New System.Drawing.Point(206, 55)
-        Me.txtQtdeParcela.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtQtdeParcela.Margin = New System.Windows.Forms.Padding(2)
         Me.txtQtdeParcela.Name = "txtQtdeParcela"
         Me.txtQtdeParcela.Size = New System.Drawing.Size(76, 27)
         Me.txtQtdeParcela.SuperMascara = ""
@@ -848,45 +721,6 @@ Partial Class frmConfiguracao
         Me.txtQtdeParcela.SuperTxtObrigatorio = ""
         Me.txtQtdeParcela.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosInteiros
         Me.txtQtdeParcela.TabIndex = 0
-        '
-        'btnFecharConfig
-        '
-        Me.btnFecharConfig.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.btnFecharConfig.BackColor = System.Drawing.Color.DarkSlateGray
-        Me.btnFecharConfig.FlatAppearance.BorderSize = 0
-        Me.btnFecharConfig.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkCyan
-        Me.btnFecharConfig.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Teal
-        Me.btnFecharConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnFecharConfig.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnFecharConfig.ForeColor = System.Drawing.Color.White
-        Me.btnFecharConfig.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
-        Me.btnFecharConfig.Location = New System.Drawing.Point(382, 593)
-        Me.btnFecharConfig.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.btnFecharConfig.Name = "btnFecharConfig"
-        Me.btnFecharConfig.Size = New System.Drawing.Size(196, 46)
-        Me.btnFecharConfig.TabIndex = 12
-        Me.btnFecharConfig.Text = " &Fechar "
-        Me.btnFecharConfig.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnFecharConfig.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnFecharConfig.UseVisualStyleBackColor = False
-        '
-        'btnFechar
-        '
-        Me.btnFechar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnFechar.BackColor = System.Drawing.Color.Transparent
-        Me.btnFechar.FlatAppearance.BorderSize = 0
-        Me.btnFechar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack
-        Me.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
-        Me.btnFechar.Location = New System.Drawing.Point(958, -1)
-        Me.btnFechar.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.btnFechar.Name = "btnFechar"
-        Me.btnFechar.Size = New System.Drawing.Size(73, 50)
-        Me.btnFechar.TabIndex = 11
-        Me.btnFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnFechar.UseVisualStyleBackColor = False
         '
         'frmConfiguracao
         '
@@ -898,13 +732,10 @@ Partial Class frmConfiguracao
         Me.Controls.Add(Me.btnFechar)
         Me.Controls.Add(Me.tabCtrlConfig)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "frmConfiguracao"
         Me.Text = "frmConfiguracao"
         Me.tabCtrlConfig.ResumeLayout(False)
-        Me.tabConta.ResumeLayout(False)
-        Me.tabConta.PerformLayout()
-        Me.gbBotoes.ResumeLayout(False)
         Me.tabReceita.ResumeLayout(False)
         Me.GroupBox4.ResumeLayout(False)
         Me.gbBotoesReceita.ResumeLayout(False)
@@ -927,47 +758,18 @@ Partial Class frmConfiguracao
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents tabCtrlConfig As GFT.Util.SuperTabControl
+
+    Friend WithEvents btnFecharConfig As Button
     Friend WithEvents tabCategoriaDespesa As TabPage
     Friend WithEvents gbCadastroDespesa As GroupBox
     Friend WithEvents lblCategoriaDespesa As Label
     Friend WithEvents txtNovaCategoriaDespesa As GFT.Util.SuperTextBox
     Friend WithEvents btnAdd As GFT.Util.SuperButton
     Friend WithEvents gbTodasDespesa As GroupBox
-    Friend WithEvents lvCategoriaDespesa As GFT.Util.SuperLV
-    Friend WithEvents tabFormaPagamento As TabPage
-    Friend WithEvents gbCadastroPagamento As GroupBox
-    Friend WithEvents lblFormaPagamento As Label
-    Friend WithEvents txtNovaFormaPag As GFT.Util.SuperTextBox
-    Friend WithEvents btnAddPag As GFT.Util.SuperButton
-    Friend WithEvents gbConsultaPagamento As GroupBox
-    Friend WithEvents lvFormaPagamento As GFT.Util.SuperLV
-    Friend WithEvents btnEditarPag As Button
-    Friend WithEvents btnExcluirPag As Button
-    Friend WithEvents btnExcluirDespesa As Button
-    Friend WithEvents btnEditarDespesa As Button
     Friend WithEvents gbBotoesCategoriaDespesa As GroupBox
-    Friend WithEvents gbBotoesPagamento As GroupBox
-    Friend WithEvents ImageList1 As ImageList
-    Friend WithEvents btnFechar As Button
-    Friend WithEvents tabConta As TabPage
-    Friend WithEvents gbDadosConta As GroupBox
-    Friend WithEvents gbBotoes As GroupBox
-    Friend WithEvents btnExcluir As GFT.Util.SuperButton
-    Friend WithEvents btnAddConta As GFT.Util.SuperButton
-    Friend WithEvents btnPesquisar As GFT.Util.SuperButton
-    Friend WithEvents btnEditar As GFT.Util.SuperButton
-    Friend WithEvents lblContas As Label
-    Friend WithEvents lvConsulta As GFT.Util.SuperLV
-    Friend WithEvents tabParcelamento As TabPage
-    Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents btnSalvarParcela As Button
-    Friend WithEvents lvParcela As GFT.Util.SuperLV
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents btnCadastrarParc As Button
-    Friend WithEvents Label1 As Label
-    Friend WithEvents txtQtdeParcela As GFT.Util.SuperTextBox
-    Friend WithEvents btnExcluirParcela As Button
+    Friend WithEvents btnEditarDespesa As Button
+    Friend WithEvents btnExcluirDespesa As Button
+    Friend WithEvents lvCategoriaDespesa As GFT.Util.SuperLV
     Friend WithEvents tabReceita As TabPage
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents gbBotoesReceita As GroupBox
@@ -978,5 +780,26 @@ Partial Class frmConfiguracao
     Friend WithEvents btnAdicionarReceita As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents txtNovaReceita As GFT.Util.SuperTextBox
-    Friend WithEvents btnFecharConfig As Button
+    Friend WithEvents tabCtrlConfig As GFT.Util.SuperTabControl
+    Friend WithEvents tabFormaPagamento As TabPage
+    Friend WithEvents gbCadastroPagamento As GroupBox
+    Friend WithEvents lblFormaPagamento As Label
+    Friend WithEvents txtNovaFormaPag As GFT.Util.SuperTextBox
+    Friend WithEvents btnAddPag As GFT.Util.SuperButton
+    Friend WithEvents gbConsultaPagamento As GroupBox
+    Friend WithEvents gbBotoesPagamento As GroupBox
+    Friend WithEvents btnEditarPag As Button
+    Friend WithEvents btnExcluirPag As Button
+    Friend WithEvents lvFormaPagamento As GFT.Util.SuperLV
+    Friend WithEvents tabParcelamento As TabPage
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents btnExcluirParcela As Button
+    Friend WithEvents btnSalvarParcela As Button
+    Friend WithEvents lvParcela As GFT.Util.SuperLV
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents btnCadastrarParc As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents txtQtdeParcela As GFT.Util.SuperTextBox
+    Friend WithEvents ImageList1 As ImageList
+    Friend WithEvents btnFechar As Button
 End Class
