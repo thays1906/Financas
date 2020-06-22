@@ -11,13 +11,16 @@ Public Class pContaBancaria
         Public Shared cCta As Campo = New Campo("cCta", DbType.Decimal, 11, 0)
         Public Shared cSaldo As Campo = New Campo("cSaldo", DbType.Decimal, 18, 2)
         Public Shared cTipo As Campo = New Campo("cTipo", DbType.Decimal, 1, 0)
+        Public Shared cPrincipal As Campo = New Campo("cPrincipal", DbType.Decimal, 1, 0)
+
     End Class
 
     Shared Function InserirConta(ByVal _rBanco As String,
                                  ByVal _cAgencia As Decimal,
                                  ByVal _cCta As Decimal,
                                  ByVal _cSaldo As Decimal,
-                                 ByVal _cTipo As Decimal) As Boolean
+                                 ByVal _cTipo As Decimal,
+                                 ByVal _cPrincipal As Decimal) As Boolean
         Dim bDados As BancoDados
         Try
             bDados = New BancoDados
@@ -29,6 +32,8 @@ Public Class pContaBancaria
             bDados.AdicionaParametro(pContaBancaria.cCta, _cCta)
             bDados.AdicionaParametro(pContaBancaria.cSaldo, _cSaldo)
             bDados.AdicionaParametro(pContaBancaria.cTipo, _cTipo)
+            bDados.AdicionaParametro(pContaBancaria.cPrincipal, _cPrincipal)
+
 
             If bDados.Executar(PROCEDURE) = True Then
                 Return True
@@ -45,7 +50,8 @@ Public Class pContaBancaria
                                 ByVal _cAgencia As Decimal,
                                 ByVal _cCta As Decimal,
                                 ByVal _cSaldo As Decimal,
-                                ByVal _cTipo As Decimal) As Boolean
+                                ByVal _cTipo As Decimal,
+                                ByVal _cPrincipal As Decimal) As Boolean
 
         Dim bDados As BancoDados
         Try
@@ -59,6 +65,8 @@ Public Class pContaBancaria
             bDados.AdicionaParametro(pContaBancaria.cCta, _cCta)
             bDados.AdicionaParametro(pContaBancaria.cSaldo, _cSaldo)
             bDados.AdicionaParametro(pContaBancaria.cTipo, _cTipo)
+            bDados.AdicionaParametro(pContaBancaria.cPrincipal, _cPrincipal)
+
 
             If bDados.Executar(PROCEDURE) Then
                 Return True

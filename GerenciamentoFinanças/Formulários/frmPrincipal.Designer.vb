@@ -321,7 +321,7 @@ Partial Class frmPrincipal
         Me.btnMaximizar.ForeColor = System.Drawing.Color.Transparent
         Me.btnMaximizar.Image = CType(resources.GetObject("btnMaximizar.Image"), System.Drawing.Image)
         Me.btnMaximizar.Location = New System.Drawing.Point(1319, 5)
-        Me.btnMaximizar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnMaximizar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnMaximizar.Name = "btnMaximizar"
         Me.btnMaximizar.Size = New System.Drawing.Size(52, 48)
         Me.btnMaximizar.TabIndex = 9
@@ -336,7 +336,7 @@ Partial Class frmPrincipal
         Me.btnMinimizar.ForeColor = System.Drawing.Color.Transparent
         Me.btnMinimizar.Image = CType(resources.GetObject("btnMinimizar.Image"), System.Drawing.Image)
         Me.btnMinimizar.Location = New System.Drawing.Point(1259, 5)
-        Me.btnMinimizar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnMinimizar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnMinimizar.Name = "btnMinimizar"
         Me.btnMinimizar.Size = New System.Drawing.Size(52, 48)
         Me.btnMinimizar.TabIndex = 8
@@ -351,7 +351,7 @@ Partial Class frmPrincipal
         Me.btnFechar.ForeColor = System.Drawing.Color.Transparent
         Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
         Me.btnFechar.Location = New System.Drawing.Point(1379, 5)
-        Me.btnFechar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnFechar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnFechar.Name = "btnFechar"
         Me.btnFechar.Size = New System.Drawing.Size(52, 48)
         Me.btnFechar.TabIndex = 7
@@ -373,7 +373,7 @@ Partial Class frmPrincipal
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmPrincipal"
         Me.Text = " Finance Management"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized

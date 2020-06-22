@@ -3,15 +3,16 @@ Imports GFT.Util.SuperComboBox
 Imports GFT.Util.clsMsgBox
 
 Public Class frmNovaConta
-    Dim cCodigo As Decimal
-    Dim agencia As Decimal
-    Dim conta As Decimal
-    Dim saldo As Decimal
+    Public cCodigo As Decimal
+    Public agencia As Decimal
+    Public conta As Decimal
+    Public saldo As Decimal
+    Public cPrincipal As Decimal
 
     Private Sub frmNovaConta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Cor(Me, Collor.CinzaClaro)
-        CorButton(btnSalvar, Collor.Branco, Color.Black, Color.Gainsboro, Color.LightGray)
-        CorButton(btnFechar, Collor.Branco, Color.Black, Color.Gainsboro, Color.LightGray)
+        Cor(Me, Collor.CinzaEscuro)
+        CorButton(btnSalvar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
+        CorButton(btnFechar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CarregarCombo()
 
         If cCodigo <> 0 Then
@@ -29,14 +30,27 @@ Public Class frmNovaConta
     Private Sub btnSalvar_Click(sender As Object, e As EventArgs) Handles btnSalvar.Click
         Try
             If DadosConta() = True Then
+
+                If chkPrincipalConta.Checked Then
+
+                    cPrincipal = 1
+                Else
+                    cPrincipal = 2
+                End If
+                If txtAgencia.Text <> "" Then
+                    agencia = CDec(txtAgencia.Text)
+                End If
+
+                If txtConta.Text <> "" Then
+                    conta = CDec(txtConta.Text)
+                End If
                 If cCodigo = 0 Then
 
-
-                    If pContaBancaria.InserirConta(txtBanco.Text, agencia, conta, saldo, CDec(cbTipoConta.ObterChaveCombo())) Then
+                    If pContaBancaria.InserirConta(txtBanco.Text, agencia, conta, saldo, CDec(cbTipoConta.ObterChaveCombo()), cPrincipal) Then
                         S_MsgBox("Conta Bancária cadastrada com sucesso.", eBotoes.Ok, "",, eImagens.Ok)
                     End If
                 Else
-                    If pContaBancaria.AlterarConta(cCodigo, txtBanco.Text, agencia, conta, saldo, CDec(cbTipoConta.ObterChaveCombo())) Then
+                    If pContaBancaria.AlterarConta(cCodigo, txtBanco.Text, agencia, conta, saldo, CDec(cbTipoConta.ObterChaveCombo()), cPrincipal) Then
                         S_MsgBox("Dados da Conta Bancária alterados com sucesso.", eBotoes.Ok, "",, eImagens.Ok)
                     End If
                 End If
@@ -76,7 +90,7 @@ Public Class frmNovaConta
         End If
         Return True
     End Function
-    Private Sub txtSaldo_Leave(sender As Object, e As EventArgs) Handles txtSaldo.TextChanged
+    Private Sub txtSaldo_Leave(sender As Object, e As EventArgs) Handles txtSaldo.Leave
         If IsNumeric(txtSaldo.Text) Then
             txtSaldo.Text = CDec(txtSaldo.Text).ToString("C")
         End If
@@ -89,7 +103,7 @@ Public Class frmNovaConta
             If oDataSet IsNot Nothing Then
 
                 txtSaldo.Text = oDataSet("cSaldo").ToString
-                txtSaldo.Text = Convert.ToDouble((txtSaldo.Text)).ToString("C")
+                txtSaldo.Text = Convert.ToDouble(txtSaldo.Text).ToString("C")
 
                 txtBanco.Text = oDataSet("rBanco").ToString
 

@@ -41,9 +41,12 @@ Public Module Util
     Public Const MDI_DEFAULT_WIDTH As Integer = 1366
     Public Const MDI_DEFAULT_HEIGHT As Integer = 768
 
+    'Public CHILD_DEFAULT_WIDTH As Integer = Screen.PrimaryScreen.Bounds.Width   '1570
+    'Public CHILD_DEFAULT_HEIGHT As Integer = Screen.PrimaryScreen.Bounds.Height   '760
 
-    Public CHILD_DEFAULT_WIDTH As Integer = Screen.PrimaryScreen.Bounds.Width - 5  '1570
-    Public CHILD_DEFAULT_HEIGHT As Integer = Screen.PrimaryScreen.Bounds.Height - 163 '760
+    'Public CHILD_DEFAULT_WIDTH As Integer = Screen.PrimaryScreen.Bounds.Width - 20 '1570
+    'Public CHILD_DEFAULT_HEIGHT As Integer = Screen.PrimaryScreen.Bounds.Height - 163 '760
+    'Public CHILD_DEFAULT_HEIGHT As Integer = Screen.PrimaryScreen.Bounds.Height - 168 '760
 
     Public Const strTituloApp As String = "Sistemas DOC - TEMPLATE"
     Public Const strOk As String = "&Ok"
@@ -112,18 +115,18 @@ Public Module Util
     End Sub
     Public Sub mostrarFormulario(ByRef oMdiContainer As Form,
                                  ByRef formulario As Form, ByVal n_nova_tela As Integer)
-        '
+
+
         'Dim arrstr As String()
         'Dim strDescricaoForm As String
 
         Try
             'arrstr = CType(collNomeTela(Int(n_nova_tela).ToString), String())
             'strDescricaoForm = arrstr(1)
-
             formulario.MdiParent = oMdiContainer
             formulario.Left = 0
             formulario.BackColor = Color.LightSeaGreen
-            formulario.AutoScaleMode = Windows.Forms.AutoScaleMode.None
+            formulario.AutoScaleMode = Windows.Forms.AutoScaleMode.Font
             formulario.ControlBox = False
             formulario.FormBorderStyle = Windows.Forms.FormBorderStyle.None
             formulario.MaximizeBox = False
@@ -131,9 +134,11 @@ Public Module Util
             formulario.ShowIcon = False
             'formulario.BackColor = Color.Transparent
             formulario.BackgroundImage = Nothing ' formulario.MdiParent.BackgroundImage
-            formulario.Size = New System.Drawing.Size(CHILD_DEFAULT_WIDTH, CHILD_DEFAULT_HEIGHT)
+            'formulario.Size = New System.Drawing.Size(CHILD_DEFAULT_WIDTH, CHILD_DEFAULT_HEIGHT)
             formulario.SizeGripStyle = Windows.Forms.SizeGripStyle.Hide
-            formulario.StartPosition = FormStartPosition.CenterScreen
+            formulario.StartPosition = FormStartPosition.CenterParent
+            formulario.WindowState = FormWindowState.Maximized
+            formulario.Dock = DockStyle.Fill
             ' formulario.Text = strDescricaoForm
             formulario.Opacity = 100
             formulario.Show()

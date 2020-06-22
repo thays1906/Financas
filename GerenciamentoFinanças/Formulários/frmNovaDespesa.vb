@@ -138,7 +138,7 @@ Public Class frmNovaDespesa
                 dtRegistro = dtDespesa.Value
                 cParcelamento = 0
                 cNumeroParcela = 0
-                cValor = Convert.ToDouble((txtValorTotal.Text))
+                cValor = Convert.ToDouble(txtValorTotal.Text.Replace("R$ ", ""))
             End If
 
             If pDespesa.InserirDespesa(txtDescricao.Text,
@@ -228,6 +228,7 @@ Public Class frmNovaDespesa
 
                 txtValorParcela.Text = Convert.ToDouble(cValor).ToString("C")
             End If
+
             txtMesReferente.Text = CDate(rsDespesa("dtRegistro")).ToString("MMMM").ToUpper
             txtValorTotal.Text = Convert.ToDouble(cNumeroParcela * cValor).ToString("C")
             dtDespesa.Value = CDate(rsDespesa("dtRegistro").ToString)
@@ -259,7 +260,15 @@ Public Class frmNovaDespesa
 
         Try
             rsDespesaConta = pContaBancaria.CarregarConta()
+
             cbConta.PreencheComboDS(rsDespesaConta, "rBanco", "cConta", SuperComboBox.PrimeiroValor.Selecione)
+
+            For i = 0 To rsDespesaConta.TotalRegistros - 1
+
+                If CDec(rsDespesaConta("cPrincipal", i)) = 1 Then
+                    cbConta.PosicionaRegistroCombo(rsDespesaConta("cPrincipal", i))
+                End If
+            Next
 
             rsDespesaCategoria = pCategoriaDespesa.CarregarCombo()
             cbCategoria.PreencheComboDS(rsDespesaCategoria, "rCategoria", "cCategoria", SuperComboBox.PrimeiroValor.Selecione)
@@ -361,7 +370,8 @@ Public Class frmNovaDespesa
                         txtValorParcela.Text = cValor.ToString
                     End If
                 End If
-
+            Else
+                'cValor = Convert.ToDouble(txtValorTotal.Text.Replace("R$", ""))
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message)

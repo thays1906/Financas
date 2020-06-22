@@ -37,8 +37,32 @@ Public Class frmConta
                 lvConsulta.PreencheGridDS(rs, True, True, False, True, 0, True)
 
                 CorList(lvConsulta)
-                lvConsulta.Alignment = ListViewAlignment.Top
+
             End If
+
+            For i = 0 To lvConsulta.ObterTotalLinhas - 1
+
+                If rs("as_Principal", i).ToString = "SIM" Then
+
+                    txtPrincipalConta.Text =
+                                    (IIf(String.IsNullOrEmpty(rs("as_AGÊNCIA#150", i).ToString) And
+                                    String.IsNullOrEmpty(rs("as_CONTA#250", i).ToString),
+                                    rs("as_BANCO#200", i).ToString,
+                                    rs("as_BANCO#200", i).ToString & " - " &
+                                    rs("as_AGÊNCIA#150", i).ToString & " - " &
+                                    rs("as_CONTA#250", i).ToString)).ToString()
+
+                    txtPrincipalTipo.Text = rs("as_TIPO_DE_CONTA", i).ToString
+                End If
+
+                If lvConsulta.Items(i).SubItems(4).Text.Contains(CChar("-")) Then
+
+                    lvConsulta.Items(i).SubItems(4).ForeColor = Color.Red
+                Else
+                    lvConsulta.Items(i).SubItems(4).ForeColor = Color.Green
+                End If
+                lvConsulta.Items(i).SubItems(4).Font = New Font(FontFamily.GenericSansSerif, 12, FontStyle.Bold)
+            Next
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
         End Try

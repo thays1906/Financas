@@ -25,6 +25,7 @@ Public Class frmPrincipal
         txtCaptionHora.Text = ""
         InicializaTelas()
         Cor(CType(StatusStrip1, Control), Collor.Preto)
+
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick

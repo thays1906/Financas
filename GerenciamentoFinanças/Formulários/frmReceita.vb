@@ -65,9 +65,8 @@ Public Class frmReceita
 
                 lvConsulta.Items(i).SubItems(2).ForeColor = Color.Green
 
-
             Next
-
+            CorList(lvConsulta)
 
             lvConsulta.GridLines = False
         Catch ex As Exception

@@ -96,6 +96,7 @@ Public Class frmDespesa
 
                 lvConsulta.PreencheGridDS(oDataset, True, True, False, True, 0, True)
 
+                CorList(lvConsulta)
                 For i = 0 To oDataset.TotalRegistros - 1
 
                     If CStr(oDataset("as_Status#100", i)) = "PAGO" Then
@@ -246,10 +247,6 @@ Public Class frmDespesa
             btnEditar.Enabled = False
             btnExcluir.Enabled = False
 
-            'If tabCtrlDespesa.TabPages(2).Enabled = True Then
-            '    btnEditar.Enabled = False
-            'End If
-
             If tabCtrlDespesa.SelectedIndex = 1 Then
                 btnFechar.Text = " &Voltar"
 
@@ -261,7 +258,9 @@ Public Class frmDespesa
                 btnStatusPago.Enabled = True
 
             Else
+                tabCtrlDespesa.TabPages(2).Enabled = False
                 btnFechar.Text = " &Fechar"
+                btnPesquisar.Enabled = True
 
                 If lvConsulta.CheckedItems.Count = 1 Then
                     btnStatusPago.Enabled = True
@@ -272,9 +271,6 @@ Public Class frmDespesa
                     btnStatusPago.Enabled = True
                     btnExcluir.Enabled = True
                 End If
-
-
-
 
                 If btn = eAcao.Editar Then
 

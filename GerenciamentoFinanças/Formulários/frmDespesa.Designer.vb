@@ -44,6 +44,8 @@ Partial Class frmDespesa
         Me.lvConsulta = New GFT.Util.SuperLV()
         Me.txtTotalDespesa = New GFT.Util.SuperTextBox()
         Me.tabDespesaFixa = New System.Windows.Forms.TabPage()
+        Me.SuperLV1 = New GFT.Util.SuperLV()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.tabDetalhe = New System.Windows.Forms.TabPage()
         Me.gbDetalhe = New System.Windows.Forms.GroupBox()
         Me.gbDadosDetalhe = New System.Windows.Forms.GroupBox()
@@ -56,8 +58,6 @@ Partial Class frmDespesa
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.txtDescriaoDetalhe = New GFT.Util.SuperTextBox()
         Me.pnlDetalhe = New System.Windows.Forms.Panel()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.SuperLV1 = New GFT.Util.SuperLV()
         Me.gbBotoes.SuspendLayout()
         Me.tabCtrlDespesa.SuspendLayout()
         Me.tpPesquisa.SuspendLayout()
@@ -79,9 +79,11 @@ Partial Class frmDespesa
         Me.gbBotoes.Controls.Add(Me.btnEditar)
         Me.gbBotoes.Controls.Add(Me.btnAddDespesa)
         Me.gbBotoes.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.gbBotoes.Location = New System.Drawing.Point(0, 504)
+        Me.gbBotoes.Location = New System.Drawing.Point(0, 620)
+        Me.gbBotoes.Margin = New System.Windows.Forms.Padding(4)
         Me.gbBotoes.Name = "gbBotoes"
-        Me.gbBotoes.Size = New System.Drawing.Size(1116, 100)
+        Me.gbBotoes.Padding = New System.Windows.Forms.Padding(4)
+        Me.gbBotoes.Size = New System.Drawing.Size(1214, 123)
         Me.gbBotoes.TabIndex = 9
         Me.gbBotoes.TabStop = False
         '
@@ -99,9 +101,10 @@ Partial Class frmDespesa
         Me.btnStatusPago.ForeColor = System.Drawing.Color.Black
         Me.btnStatusPago.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconOk
         Me.btnStatusPago.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnStatusPago.Location = New System.Drawing.Point(662, 19)
+        Me.btnStatusPago.Location = New System.Drawing.Point(746, 23)
+        Me.btnStatusPago.Margin = New System.Windows.Forms.Padding(4)
         Me.btnStatusPago.Name = "btnStatusPago"
-        Me.btnStatusPago.Size = New System.Drawing.Size(156, 45)
+        Me.btnStatusPago.Size = New System.Drawing.Size(208, 55)
         Me.btnStatusPago.TabIndex = 13
         Me.btnStatusPago.Text = "  &Pagar"
         Me.btnStatusPago.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -120,9 +123,10 @@ Partial Class frmDespesa
         Me.btnFechar.ForeColor = System.Drawing.Color.Black
         Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
         Me.btnFechar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnFechar.Location = New System.Drawing.Point(986, 19)
+        Me.btnFechar.Location = New System.Drawing.Point(1178, 23)
+        Me.btnFechar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnFechar.Name = "btnFechar"
-        Me.btnFechar.Size = New System.Drawing.Size(156, 45)
+        Me.btnFechar.Size = New System.Drawing.Size(208, 55)
         Me.btnFechar.TabIndex = 2
         Me.btnFechar.Text = "  &Fechar"
         Me.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -142,9 +146,10 @@ Partial Class frmDespesa
         Me.btnExcluir.ForeColor = System.Drawing.Color.Black
         Me.btnExcluir.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconExcluir
         Me.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnExcluir.Location = New System.Drawing.Point(500, 19)
+        Me.btnExcluir.Location = New System.Drawing.Point(530, 23)
+        Me.btnExcluir.Margin = New System.Windows.Forms.Padding(4)
         Me.btnExcluir.Name = "btnExcluir"
-        Me.btnExcluir.Size = New System.Drawing.Size(156, 45)
+        Me.btnExcluir.Size = New System.Drawing.Size(208, 55)
         Me.btnExcluir.TabIndex = 11
         Me.btnExcluir.Text = "  &Excluir"
         Me.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -163,9 +168,10 @@ Partial Class frmDespesa
         Me.btnExportar.ForeColor = System.Drawing.Color.Black
         Me.btnExportar.Image = CType(resources.GetObject("btnExportar.Image"), System.Drawing.Image)
         Me.btnExportar.ImageAlign = System.Drawing.ContentAlignment.TopRight
-        Me.btnExportar.Location = New System.Drawing.Point(824, 19)
+        Me.btnExportar.Location = New System.Drawing.Point(962, 23)
+        Me.btnExportar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnExportar.Name = "btnExportar"
-        Me.btnExportar.Size = New System.Drawing.Size(156, 45)
+        Me.btnExportar.Size = New System.Drawing.Size(208, 55)
         Me.btnExportar.TabIndex = 9
         Me.btnExportar.Text = "  &Exportar"
         Me.btnExportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -184,9 +190,10 @@ Partial Class frmDespesa
         Me.btnPesquisar.ForeColor = System.Drawing.Color.Black
         Me.btnPesquisar.Image = CType(resources.GetObject("btnPesquisar.Image"), System.Drawing.Image)
         Me.btnPesquisar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnPesquisar.Location = New System.Drawing.Point(14, 19)
+        Me.btnPesquisar.Location = New System.Drawing.Point(-118, 23)
+        Me.btnPesquisar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnPesquisar.Name = "btnPesquisar"
-        Me.btnPesquisar.Size = New System.Drawing.Size(156, 44)
+        Me.btnPesquisar.Size = New System.Drawing.Size(208, 54)
         Me.btnPesquisar.TabIndex = 1
         Me.btnPesquisar.Text = "  &Pesquisar"
         Me.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -206,9 +213,10 @@ Partial Class frmDespesa
         Me.btnEditar.ForeColor = System.Drawing.Color.Black
         Me.btnEditar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconEditar
         Me.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnEditar.Location = New System.Drawing.Point(338, 19)
+        Me.btnEditar.Location = New System.Drawing.Point(314, 23)
+        Me.btnEditar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnEditar.Name = "btnEditar"
-        Me.btnEditar.Size = New System.Drawing.Size(156, 45)
+        Me.btnEditar.Size = New System.Drawing.Size(208, 55)
         Me.btnEditar.TabIndex = 8
         Me.btnEditar.Text = "  &Editar"
         Me.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -227,9 +235,10 @@ Partial Class frmDespesa
         Me.btnAddDespesa.ForeColor = System.Drawing.Color.Black
         Me.btnAddDespesa.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconAddReceita
         Me.btnAddDespesa.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnAddDespesa.Location = New System.Drawing.Point(176, 19)
+        Me.btnAddDespesa.Location = New System.Drawing.Point(98, 23)
+        Me.btnAddDespesa.Margin = New System.Windows.Forms.Padding(4)
         Me.btnAddDespesa.Name = "btnAddDespesa"
-        Me.btnAddDespesa.Size = New System.Drawing.Size(156, 45)
+        Me.btnAddDespesa.Size = New System.Drawing.Size(208, 55)
         Me.btnAddDespesa.TabIndex = 10
         Me.btnAddDespesa.Text = "  &Despesa"
         Me.btnAddDespesa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -255,10 +264,11 @@ Partial Class frmDespesa
         Me.tabCtrlDespesa.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabCtrlDespesa.ImageList = Me.ImageList1
         Me.tabCtrlDespesa.Location = New System.Drawing.Point(0, 0)
+        Me.tabCtrlDespesa.Margin = New System.Windows.Forms.Padding(4)
         Me.tabCtrlDespesa.Name = "tabCtrlDespesa"
         Me.tabCtrlDespesa.Padding = New System.Drawing.Point(50, 6)
         Me.tabCtrlDespesa.SelectedIndex = 0
-        Me.tabCtrlDespesa.Size = New System.Drawing.Size(1116, 504)
+        Me.tabCtrlDespesa.Size = New System.Drawing.Size(1214, 620)
         Me.tabCtrlDespesa.TabIndex = 4
         '
         'tpPesquisa
@@ -269,9 +279,10 @@ Partial Class frmDespesa
         Me.tpPesquisa.Controls.Add(Me.txtTotalDespesa)
         Me.tpPesquisa.ImageIndex = 3
         Me.tpPesquisa.Location = New System.Drawing.Point(4, 61)
+        Me.tpPesquisa.Margin = New System.Windows.Forms.Padding(4)
         Me.tpPesquisa.Name = "tpPesquisa"
-        Me.tpPesquisa.Padding = New System.Windows.Forms.Padding(5, 5, 5, 5)
-        Me.tpPesquisa.Size = New System.Drawing.Size(1108, 439)
+        Me.tpPesquisa.Padding = New System.Windows.Forms.Padding(7, 6, 7, 6)
+        Me.tpPesquisa.Size = New System.Drawing.Size(1206, 555)
         Me.tpPesquisa.TabIndex = 0
         Me.tpPesquisa.Text = "Despesas"
         Me.tpPesquisa.UseVisualStyleBackColor = True
@@ -282,9 +293,10 @@ Partial Class frmDespesa
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(793, 104)
+        Me.Label4.Location = New System.Drawing.Point(783, 128)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(135, 18)
+        Me.Label4.Size = New System.Drawing.Size(169, 23)
         Me.Label4.TabIndex = 9
         Me.Label4.Text = "Total de Despesas:"
         '
@@ -296,9 +308,11 @@ Partial Class frmDespesa
         Me.gbFiltro.Controls.Add(Me.cbMes)
         Me.gbFiltro.Controls.Add(Me.Label3)
         Me.gbFiltro.Controls.Add(Me.cbStatusFiltro)
-        Me.gbFiltro.Location = New System.Drawing.Point(8, 8)
+        Me.gbFiltro.Location = New System.Drawing.Point(11, 10)
+        Me.gbFiltro.Margin = New System.Windows.Forms.Padding(4)
         Me.gbFiltro.Name = "gbFiltro"
-        Me.gbFiltro.Size = New System.Drawing.Size(1092, 83)
+        Me.gbFiltro.Padding = New System.Windows.Forms.Padding(4)
+        Me.gbFiltro.Size = New System.Drawing.Size(1182, 102)
         Me.gbFiltro.TabIndex = 7
         Me.gbFiltro.TabStop = False
         Me.gbFiltro.Text = "Filtro"
@@ -306,9 +320,10 @@ Partial Class frmDespesa
         'lblMes
         '
         Me.lblMes.AutoSize = True
-        Me.lblMes.Location = New System.Drawing.Point(262, 26)
+        Me.lblMes.Location = New System.Drawing.Point(349, 32)
+        Me.lblMes.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMes.Name = "lblMes"
-        Me.lblMes.Size = New System.Drawing.Size(39, 17)
+        Me.lblMes.Size = New System.Drawing.Size(51, 22)
         Me.lblMes.TabIndex = 10
         Me.lblMes.Text = "Mês:"
         '
@@ -320,9 +335,10 @@ Partial Class frmDespesa
         Me.cbMes.CorTexto = System.Drawing.Color.Black
         Me.cbMes.CorTextoSelecionado = System.Drawing.Color.Black
         Me.cbMes.FormattingEnabled = True
-        Me.cbMes.Location = New System.Drawing.Point(265, 46)
+        Me.cbMes.Location = New System.Drawing.Point(353, 57)
+        Me.cbMes.Margin = New System.Windows.Forms.Padding(4)
         Me.cbMes.Name = "cbMes"
-        Me.cbMes.Size = New System.Drawing.Size(251, 25)
+        Me.cbMes.Size = New System.Drawing.Size(333, 30)
         Me.cbMes.SuperObrigatorio = False
         Me.cbMes.SuperTxtObrigatorio = ""
         Me.cbMes.TabIndex = 9
@@ -330,9 +346,10 @@ Partial Class frmDespesa
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(14, 26)
+        Me.Label3.Location = New System.Drawing.Point(19, 32)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(54, 17)
+        Me.Label3.Size = New System.Drawing.Size(68, 22)
         Me.Label3.TabIndex = 8
         Me.Label3.Text = "Status:"
         '
@@ -344,9 +361,10 @@ Partial Class frmDespesa
         Me.cbStatusFiltro.CorTexto = System.Drawing.Color.Black
         Me.cbStatusFiltro.CorTextoSelecionado = System.Drawing.Color.Black
         Me.cbStatusFiltro.FormattingEnabled = True
-        Me.cbStatusFiltro.Location = New System.Drawing.Point(17, 46)
+        Me.cbStatusFiltro.Location = New System.Drawing.Point(23, 57)
+        Me.cbStatusFiltro.Margin = New System.Windows.Forms.Padding(4)
         Me.cbStatusFiltro.Name = "cbStatusFiltro"
-        Me.cbStatusFiltro.Size = New System.Drawing.Size(174, 25)
+        Me.cbStatusFiltro.Size = New System.Drawing.Size(231, 30)
         Me.cbStatusFiltro.SuperObrigatorio = False
         Me.cbStatusFiltro.SuperTxtObrigatorio = ""
         Me.cbStatusFiltro.TabIndex = 7
@@ -358,10 +376,11 @@ Partial Class frmDespesa
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lvConsulta.HabilitaOrdem = True
         Me.lvConsulta.HideSelection = False
-        Me.lvConsulta.Location = New System.Drawing.Point(8, 128)
+        Me.lvConsulta.Location = New System.Drawing.Point(11, 158)
+        Me.lvConsulta.Margin = New System.Windows.Forms.Padding(4)
         Me.lvConsulta.Name = "lvConsulta"
         Me.lvConsulta.SelecionaVarios = True
-        Me.lvConsulta.Size = New System.Drawing.Size(1091, 326)
+        Me.lvConsulta.Size = New System.Drawing.Size(1179, 400)
         Me.lvConsulta.TabIndex = 0
         Me.lvConsulta.UseCompatibleStateImageBehavior = False
         '
@@ -370,13 +389,14 @@ Partial Class frmDespesa
         Me.txtTotalDespesa.Alterado = False
         Me.txtTotalDespesa.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtTotalDespesa.BackColor = System.Drawing.Color.White
-        Me.txtTotalDespesa.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
+        Me.txtTotalDespesa.CorFundoSelecionado = System.Drawing.SystemColors.Control
         Me.txtTotalDespesa.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTotalDespesa.ForeColor = System.Drawing.Color.Red
-        Me.txtTotalDespesa.Location = New System.Drawing.Point(933, 97)
+        Me.txtTotalDespesa.Location = New System.Drawing.Point(970, 119)
+        Me.txtTotalDespesa.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTotalDespesa.Name = "txtTotalDespesa"
         Me.txtTotalDespesa.ReadOnly = True
-        Me.txtTotalDespesa.Size = New System.Drawing.Size(167, 25)
+        Me.txtTotalDespesa.Size = New System.Drawing.Size(221, 29)
         Me.txtTotalDespesa.SuperMascara = ""
         Me.txtTotalDespesa.SuperObrigatorio = False
         Me.txtTotalDespesa.SuperTravaErrors = False
@@ -392,23 +412,46 @@ Partial Class frmDespesa
         Me.tabDespesaFixa.Controls.Add(Me.GroupBox1)
         Me.tabDespesaFixa.ImageIndex = 5
         Me.tabDespesaFixa.Location = New System.Drawing.Point(4, 61)
-        Me.tabDespesaFixa.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabDespesaFixa.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.tabDespesaFixa.Name = "tabDespesaFixa"
-        Me.tabDespesaFixa.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.tabDespesaFixa.Size = New System.Drawing.Size(1108, 439)
+        Me.tabDespesaFixa.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.tabDespesaFixa.Size = New System.Drawing.Size(1206, 555)
         Me.tabDespesaFixa.TabIndex = 2
         Me.tabDespesaFixa.Text = "Despesas Fixas"
         Me.tabDespesaFixa.UseVisualStyleBackColor = True
+        '
+        'SuperLV1
+        '
+        Me.SuperLV1.HabilitaOrdem = True
+        Me.SuperLV1.HideSelection = False
+        Me.SuperLV1.Location = New System.Drawing.Point(52, 174)
+        Me.SuperLV1.Margin = New System.Windows.Forms.Padding(4)
+        Me.SuperLV1.Name = "SuperLV1"
+        Me.SuperLV1.SelecionaVarios = False
+        Me.SuperLV1.Size = New System.Drawing.Size(1328, 217)
+        Me.SuperLV1.TabIndex = 1
+        Me.SuperLV1.UseCompatibleStateImageBehavior = False
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Location = New System.Drawing.Point(52, 38)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupBox1.Size = New System.Drawing.Size(1329, 117)
+        Me.GroupBox1.TabIndex = 0
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "GroupBox1"
         '
         'tabDetalhe
         '
         Me.tabDetalhe.Controls.Add(Me.gbDetalhe)
         Me.tabDetalhe.ImageIndex = 4
         Me.tabDetalhe.Location = New System.Drawing.Point(4, 61)
-        Me.tabDetalhe.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabDetalhe.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.tabDetalhe.Name = "tabDetalhe"
-        Me.tabDetalhe.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.tabDetalhe.Size = New System.Drawing.Size(1108, 439)
+        Me.tabDetalhe.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.tabDetalhe.Size = New System.Drawing.Size(1206, 555)
         Me.tabDetalhe.TabIndex = 1
         Me.tabDetalhe.Text = "Detalhamento da Dívida"
         Me.tabDetalhe.UseVisualStyleBackColor = True
@@ -420,11 +463,11 @@ Partial Class frmDespesa
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gbDetalhe.Controls.Add(Me.gbDadosDetalhe)
         Me.gbDetalhe.Controls.Add(Me.pnlDetalhe)
-        Me.gbDetalhe.Location = New System.Drawing.Point(28, 28)
-        Me.gbDetalhe.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbDetalhe.Location = New System.Drawing.Point(37, 34)
+        Me.gbDetalhe.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.gbDetalhe.Name = "gbDetalhe"
-        Me.gbDetalhe.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.gbDetalhe.Size = New System.Drawing.Size(1041, 407)
+        Me.gbDetalhe.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.gbDetalhe.Size = New System.Drawing.Size(1388, 501)
         Me.gbDetalhe.TabIndex = 9
         Me.gbDetalhe.TabStop = False
         Me.gbDetalhe.Text = "Dados da Despesa"
@@ -439,11 +482,11 @@ Partial Class frmDespesa
         Me.gbDadosDetalhe.Controls.Add(Me.txtTotalDespesaDetalhe)
         Me.gbDadosDetalhe.Controls.Add(Me.lblTitulo)
         Me.gbDadosDetalhe.Controls.Add(Me.txtDescriaoDetalhe)
-        Me.gbDadosDetalhe.Location = New System.Drawing.Point(38, 9)
-        Me.gbDadosDetalhe.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbDadosDetalhe.Location = New System.Drawing.Point(51, 11)
+        Me.gbDadosDetalhe.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.gbDadosDetalhe.Name = "gbDadosDetalhe"
-        Me.gbDadosDetalhe.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.gbDadosDetalhe.Size = New System.Drawing.Size(1148, 133)
+        Me.gbDadosDetalhe.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.gbDadosDetalhe.Size = New System.Drawing.Size(1531, 164)
         Me.gbDadosDetalhe.TabIndex = 9
         Me.gbDadosDetalhe.TabStop = False
         '
@@ -451,10 +494,9 @@ Partial Class frmDespesa
         '
         Me.lblNaoPago.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.lblNaoPago.AutoSize = True
-        Me.lblNaoPago.Location = New System.Drawing.Point(818, 47)
-        Me.lblNaoPago.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblNaoPago.Location = New System.Drawing.Point(1091, 58)
         Me.lblNaoPago.Name = "lblNaoPago"
-        Me.lblNaoPago.Size = New System.Drawing.Size(72, 17)
+        Me.lblNaoPago.Size = New System.Drawing.Size(94, 22)
         Me.lblNaoPago.TabIndex = 15
         Me.lblNaoPago.Text = "Não Pago"
         '
@@ -463,13 +505,14 @@ Partial Class frmDespesa
         Me.txtPago.Alterado = False
         Me.txtPago.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.txtPago.BackColor = System.Drawing.Color.White
-        Me.txtPago.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
+        Me.txtPago.CorFundoSelecionado = System.Drawing.SystemColors.Control
         Me.txtPago.Font = New System.Drawing.Font("Arial", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPago.ForeColor = System.Drawing.Color.ForestGreen
-        Me.txtPago.Location = New System.Drawing.Point(656, 68)
+        Me.txtPago.Location = New System.Drawing.Point(875, 84)
+        Me.txtPago.Margin = New System.Windows.Forms.Padding(4)
         Me.txtPago.Name = "txtPago"
         Me.txtPago.ReadOnly = True
-        Me.txtPago.Size = New System.Drawing.Size(158, 24)
+        Me.txtPago.Size = New System.Drawing.Size(209, 28)
         Me.txtPago.SuperMascara = ""
         Me.txtPago.SuperObrigatorio = False
         Me.txtPago.SuperTravaErrors = False
@@ -482,10 +525,9 @@ Partial Class frmDespesa
         '
         Me.lblPago.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.lblPago.AutoSize = True
-        Me.lblPago.Location = New System.Drawing.Point(653, 47)
-        Me.lblPago.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblPago.Location = New System.Drawing.Point(871, 58)
         Me.lblPago.Name = "lblPago"
-        Me.lblPago.Size = New System.Drawing.Size(46, 17)
+        Me.lblPago.Size = New System.Drawing.Size(60, 22)
         Me.lblPago.TabIndex = 13
         Me.lblPago.Text = "Pago:"
         '
@@ -494,13 +536,14 @@ Partial Class frmDespesa
         Me.txtNaoPago.Alterado = False
         Me.txtNaoPago.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.txtNaoPago.BackColor = System.Drawing.Color.White
-        Me.txtNaoPago.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
+        Me.txtNaoPago.CorFundoSelecionado = System.Drawing.SystemColors.Control
         Me.txtNaoPago.Font = New System.Drawing.Font("Arial", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNaoPago.ForeColor = System.Drawing.Color.Red
-        Me.txtNaoPago.Location = New System.Drawing.Point(820, 68)
+        Me.txtNaoPago.Location = New System.Drawing.Point(1093, 84)
+        Me.txtNaoPago.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNaoPago.Name = "txtNaoPago"
         Me.txtNaoPago.ReadOnly = True
-        Me.txtNaoPago.Size = New System.Drawing.Size(158, 24)
+        Me.txtNaoPago.Size = New System.Drawing.Size(209, 28)
         Me.txtNaoPago.SuperMascara = ""
         Me.txtNaoPago.SuperObrigatorio = False
         Me.txtNaoPago.SuperTravaErrors = False
@@ -513,10 +556,9 @@ Partial Class frmDespesa
         '
         Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(490, 47)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label1.Location = New System.Drawing.Point(653, 58)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(125, 17)
+        Me.Label1.Size = New System.Drawing.Size(163, 22)
         Me.Label1.TabIndex = 11
         Me.Label1.Text = "Total da Despesa:"
         '
@@ -525,12 +567,13 @@ Partial Class frmDespesa
         Me.txtTotalDespesaDetalhe.Alterado = False
         Me.txtTotalDespesaDetalhe.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.txtTotalDespesaDetalhe.BackColor = System.Drawing.Color.White
-        Me.txtTotalDespesaDetalhe.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
+        Me.txtTotalDespesaDetalhe.CorFundoSelecionado = System.Drawing.SystemColors.Control
         Me.txtTotalDespesaDetalhe.Font = New System.Drawing.Font("Arial", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTotalDespesaDetalhe.Location = New System.Drawing.Point(493, 68)
+        Me.txtTotalDespesaDetalhe.Location = New System.Drawing.Point(657, 84)
+        Me.txtTotalDespesaDetalhe.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTotalDespesaDetalhe.Name = "txtTotalDespesaDetalhe"
         Me.txtTotalDespesaDetalhe.ReadOnly = True
-        Me.txtTotalDespesaDetalhe.Size = New System.Drawing.Size(158, 24)
+        Me.txtTotalDespesaDetalhe.Size = New System.Drawing.Size(209, 28)
         Me.txtTotalDespesaDetalhe.SuperMascara = ""
         Me.txtTotalDespesaDetalhe.SuperObrigatorio = False
         Me.txtTotalDespesaDetalhe.SuperTravaErrors = False
@@ -542,10 +585,9 @@ Partial Class frmDespesa
         'lblTitulo
         '
         Me.lblTitulo.AutoSize = True
-        Me.lblTitulo.Location = New System.Drawing.Point(10, 47)
-        Me.lblTitulo.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblTitulo.Location = New System.Drawing.Point(13, 58)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(158, 17)
+        Me.lblTitulo.Size = New System.Drawing.Size(204, 22)
         Me.lblTitulo.TabIndex = 8
         Me.lblTitulo.Text = "Descrição da Despesa"
         '
@@ -553,11 +595,12 @@ Partial Class frmDespesa
         '
         Me.txtDescriaoDetalhe.Alterado = False
         Me.txtDescriaoDetalhe.BackColor = System.Drawing.Color.White
-        Me.txtDescriaoDetalhe.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
-        Me.txtDescriaoDetalhe.Location = New System.Drawing.Point(13, 68)
+        Me.txtDescriaoDetalhe.CorFundoSelecionado = System.Drawing.SystemColors.Control
+        Me.txtDescriaoDetalhe.Location = New System.Drawing.Point(17, 84)
+        Me.txtDescriaoDetalhe.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDescriaoDetalhe.Name = "txtDescriaoDetalhe"
         Me.txtDescriaoDetalhe.ReadOnly = True
-        Me.txtDescriaoDetalhe.Size = New System.Drawing.Size(475, 25)
+        Me.txtDescriaoDetalhe.Size = New System.Drawing.Size(632, 29)
         Me.txtDescriaoDetalhe.SuperMascara = ""
         Me.txtDescriaoDetalhe.SuperObrigatorio = False
         Me.txtDescriaoDetalhe.SuperTravaErrors = False
@@ -572,42 +615,25 @@ Partial Class frmDespesa
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pnlDetalhe.AutoScroll = True
-        Me.pnlDetalhe.Location = New System.Drawing.Point(4, 128)
-        Me.pnlDetalhe.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.pnlDetalhe.Location = New System.Drawing.Point(5, 158)
+        Me.pnlDetalhe.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.pnlDetalhe.Name = "pnlDetalhe"
-        Me.pnlDetalhe.Size = New System.Drawing.Size(1036, 275)
+        Me.pnlDetalhe.Size = New System.Drawing.Size(1381, 338)
         Me.pnlDetalhe.TabIndex = 10
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Location = New System.Drawing.Point(39, 31)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(997, 95)
-        Me.GroupBox1.TabIndex = 0
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "GroupBox1"
-        '
-        'SuperLV1
-        '
-        Me.SuperLV1.HabilitaOrdem = True
-        Me.SuperLV1.HideSelection = False
-        Me.SuperLV1.Location = New System.Drawing.Point(39, 141)
-        Me.SuperLV1.Name = "SuperLV1"
-        Me.SuperLV1.SelecionaVarios = False
-        Me.SuperLV1.Size = New System.Drawing.Size(997, 177)
-        Me.SuperLV1.TabIndex = 1
-        Me.SuperLV1.UseCompatibleStateImageBehavior = False
         '
         'frmDespesa
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(126, Byte), Integer), CType(CType(143, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1116, 604)
+        Me.ClientSize = New System.Drawing.Size(1214, 743)
         Me.Controls.Add(Me.tabCtrlDespesa)
         Me.Controls.Add(Me.gbBotoes)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmDespesa"
+        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmDespesa"
         Me.gbBotoes.ResumeLayout(False)
         Me.tabCtrlDespesa.ResumeLayout(False)
