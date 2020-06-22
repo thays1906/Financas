@@ -4,20 +4,19 @@ Public Class frmPrincipal
     Private Sub ConsultaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultaToolStripMenuItem.Click
 
         Dim oform As Form
-        oform = frmConsulta
+        oform = New frmConsulta
         controleFormulario(Me, oform, eTela.Consulta)
     End Sub
 
     Private Sub ReceitasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReceitasToolStripMenuItem.Click
         Dim oform As Form
-        oform = frmReceita
+        oform = New frmReceita
         controleFormulario(Me, oform, eTela.Receita)
     End Sub
 
     Private Sub DespesasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DespesasToolStripMenuItem.Click
         Dim oform As Form
-
-        oform = frmDespesa
+        oform = New frmDespesa()
         controleFormulario(Me, oform, eTela.Despesa)
     End Sub
 
@@ -38,11 +37,6 @@ Public Class frmPrincipal
         End If
     End Sub
 
-    Private Sub UsuárioSenhaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuárioSenhaToolStripMenuItem.Click
-
-    End Sub
-
-
     Private Sub btnFechar_Click(sender As Object, e As EventArgs) Handles btnFechar.Click
         Me.Close()
     End Sub
@@ -59,7 +53,6 @@ Public Class frmPrincipal
             Me.WindowState = FormWindowState.Normal
         End If
     End Sub
-
 
     Private Sub LoginToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LoginToolStripMenuItem1.Click
         Dim log As frmLogin

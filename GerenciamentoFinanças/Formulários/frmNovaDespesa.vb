@@ -13,7 +13,7 @@ Public Class frmNovaDespesa
     Public cParcelamento As Decimal
     Public cQtdeParcela As Decimal
     Public cNumeroParcela As Decimal
-    Public cValor As Decimal
+    Public cValor As Double
     Public bParcelado As Boolean = False
     Public erro As Decimal
     Public logErro As String
@@ -138,11 +138,11 @@ Public Class frmNovaDespesa
                 dtRegistro = dtDespesa.Value
                 cParcelamento = 0
                 cNumeroParcela = 0
-                cValor = CDec(txtValorTotal.Text)
+                cValor = Convert.ToDouble((txtValorTotal.Text))
             End If
 
             If pDespesa.InserirDespesa(txtDescricao.Text,
-                                       cValor,
+                                       CDec(cValor),
                                        CDec(cbConta.ObterChaveCombo()),
                                        CDec(cbCategoria.ObterChaveCombo()),
                                        CDec(cbPagamento.ObterChaveCombo()),
@@ -242,6 +242,7 @@ Public Class frmNovaDespesa
         End Try
     End Sub
     Private Sub LimpaCampos()
+        chkParcela.Checked = False
         dtDespesa.Value = Now
         txtDescricao.Text = ""
         txtValorTotal.Text = ""
@@ -249,18 +250,9 @@ Public Class frmNovaDespesa
         cbCategoria.SelectedIndex = 0
         cbPagamento.SelectedIndex = 0
         cbStatus.SelectedIndex = 0
-        'cbParcelamento.SelectedIndex = 0
+        cbParcelamento.SelectedIndex = 0
+
     End Sub
-    'Public Sub PesquisarDespesa()
-    '    Try
-    '        rsDespesa = pDespesa.PesquisarDespesa(CType(cbStatus.ObterChaveCombo, eStatusDespesa), CDec(cb)
-    '        If rsDespesa.TotalRegistros > 0 Then
-    '            frmDespesa.lvConsulta.PreencheGridDS(rsDespesa, True, True, False, True)
-    '        End If
-    '    Catch ex As Exception
-    '        MessageBox.Show(ex.Message)
-    '    End Try
-    'End Sub
     Private Sub CarregarCombo()
         Dim qtde As New Collection
         Dim col As New Collection
@@ -308,6 +300,7 @@ Public Class frmNovaDespesa
         End If
     End Sub
     Private Sub btnFechar_Click(sender As Object, e As EventArgs) Handles btnFechar.Click
+        LimpaCampos()
         Me.Close()
     End Sub
 
@@ -344,7 +337,7 @@ Public Class frmNovaDespesa
                     If CDec(txtValorTotal.Text) > 0 Then
                         cValor = CDec(txtValorTotal.Text.Replace("R$", "")) / cQtdeParcela
 
-                        txtValorParcela.Text = Convert.ToDouble(cValor).ToString("C")
+                        txtValorParcela.Text = Convert.ToDouble(cValor).ToString("C2")
                     End If
                 End If
             End If
@@ -363,7 +356,7 @@ Public Class frmNovaDespesa
                 If IsNumeric(txtValorTotal.Text) Then
                     If CDec(txtValorTotal.Text) > 0 Then
 
-                        cValor = CDec(txtValorTotal.Text.Replace("R$", "")) / cQtdeParcela
+                        cValor = Convert.ToDouble(txtValorTotal.Text.Replace("R$", "")) / cQtdeParcela
 
                         txtValorParcela.Text = cValor.ToString
                     End If
@@ -388,10 +381,13 @@ Public Class frmNovaDespesa
 
             If cControleParcelamento <> 0 Then
                 Me.cControleParcelamento.ToString()
+                LimpaCampos()
                 Me.Close()
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
     End Sub
+
+
 End Class
