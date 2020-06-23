@@ -114,6 +114,12 @@
     <Compile Include="Formulários\frmConta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formulários\frmDespesaFixa.Designer.vb">
+      <DependentUpon>frmDespesaFixa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmDespesaFixa.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formulários\frmLogin.Designer.vb">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
@@ -206,6 +212,9 @@
     <EmbeddedResource Include="Formulários\frmCadastroCategoria.resx">
       <DependentUpon>frmCadastroCategoria.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmDespesaFixa.resx">
+      <DependentUpon>frmDespesaFixa.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </EmbeddedResource>
@@ -229,9 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -251,8 +260,13 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="iconFinanceiro4.ico" />
+    <None Include="Resources\iconAddReceita1.png" />
     <Content Include="Resources\iconAtrasado.bmp" />
+    <None Include="Resources\icon_MAxWhite.png" />
+    <None Include="Resources\icon_CloseApp2.png" />
     <None Include="Resources\iconPago.png" />
+    <None Include="Resources\iconCloseWhite.fw.png" />
+    <None Include="Resources\iconCloseWhite.fw1.png" />
     <Content Include="Resources\iconPendente.png" />
     <None Include="Resources\icone_Email.png" />
     <None Include="Resources\iconExtract.png" />

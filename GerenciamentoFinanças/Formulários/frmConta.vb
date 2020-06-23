@@ -18,6 +18,8 @@ Public Class frmConta
 
         centralizarGrupoBotoes(gbBotoes)
         centralizarGrupoTab(tabCtrlConta)
+        centralizarGrupoBotoes(gbDadosConta)
+        centralizarGrupoBotoes(gbListConta)
         PesquisarConta()
     End Sub
     Private Sub frmConta_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated

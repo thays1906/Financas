@@ -49,9 +49,10 @@ Public Class frmNovaDespesa
         Else
             tabDespesa.TabPages(0).Text = "Adicionar Despesa"
             cbParcelamento.Enabled = False
+            cbDespesaFixa.Enabled = False
             txtParcela.Visible = False
             lblParcela.Visible = False
-            btnSalvar.SetBounds(210, 420, 203, 42)
+            btnSalvar.SetBounds(230, 448, 203, 42)
         End If
     End Sub
 
@@ -204,7 +205,9 @@ Public Class frmNovaDespesa
         Try
             tabDespesa.TabPages(0).Text = "Alterar Despesa"
             chkParcela.Visible = False
+            chkDespesaFixa.Visible = False
             cbParcelamento.Visible = False
+            cbDespesaFixa.Visible = False
             txtValorParcela.Visible = False
             lblValorParcela.Visible = False
             txtMesReferente.Visible = True
@@ -244,6 +247,7 @@ Public Class frmNovaDespesa
     End Sub
     Private Sub LimpaCampos()
         chkParcela.Checked = False
+        chkDespesaFixa.Checked = False
         dtDespesa.Value = Now
         txtDescricao.Text = ""
         txtValorTotal.Text = ""
@@ -252,6 +256,7 @@ Public Class frmNovaDespesa
         cbPagamento.SelectedIndex = 0
         cbStatus.SelectedIndex = 0
         cbParcelamento.SelectedIndex = 0
+        cbDespesaFixa.SelectedIndex = 0
 
     End Sub
     Private Sub CarregarCombo()
@@ -297,6 +302,19 @@ Public Class frmNovaDespesa
 
             cbStatus.PreencheComboColl(col, SuperComboBox.PrimeiroValor.Nada)
 
+            col.Clear()
+
+            col.Add(New DuplaCombo(eDespesaFixa.Diario, "Diário"))
+            col.Add(New DuplaCombo(eDespesaFixa.Semanal, "Semanal"))
+            col.Add(New DuplaCombo(eDespesaFixa.Quinzenal, "Quinzenal"))
+            col.Add(New DuplaCombo(eDespesaFixa.Mensal, "Mensal"))
+            col.Add(New DuplaCombo(eDespesaFixa.Bimestral, "Bimestral"))
+            col.Add(New DuplaCombo(eDespesaFixa.Trimestral, "Trimestral"))
+            col.Add(New DuplaCombo(eDespesaFixa.Semestral, "Semestral"))
+            col.Add(New DuplaCombo(eDespesaFixa.Anual, "Anual"))
+
+            cbDespesaFixa.PreencheComboColl(col, PrimeiroValor.Selecione)
+
         Catch ex As Exception
             MessageBox.Show(ex.Message)
 
@@ -317,6 +335,8 @@ Public Class frmNovaDespesa
         Try
             If chkParcela.Checked = True Then
 
+                chkDespesaFixa.Checked = False
+                cbDespesaFixa.Enabled = False
                 txtValorParcela.Visible = True
                 lblValorParcela.Visible = True
                 cbParcelamento.Enabled = True
@@ -399,5 +419,14 @@ Public Class frmNovaDespesa
         End Try
     End Sub
 
+    Private Sub chkDespesaFixa_CheckedChanged(sender As Object, e As EventArgs) Handles chkDespesaFixa.CheckedChanged
+        If chkDespesaFixa.Checked Then
 
+            chkParcela.Checked = False
+            cbPagamento.Enabled = False
+            cbDespesaFixa.Enabled = True
+        Else
+            cbDespesaFixa.Enabled = False
+        End If
+    End Sub
 End Class

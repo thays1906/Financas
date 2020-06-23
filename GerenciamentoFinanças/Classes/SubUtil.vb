@@ -25,7 +25,6 @@ Public Module SubUtil
     Public Enum eSimNao
         Sim = 1
         Nao = 2
-
     End Enum
     Public Enum Collor
         Preto = 1
@@ -47,18 +46,25 @@ Public Module SubUtil
         CinzaEscuro
         Nenhuma
     End Enum
-
     Public Enum eStatusDespesa
         Pago = 1
         Pendente = 2
         Atrasado = 3
     End Enum
-
+    Public Enum eDespesaFixa
+        Diario = 1
+        Semanal = 2
+        Quinzenal = 3
+        Mensal = 4
+        Bimestral = 5
+        Trimestral = 6
+        Semestral = 7
+        Anual = 8
+    End Enum
     Public Enum eStatus
         Ativo = 1
         Inativo = 2
     End Enum
-
     Public Enum eTipoConta
         Corrente = 1
         Poupanca = 2
@@ -74,7 +80,10 @@ Public Module SubUtil
         Question = 2
         Erro = 3
     End Enum
-
+    '=======================================
+    'FIM --- Enums
+    '=======================================
+    '=======================================
     'Cores
     Public Sub Cor(ByRef Controle As Control, ByVal Cor As Collor)
 
@@ -114,9 +123,6 @@ Public Module SubUtil
         ElseIf Cor = Collor.CinzaEscuro Then
             Controle.BackColor = Color.FromArgb(80, 87, 86)
         End If
-
-
-        '    Control.BackColor = Color.FromArgb(64, 62, 63)
     End Sub
     Public Sub CorButton(ByRef button As Button,
                          ByVal Cor As Collor,
@@ -154,7 +160,6 @@ Public Module SubUtil
             button.BackColor = Color.Transparent
         End If
     End Sub
-
     Public Sub CorList(ByRef lv As SuperLV)
 
         lv.BackColor = Color.WhiteSmoke
@@ -183,6 +188,11 @@ Public Module SubUtil
 
     '    End If
     'End Sub
+    '=======================================
+    'FIM------Cores
+    '=======================================
+
+
     Public Sub restaurarMDI()
         Lixeiro()
         frmPrincipal.txtCaption.Text = ""

@@ -127,6 +127,9 @@
   <data name="iconUser" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconUser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="iconDespesa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconDespesa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="iconNovoReceita" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconNovoReceita.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -145,11 +148,26 @@
   <data name="IconSearch" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconSearch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icone_Email" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_Email.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_MAxWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_MAxWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Banco2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Banco2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconCloseWhite1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconCloseWhite.fw1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="iconEditar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconEditar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconFileExplorer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconFileExplorer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconPendente" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\iconpendente.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="User" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\User.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,6 +181,9 @@
   <data name="Icon_search" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon_search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="iconAddReceita1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconAddReceita1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="iconMOneyGreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconMOneyGreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -172,23 +193,23 @@
   <data name="iconLogin32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconLogin32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="iconCloseWhite.fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconCloseWhite.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="iconOk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconOk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconExcel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconExcel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconDespesa" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconDespesa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icon_CloseApp2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_CloseApp2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LOGO1.2.fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LOGO1.2.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconAtrasado" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconAtrasado.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="iconExplorer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconExplorer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconLogout" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconLogout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -202,11 +223,14 @@
   <data name="iconFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="iconExplorer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconExplorer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="iconLogout_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconLogout_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Banco2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Banco2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconPago" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconPago.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconReceita.fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconReceita.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -216,14 +240,5 @@
   </data>
   <data name="iconExcluir" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconExcluir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icone_Email" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icone_Email.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="iconPendente" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\iconpendente.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="iconPago" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconPago.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

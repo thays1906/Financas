@@ -9,6 +9,13 @@ Public Class frmReceita
 
     Private Sub frmReceita_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cor(Me, Collor.CinzaEscuro)
+        CorButton(btnPesquisar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
+        CorButton(btnAddReceita, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
+        CorButton(btnEditar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
+        CorButton(btnExcluir, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
+        CorButton(btnExporta, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
+        CorButton(btnFechar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
+
         centralizarGrupoBotoes(gbBotoes)
         centralizarGrupoTab(tbConsulta)
         CarregaCombo()

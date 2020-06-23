@@ -37,7 +37,7 @@ Public Class frmConfiguracao
 
             If rsCategoria.TotalRegistros > 0 Then
 
-                lvCategoriaDespesa.PreencheGridDS(rsCategoria, True, True, False, True)
+                lvCategoriaDespesa.PreencheGridDS(rsCategoria, True, True, False, True, 0, True)
 
                 CorList(lvCategoriaDespesa)
             End If
@@ -54,7 +54,7 @@ Public Class frmConfiguracao
             rsFormaPagamento = pFormaPagamento.CarregarFormaPagamento()
 
             If rsFormaPagamento.TotalRegistros > 0 Then
-                lvFormaPagamento.PreencheGridDS(rsFormaPagamento, True, True, False, True)
+                lvFormaPagamento.PreencheGridDS(rsFormaPagamento, True, True, False, True, 0, True)
             End If
 
             CorList(lvFormaPagamento)
@@ -238,7 +238,7 @@ Public Class frmConfiguracao
             rsParcelas = pParcelamento.CarregarGrid()
 
             If rsParcelas.TotalRegistros > 0 Then
-                lvParcela.PreencheGridDS(rsParcelas, True, True, False, True)
+                lvParcela.PreencheGridDS(rsParcelas, True, True, False, True, 0, True)
                 CorList(lvParcela)
 
             End If
@@ -330,7 +330,7 @@ Public Class frmConfiguracao
             rsReceita = pTipoReceita.CarregaGrid()
 
             If rsReceita.TotalRegistros > 0 Then
-                lvReceita.PreencheGridDS(rsReceita, True, True, False, True)
+                lvReceita.PreencheGridDS(rsReceita, True, True, False, True, 0, True)
                 CorList(lvReceita)
             Else
                 S_MsgBox("Nenhum registro encontrado.", eBotoes.Ok,,, eImagens.Info)

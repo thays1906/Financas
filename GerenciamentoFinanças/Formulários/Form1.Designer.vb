@@ -212,7 +212,7 @@ Partial Class Form1
         Me.btnFechar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepSkyBlue
         Me.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkTurquoise
         Me.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
+        'Me.btnFechar.Image = Global.GerenciamentoFinanças.My.RES
         Me.btnFechar.Location = New System.Drawing.Point(398, 301)
         Me.btnFechar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnFechar.Name = "btnFechar"
