@@ -29,12 +29,10 @@
  * Jan Källman		Initial Release		        2009-10-01
  * Jan Källman		License changed GPL-->LGPL 2011-12-16
  *******************************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
-using System.Globalization;
 using OfficeOpenXml.Table.PivotTable;
+using System;
+using System.Globalization;
+using System.Xml;
 
 namespace OfficeOpenXml.Drawing.Chart
 {
@@ -57,7 +55,7 @@ namespace OfficeOpenXml.Drawing.Chart
             base(drawings, node, type, topChart, PivotTableSource)
         {
             //SetPaths();
-        }        
+        }
         internal ExcelDoughnutChart(ExcelDrawings drawings, XmlNode node, Uri uriChart, System.IO.Packaging.PackagePart part, XmlDocument chartXml, XmlNode chartNode) :
            base(drawings, node, uriChart, part, chartXml, chartNode)
         {

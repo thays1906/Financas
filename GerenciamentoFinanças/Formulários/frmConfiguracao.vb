@@ -20,7 +20,7 @@ Public Class frmConfiguracao
         CorButton(btnCadastrarParc, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnSalvarParcela, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnExcluirParcela, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
-        'CorButton(btn, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
+        CorButton(btnAddPag, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
 
         centralizarGrupoTab(tabCtrlConfig)
         centralizarGrupoBotoes(gbCadastroDespesa)
@@ -76,7 +76,7 @@ Public Class frmConfiguracao
         End Try
     End Sub
 
-    Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+    Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAddCatDespesa.Click
         Try
             If VerificaCampos(txtNovaCategoriaDespesa) Then
 

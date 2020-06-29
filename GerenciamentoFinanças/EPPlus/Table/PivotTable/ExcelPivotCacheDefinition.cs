@@ -30,11 +30,10 @@
  * Jan Källman		License changed GPL-->LGPL 2011-12-16
  *******************************************************************************/
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
 using System.IO.Packaging;
 using System.Linq;
+using System.Text;
+using System.Xml;
 namespace OfficeOpenXml.Table.PivotTable
 {
     public enum eSourceType
@@ -92,16 +91,16 @@ namespace OfficeOpenXml.Table.PivotTable
             PivotTable = pivotTable;
 
             var pck = pivotTable.WorkSheet._package.Package;
-            
+
             //CacheDefinition
             CacheDefinitionXml = new XmlDocument();
             LoadXmlSafe(CacheDefinitionXml, GetStartXml(sourceAddress), Encoding.UTF8);
-            CacheDefinitionUri = GetNewUri(pck, "/xl/pivotCache/pivotCacheDefinition{0}.xml", tblId); 
+            CacheDefinitionUri = GetNewUri(pck, "/xl/pivotCache/pivotCacheDefinition{0}.xml", tblId);
             Part = pck.CreatePart(CacheDefinitionUri, ExcelPackage.schemaPivotCacheDefinition);
             TopNode = CacheDefinitionXml.DocumentElement;
 
             //CacheRecord. Create an empty one.
-            CacheRecordUri = GetNewUri(pck, "/xl/pivotCache/pivotCacheRecords{0}.xml", tblId); 
+            CacheRecordUri = GetNewUri(pck, "/xl/pivotCache/pivotCacheRecords{0}.xml", tblId);
             var cacheRecord = new XmlDocument();
             cacheRecord.LoadXml("<pivotCacheRecords xmlns=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" count=\"0\" />");
             var recPart = pck.CreatePart(CacheRecordUri, ExcelPackage.schemaPivotCacheRecords);
@@ -111,7 +110,7 @@ namespace OfficeOpenXml.Table.PivotTable
             RecordRelationshipID = RecordRelationship.Id;
 
             CacheDefinitionXml.Save(Part.GetStream());
-        }        
+        }
         /// <summary>
         /// Reference to the internal package part
         /// </summary>
@@ -147,7 +146,7 @@ namespace OfficeOpenXml.Table.PivotTable
             get;
             set;
         }
-        internal string RecordRelationshipID 
+        internal string RecordRelationshipID
         {
             get
             {
@@ -166,8 +165,8 @@ namespace OfficeOpenXml.Table.PivotTable
             get;
             private set;
         }
-        
-        const string _sourceWorksheetPath="d:cacheSource/d:worksheetSource/@sheet";
+
+        const string _sourceWorksheetPath = "d:cacheSource/d:worksheetSource/@sheet";
         const string _sourceAddressPath = "d:cacheSource/d:worksheetSource/@ref";
         internal ExcelRangeBase _sourceRange = null;
         /// <summary>
@@ -203,7 +202,7 @@ namespace OfficeOpenXml.Table.PivotTable
                     throw (new ArgumentException("Range must be in the same package as the pivottable"));
                 }
 
-                var sr=SourceRange;
+                var sr = SourceRange;
                 if (value.End.Column - value.Start.Column != sr.End.Column - sr.Start.Column)
                 {
                     throw (new ArgumentException("Can not change the number of columns(fields) in the SourceRange"));
@@ -221,7 +220,7 @@ namespace OfficeOpenXml.Table.PivotTable
         {
             get
             {
-                var s=GetXmlNodeString("d:cacheSource/@type");
+                var s = GetXmlNodeString("d:cacheSource/@type");
                 if (s == "")
                 {
                     return eSourceType.Worksheet;
@@ -234,7 +233,7 @@ namespace OfficeOpenXml.Table.PivotTable
         }
         private string GetStartXml(ExcelRangeBase sourceAddress)
         {
-            string xml="<pivotCacheDefinition xmlns=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" r:id=\"\" refreshOnLoad=\"1\" refreshedBy=\"SomeUser\" refreshedDate=\"40504.582403125001\" createdVersion=\"1\" refreshedVersion=\"3\" recordCount=\"5\" upgradeOnRefresh=\"1\">";
+            string xml = "<pivotCacheDefinition xmlns=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" r:id=\"\" refreshOnLoad=\"1\" refreshedBy=\"SomeUser\" refreshedDate=\"40504.582403125001\" createdVersion=\"1\" refreshedVersion=\"3\" recordCount=\"5\" upgradeOnRefresh=\"1\">";
 
             xml += "<cacheSource type=\"worksheet\">";
             xml += string.Format("<worksheetSource ref=\"{0}\" sheet=\"{1}\" /> ", sourceAddress.Address, sourceAddress.WorkSheet);

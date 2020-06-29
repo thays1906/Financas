@@ -79,11 +79,4 @@ Public Class frmPrincipal
         controleFormulario(Me, oForm, eTela.conta_Bancaria)
     End Sub
 
-    Private Sub MenuStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
-
-    End Sub
-
-    Private Sub LançarDespesaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LançarDespesaToolStripMenuItem.Click
-
-    End Sub
 End Class

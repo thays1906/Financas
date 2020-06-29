@@ -24,39 +24,39 @@ Partial Class frmNovaDespesa
     Private Sub InitializeComponent()
         Me.tabDespesa = New GFT.Util.SuperTabControl()
         Me.tpAddDespesa = New System.Windows.Forms.TabPage()
-        Me.lblMesReferente = New System.Windows.Forms.Label()
-        Me.txtMesReferente = New GFT.Util.SuperTextBox()
-        Me.lblValorParcela = New System.Windows.Forms.Label()
-        Me.txtValorParcela = New GFT.Util.SuperTextBox()
-        Me.lblParcela = New System.Windows.Forms.Label()
-        Me.txtParcela = New GFT.Util.SuperTextBox()
-        Me.chkParcela = New System.Windows.Forms.CheckBox()
-        Me.lblStatus = New System.Windows.Forms.Label()
-        Me.cbStatus = New GFT.Util.SuperComboBox()
-        Me.lblFormaPagamento = New System.Windows.Forms.Label()
-        Me.cbPagamento = New GFT.Util.SuperComboBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.txtDescricao = New GFT.Util.SuperTextBox()
-        Me.lblDescricao = New System.Windows.Forms.Label()
-        Me.lblCategoria = New System.Windows.Forms.Label()
         Me.cbCategoria = New GFT.Util.SuperComboBox()
-        Me.lblConta = New System.Windows.Forms.Label()
-        Me.cbConta = New GFT.Util.SuperComboBox()
-        Me.lblData = New System.Windows.Forms.Label()
+        Me.lblMesReferente = New System.Windows.Forms.Label()
+        Me.lblCategoria = New System.Windows.Forms.Label()
+        Me.txtMesReferente = New GFT.Util.SuperTextBox()
+        Me.lblStatus = New System.Windows.Forms.Label()
+        Me.lblDescricao = New System.Windows.Forms.Label()
+        Me.cbStatus = New GFT.Util.SuperComboBox()
         Me.dtDespesa = New GFT.Util.SuperDatePicker()
-        Me.txtValorTotal = New GFT.Util.SuperTextBox()
+        Me.lblData = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cbDespesaFixa = New GFT.Util.SuperComboBox()
+        Me.chkDespesaFixa = New System.Windows.Forms.CheckBox()
+        Me.cbPagamento = New GFT.Util.SuperComboBox()
+        Me.cbConta = New GFT.Util.SuperComboBox()
+        Me.lblConta = New System.Windows.Forms.Label()
+        Me.txtParcela = New GFT.Util.SuperTextBox()
+        Me.lblValorParcela = New System.Windows.Forms.Label()
+        Me.cbParcelamento = New GFT.Util.SuperComboBox()
+        Me.txtValorParcela = New GFT.Util.SuperTextBox()
+        Me.lblFormaPagamento = New System.Windows.Forms.Label()
+        Me.chkParcela = New System.Windows.Forms.CheckBox()
         Me.lblValor = New System.Windows.Forms.Label()
+        Me.txtValorTotal = New GFT.Util.SuperTextBox()
+        Me.lblParcela = New System.Windows.Forms.Label()
         Me.btnFechar = New System.Windows.Forms.Button()
         Me.btnSalvar = New System.Windows.Forms.Button()
         Me.btnDetalhe = New System.Windows.Forms.Button()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.chkDespesaFixa = New System.Windows.Forms.CheckBox()
-        Me.cbParcelamento = New GFT.Util.SuperComboBox()
-        Me.cbDespesaFixa = New GFT.Util.SuperComboBox()
         Me.tabDespesa.SuspendLayout()
         Me.tpAddDespesa.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'tabDespesa
@@ -83,6 +83,57 @@ Partial Class frmNovaDespesa
         Me.tpAddDespesa.Text = "Adicionar Despesa"
         Me.tpAddDespesa.UseVisualStyleBackColor = True
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.txtDescricao)
+        Me.GroupBox2.Controls.Add(Me.cbCategoria)
+        Me.GroupBox2.Controls.Add(Me.lblMesReferente)
+        Me.GroupBox2.Controls.Add(Me.lblCategoria)
+        Me.GroupBox2.Controls.Add(Me.txtMesReferente)
+        Me.GroupBox2.Controls.Add(Me.lblStatus)
+        Me.GroupBox2.Controls.Add(Me.lblDescricao)
+        Me.GroupBox2.Controls.Add(Me.cbStatus)
+        Me.GroupBox2.Controls.Add(Me.dtDespesa)
+        Me.GroupBox2.Controls.Add(Me.lblData)
+        Me.GroupBox2.Location = New System.Drawing.Point(27, 6)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(543, 130)
+        Me.GroupBox2.TabIndex = 25
+        Me.GroupBox2.TabStop = False
+        '
+        'txtDescricao
+        '
+        Me.txtDescricao.Alterado = False
+        Me.txtDescricao.BackColor = System.Drawing.Color.White
+        Me.txtDescricao.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
+        Me.txtDescricao.Location = New System.Drawing.Point(9, 95)
+        Me.txtDescricao.Name = "txtDescricao"
+        Me.txtDescricao.Size = New System.Drawing.Size(303, 27)
+        Me.txtDescricao.SuperMascara = "0.00"
+        Me.txtDescricao.SuperObrigatorio = False
+        Me.txtDescricao.SuperTravaErrors = False
+        Me.txtDescricao.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
+        Me.txtDescricao.SuperTxtObrigatorio = ""
+        Me.txtDescricao.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NENHUMA
+        Me.txtDescricao.TabIndex = 10
+        '
+        'cbCategoria
+        '
+        Me.cbCategoria.Alterado = False
+        Me.cbCategoria.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.cbCategoria.CorFundo = System.Drawing.Color.White
+        Me.cbCategoria.CorFundoSelecionado = System.Drawing.Color.WhiteSmoke
+        Me.cbCategoria.CorTexto = System.Drawing.Color.Black
+        Me.cbCategoria.CorTextoSelecionado = System.Drawing.SystemColors.MenuText
+        Me.cbCategoria.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbCategoria.FormattingEnabled = True
+        Me.cbCategoria.Location = New System.Drawing.Point(319, 97)
+        Me.cbCategoria.Name = "cbCategoria"
+        Me.cbCategoria.Size = New System.Drawing.Size(218, 25)
+        Me.cbCategoria.SuperObrigatorio = False
+        Me.cbCategoria.SuperTxtObrigatorio = ""
+        Me.cbCategoria.TabIndex = 6
+        '
         'lblMesReferente
         '
         Me.lblMesReferente.AutoSize = True
@@ -93,6 +144,15 @@ Partial Class frmNovaDespesa
         Me.lblMesReferente.TabIndex = 23
         Me.lblMesReferente.Text = "Mês / Referente:"
         Me.lblMesReferente.Visible = False
+        '
+        'lblCategoria
+        '
+        Me.lblCategoria.AutoSize = True
+        Me.lblCategoria.Location = New System.Drawing.Point(316, 75)
+        Me.lblCategoria.Name = "lblCategoria"
+        Me.lblCategoria.Size = New System.Drawing.Size(94, 18)
+        Me.lblCategoria.TabIndex = 7
+        Me.lblCategoria.Text = "Categoria:"
         '
         'txtMesReferente
         '
@@ -114,46 +174,151 @@ Partial Class frmNovaDespesa
         Me.txtMesReferente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.txtMesReferente.Visible = False
         '
-        'lblValorParcela
+        'lblStatus
         '
-        Me.lblValorParcela.AutoSize = True
-        Me.lblValorParcela.Location = New System.Drawing.Point(382, 89)
-        Me.lblValorParcela.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.lblValorParcela.Name = "lblValorParcela"
-        Me.lblValorParcela.Size = New System.Drawing.Size(147, 18)
-        Me.lblValorParcela.TabIndex = 21
-        Me.lblValorParcela.Text = "Valor da parcela:"
-        Me.lblValorParcela.Visible = False
+        Me.lblStatus.AutoSize = True
+        Me.lblStatus.Location = New System.Drawing.Point(316, 23)
+        Me.lblStatus.Name = "lblStatus"
+        Me.lblStatus.Size = New System.Drawing.Size(68, 18)
+        Me.lblStatus.TabIndex = 15
+        Me.lblStatus.Text = "Status:"
         '
-        'txtValorParcela
+        'lblDescricao
         '
-        Me.txtValorParcela.Alterado = False
-        Me.txtValorParcela.BackColor = System.Drawing.Color.White
-        Me.txtValorParcela.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
-        Me.txtValorParcela.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtValorParcela.Location = New System.Drawing.Point(385, 110)
-        Me.txtValorParcela.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtValorParcela.Name = "txtValorParcela"
-        Me.txtValorParcela.Size = New System.Drawing.Size(151, 27)
-        Me.txtValorParcela.SuperMascara = ""
-        Me.txtValorParcela.SuperObrigatorio = False
-        Me.txtValorParcela.SuperTravaErrors = False
-        Me.txtValorParcela.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
-        Me.txtValorParcela.SuperTxtObrigatorio = ""
-        Me.txtValorParcela.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosReais
-        Me.txtValorParcela.TabIndex = 20
-        Me.txtValorParcela.Visible = False
+        Me.lblDescricao.AutoSize = True
+        Me.lblDescricao.Location = New System.Drawing.Point(6, 76)
+        Me.lblDescricao.Name = "lblDescricao"
+        Me.lblDescricao.Size = New System.Drawing.Size(93, 18)
+        Me.lblDescricao.TabIndex = 11
+        Me.lblDescricao.Text = "Descrição:"
         '
-        'lblParcela
+        'cbStatus
         '
-        Me.lblParcela.AutoSize = True
-        Me.lblParcela.Location = New System.Drawing.Point(382, 136)
-        Me.lblParcela.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.lblParcela.Name = "lblParcela"
-        Me.lblParcela.Size = New System.Drawing.Size(74, 18)
-        Me.lblParcela.TabIndex = 19
-        Me.lblParcela.Text = "Parcela:"
-        Me.lblParcela.Visible = False
+        Me.cbStatus.Alterado = False
+        Me.cbStatus.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.cbStatus.CorFundo = System.Drawing.Color.White
+        Me.cbStatus.CorFundoSelecionado = System.Drawing.Color.WhiteSmoke
+        Me.cbStatus.CorTexto = System.Drawing.Color.Black
+        Me.cbStatus.CorTextoSelecionado = System.Drawing.SystemColors.MenuText
+        Me.cbStatus.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbStatus.FormattingEnabled = True
+        Me.cbStatus.Location = New System.Drawing.Point(319, 41)
+        Me.cbStatus.Name = "cbStatus"
+        Me.cbStatus.Size = New System.Drawing.Size(186, 25)
+        Me.cbStatus.SuperObrigatorio = True
+        Me.cbStatus.SuperTxtObrigatorio = "Selecione um Status "
+        Me.cbStatus.TabIndex = 14
+        '
+        'dtDespesa
+        '
+        Me.dtDespesa.Alterado = False
+        Me.dtDespesa.BackColor = System.Drawing.Color.White
+        Me.dtDespesa.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtDespesa.Location = New System.Drawing.Point(9, 41)
+        Me.dtDespesa.Name = "dtDespesa"
+        Me.dtDespesa.Size = New System.Drawing.Size(135, 27)
+        Me.dtDespesa.TabIndex = 2
+        '
+        'lblData
+        '
+        Me.lblData.AutoSize = True
+        Me.lblData.Location = New System.Drawing.Point(6, 19)
+        Me.lblData.Name = "lblData"
+        Me.lblData.Size = New System.Drawing.Size(54, 18)
+        Me.lblData.TabIndex = 3
+        Me.lblData.Text = "Data:"
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.cbDespesaFixa)
+        Me.GroupBox1.Controls.Add(Me.chkDespesaFixa)
+        Me.GroupBox1.Controls.Add(Me.cbPagamento)
+        Me.GroupBox1.Controls.Add(Me.cbConta)
+        Me.GroupBox1.Controls.Add(Me.lblConta)
+        Me.GroupBox1.Controls.Add(Me.txtParcela)
+        Me.GroupBox1.Controls.Add(Me.lblValorParcela)
+        Me.GroupBox1.Controls.Add(Me.txtValorParcela)
+        Me.GroupBox1.Controls.Add(Me.chkParcela)
+        Me.GroupBox1.Controls.Add(Me.lblFormaPagamento)
+        Me.GroupBox1.Controls.Add(Me.cbParcelamento)
+        Me.GroupBox1.Controls.Add(Me.lblValor)
+        Me.GroupBox1.Controls.Add(Me.txtValorTotal)
+        Me.GroupBox1.Controls.Add(Me.lblParcela)
+        Me.GroupBox1.Location = New System.Drawing.Point(28, 142)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(543, 202)
+        Me.GroupBox1.TabIndex = 24
+        Me.GroupBox1.TabStop = False
+        '
+        'cbDespesaFixa
+        '
+        Me.cbDespesaFixa.Alterado = False
+        Me.cbDespesaFixa.CorFundo = System.Drawing.Color.White
+        Me.cbDespesaFixa.CorFundoSelecionado = System.Drawing.Color.WhiteSmoke
+        Me.cbDespesaFixa.CorTexto = System.Drawing.Color.Black
+        Me.cbDespesaFixa.CorTextoSelecionado = System.Drawing.SystemColors.MenuText
+        Me.cbDespesaFixa.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbDespesaFixa.FormattingEnabled = True
+        Me.cbDespesaFixa.Location = New System.Drawing.Point(163, 99)
+        Me.cbDespesaFixa.Name = "cbDespesaFixa"
+        Me.cbDespesaFixa.Size = New System.Drawing.Size(151, 25)
+        Me.cbDespesaFixa.SuperObrigatorio = False
+        Me.cbDespesaFixa.SuperTxtObrigatorio = ""
+        Me.cbDespesaFixa.TabIndex = 23
+        '
+        'chkDespesaFixa
+        '
+        Me.chkDespesaFixa.AutoSize = True
+        Me.chkDespesaFixa.Location = New System.Drawing.Point(163, 75)
+        Me.chkDespesaFixa.Name = "chkDespesaFixa"
+        Me.chkDespesaFixa.Size = New System.Drawing.Size(136, 22)
+        Me.chkDespesaFixa.TabIndex = 22
+        Me.chkDespesaFixa.Text = "Despesa Fixa"
+        Me.chkDespesaFixa.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.chkDespesaFixa.UseVisualStyleBackColor = True
+        '
+        'cbPagamento
+        '
+        Me.cbPagamento.Alterado = False
+        Me.cbPagamento.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.cbPagamento.CorFundo = System.Drawing.Color.White
+        Me.cbPagamento.CorFundoSelecionado = System.Drawing.Color.WhiteSmoke
+        Me.cbPagamento.CorTexto = System.Drawing.Color.Black
+        Me.cbPagamento.CorTextoSelecionado = System.Drawing.SystemColors.MenuText
+        Me.cbPagamento.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbPagamento.FormattingEnabled = True
+        Me.cbPagamento.Location = New System.Drawing.Point(8, 151)
+        Me.cbPagamento.Name = "cbPagamento"
+        Me.cbPagamento.Size = New System.Drawing.Size(218, 25)
+        Me.cbPagamento.SuperObrigatorio = True
+        Me.cbPagamento.SuperTxtObrigatorio = "Selecione a Forma de Pagamento"
+        Me.cbPagamento.TabIndex = 12
+        '
+        'cbConta
+        '
+        Me.cbConta.Alterado = False
+        Me.cbConta.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.cbConta.CorFundo = System.Drawing.Color.White
+        Me.cbConta.CorFundoSelecionado = System.Drawing.Color.WhiteSmoke
+        Me.cbConta.CorTexto = System.Drawing.Color.Black
+        Me.cbConta.CorTextoSelecionado = System.Drawing.SystemColors.MenuText
+        Me.cbConta.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbConta.FormattingEnabled = True
+        Me.cbConta.Location = New System.Drawing.Point(318, 151)
+        Me.cbConta.Name = "cbConta"
+        Me.cbConta.Size = New System.Drawing.Size(218, 25)
+        Me.cbConta.SuperObrigatorio = True
+        Me.cbConta.SuperTxtObrigatorio = "Conta Báncaria"
+        Me.cbConta.TabIndex = 4
+        '
+        'lblConta
+        '
+        Me.lblConta.AutoSize = True
+        Me.lblConta.Location = New System.Drawing.Point(318, 127)
+        Me.lblConta.Name = "lblConta"
+        Me.lblConta.Size = New System.Drawing.Size(139, 18)
+        Me.lblConta.TabIndex = 5
+        Me.lblConta.Text = "Conta Báncaria:"
         '
         'txtParcela
         '
@@ -161,7 +326,7 @@ Partial Class frmNovaDespesa
         Me.txtParcela.BackColor = System.Drawing.Color.White
         Me.txtParcela.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
         Me.txtParcela.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtParcela.Location = New System.Drawing.Point(385, 159)
+        Me.txtParcela.Location = New System.Drawing.Point(318, 37)
         Me.txtParcela.Margin = New System.Windows.Forms.Padding(2)
         Me.txtParcela.Name = "txtParcela"
         Me.txtParcela.Size = New System.Drawing.Size(76, 27)
@@ -174,10 +339,65 @@ Partial Class frmNovaDespesa
         Me.txtParcela.TabIndex = 18
         Me.txtParcela.Visible = False
         '
+        'lblValorParcela
+        '
+        Me.lblValorParcela.AutoSize = True
+        Me.lblValorParcela.Location = New System.Drawing.Point(160, 17)
+        Me.lblValorParcela.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblValorParcela.Name = "lblValorParcela"
+        Me.lblValorParcela.Size = New System.Drawing.Size(147, 18)
+        Me.lblValorParcela.TabIndex = 21
+        Me.lblValorParcela.Text = "Valor da parcela:"
+        Me.lblValorParcela.Visible = False
+        '
+        'cbParcelamento
+        '
+        Me.cbParcelamento.Alterado = False
+        Me.cbParcelamento.CorFundo = System.Drawing.Color.White
+        Me.cbParcelamento.CorFundoSelecionado = System.Drawing.Color.WhiteSmoke
+        Me.cbParcelamento.CorTexto = System.Drawing.Color.Black
+        Me.cbParcelamento.CorTextoSelecionado = System.Drawing.SystemColors.MenuText
+        Me.cbParcelamento.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbParcelamento.FormattingEnabled = True
+        Me.cbParcelamento.Location = New System.Drawing.Point(9, 99)
+        Me.cbParcelamento.Name = "cbParcelamento"
+        Me.cbParcelamento.Size = New System.Drawing.Size(116, 25)
+        Me.cbParcelamento.SuperObrigatorio = False
+        Me.cbParcelamento.SuperTxtObrigatorio = ""
+        Me.cbParcelamento.TabIndex = 17
+        '
+        'txtValorParcela
+        '
+        Me.txtValorParcela.Alterado = False
+        Me.txtValorParcela.BackColor = System.Drawing.Color.White
+        Me.txtValorParcela.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
+        Me.txtValorParcela.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtValorParcela.Location = New System.Drawing.Point(163, 37)
+        Me.txtValorParcela.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtValorParcela.Name = "txtValorParcela"
+        Me.txtValorParcela.Size = New System.Drawing.Size(151, 27)
+        Me.txtValorParcela.SuperMascara = ""
+        Me.txtValorParcela.SuperObrigatorio = False
+        Me.txtValorParcela.SuperTravaErrors = False
+        Me.txtValorParcela.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
+        Me.txtValorParcela.SuperTxtObrigatorio = ""
+        Me.txtValorParcela.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosReais
+        Me.txtValorParcela.TabIndex = 20
+        Me.txtValorParcela.Visible = False
+        '
+        'lblFormaPagamento
+        '
+        Me.lblFormaPagamento.AutoSize = True
+        Me.lblFormaPagamento.Location = New System.Drawing.Point(5, 131)
+        Me.lblFormaPagamento.Name = "lblFormaPagamento"
+        Me.lblFormaPagamento.Size = New System.Drawing.Size(189, 18)
+        Me.lblFormaPagamento.TabIndex = 13
+        Me.lblFormaPagamento.Text = "Forma de Pagamento:"
+        '
         'chkParcela
         '
         Me.chkParcela.AutoSize = True
-        Me.chkParcela.Location = New System.Drawing.Point(6, 19)
+        Me.chkParcela.Location = New System.Drawing.Point(9, 75)
         Me.chkParcela.Name = "chkParcela"
         Me.chkParcela.Size = New System.Drawing.Size(138, 22)
         Me.chkParcela.TabIndex = 16
@@ -185,149 +405,14 @@ Partial Class frmNovaDespesa
         Me.chkParcela.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.chkParcela.UseVisualStyleBackColor = True
         '
-        'lblStatus
+        'lblValor
         '
-        Me.lblStatus.AutoSize = True
-        Me.lblStatus.Location = New System.Drawing.Point(383, 20)
-        Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(68, 18)
-        Me.lblStatus.TabIndex = 15
-        Me.lblStatus.Text = "Status:"
-        '
-        'cbStatus
-        '
-        Me.cbStatus.Alterado = False
-        Me.cbStatus.CorFundo = System.Drawing.Color.White
-        Me.cbStatus.CorFundoSelecionado = System.Drawing.Color.WhiteSmoke
-        Me.cbStatus.CorTexto = System.Drawing.Color.Black
-        Me.cbStatus.CorTextoSelecionado = System.Drawing.SystemColors.MenuText
-        Me.cbStatus.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbStatus.FormattingEnabled = True
-        Me.cbStatus.Location = New System.Drawing.Point(386, 41)
-        Me.cbStatus.Name = "cbStatus"
-        Me.cbStatus.Size = New System.Drawing.Size(151, 25)
-        Me.cbStatus.SuperObrigatorio = True
-        Me.cbStatus.SuperTxtObrigatorio = "Selecione um Status "
-        Me.cbStatus.TabIndex = 14
-        '
-        'lblFormaPagamento
-        '
-        Me.lblFormaPagamento.AutoSize = True
-        Me.lblFormaPagamento.Location = New System.Drawing.Point(3, 84)
-        Me.lblFormaPagamento.Name = "lblFormaPagamento"
-        Me.lblFormaPagamento.Size = New System.Drawing.Size(189, 18)
-        Me.lblFormaPagamento.TabIndex = 13
-        Me.lblFormaPagamento.Text = "Forma de Pagamento:"
-        '
-        'cbPagamento
-        '
-        Me.cbPagamento.Alterado = False
-        Me.cbPagamento.CorFundo = System.Drawing.Color.White
-        Me.cbPagamento.CorFundoSelecionado = System.Drawing.Color.WhiteSmoke
-        Me.cbPagamento.CorTexto = System.Drawing.Color.Black
-        Me.cbPagamento.CorTextoSelecionado = System.Drawing.SystemColors.MenuText
-        Me.cbPagamento.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbPagamento.FormattingEnabled = True
-        Me.cbPagamento.Location = New System.Drawing.Point(6, 108)
-        Me.cbPagamento.Name = "cbPagamento"
-        Me.cbPagamento.Size = New System.Drawing.Size(218, 25)
-        Me.cbPagamento.SuperObrigatorio = True
-        Me.cbPagamento.SuperTxtObrigatorio = "Selecione a Forma de Pagamento"
-        Me.cbPagamento.TabIndex = 12
-        '
-        'txtDescricao
-        '
-        Me.txtDescricao.Alterado = False
-        Me.txtDescricao.BackColor = System.Drawing.Color.White
-        Me.txtDescricao.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
-        Me.txtDescricao.Location = New System.Drawing.Point(6, 97)
-        Me.txtDescricao.Name = "txtDescricao"
-        Me.txtDescricao.Size = New System.Drawing.Size(303, 27)
-        Me.txtDescricao.SuperMascara = "0.00"
-        Me.txtDescricao.SuperObrigatorio = False
-        Me.txtDescricao.SuperTravaErrors = False
-        Me.txtDescricao.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
-        Me.txtDescricao.SuperTxtObrigatorio = ""
-        Me.txtDescricao.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NENHUMA
-        Me.txtDescricao.TabIndex = 10
-        '
-        'lblDescricao
-        '
-        Me.lblDescricao.AutoSize = True
-        Me.lblDescricao.Location = New System.Drawing.Point(3, 75)
-        Me.lblDescricao.Name = "lblDescricao"
-        Me.lblDescricao.Size = New System.Drawing.Size(93, 18)
-        Me.lblDescricao.TabIndex = 11
-        Me.lblDescricao.Text = "Descrição:"
-        '
-        'lblCategoria
-        '
-        Me.lblCategoria.AutoSize = True
-        Me.lblCategoria.Location = New System.Drawing.Point(316, 75)
-        Me.lblCategoria.Name = "lblCategoria"
-        Me.lblCategoria.Size = New System.Drawing.Size(94, 18)
-        Me.lblCategoria.TabIndex = 7
-        Me.lblCategoria.Text = "Categoria:"
-        '
-        'cbCategoria
-        '
-        Me.cbCategoria.Alterado = False
-        Me.cbCategoria.CorFundo = System.Drawing.Color.White
-        Me.cbCategoria.CorFundoSelecionado = System.Drawing.Color.WhiteSmoke
-        Me.cbCategoria.CorTexto = System.Drawing.Color.Black
-        Me.cbCategoria.CorTextoSelecionado = System.Drawing.SystemColors.MenuText
-        Me.cbCategoria.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbCategoria.FormattingEnabled = True
-        Me.cbCategoria.Location = New System.Drawing.Point(319, 97)
-        Me.cbCategoria.Name = "cbCategoria"
-        Me.cbCategoria.Size = New System.Drawing.Size(218, 25)
-        Me.cbCategoria.SuperObrigatorio = False
-        Me.cbCategoria.SuperTxtObrigatorio = ""
-        Me.cbCategoria.TabIndex = 6
-        '
-        'lblConta
-        '
-        Me.lblConta.AutoSize = True
-        Me.lblConta.Location = New System.Drawing.Point(3, 136)
-        Me.lblConta.Name = "lblConta"
-        Me.lblConta.Size = New System.Drawing.Size(139, 18)
-        Me.lblConta.TabIndex = 5
-        Me.lblConta.Text = "Conta Báncaria:"
-        '
-        'cbConta
-        '
-        Me.cbConta.Alterado = False
-        Me.cbConta.CorFundo = System.Drawing.Color.White
-        Me.cbConta.CorFundoSelecionado = System.Drawing.Color.WhiteSmoke
-        Me.cbConta.CorTexto = System.Drawing.Color.Black
-        Me.cbConta.CorTextoSelecionado = System.Drawing.SystemColors.MenuText
-        Me.cbConta.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbConta.FormattingEnabled = True
-        Me.cbConta.Location = New System.Drawing.Point(6, 157)
-        Me.cbConta.Name = "cbConta"
-        Me.cbConta.Size = New System.Drawing.Size(218, 25)
-        Me.cbConta.SuperObrigatorio = True
-        Me.cbConta.SuperTxtObrigatorio = "Conta Báncaria"
-        Me.cbConta.TabIndex = 4
-        '
-        'lblData
-        '
-        Me.lblData.AutoSize = True
-        Me.lblData.Location = New System.Drawing.Point(6, 19)
-        Me.lblData.Name = "lblData"
-        Me.lblData.Size = New System.Drawing.Size(54, 18)
-        Me.lblData.TabIndex = 3
-        Me.lblData.Text = "Data:"
-        '
-        'dtDespesa
-        '
-        Me.dtDespesa.Alterado = False
-        Me.dtDespesa.BackColor = System.Drawing.Color.White
-        Me.dtDespesa.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtDespesa.Location = New System.Drawing.Point(9, 41)
-        Me.dtDespesa.Name = "dtDespesa"
-        Me.dtDespesa.Size = New System.Drawing.Size(135, 27)
-        Me.dtDespesa.TabIndex = 2
+        Me.lblValor.AutoSize = True
+        Me.lblValor.Location = New System.Drawing.Point(6, 17)
+        Me.lblValor.Name = "lblValor"
+        Me.lblValor.Size = New System.Drawing.Size(102, 18)
+        Me.lblValor.TabIndex = 1
+        Me.lblValor.Text = "Valor Total:"
         '
         'txtValorTotal
         '
@@ -335,7 +420,7 @@ Partial Class frmNovaDespesa
         Me.txtValorTotal.BackColor = System.Drawing.Color.White
         Me.txtValorTotal.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
         Me.txtValorTotal.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtValorTotal.Location = New System.Drawing.Point(385, 47)
+        Me.txtValorTotal.Location = New System.Drawing.Point(8, 38)
         Me.txtValorTotal.Name = "txtValorTotal"
         Me.txtValorTotal.Size = New System.Drawing.Size(151, 27)
         Me.txtValorTotal.SuperMascara = "R$0.00"
@@ -346,14 +431,16 @@ Partial Class frmNovaDespesa
         Me.txtValorTotal.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosReais
         Me.txtValorTotal.TabIndex = 0
         '
-        'lblValor
+        'lblParcela
         '
-        Me.lblValor.AutoSize = True
-        Me.lblValor.Location = New System.Drawing.Point(382, 25)
-        Me.lblValor.Name = "lblValor"
-        Me.lblValor.Size = New System.Drawing.Size(102, 18)
-        Me.lblValor.TabIndex = 1
-        Me.lblValor.Text = "Valor Total:"
+        Me.lblParcela.AutoSize = True
+        Me.lblParcela.Location = New System.Drawing.Point(315, 17)
+        Me.lblParcela.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblParcela.Name = "lblParcela"
+        Me.lblParcela.Size = New System.Drawing.Size(74, 18)
+        Me.lblParcela.TabIndex = 19
+        Me.lblParcela.Text = "Parcela:"
+        Me.lblParcela.Visible = False
         '
         'btnFechar
         '
@@ -398,89 +485,6 @@ Partial Class frmNovaDespesa
         Me.btnDetalhe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnDetalhe.UseVisualStyleBackColor = True
         '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.cbDespesaFixa)
-        Me.GroupBox1.Controls.Add(Me.chkDespesaFixa)
-        Me.GroupBox1.Controls.Add(Me.cbPagamento)
-        Me.GroupBox1.Controls.Add(Me.cbConta)
-        Me.GroupBox1.Controls.Add(Me.lblConta)
-        Me.GroupBox1.Controls.Add(Me.lblValorParcela)
-        Me.GroupBox1.Controls.Add(Me.lblFormaPagamento)
-        Me.GroupBox1.Controls.Add(Me.txtValorParcela)
-        Me.GroupBox1.Controls.Add(Me.lblParcela)
-        Me.GroupBox1.Controls.Add(Me.chkParcela)
-        Me.GroupBox1.Controls.Add(Me.txtParcela)
-        Me.GroupBox1.Controls.Add(Me.cbParcelamento)
-        Me.GroupBox1.Controls.Add(Me.lblValor)
-        Me.GroupBox1.Controls.Add(Me.txtValorTotal)
-        Me.GroupBox1.Location = New System.Drawing.Point(28, 142)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(543, 192)
-        Me.GroupBox1.TabIndex = 24
-        Me.GroupBox1.TabStop = False
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.txtDescricao)
-        Me.GroupBox2.Controls.Add(Me.cbCategoria)
-        Me.GroupBox2.Controls.Add(Me.lblMesReferente)
-        Me.GroupBox2.Controls.Add(Me.lblCategoria)
-        Me.GroupBox2.Controls.Add(Me.txtMesReferente)
-        Me.GroupBox2.Controls.Add(Me.lblStatus)
-        Me.GroupBox2.Controls.Add(Me.lblDescricao)
-        Me.GroupBox2.Controls.Add(Me.cbStatus)
-        Me.GroupBox2.Controls.Add(Me.dtDespesa)
-        Me.GroupBox2.Controls.Add(Me.lblData)
-        Me.GroupBox2.Location = New System.Drawing.Point(27, 6)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(543, 130)
-        Me.GroupBox2.TabIndex = 25
-        Me.GroupBox2.TabStop = False
-        '
-        'chkDespesaFixa
-        '
-        Me.chkDespesaFixa.AutoSize = True
-        Me.chkDespesaFixa.Location = New System.Drawing.Point(153, 19)
-        Me.chkDespesaFixa.Name = "chkDespesaFixa"
-        Me.chkDespesaFixa.Size = New System.Drawing.Size(136, 22)
-        Me.chkDespesaFixa.TabIndex = 22
-        Me.chkDespesaFixa.Text = "Despesa Fixa"
-        Me.chkDespesaFixa.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.chkDespesaFixa.UseVisualStyleBackColor = True
-        '
-        'cbParcelamento
-        '
-        Me.cbParcelamento.Alterado = False
-        Me.cbParcelamento.CorFundo = System.Drawing.Color.White
-        Me.cbParcelamento.CorFundoSelecionado = System.Drawing.Color.WhiteSmoke
-        Me.cbParcelamento.CorTexto = System.Drawing.Color.Black
-        Me.cbParcelamento.CorTextoSelecionado = System.Drawing.SystemColors.MenuText
-        Me.cbParcelamento.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbParcelamento.FormattingEnabled = True
-        Me.cbParcelamento.Location = New System.Drawing.Point(6, 47)
-        Me.cbParcelamento.Name = "cbParcelamento"
-        Me.cbParcelamento.Size = New System.Drawing.Size(116, 25)
-        Me.cbParcelamento.SuperObrigatorio = False
-        Me.cbParcelamento.SuperTxtObrigatorio = ""
-        Me.cbParcelamento.TabIndex = 17
-        '
-        'cbDespesaFixa
-        '
-        Me.cbDespesaFixa.Alterado = False
-        Me.cbDespesaFixa.CorFundo = System.Drawing.Color.White
-        Me.cbDespesaFixa.CorFundoSelecionado = System.Drawing.Color.WhiteSmoke
-        Me.cbDespesaFixa.CorTexto = System.Drawing.Color.Black
-        Me.cbDespesaFixa.CorTextoSelecionado = System.Drawing.SystemColors.MenuText
-        Me.cbDespesaFixa.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbDespesaFixa.FormattingEnabled = True
-        Me.cbDespesaFixa.Location = New System.Drawing.Point(153, 47)
-        Me.cbDespesaFixa.Name = "cbDespesaFixa"
-        Me.cbDespesaFixa.Size = New System.Drawing.Size(138, 25)
-        Me.cbDespesaFixa.SuperObrigatorio = False
-        Me.cbDespesaFixa.SuperTxtObrigatorio = ""
-        Me.cbDespesaFixa.TabIndex = 23
-        '
         'frmNovaDespesa
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -497,10 +501,10 @@ Partial Class frmNovaDespesa
         Me.Text = "frmNovaDespesa"
         Me.tabDespesa.ResumeLayout(False)
         Me.tpAddDespesa.ResumeLayout(False)
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub

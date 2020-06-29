@@ -31,9 +31,7 @@
  *******************************************************************************/
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO.Packaging;
-using System.Xml;
 
 namespace OfficeOpenXml.Table.PivotTable
 {
@@ -44,12 +42,12 @@ namespace OfficeOpenXml.Table.PivotTable
     {
         List<ExcelPivotTable> _pivotTables = new List<ExcelPivotTable>();
         internal Dictionary<string, int> _pivotTableNames = new Dictionary<string, int>();
-        ExcelWorksheet _ws;        
+        ExcelWorksheet _ws;
         internal ExcelPivotTableCollection(ExcelWorksheet ws)
         {
             Package pck = ws._package.Package;
-            _ws = ws;            
-            foreach(var rel in ws.Part.GetRelationships())
+            _ws = ws;
+            foreach (var rel in ws.Part.GetRelationships())
             {
                 if (rel.RelationshipType == ExcelPackage.schemaRelationships + "/pivotTable")
                 {
@@ -86,7 +84,7 @@ namespace OfficeOpenXml.Table.PivotTable
             }
             if (Range.WorkSheet != _ws.Name)
             {
-                throw(new Exception("The Range must be in the current worksheet"));
+                throw (new Exception("The Range must be in the current worksheet"));
             }
             else if (_ws.Workbook.ExistsTableName(Name))
             {

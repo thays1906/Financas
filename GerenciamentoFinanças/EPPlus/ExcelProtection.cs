@@ -29,11 +29,8 @@
  * Jan Källman		    Added		10-AUG-2010
  * Jan Källman		    License changed GPL-->LGPL 2011-12-27
  *******************************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
 using OfficeOpenXml.Utils;
+using System.Xml;
 namespace OfficeOpenXml
 {
     /// <summary>
@@ -55,7 +52,7 @@ namespace OfficeOpenXml
         /// <param name="Password">The password. </param>
         public void SetPassword(string Password)
         {
-            if(string.IsNullOrEmpty(Password))
+            if (string.IsNullOrEmpty(Password))
             {
                 DeleteNode(workbookPasswordPath);
             }
@@ -76,7 +73,7 @@ namespace OfficeOpenXml
             }
             set
             {
-                SetXmlNodeBool(lockStructurePath, value,  false);
+                SetXmlNodeBool(lockStructurePath, value, false);
             }
         }
         const string lockWindowsPath = "d:workbookProtection/@lockWindows";

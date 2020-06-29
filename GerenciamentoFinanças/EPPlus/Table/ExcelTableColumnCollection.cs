@@ -31,7 +31,6 @@
  *******************************************************************************/
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Xml;
 
 namespace OfficeOpenXml.Table
@@ -46,8 +45,8 @@ namespace OfficeOpenXml.Table
         public ExcelTableColumnCollection(ExcelTable table)
         {
             Table = table;
-            foreach(XmlNode node in table.TableXml.SelectNodes("//d:table/d:tableColumns/d:tableColumn",table.NameSpaceManager))
-            {                
+            foreach (XmlNode node in table.TableXml.SelectNodes("//d:table/d:tableColumns/d:tableColumn", table.NameSpaceManager))
+            {
                 _cols.Add(new ExcelTableColumn(table.NameSpaceManager, node, table, _cols.Count));
                 _colNames.Add(_cols[_cols.Count - 1].Name, _cols.Count - 1);
             }

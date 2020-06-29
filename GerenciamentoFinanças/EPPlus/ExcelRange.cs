@@ -30,10 +30,6 @@
  * Jan Källman		    License changed GPL-->LGPL 2011-12-27
  *******************************************************************************/
 using System;
-using System.Collections.Generic;
-using System.Text;
-using OfficeOpenXml.Style;
-using System.Data;
 namespace OfficeOpenXml
 {
     /// <summary>
@@ -42,7 +38,7 @@ namespace OfficeOpenXml
     public class ExcelRange : ExcelRangeBase
     {
         #region "Constructors"
-        internal ExcelRange(ExcelWorksheet sheet) : 
+        internal ExcelRange(ExcelWorksheet sheet) :
             base(sheet)
         {
 

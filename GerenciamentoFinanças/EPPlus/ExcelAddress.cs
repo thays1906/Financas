@@ -31,7 +31,6 @@
  *******************************************************************************/
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace OfficeOpenXml
@@ -42,7 +41,7 @@ namespace OfficeOpenXml
     /// <remarks>Examples of addresses are "A1" "B1:C2" "A:A" "1:1" "A1:E2,G3:G5" </remarks>
     public class ExcelAddressBase : ExcelCellBase
     {
-        internal protected int _fromRow=-1, _toRow, _fromCol, _toCol;
+        internal protected int _fromRow = -1, _toRow, _fromCol, _toCol;
         internal protected string _wb;
         internal protected string _ws;
         internal protected string _address;
@@ -110,31 +109,31 @@ namespace OfficeOpenXml
         }
         protected internal string GetAddress(string wb, string ws, string address)
         {
-            var a="";
-            if(!string.IsNullOrEmpty(wb))
+            var a = "";
+            if (!string.IsNullOrEmpty(wb))
             {
-                a="["+wb+"]";
+                a = "[" + wb + "]";
             }
-            if(!string.IsNullOrEmpty(ws))
+            if (!string.IsNullOrEmpty(ws))
             {
-                if(ws!="#REF")
+                if (ws != "#REF")
                 {
-                    a+= ws + "!";
+                    a += ws + "!";
                 }
                 else
                 {
                     a += "'" + ws + "'!";
                 }
             }
-            a+=address;
+            a += address;
             return a;
         }
         protected internal void SetAddress(string address)
         {
-            if(address.StartsWith("'"))
+            if (address.StartsWith("'"))
             {
                 int pos = address.IndexOf("'", 1);
-                SetWbWs(address.Substring(1,pos-1).Replace("''","'"));
+                SetWbWs(address.Substring(1, pos - 1).Replace("''", "'"));
                 _address = address.Substring(pos + 2);
             }
             else if (address.StartsWith("[")) //Remove any external reference
@@ -145,7 +144,7 @@ namespace OfficeOpenXml
             {
                 _address = address;
             }
-            if(_address.IndexOfAny(new char[] {',','!'}) > -1)
+            if (_address.IndexOfAny(new char[] { ',', '!' }) > -1)
             {
                 //Advanced address. Including Sheet or multi
                 ExtractAddress(_address);
@@ -153,7 +152,7 @@ namespace OfficeOpenXml
             else
             {
                 //Simple address
-                GetRowColFromAddress(_address, out _fromRow, out _fromCol, out _toRow, out  _toCol);
+                GetRowColFromAddress(_address, out _fromRow, out _fromCol, out _toRow, out _toCol);
                 _addresses = null;
                 _start = null;
                 _end = null;
@@ -175,7 +174,7 @@ namespace OfficeOpenXml
             if (address[0] == '[')
             {
                 pos = address.LastIndexOf("]");
-                _wb = address.Substring(1, pos - 1);                
+                _wb = address.Substring(1, pos - 1);
                 _ws = address.Substring(pos + 1);
             }
             else
@@ -192,8 +191,8 @@ namespace OfficeOpenXml
         }
         internal void ChangeWorksheet(string wsName, string newWs)
         {
-            if(_ws == wsName) _ws = newWs;
-            string wb, ws, address, fullAddress;            
+            if (_ws == wsName) _ws = newWs;
+            string wb, ws, address, fullAddress;
             ExtractAddress(FirstAddress, out wb, out ws, out address);
             if (wsName == ws)
             {
@@ -204,9 +203,9 @@ namespace OfficeOpenXml
                 fullAddress = FirstAddress;
             }
 
-            if(Addresses!=null)
+            if (Addresses != null)
             {
-                foreach(var a in Addresses)
+                foreach (var a in Addresses)
                 {
                     ExtractAddress(a._address, out wb, out ws, out address);
                     if (wsName == ws)
@@ -262,7 +261,7 @@ namespace OfficeOpenXml
             {
                 return _address;
             }
-        }        
+        }
         /// <summary>
         /// If the address is a defined name
         /// </summary>
@@ -331,24 +330,24 @@ namespace OfficeOpenXml
 
         private void ExtractAddress(string fullAddress)
         {
-            string first="", second="";
-            bool isText=false, hasSheet=false;
+            string first = "", second = "";
+            bool isText = false, hasSheet = false;
             if (fullAddress == "#REF!")
             {
-                SetAddress(ref fullAddress, ref second, ref hasSheet );
+                SetAddress(ref fullAddress, ref second, ref hasSheet);
                 return;
             }
             foreach (char c in fullAddress)
             {
-                if(c=='\'')
+                if (c == '\'')
                 {
-                    isText=!isText;
+                    isText = !isText;
                 }
                 else
                 {
-                    if(c=='!' && !isText && !first.EndsWith("#REF") && !second.EndsWith("#REF"))
+                    if (c == '!' && !isText && !first.EndsWith("#REF") && !second.EndsWith("#REF"))
                     {
-                        hasSheet=true;
+                        hasSheet = true;
                     }
                     else if (c == ',' && !isText)
                     {
@@ -381,8 +380,8 @@ namespace OfficeOpenXml
             int ix = 0;
             if (fullAddress[0] == '[')
             {
-                ix=fullAddress.IndexOf(']',1);
-                if(ix>0)
+                ix = fullAddress.IndexOf(']', 1);
+                if (ix > 0)
                 {
                     wb = fullAddress.Substring(1, ix);
                 }
@@ -390,38 +389,38 @@ namespace OfficeOpenXml
             }
             else
             {
-                wb="";
+                wb = "";
             }
             if (fullAddress[ix] == '\'')
             {
-                var wsIx=fullAddress.LastIndexOf('\'');
-                if(wsIx==ix)
+                var wsIx = fullAddress.LastIndexOf('\'');
+                if (wsIx == ix)
                 {
-                    throw(new ArgumentException("Invalid address"));
+                    throw (new ArgumentException("Invalid address"));
                 }
-                ws=fullAddress.Substring(ix+1, wsIx-ix+1).Replace("'","''");
-                if(fullAddress[wsIx+1]=='!')
+                ws = fullAddress.Substring(ix + 1, wsIx - ix + 1).Replace("'", "''");
+                if (fullAddress[wsIx + 1] == '!')
                 {
-                    address=fullAddress.Substring(wsIx+1);
+                    address = fullAddress.Substring(wsIx + 1);
                 }
             }
             else
             {
-                var wsIx=fullAddress.LastIndexOf('!');
-                if(wsIx>0)
+                var wsIx = fullAddress.LastIndexOf('!');
+                if (wsIx > 0)
                 {
-                    ws=fullAddress.Substring(ix, wsIx-ix);
-                    address=fullAddress.Substring(wsIx+1);
+                    ws = fullAddress.Substring(ix, wsIx - ix);
+                    address = fullAddress.Substring(wsIx + 1);
                 }
                 else
                 {
-                    ws="";
-                    address=fullAddress;
+                    ws = "";
+                    address = fullAddress;
                 }
             }
-            if(address.IndexOf(";")>-1)
+            if (address.IndexOf(";") > -1)
             {
-                throw(new ArgumentException("Internal error: ExtractAddress can not handle address lists"));
+                throw (new ArgumentException("Internal error: ExtractAddress can not handle address lists"));
             }
         }
         #region Address manipulation methods
@@ -450,7 +449,7 @@ namespace OfficeOpenXml
             }
             else
                 return eAddressCollition.Partly;
-        }        
+        }
         internal ExcelAddressBase AddRow(int row, int rows)
         {
             if (row > _toRow)
@@ -471,8 +470,8 @@ namespace OfficeOpenXml
             if (row > _toRow) //After
             {
                 return this;
-            }            
-            else if (row+rows <= _fromRow) //Before
+            }
+            else if (row + rows <= _fromRow) //Before
             {
                 return new ExcelAddressBase(_fromRow - rows, _fromCol, _toRow - rows, _toCol);
             }
@@ -553,9 +552,9 @@ namespace OfficeOpenXml
             hasSheet = false;
             if (string.IsNullOrEmpty(_firstAddress))
             {
-                if(string.IsNullOrEmpty(_ws) || !string.IsNullOrEmpty(ws))_ws = ws;
+                if (string.IsNullOrEmpty(_ws) || !string.IsNullOrEmpty(ws)) _ws = ws;
                 _firstAddress = address;
-                GetRowColFromAddress(address, out _fromRow, out _fromCol, out _toRow, out  _toCol);
+                GetRowColFromAddress(address, out _fromRow, out _fromCol, out _toRow, out _toCol);
             }
             else
             {
@@ -574,17 +573,17 @@ namespace OfficeOpenXml
 
         internal static AddressType IsValid(string Address)
         {
-            string ws="";
+            string ws = "";
             if (Address.StartsWith("'"))
             {
                 int ix = Address.IndexOf('\'', 1);
                 if (ix > -1)
                 {
-                    ws = Address.Substring(1, ix-1);
+                    ws = Address.Substring(1, ix - 1);
                     Address = Address.Substring(ix + 2);
                 }
             }
-            if (Address.IndexOfAny(new char[] { '(', ')', '+', '-', '*', '/', '.', '=','^','&','%','\"' })>-1)
+            if (Address.IndexOfAny(new char[] { '(', ')', '+', '-', '*', '/', '.', '=', '^', '&', '%', '\"' }) > -1)
             {
                 return AddressType.Invalid;
             }
@@ -635,7 +634,7 @@ namespace OfficeOpenXml
             }
             else
             {
-                if(IsValidName(Address))
+                if (IsValidName(Address))
                 {
                     if (ws.StartsWith("[") && ws.IndexOf("]") > 1)
                     {
@@ -686,7 +685,7 @@ namespace OfficeOpenXml
             : base(address)
         {
         }
-        
+
         internal ExcelAddress(string ws, string address)
             : base(address)
         {
@@ -705,14 +704,14 @@ namespace OfficeOpenXml
         {
             get
             {
-                if (string.IsNullOrEmpty(_address) && _fromRow>0)
+                if (string.IsNullOrEmpty(_address) && _fromRow > 0)
                 {
                     _address = GetAddress(_fromRow, _fromCol, _toRow, _toCol);
                 }
                 return _address;
             }
             set
-            {                
+            {
                 SetAddress(value);
                 base.ChangeAddress();
             }

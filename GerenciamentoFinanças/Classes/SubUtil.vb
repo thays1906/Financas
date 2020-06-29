@@ -53,13 +53,13 @@ Public Module SubUtil
     End Enum
     Public Enum eDespesaFixa
         Diario = 1
-        Semanal = 2
-        Quinzenal = 3
-        Mensal = 4
-        Bimestral = 5
-        Trimestral = 6
-        Semestral = 7
-        Anual = 8
+        Semanal = 7
+        Quinzenal = 15
+        Mensal = 30
+        Bimestral = 60
+        Trimestral = 90
+        Semestral = 182
+        Anual = 365
     End Enum
     Public Enum eStatus
         Ativo = 1

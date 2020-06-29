@@ -29,22 +29,19 @@
  * Mats Alm   		                Added       		        2011-01-01
  * Jan Källman		                License changed GPL-->LGPL  2011-12-27
  *******************************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using OfficeOpenXml.Utils;
-using System.Xml;
-using System.Text.RegularExpressions;
-using OfficeOpenXml.DataValidation.Formulas.Contracts;
 using OfficeOpenXml.DataValidation.Contracts;
+using OfficeOpenXml.Utils;
+using System;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Xml;
 
 namespace OfficeOpenXml.DataValidation
 {
     /// <summary>
     /// Excel datavalidation
     /// </summary>
-    public abstract class ExcelDataValidation : XmlHelper, IExcelDataValidation  
+    public abstract class ExcelDataValidation : XmlHelper, IExcelDataValidation
     {
         private const string _itemElementNodeName = "d:dataValidation";
 
@@ -116,17 +113,17 @@ namespace OfficeOpenXml.DataValidation
         private void Init()
         {
             // set schema node order
-            SchemaNodeOrder = new string[]{ 
-                "type", 
-                "errorStyle", 
-                "operator", 
+            SchemaNodeOrder = new string[]{
+                "type",
+                "errorStyle",
+                "operator",
                 "allowBlank",
-                "showInputMessage", 
-                "showErrorMessage", 
-                "errorTitle", 
-                "error", 
-                "promptTitle", 
-                "prompt", 
+                "showInputMessage",
+                "showErrorMessage",
+                "errorTitle",
+                "error",
+                "promptTitle",
+                "prompt",
                 "sqref",
                 "formula1",
                 "formula2"
@@ -257,7 +254,7 @@ namespace OfficeOpenXml.DataValidation
             }
             set
             {
-                if(value == ExcelDataValidationWarningStyle.undefined)
+                if (value == ExcelDataValidationWarningStyle.undefined)
                 {
                     DeleteNode(_errorStylePath);
                 }

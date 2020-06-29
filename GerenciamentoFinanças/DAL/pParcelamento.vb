@@ -4,11 +4,13 @@ Public Class pParcelamento
     Public Shared OPERACAO As Campo = New Campo("OPERACAO", DbType.String, 4)
     Public Const PROCEDURE As String = "pParcelamento"
 
+    '-------------------------------------
+    'PROCEDURE DE PARAMEIZAÇÃO DE PARCELAS
+    '-------------------------------------
     Class pParcelamento
         Public Shared cParcelamento As Campo = New Campo("cParcelamento", DbType.Decimal, 10)
         Public Shared cQtdeParcela As Campo = New Campo("cQtdeParcela", DbType.Decimal, 2)
         Public Shared cStatus As Campo = New Campo("cStatus", DbType.Decimal, 1)
-
     End Class
 
     Shared Function Inserir(ByVal _cQtdeparcela As Decimal) As Boolean

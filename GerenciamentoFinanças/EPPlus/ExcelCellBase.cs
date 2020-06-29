@@ -30,10 +30,6 @@
  * Jan Källman		License changed GPL-->LGPL 2011-12-27
  *******************************************************************************/
 using System;
-using System.Collections.Generic;
-using System.Text;
-using OfficeOpenXml.Style;
-using System.Text.RegularExpressions;
 
 namespace OfficeOpenXml
 {
@@ -114,9 +110,9 @@ namespace OfficeOpenXml
             for (int pos = 0; pos < value.Length; pos++)
             {
                 char c = value[pos];
-                if (c == '"' || c=='\'')
+                if (c == '"' || c == '\'')
                 {
-                    if (isText == false && part != "" && prevTQ==c)
+                    if (isText == false && part != "" && prevTQ == c)
                     {
                         ret += addressTranslator(part, row, col, rowIncr, colIncr);
                         part = "";
@@ -391,14 +387,14 @@ namespace OfficeOpenXml
 
             if (CellAddress.IndexOf(':') < 0)
             {
-                ret=GetRowColFromAddress(CellAddress, out FromRow, out FromColumn);
+                ret = GetRowColFromAddress(CellAddress, out FromRow, out FromColumn);
                 ToColumn = FromColumn;
                 ToRow = FromRow;
             }
             else
             {
                 string[] cells = CellAddress.Split(':');
-                ret=GetRowColFromAddress(cells[0], out FromRow, out FromColumn);
+                ret = GetRowColFromAddress(cells[0], out FromRow, out FromColumn);
                 if (ret)
                     ret = GetRowColFromAddress(cells[1], out ToRow, out ToColumn);
                 else
@@ -497,7 +493,7 @@ namespace OfficeOpenXml
             {
                 col = 0;
                 int.TryParse(sRow, out row);
-                return row>0;
+                return row > 0;
             }
             // Get the row number
             if (sRow == "") //Blank, fullRow
@@ -526,7 +522,7 @@ namespace OfficeOpenXml
         /// <returns>The cell address in the format A1</returns>
         public static string GetAddress(int Row, int Column)
         {
-            return GetAddress(Row, Column,false);
+            return GetAddress(Row, Column, false);
         }
         /// <summary>
         /// Returns the AlphaNumeric representation that Excel expects for a Cell Address
@@ -538,7 +534,7 @@ namespace OfficeOpenXml
         /// <returns>The cell address in the format A1</returns>
         public static string GetAddress(int Row, bool AbsoluteRow, int Column, bool AbsoluteCol)
         {
-            return ( AbsoluteCol ? "$" : "") + GetColumnLetter(Column) + ( AbsoluteRow ? "$" : "") + Row.ToString();
+            return (AbsoluteCol ? "$" : "") + GetColumnLetter(Column) + (AbsoluteRow ? "$" : "") + Row.ToString();
         }
         /// <summary>
         /// Returns the AlphaNumeric representation that Excel expects for a Cell Address
@@ -596,7 +592,7 @@ namespace OfficeOpenXml
                     var absChar = Absolute ? "$" : "";
                     return absChar + GetColumnLetter(FromColumn) + ":" + absChar + GetColumnLetter(ToColumn);
                 }
-                else if(FromColumn==1 && ToColumn==ExcelPackage.MaxColumns)
+                else if (FromColumn == 1 && ToColumn == ExcelPackage.MaxColumns)
                 {
                     var absChar = Absolute ? "$" : "";
                     return absChar + FromRow.ToString() + ":" + absChar + ToRow.ToString();
@@ -619,34 +615,34 @@ namespace OfficeOpenXml
         }
         internal static string GetFullAddress(string worksheetName, string address, bool fullRowCol)
         {
-               if (address.IndexOf("!") == -1 || address=="#REF!")
-               {
-                   if (fullRowCol)
-                   {
-                       string[] cells = address.Split(':');
-                       if (cells.Length > 0)
-                       {
-                           address = string.Format("'{0}'!{1}", worksheetName, cells[0]);
-                           if (cells.Length > 1)
-                           {
-                               address += string.Format(":{0}", cells[1]);
-                           }
-                       }
-                   }
-                   else
-                   {
-                       var a = new ExcelAddressBase(address);
-                       if ((a._fromRow == 1 && a._toRow == ExcelPackage.MaxRows) || (a._fromCol == 1 && a._toCol == ExcelPackage.MaxColumns))
-                       {
-                           address = string.Format("'{0}'!{1}{2}:{3}{4}", worksheetName, ExcelAddress.GetColumnLetter(a._fromCol), a._fromRow, ExcelAddress.GetColumnLetter(a._toCol), a._toRow);
-                       }
-                       else
-                       {
-                           address=GetFullAddress(worksheetName, address, true);
-                       }
-                   }
-               }
-               return address;
+            if (address.IndexOf("!") == -1 || address == "#REF!")
+            {
+                if (fullRowCol)
+                {
+                    string[] cells = address.Split(':');
+                    if (cells.Length > 0)
+                    {
+                        address = string.Format("'{0}'!{1}", worksheetName, cells[0]);
+                        if (cells.Length > 1)
+                        {
+                            address += string.Format(":{0}", cells[1]);
+                        }
+                    }
+                }
+                else
+                {
+                    var a = new ExcelAddressBase(address);
+                    if ((a._fromRow == 1 && a._toRow == ExcelPackage.MaxRows) || (a._fromCol == 1 && a._toCol == ExcelPackage.MaxColumns))
+                    {
+                        address = string.Format("'{0}'!{1}{2}:{3}{4}", worksheetName, ExcelAddress.GetColumnLetter(a._fromCol), a._fromRow, ExcelAddress.GetColumnLetter(a._toCol), a._toRow);
+                    }
+                    else
+                    {
+                        address = GetFullAddress(worksheetName, address, true);
+                    }
+                }
+            }
+            return address;
         }
         #endregion
         #region IsValidCellAddress

@@ -30,10 +30,8 @@
  * Jan Källman		License changed GPL-->LGPL 2011-12-16
  *******************************************************************************/
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
 using System.Globalization;
+using System.Xml;
 namespace OfficeOpenXml.Style.XmlAccess
 {
     /// <summary>
@@ -53,9 +51,9 @@ namespace OfficeOpenXml.Style.XmlAccess
         internal ExcelColorXml(XmlNamespaceManager nsm, XmlNode topNode) :
             base(nsm, topNode)
         {
-            if(topNode==null)
+            if (topNode == null)
             {
-                _exists=false;
+                _exists = false;
             }
             else
             {
@@ -67,7 +65,7 @@ namespace OfficeOpenXml.Style.XmlAccess
                 _indexed = GetXmlNodeInt("@indexed");
             }
         }
-        
+
         internal override string Id
         {
             get
@@ -133,7 +131,7 @@ namespace OfficeOpenXml.Style.XmlAccess
             set
             {
                 _rgb = value;
-                _exists=true;
+                _exists = true;
                 _indexed = int.MinValue;
                 _auto = false;
             }
@@ -146,7 +144,7 @@ namespace OfficeOpenXml.Style.XmlAccess
         {
             get
             {
-              return _indexed;
+                return _indexed;
             }
             set
             {
@@ -175,13 +173,13 @@ namespace OfficeOpenXml.Style.XmlAccess
 
         internal ExcelColorXml Copy()
         {
-            return new ExcelColorXml(NameSpaceManager) {_indexed=Indexed, _tint=Tint, _rgb=Rgb, _theme=Theme, _auto=Auto, _exists=Exists };
+            return new ExcelColorXml(NameSpaceManager) { _indexed = Indexed, _tint = Tint, _rgb = Rgb, _theme = Theme, _auto = Auto, _exists = Exists };
         }
 
         internal override XmlNode CreateXmlNode(XmlNode topNode)
         {
             TopNode = topNode;
-            if(_rgb!="")
+            if (_rgb != "")
             {
                 SetXmlNodeString("@rgb", _rgb);
             }

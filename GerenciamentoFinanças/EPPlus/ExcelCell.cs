@@ -29,12 +29,8 @@
  * Jan Källman		Added		10-SEP-2009
  * Jan Källman		License changed GPL-->LGPL 2011-12-16
  *******************************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Globalization;
 using OfficeOpenXml.Style;
-using System.Text.RegularExpressions;
+using System;
 namespace OfficeOpenXml
 {
     internal class ExcelCell : ExcelCellBase, IExcelCell, IRangeID
@@ -42,43 +38,43 @@ namespace OfficeOpenXml
         [Flags]
         private enum flags
         {
-            isMerged=1,
-            isRichText=2,
+            isMerged = 1,
+            isRichText = 2,
 
         }
-		#region Cell Private Properties
-		private ExcelWorksheet _worksheet;
+        #region Cell Private Properties
+        private ExcelWorksheet _worksheet;
         private int _row;
         private int _col;
-		internal string _formula="";
+        internal string _formula = "";
         internal string _formulaR1C1 = "";
         private Uri _hyperlink = null;
         string _dataType = "";
         #endregion
-		#region ExcelCell Constructor
-		/// <summary>
-		/// A cell in the worksheet. 
-		/// </summary>
-		/// <param name="worksheet">A reference to the worksheet</param>
-		/// <param name="row">The row number</param>
-		/// <param name="col">The column number</param>
-		internal ExcelCell(ExcelWorksheet worksheet, int row, int col)
-		{
-			if (row < 1 || col < 1)
+        #region ExcelCell Constructor
+        /// <summary>
+        /// A cell in the worksheet. 
+        /// </summary>
+        /// <param name="worksheet">A reference to the worksheet</param>
+        /// <param name="row">The row number</param>
+        /// <param name="col">The column number</param>
+        internal ExcelCell(ExcelWorksheet worksheet, int row, int col)
+        {
+            if (row < 1 || col < 1)
                 throw new ArgumentException("Negative row and column numbers are not allowed");
             if (row > ExcelPackage.MaxRows || col > ExcelPackage.MaxColumns)
                 throw new ArgumentException("Row or column numbers are out of range");
             if (worksheet == null)
-				throw new ArgumentException("Worksheet must be set to a valid reference");
+                throw new ArgumentException("Worksheet must be set to a valid reference");
 
-			_row = row;
-			_col = col;
+            _row = row;
+            _col = col;
             _worksheet = worksheet;
             if (col < worksheet._minCol) worksheet._minCol = col;
             if (col > worksheet._maxCol) worksheet._maxCol = col;
             _sharedFormulaID = int.MinValue;
             IsRichText = false;
-		}
+        }
         internal ExcelCell(ExcelWorksheet worksheet, string cellAddress)
         {
             _worksheet = worksheet;
@@ -88,7 +84,7 @@ namespace OfficeOpenXml
             _sharedFormulaID = int.MinValue;
             IsRichText = false;
         }
-		#endregion 
+        #endregion
         internal ulong CellID
         {
             get
@@ -98,39 +94,39 @@ namespace OfficeOpenXml
         }
         #region ExcelCell Public Properties
 
-		/// <summary>
-		/// Row number
-		/// </summary>
+        /// <summary>
+        /// Row number
+        /// </summary>
         internal int Row { get { return _row; } set { _row = value; } }
-		/// <summary>
-		/// Column number
-		/// </summary>
+        /// <summary>
+        /// Column number
+        /// </summary>
         internal int Column { get { return _col; } set { _col = value; } }
-		/// <summary>
-		/// The address
-		/// </summary>
+        /// <summary>
+        /// The address
+        /// </summary>
         internal string CellAddress { get { return GetAddress(_row, _col); } }
-		/// <summary>
-		/// Returns true if the cell's contents are numeric.
-		/// </summary>
-        public bool IsNumeric { get { return (Value is decimal || Value.GetType().IsPrimitive ); } }
-		#region ExcelCell Value
+        /// <summary>
+        /// Returns true if the cell's contents are numeric.
+        /// </summary>
+        public bool IsNumeric { get { return (Value is decimal || Value.GetType().IsPrimitive); } }
+        #region ExcelCell Value
         internal object _value = null;
         /// <summary>
 		/// Gets/sets the value of the cell.
 		/// </summary>
         public object Value
-		{
-			get
-			{
+        {
+            get
+            {
                 return _value;
-			}
-			set
-			{
+            }
+            set
+            {
                 SetValueRichText(value);
                 if (IsRichText) IsRichText = false;
-			}
-		}
+            }
+        }
         internal void SetValueRichText(object value)
         {
             _value = value;
@@ -149,7 +145,7 @@ namespace OfficeOpenXml
         /// Merge Id
         /// </summary>
         internal int MergeId { get; set; }
-		#endregion  
+        #endregion
 
         #region ExcelCell DataType
         /// <summary>
@@ -169,14 +165,14 @@ namespace OfficeOpenXml
         }
         #endregion
 
-		#region ExcelCell Style
-        string _styleName=null;
+        #region ExcelCell Style
+        string _styleName = null;
         /// <summary>
 		/// Optional named style for the cell
 		/// </summary>
 		public string StyleName
-		{
-			get 
+        {
+            get
             {
                 if (_styleName == null)
                 {
@@ -195,31 +191,31 @@ namespace OfficeOpenXml
                 }
                 return _styleName;
             }
-			set 
+            set
             {
                 _styleID = _worksheet.Workbook.Styles.GetStyleIdFromName(value);
                 _styleName = value;
             }
-		}
+        }
 
-		int _styleID=0;
+        int _styleID = 0;
         /// <summary>
 		/// The style ID for the cell. Reference to the style collection
 		/// </summary>
 		public int StyleID
-		{
-			get
-			{
-				if(_styleID>0)
+        {
+            get
+            {
+                if (_styleID > 0)
                     return _styleID;
-                else if (_worksheet._rows != null && _worksheet._rows.ContainsKey(ExcelRow.GetRowID(_worksheet.SheetID, Row)) && _worksheet.Row(Row).StyleID>0)
+                else if (_worksheet._rows != null && _worksheet._rows.ContainsKey(ExcelRow.GetRowID(_worksheet.SheetID, Row)) && _worksheet.Row(Row).StyleID > 0)
                 {
                     return _worksheet.Row(Row).StyleID;
                 }
                 else
                 {
                     ExcelColumn col = GetColumn(Column);
-                    if(col==null)
+                    if (col == null)
                     {
                         return 0;
                     }
@@ -228,12 +224,12 @@ namespace OfficeOpenXml
                         return col.StyleID;
                     }
                 }
-			}
-			set 
+            }
+            set
             {
                 _styleID = value;
             }
-		}
+        }
 
         private ExcelColumn GetColumn(int col)
         {
@@ -263,21 +259,21 @@ namespace OfficeOpenXml
             _styleName = Name;
 
         }
-		#endregion
+        #endregion
 
-		#region ExcelCell Hyperlink
-		/// <summary>
-		/// The cells cell's Hyperlink
-		/// </summary>
-		public Uri Hyperlink
-		{
-			get
-			{				
+        #region ExcelCell Hyperlink
+        /// <summary>
+        /// The cells cell's Hyperlink
+        /// </summary>
+        public Uri Hyperlink
+        {
+            get
+            {
                 return (_hyperlink);
-			}
-			set
-			{
-				_hyperlink = value;
+            }
+            set
+            {
+                _hyperlink = value;
                 if ((Value == null || Value.ToString() == ""))
                 {
                     if (value is ExcelHyperLink)
@@ -289,23 +285,23 @@ namespace OfficeOpenXml
                         Value = _hyperlink.AbsoluteUri;
                     }
                 }
-			}
-		}
+            }
+        }
         internal string HyperLinkRId
         {
             get;
             set;
         }
-		#endregion
+        #endregion
 
-		#region ExcelCell Formula
-		/// <summary>
-		/// The cell's formula.
-		/// </summary>
-		public string Formula
-		{
-			get
-			{
+        #region ExcelCell Formula
+        /// <summary>
+        /// The cell's formula.
+        /// </summary>
+        public string Formula
+        {
+            get
+            {
                 if (SharedFormulaID < 0)
                 {
                     if (_formula == "")
@@ -328,26 +324,26 @@ namespace OfficeOpenXml
                         }
                         else
                         {
-                            return TranslateFromR1C1(TranslateToR1C1(f.Formula, f.StartRow, f.StartCol), Row, Column); 
+                            return TranslateFromR1C1(TranslateToR1C1(f.Formula, f.StartRow, f.StartCol), Row, Column);
                         }
-                        
+
                     }
                     else
                     {
-                        throw(new Exception("Shared formula reference (SI) is invalid"));
+                        throw (new Exception("Shared formula reference (SI) is invalid"));
                     }
                 }
-			}
-			set
-			{
-				_formula = value;
+            }
+            set
+            {
+                _formula = value;
                 _formulaR1C1 = "";
                 _sharedFormulaID = int.MinValue;
-                if (_formula!="" && !_worksheet._formulaCells.ContainsKey(CellID))
+                if (_formula != "" && !_worksheet._formulaCells.ContainsKey(CellID))
                 {
                     _worksheet._formulaCells.Add(this);
                 }
-			}
+            }
         }
         /// <summary>
         /// The cell's formula using R1C1 style.
@@ -371,7 +367,7 @@ namespace OfficeOpenXml
                 {
                     if (_worksheet._sharedFormulas.ContainsKey(SharedFormulaID))
                     {
-						var f = _worksheet._sharedFormulas[SharedFormulaID];
+                        var f = _worksheet._sharedFormulas[SharedFormulaID];
                         return TranslateToR1C1(f.Formula, f.StartRow, f.StartCol);
                     }
                     else
@@ -399,7 +395,8 @@ namespace OfficeOpenXml
         /// <summary>
         /// Id for the shared formula
         /// </summary>
-        internal int SharedFormulaID {
+        internal int SharedFormulaID
+        {
             get
             {
                 return _sharedFormulaID;
@@ -407,19 +404,19 @@ namespace OfficeOpenXml
             set
             {
                 _sharedFormulaID = value;
-                if(_worksheet._formulaCells.ContainsKey(CellID)) _worksheet._formulaCells.Delete(CellID);
+                if (_worksheet._formulaCells.ContainsKey(CellID)) _worksheet._formulaCells.Delete(CellID);
             }
         }
         public bool IsArrayFormula { get; internal set; }
-		#endregion 		
-		/// <summary>
-		/// Returns the cell's value as a string.
-		/// </summary>
-		/// <returns>The cell's value</returns>
-		public override string ToString()	{	return Value.ToString();	}
-		#endregion 
-		#region ExcelCell Private Methods
-		#endregion 
+        #endregion
+        /// <summary>
+        /// Returns the cell's value as a string.
+        /// </summary>
+        /// <returns>The cell's value</returns>
+        public override string ToString() { return Value.ToString(); }
+        #endregion
+        #region ExcelCell Private Methods
+        #endregion
         #region IRangeID Members
 
         ulong IRangeID.RangeID
@@ -443,7 +440,7 @@ namespace OfficeOpenXml
         internal ExcelCell Clone(ExcelWorksheet added, int row, int col)
         {
             ExcelCell newCell = new ExcelCell(added, row, col);
-            if(_hyperlink!=null) newCell.Hyperlink = Hyperlink;
+            if (_hyperlink != null) newCell.Hyperlink = Hyperlink;
             newCell._formula = _formula;
             newCell._formulaR1C1 = _formulaR1C1;
             newCell.IsRichText = IsRichText;

@@ -29,19 +29,18 @@
  * Jan Källman		    Initial Release		        2009-10-01
  * Jan Källman		    License changed GPL-->LGPL 2011-12-27
  *******************************************************************************/
-using System;
-using System.Xml;
-using System.Collections.Generic;
-using draw=System.Drawing;
-using OfficeOpenXml.Style;
-using OfficeOpenXml.Style.XmlAccess;
-using OfficeOpenXml.Style.Dxf;
 using OfficeOpenXml.ConditionalFormatting;
+using OfficeOpenXml.Style;
+using OfficeOpenXml.Style.Dxf;
+using OfficeOpenXml.Style.XmlAccess;
+using System;
+using System.Collections.Generic;
+using System.Xml;
 namespace OfficeOpenXml
 {
-	/// <summary>
-	/// Containts all shared cell styles for a workbook
-	/// </summary>
+    /// <summary>
+    /// Containts all shared cell styles for a workbook
+    /// </summary>
     public sealed class ExcelStyles : XmlHelper
     {
         const string NumberFormatsPath = "d:styleSheet/d:numFmts";
@@ -60,8 +59,8 @@ namespace OfficeOpenXml
         internal int _nextDfxNumFmtID = 164;
         internal ExcelStyles(XmlNamespaceManager NameSpaceManager, XmlDocument xml, ExcelWorkbook wb) :
             base(NameSpaceManager, xml)
-        {       
-            _styleXml=xml;
+        {
+            _styleXml = xml;
             _wb = wb;
             _nameSpaceManager = NameSpaceManager;
             SchemaNodeOrder = new string[] { "numFmts", "fonts", "fills", "borders", "cellStyleXfs", "cellXfs", "cellStyles", "dxfs" };
@@ -81,7 +80,7 @@ namespace OfficeOpenXml
                 {
                     ExcelNumberFormatXml nf = new ExcelNumberFormatXml(_nameSpaceManager, n);
                     NumberFormats.Add(nf.Id, nf);
-                    if (nf.NumFmtId >= NumberFormats.NextId) NumberFormats.NextId=nf.NumFmtId+1;
+                    if (nf.NumFmtId >= NumberFormats.NextId) NumberFormats.NextId = nf.NumFmtId + 1;
                 }
             }
 
@@ -158,7 +157,7 @@ namespace OfficeOpenXml
                 }
             }
         }
-        internal ExcelStyle GetStyleObject(int Id,int PositionID, string Address)
+        internal ExcelStyle GetStyleObject(int Id, int PositionID, string Address)
         {
             if (Id < 0) Id = 0;
             return new ExcelStyle(this, PropertyChange, PositionID, Address, Id);
@@ -201,7 +200,7 @@ namespace OfficeOpenXml
                 ulong colID = ExcelColumn.GetColumnID(ws.SheetID, address.Start.Column);
                 if (!ws._columns.ContainsKey(colID))
                 {
-                    column=ws.Column(address.Start.Column);
+                    column = ws.Column(address.Start.Column);
                 }
                 else
                 {
@@ -209,7 +208,7 @@ namespace OfficeOpenXml
                 }
 
                 var index = ws._columns.IndexOf(colID);
-                while(column.ColumnMin <= address.End.Column)
+                while (column.ColumnMin <= address.End.Column)
                 {
                     if (column.ColumnMax > address.End.Column)
                     {
@@ -256,7 +255,7 @@ namespace OfficeOpenXml
                         styleCashe.Add(newCol.StyleID, newId);
                         newCol.StyleID = newId;
                     }
-                    
+
                     //column._columnMax = address.End.Column;
                 }
 
@@ -282,7 +281,7 @@ namespace OfficeOpenXml
                 }
             }
             //Rows
-            else if(address.Start.Column==1 && address.End.Column==ExcelPackage.MaxColumns)
+            else if (address.Start.Column == 1 && address.End.Column == ExcelPackage.MaxColumns)
             {
                 for (int rowNum = address.Start.Row; rowNum <= address.End.Row; rowNum++)
                 {
@@ -316,9 +315,9 @@ namespace OfficeOpenXml
 
                 index = ~index;
                 while (index < ws._cells.Count)
-                {                        
+                {
                     var cell = ws._cells[index] as ExcelCell;
-                    if(cell.Row > address.End.Row)
+                    if (cell.Row > address.End.Row)
                     {
                         break;
                     }
@@ -355,7 +354,7 @@ namespace OfficeOpenXml
                             cell.StyleID = newId;
                         }
                     }
-                }            
+                }
             }
         }
         /// <summary>
@@ -371,7 +370,7 @@ namespace OfficeOpenXml
             if (index >= 0)
             {
                 int newId = CellStyleXfs[NamedStyles[index].StyleXfId].GetNewID(CellStyleXfs, sender, e.StyleClass, e.StyleProperty, e.Value);
-                int prevIx=NamedStyles[index].StyleXfId;
+                int prevIx = NamedStyles[index].StyleXfId;
                 NamedStyles[index].StyleXfId = newId;
                 NamedStyles[index].Style.Index = newId;
 
@@ -394,7 +393,7 @@ namespace OfficeOpenXml
         public ExcelStyleCollection<ExcelXfs> CellXfs = new ExcelStyleCollection<ExcelXfs>();
         public ExcelStyleCollection<ExcelNamedStyleXml> NamedStyles = new ExcelStyleCollection<ExcelNamedStyleXml>();
         public ExcelStyleCollection<ExcelDxfStyleConditionalFormatting> Dxfs = new ExcelStyleCollection<ExcelDxfStyleConditionalFormatting>();
-        
+
         internal string Id
         {
             get { return ""; }
@@ -417,17 +416,17 @@ namespace OfficeOpenXml
             ExcelStyles styles;
             if (Template == null)
             {
-//                style.Style = new ExcelStyle(this, NamedStylePropertyChange, -1, name, 0);
+                //                style.Style = new ExcelStyle(this, NamedStylePropertyChange, -1, name, 0);
                 xfIdCopy = 0;
                 positionID = -1;
                 styles = this;
             }
             else
             {
-                if (Template.PositionID < 0 && Template.Styles==this)
+                if (Template.PositionID < 0 && Template.Styles == this)
                 {
                     xfIdCopy = Template.Index;
-                    positionID=Template.PositionID;
+                    positionID = Template.PositionID;
                     styles = this;
                     //style.Style = new ExcelStyle(this, NamedStylePropertyChange, Template.PositionID, name, Template.Index);
                     //style.StyleXfId = Template.Index;
@@ -442,14 +441,14 @@ namespace OfficeOpenXml
             //Clone namedstyle
             int styleXfId = CloneStyle(styles, xfIdCopy, true);
             //Close cells style
-            CellStyleXfs[styleXfId].XfId = CellStyleXfs.Count-1;
+            CellStyleXfs[styleXfId].XfId = CellStyleXfs.Count - 1;
             int xfid = CloneStyle(styles, xfIdCopy, false, true); //Always add a new style (We create a new named style here)
             CellXfs[xfid].XfId = styleXfId;
             style.Style = new ExcelStyle(this, NamedStylePropertyChange, positionID, name, styleXfId);
             style.StyleXfId = styleXfId;
-            
+
             style.Name = name;
-            int ix =_wb.Styles.NamedStyles.Add(style.Name, style);
+            int ix = _wb.Styles.NamedStyles.Add(style.Name, style);
             style.Style.SetIndex(ix);
             //style.Style.XfId = ix;
             return style;
@@ -459,7 +458,7 @@ namespace OfficeOpenXml
             RemoveUnusedStyles();
 
             //NumberFormat
-            XmlNode nfNode=_styleXml.SelectSingleNode(NumberFormatsPath, _nameSpaceManager);
+            XmlNode nfNode = _styleXml.SelectSingleNode(NumberFormatsPath, _nameSpaceManager);
             if (nfNode == null)
             {
                 CreateNode(NumberFormatsPath, true);
@@ -467,12 +466,12 @@ namespace OfficeOpenXml
             }
             else
             {
-                nfNode.RemoveAll();                
+                nfNode.RemoveAll();
             }
 
             int count = 0;
             int normalIx = NamedStyles.FindIndexByID("Normal");
-            if (NamedStyles.Count > 0 && normalIx>=0 && NamedStyles[normalIx].Style.Numberformat.NumFmtID >= 164)
+            if (NamedStyles.Count > 0 && normalIx >= 0 && NamedStyles[normalIx].Style.Numberformat.NumFmtID >= 164)
             {
                 ExcelNumberFormatXml nf = NumberFormats[NumberFormats.FindIndexByID(NamedStyles[normalIx].Style.Numberformat.Id)];
                 nfNode.AppendChild(nf.CreateXmlNode(_styleXml.CreateElement("numFmt", ExcelPackage.schemaMain)));
@@ -480,7 +479,7 @@ namespace OfficeOpenXml
             }
             foreach (ExcelNumberFormatXml nf in NumberFormats)
             {
-                if(!nf.BuildIn /*&& nf.newID<0*/) //Buildin formats are not updated.
+                if (!nf.BuildIn /*&& nf.newID<0*/) //Buildin formats are not updated.
                 {
                     nfNode.AppendChild(nf.CreateXmlNode(_styleXml.CreateElement("numFmt", ExcelPackage.schemaMain)));
                     nf.newID = count;
@@ -490,7 +489,7 @@ namespace OfficeOpenXml
             (nfNode as XmlElement).SetAttribute("count", count.ToString());
 
             //Font
-            count=0;
+            count = 0;
             XmlNode fntNode = _styleXml.SelectSingleNode(FontsPath, _nameSpaceManager);
             fntNode.RemoveAll();
 
@@ -562,7 +561,7 @@ namespace OfficeOpenXml
             count = normalIx > -1 ? 1 : 0;  //If we have a normal style, we make sure it's added first.
 
             XmlNode cellStyleNode = _styleXml.SelectSingleNode(CellStylesPath, _nameSpaceManager);
-            if(cellStyleNode!=null)
+            if (cellStyleNode != null)
             {
                 cellStyleNode.RemoveAll();
             }
@@ -587,7 +586,7 @@ namespace OfficeOpenXml
                 }
                 cellStyleNode.AppendChild(style.CreateXmlNode(_styleXml.CreateElement("cellStyle", ExcelPackage.schemaMain)));
             }
-            if (cellStyleNode!=null) (cellStyleNode as XmlElement).SetAttribute("count", count.ToString());
+            if (cellStyleNode != null) (cellStyleNode as XmlElement).SetAttribute("count", count.ToString());
             if (styleXfsNode != null) (styleXfsNode as XmlElement).SetAttribute("count", count.ToString());
 
             //CellStyle
@@ -630,7 +629,7 @@ namespace OfficeOpenXml
             }
         }
 
-        private void AddNamedStyle(int id, XmlNode styleXfsNode,XmlNode cellXfsNode, ExcelNamedStyleXml style)
+        private void AddNamedStyle(int id, XmlNode styleXfsNode, XmlNode cellXfsNode, ExcelNamedStyleXml style)
         {
             var styleXfs = CellStyleXfs[style.StyleXfId];
             styleXfsNode.AppendChild(styleXfs.CreateXmlNode(_styleXml.CreateElement("xf", ExcelPackage.schemaMain), true));
@@ -666,13 +665,13 @@ namespace OfficeOpenXml
                 {
                     CellXfs[cell.GetCellStyleID()].useCnt++;
                 }
-                foreach(ExcelRow row in sheet._rows)
+                foreach (ExcelRow row in sheet._rows)
                 {
                     CellXfs[row.StyleID].useCnt++;
                 }
                 foreach (ExcelColumn col in sheet._columns)
                 {
-                    if(col.StyleID>=0) CellXfs[col.StyleID].useCnt++;
+                    if (col.StyleID >= 0) CellXfs[col.StyleID].useCnt++;
                 }
             }
             foreach (ExcelNamedStyleXml ns in NamedStyles)
@@ -695,7 +694,7 @@ namespace OfficeOpenXml
                 {
                     if (xf.FontId >= 0) Fonts[xf.FontId].useCnt++;
                     if (xf.FillId >= 0) Fills[xf.FillId].useCnt++;
-                    if (xf.BorderId >= 0) Borders[xf.BorderId].useCnt++;                    
+                    if (xf.BorderId >= 0) Borders[xf.BorderId].useCnt++;
                 }
             }
         }
@@ -707,7 +706,7 @@ namespace OfficeOpenXml
                 int id = NamedStyles[i].XfId;
                 if (id < 0)
                 {
-                    int styleXfId=NamedStyles[i].StyleXfId;
+                    int styleXfId = NamedStyles[i].StyleXfId;
                     ExcelXfs newStyle = CellStyleXfs[styleXfId].Copy();
                     newStyle.XfId = styleXfId;
                     id = CellXfs.FindIndexByID(newStyle.Id);
@@ -715,7 +714,7 @@ namespace OfficeOpenXml
                     {
                         id = CellXfs.Add(newStyle.Id, newStyle);
                     }
-                    NamedStyles[i].XfId=id;
+                    NamedStyles[i].XfId = id;
                 }
                 return id;
             }
@@ -725,7 +724,7 @@ namespace OfficeOpenXml
                 //throw(new Exception("Named style does not exist"));        	         
             }
         }
-   #region XmlHelpFunctions
+        #region XmlHelpFunctions
         private int GetXmlNodeInt(XmlNode node)
         {
             int i;
@@ -754,7 +753,7 @@ namespace OfficeOpenXml
             }
         }
 
-#endregion
+        #endregion
         internal int CloneStyle(ExcelStyles style, int styleID)
         {
             return CloneStyle(style, styleID, false, false);
@@ -774,39 +773,39 @@ namespace OfficeOpenXml
             {
                 xfs = style.CellXfs[styleID];
             }
-            ExcelXfs newXfs=xfs.Copy(this);
+            ExcelXfs newXfs = xfs.Copy(this);
             //Numberformat
             if (xfs.NumberFormatId > 0)
             {
-                string format="";
+                string format = "";
                 foreach (var fmt in style.NumberFormats)
                 {
                     if (fmt.NumFmtId == xfs.NumberFormatId)
                     {
-                        format=fmt.Format;
+                        format = fmt.Format;
                         break;
                     }
                 }
-                int ix=NumberFormats.FindIndexByID(format);
-                if (ix<0)
+                int ix = NumberFormats.FindIndexByID(format);
+                if (ix < 0)
                 {
                     ExcelNumberFormatXml item = new ExcelNumberFormatXml(NameSpaceManager) { Format = format, NumFmtId = NumberFormats.NextId++ };
                     NumberFormats.Add(format, item);
-                    ix=item.NumFmtId;
+                    ix = item.NumFmtId;
                 }
-                newXfs.NumberFormatId= ix;
+                newXfs.NumberFormatId = ix;
             }
 
             //Font
             if (xfs.FontId > -1)
             {
-                int ix=Fonts.FindIndexByID(xfs.Font.Id);
-                if (ix<0)
+                int ix = Fonts.FindIndexByID(xfs.Font.Id);
+                if (ix < 0)
                 {
                     ExcelFontXml item = style.Fonts[xfs.FontId].Copy();
-                    ix=Fonts.Add(xfs.Font.Id, item);
+                    ix = Fonts.Add(xfs.Font.Id, item);
                 }
-                newXfs.FontId=ix;
+                newXfs.FontId = ix;
             }
 
             //Border
@@ -840,12 +839,12 @@ namespace OfficeOpenXml
                 var newId = CellStyleXfs.FindIndexByID(id);
                 //if (newId < 0)
                 //{
-                    
+
                 //    newXfs.XfId = CloneStyle(style, xfs.XfId, true);
                 //}
                 //else
                 //{
-                    newXfs.XfId = newId;
+                newXfs.XfId = newId;
                 //}
             }
 

@@ -29,12 +29,10 @@
  * Jan Källman		Initial Release		        2009-10-01
  * Jan Källman		License changed GPL-->LGPL 2011-12-16
  *******************************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
-using System.IO.Packaging;
 using OfficeOpenXml.Table.PivotTable;
+using System;
+using System.IO.Packaging;
+using System.Xml;
 
 namespace OfficeOpenXml.Drawing.Chart
 {
@@ -81,7 +79,7 @@ namespace OfficeOpenXml.Drawing.Chart
         {
             if (name == "pieChart")
             {
-                if (Series.Count > 0 && ((ExcelPieChartSerie)Series[0]).Explosion>0)
+                if (Series.Count > 0 && ((ExcelPieChartSerie)Series[0]).Explosion > 0)
                 {
                     return eChartType.PieExploded;
                 }

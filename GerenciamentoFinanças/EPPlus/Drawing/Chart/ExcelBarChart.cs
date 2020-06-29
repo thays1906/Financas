@@ -29,11 +29,9 @@
  * Jan Källman		Added		2009-10-01
  * Jan Källman		License changed GPL-->LGPL 2011-12-16
  *******************************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
 using OfficeOpenXml.Table.PivotTable;
+using System;
+using System.Xml;
 
 namespace OfficeOpenXml.Drawing.Chart
 {
@@ -69,7 +67,7 @@ namespace OfficeOpenXml.Drawing.Chart
             SetChartNodeText(chartNode.Name);
         }
 
-        internal ExcelBarChart(ExcelChart topChart, XmlNode chartNode) : 
+        internal ExcelBarChart(ExcelChart topChart, XmlNode chartNode) :
             base(topChart, chartNode)
         {
             SetChartNodeText(chartNode.Name);
@@ -79,7 +77,7 @@ namespace OfficeOpenXml.Drawing.Chart
         //string _chartTopPath="c:chartSpace/c:chart/c:plotArea/{0}";
         private void SetChartNodeText(string chartNodeText)
         {
-            if(string.IsNullOrEmpty(chartNodeText))
+            if (string.IsNullOrEmpty(chartNodeText))
             {
                 chartNodeText = GetChartNodeText();
             }
@@ -335,7 +333,7 @@ namespace OfficeOpenXml.Drawing.Chart
             if (name == "bar3DChart")
             {
                 #region "Bar Shape"
-                if (this.Shape==eShape.Box)
+                if (this.Shape == eShape.Box)
                 {
                     if (this.Direction == eDirection.Bar)
                     {

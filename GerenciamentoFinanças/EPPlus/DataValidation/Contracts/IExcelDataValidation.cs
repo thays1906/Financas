@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace OfficeOpenXml.DataValidation.Contracts
+﻿namespace OfficeOpenXml.DataValidation.Contracts
 {
     /// <summary>
     /// Interface for data validation
@@ -21,7 +16,7 @@ namespace OfficeOpenXml.DataValidation.Contracts
         /// <summary>
         /// Controls how Excel will handle invalid values.
         /// </summary>
-        ExcelDataValidationWarningStyle ErrorStyle{ get; set; }
+        ExcelDataValidationWarningStyle ErrorStyle { get; set; }
         /// <summary>
         /// True if input message should be shown
         /// </summary>

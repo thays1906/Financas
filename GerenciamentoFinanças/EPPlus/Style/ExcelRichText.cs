@@ -30,11 +30,9 @@
  * Jan Källman		License changed GPL-->LGPL 2011-12-16
  *******************************************************************************/
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
 using System.Drawing;
 using System.Globalization;
+using System.Xml;
 
 namespace OfficeOpenXml.Style
 {
@@ -46,21 +44,21 @@ namespace OfficeOpenXml.Style
         internal ExcelRichText(XmlNamespaceManager ns, XmlNode topNode) :
             base(ns, topNode)
         {
-            SchemaNodeOrder=new string[] {"rPr", "t", "b", "i","strike", "u", "vertAlign" , "sz", "color", "rFont", "family", "scheme", "charset"};
+            SchemaNodeOrder = new string[] { "rPr", "t", "b", "i", "strike", "u", "vertAlign", "sz", "color", "rFont", "family", "scheme", "charset" };
             PreserveSpace = false;
         }
         internal delegate void CallbackDelegate();
         CallbackDelegate _callback;
         internal void SetCallback(CallbackDelegate callback)
         {
-            _callback=callback;
+            _callback = callback;
         }
-        const string TEXT_PATH="d:t";
+        const string TEXT_PATH = "d:t";
         /// <summary>
         /// The text
         /// </summary>
-        public string Text 
-        { 
+        public string Text
+        {
 
             get
             {
@@ -77,7 +75,7 @@ namespace OfficeOpenXml.Style
                 if (_callback != null) _callback();
             }
         }
-        bool _preserveSpace=false;
+        bool _preserveSpace = false;
         /// <summary>
         /// Preserves whitespace. Default true
         /// </summary>
@@ -88,7 +86,7 @@ namespace OfficeOpenXml.Style
                 XmlElement elem = TopNode.SelectSingleNode(TEXT_PATH, NameSpaceManager) as XmlElement;
                 if (elem != null)
                 {
-                    return elem.GetAttribute("xml:space")=="preserve";
+                    return elem.GetAttribute("xml:space") == "preserve";
                 }
                 return _preserveSpace;
             }
@@ -129,7 +127,7 @@ namespace OfficeOpenXml.Style
                 {
                     DeleteNode(BOLD_PATH);
                 }
-                if(_callback!=null) _callback();
+                if (_callback != null) _callback();
             }
         }
         const string ITALIC_PATH = "d:rPr/d:i";
@@ -211,8 +209,8 @@ namespace OfficeOpenXml.Style
         {
             get
             {
-                string v=GetXmlNodeString(VERT_ALIGN_PATH);
-                if(v=="")
+                string v = GetXmlNodeString(VERT_ALIGN_PATH);
+                if (v == "")
                 {
                     return ExcelVerticalAlignmentFont.None;
                 }
@@ -230,7 +228,7 @@ namespace OfficeOpenXml.Style
             }
             set
             {
-                SetXmlNodeString(VERT_ALIGN_PATH,((ExcelVerticalAlignmentFont)value) == ExcelVerticalAlignmentFont.None ? "" : value.ToString().ToLower());
+                SetXmlNodeString(VERT_ALIGN_PATH, ((ExcelVerticalAlignmentFont)value) == ExcelVerticalAlignmentFont.None ? "" : value.ToString().ToLower());
             }
         }
         const string SIZE_PATH = "d:rPr/d:sz/@val";

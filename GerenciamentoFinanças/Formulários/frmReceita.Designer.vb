@@ -71,7 +71,7 @@ Partial Class frmReceita
         Me.btnAddReceita.Font = New System.Drawing.Font("Verdana", 12.0!)
         Me.btnAddReceita.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconAddReceita1
         Me.btnAddReceita.Location = New System.Drawing.Point(231, 17)
-        Me.btnAddReceita.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnAddReceita.Margin = New System.Windows.Forms.Padding(2)
         Me.btnAddReceita.Name = "btnAddReceita"
         Me.btnAddReceita.Size = New System.Drawing.Size(203, 42)
         Me.btnAddReceita.TabIndex = 13
@@ -84,9 +84,9 @@ Partial Class frmReceita
         '
         Me.btnPesquisar.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnPesquisar.Font = New System.Drawing.Font("Verdana", 12.0!)
-        Me.btnPesquisar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.Icon_search
+        Me.btnPesquisar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconePesquisar
         Me.btnPesquisar.Location = New System.Drawing.Point(11, 17)
-        Me.btnPesquisar.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnPesquisar.Margin = New System.Windows.Forms.Padding(2)
         Me.btnPesquisar.Name = "btnPesquisar"
         Me.btnPesquisar.Size = New System.Drawing.Size(203, 42)
         Me.btnPesquisar.TabIndex = 8
@@ -101,7 +101,7 @@ Partial Class frmReceita
         Me.btnEditar.Font = New System.Drawing.Font("Verdana", 12.0!)
         Me.btnEditar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconEditar
         Me.btnEditar.Location = New System.Drawing.Point(449, 17)
-        Me.btnEditar.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnEditar.Margin = New System.Windows.Forms.Padding(2)
         Me.btnEditar.Name = "btnEditar"
         Me.btnEditar.Size = New System.Drawing.Size(203, 42)
         Me.btnEditar.TabIndex = 9
@@ -116,7 +116,7 @@ Partial Class frmReceita
         Me.btnExcluir.Font = New System.Drawing.Font("Verdana", 12.0!)
         Me.btnExcluir.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconExcluir
         Me.btnExcluir.Location = New System.Drawing.Point(668, 17)
-        Me.btnExcluir.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnExcluir.Margin = New System.Windows.Forms.Padding(2)
         Me.btnExcluir.Name = "btnExcluir"
         Me.btnExcluir.Size = New System.Drawing.Size(203, 42)
         Me.btnExcluir.TabIndex = 10
@@ -131,7 +131,7 @@ Partial Class frmReceita
         Me.btnFechar.Font = New System.Drawing.Font("Verdana", 12.0!)
         Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
         Me.btnFechar.Location = New System.Drawing.Point(1104, 17)
-        Me.btnFechar.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnFechar.Margin = New System.Windows.Forms.Padding(2)
         Me.btnFechar.Name = "btnFechar"
         Me.btnFechar.Size = New System.Drawing.Size(203, 42)
         Me.btnFechar.TabIndex = 12
@@ -146,7 +146,7 @@ Partial Class frmReceita
         Me.btnExporta.Font = New System.Drawing.Font("Verdana", 12.0!)
         Me.btnExporta.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconExcel
         Me.btnExporta.Location = New System.Drawing.Point(887, 17)
-        Me.btnExporta.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnExporta.Margin = New System.Windows.Forms.Padding(2)
         Me.btnExporta.Name = "btnExporta"
         Me.btnExporta.Size = New System.Drawing.Size(203, 42)
         Me.btnExporta.TabIndex = 11
@@ -183,7 +183,7 @@ Partial Class frmReceita
         Me.tpPesquisa.ImageIndex = 1
         Me.tpPesquisa.Location = New System.Drawing.Point(4, 53)
         Me.tpPesquisa.Name = "tpPesquisa"
-        Me.tpPesquisa.Padding = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.tpPesquisa.Padding = New System.Windows.Forms.Padding(5)
         Me.tpPesquisa.Size = New System.Drawing.Size(1346, 514)
         Me.tpPesquisa.TabIndex = 0
         Me.tpPesquisa.Text = "Receitas"

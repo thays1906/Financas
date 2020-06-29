@@ -30,48 +30,47 @@
  * Jan Källman		    License changed GPL-->LGPL 2011-12-27
  *******************************************************************************/
 
-using System;
-using System.Xml;
 using OfficeOpenXml.Style;
+using System.Xml;
 namespace OfficeOpenXml
 {
-	/// <summary>
-	/// Represents an individual row in the spreadsheet.
-	/// </summary>
-	public class ExcelRow : IRangeID
-	{
-		private ExcelWorksheet _worksheet;
-		private XmlElement _rowElement = null;
+    /// <summary>
+    /// Represents an individual row in the spreadsheet.
+    /// </summary>
+    public class ExcelRow : IRangeID
+    {
+        private ExcelWorksheet _worksheet;
+        private XmlElement _rowElement = null;
         /// <summary>
         /// Internal RowID.
         /// </summary>
-        public ulong RowID 
+        public ulong RowID
         {
             get
             {
                 return GetRowID(_worksheet.SheetID, Row);
             }
         }
-		#region ExcelRow Constructor
-		/// <summary>
-		/// Creates a new instance of the ExcelRow class. 
-		/// For internal use only!
-		/// </summary>
-		/// <param name="Worksheet">The parent worksheet</param>
-		/// <param name="row">The row number</param>
-		internal ExcelRow(ExcelWorksheet Worksheet, int row)
-		{
-			_worksheet = Worksheet;
+        #region ExcelRow Constructor
+        /// <summary>
+        /// Creates a new instance of the ExcelRow class. 
+        /// For internal use only!
+        /// </summary>
+        /// <param name="Worksheet">The parent worksheet</param>
+        /// <param name="row">The row number</param>
+        internal ExcelRow(ExcelWorksheet Worksheet, int row)
+        {
+            _worksheet = Worksheet;
             Row = row;
-		}
-		#endregion
+        }
+        #endregion
 
-		/// <summary>
-		/// Provides access to the node representing the row.
-		/// </summary>
-		internal XmlNode Node { get { return (_rowElement); } }
+        /// <summary>
+        /// Provides access to the node representing the row.
+        /// </summary>
+        internal XmlNode Node { get { return (_rowElement); } }
 
-		#region ExcelRow Hidden
+        #region ExcelRow Hidden
         bool _hidden = false;
         /// <summary>
 		/// Allows the row to be hidden in the worksheet
@@ -95,18 +94,18 @@ namespace OfficeOpenXml
                     _hidden = value;
                 }
             }
-        }        
-		#endregion
+        }
+        #endregion
 
-		#region ExcelRow Height
-        double _height=-1;  //Set to default height
+        #region ExcelRow Height
+        double _height = -1;  //Set to default height
         /// <summary>
 		/// Sets the height of the row
 		/// </summary>
 		public double Height
         {
-			get
-			{
+            get
+            {
                 if (_height == -1)
                 {
                     return _worksheet.DefaultRowHeight;
@@ -116,8 +115,8 @@ namespace OfficeOpenXml
                     return _height;
                 }
                 //}
-			}
-			set	
+            }
+            set
             {
                 if (_worksheet._package.DoAdjustDrawings)
                 {
@@ -141,7 +140,7 @@ namespace OfficeOpenXml
         /// Set to true if You don't want the row to Autosize
         /// </summary>
         public bool CustomHeight { get; set; }
-		#endregion
+        #endregion
 
         internal string _styleName = "";
         /// <summary>
@@ -158,22 +157,22 @@ namespace OfficeOpenXml
                 _styleId = _worksheet.Workbook.Styles.GetStyleIdFromName(value);
                 _styleName = value;
             }
-        }        
+        }
         internal int _styleId = 0;
-		/// <summary>
-		/// Sets the style for the entire row using the style ID.  
-		/// </summary>
+        /// <summary>
+        /// Sets the style for the entire row using the style ID.  
+        /// </summary>
         public int StyleID
-		{
-			get
-			{
-				return _styleId; 
-			}
-			set	
-			{
+        {
+            get
+            {
+                return _styleId;
+            }
+            set
+            {
                 _styleId = value;
-			}
-		}
+            }
+        }
 
         /// <summary>
         /// Rownumber
@@ -198,11 +197,11 @@ namespace OfficeOpenXml
         {
             get;
             set;
-        }        
+        }
         /// <summary>
         /// Show phonetic Information
         /// </summary>
-        public bool Phonetic 
+        public bool Phonetic
         {
             get;
             set;
@@ -215,7 +214,7 @@ namespace OfficeOpenXml
         {
             get
             {
-                return _worksheet.Workbook.Styles.GetStyleObject(StyleID,_worksheet.PositionID ,Row.ToString()+":"+Row.ToString());                
+                return _worksheet.Workbook.Styles.GetStyleObject(StyleID, _worksheet.PositionID, Row.ToString() + ":" + Row.ToString());
             }
         }
         /// <summary>
@@ -238,7 +237,7 @@ namespace OfficeOpenXml
         {
             get
             {
-                return RowID; 
+                return RowID;
             }
             set
             {

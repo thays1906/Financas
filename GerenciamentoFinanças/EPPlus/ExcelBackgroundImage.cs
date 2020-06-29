@@ -29,15 +29,12 @@
  * Jan Källman		Added		10-SEP-2009
  * Jan Källman		License changed GPL-->LGPL 2011-12-16
  *******************************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml;
-using System.Drawing;
-using System.IO.Packaging;
-using System.IO;
 using OfficeOpenXml.Drawing;
+using System;
+using System.Drawing;
+using System.IO;
+using System.IO.Packaging;
+using System.Xml;
 namespace OfficeOpenXml
 {
     /// <summary>
@@ -52,12 +49,12 @@ namespace OfficeOpenXml
         /// <param name="nsm"></param>
         /// <param name="topNode">The topnode of the worksheet</param>
         /// <param name="workSheet">Worksheet reference</param>
-        internal  ExcelBackgroundImage(XmlNamespaceManager nsm, XmlNode topNode, ExcelWorksheet workSheet) :
+        internal ExcelBackgroundImage(XmlNamespaceManager nsm, XmlNode topNode, ExcelWorksheet workSheet) :
             base(nsm, topNode)
         {
             _workSheet = workSheet;
         }
-        
+
         const string BACKGROUNDPIC_PATH = "d:picture/@r:id";
         /// <summary>
         /// The background image of the worksheet. 
@@ -120,7 +117,7 @@ namespace OfficeOpenXml
             var ii = _workSheet.Workbook._package.AddImage(fileBytes, imageURI, contentType);
 
 
-            if (_workSheet.Part.Package.PartExists(imageURI) && ii.RefCount==1) //The file exists with another content, overwrite it.
+            if (_workSheet.Part.Package.PartExists(imageURI) && ii.RefCount == 1) //The file exists with another content, overwrite it.
             {
                 //Remove the part if it exists
                 _workSheet.Part.Package.DeletePart(imageURI);
@@ -146,7 +143,7 @@ namespace OfficeOpenXml
 
                 //Delete the relation
                 _workSheet.Part.DeleteRelationship(relID);
-                
+
                 //Delete the image if there are no other references.
                 if (ii != null && ii.RefCount == 1)
                 {
@@ -155,7 +152,7 @@ namespace OfficeOpenXml
                         _workSheet.Part.Package.DeletePart(ii.Uri);
                     }
                 }
-                
+
             }
         }
     }

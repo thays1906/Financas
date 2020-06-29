@@ -29,11 +29,6 @@
  * Jan Källman		                Initial Release		        2009-10-01
  * Jan Källman		License changed GPL-->LGPL 2011-12-16
  *******************************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Globalization;
 
 namespace OfficeOpenXml.Style
 {
@@ -50,7 +45,7 @@ namespace OfficeOpenXml.Style
         /// <summary>
         /// The numeric index fror the format
         /// </summary>
-        public int NumFmtID 
+        public int NumFmtID
         {
             get
             {
@@ -68,9 +63,9 @@ namespace OfficeOpenXml.Style
         {
             get
             {
-                for(int i=0;i<_styles.NumberFormats.Count;i++)
+                for (int i = 0; i < _styles.NumberFormats.Count; i++)
                 {
-                    if(Index==_styles.NumberFormats[i].NumFmtId)
+                    if (Index == _styles.NumberFormats[i].NumFmtId)
                     {
                         return _styles.NumberFormats[i].Format;
                     }
@@ -85,7 +80,7 @@ namespace OfficeOpenXml.Style
 
         internal override string Id
         {
-            get 
+            get
             {
                 return Format;
             }

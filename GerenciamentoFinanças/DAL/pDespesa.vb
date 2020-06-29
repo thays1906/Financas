@@ -19,7 +19,9 @@ Public Class pDespesa
         Public Shared cValorParcela As Campo = New Campo("cValorParcela", DbType.Decimal, 18, 2)
         Public Shared dtMes As Campo = New Campo("dtMes", DbType.Decimal, 2, 0)
         Public Shared dtYear As Campo = New Campo("dtYear", DbType.Decimal, 4, 0)
+        Public Shared cDespesaFixa As Campo = New Campo("cDespesaFixa", DbType.Decimal, 10, 0)
         Public Shared rLog As Campo = New Campo("rLog", DbType.String, -1)
+
     End Class
 
     Shared Function InserirDespesa(ByVal _rDescricao As String,
@@ -31,6 +33,7 @@ Public Class pDespesa
                                    ByVal _cStatus As eStatusDespesa,
                                    ByVal _cControleParcelamento As Decimal,
                                    ByVal _cNumeroParcela As Decimal,
+                                   ByVal _cDespesaFixa As Decimal,
                                    ByVal _rLog As String) As Boolean
         Dim bDados As BancoDados
         Try
@@ -49,6 +52,7 @@ Public Class pDespesa
             bDados.AdicionaParametro(pDespesa.cStatus, _cStatus)
             bDados.AdicionaParametro(pDespesa.cControleParcelamento, _cControleParcelamento)
             bDados.AdicionaParametro(pDespesa.cNumeroParcela, _cNumeroParcela)
+            bDados.AdicionaParametro(pDespesa.cDespesaFixa, _cDespesaFixa)
             bDados.AdicionaParametro(pDespesa.rLog, _rLog)
 
             If bDados.Executar(PROCEDURE) = True Then

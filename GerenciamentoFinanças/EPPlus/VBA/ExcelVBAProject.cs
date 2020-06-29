@@ -18,16 +18,13 @@
  *******************************************************************************
  * Jan Källman		Added		26-MAR-2012
  *******************************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO.Packaging;
-using System.IO;
 using OfficeOpenXml.Utils;
-using System.Security.Cryptography.Pkcs;
-using System.Security.Cryptography.X509Certificates;
+using System;
+using System.IO;
+using System.IO.Packaging;
+using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace OfficeOpenXml.VBA
@@ -63,7 +60,7 @@ namespace OfficeOpenXml.VBA
             {
                 Uri = PackUriHelper.ResolvePartUri(rel.SourceUri, rel.TargetUri);
                 Part = _pck.GetPart(Uri);
-                GetProject();                
+                GetProject();
             }
             else
             {
@@ -131,12 +128,12 @@ namespace OfficeOpenXml.VBA
             {
                 if (_signature == null)
                 {
-                    _signature=new ExcelVbaSignature(Part);
+                    _signature = new ExcelVbaSignature(Part);
                 }
                 return _signature;
             }
         }
-        ExcelVbaProtection _protection=null;
+        ExcelVbaProtection _protection = null;
         /// <summary>
         /// VBA protection 
         /// </summary>
@@ -174,34 +171,34 @@ namespace OfficeOpenXml.VBA
                 var stream = Document.Storage.SubStorage["VBA"].DataStreams[modul.streamName];
                 var byCode = CompoundDocument.DecompressPart(stream, (int)modul.ModuleOffset);
                 string code = Encoding.GetEncoding(CodePage).GetString(byCode);
-                int pos=0;
-                while(pos+9<code.Length && code.Substring(pos,9)=="Attribute")
+                int pos = 0;
+                while (pos + 9 < code.Length && code.Substring(pos, 9) == "Attribute")
                 {
-                    int linePos=code.IndexOf("\r\n",pos);
+                    int linePos = code.IndexOf("\r\n", pos);
                     string[] lineSplit;
-                    if(linePos>0)
+                    if (linePos > 0)
                     {
                         lineSplit = code.Substring(pos + 9, linePos - pos - 9).Split('=');
                     }
                     else
                     {
-                        lineSplit=code.Substring(pos+9).Split(new char[]{'='},1);
+                        lineSplit = code.Substring(pos + 9).Split(new char[] { '=' }, 1);
                     }
                     if (lineSplit.Length > 1)
                     {
                         lineSplit[1] = lineSplit[1].Trim();
-                        var attr = 
+                        var attr =
                             new ExcelVbaModuleAttribute()
-                        {
-                            Name = lineSplit[0].Trim(),
-                            DataType = lineSplit[1].StartsWith("\"") ? eAttributeDataType.String : eAttributeDataType.NonString,
-                            Value = lineSplit[1].StartsWith("\"") ? lineSplit[1].Substring(1, lineSplit[1].Length - 2) : lineSplit[1]
-                        };
+                            {
+                                Name = lineSplit[0].Trim(),
+                                DataType = lineSplit[1].StartsWith("\"") ? eAttributeDataType.String : eAttributeDataType.NonString,
+                                Value = lineSplit[1].StartsWith("\"") ? lineSplit[1].Substring(1, lineSplit[1].Length - 2) : lineSplit[1]
+                            };
                         modul.Attributes._list.Add(attr);
                     }
                     pos = linePos + 2;
                 }
-                modul.Code=code.Substring(pos);
+                modul.Code = code.Substring(pos);
             }
         }
 
@@ -596,7 +593,7 @@ namespace OfficeOpenXml.VBA
                     Part = _pck.CreatePart(Uri, ExcelPackage.schemaVBA);
                     var rel = _wb.Part.CreateRelationship(Uri, TargetMode.Internal, schemaRelVba);
                 }
-                var vbaBuffer=doc.Save();
+                var vbaBuffer = doc.Save();
                 var st = Part.GetStream(FileMode.Create);
                 st.Write(vbaBuffer, 0, vbaBuffer.Length);
                 st.Flush();
@@ -663,7 +660,7 @@ namespace OfficeOpenXml.VBA
             bw.Write((uint)Description.Length);                             //Size
             bw.Write(Encoding.GetEncoding(CodePage).GetBytes(Description)); //Project Name
             bw.Write((ushort)0x40);                                           //ID
-            bw.Write((uint)Description.Length*2);                           //Size
+            bw.Write((uint)Description.Length * 2);                           //Size
             bw.Write(Encoding.Unicode.GetBytes(Description));               //Project Description
 
             //Helpfiles
@@ -695,7 +692,7 @@ namespace OfficeOpenXml.VBA
             bw.Write((uint)Constants.Length);              //Size
             bw.Write(Encoding.GetEncoding(CodePage).GetBytes(Constants));              //Help context id
             bw.Write((ushort)0x3C);                                           //ID
-            bw.Write((uint)Constants.Length/2);                              //Size
+            bw.Write((uint)Constants.Length / 2);                              //Size
             bw.Write(Encoding.Unicode.GetBytes(Constants));  //HelpFile2
 
             /****** PROJECTREFERENCES Record ******/
@@ -733,7 +730,7 @@ namespace OfficeOpenXml.VBA
                 WriteModuleRecord(bw, module);
             }
             bw.Write((ushort)0x10);             //Terminator
-            bw.Write((uint)0);              
+            bw.Write((uint)0);
 
             return CompoundDocument.CompressPart(((MemoryStream)bw.BaseStream).ToArray());
         }
@@ -745,7 +742,7 @@ namespace OfficeOpenXml.VBA
             bw.Write(Encoding.GetEncoding(CodePage).GetBytes(module.Name));     //Name
 
             bw.Write((ushort)0x47);
-            bw.Write((uint)module.Name.Length*2);
+            bw.Write((uint)module.Name.Length * 2);
             bw.Write(Encoding.Unicode.GetBytes(module.Name));                   //Name
 
             bw.Write((ushort)0x1A);
@@ -753,7 +750,7 @@ namespace OfficeOpenXml.VBA
             bw.Write(Encoding.GetEncoding(CodePage).GetBytes(module.Name));     //Stream Name  
 
             bw.Write((ushort)0x32);
-            bw.Write((uint)module.Name.Length*2);
+            bw.Write((uint)module.Name.Length * 2);
             bw.Write(Encoding.Unicode.GetBytes(module.Name));                   //Stream Name
 
             module.Description = module.Description ?? "";
@@ -762,7 +759,7 @@ namespace OfficeOpenXml.VBA
             bw.Write(Encoding.GetEncoding(CodePage).GetBytes(module.Description));     //Description
 
             bw.Write((ushort)0x48);
-            bw.Write((uint)module.Description.Length*2);
+            bw.Write((uint)module.Description.Length * 2);
             bw.Write(Encoding.Unicode.GetBytes(module.Description));                   //Description
 
             bw.Write((ushort)0x31);
@@ -793,7 +790,7 @@ namespace OfficeOpenXml.VBA
             }
 
             bw.Write((ushort)0x2B);             //Terminator
-            bw.Write((uint)0);              
+            bw.Write((uint)0);
         }
 
         private void WriteNameReference(BinaryWriter bw, ExcelVbaReference reference)
@@ -811,7 +808,7 @@ namespace OfficeOpenXml.VBA
             WriteOrginalReference(bw, reference);
 
             bw.Write((ushort)0x2F);
-            var controlRef=(ExcelVbaReferenceControl)reference;
+            var controlRef = (ExcelVbaReferenceControl)reference;
             bw.Write((uint)(4 + controlRef.LibIdTwiddled.Length + 4 + 2));    // Size of SizeOfLibidTwiddled, LibidTwiddled, Reserved1, and Reserved2.
             bw.Write((uint)controlRef.LibIdTwiddled.Length);                              //Size            
             bw.Write(Encoding.GetEncoding(CodePage).GetBytes(controlRef.LibIdTwiddled));  //LibID
@@ -838,7 +835,7 @@ namespace OfficeOpenXml.VBA
         {
             bw.Write((ushort)0x0E);
             var projRef = (ExcelVbaReferenceProject)reference;
-            bw.Write((uint)(4 + projRef.Libid.Length + 4 + projRef.LibIdRelative.Length+4+2));
+            bw.Write((uint)(4 + projRef.Libid.Length + 4 + projRef.LibIdRelative.Length + 4 + 2));
             bw.Write((uint)projRef.Libid.Length);
             bw.Write(Encoding.GetEncoding(CodePage).GetBytes(projRef.Libid));  //LibAbsolute
             bw.Write((uint)projRef.LibIdRelative.Length);
@@ -850,7 +847,7 @@ namespace OfficeOpenXml.VBA
         private void WriteRegisteredReference(BinaryWriter bw, ExcelVbaReference reference)
         {
             bw.Write((ushort)0x0D);
-            bw.Write((uint)(4+reference.Libid.Length+4+2));
+            bw.Write((uint)(4 + reference.Libid.Length + 4 + 2));
             bw.Write((uint)reference.Libid.Length);
             bw.Write(Encoding.GetEncoding(CodePage).GetBytes(reference.Libid));  //LibID            
             bw.Write((uint)0);      //Reserved1
@@ -870,12 +867,12 @@ namespace OfficeOpenXml.VBA
             }
             bw.Write((ushort)0); //Null
             return CompoundDocument.CompressPart(((MemoryStream)bw.BaseStream).ToArray());
-        }       
+        }
         private byte[] CreateProjectStream()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("ID=\"{0}\"\r\n", ProjectID);
-            foreach(var module in Modules)
+            foreach (var module in Modules)
             {
                 if (module.Type == eModuleType.Document)
                 {
@@ -917,24 +914,24 @@ namespace OfficeOpenXml.VBA
             sb.Append("&H00000001={3832D640-CF90-11CF-8E43-00A0C911005A};VBE;&H00000000\r\n");
             sb.Append("\r\n");
             sb.Append("[Workspace]\r\n");
-            foreach(var module in Modules)
+            foreach (var module in Modules)
             {
-                sb.AppendFormat("{0}=0, 0, 0, 0, C \r\n",module.Name);              
+                sb.AppendFormat("{0}=0, 0, 0, 0, C \r\n", module.Name);
             }
             string s = sb.ToString();
             return Encoding.GetEncoding(CodePage).GetBytes(s);
         }
         private string WriteProtectionStat()
         {
-            int stat=(_protection.UserProtected ? 1:0) |  
-                     (_protection.HostProtected ? 2:0) |
-                     (_protection.VbeProtected ? 4:0);
+            int stat = (_protection.UserProtected ? 1 : 0) |
+                     (_protection.HostProtected ? 2 : 0) |
+                     (_protection.VbeProtected ? 4 : 0);
 
-            return Encrypt(BitConverter.GetBytes(stat));    
+            return Encrypt(BitConverter.GetBytes(stat));
         }
         private string WritePassword()
         {
-            byte[] nullBits=new byte[3];
+            byte[] nullBits = new byte[3];
             byte[] nullKey = new byte[4];
             byte[] nullHash = new byte[20];
             if (Protection.PasswordKey == null)
@@ -986,7 +983,7 @@ namespace OfficeOpenXml.VBA
         }
         private string WriteVisibilityState()
         {
-            return Encrypt(new byte[] { (byte)(Protection.VisibilityState ? 0xFF : 0) }); 
+            return Encrypt(new byte[] { (byte)(Protection.VisibilityState ? 0xFF : 0) });
         }
         #endregion
         private string GetString(BinaryReader br, uint size)
@@ -1022,7 +1019,7 @@ namespace OfficeOpenXml.VBA
         /// </summary>
         internal void Create()
         {
-            if(Lcid>0)
+            if (Lcid > 0)
             {
                 throw (new InvalidOperationException("Package already contains a VBAProject"));
             }
@@ -1035,7 +1032,7 @@ namespace OfficeOpenXml.VBA
             MajorVersion = 1361024421;
             MinorVersion = 6;
             HelpContextID = 0;
-            Modules.Add(new ExcelVBAModule(_wb.CodeNameChange) { Name = "ThisWorkbook", Code = "", Attributes=GetDocumentAttributes("ThisWorkbook", "0{00020819-0000-0000-C000-000000000046}"), Type = eModuleType.Document, HelpContext = 0 });
+            Modules.Add(new ExcelVBAModule(_wb.CodeNameChange) { Name = "ThisWorkbook", Code = "", Attributes = GetDocumentAttributes("ThisWorkbook", "0{00020819-0000-0000-C000-000000000046}"), Type = eModuleType.Document, HelpContext = 0 });
             foreach (var sheet in _wb.Worksheets)
             {
                 if (!Modules.Exists(sheet.Name))

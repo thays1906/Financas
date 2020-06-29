@@ -31,7 +31,6 @@
  *******************************************************************************/
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Xml;
 namespace OfficeOpenXml
 {
@@ -53,7 +52,7 @@ namespace OfficeOpenXml
         public XmlNode TopNode { get; set; }
         internal List<T> _list = new List<T>();
         Dictionary<string, int> _dic = new Dictionary<string, int>();
-        internal int NextId=0;
+        internal int NextId = 0;
         #region IEnumerable<T> Members
 
         public IEnumerator<T> GetEnumerator()
@@ -94,7 +93,7 @@ namespace OfficeOpenXml
             _list.Add(item);
             if (!_dic.ContainsKey(key.ToLower())) _dic.Add(key.ToLower(), _list.Count - 1);
             if (_setNextIdManual) NextId++;
-            return _list.Count-1;
+            return _list.Count - 1;
         }
         /// <summary>
         /// Finds the key 

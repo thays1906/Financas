@@ -30,11 +30,8 @@
  * Jan Källman		License changed GPL-->LGPL 2011-12-16
  *******************************************************************************/
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
-using OfficeOpenXml.Drawing;
 using System.Drawing;
+using System.Xml;
 
 namespace OfficeOpenXml.Style
 {
@@ -45,7 +42,7 @@ namespace OfficeOpenXml.Style
     {
         Dash,
         DashHeavy,
-        DashLong, 
+        DashLong,
         DashLongHeavy,
         Double,
         DotDash,
@@ -109,7 +106,7 @@ namespace OfficeOpenXml.Style
 
         protected internal void CreateTopNode()
         {
-            if (_path!="" && TopNode == _rootNode)
+            if (_path != "" && TopNode == _rootNode)
             {
                 CreateNode(_path);
                 TopNode = _rootNode.SelectSingleNode(_path, NameSpaceManager);

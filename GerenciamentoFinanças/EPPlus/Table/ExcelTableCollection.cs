@@ -31,7 +31,6 @@
  *******************************************************************************/
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO.Packaging;
 using System.Xml;
 
@@ -44,14 +43,14 @@ namespace OfficeOpenXml.Table
     {
         List<ExcelTable> _tables = new List<ExcelTable>();
         internal Dictionary<string, int> _tableNames = new Dictionary<string, int>();
-        ExcelWorksheet _ws;        
+        ExcelWorksheet _ws;
         internal ExcelTableCollection(ExcelWorksheet ws)
         {
             Package pck = ws._package.Package;
             _ws = ws;
-            foreach(XmlElement node in ws.WorksheetXml.SelectNodes("//d:tableParts/d:tablePart", ws.NameSpaceManager))
+            foreach (XmlElement node in ws.WorksheetXml.SelectNodes("//d:tableParts/d:tablePart", ws.NameSpaceManager))
             {
-                var rel = ws.Part.GetRelationship(node.GetAttribute("id",ExcelPackage.schemaRelationships));
+                var rel = ws.Part.GetRelationship(node.GetAttribute("id", ExcelPackage.schemaRelationships));
                 var tbl = new ExcelTable(rel, ws);
                 if (tbl.Id + 1 > _ws.Workbook._nextTableID) _ws.Workbook._nextTableID = tbl.Id + 1;
                 _tableNames.Add(tbl.Name, _tables.Count);

@@ -25,8 +25,6 @@ Partial Class frmConsulta
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConsulta))
         Me.btnPesquisar = New System.Windows.Forms.Button()
-        Me.btnFechar = New System.Windows.Forms.Button()
-        Me.btnExportar = New System.Windows.Forms.Button()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.tbConsulta = New GFT.Util.SuperTabControl()
         Me.tpPesquisa = New System.Windows.Forms.TabPage()
@@ -43,6 +41,8 @@ Partial Class frmConsulta
         Me.dtInicialFiltro = New GFT.Util.SuperDatePicker()
         Me.lvConsulta = New GFT.Util.SuperLV()
         Me.gbBotoes = New System.Windows.Forms.GroupBox()
+        Me.btnFechar = New System.Windows.Forms.Button()
+        Me.btnExportar = New System.Windows.Forms.Button()
         Me.tbConsulta.SuspendLayout()
         Me.tpPesquisa.SuspendLayout()
         Me.gbFiltro.SuspendLayout()
@@ -55,47 +55,15 @@ Partial Class frmConsulta
         Me.btnPesquisar.BackColor = System.Drawing.Color.White
         Me.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnPesquisar.Font = New System.Drawing.Font("Verdana", 12.0!)
-        Me.btnPesquisar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.Icon_search
-        Me.btnPesquisar.Location = New System.Drawing.Point(138, 19)
+        Me.btnPesquisar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconePesquisar
+        Me.btnPesquisar.Location = New System.Drawing.Point(244, 20)
         Me.btnPesquisar.Name = "btnPesquisar"
-        Me.btnPesquisar.Size = New System.Drawing.Size(271, 52)
+        Me.btnPesquisar.Size = New System.Drawing.Size(203, 42)
         Me.btnPesquisar.TabIndex = 5
         Me.btnPesquisar.Text = " &Pesquisar"
         Me.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnPesquisar.UseVisualStyleBackColor = False
-        '
-        'btnFechar
-        '
-        Me.btnFechar.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnFechar.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnFechar.Font = New System.Drawing.Font("Verdana", 12.0!)
-        Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
-        Me.btnFechar.Location = New System.Drawing.Point(930, 19)
-        Me.btnFechar.Name = "btnFechar"
-        Me.btnFechar.Size = New System.Drawing.Size(271, 52)
-        Me.btnFechar.TabIndex = 7
-        Me.btnFechar.Text = " &Fechar"
-        Me.btnFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnFechar.UseVisualStyleBackColor = False
-        '
-        'btnExportar
-        '
-        Me.btnExportar.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnExportar.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.btnExportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnExportar.Font = New System.Drawing.Font("Verdana", 12.0!)
-        Me.btnExportar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconExcel
-        Me.btnExportar.Location = New System.Drawing.Point(519, 19)
-        Me.btnExportar.Name = "btnExportar"
-        Me.btnExportar.Size = New System.Drawing.Size(271, 52)
-        Me.btnExportar.TabIndex = 6
-        Me.btnExportar.Text = " &Exportar"
-        Me.btnExportar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnExportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnExportar.UseVisualStyleBackColor = False
         '
         'ImageList1
         '
@@ -155,7 +123,7 @@ Partial Class frmConsulta
         Me.lblConta.AutoSize = True
         Me.lblConta.Location = New System.Drawing.Point(877, 26)
         Me.lblConta.Name = "lblConta"
-        Me.lblConta.Size = New System.Drawing.Size(175, 25)
+        Me.lblConta.Size = New System.Drawing.Size(139, 18)
         Me.lblConta.TabIndex = 12
         Me.lblConta.Text = "Conta Báncaria:"
         '
@@ -169,7 +137,7 @@ Partial Class frmConsulta
         Me.cbConta.FormattingEnabled = True
         Me.cbConta.Location = New System.Drawing.Point(891, 54)
         Me.cbConta.Name = "cbConta"
-        Me.cbConta.Size = New System.Drawing.Size(290, 33)
+        Me.cbConta.Size = New System.Drawing.Size(290, 26)
         Me.cbConta.SuperObrigatorio = False
         Me.cbConta.SuperTxtObrigatorio = ""
         Me.cbConta.TabIndex = 11
@@ -180,7 +148,7 @@ Partial Class frmConsulta
         Me.Label4.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(599, 29)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(167, 22)
+        Me.Label4.Size = New System.Drawing.Size(129, 17)
         Me.Label4.TabIndex = 10
         Me.Label4.Text = "Receita/ Despesa:"
         '
@@ -195,7 +163,7 @@ Partial Class frmConsulta
         Me.cbTipoFiltro.FormattingEnabled = True
         Me.cbTipoFiltro.Location = New System.Drawing.Point(603, 59)
         Me.cbTipoFiltro.Name = "cbTipoFiltro"
-        Me.cbTipoFiltro.Size = New System.Drawing.Size(253, 30)
+        Me.cbTipoFiltro.Size = New System.Drawing.Size(253, 25)
         Me.cbTipoFiltro.SuperObrigatorio = False
         Me.cbTipoFiltro.SuperTxtObrigatorio = ""
         Me.cbTipoFiltro.TabIndex = 9
@@ -206,7 +174,7 @@ Partial Class frmConsulta
         Me.Label3.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(322, 29)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(68, 22)
+        Me.Label3.Size = New System.Drawing.Size(54, 17)
         Me.Label3.TabIndex = 8
         Me.Label3.Text = "Status:"
         '
@@ -221,7 +189,7 @@ Partial Class frmConsulta
         Me.cbStatusFiltro.FormattingEnabled = True
         Me.cbStatusFiltro.Location = New System.Drawing.Point(326, 59)
         Me.cbStatusFiltro.Name = "cbStatusFiltro"
-        Me.cbStatusFiltro.Size = New System.Drawing.Size(244, 30)
+        Me.cbStatusFiltro.Size = New System.Drawing.Size(244, 25)
         Me.cbStatusFiltro.SuperObrigatorio = False
         Me.cbStatusFiltro.SuperTxtObrigatorio = ""
         Me.cbStatusFiltro.TabIndex = 7
@@ -232,7 +200,7 @@ Partial Class frmConsulta
         Me.Label1.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(15, 29)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(40, 22)
+        Me.Label1.Size = New System.Drawing.Size(31, 17)
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "De:"
         '
@@ -244,7 +212,7 @@ Partial Class frmConsulta
         Me.dtFinalFiltro.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtFinalFiltro.Location = New System.Drawing.Point(173, 60)
         Me.dtFinalFiltro.Name = "dtFinalFiltro"
-        Me.dtFinalFiltro.Size = New System.Drawing.Size(138, 29)
+        Me.dtFinalFiltro.Size = New System.Drawing.Size(138, 25)
         Me.dtFinalFiltro.TabIndex = 4
         '
         'Label2
@@ -253,7 +221,7 @@ Partial Class frmConsulta
         Me.Label2.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(169, 29)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(44, 22)
+        Me.Label2.Size = New System.Drawing.Size(33, 17)
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "Até:"
         '
@@ -265,7 +233,7 @@ Partial Class frmConsulta
         Me.dtInicialFiltro.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtInicialFiltro.Location = New System.Drawing.Point(19, 60)
         Me.dtInicialFiltro.Name = "dtInicialFiltro"
-        Me.dtInicialFiltro.Size = New System.Drawing.Size(134, 29)
+        Me.dtInicialFiltro.Size = New System.Drawing.Size(134, 25)
         Me.dtInicialFiltro.TabIndex = 3
         '
         'lvConsulta
@@ -298,6 +266,38 @@ Partial Class frmConsulta
         Me.gbBotoes.Size = New System.Drawing.Size(1284, 90)
         Me.gbBotoes.TabIndex = 27
         Me.gbBotoes.TabStop = False
+        '
+        'btnFechar
+        '
+        Me.btnFechar.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnFechar.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnFechar.Font = New System.Drawing.Font("Verdana", 12.0!)
+        Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
+        Me.btnFechar.Location = New System.Drawing.Point(781, 20)
+        Me.btnFechar.Name = "btnFechar"
+        Me.btnFechar.Size = New System.Drawing.Size(203, 42)
+        Me.btnFechar.TabIndex = 7
+        Me.btnFechar.Text = " &Fechar"
+        Me.btnFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnFechar.UseVisualStyleBackColor = False
+        '
+        'btnExportar
+        '
+        Me.btnExportar.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnExportar.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.btnExportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnExportar.Font = New System.Drawing.Font("Verdana", 12.0!)
+        Me.btnExportar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconExcel
+        Me.btnExportar.Location = New System.Drawing.Point(519, 19)
+        Me.btnExportar.Name = "btnExportar"
+        Me.btnExportar.Size = New System.Drawing.Size(203, 42)
+        Me.btnExportar.TabIndex = 6
+        Me.btnExportar.Text = " &Exportar"
+        Me.btnExportar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnExportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnExportar.UseVisualStyleBackColor = False
         '
         'frmConsulta
         '

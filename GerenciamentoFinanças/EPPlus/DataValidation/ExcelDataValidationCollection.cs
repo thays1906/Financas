@@ -31,14 +31,12 @@
  *                                  by Ted Heatherington
  * Jan Källman		                License changed GPL-->LGPL  2011-12-27
  *******************************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Collections;
-using OfficeOpenXml.Utils;
-using System.Xml;
 using OfficeOpenXml.DataValidation.Contracts;
+using OfficeOpenXml.Utils;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Xml;
 
 namespace OfficeOpenXml.DataValidation
 {
@@ -137,7 +135,7 @@ namespace OfficeOpenXml.DataValidation
         private void ValidateAddress(string address, IExcelDataValidation validatingValidation)
         {
             Require.Argument(address).IsNotNullOrEmpty("address");
-            
+
             // ensure that the new address does not collide with an existing validation.
             var newAddress = new ExcelAddress(address);
             if (_validations.Count > 0)
@@ -183,7 +181,7 @@ namespace OfficeOpenXml.DataValidation
         public IExcelDataValidationInt AddIntegerValidation(string address)
         {
             ValidateAddress(address);
-            EnsureRootElementExists(); 
+            EnsureRootElementExists();
             var item = new ExcelDataValidationInt(_worksheet, address, ExcelDataValidationType.Whole);
             _validations.Add(item);
             OnValidationCountChanged();
@@ -252,7 +250,7 @@ namespace OfficeOpenXml.DataValidation
             return item;
         }
 
-        
+
         public IExcelDataValidationTime AddTimeValidation(string address)
         {
             ValidateAddress(address);

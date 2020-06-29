@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace OfficeOpenXml.DataValidation.Contracts
+﻿namespace OfficeOpenXml.DataValidation.Contracts
 {
     /// <summary>
     /// Represents a validation with an operator

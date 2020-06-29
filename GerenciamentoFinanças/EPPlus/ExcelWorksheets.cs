@@ -29,61 +29,58 @@
  * Jan Källman		    Initial Release		       2009-10-01
  * Jan Källman		    License changed GPL-->LGPL 2011-12-27
  *******************************************************************************/
+using OfficeOpenXml.Drawing;
+using OfficeOpenXml.Drawing.Chart;
+using OfficeOpenXml.Drawing.Vml;
+using OfficeOpenXml.VBA;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
-using System.Xml;
 using System.IO;
 using System.IO.Packaging;
-using OfficeOpenXml.Style;
-using OfficeOpenXml.Drawing;
-using OfficeOpenXml.Drawing.Chart;
-using OfficeOpenXml.Style.XmlAccess;
-using OfficeOpenXml.Drawing.Vml;
-using OfficeOpenXml.VBA;
+using System.Xml;
 namespace OfficeOpenXml
 {
-	/// <summary>
-	/// The collection of worksheets for the workbook
-	/// </summary>
-	public class ExcelWorksheets : XmlHelper, IEnumerable<ExcelWorksheet>, IDisposable
-	{
-		#region Private Properties
+    /// <summary>
+    /// The collection of worksheets for the workbook
+    /// </summary>
+    public class ExcelWorksheets : XmlHelper, IEnumerable<ExcelWorksheet>, IDisposable
+    {
+        #region Private Properties
         private ExcelPackage _pck;
         private Dictionary<int, ExcelWorksheet> _worksheets;
-		private XmlNamespaceManager _namespaceManager;
-		#endregion
-		#region ExcelWorksheets Constructor
-		internal ExcelWorksheets(ExcelPackage pck, XmlNamespaceManager nsm, XmlNode topNode) :
+        private XmlNamespaceManager _namespaceManager;
+        #endregion
+        #region ExcelWorksheets Constructor
+        internal ExcelWorksheets(ExcelPackage pck, XmlNamespaceManager nsm, XmlNode topNode) :
             base(nsm, topNode)
-		{
-			_pck = pck;
+        {
+            _pck = pck;
             _namespaceManager = nsm;
-			_worksheets = new Dictionary<int, ExcelWorksheet>();
-			int positionID = 1;
+            _worksheets = new Dictionary<int, ExcelWorksheet>();
+            int positionID = 1;
 
             foreach (XmlNode sheetNode in topNode.ChildNodes)
-			{
-				string name = sheetNode.Attributes["name"].Value;
-				//Get the relationship id
-				string relId = sheetNode.Attributes["r:id"].Value;
-				int sheetID = Convert.ToInt32(sheetNode.Attributes["sheetId"].Value);
-                
+            {
+                string name = sheetNode.Attributes["name"].Value;
+                //Get the relationship id
+                string relId = sheetNode.Attributes["r:id"].Value;
+                int sheetID = Convert.ToInt32(sheetNode.Attributes["sheetId"].Value);
+
                 //Hidden property
                 eWorkSheetHidden hidden = eWorkSheetHidden.Visible;
-				XmlNode attr = sheetNode.Attributes["state"];
-				if (attr != null)
-					hidden = TranslateHidden(attr.Value);
+                XmlNode attr = sheetNode.Attributes["state"];
+                if (attr != null)
+                    hidden = TranslateHidden(attr.Value);
 
-				PackageRelationship sheetRelation = pck.Workbook.Part.GetRelationship(relId);
-				Uri uriWorksheet = PackUriHelper.ResolvePartUri(pck.Workbook.WorkbookUri, sheetRelation.TargetUri);
-				
-				//add the worksheet
+                PackageRelationship sheetRelation = pck.Workbook.Part.GetRelationship(relId);
+                Uri uriWorksheet = PackUriHelper.ResolvePartUri(pck.Workbook.WorkbookUri, sheetRelation.TargetUri);
+
+                //add the worksheet
                 _worksheets.Add(positionID, new ExcelWorksheet(_namespaceManager, _pck, relId, uriWorksheet, name, sheetID, positionID, hidden));
-				positionID++;
-			}
-		}
+                positionID++;
+            }
+        }
 
         private eWorkSheetHidden TranslateHidden(string value)
         {
@@ -97,27 +94,27 @@ namespace OfficeOpenXml
                     return eWorkSheetHidden.Visible;
             }
         }
-		#endregion
+        #endregion
 
-		#region ExcelWorksheets Public Properties
-		/// <summary>
-		/// Returns the number of worksheets in the workbook
-		/// </summary>
-		public int Count
-		{
-			get { return (_worksheets.Count); }
-		}
-		#endregion
+        #region ExcelWorksheets Public Properties
+        /// <summary>
+        /// Returns the number of worksheets in the workbook
+        /// </summary>
+        public int Count
+        {
+            get { return (_worksheets.Count); }
+        }
+        #endregion
         private const string ERR_DUP_WORKSHEET = "A worksheet with this name already exists in the workbook";
         internal const string WORKSHEET_CONTENTTYPE = @"application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml";
-		#region ExcelWorksheets Public Methods
-		/// <summary>
+        #region ExcelWorksheets Public Methods
+        /// <summary>
         /// Foreach support
-		/// </summary>
-		/// <returns>An enumerator</returns>
-		public IEnumerator<ExcelWorksheet> GetEnumerator()
-		{
-			return (_worksheets.Values.GetEnumerator());
+        /// </summary>
+        /// <returns>An enumerator</returns>
+        public IEnumerator<ExcelWorksheet> GetEnumerator()
+        {
+            return (_worksheets.Values.GetEnumerator());
         }
         #region IEnumerable Members
 
@@ -129,13 +126,13 @@ namespace OfficeOpenXml
         #endregion
 
 
-		#region Add Worksheet
-		/// <summary>
-		/// Adds a new blank worksheet.
-		/// </summary>
-		/// <param name="Name">The name of the workbook</param>
-		public ExcelWorksheet Add(string Name)
-		{
+        #region Add Worksheet
+        /// <summary>
+        /// Adds a new blank worksheet.
+        /// </summary>
+        /// <param name="Name">The name of the workbook</param>
+        public ExcelWorksheet Add(string Name)
+        {
             int sheetID;
             Uri uriWorksheet;
             if (GetByName(Name) != null)
@@ -145,27 +142,27 @@ namespace OfficeOpenXml
             GetSheetURI(ref Name, out sheetID, out uriWorksheet);
             PackagePart worksheetPart = _pck.Package.CreatePart(uriWorksheet, WORKSHEET_CONTENTTYPE, _pck.Compression);
 
-			//Create the new, empty worksheet and save it to the package
-			StreamWriter streamWorksheet = new StreamWriter(worksheetPart.GetStream(FileMode.Create, FileAccess.Write));
-			XmlDocument worksheetXml = CreateNewWorksheet();
-			worksheetXml.Save(streamWorksheet);
-			streamWorksheet.Close();
-			_pck.Package.Flush();
+            //Create the new, empty worksheet and save it to the package
+            StreamWriter streamWorksheet = new StreamWriter(worksheetPart.GetStream(FileMode.Create, FileAccess.Write));
+            XmlDocument worksheetXml = CreateNewWorksheet();
+            worksheetXml.Save(streamWorksheet);
+            streamWorksheet.Close();
+            _pck.Package.Flush();
 
             string rel = CreateWorkbookRel(Name, sheetID, uriWorksheet);
 
             int positionID = _worksheets.Count + 1;
             ExcelWorksheet worksheet = new ExcelWorksheet(_namespaceManager, _pck, rel, uriWorksheet, Name, sheetID, positionID, eWorkSheetHidden.Visible);
 
-			_worksheets.Add(positionID, worksheet);
+            _worksheets.Add(positionID, worksheet);
             if (_pck.Workbook.VbaProject != null)
             {
                 _pck.Workbook.VbaProject.Modules.Add(new VBA.ExcelVBAModule(worksheet.CodeNameChange) { Name = Name, Code = "", Attributes = _pck.Workbook.VbaProject.GetDocumentAttributes(Name, "0{00020820-0000-0000-C000-000000000046}"), Type = eModuleType.Document, HelpContext = 0 });
                 worksheet.CodeModuleName = Name;
 
             }
-			return worksheet;
-		}
+            return worksheet;
+        }
         /// <summary>
         /// Adds a copy of a worksheet
         /// </summary>
@@ -216,7 +213,7 @@ namespace OfficeOpenXml
             {
                 CopyDrawing(Copy, added);
             }
-			if (Copy.Tables.Count > 0)
+            if (Copy.Tables.Count > 0)
             {
                 CopyTable(Copy, added);
             }
@@ -268,13 +265,13 @@ namespace OfficeOpenXml
                 }
                 else if (!string.IsNullOrEmpty(name.NameFormula))
                 {
-                    newName=added.Names.AddFormula(name.Name, name.Formula);
+                    newName = added.Names.AddFormula(name.Name, name.Formula);
                 }
                 else
                 {
-                    newName=added.Names.AddValue(name.Name, name.Value);
+                    newName = added.Names.AddValue(name.Name, name.Value);
                 }
-               newName.NameComment = name.NameComment;
+                newName.NameComment = name.NameComment;
             }
         }
 
@@ -284,7 +281,7 @@ namespace OfficeOpenXml
             //First copy the table XML
             foreach (var tbl in Copy.Tables)
             {
-                string xml=tbl.TableXml.OuterXml;
+                string xml = tbl.TableXml.OuterXml;
                 int Id = _pck.Workbook._nextTableID++;
                 string name;
                 if (prevName == "")
@@ -315,7 +312,7 @@ namespace OfficeOpenXml
                 streamTbl.Close();
 
                 //create the relationship and add the ID to the worksheet xml.
-                var rel = added.Part.CreateRelationship(PackUriHelper.GetRelativeUri(added.WorksheetUri,uriTbl), TargetMode.Internal, ExcelPackage.schemaRelationships + "/table");
+                var rel = added.Part.CreateRelationship(PackUriHelper.GetRelativeUri(added.WorksheetUri, uriTbl), TargetMode.Internal, ExcelPackage.schemaRelationships + "/table");
 
                 if (tbl.RelationshipID == null)
                 {
@@ -327,7 +324,7 @@ namespace OfficeOpenXml
                     }
                     XmlElement elem = added.WorksheetXml.CreateElement("tablePart", ExcelPackage.schemaMain);
                     topNode.AppendChild(elem);
-                    elem.SetAttribute("id",ExcelPackage.schemaRelationships, rel.Id);
+                    elem.SetAttribute("id", ExcelPackage.schemaRelationships, rel.Id);
                 }
                 else
                 {
@@ -352,14 +349,14 @@ namespace OfficeOpenXml
                 }
                 else
                 {
-                    int ix=int.Parse(prevName.Substring(10))+1;
+                    int ix = int.Parse(prevName.Substring(10)) + 1;
                     name = string.Format("PivotTable{0}", ix);
                     while (_pck.Workbook.ExistsPivotTableName(name))
                     {
                         name = string.Format("PivotTable{0}", ++ix);
                     }
                 }
-                prevName=name;
+                prevName = name;
                 XmlDocument xmlDoc = new XmlDocument();
                 Copy.Save();    //Save the worksheet first
                 xmlDoc.LoadXml(xml);
@@ -368,7 +365,7 @@ namespace OfficeOpenXml
                 xml = xmlDoc.OuterXml;
 
                 var uriTbl = new Uri(string.Format("/xl/pivotTables/pivotTable{0}.xml", Id), UriKind.Relative);
-                var part = _pck.Package.CreatePart(uriTbl, ExcelPackage.schemaPivotTable , _pck.Compression);
+                var part = _pck.Package.CreatePart(uriTbl, ExcelPackage.schemaPivotTable, _pck.Compression);
                 StreamWriter streamTbl = new StreamWriter(part.GetStream(FileMode.Create, FileAccess.Write));
                 streamTbl.Write(xml);
                 streamTbl.Close();
@@ -388,13 +385,13 @@ namespace OfficeOpenXml
             CopyText(Copy.HeaderFooter._evenFooter, added.HeaderFooter.EvenFooter);
             CopyText(Copy.HeaderFooter._firstHeader, added.HeaderFooter.FirstHeader);
             CopyText(Copy.HeaderFooter._firstFooter, added.HeaderFooter.FirstFooter);
-            
+
             //Copy any images;
             if (Copy.HeaderFooter.Pictures.Count > 0)
             {
                 Uri source = Copy.HeaderFooter.Pictures.Uri;
                 Uri dest = XmlHelper.GetNewUri(_pck.Package, @"/xl/drawings/vmlDrawing{0}.vml");
-                
+
                 var part = _pck.Package.CreatePart(dest, "application/vnd.openxmlformats-officedocument.vmlDrawing", _pck.Compression);
                 foreach (ExcelVmlDrawingPicture pic in Copy.HeaderFooter.Pictures)
                 {
@@ -411,13 +408,13 @@ namespace OfficeOpenXml
         private void CopyText(ExcelHeaderFooterText from, ExcelHeaderFooterText to)
         {
             if (from == null) return;
-            to.LeftAlignedText=from.LeftAlignedText;
+            to.LeftAlignedText = from.LeftAlignedText;
             to.CenteredText = from.CenteredText;
             to.RightAlignedText = from.RightAlignedText;
         }
         private void CloneCells(ExcelWorksheet Copy, ExcelWorksheet added)
         {
-            bool sameWorkbook=(Copy.Workbook == _pck.Workbook);
+            bool sameWorkbook = (Copy.Workbook == _pck.Workbook);
 
             bool doAdjust = _pck.DoAdjustDrawings;
             _pck.DoAdjustDrawings = false;
@@ -432,33 +429,33 @@ namespace OfficeOpenXml
             {
                 added._sharedFormulas.Add(key, Copy._sharedFormulas[key]);
             }
-            
+
             Dictionary<int, int> styleCashe = new Dictionary<int, int>();
             //Cells
             foreach (ExcelCell cell in Copy._cells)
-            {                
+            {
                 if (sameWorkbook)   //Same workbook == same styles
                 {
                     added._cells.Add(cell.Clone(added));
                 }
                 else
                 {
-                    ExcelCell addedCell=cell.Clone(added);
+                    ExcelCell addedCell = cell.Clone(added);
                     if (styleCashe.ContainsKey(cell.StyleID))
                     {
                         addedCell.StyleID = styleCashe[cell.StyleID];
                     }
                     else
                     {
-                        addedCell.StyleID = added.Workbook.Styles.CloneStyle(Copy.Workbook.Styles,  cell.StyleID);
+                        addedCell.StyleID = added.Workbook.Styles.CloneStyle(Copy.Workbook.Styles, cell.StyleID);
                         if (cell.StyleName != "") //Named styles
                         {
                             if (!Copy.Workbook.Styles.NamedStyles.ExistsKey(cell.StyleName))
                             {
-                               var ns=Copy.Workbook.Styles.CreateNamedStyle(cell.StyleName);
-                               ns.StyleXfId  = addedCell.StyleID;
+                                var ns = Copy.Workbook.Styles.CreateNamedStyle(cell.StyleName);
+                                ns.StyleXfId = addedCell.StyleID;
                             }
-                            
+
                         }
                         styleCashe.Add(cell.StyleID, addedCell.StyleID);
                     }
@@ -490,7 +487,7 @@ namespace OfficeOpenXml
                         }
                         styleCashe.Add(row.StyleID, addedRow.StyleID);
                     }
-                }                
+                }
             }
             //Columns
             foreach (ExcelColumn col in Copy._columns)
@@ -538,7 +535,7 @@ namespace OfficeOpenXml
             streamDrawing.Close();
 
             //Add the relationship ID to the worksheet xml.
-            PackageRelationship commentRelation = workSheet.Part.CreateRelationship(PackUriHelper.GetRelativeUri(workSheet.WorksheetUri,uriComment), TargetMode.Internal, ExcelPackage.schemaRelationships + "/comments");
+            PackageRelationship commentRelation = workSheet.Part.CreateRelationship(PackUriHelper.GetRelativeUri(workSheet.WorksheetUri, uriComment), TargetMode.Internal, ExcelPackage.schemaRelationships + "/comments");
 
             xml = Copy.VmlDrawingsComments.VmlDrawingXml.InnerXml;
 
@@ -553,7 +550,7 @@ namespace OfficeOpenXml
             streamVml.Write(xml);
             streamVml.Close();
 
-            PackageRelationship newVmlRel = workSheet.Part.CreateRelationship(PackUriHelper.GetRelativeUri(workSheet.WorksheetUri,uriVml), TargetMode.Internal, ExcelPackage.schemaRelationships + "/vmlDrawing");
+            PackageRelationship newVmlRel = workSheet.Part.CreateRelationship(PackUriHelper.GetRelativeUri(workSheet.WorksheetUri, uriVml), TargetMode.Internal, ExcelPackage.schemaRelationships + "/vmlDrawing");
 
             //Add the relationship ID to the worksheet xml.
             XmlElement e = workSheet.WorksheetXml.SelectSingleNode("//d:legacyDrawing", _namespaceManager) as XmlElement;
@@ -567,90 +564,90 @@ namespace OfficeOpenXml
         }
         private void CopyDrawing(ExcelWorksheet Copy, ExcelWorksheet workSheet/*, PackageRelationship r*/)
         {
-            
+
             //Check if the worksheet has drawings
             //if(_xlPackage.Package.PartExists(r.TargetUri))
             //{
-                //First copy the drawing XML                
-                string xml = Copy.Drawings.DrawingXml.OuterXml;            
-                var uriDraw=new Uri(string.Format("/xl/drawings/drawing{0}.xml", workSheet.SheetID),  UriKind.Relative);
-                var part= _pck.Package.CreatePart(uriDraw,"application/vnd.openxmlformats-officedocument.drawing+xml", _pck.Compression);
-                StreamWriter streamDrawing = new StreamWriter(part.GetStream(FileMode.Create, FileAccess.Write));
-                streamDrawing.Write(xml);
-                streamDrawing.Close();
+            //First copy the drawing XML                
+            string xml = Copy.Drawings.DrawingXml.OuterXml;
+            var uriDraw = new Uri(string.Format("/xl/drawings/drawing{0}.xml", workSheet.SheetID), UriKind.Relative);
+            var part = _pck.Package.CreatePart(uriDraw, "application/vnd.openxmlformats-officedocument.drawing+xml", _pck.Compression);
+            StreamWriter streamDrawing = new StreamWriter(part.GetStream(FileMode.Create, FileAccess.Write));
+            streamDrawing.Write(xml);
+            streamDrawing.Close();
 
-                XmlDocument drawXml = new XmlDocument();
-                drawXml.LoadXml(xml);
-                //Add the relationship ID to the worksheet xml.
-                PackageRelationship drawRelation = workSheet.Part.CreateRelationship(PackUriHelper.GetRelativeUri(workSheet.WorksheetUri,uriDraw), TargetMode.Internal, ExcelPackage.schemaRelationships + "/drawing");
-                XmlElement e = workSheet.WorksheetXml.SelectSingleNode("//d:drawing", _namespaceManager) as XmlElement;
-                e.SetAttribute("id",ExcelPackage.schemaRelationships, drawRelation.Id);
+            XmlDocument drawXml = new XmlDocument();
+            drawXml.LoadXml(xml);
+            //Add the relationship ID to the worksheet xml.
+            PackageRelationship drawRelation = workSheet.Part.CreateRelationship(PackUriHelper.GetRelativeUri(workSheet.WorksheetUri, uriDraw), TargetMode.Internal, ExcelPackage.schemaRelationships + "/drawing");
+            XmlElement e = workSheet.WorksheetXml.SelectSingleNode("//d:drawing", _namespaceManager) as XmlElement;
+            e.SetAttribute("id", ExcelPackage.schemaRelationships, drawRelation.Id);
 
-                foreach (ExcelDrawing draw in Copy.Drawings)
+            foreach (ExcelDrawing draw in Copy.Drawings)
+            {
+                if (draw is ExcelChart)
                 {
-                    if (draw is ExcelChart)
-                    {
-                        ExcelChart chart = draw as ExcelChart;
-                        xml = chart.ChartXml.InnerXml;
+                    ExcelChart chart = draw as ExcelChart;
+                    xml = chart.ChartXml.InnerXml;
 
-                        var UriChart = XmlHelper.GetNewUri(_pck.Package, "/xl/charts/chart{0}.xml");
-                        var chartPart = _pck.Package.CreatePart(UriChart, "application/vnd.openxmlformats-officedocument.drawingml.chart+xml", _pck.Compression);
-                        StreamWriter streamChart = new StreamWriter(chartPart.GetStream(FileMode.Create, FileAccess.Write));
-                        streamChart.Write(xml);
-                        streamChart.Close();
-                        //Now create the new relationship to the copied chart xml
-                        var prevRelID=draw.TopNode.SelectSingleNode("xdr:graphicFrame/a:graphic/a:graphicData/c:chart/@r:id", Copy.Drawings.NameSpaceManager).Value;
-                        var rel = part.CreateRelationship(PackUriHelper.GetRelativeUri(uriDraw,UriChart), TargetMode.Internal, ExcelPackage.schemaRelationships + "/chart");
-                        XmlAttribute relAtt = drawXml.SelectSingleNode(string.Format("//c:chart/@r:id[.='{0}']", prevRelID), Copy.Drawings.NameSpaceManager) as XmlAttribute;
-                        relAtt.Value=rel.Id;
-                    }
-                    else if (draw is ExcelPicture)
-                    {
-                        ExcelPicture pic = draw as ExcelPicture;
-                        var uri = pic.UriPic;
-                        if(!workSheet.Workbook._package.Package.PartExists(uri))
-                        {
-                            var picPart = workSheet.Workbook._package.Package.CreatePart(uri, pic.ContentType, CompressionOption.NotCompressed);
-                            pic.Image.Save(picPart.GetStream(FileMode.Create, FileAccess.Write), pic.ImageFormat);
-                        }
-
-                        var prevRelID = draw.TopNode.SelectSingleNode("xdr:pic/xdr:blipFill/a:blip/@r:embed", Copy.Drawings.NameSpaceManager).Value;
-                        var rel = part.CreateRelationship(PackUriHelper.GetRelativeUri(workSheet.WorksheetUri, uri), TargetMode.Internal, ExcelPackage.schemaRelationships + "/image");
-                        XmlAttribute relAtt = drawXml.SelectSingleNode(string.Format("//xdr:pic/xdr:blipFill/a:blip/@r:embed[.='{0}']", prevRelID), Copy.Drawings.NameSpaceManager) as XmlAttribute;
-                        relAtt.Value = rel.Id;
-                    }
+                    var UriChart = XmlHelper.GetNewUri(_pck.Package, "/xl/charts/chart{0}.xml");
+                    var chartPart = _pck.Package.CreatePart(UriChart, "application/vnd.openxmlformats-officedocument.drawingml.chart+xml", _pck.Compression);
+                    StreamWriter streamChart = new StreamWriter(chartPart.GetStream(FileMode.Create, FileAccess.Write));
+                    streamChart.Write(xml);
+                    streamChart.Close();
+                    //Now create the new relationship to the copied chart xml
+                    var prevRelID = draw.TopNode.SelectSingleNode("xdr:graphicFrame/a:graphic/a:graphicData/c:chart/@r:id", Copy.Drawings.NameSpaceManager).Value;
+                    var rel = part.CreateRelationship(PackUriHelper.GetRelativeUri(uriDraw, UriChart), TargetMode.Internal, ExcelPackage.schemaRelationships + "/chart");
+                    XmlAttribute relAtt = drawXml.SelectSingleNode(string.Format("//c:chart/@r:id[.='{0}']", prevRelID), Copy.Drawings.NameSpaceManager) as XmlAttribute;
+                    relAtt.Value = rel.Id;
                 }
-                //rewrite the drawing xml with the new relID's
-                streamDrawing = new StreamWriter(part.GetStream(FileMode.Create, FileAccess.Write));
-                streamDrawing.Write(drawXml.OuterXml);
-                streamDrawing.Close();
+                else if (draw is ExcelPicture)
+                {
+                    ExcelPicture pic = draw as ExcelPicture;
+                    var uri = pic.UriPic;
+                    if (!workSheet.Workbook._package.Package.PartExists(uri))
+                    {
+                        var picPart = workSheet.Workbook._package.Package.CreatePart(uri, pic.ContentType, CompressionOption.NotCompressed);
+                        pic.Image.Save(picPart.GetStream(FileMode.Create, FileAccess.Write), pic.ImageFormat);
+                    }
+
+                    var prevRelID = draw.TopNode.SelectSingleNode("xdr:pic/xdr:blipFill/a:blip/@r:embed", Copy.Drawings.NameSpaceManager).Value;
+                    var rel = part.CreateRelationship(PackUriHelper.GetRelativeUri(workSheet.WorksheetUri, uri), TargetMode.Internal, ExcelPackage.schemaRelationships + "/image");
+                    XmlAttribute relAtt = drawXml.SelectSingleNode(string.Format("//xdr:pic/xdr:blipFill/a:blip/@r:embed[.='{0}']", prevRelID), Copy.Drawings.NameSpaceManager) as XmlAttribute;
+                    relAtt.Value = rel.Id;
+                }
+            }
+            //rewrite the drawing xml with the new relID's
+            streamDrawing = new StreamWriter(part.GetStream(FileMode.Create, FileAccess.Write));
+            streamDrawing.Write(drawXml.OuterXml);
+            streamDrawing.Close();
             //}
         }
 
-		private void CopyVmlDrawing(ExcelWorksheet origSheet, ExcelWorksheet newSheet)
-		{
-			var xml = origSheet.VmlDrawingsComments.VmlDrawingXml.OuterXml;
-			var vmlUri = new Uri(string.Format("/xl/drawings/vmlDrawing{0}.vml", newSheet.SheetID), UriKind.Relative);
-			var part = _pck.Package.CreatePart(vmlUri, "application/vnd.openxmlformats-officedocument.vmlDrawing", _pck.Compression);
-			using (var streamDrawing = new StreamWriter(part.GetStream(FileMode.Create, FileAccess.Write)))
-			{
-				streamDrawing.Write(xml);
-			}
+        private void CopyVmlDrawing(ExcelWorksheet origSheet, ExcelWorksheet newSheet)
+        {
+            var xml = origSheet.VmlDrawingsComments.VmlDrawingXml.OuterXml;
+            var vmlUri = new Uri(string.Format("/xl/drawings/vmlDrawing{0}.vml", newSheet.SheetID), UriKind.Relative);
+            var part = _pck.Package.CreatePart(vmlUri, "application/vnd.openxmlformats-officedocument.vmlDrawing", _pck.Compression);
+            using (var streamDrawing = new StreamWriter(part.GetStream(FileMode.Create, FileAccess.Write)))
+            {
+                streamDrawing.Write(xml);
+            }
 
-			//Add the relationship ID to the worksheet xml.
-			PackageRelationship vmlRelation = newSheet.Part.CreateRelationship(PackUriHelper.GetRelativeUri(newSheet.WorksheetUri,vmlUri), TargetMode.Internal, ExcelPackage.schemaRelationships + "/vmlDrawing");
-			var e = newSheet.WorksheetXml.SelectSingleNode("//d:legacyDrawing", _namespaceManager) as XmlElement;
-			if (e == null)
-			{
-				e = newSheet.WorksheetXml.CreateNode(XmlNodeType.Entity, "//d:legacyDrawing", _namespaceManager.LookupNamespace("d")) as XmlElement;
-			}
-			if (e != null)
-			{
-				e.SetAttribute("id", ExcelPackage.schemaRelationships, vmlRelation.Id);
-			}
-		}
+            //Add the relationship ID to the worksheet xml.
+            PackageRelationship vmlRelation = newSheet.Part.CreateRelationship(PackUriHelper.GetRelativeUri(newSheet.WorksheetUri, vmlUri), TargetMode.Internal, ExcelPackage.schemaRelationships + "/vmlDrawing");
+            var e = newSheet.WorksheetXml.SelectSingleNode("//d:legacyDrawing", _namespaceManager) as XmlElement;
+            if (e == null)
+            {
+                e = newSheet.WorksheetXml.CreateNode(XmlNodeType.Entity, "//d:legacyDrawing", _namespaceManager.LookupNamespace("d")) as XmlElement;
+            }
+            if (e != null)
+            {
+                e.SetAttribute("id", ExcelPackage.schemaRelationships, vmlRelation.Id);
+            }
+        }
 
-		string CreateWorkbookRel(string Name, int sheetID, Uri uriWorksheet)
+        string CreateWorkbookRel(string Name, int sheetID, Uri uriWorksheet)
         {
             //Create the relationship between the workbook and the new worksheet
             PackageRelationship rel = _pck.Workbook.Part.CreateRelationship(PackUriHelper.GetRelativeUri(_pck.Workbook.WorkbookUri, uriWorksheet), TargetMode.Internal, ExcelPackage.schemaRelationships + "/worksheet");
@@ -671,8 +668,8 @@ namespace OfficeOpenXml
 
             //First find maximum existing sheetID
             sheetID = 0;
-            foreach(var ws in this)
-            {                
+            foreach (var ws in this)
+            {
                 if (ws.SheetID > sheetID)
                 {
                     sheetID = ws.SheetID;
@@ -715,13 +712,13 @@ namespace OfficeOpenXml
             return System.Text.RegularExpressions.Regex.IsMatch(Name, @":|\?|/|\\|\[|\]");
         }
 
-		/// <summary>
-		/// Creates the XML document representing a new empty worksheet
-		/// </summary>
-		/// <returns></returns>
-		internal XmlDocument CreateNewWorksheet()
-		{
-			XmlDocument xmlDoc = new XmlDocument();
+        /// <summary>
+        /// Creates the XML document representing a new empty worksheet
+        /// </summary>
+        /// <returns></returns>
+        internal XmlDocument CreateNewWorksheet()
+        {
+            XmlDocument xmlDoc = new XmlDocument();
             XmlElement elemWs = xmlDoc.CreateElement("worksheet", ExcelPackage.schemaMain);
             elemWs.SetAttribute("xmlns:r", ExcelPackage.schemaRelationships);
             xmlDoc.AppendChild(elemWs);
@@ -740,45 +737,45 @@ namespace OfficeOpenXml
             XmlElement elemSheetData = xmlDoc.CreateElement("sheetData", ExcelPackage.schemaMain);
             elemWs.AppendChild(elemSheetData);
             return xmlDoc;
-		}
-		#endregion
+        }
+        #endregion
 
-		#region Delete Worksheet
-		/// <summary>
-		/// Deletes a worksheet from the collection
-		/// </summary>
-		/// <param name="Index">The position of the worksheet in the workbook</param>
-		public void Delete(int Index)
-		{
-			ExcelWorksheet worksheet = _worksheets[Index];
+        #region Delete Worksheet
+        /// <summary>
+        /// Deletes a worksheet from the collection
+        /// </summary>
+        /// <param name="Index">The position of the worksheet in the workbook</param>
+        public void Delete(int Index)
+        {
+            ExcelWorksheet worksheet = _worksheets[Index];
             if (worksheet.Drawings.Count > 0)
             {
                 worksheet.Drawings.Clear();
             }
             //Delete the worksheet part and relation from the package 
-			_pck.Package.DeletePart(worksheet.WorksheetUri);
-			_pck.Workbook.Part.DeleteRelationship(worksheet.RelationshipID);
+            _pck.Package.DeletePart(worksheet.WorksheetUri);
+            _pck.Workbook.Part.DeleteRelationship(worksheet.RelationshipID);
 
             //Delete worksheet from the workbook XML
-			XmlNode sheetsNode = _pck.Workbook.WorkbookXml.SelectSingleNode("//d:workbook/d:sheets", _namespaceManager);
-			if (sheetsNode != null)
-			{
-				XmlNode sheetNode = sheetsNode.SelectSingleNode(string.Format("./d:sheet[@sheetId={0}]", worksheet.SheetID), _namespaceManager);
-				if (sheetNode != null)
-				{
-					sheetsNode.RemoveChild(sheetNode);
-				}
-			}
-			_worksheets.Remove(Index);
+            XmlNode sheetsNode = _pck.Workbook.WorkbookXml.SelectSingleNode("//d:workbook/d:sheets", _namespaceManager);
+            if (sheetsNode != null)
+            {
+                XmlNode sheetNode = sheetsNode.SelectSingleNode(string.Format("./d:sheet[@sheetId={0}]", worksheet.SheetID), _namespaceManager);
+                if (sheetNode != null)
+                {
+                    sheetsNode.RemoveChild(sheetNode);
+                }
+            }
+            _worksheets.Remove(Index);
             if (_pck.Workbook.VbaProject != null)
             {
                 _pck.Workbook.VbaProject.Modules.Remove(worksheet.CodeModule);
             }
-			ReindexWorksheetDictionary();
+            ReindexWorksheetDictionary();
             //If the active sheet is deleted, set the first tab as active.
             if (_pck.Workbook.View.ActiveTab >= _pck.Workbook.Worksheets.Count)
             {
-                _pck.Workbook.View.ActiveTab = _pck.Workbook.View.ActiveTab-1;
+                _pck.Workbook.View.ActiveTab = _pck.Workbook.View.ActiveTab - 1;
             }
             if (_pck.Workbook.View.ActiveTab == worksheet.SheetID)
             {
@@ -787,25 +784,25 @@ namespace OfficeOpenXml
             worksheet = null;
         }
 
-		/// <summary>
-		/// Deletes a worksheet from the collection
-		/// </summary>
-		/// <param name="name">The name of the worksheet in the workbook</param>
-		public void Delete(string name)
-		{
-			var sheet = this[name];
-			if (sheet == null)
-			{
-				throw new ArgumentException(string.Format("Could not find worksheet to delete '{0}'", name));
-			}
-			Delete(sheet.PositionID);
-		}
-		/// <summary>
+        /// <summary>
+        /// Deletes a worksheet from the collection
+        /// </summary>
+        /// <param name="name">The name of the worksheet in the workbook</param>
+        public void Delete(string name)
+        {
+            var sheet = this[name];
+            if (sheet == null)
+            {
+                throw new ArgumentException(string.Format("Could not find worksheet to delete '{0}'", name));
+            }
+            Delete(sheet.PositionID);
+        }
+        /// <summary>
         /// Delete a worksheet from the collection
         /// </summary>
         /// <param name="Worksheet">The worksheet to delete</param>
         public void Delete(ExcelWorksheet Worksheet)
-		{
+        {
             if (Worksheet.PositionID <= _worksheets.Count && Worksheet == _worksheets[Worksheet.PositionID])
             {
                 Delete(Worksheet.PositionID);
@@ -817,51 +814,51 @@ namespace OfficeOpenXml
         }
         #endregion
 
-		private void ReindexWorksheetDictionary()
-		{
-			var index = 1;
-			var worksheets = new Dictionary<int, ExcelWorksheet>();
-			foreach (var entry in _worksheets)
-			{
-				entry.Value.PositionID = index;
-				worksheets.Add(index++, entry.Value);
-			}
-			_worksheets = worksheets;
-		}
+        private void ReindexWorksheetDictionary()
+        {
+            var index = 1;
+            var worksheets = new Dictionary<int, ExcelWorksheet>();
+            foreach (var entry in _worksheets)
+            {
+                entry.Value.PositionID = index;
+                worksheets.Add(index++, entry.Value);
+            }
+            _worksheets = worksheets;
+        }
 
-		/// <summary>
-		/// Returns the worksheet at the specified position.  
-		/// </summary>
-		/// <param name="PositionID">The position of the worksheet. 1-base</param>
-		/// <returns></returns>
-		public ExcelWorksheet this[int PositionID]
-		{
-			get
-			{
+        /// <summary>
+        /// Returns the worksheet at the specified position.  
+        /// </summary>
+        /// <param name="PositionID">The position of the worksheet. 1-base</param>
+        /// <returns></returns>
+        public ExcelWorksheet this[int PositionID]
+        {
+            get
+            {
                 return (_worksheets[PositionID]);
-			}
-		}
+            }
+        }
 
-		/// <summary>
-		/// Returns the worksheet matching the specified name
-		/// </summary>
-		/// <param name="Name">The name of the worksheet</param>
-		/// <returns></returns>
-		public ExcelWorksheet this[string Name]
-		{
-			get
-			{
+        /// <summary>
+        /// Returns the worksheet matching the specified name
+        /// </summary>
+        /// <param name="Name">The name of the worksheet</param>
+        /// <returns></returns>
+        public ExcelWorksheet this[string Name]
+        {
+            get
+            {
                 return GetByName(Name);
-			}
-		}
-		/// <summary>
-		/// Copies the named worksheet and creates a new worksheet in the same workbook
-		/// </summary>
-		/// <param name="Name">The name of the existing worksheet</param>
-		/// <param name="NewName">The name of the new worksheet to create</param>
-		/// <returns>The new copy added to the end of the worksheets collection</returns>
-		public ExcelWorksheet Copy(string Name, string NewName)
-		{
+            }
+        }
+        /// <summary>
+        /// Copies the named worksheet and creates a new worksheet in the same workbook
+        /// </summary>
+        /// <param name="Name">The name of the existing worksheet</param>
+        /// <param name="NewName">The name of the new worksheet to create</param>
+        /// <returns>The new copy added to the end of the worksheets collection</returns>
+        public ExcelWorksheet Copy(string Name, string NewName)
+        {
             ExcelWorksheet Copy = this[Name];
             if (Copy == null)
                 throw new ArgumentException(string.Format("Copy worksheet error: Could not find worksheet to copy '{0}'", Name));
@@ -869,7 +866,7 @@ namespace OfficeOpenXml
             ExcelWorksheet added = Add(NewName, Copy);
             return added;
         }
-		#endregion
+        #endregion
 
         internal ExcelWorksheet GetBySheetID(int localSheetID)
         {
@@ -893,180 +890,180 @@ namespace OfficeOpenXml
             }
             return (xlWorksheet);
         }
-		#region MoveBefore and MoveAfter Methods
-		/// <summary>
-		/// Moves the source worksheet to the position before the target worksheet
-		/// </summary>
-		/// <param name="sourceName">The name of the source worksheet</param>
-		/// <param name="targetName">The name of the target worksheet</param>
-		public void MoveBefore(string sourceName, string targetName)
-		{
-			Move(sourceName, targetName, false);
-		}
+        #region MoveBefore and MoveAfter Methods
+        /// <summary>
+        /// Moves the source worksheet to the position before the target worksheet
+        /// </summary>
+        /// <param name="sourceName">The name of the source worksheet</param>
+        /// <param name="targetName">The name of the target worksheet</param>
+        public void MoveBefore(string sourceName, string targetName)
+        {
+            Move(sourceName, targetName, false);
+        }
 
-		/// <summary>
-		/// Moves the source worksheet to the position before the target worksheet
-		/// </summary>
-		/// <param name="sourcePositionId">The id of the source worksheet</param>
-		/// <param name="targetPositionId">The id of the target worksheet</param>
-		public void MoveBefore(int sourcePositionId, int targetPositionId)
-		{
-			Move(sourcePositionId, targetPositionId, false);
-		}
+        /// <summary>
+        /// Moves the source worksheet to the position before the target worksheet
+        /// </summary>
+        /// <param name="sourcePositionId">The id of the source worksheet</param>
+        /// <param name="targetPositionId">The id of the target worksheet</param>
+        public void MoveBefore(int sourcePositionId, int targetPositionId)
+        {
+            Move(sourcePositionId, targetPositionId, false);
+        }
 
-		/// <summary>
-		/// Moves the source worksheet to the position after the target worksheet
-		/// </summary>
-		/// <param name="sourceName">The name of the source worksheet</param>
-		/// <param name="targetName">The name of the target worksheet</param>
-		public void MoveAfter(string sourceName, string targetName)
-		{
-			Move(sourceName, targetName, true);
-		}
+        /// <summary>
+        /// Moves the source worksheet to the position after the target worksheet
+        /// </summary>
+        /// <param name="sourceName">The name of the source worksheet</param>
+        /// <param name="targetName">The name of the target worksheet</param>
+        public void MoveAfter(string sourceName, string targetName)
+        {
+            Move(sourceName, targetName, true);
+        }
 
-		/// <summary>
-		/// Moves the source worksheet to the position after the target worksheet
-		/// </summary>
-		/// <param name="sourcePositionId">The id of the source worksheet</param>
-		/// <param name="targetPositionId">The id of the target worksheet</param>
-		public void MoveAfter(int sourcePositionId, int targetPositionId)
-		{
-			Move(sourcePositionId, targetPositionId, true);
-		}
+        /// <summary>
+        /// Moves the source worksheet to the position after the target worksheet
+        /// </summary>
+        /// <param name="sourcePositionId">The id of the source worksheet</param>
+        /// <param name="targetPositionId">The id of the target worksheet</param>
+        public void MoveAfter(int sourcePositionId, int targetPositionId)
+        {
+            Move(sourcePositionId, targetPositionId, true);
+        }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="sourceName"></param>
-		public void MoveToStart(string sourceName)
-		{
-			var sourceSheet = this[sourceName];
-			if (sourceSheet == null)
-			{
-				throw new Exception(string.Format("Move worksheet error: Could not find worksheet to move '{0}'", sourceName));
-			}
-			Move(sourceSheet.PositionID, 1, false);
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sourceName"></param>
+        public void MoveToStart(string sourceName)
+        {
+            var sourceSheet = this[sourceName];
+            if (sourceSheet == null)
+            {
+                throw new Exception(string.Format("Move worksheet error: Could not find worksheet to move '{0}'", sourceName));
+            }
+            Move(sourceSheet.PositionID, 1, false);
+        }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="sourcePositionId"></param>
-		public void MoveToStart(int sourcePositionId)
-		{
-			Move(sourcePositionId, 1, false);
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sourcePositionId"></param>
+        public void MoveToStart(int sourcePositionId)
+        {
+            Move(sourcePositionId, 1, false);
+        }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="sourceName"></param>
-		public void MoveToEnd(string sourceName)
-		{
-			var sourceSheet = this[sourceName];
-			if (sourceSheet == null)
-			{
-				throw new Exception(string.Format("Move worksheet error: Could not find worksheet to move '{0}'", sourceName));
-			}
-			Move(sourceSheet.PositionID, _worksheets.Count, true);
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sourceName"></param>
+        public void MoveToEnd(string sourceName)
+        {
+            var sourceSheet = this[sourceName];
+            if (sourceSheet == null)
+            {
+                throw new Exception(string.Format("Move worksheet error: Could not find worksheet to move '{0}'", sourceName));
+            }
+            Move(sourceSheet.PositionID, _worksheets.Count, true);
+        }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="sourcePositionId"></param>
-		public void MoveToEnd(int sourcePositionId)
-		{
-			Move(sourcePositionId, _worksheets.Count, true);
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sourcePositionId"></param>
+        public void MoveToEnd(int sourcePositionId)
+        {
+            Move(sourcePositionId, _worksheets.Count, true);
+        }
 
-		private void Move(string sourceName, string targetName, bool placeAfter)
-		{
-			var sourceSheet = this[sourceName];
-			if (sourceSheet == null)
-			{
-				throw new Exception(string.Format("Move worksheet error: Could not find worksheet to move '{0}'", sourceName));
-			}
-			var targetSheet = this[targetName];
-			if (targetSheet == null)
-			{
-				throw new Exception(string.Format("Move worksheet error: Could not find worksheet to move '{0}'", targetName));
-			}
-			Move(sourceSheet.PositionID, targetSheet.PositionID, placeAfter);
-		}
+        private void Move(string sourceName, string targetName, bool placeAfter)
+        {
+            var sourceSheet = this[sourceName];
+            if (sourceSheet == null)
+            {
+                throw new Exception(string.Format("Move worksheet error: Could not find worksheet to move '{0}'", sourceName));
+            }
+            var targetSheet = this[targetName];
+            if (targetSheet == null)
+            {
+                throw new Exception(string.Format("Move worksheet error: Could not find worksheet to move '{0}'", targetName));
+            }
+            Move(sourceSheet.PositionID, targetSheet.PositionID, placeAfter);
+        }
 
-		private void Move(int sourcePositionId, int targetPositionId, bool placeAfter)
-		{
-			var sourceSheet = this[sourcePositionId];
-			if (sourceSheet == null)
-			{
-				throw new Exception(string.Format("Move worksheet error: Could not find worksheet at position '{0}'", sourcePositionId));
-			}
-			var targetSheet = this[targetPositionId];
-			if (targetSheet == null)
-			{
-				throw new Exception(string.Format("Move worksheet error: Could not find worksheet at position '{0}'", targetPositionId));
-			}
-			if (_worksheets.Count < 2)
-			{
-				return;		//--- no reason to attempt to re-arrange a single item with itself
-			}
+        private void Move(int sourcePositionId, int targetPositionId, bool placeAfter)
+        {
+            var sourceSheet = this[sourcePositionId];
+            if (sourceSheet == null)
+            {
+                throw new Exception(string.Format("Move worksheet error: Could not find worksheet at position '{0}'", sourcePositionId));
+            }
+            var targetSheet = this[targetPositionId];
+            if (targetSheet == null)
+            {
+                throw new Exception(string.Format("Move worksheet error: Could not find worksheet at position '{0}'", targetPositionId));
+            }
+            if (_worksheets.Count < 2)
+            {
+                return;     //--- no reason to attempt to re-arrange a single item with itself
+            }
 
-			var index = 1;
-			var newOrder = new Dictionary<int, ExcelWorksheet>();
-			foreach (var entry in _worksheets)
-			{
-				if (entry.Key == targetPositionId)
-				{
-					if (!placeAfter)
-					{
-						sourceSheet.PositionID = index;
-						newOrder.Add(index++, sourceSheet);
-					}
+            var index = 1;
+            var newOrder = new Dictionary<int, ExcelWorksheet>();
+            foreach (var entry in _worksheets)
+            {
+                if (entry.Key == targetPositionId)
+                {
+                    if (!placeAfter)
+                    {
+                        sourceSheet.PositionID = index;
+                        newOrder.Add(index++, sourceSheet);
+                    }
 
-					entry.Value.PositionID = index;
-					newOrder.Add(index++, entry.Value);
+                    entry.Value.PositionID = index;
+                    newOrder.Add(index++, entry.Value);
 
-					if (placeAfter)
-					{
-						sourceSheet.PositionID = index;
-						newOrder.Add(index++, sourceSheet);
-					}
-				}
-				else if (entry.Key == sourcePositionId)
-				{
-					//--- do nothing
-				}
-				else
-				{
-					entry.Value.PositionID = index;
-					newOrder.Add(index++, entry.Value);
-				}
-			}
-			_worksheets = newOrder;
+                    if (placeAfter)
+                    {
+                        sourceSheet.PositionID = index;
+                        newOrder.Add(index++, sourceSheet);
+                    }
+                }
+                else if (entry.Key == sourcePositionId)
+                {
+                    //--- do nothing
+                }
+                else
+                {
+                    entry.Value.PositionID = index;
+                    newOrder.Add(index++, entry.Value);
+                }
+            }
+            _worksheets = newOrder;
 
-			MoveSheetXmlNode(sourceSheet, targetSheet, placeAfter);
-		}
+            MoveSheetXmlNode(sourceSheet, targetSheet, placeAfter);
+        }
 
-		private void MoveSheetXmlNode(ExcelWorksheet sourceSheet, ExcelWorksheet targetSheet, bool placeAfter)
-		{
-			var sourceNode = TopNode.SelectSingleNode(string.Format("d:sheet[@sheetId = '{0}']", sourceSheet.SheetID), _namespaceManager);
+        private void MoveSheetXmlNode(ExcelWorksheet sourceSheet, ExcelWorksheet targetSheet, bool placeAfter)
+        {
+            var sourceNode = TopNode.SelectSingleNode(string.Format("d:sheet[@sheetId = '{0}']", sourceSheet.SheetID), _namespaceManager);
             var targetNode = TopNode.SelectSingleNode(string.Format("d:sheet[@sheetId = '{0}']", targetSheet.SheetID), _namespaceManager);
-			if (sourceNode == null || targetNode == null)
-			{
-				throw new Exception("Source SheetId and Target SheetId must be valid");
-			}
-			if (placeAfter)
-			{
+            if (sourceNode == null || targetNode == null)
+            {
+                throw new Exception("Source SheetId and Target SheetId must be valid");
+            }
+            if (placeAfter)
+            {
                 TopNode.InsertAfter(sourceNode, targetNode);
-			}
-			else
-			{
+            }
+            else
+            {
                 TopNode.InsertBefore(sourceNode, targetNode);
-			}
-		}
+            }
+        }
 
-		#endregion
+        #endregion
 
         void IDisposable.Dispose()
         {

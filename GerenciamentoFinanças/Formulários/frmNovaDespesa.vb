@@ -9,12 +9,16 @@ Public Class frmNovaDespesa
     Public rsDespesaPagamento As SuperDataSet
     Public rsDespesaParcelamento As SuperDataSet
     Public rsDespesaConta As SuperDataSet
+    Public rsDespesaFixa As SuperDataSet
     Public dtRegistro As Date
     Public cParcelamento As Decimal
     Public cQtdeParcela As Decimal
     Public cNumeroParcela As Decimal
-    Public cValor As Double
+    Public cValor As Decimal
     Public bParcelado As Boolean = False
+    Public bDespesaFixa As Boolean = False
+    Public cDespesaFixa As Decimal
+    Public cPeriodo As Decimal
     Public erro As Decimal
     Public logErro As String
     Public Property cControleParcelamento() As Decimal
@@ -42,9 +46,7 @@ Public Class frmNovaDespesa
 
         If cDespesa > 0 Then
 
-            btnDetalhe.Visible = True
             rsDespesa = pDespesa.ObterDespesa(cDespesa)
-
             PreencheCampo()
         Else
             tabDespesa.TabPages(0).Text = "Adicionar Despesa"
@@ -65,7 +67,7 @@ Public Class frmNovaDespesa
                     logErro = Now & " - Inclusão de Despesa."
 
                     If chkParcela.Checked = True Then
-
+                        'Então é parcelamento
                         bParcelado = True
 
                         cQtdeParcela = CDec(cbParcelamento.ObterDescricaoCombo().
@@ -87,8 +89,7 @@ Public Class frmNovaDespesa
                                         dtRegistro = dtRegistro.AddMonths(CInt(i))
                                     End If
 
-                                    erro = IncluirDespesa(bParcelado)
-
+                                    erro = IncluirDespesa()
                                 Next
                             Else
                                 erro = +1
@@ -97,67 +98,128 @@ Public Class frmNovaDespesa
                             erro = +1
                         End If
                     Else
-                        erro = IncluirDespesa(bParcelado)
+                        If chkDespesaFixa.Checked Then
+                            'se for Despesa Fixa
+                            bDespesaFixa = True
+                            If IsNumeric(txtValorTotal.Text) Then
+                                cValor = CDec(txtValorTotal.Text)
+                            End If
+                            dtRegistro = dtDespesa.Value
+                        End If
+                        erro = IncluirDespesa()
                     End If
 
                     If erro = 0 Then
-                        S_MsgBox("Despesa adicionada com sucesso", clsMsgBox.eBotoes.Ok,, clsMsgBox.eImagens.FileOK)
+                        S_MsgBox("Despesa adicionada com sucesso", eBotoes.Ok,, eImagens.FileOK)
                     Else
-                        S_MsgBox("Erro ao lançar despesa.", clsMsgBox.eBotoes.Ok,, clsMsgBox.eImagens.Cancel)
+                        S_MsgBox("Não possível adicionar despesa.", eBotoes.Ok,, eImagens.Cancel)
                     End If
 
                 Else
                     'Então é alteração
 
+                    'Verificando se ja era Despesa Fixa ou se vai virar fixa...
+                    If chkDespesaFixa.Checked Then
+
+                        If cbDespesaFixa.SelectedIndex <> 0 Then
+
+                            If cDespesaFixa <> 0 Then
+                                pDespesaFixa.Alterar(cDespesaFixa,
+                                                    CType(cbDespesaFixa.ObterChaveCombo(), eDespesaFixa),
+                                                    txtDescricao.Text,
+                                                    cValor,
+                                                    CDec(cbCategoria.ObterChaveCombo()),
+                                                    CDec(cbPagamento.ObterChaveCombo()),
+                                                    CDec(cbConta.ObterChaveCombo()),
+                                                    dtRegistro)
+                            Else
+                                pDespesaFixa.Inserir(CType(cbDespesaFixa.ObterChaveCombo(), eDespesaFixa),
+                                                    txtDescricao.Text,
+                                                    cValor,
+                                                    CDec(cbCategoria.ObterChaveCombo()),
+                                                    CDec(cbPagamento.ObterChaveCombo()),
+                                                    CDec(cbConta.ObterChaveCombo()),
+                                                    dtRegistro)
+                            End If
+                        End If
+                    End If
+
                     erro = AlterarDespesa()
 
                     If erro = 0 Then
-                        clsMsgBox.S_MsgBox("Dados alterados com sucesso",
-                                           clsMsgBox.eBotoes.Ok,,
+                        S_MsgBox("Dados alterados com sucesso",
+                                           eBotoes.Ok,,
                                            clsMsgBox.eImagens.Ok)
                     Else
-                        S_MsgBox("Erro ao alterar despesa.",
-                                 clsMsgBox.eBotoes.Ok,,
-                                 clsMsgBox.eImagens.Cancel)
+                        S_MsgBox("Não foi possível salvar as alterações.",
+                                 eBotoes.Ok,,
+                                 eImagens.Cancel)
                     End If
                 End If
+                LimpaCampos()
+                Me.Close()
             End If
 
-            LimpaCampos()
-            Me.Close()
             'PesquisarDespesa()
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
     End Sub
-    Private Function IncluirDespesa(ByVal bParcelado As Boolean) As Decimal
+    Private Function IncluirDespesa() As Decimal
         Try
-            'Se nao for parcelamento, pegar date da tela
 
-            If bParcelado = False Then
-                dtRegistro = dtDespesa.Value
-                cParcelamento = 0
-                cNumeroParcela = 0
-                cValor = Convert.ToDouble(txtValorTotal.Text.Replace("R$ ", ""))
-            End If
+            'Se é Despesa Fixa, insert registro na tDespesa_Fixa
+            If bDespesaFixa = True Then
 
-            If pDespesa.InserirDespesa(txtDescricao.Text,
-                                       CDec(cValor),
-                                       CDec(cbConta.ObterChaveCombo()),
-                                       CDec(cbCategoria.ObterChaveCombo()),
-                                       CDec(cbPagamento.ObterChaveCombo()),
-                                       dtRegistro,
-                                       CType(cbStatus.ObterChaveCombo(), eStatusDespesa),
-                                       cParcelamento,
-                                       cNumeroParcela,
-                                       logErro) = True Then
-                Return 0
+
+                'Inserindo registro (modelo) na tabela Despesa Fixa
+                cDespesaFixa = pDespesaFixa.Inserir(
+                                    CType(cbDespesaFixa.ObterChaveCombo(), eDespesaFixa),
+                                    txtDescricao.Text,
+                                    cValor,
+                                    CDec(cbCategoria.ObterChaveCombo()),
+                                    CDec(cbPagamento.ObterChaveCombo()),
+                                    CDec(cbConta.ObterChaveCombo()),
+                                    dtRegistro)
+
+                'Se inseriu bonitinho, gera lançamentos futuros do registro (modelo) na tDespesa
+                If cDespesaFixa <> 0 Then
+                    pDespesaFixa.InserirLancamentoFuturo(cDespesaFixa)
+                    erro = 0
+                Else
+                    erro += 1
+                End If
             Else
-                erro = +1
-                Return erro
-                Me.Close()
+                'Se não é parcelamento, zera as variaveis de parça e pega data e valor da tela.
+                If bParcelado = False Then
+                    cParcelamento = 0
+                    cNumeroParcela = 0
+                    dtRegistro = dtDespesa.Value
+                    cValor = CDec(txtValorTotal.Text.Replace("R$", ""))
+                End If
+
+                cDespesaFixa = 0
+
+                If pDespesa.InserirDespesa(txtDescricao.Text,
+                                           cValor,
+                                           CDec(cbConta.ObterChaveCombo()),
+                                           CDec(cbCategoria.ObterChaveCombo()),
+                                           CDec(cbPagamento.ObterChaveCombo()),
+                                           dtRegistro,
+                                           CType(cbStatus.ObterChaveCombo(), eStatusDespesa),
+                                           cParcelamento,
+                                           cNumeroParcela,
+                                           cDespesaFixa,
+                                           logErro) = True Then
+                    erro = 0
+                Else
+                    erro += 1
+                End If
             End If
+
+            Return erro
+
         Catch ex As Exception
             MessageBox.Show(ex.Message)
             Return erro
@@ -190,15 +252,53 @@ Public Class frmNovaDespesa
     Private Function VerificaCampos() As Boolean
 
         If cbConta.VerificaObrigatorio() = False Then
+            S_MsgBox("Você não selecionou à conta báncaria.",
+                     eBotoes.Ok,
+                     "Lançamento de Despesa",,
+                     eImagens.Atencao)
+            cbConta.Focus()
+
             Return False
         End If
-        If cbCategoria.VerificaObrigatorio() = False Then
+        If cbStatus.SelectedIndex <> 0 Then
+            S_MsgBox("Nenhum status está selecionado para sua despesa." & vbNewLine &
+                     "Você pode selecionar 'Pendente','Pago',ou 'Atrasado' se preferir.'",
+                     eBotoes.Ok,
+                     "Lançamento de Despesa",,
+                     eImagens.Atencao)
+            cbStatus.Focus()
+
             Return False
         End If
         If txtValorTotal.Text = Nothing Then
+            S_MsgBox("Você não informou o valor da sua despesa.",
+                     eBotoes.Ok,
+                     "Lançamento de Despesa",,
+                     eImagens.Atencao)
+            txtValorTotal.Focus()
+
             Return False
+
         End If
 
+        If chkDespesaFixa.Checked Then
+
+            If cbDespesaFixa.SelectedIndex = 0 Then
+                S_MsgBox("Você definiu que essa Despesa, é uma 'Despesa Fixa'. " & vbNewLine &
+                     "Por favor,informe a frequência que essa despesa se repete.",
+                     eBotoes.Ok, "Lançamento de Despesa",, eImagens.Atencao)
+                Return False
+            End If
+
+        ElseIf chkParcela.Checked Then
+
+            If cbParcelamento.SelectedIndex = 0 Then
+                S_MsgBox("Você marcou essa Despesa como 'Despesa Parcelada'. " & vbNewLine &
+                    "Por favor, informe a quantidade de parcelas que essa despesa possui.",
+                    eBotoes.Ok, "Lançamento de Despesa",, eImagens.Atencao)
+                Return False
+            End If
+        End If
         Return True
     End Function
     Private Sub PreencheCampo()
@@ -207,7 +307,9 @@ Public Class frmNovaDespesa
             chkParcela.Visible = False
             chkDespesaFixa.Visible = False
             cbParcelamento.Visible = False
+            cbParcelamento.Enabled = False
             cbDespesaFixa.Visible = False
+            txtParcela.Enabled = False
             txtValorParcela.Visible = False
             lblValorParcela.Visible = False
             txtMesReferente.Visible = True
@@ -216,12 +318,22 @@ Public Class frmNovaDespesa
 
             If CDec(rsDespesa("cControleParcelamento")) <> 0 Then
 
+                lblValor.SetBounds(8, 35, 102, 18)
+                txtValorTotal.SetBounds(8, 61, 151, 27)
+
                 txtParcela.Visible = True
                 txtParcela.Enabled = False
+                txtParcela.SetBounds(319, 61, 76, 27)
                 lblParcela.Visible = True
+                lblParcela.SetBounds(316, 35, 74, 18)
+
                 txtValorParcela.Visible = True
+                txtValorParcela.SetBounds(161, 61, 151, 27)
                 lblValorParcela.Visible = True
+                lblValorParcela.SetBounds(161, 35, 147, 18)
+
                 btnDetalhe.Enabled = True
+                btnDetalhe.Visible = True
 
                 cQtdeParcela = CDec(rsDespesa("cNumeroParcela"))
                 cNumeroParcela = CDec(rsDespesa("cQtdeParcela"))
@@ -230,6 +342,30 @@ Public Class frmNovaDespesa
                 txtParcela.Text = cQtdeParcela.ToString & "/" & cNumeroParcela.ToString
 
                 txtValorParcela.Text = Convert.ToDouble(cValor).ToString("C")
+
+            ElseIf CDec(rsDespesa("cDespesaFixa")) <> 0 Then
+
+
+                cDespesaFixa = CDec(rsDespesa("cDespesaFixa"))
+                rsDespesaFixa = pDespesaFixa.Obter(cDespesaFixa)
+
+                chkDespesaFixa.Visible = True
+                chkDespesaFixa.Checked = True
+                chkDespesaFixa.SetBounds(9, 16, 136, 22)
+
+                cbDespesaFixa.Visible = True
+                cbDespesaFixa.SetBounds(9, 40, 186, 25)
+                cbDespesaFixa.PosicionaRegistroCombo(CType(rsDespesaFixa("cPeriodo"), eDespesaFixa))
+
+                lblValor.SetBounds(315, 16, 102, 18)
+                txtValorTotal.SetBounds(318, 40, 151, 27)
+
+                lblFormaPagamento.SetBounds(6, 84, 189, 18)
+                cbPagamento.SetBounds(9, 108, 218, 25)
+
+                lblConta.SetBounds(315, 84, 139, 18)
+                cbConta.SetBounds(318, 108, 218, 25)
+
             End If
 
             txtMesReferente.Text = CDate(rsDespesa("dtRegistro")).ToString("MMMM").ToUpper
@@ -246,6 +382,7 @@ Public Class frmNovaDespesa
         End Try
     End Sub
     Private Sub LimpaCampos()
+        cDespesa = 0
         chkParcela.Checked = False
         chkDespesaFixa.Checked = False
         dtDespesa.Value = Now
@@ -304,7 +441,7 @@ Public Class frmNovaDespesa
 
             col.Clear()
 
-            col.Add(New DuplaCombo(eDespesaFixa.Diario, "Diário"))
+            col.Add(New DuplaCombo(eDespesaFixa.Diario, "Diariamente"))
             col.Add(New DuplaCombo(eDespesaFixa.Semanal, "Semanal"))
             col.Add(New DuplaCombo(eDespesaFixa.Quinzenal, "Quinzenal"))
             col.Add(New DuplaCombo(eDespesaFixa.Mensal, "Mensal"))
@@ -322,9 +459,30 @@ Public Class frmNovaDespesa
     End Sub
 
     Private Sub txtValor_Leave(sender As Object, e As EventArgs) Handles txtValorTotal.Leave
-        If IsNumeric(txtValorTotal.Text) Then
-            txtValorTotal.Text = Convert.ToDouble(txtValorTotal.Text).ToString("C")
-        End If
+        Try
+            txtValorTotal.Text = txtValorTotal.Text.Replace("R$", "").Trim.ToString
+            If IsNumeric(txtValorTotal.Text) Then
+
+                txtValorTotal.Text = Convert.ToDouble(txtValorTotal.Text).ToString("C")
+
+                If chkParcela.Checked = True Then
+
+                    If cbParcelamento.SelectedIndex <> 0 Then
+
+                        cQtdeParcela = CDec(cbParcelamento.ObterDescricaoCombo().Replace("x", ""))
+
+                        If CDec(txtValorTotal.Text) > 0 Then
+
+                            cValor = CDec(txtValorTotal.Text.Replace("R$", "")) / CDec(cQtdeParcela)
+
+                            txtValorParcela.Text = Convert.ToDouble(cValor).ToString("C2")
+                        End If
+                    End If
+                End If
+            End If
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro inesperado",, eImagens.Cancel)
+        End Try
     End Sub
     Private Sub btnFechar_Click(sender As Object, e As EventArgs) Handles btnFechar.Click
         LimpaCampos()
@@ -344,66 +502,22 @@ Public Class frmNovaDespesa
                 cbPagamento.PosicionaRegistroCombo(rsDespesaPagamento("cFormaPagamento", 1))
 
             ElseIf chkParcela.Checked = False Then
+                cbParcelamento.SelectedIndex = 0
                 txtValorParcela.Visible = False
                 lblValorParcela.Visible = False
-                cbParcelamento.Enabled = False
 
                 cbPagamento.PosicionaRegistroCombo(rsDespesaPagamento("cFormaPagamento", 0))
-
+                cbParcelamento.Enabled = False
             End If
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro inesperado",, eImagens.Cancel)
         End Try
     End Sub
 
-    Private Sub cbParcelamento_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbParcelamento.SelectedIndexChanged
-        Try
-            If chkParcela.Checked = True Then
 
-                cQtdeParcela = CDec(cbParcelamento.ObterDescricaoCombo().Replace("x", ""))
-
-                If IsNumeric(txtValorTotal.Text) Then
-                    If CDec(txtValorTotal.Text) > 0 Then
-                        cValor = CDec(txtValorTotal.Text.Replace("R$", "")) / cQtdeParcela
-
-                        txtValorParcela.Text = Convert.ToDouble(cValor).ToString("C2")
-                    End If
-                End If
-            End If
-
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-        End Try
-    End Sub
-
-    Private Sub txtValor_TextChanged(sender As Object, e As EventArgs) Handles txtValorTotal.TextChanged
-        Try
-            If chkParcela.Checked = True Then
-
-                cQtdeParcela = CDec(cbParcelamento.ObterDescricaoCombo().Replace("x", ""))
-
-                If IsNumeric(txtValorTotal.Text) Then
-                    If CDec(txtValorTotal.Text) > 0 Then
-
-                        cValor = Convert.ToDouble(txtValorTotal.Text.Replace("R$", "")) / cQtdeParcela
-
-                        txtValorParcela.Text = cValor.ToString
-                    End If
-                End If
-            Else
-                'cValor = Convert.ToDouble(txtValorTotal.Text.Replace("R$", ""))
-            End If
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-        End Try
-    End Sub
-
-    Private Sub txtValorParcela_Leave(sender As Object, e As EventArgs) Handles txtValorParcela.Leave
-        If IsNumeric(txtValorParcela.Text) Then
-            txtValorParcela.Text = Convert.ToDouble(txtParcela.Text).ToString("C")
-        End If
-    End Sub
-
+    '==================================
+    'ARRUMAR TXT VALOR E PARCELA
+    '==================================
     Private Sub btnDetalhe_Click(sender As Object, e As EventArgs) Handles btnDetalhe.Click
 
         Try
@@ -421,12 +535,81 @@ Public Class frmNovaDespesa
 
     Private Sub chkDespesaFixa_CheckedChanged(sender As Object, e As EventArgs) Handles chkDespesaFixa.CheckedChanged
         If chkDespesaFixa.Checked Then
-
             chkParcela.Checked = False
-            cbPagamento.Enabled = False
             cbDespesaFixa.Enabled = True
         Else
+            cbDespesaFixa.SelectedIndex = 0
             cbDespesaFixa.Enabled = False
         End If
     End Sub
+
+    Private Sub txtValorTotal_KeyDown(sender As Object, e As KeyEventArgs) Handles txtValorTotal.KeyDown
+        If e.KeyCode = Keys.Back Then
+            txtValorParcela.Text = ""
+        End If
+    End Sub
+
+    Private Sub txtValorTotal_KeyUp(sender As Object, e As KeyEventArgs) Handles txtValorTotal.KeyUp
+        Try
+            If chkParcela.Checked Then
+                If cbParcelamento.SelectedIndex <> 0 Then
+
+                    cQtdeParcela = CDec(cbParcelamento.ObterDescricaoCombo().Replace("x", ""))
+
+                    If IsNumeric(txtValorTotal.Text) Then
+
+                        If CDec(txtValorTotal.Text) > 0 Then
+                            cValor = CDec(txtValorTotal.Text.Replace("R$", "")) / cQtdeParcela
+
+                            txtValorParcela.Text = Convert.ToDouble(cValor).ToString("C2")
+
+                        End If
+                    End If
+                End If
+            End If
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro inesperado",, eImagens.Cancel)
+        End Try
+    End Sub
+    Private Sub cbParcelamento_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbParcelamento.SelectedIndexChanged
+        Try
+            If chkParcela.Checked Then
+
+                If cbParcelamento.SelectedIndex <> 0 Then
+
+                    cQtdeParcela = CDec(cbParcelamento.ObterDescricaoCombo().Replace("x", ""))
+
+                    If IsNumeric(txtValorTotal.Text) Then
+
+                        If CDec(txtValorTotal.Text) > 0 Then
+
+                            cValor = Truncate(CDec(txtValorTotal.Text.Replace("R$", "")) / CDec(cQtdeParcela), 2)
+
+                            txtValorParcela.Text = Convert.ToDouble(cValor).ToString("C2")
+                        End If
+                    End If
+                End If
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+    End Sub
+
+
+    Public Function Truncate(ByVal _valor As Decimal, ByVal _intDigits As Integer) As Decimal
+        Dim mult As Double
+        Dim result As Double
+        Try
+            mult = Math.Pow(10.0, _intDigits)
+
+            result = Math.Truncate(mult * _valor) / mult
+
+            Return CDec(result)
+
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+            Return 0
+        End Try
+    End Function
 End Class

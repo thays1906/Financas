@@ -31,11 +31,9 @@
  *******************************************************************************/
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
 using System.Runtime.InteropServices;
 using comTypes = System.Runtime.InteropServices.ComTypes;
-using System.IO;
 
 namespace OfficeOpenXml.Utils
 {
@@ -117,23 +115,23 @@ namespace OfficeOpenXml.Utils
                     header = (ushort)(((chunk.Length - 1) & 0xFFF));
                     header |= 0xB000;   //B=011 A=1
                     br.Write(header);
-                    br.Write(chunk);                    
+                    br.Write(chunk);
                 }
-                decompEnd = part.Length < decompStart + 4096 ? part.Length : decompStart+4096;
+                decompEnd = part.Length < decompStart + 4096 ? part.Length : decompStart + 4096;
             }
 
-            
+
             br.Flush();
-            return ms.ToArray();        
+            return ms.ToArray();
         }
         private static byte[] CompressChunk(byte[] buffer, ref int startPos)
         {
-            var comprBuffer=new byte[4096];
+            var comprBuffer = new byte[4096];
             int flagPos = 0;
-            int cPos=1;
+            int cPos = 1;
             int dPos = startPos;
-            int dEnd=startPos+4096 < buffer.Length? startPos+4096 : buffer.Length;
-            while(dPos<dEnd)
+            int dEnd = startPos + 4096 < buffer.Length ? startPos + 4096 : buffer.Length;
+            while (dPos < dEnd)
             {
                 byte tokenFlags = 0;
                 for (int i = 0; i < 8; i++)
@@ -143,7 +141,7 @@ namespace OfficeOpenXml.Utils
                         int bestCandidate = -1;
                         int bestLength = 0;
                         int candidate = dPos - 1;
-                        int bitCount = GetLengthBits(dPos-startPos);
+                        int bitCount = GetLengthBits(dPos - startPos);
                         int bits = (16 - bitCount);
                         ushort lengthMask = (ushort)((0xFFFF) >> bits);
 
@@ -174,7 +172,7 @@ namespace OfficeOpenXml.Utils
                             tokenFlags |= (byte)(1 << i);
 
                             UInt16 offsetMask = (ushort)~lengthMask;
-                            ushort token = (ushort)(((ushort)(dPos - (bestCandidate+1))) << (bitCount) | (ushort)(bestLength - 3));
+                            ushort token = (ushort)(((ushort)(dPos - (bestCandidate + 1))) << (bitCount) | (ushort)(bestLength - 3));
                             Array.Copy(BitConverter.GetBytes(token), 0, comprBuffer, cPos, 2);
                             dPos = dPos + bestLength;
                             cPos += 2;
@@ -185,7 +183,7 @@ namespace OfficeOpenXml.Utils
                             comprBuffer[cPos++] = buffer[dPos++];
                         }
                     }
-                    
+
                     else
                     {
                         comprBuffer[cPos++] = buffer[dPos++];
@@ -219,9 +217,9 @@ namespace OfficeOpenXml.Utils
                 return null;
             }
             MemoryStream ms = new MemoryStream(4096);
-            BinaryWriter br=new BinaryWriter(ms);
-            int compressPos = startPos+1;
-            while(compressPos<part.Length-1)
+            BinaryWriter br = new BinaryWriter(ms);
+            int compressPos = startPos + 1;
+            while (compressPos < part.Length - 1)
             {
                 byte[] chunk = GetChunk(part, ref compressPos);
                 if (chunk != null)
@@ -235,10 +233,10 @@ namespace OfficeOpenXml.Utils
         private static byte[] GetChunk(byte[] compBuffer, ref int pos)
         {
             ushort header = BitConverter.ToUInt16(compBuffer, pos);
-            int  decomprPos=0;
+            int decomprPos = 0;
             byte[] buffer = new byte[4098];
-            int size = (int)(header & 0xFFF)+3;
-            int endPos = pos+size;
+            int size = (int)(header & 0xFFF) + 3;
+            int endPos = pos + size;
             int a = (int)(header & 0x7000) >> 12;
             int b = (int)(header & 0x8000) >> 15;
             pos += 2;
@@ -293,7 +291,7 @@ namespace OfficeOpenXml.Utils
             else //Raw chunk
             {
                 byte[] ret = new byte[size];
-                Array.Copy(compBuffer, pos, ret,0, size);
+                Array.Copy(compBuffer, pos, ret, 0, size);
                 pos += size;
                 return ret;
             }
@@ -353,7 +351,7 @@ namespace OfficeOpenXml.Utils
             [PreserveSig]
             uint Next(
                 uint celt,
-                [MarshalAs(UnmanagedType.LPArray), Out] 
+                [MarshalAs(UnmanagedType.LPArray), Out]
             System.Runtime.InteropServices.ComTypes.STATSTG[] rgelt,
                 out uint pceltFetched
             );
@@ -531,7 +529,7 @@ namespace OfficeOpenXml.Utils
 
         [DllImport("ole32.dll")]
         static extern int StgCreateDocfileOnILockBytes(ILockBytes plkbyt, STGM grfMode, int reserved, out IStorage ppstgOpen);
-        
+
         #endregion
         internal static int IsStorageFile(string Name)
         {
@@ -579,13 +577,13 @@ namespace OfficeOpenXml.Utils
                     {
                         IStorage subStorage;
                         storage.OpenStorage(item.pwcsName, null, STGM.DIRECT | STGM.READ | STGM.SHARE_EXCLUSIVE, IntPtr.Zero, 0, out subStorage);
-                        StoragePart subStoragePart=new StoragePart();
+                        StoragePart subStoragePart = new StoragePart();
                         storagePart.SubStorage.Add(item.pwcsName, subStoragePart);
                         ReadParts(subStorage, subStoragePart);
                     }
                     else
                     {
-                        storagePart.DataStreams.Add(item.pwcsName, GetOleStream(storage, item));                    
+                        storagePart.DataStreams.Add(item.pwcsName, GetOleStream(storage, item));
                     }
                 }
                 res = pIEnumStatStg.Next(1, regelt, out fetched);
@@ -660,24 +658,24 @@ namespace OfficeOpenXml.Utils
 
             //Create the document in-memory
             if (StgCreateDocfileOnILockBytes(lb,
-                    STGM.CREATE | STGM.READWRITE | STGM.SHARE_EXCLUSIVE | STGM.TRANSACTED, 
+                    STGM.CREATE | STGM.READWRITE | STGM.SHARE_EXCLUSIVE | STGM.TRANSACTED,
                     0,
-                    out storage)==0)
+                    out storage) == 0)
             {
-                foreach(var store in this.Storage.SubStorage)
+                foreach (var store in this.Storage.SubStorage)
                 {
                     CreateStore(store.Key, store.Value, storage);
                 }
-                CreateStreams(this.Storage, storage);                                
+                CreateStreams(this.Storage, storage);
                 lb.Flush();
-                
+
                 //Now copy the unmanaged stream to a byte array --> memory stream
                 var statstg = new comTypes.STATSTG();
                 lb.Stat(out statstg, 0);
                 int size = (int)statstg.cbSize;
                 IntPtr buffer = Marshal.AllocHGlobal(size);
                 UIntPtr readSize;
-                ret=new byte[size];
+                ret = new byte[size];
                 lb.ReadAt(0, buffer, size, out readSize);
                 Marshal.Copy(buffer, ret, 0, size);
                 Marshal.FreeHGlobal(buffer);
@@ -697,7 +695,7 @@ namespace OfficeOpenXml.Utils
             {
                 CreateStore(store.Key, store.Value, subStorage);
             }
-            
+
             CreateStreams(subStore, subStorage);
         }
 

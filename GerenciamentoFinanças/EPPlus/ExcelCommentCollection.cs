@@ -29,11 +29,10 @@
  * Jan Källman		License changed GPL-->LGPL 2011-12-27
  *******************************************************************************/
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
-using System.IO.Packaging;
 using System.Collections;
+using System.Collections.Generic;
+using System.IO.Packaging;
+using System.Xml;
 
 namespace OfficeOpenXml
 {
@@ -47,26 +46,26 @@ namespace OfficeOpenXml
         {
             CommentXml = new XmlDocument();
             CommentXml.PreserveWhitespace = false;
-            NameSpaceManager=ns;
-            Worksheet=ws;
+            NameSpaceManager = ns;
+            Worksheet = ws;
             CreateXml(pck);
             AddCommentsFromXml();
         }
         private void CreateXml(ExcelPackage pck)
         {
             var commentParts = Worksheet.Part.GetRelationshipsByType(ExcelPackage.schemaComment);
-            bool isLoaded=false;
-            CommentXml=new XmlDocument();
-            foreach(var commentPart in commentParts)
+            bool isLoaded = false;
+            CommentXml = new XmlDocument();
+            foreach (var commentPart in commentParts)
             {
                 Uri = PackUriHelper.ResolvePartUri(commentPart.SourceUri, commentPart.TargetUri);
                 Part = pck.Package.GetPart(Uri);
-                XmlHelper.LoadXmlSafe(CommentXml, Part.GetStream()); 
+                XmlHelper.LoadXmlSafe(CommentXml, Part.GetStream());
                 RelId = commentPart.Id;
-                isLoaded=true;
+                isLoaded = true;
             }
             //Create a new document
-            if(!isLoaded)
+            if (!isLoaded)
             {
                 CommentXml.LoadXml("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?><comments xmlns=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><authors /><commentList /></comments>");
                 Uri = null;
@@ -123,7 +122,7 @@ namespace OfficeOpenXml
             {
                 if (Index < 0 || Index >= _comments.Count)
                 {
-                    throw(new ArgumentOutOfRangeException("Comment index out of range"));
+                    throw (new ArgumentOutOfRangeException("Comment index out of range"));
                 }
                 return _comments[Index] as ExcelComment;
             }
@@ -137,7 +136,7 @@ namespace OfficeOpenXml
         {
             get
             {
-                ulong cellID=ExcelCellBase.GetCellID(Worksheet.SheetID, cell.Row, cell.Column);
+                ulong cellID = ExcelCellBase.GetCellID(Worksheet.SheetID, cell.Row, cell.Column);
                 if (_comments.IndexOf(cellID) >= 0)
                 {
                     return _comments[cellID] as ExcelComment;
@@ -156,9 +155,9 @@ namespace OfficeOpenXml
         /// <param name="author">Author</param>
         /// <returns>The comment</returns>
         public ExcelComment Add(ExcelRangeBase cell, string Text, string author)
-        {            
+        {
             var elem = CommentXml.CreateElement("comment", ExcelPackage.schemaMain);
-            int ix=_comments.IndexOf(ExcelAddress.GetCellID(Worksheet.SheetID, cell._fromRow, cell._fromCol));
+            int ix = _comments.IndexOf(ExcelAddress.GetCellID(Worksheet.SheetID, cell._fromRow, cell._fromCol));
             //Make sure the nodes come on order.
             if (ix < 0 && (~ix < _comments.Count))
             {
@@ -171,11 +170,11 @@ namespace OfficeOpenXml
                 CommentXml.SelectSingleNode("d:comments/d:commentList", NameSpaceManager).AppendChild(elem);
             }
             elem.SetAttribute("ref", cell.Start.Address);
-            ExcelComment comment = new ExcelComment(NameSpaceManager, elem , cell);
+            ExcelComment comment = new ExcelComment(NameSpaceManager, elem, cell);
             comment.RichText.Add(Text);
-            if(author!="") 
+            if (author != "")
             {
-                comment.Author=author;
+                comment.Author = author;
             }
             _comments.Add(comment);
             return comment;
@@ -187,7 +186,7 @@ namespace OfficeOpenXml
         public void Remove(ExcelComment comment)
         {
             ulong id = ExcelAddress.GetCellID(Worksheet.SheetID, comment.Range._fromRow, comment.Range._fromCol);
-            int ix=_comments.IndexOf(id);
+            int ix = _comments.IndexOf(id);
             if (ix >= 0 && comment == _comments[ix])
             {
                 comment.TopNode.ParentNode.RemoveChild(comment.TopNode); //Remove VML

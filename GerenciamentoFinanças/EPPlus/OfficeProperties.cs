@@ -31,10 +31,10 @@
  * Jan Källman		    License changed GPL-->LGPL  2011-12-27
  *******************************************************************************/
 using System;
-using System.Xml;
+using System.Globalization;
 using System.IO;
 using System.IO.Packaging;
-using System.Globalization;
+using System.Xml;
 
 namespace OfficeOpenXml
 {
@@ -318,7 +318,7 @@ namespace OfficeOpenXml
                     _xmlPropertiesCustom = GetXmlDocument(string.Format("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?><Properties xmlns:vt=\"{0}\" xmlns=\"{1}\"></Properties>",
                             ExcelPackage.schemaVt,
                             ExcelPackage.schemaCustom),
-                         _uriPropertiesCustom, 
+                         _uriPropertiesCustom,
                          @"application/vnd.openxmlformats-officedocument.custom-properties+xml",
                          @"http://schemas.openxmlformats.org/officeDocument/2006/relationships/custom-properties");
                 }

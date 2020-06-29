@@ -29,12 +29,9 @@
  * Jan Källman		Initial Release		        2010-06-01
  * Jan Källman		License changed GPL-->LGPL 2011-12-16
  *******************************************************************************/
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
 using OfficeOpenXml.Drawing.Chart;
+using System;
+using System.Xml;
 namespace OfficeOpenXml.Drawing
 {
     /// <summary>
@@ -91,7 +88,7 @@ namespace OfficeOpenXml.Drawing
     /// Base class for drawings. 
     /// Drawings are Charts, shapes and Pictures.
     /// </summary>
-    public class ExcelDrawing : XmlHelper 
+    public class ExcelDrawing : XmlHelper
     {
         /// <summary>
         /// Position of the a drawing.
@@ -99,14 +96,14 @@ namespace OfficeOpenXml.Drawing
         public class ExcelPosition : XmlHelper
         {
             XmlNode _node;
-            XmlNamespaceManager _ns;            
+            XmlNamespaceManager _ns;
             internal ExcelPosition(XmlNamespaceManager ns, XmlNode node) :
-                base (ns,node)
+                base(ns, node)
             {
                 _node = node;
                 _ns = ns;
             }
-            const string colPath="xdr:col";
+            const string colPath = "xdr:col";
             public int Column
             {
                 get
@@ -118,7 +115,7 @@ namespace OfficeOpenXml.Drawing
                     SetXmlNodeString(colPath, value.ToString());
                 }
             }
-            const string rowPath="xdr:row";
+            const string rowPath = "xdr:row";
             public int Row
             {
                 get
@@ -193,7 +190,7 @@ namespace OfficeOpenXml.Drawing
                 To = new ExcelPosition(drawings.NameSpaceManager, posNode);
             }
             _nameXPath = nameXPath;
-            SchemaNodeOrder = new string[] { "from", "to", "graphicFrame", "sp", "clientData"  };
+            SchemaNodeOrder = new string[] { "from", "to", "graphicFrame", "sp", "clientData" };
         }
         internal ExcelDrawing(XmlNamespaceManager nameSpaceManager, XmlNode node) :
             base(nameSpaceManager, node)
@@ -202,7 +199,7 @@ namespace OfficeOpenXml.Drawing
         /// <summary>
         /// The name of the drawing object
         /// </summary>
-        public string Name 
+        public string Name
         {
             get
             {
@@ -213,7 +210,7 @@ namespace OfficeOpenXml.Drawing
                 }
                 catch
                 {
-                    return ""; 
+                    return "";
                 }
             }
             set
@@ -246,7 +243,7 @@ namespace OfficeOpenXml.Drawing
                     }
                     else
                     {
-                        return (eEditAs)Enum.Parse(typeof(eEditAs), s,true);
+                        return (eEditAs)Enum.Parse(typeof(eEditAs), s, true);
                     }
                 }
                 catch
@@ -256,11 +253,11 @@ namespace OfficeOpenXml.Drawing
             }
             set
             {
-                string s=value.ToString();
-                SetXmlNodeString("@editAs", s.Substring(0,1).ToLower()+s.Substring(1,s.Length-1));
+                string s = value.ToString();
+                SetXmlNodeString("@editAs", s.Substring(0, 1).ToLower() + s.Substring(1, s.Length - 1));
             }
         }
-        const string lockedPath="xdr:clientData/@fLocksWithSheet";
+        const string lockedPath = "xdr:clientData/@fLocksWithSheet";
         /// <summary>
         /// Lock drawing
         /// </summary>
@@ -290,8 +287,8 @@ namespace OfficeOpenXml.Drawing
                 SetXmlNodeBool(printPath, value);
             }
         }        /// <summary>
-        /// Top Left position
-        /// </summary>
+                 /// Top Left position
+                 /// </summary>
         public ExcelPosition From { get; set; }
         /// <summary>
         /// Bottom right position
@@ -330,12 +327,12 @@ namespace OfficeOpenXml.Drawing
         internal int GetPixelLeft()
         {
             ExcelWorksheet ws = _drawings.Worksheet;
-            decimal mdw=ws.Workbook.MaxFontWidth;
+            decimal mdw = ws.Workbook.MaxFontWidth;
 
             int pix = 0;
             for (int col = 0; col < From.Column; col++)
             {
-                pix += (int)decimal.Truncate(((256 * GetColumnWidth(col+1) + decimal.Truncate(128 / (decimal)mdw)) / 256) * mdw);
+                pix += (int)decimal.Truncate(((256 * GetColumnWidth(col + 1) + decimal.Truncate(128 / (decimal)mdw)) / 256) * mdw);
             }
             pix += From.ColumnOff / EMU_PER_PIXEL;
             return pix;
@@ -346,7 +343,7 @@ namespace OfficeOpenXml.Drawing
             int pix = 0;
             for (int row = 0; row < From.Row; row++)
             {
-                pix += (int)(GetRowWidth(row+1) / 0.75);
+                pix += (int)(GetRowWidth(row + 1) / 0.75);
             }
             pix += From.RowOff / EMU_PER_PIXEL;
             return pix;
@@ -419,7 +416,7 @@ namespace OfficeOpenXml.Drawing
             {
                 From.Row = row - 1;
                 From.RowOff = 0;
-            }   
+            }
             else
             {
                 From.Row = row - 2;
@@ -461,7 +458,7 @@ namespace OfficeOpenXml.Drawing
             pixels = (int)(pixels / (dpi / STANDARD_DPI) + .5);
             int pixOff = pixels - ((int)(ws.Row(From.Row + 1).Height / 0.75) - (int)(From.RowOff / EMU_PER_PIXEL));
             int prevPixOff = pixels;
-            int row = From.Row+1;
+            int row = From.Row + 1;
 
             while (pixOff >= 0)
             {

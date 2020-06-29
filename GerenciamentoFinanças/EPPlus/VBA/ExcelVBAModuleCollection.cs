@@ -28,9 +28,7 @@
  *******************************************************************************
  * Jan Källman		Added		12-APR-2012
  *******************************************************************************/
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace OfficeOpenXml.VBA
@@ -41,7 +39,7 @@ namespace OfficeOpenXml.VBA
     /// <typeparam name="T"></typeparam>
     public class ExcelVBACollectionBase<T> : IEnumerable<T>
     {
-        internal protected List<T> _list=new List<T>();        
+        internal protected List<T> _list = new List<T>();
         public IEnumerator<T> GetEnumerator()
         {
             return _list.GetEnumerator();
@@ -56,7 +54,7 @@ namespace OfficeOpenXml.VBA
         /// </summary>
         /// <param name="Name">Name</param>
         /// <returns></returns>
-        public T this [string Name]
+        public T this[string Name]
         {
             get
             {
@@ -107,7 +105,7 @@ namespace OfficeOpenXml.VBA
         {
             _list.RemoveAt(index);
         }
-        
+
         internal void Clear()
         {
             _list.Clear();
@@ -119,10 +117,10 @@ namespace OfficeOpenXml.VBA
     public class ExcelVbaModuleCollection : ExcelVBACollectionBase<ExcelVBAModule>
     {
         ExcelVbaProject _project;
-        internal ExcelVbaModuleCollection (ExcelVbaProject project)
-	    {
-            _project=project;
-	    }
+        internal ExcelVbaModuleCollection(ExcelVbaProject project)
+        {
+            _project = project;
+        }
         internal void Add(ExcelVBAModule Item)
         {
             _list.Add(Item);
@@ -151,7 +149,7 @@ namespace OfficeOpenXml.VBA
         public ExcelVBAModule AddClass(string Name, bool Exposed)
         {
             var m = new ExcelVBAModule();
-            m.Name = Name;            
+            m.Name = Name;
             m.Type = eModuleType.Class;
             m.Attributes._list.Add(new ExcelVbaModuleAttribute() { Name = "VB_Name", Value = Name, DataType = eAttributeDataType.String });
             m.Attributes._list.Add(new ExcelVbaModuleAttribute() { Name = "VB_Base", Value = "0{FCFB3D2A-A0FA-1068-A738-08002B3371B5}", DataType = eAttributeDataType.String });
@@ -173,7 +171,7 @@ namespace OfficeOpenXml.VBA
     /// A collection of the vba projects references
     /// </summary>
     public class ExcelVbaReferenceCollection : ExcelVBACollectionBase<ExcelVbaReference>
-    {        
+    {
         internal ExcelVbaReferenceCollection()
         {
 
@@ -194,11 +192,11 @@ namespace OfficeOpenXml.VBA
     {
         internal string GetAttributeText()
         {
-            StringBuilder sb=new StringBuilder();
+            StringBuilder sb = new StringBuilder();
 
             foreach (var attr in this)
             {
-                sb.AppendFormat("Attribute {0} = {1}\r\n", attr.Name, attr.DataType==eAttributeDataType.String ? "\"" + attr.Value + "\"" : attr.Value);
+                sb.AppendFormat("Attribute {0} = {1}\r\n", attr.Name, attr.DataType == eAttributeDataType.String ? "\"" + attr.Value + "\"" : attr.Value);
             }
             return sb.ToString();
         }

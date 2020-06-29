@@ -29,10 +29,8 @@
  * Jan Källman		Added this class		        2010-01-28
  * Jan Källman		License changed GPL-->LGPL 2011-12-27
  *******************************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace OfficeOpenXml
 {
@@ -66,13 +64,13 @@ namespace OfficeOpenXml
             if (Range.IsName)
             {
 
-                item = new ExcelNamedRange(Name, _wb,_ws);
+                item = new ExcelNamedRange(Name, _wb, _ws);
             }
             else
             {
                 item = new ExcelNamedRange(Name, _ws, Range.Worksheet, Range.Address);
             }
-            
+
             _dic.Add(Name.ToLower(), item);
             return item;
         }
@@ -84,7 +82,7 @@ namespace OfficeOpenXml
         /// <returns></returns>
         public ExcelNamedRange AddValue(string Name, object value)
         {
-            var item = new ExcelNamedRange(Name,_wb, _ws);
+            var item = new ExcelNamedRange(Name, _wb, _ws);
             item.NameValue = value;
             _dic.Add(Name.ToLower(), item);
             return item;

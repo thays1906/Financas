@@ -86,6 +86,7 @@
     <Compile Include="DAL\pContaBancaria.vb" />
     <Compile Include="DAL\pControleParcelamento.vb" />
     <Compile Include="DAL\pDespesa.vb" />
+    <Compile Include="DAL\pDespesaFixa.vb" />
     <Compile Include="DAL\pFormaPagamento.vb" />
     <Compile Include="DAL\pParcelamento.vb" />
     <Compile Include="DAL\pReceita.vb" />
@@ -244,6 +245,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="BD\GerenciamentoFinancas.bak" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -261,14 +263,18 @@
     </Content>
     <Content Include="iconFinanceiro4.ico" />
     <None Include="Resources\iconAddReceita1.png" />
+    <None Include="Resources\iconAddDespesa.png" />
+    <None Include="Resources\iconAddBlue.png" />
     <Content Include="Resources\iconAtrasado.bmp" />
     <None Include="Resources\icon_MAxWhite.png" />
-    <None Include="Resources\icon_CloseApp2.png" />
     <None Include="Resources\iconPago.png" />
     <None Include="Resources\iconCloseWhite.fw.png" />
     <None Include="Resources\iconCloseWhite.fw1.png" />
+    <None Include="Resources\iconePesquisar.png" />
+    <None Include="Resources\iconEditarFile.png" />
+    <None Include="Resources\iconDeletarFile.png" />
+    <None Include="Resources\iconFechar48.png" />
     <Content Include="Resources\iconPendente.png" />
-    <None Include="Resources\icone_Email.png" />
     <None Include="Resources\iconExtract.png" />
     <None Include="Resources\iconDetalheFiles.png" />
     <None Include="Resources\iconExcluir.png" />
@@ -279,11 +285,8 @@
     <None Include="Resources\iconJanelas.png" />
     <None Include="Resources\icon_Salvar.png.png" />
     <None Include="Resources\iconAddReceita.png" />
-    <None Include="Resources\iconNovoReceita.png" />
     <None Include="Resources\iconCartao1.png" />
     <None Include="Resources\User.png" />
-    <None Include="Resources\Banco2.png" />
-    <None Include="Resources\iconBanco.fw.png" />
     <None Include="Resources\iconUser.png" />
     <None Include="Resources\iconCartao.png" />
     <None Include="Resources\iconEngrenagem32x.png" />
@@ -300,11 +303,8 @@
     <None Include="Resources\iconExcel.png" />
     <None Include="Resources\iconReceita.fw.png" />
     <None Include="Resources\iconDespesa.png" />
-    <None Include="Resources\Icon_search.png" />
-    <None Include="Resources\IconSearch.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BD\" />
     <Folder Include="Imagens\" />
   </ItemGroup>
   <ItemGroup>

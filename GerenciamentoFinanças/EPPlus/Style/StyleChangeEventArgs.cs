@@ -30,14 +30,12 @@
  * Jan Källman		License changed GPL-->LGPL 2011-12-16
  *******************************************************************************/
 using System;
-using System.Collections.Generic;
-using System.Text;
 namespace OfficeOpenXml.Style
 {
     internal enum eStyleClass
     {
         Numberformat,
-        Font,    
+        Font,
         Border,
         BorderTop,
         BorderLeft,
@@ -97,7 +95,7 @@ namespace OfficeOpenXml.Style
         internal StyleChangeEventArgs(eStyleClass styleclass, eStyleProperty styleProperty, object value, int positionID, string address)
         {
             StyleClass = styleclass;
-            StyleProperty=styleProperty;
+            StyleProperty = styleProperty;
             Value = value;
             Address = address;
             PositionID = positionID;

@@ -29,13 +29,9 @@
  * Jan Källman		Initial Release		     
  * Jan Källman		License changed GPL-->LGPL 2011-12-27
  *******************************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Text;
+using OfficeOpenXml.Drawing.Vml;
 using OfficeOpenXml.Style;
 using System.Xml;
-using OfficeOpenXml.Drawing;
-using OfficeOpenXml.Drawing.Vml;
 
 namespace OfficeOpenXml
 {
@@ -50,7 +46,7 @@ namespace OfficeOpenXml
         {
             //_commentHelper = new XmlHelper(ns, commentTopNode);
             _commentHelper = XmlHelperFactory.Create(ns, commentTopNode);
-            var textElem=commentTopNode.SelectSingleNode("d:text", ns);
+            var textElem = commentTopNode.SelectSingleNode("d:text", ns);
             if (textElem == null)
             {
                 textElem = commentTopNode.OwnerDocument.CreateElement("text", ExcelPackage.schemaMain);
@@ -62,7 +58,7 @@ namespace OfficeOpenXml
             }
 
             TopNode = cell.Worksheet.VmlDrawingsComments[ExcelCellBase.GetCellID(cell.Worksheet.SheetID, cell.Start.Row, cell.Start.Column)].TopNode;
-            RichText = new ExcelRichTextCollection(ns,textElem);
+            RichText = new ExcelRichTextCollection(ns, textElem);
         }
         const string AUTHORS_PATH = "d:comments/d:authors";
         const string AUTHOR_PATH = "d:comments/d:authors/d:author";
@@ -74,7 +70,7 @@ namespace OfficeOpenXml
             get
             {
                 int authorRef = _commentHelper.GetXmlNodeInt("@authorId");
-                return _commentHelper.TopNode.OwnerDocument.SelectSingleNode(string.Format("{0}[{1}]", AUTHOR_PATH, authorRef+1), _commentHelper.NameSpaceManager).InnerText;
+                return _commentHelper.TopNode.OwnerDocument.SelectSingleNode(string.Format("{0}[{1}]", AUTHOR_PATH, authorRef + 1), _commentHelper.NameSpaceManager).InnerText;
             }
             set
             {
@@ -134,10 +130,10 @@ namespace OfficeOpenXml
         /// <summary>
         /// Richtext collection
         /// </summary>
-        public ExcelRichTextCollection RichText 
-        { 
-           get; 
-           set; 
+        public ExcelRichTextCollection RichText
+        {
+            get;
+            set;
         }
     }
 }

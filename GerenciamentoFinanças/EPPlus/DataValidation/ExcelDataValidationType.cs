@@ -30,9 +30,6 @@
  * Jan Källman		                License changed GPL-->LGPL  2011-12-27
  *******************************************************************************/
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace OfficeOpenXml.DataValidation
 {
@@ -199,11 +196,11 @@ namespace OfficeOpenXml.DataValidation
         private static ExcelDataValidationType _whole;
         public static ExcelDataValidationType Whole
         {
-            get 
+            get
             {
-                if(_whole == null)
+                if (_whole == null)
                 {
-                    _whole = new ExcelDataValidationType(eDataValidationType.Whole, true, DataValidationSchemaNames.Whole); 
+                    _whole = new ExcelDataValidationType(eDataValidationType.Whole, true, DataValidationSchemaNames.Whole);
                 }
                 return _whole;
             }
