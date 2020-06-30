@@ -264,6 +264,7 @@
     <None Include="Resources\iconAddReceita1.png" />
     <None Include="Resources\iconAddDespesa.png" />
     <None Include="Resources\iconAddBlue.png" />
+    <None Include="Resources\iconAbout.png" />
     <Content Include="Resources\iconAtrasado.bmp" />
     <None Include="Resources\icon_MAxWhite.png" />
     <None Include="Resources\iconPago.png" />

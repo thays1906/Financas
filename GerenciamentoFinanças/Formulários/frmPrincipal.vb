@@ -25,7 +25,7 @@ Public Class frmPrincipal
         txtCaptionHora.Text = ""
         InicializaTelas()
         Cor(CType(StatusStrip1, Control), Collor.Preto)
-
+        gbPricnipal.Visible = True
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -61,12 +61,6 @@ Public Class frmPrincipal
         log.Show()
     End Sub
 
-    Private Sub TesteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TesteToolStripMenuItem.Click
-        'Dim teste As frmNovaDespesa
-        'teste = New frmNovaDespesa
-        'teste.Show()
-    End Sub
-
     Private Sub CategoriasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CategoriasToolStripMenuItem.Click
         Dim oForm As Form
         oForm = New frmConfiguracao
@@ -79,4 +73,11 @@ Public Class frmPrincipal
         controleFormulario(Me, oForm, eTela.conta_Bancaria)
     End Sub
 
+    Private Sub txtCaption_TextChanged(sender As Object, e As EventArgs) Handles txtCaption.TextChanged
+        If txtCaption.Text <> "Home" Then
+            gbPricnipal.Visible = False
+        Else
+            gbPricnipal.Visible = True
+        End If
+    End Sub
 End Class

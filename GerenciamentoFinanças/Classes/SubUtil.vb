@@ -195,7 +195,7 @@ Public Module SubUtil
 
     Public Sub restaurarMDI()
         Lixeiro()
-        frmPrincipal.txtCaption.Text = ""
+        frmPrincipal.txtCaption.Text = "Home"
     End Sub
 
     Public Sub Lixeiro()
