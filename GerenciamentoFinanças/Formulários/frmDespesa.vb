@@ -102,13 +102,18 @@ Public Class frmDespesa
                 'End If
             Else
                 oDataset = pDespesa.PesquisarDespesa(CType(cbStatusFiltro.ObterChaveCombo(), eStatusDespesa),
-                                                 CDec(cbMes.ObterChaveCombo()))
+                                                 CDec(cbMes.ObterChaveCombo()),
+                                                 CDec(cbAno.ObterDescricaoCombo()))
                 If oDataset.TotalRegistros > 0 Then
 
                     Dim x As String = oDataset("total", 0, 1).ToString
 
                     txtTotalDespesa.Text = x
-                    txtTotalDespesa.Text = Convert.ToDouble(txtTotalDespesa.Text).ToString("C")
+
+                    If CDec(x) <> 0 Then
+                        txtTotalDespesa.Text = Convert.ToDouble(txtTotalDespesa.Text).ToString("C")
+                    End If
+
 
                     lvConsulta.PreencheGridDS(oDataset, True, True, False, True, 0, True)
 
@@ -142,22 +147,33 @@ Public Class frmDespesa
         Dim col As Collection
         Dim data As DateTime
         Dim rs As SuperDataSet
+        Dim ano As Decimal
         Try
             col = New Collection
             col.Add(New DuplaCombo(eStatusDespesa.Pendente, "Pendente"))
             col.Add(New DuplaCombo(eStatusDespesa.Pago, "Pago"))
             col.Add(New DuplaCombo(eStatusDespesa.Atrasado, "Atrasado"))
 
-            cbStatusFiltro.PreencheComboColl(col, PrimeiroValor.Selecione)
-
+            cbStatusFiltro.PreencheComboColl(col, PrimeiroValor.Nada)
+            cbStatusFiltro.PosicionaRegistroCombo(eStatusDespesa.Pago)
             col.Clear()
 
             For i = 1 To 12
                 col.Add(New DuplaCombo(i, data.AddMonths(i - 1).ToString("MMMM").ToUpperInvariant))
             Next
 
-            cbMes.PreencheComboColl(col, PrimeiroValor.Selecione)
+            cbMes.PreencheComboColl(col, PrimeiroValor.Nada)
             cbMesFixa.PreencheComboColl(col, PrimeiroValor.Selecione)
+
+            col.Clear()
+
+            data = Now.AddYears(-3)
+            For i = 0 To 6
+                col.Add(New DuplaCombo(i, data.AddYears(i).ToString("yyyy")))
+            Next
+
+            cbAno.PreencheComboColl(col, PrimeiroValor.Todos)
+            cbAno.PosicionaRegistroCombo(3)
 
             col.Clear()
 
@@ -670,4 +686,20 @@ Public Class frmDespesa
         ControleFormulario()
     End Sub
 
+    Private Sub chkList_CheckedChanged(sender As Object, e As EventArgs) Handles chkList.CheckedChanged
+        Try
+            If chkList.Checked Then
+                For i = 0 To lvConsulta.ObterTotalLinhas - 1
+                    lvConsulta.Items.Item(i).Checked = True
+                Next
+            Else
+                For i = 0 To lvConsulta.ObterTotalLinhas - 1
+                    lvConsulta.Items.Item(i).Checked = False
+                Next
+
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
 End Class

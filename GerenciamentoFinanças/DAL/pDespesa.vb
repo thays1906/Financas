@@ -124,7 +124,9 @@ Public Class pDespesa
             Return False
         End Try
     End Function
-    Shared Function PesquisarDespesa(ByVal _cStatus As eStatusDespesa, ByVal _dtMes As Decimal) As SuperDataSet
+    Shared Function PesquisarDespesa(ByVal _cStatus As eStatusDespesa,
+                                     ByVal _dtMes As Decimal,
+                                     ByVal _dtYear As Decimal) As SuperDataSet
         Dim bDados As BancoDados
         Dim oDataset As SuperDataSet
         Try
@@ -138,6 +140,9 @@ Public Class pDespesa
 
             If _dtMes > 0 Then
                 bDados.AdicionaParametro(pDespesa.dtMes, _dtMes)
+            End If
+            If _dtYear > 0 Then
+                bDados.AdicionaParametro(pDespesa.dtYear, _dtYear)
             End If
 
 
