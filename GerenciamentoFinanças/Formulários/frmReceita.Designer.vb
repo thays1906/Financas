@@ -34,7 +34,10 @@ Partial Class frmReceita
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.tbConsulta = New GFT.Util.SuperTabControl()
         Me.tpPesquisa = New System.Windows.Forms.TabPage()
+        Me.chkList = New System.Windows.Forms.CheckBox()
         Me.gbFiltro = New System.Windows.Forms.GroupBox()
+        Me.lblAno = New System.Windows.Forms.Label()
+        Me.cbAno = New GFT.Util.SuperComboBox()
         Me.lblTotalReceita = New System.Windows.Forms.Label()
         Me.lblMes = New System.Windows.Forms.Label()
         Me.txtTotalReceita = New GFT.Util.SuperTextBox()
@@ -42,9 +45,8 @@ Partial Class frmReceita
         Me.lblContaFiltro = New System.Windows.Forms.Label()
         Me.cbContaFiltro = New GFT.Util.SuperComboBox()
         Me.lvConsulta = New GFT.Util.SuperLV()
-        Me.chkList = New System.Windows.Forms.CheckBox()
-        Me.lblAno = New System.Windows.Forms.Label()
-        Me.cbAno = New GFT.Util.SuperComboBox()
+        Me.txtLetreiroReceita = New GFT.Util.SuperLetreiro()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.gbBotoes.SuspendLayout()
         Me.tbConsulta.SuspendLayout()
         Me.tpPesquisa.SuspendLayout()
@@ -181,6 +183,7 @@ Partial Class frmReceita
         'tpPesquisa
         '
         Me.tpPesquisa.BackColor = System.Drawing.Color.White
+        Me.tpPesquisa.Controls.Add(Me.txtLetreiroReceita)
         Me.tpPesquisa.Controls.Add(Me.chkList)
         Me.tpPesquisa.Controls.Add(Me.gbFiltro)
         Me.tpPesquisa.Controls.Add(Me.lvConsulta)
@@ -192,11 +195,22 @@ Partial Class frmReceita
         Me.tpPesquisa.TabIndex = 0
         Me.tpPesquisa.Text = "Receitas"
         '
+        'chkList
+        '
+        Me.chkList.AutoSize = True
+        Me.chkList.Location = New System.Drawing.Point(33, 99)
+        Me.chkList.Name = "chkList"
+        Me.chkList.Size = New System.Drawing.Size(215, 22)
+        Me.chkList.TabIndex = 13
+        Me.chkList.Text = "Marcar/Desmarcar Todos"
+        Me.chkList.UseVisualStyleBackColor = True
+        '
         'gbFiltro
         '
         Me.gbFiltro.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gbFiltro.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.gbFiltro.Controls.Add(Me.Button1)
         Me.gbFiltro.Controls.Add(Me.lblAno)
         Me.gbFiltro.Controls.Add(Me.cbAno)
         Me.gbFiltro.Controls.Add(Me.lblTotalReceita)
@@ -211,6 +225,30 @@ Partial Class frmReceita
         Me.gbFiltro.TabIndex = 7
         Me.gbFiltro.TabStop = False
         Me.gbFiltro.Text = "Filtro"
+        '
+        'lblAno
+        '
+        Me.lblAno.AutoSize = True
+        Me.lblAno.Location = New System.Drawing.Point(627, 21)
+        Me.lblAno.Name = "lblAno"
+        Me.lblAno.Size = New System.Drawing.Size(44, 18)
+        Me.lblAno.TabIndex = 15
+        Me.lblAno.Text = "Ano:"
+        '
+        'cbAno
+        '
+        Me.cbAno.Alterado = False
+        Me.cbAno.CorFundo = System.Drawing.Color.White
+        Me.cbAno.CorFundoSelecionado = System.Drawing.Color.White
+        Me.cbAno.CorTexto = System.Drawing.Color.Black
+        Me.cbAno.CorTextoSelecionado = System.Drawing.Color.Black
+        Me.cbAno.FormattingEnabled = True
+        Me.cbAno.Location = New System.Drawing.Point(631, 42)
+        Me.cbAno.Name = "cbAno"
+        Me.cbAno.Size = New System.Drawing.Size(251, 25)
+        Me.cbAno.SuperObrigatorio = False
+        Me.cbAno.SuperTxtObrigatorio = ""
+        Me.cbAno.TabIndex = 14
         '
         'lblTotalReceita
         '
@@ -315,48 +353,35 @@ Partial Class frmReceita
         Me.lvConsulta.HabilitaOrdem = True
         Me.lvConsulta.HideSelection = False
         Me.lvConsulta.HoverSelection = True
-        Me.lvConsulta.Location = New System.Drawing.Point(33, 121)
+        Me.lvConsulta.Location = New System.Drawing.Point(31, 117)
         Me.lvConsulta.Name = "lvConsulta"
         Me.lvConsulta.SelecionaVarios = False
-        Me.lvConsulta.Size = New System.Drawing.Size(1284, 385)
+        Me.lvConsulta.Size = New System.Drawing.Size(1284, 371)
         Me.lvConsulta.TabIndex = 0
         Me.lvConsulta.TileSize = New System.Drawing.Size(400, 38)
         Me.lvConsulta.UseCompatibleStateImageBehavior = False
         Me.lvConsulta.View = System.Windows.Forms.View.Tile
         '
-        'chkList
+        'txtLetreiroReceita
         '
-        Me.chkList.AutoSize = True
-        Me.chkList.Location = New System.Drawing.Point(33, 99)
-        Me.chkList.Name = "chkList"
-        Me.chkList.Size = New System.Drawing.Size(215, 22)
-        Me.chkList.TabIndex = 13
-        Me.chkList.Text = "Marcar/Desmarcar Todos"
-        Me.chkList.UseVisualStyleBackColor = True
+        Me.txtLetreiroReceita.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.txtLetreiroReceita.CorSombraTexto = System.Drawing.Color.White
+        Me.txtLetreiroReceita.Location = New System.Drawing.Point(81, 488)
+        Me.txtLetreiroReceita.Name = "txtLetreiroReceita"
+        Me.txtLetreiroReceita.RolagemLetreiro = GFT.Util.SuperLetreiro.Direcao.Direita
+        Me.txtLetreiroReceita.Size = New System.Drawing.Size(377, 18)
+        Me.txtLetreiroReceita.TabIndex = 14
+        Me.txtLetreiroReceita.TextoLetreiro = "0,00 Registros"
+        Me.txtLetreiroReceita.VelocidadeRolagem = 1
         '
-        'lblAno
+        'Button1
         '
-        Me.lblAno.AutoSize = True
-        Me.lblAno.Location = New System.Drawing.Point(627, 21)
-        Me.lblAno.Name = "lblAno"
-        Me.lblAno.Size = New System.Drawing.Size(44, 18)
-        Me.lblAno.TabIndex = 15
-        Me.lblAno.Text = "Ano:"
-        '
-        'cbAno
-        '
-        Me.cbAno.Alterado = False
-        Me.cbAno.CorFundo = System.Drawing.Color.White
-        Me.cbAno.CorFundoSelecionado = System.Drawing.Color.White
-        Me.cbAno.CorTexto = System.Drawing.Color.Black
-        Me.cbAno.CorTextoSelecionado = System.Drawing.Color.Black
-        Me.cbAno.FormattingEnabled = True
-        Me.cbAno.Location = New System.Drawing.Point(631, 42)
-        Me.cbAno.Name = "cbAno"
-        Me.cbAno.Size = New System.Drawing.Size(251, 25)
-        Me.cbAno.SuperObrigatorio = False
-        Me.cbAno.SuperTxtObrigatorio = ""
-        Me.cbAno.TabIndex = 14
+        Me.Button1.Location = New System.Drawing.Point(954, 50)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 16
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'frmReceita
         '
@@ -403,4 +428,6 @@ Partial Class frmReceita
     Friend WithEvents chkList As CheckBox
     Friend WithEvents lblAno As Label
     Friend WithEvents cbAno As GFT.Util.SuperComboBox
+    Friend WithEvents txtLetreiroReceita As GFT.Util.SuperLetreiro
+    Friend WithEvents Button1 As Button
 End Class

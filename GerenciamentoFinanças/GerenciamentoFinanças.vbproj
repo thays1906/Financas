@@ -115,12 +115,6 @@
     <Compile Include="Formulários\frmConta.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\frmDespesaFixa.Designer.vb">
-      <DependentUpon>frmDespesaFixa.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formulários\frmDespesaFixa.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Formulários\frmLogin.Designer.vb">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
@@ -212,9 +206,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmCadastroCategoria.resx">
       <DependentUpon>frmCadastroCategoria.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\frmDespesaFixa.resx">
-      <DependentUpon>frmDespesaFixa.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>

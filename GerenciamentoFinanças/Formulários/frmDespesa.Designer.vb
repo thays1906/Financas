@@ -35,8 +35,11 @@ Partial Class frmDespesa
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.tabCtrlDespesa = New GFT.Util.SuperTabControl()
         Me.tpPesquisa = New System.Windows.Forms.TabPage()
+        Me.chkList = New System.Windows.Forms.CheckBox()
         Me.lvConsulta = New GFT.Util.SuperLV()
         Me.gbFiltro = New System.Windows.Forms.GroupBox()
+        Me.lblAno = New System.Windows.Forms.Label()
+        Me.cbAno = New GFT.Util.SuperComboBox()
         Me.lblMes = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.cbMes = New GFT.Util.SuperComboBox()
@@ -64,9 +67,8 @@ Partial Class frmDespesa
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.txtDescriaoDetalhe = New GFT.Util.SuperTextBox()
         Me.pnlDetalhe = New System.Windows.Forms.Panel()
-        Me.lblAno = New System.Windows.Forms.Label()
-        Me.cbAno = New GFT.Util.SuperComboBox()
-        Me.chkList = New System.Windows.Forms.CheckBox()
+        Me.txtLetreiroDespesa = New GFT.Util.SuperLetreiro()
+        Me.txtLetreiroFixa = New GFT.Util.SuperLetreiro()
         Me.gbBotoes.SuspendLayout()
         Me.tabCtrlDespesa.SuspendLayout()
         Me.tpPesquisa.SuspendLayout()
@@ -89,7 +91,7 @@ Partial Class frmDespesa
         Me.gbBotoes.Controls.Add(Me.btnAddDespesa)
         Me.gbBotoes.Controls.Add(Me.btnExcluir)
         Me.gbBotoes.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.gbBotoes.Location = New System.Drawing.Point(0, 536)
+        Me.gbBotoes.Location = New System.Drawing.Point(0, 554)
         Me.gbBotoes.Name = "gbBotoes"
         Me.gbBotoes.Padding = New System.Windows.Forms.Padding(0)
         Me.gbBotoes.Size = New System.Drawing.Size(1455, 68)
@@ -217,22 +219,33 @@ Partial Class frmDespesa
         Me.tabCtrlDespesa.Name = "tabCtrlDespesa"
         Me.tabCtrlDespesa.Padding = New System.Drawing.Point(50, 6)
         Me.tabCtrlDespesa.SelectedIndex = 0
-        Me.tabCtrlDespesa.Size = New System.Drawing.Size(1455, 536)
+        Me.tabCtrlDespesa.Size = New System.Drawing.Size(1455, 554)
         Me.tabCtrlDespesa.TabIndex = 4
         '
         'tpPesquisa
         '
+        Me.tpPesquisa.Controls.Add(Me.txtLetreiroDespesa)
         Me.tpPesquisa.Controls.Add(Me.chkList)
         Me.tpPesquisa.Controls.Add(Me.lvConsulta)
         Me.tpPesquisa.Controls.Add(Me.gbFiltro)
         Me.tpPesquisa.ImageIndex = 3
         Me.tpPesquisa.Location = New System.Drawing.Point(4, 61)
         Me.tpPesquisa.Name = "tpPesquisa"
-        Me.tpPesquisa.Padding = New System.Windows.Forms.Padding(5, 5, 5, 5)
-        Me.tpPesquisa.Size = New System.Drawing.Size(1447, 471)
+        Me.tpPesquisa.Padding = New System.Windows.Forms.Padding(5)
+        Me.tpPesquisa.Size = New System.Drawing.Size(1447, 489)
         Me.tpPesquisa.TabIndex = 0
         Me.tpPesquisa.Text = "Despesas"
         Me.tpPesquisa.UseVisualStyleBackColor = True
+        '
+        'chkList
+        '
+        Me.chkList.AutoSize = True
+        Me.chkList.Location = New System.Drawing.Point(33, 77)
+        Me.chkList.Name = "chkList"
+        Me.chkList.Size = New System.Drawing.Size(226, 22)
+        Me.chkList.TabIndex = 8
+        Me.chkList.Text = "Marcar/Desmarcar Todos"
+        Me.chkList.UseVisualStyleBackColor = True
         '
         'lvConsulta
         '
@@ -241,10 +254,10 @@ Partial Class frmDespesa
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lvConsulta.HabilitaOrdem = True
         Me.lvConsulta.HideSelection = False
-        Me.lvConsulta.Location = New System.Drawing.Point(33, 107)
+        Me.lvConsulta.Location = New System.Drawing.Point(33, 102)
         Me.lvConsulta.Name = "lvConsulta"
         Me.lvConsulta.SelecionaVarios = True
-        Me.lvConsulta.Size = New System.Drawing.Size(1373, 361)
+        Me.lvConsulta.Size = New System.Drawing.Size(1373, 360)
         Me.lvConsulta.TabIndex = 0
         Me.lvConsulta.UseCompatibleStateImageBehavior = False
         '
@@ -266,6 +279,30 @@ Partial Class frmDespesa
         Me.gbFiltro.TabIndex = 7
         Me.gbFiltro.TabStop = False
         Me.gbFiltro.Text = "Filtro"
+        '
+        'lblAno
+        '
+        Me.lblAno.AutoSize = True
+        Me.lblAno.Location = New System.Drawing.Point(535, 21)
+        Me.lblAno.Name = "lblAno"
+        Me.lblAno.Size = New System.Drawing.Size(46, 18)
+        Me.lblAno.TabIndex = 12
+        Me.lblAno.Text = "Ano:"
+        '
+        'cbAno
+        '
+        Me.cbAno.Alterado = False
+        Me.cbAno.CorFundo = System.Drawing.Color.White
+        Me.cbAno.CorFundoSelecionado = System.Drawing.Color.White
+        Me.cbAno.CorTexto = System.Drawing.Color.Black
+        Me.cbAno.CorTextoSelecionado = System.Drawing.Color.Black
+        Me.cbAno.FormattingEnabled = True
+        Me.cbAno.Location = New System.Drawing.Point(539, 42)
+        Me.cbAno.Name = "cbAno"
+        Me.cbAno.Size = New System.Drawing.Size(251, 26)
+        Me.cbAno.SuperObrigatorio = False
+        Me.cbAno.SuperTxtObrigatorio = ""
+        Me.cbAno.TabIndex = 11
         '
         'lblMes
         '
@@ -317,7 +354,7 @@ Partial Class frmDespesa
         Me.txtTotalDespesa.Alterado = False
         Me.txtTotalDespesa.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtTotalDespesa.BackColor = System.Drawing.Color.White
-        Me.txtTotalDespesa.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
+        Me.txtTotalDespesa.CorFundoSelecionado = System.Drawing.SystemColors.Control
         Me.txtTotalDespesa.Font = New System.Drawing.Font("Verdana", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTotalDespesa.ForeColor = System.Drawing.Color.Red
         Me.txtTotalDespesa.Location = New System.Drawing.Point(1200, 43)
@@ -350,14 +387,15 @@ Partial Class frmDespesa
         '
         'tabDespesaFixa
         '
+        Me.tabDespesaFixa.Controls.Add(Me.txtLetreiroFixa)
         Me.tabDespesaFixa.Controls.Add(Me.lvlConsultaFixa)
         Me.tabDespesaFixa.Controls.Add(Me.gbDespesaFixa)
         Me.tabDespesaFixa.ImageIndex = 5
         Me.tabDespesaFixa.Location = New System.Drawing.Point(4, 61)
-        Me.tabDespesaFixa.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabDespesaFixa.Margin = New System.Windows.Forms.Padding(2)
         Me.tabDespesaFixa.Name = "tabDespesaFixa"
-        Me.tabDespesaFixa.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.tabDespesaFixa.Size = New System.Drawing.Size(1461, 470)
+        Me.tabDespesaFixa.Padding = New System.Windows.Forms.Padding(2)
+        Me.tabDespesaFixa.Size = New System.Drawing.Size(1447, 489)
         Me.tabDespesaFixa.TabIndex = 2
         Me.tabDespesaFixa.Text = "Despesas Fixas"
         Me.tabDespesaFixa.UseVisualStyleBackColor = True
@@ -372,7 +410,7 @@ Partial Class frmDespesa
         Me.lvlConsultaFixa.Location = New System.Drawing.Point(39, 132)
         Me.lvlConsultaFixa.Name = "lvlConsultaFixa"
         Me.lvlConsultaFixa.SelecionaVarios = False
-        Me.lvlConsultaFixa.Size = New System.Drawing.Size(1081, 334)
+        Me.lvlConsultaFixa.Size = New System.Drawing.Size(1081, 331)
         Me.lvlConsultaFixa.TabIndex = 1
         Me.lvlConsultaFixa.UseCompatibleStateImageBehavior = False
         '
@@ -470,10 +508,10 @@ Partial Class frmDespesa
         Me.tabDetalhe.Controls.Add(Me.gbDetalhe)
         Me.tabDetalhe.ImageIndex = 4
         Me.tabDetalhe.Location = New System.Drawing.Point(4, 61)
-        Me.tabDetalhe.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabDetalhe.Margin = New System.Windows.Forms.Padding(2)
         Me.tabDetalhe.Name = "tabDetalhe"
-        Me.tabDetalhe.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.tabDetalhe.Size = New System.Drawing.Size(1461, 470)
+        Me.tabDetalhe.Padding = New System.Windows.Forms.Padding(2)
+        Me.tabDetalhe.Size = New System.Drawing.Size(1447, 471)
         Me.tabDetalhe.TabIndex = 1
         Me.tabDetalhe.Text = "Detalhamento da Dívida"
         Me.tabDetalhe.UseVisualStyleBackColor = True
@@ -486,9 +524,9 @@ Partial Class frmDespesa
         Me.gbDetalhe.Controls.Add(Me.gbDadosDetalhe)
         Me.gbDetalhe.Controls.Add(Me.pnlDetalhe)
         Me.gbDetalhe.Location = New System.Drawing.Point(28, 4)
-        Me.gbDetalhe.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbDetalhe.Margin = New System.Windows.Forms.Padding(2)
         Me.gbDetalhe.Name = "gbDetalhe"
-        Me.gbDetalhe.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbDetalhe.Padding = New System.Windows.Forms.Padding(2)
         Me.gbDetalhe.Size = New System.Drawing.Size(1041, 463)
         Me.gbDetalhe.TabIndex = 9
         Me.gbDetalhe.TabStop = False
@@ -506,9 +544,9 @@ Partial Class frmDespesa
         Me.gbDadosDetalhe.Controls.Add(Me.lblTitulo)
         Me.gbDadosDetalhe.Controls.Add(Me.txtDescriaoDetalhe)
         Me.gbDadosDetalhe.Location = New System.Drawing.Point(38, 24)
-        Me.gbDadosDetalhe.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbDadosDetalhe.Margin = New System.Windows.Forms.Padding(2)
         Me.gbDadosDetalhe.Name = "gbDadosDetalhe"
-        Me.gbDadosDetalhe.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbDadosDetalhe.Padding = New System.Windows.Forms.Padding(2)
         Me.gbDadosDetalhe.Size = New System.Drawing.Size(1148, 118)
         Me.gbDadosDetalhe.TabIndex = 9
         Me.gbDadosDetalhe.TabStop = False
@@ -529,7 +567,7 @@ Partial Class frmDespesa
         Me.txtPago.Alterado = False
         Me.txtPago.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.txtPago.BackColor = System.Drawing.Color.White
-        Me.txtPago.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
+        Me.txtPago.CorFundoSelecionado = System.Drawing.SystemColors.Control
         Me.txtPago.Font = New System.Drawing.Font("Arial", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPago.ForeColor = System.Drawing.Color.ForestGreen
         Me.txtPago.Location = New System.Drawing.Point(676, 61)
@@ -560,7 +598,7 @@ Partial Class frmDespesa
         Me.txtNaoPago.Alterado = False
         Me.txtNaoPago.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.txtNaoPago.BackColor = System.Drawing.Color.White
-        Me.txtNaoPago.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
+        Me.txtNaoPago.CorFundoSelecionado = System.Drawing.SystemColors.Control
         Me.txtNaoPago.Font = New System.Drawing.Font("Arial", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNaoPago.ForeColor = System.Drawing.Color.Red
         Me.txtNaoPago.Location = New System.Drawing.Point(840, 61)
@@ -591,7 +629,7 @@ Partial Class frmDespesa
         Me.txtTotalDespesaDetalhe.Alterado = False
         Me.txtTotalDespesaDetalhe.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.txtTotalDespesaDetalhe.BackColor = System.Drawing.Color.White
-        Me.txtTotalDespesaDetalhe.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
+        Me.txtTotalDespesaDetalhe.CorFundoSelecionado = System.Drawing.SystemColors.Control
         Me.txtTotalDespesaDetalhe.Font = New System.Drawing.Font("Arial", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTotalDespesaDetalhe.Location = New System.Drawing.Point(512, 61)
         Me.txtTotalDespesaDetalhe.Name = "txtTotalDespesaDetalhe"
@@ -619,7 +657,7 @@ Partial Class frmDespesa
         '
         Me.txtDescriaoDetalhe.Alterado = False
         Me.txtDescriaoDetalhe.BackColor = System.Drawing.Color.White
-        Me.txtDescriaoDetalhe.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
+        Me.txtDescriaoDetalhe.CorFundoSelecionado = System.Drawing.SystemColors.Control
         Me.txtDescriaoDetalhe.Location = New System.Drawing.Point(5, 58)
         Me.txtDescriaoDetalhe.Name = "txtDescriaoDetalhe"
         Me.txtDescriaoDetalhe.ReadOnly = True
@@ -639,51 +677,41 @@ Partial Class frmDespesa
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pnlDetalhe.AutoScroll = True
         Me.pnlDetalhe.Location = New System.Drawing.Point(4, 130)
-        Me.pnlDetalhe.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.pnlDetalhe.Margin = New System.Windows.Forms.Padding(2)
         Me.pnlDetalhe.Name = "pnlDetalhe"
         Me.pnlDetalhe.Size = New System.Drawing.Size(1036, 328)
         Me.pnlDetalhe.TabIndex = 10
         '
-        'lblAno
+        'txtLetreiroDespesa
         '
-        Me.lblAno.AutoSize = True
-        Me.lblAno.Location = New System.Drawing.Point(535, 21)
-        Me.lblAno.Name = "lblAno"
-        Me.lblAno.Size = New System.Drawing.Size(46, 18)
-        Me.lblAno.TabIndex = 12
-        Me.lblAno.Text = "Ano:"
+        Me.txtLetreiroDespesa.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.txtLetreiroDespesa.CorSombraTexto = System.Drawing.Color.White
+        Me.txtLetreiroDespesa.Location = New System.Drawing.Point(33, 468)
+        Me.txtLetreiroDespesa.Name = "txtLetreiroDespesa"
+        Me.txtLetreiroDespesa.RolagemLetreiro = GFT.Util.SuperLetreiro.Direcao.Direita
+        Me.txtLetreiroDespesa.Size = New System.Drawing.Size(377, 18)
+        Me.txtLetreiroDespesa.TabIndex = 9
+        Me.txtLetreiroDespesa.TextoLetreiro = "0,00 Registros"
+        Me.txtLetreiroDespesa.VelocidadeRolagem = 1
         '
-        'cbAno
+        'txtLetreiroFixa
         '
-        Me.cbAno.Alterado = False
-        Me.cbAno.CorFundo = System.Drawing.Color.White
-        Me.cbAno.CorFundoSelecionado = System.Drawing.Color.White
-        Me.cbAno.CorTexto = System.Drawing.Color.Black
-        Me.cbAno.CorTextoSelecionado = System.Drawing.Color.Black
-        Me.cbAno.FormattingEnabled = True
-        Me.cbAno.Location = New System.Drawing.Point(539, 42)
-        Me.cbAno.Name = "cbAno"
-        Me.cbAno.Size = New System.Drawing.Size(251, 26)
-        Me.cbAno.SuperObrigatorio = False
-        Me.cbAno.SuperTxtObrigatorio = ""
-        Me.cbAno.TabIndex = 11
-        '
-        'chkList
-        '
-        Me.chkList.AutoSize = True
-        Me.chkList.Location = New System.Drawing.Point(33, 83)
-        Me.chkList.Name = "chkList"
-        Me.chkList.Size = New System.Drawing.Size(226, 22)
-        Me.chkList.TabIndex = 8
-        Me.chkList.Text = "Marcar/Desmarcar Todos"
-        Me.chkList.UseVisualStyleBackColor = True
+        Me.txtLetreiroFixa.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.txtLetreiroFixa.CorSombraTexto = System.Drawing.Color.White
+        Me.txtLetreiroFixa.Location = New System.Drawing.Point(39, 468)
+        Me.txtLetreiroFixa.Name = "txtLetreiroFixa"
+        Me.txtLetreiroFixa.RolagemLetreiro = GFT.Util.SuperLetreiro.Direcao.Direita
+        Me.txtLetreiroFixa.Size = New System.Drawing.Size(377, 18)
+        Me.txtLetreiroFixa.TabIndex = 10
+        Me.txtLetreiroFixa.TextoLetreiro = "0,00 Registros"
+        Me.txtLetreiroFixa.VelocidadeRolagem = 1
         '
         'frmDespesa
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(126, Byte), Integer), CType(CType(143, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1455, 604)
+        Me.ClientSize = New System.Drawing.Size(1455, 622)
         Me.Controls.Add(Me.tabCtrlDespesa)
         Me.Controls.Add(Me.gbBotoes)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -751,4 +779,6 @@ Partial Class frmDespesa
     Friend WithEvents chkList As CheckBox
     Friend WithEvents lblAno As Label
     Friend WithEvents cbAno As GFT.Util.SuperComboBox
+    Friend WithEvents txtLetreiroDespesa As GFT.Util.SuperLetreiro
+    Friend WithEvents txtLetreiroFixa As GFT.Util.SuperLetreiro
 End Class

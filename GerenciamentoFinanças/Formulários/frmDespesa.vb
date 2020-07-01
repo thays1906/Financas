@@ -93,18 +93,28 @@ Public Class frmDespesa
         End Try
     End Sub
     Private Sub Pesquisar()
+        Dim ano As Decimal
         Try
             If tabCtrlDespesa.SelectedIndex = 1 Then
+
                 oDataset = pDespesaFixa.Pesquisar
 
-                'If oDataset.TotalRegistros > 0 Then
-                lvlConsultaFixa.PreencheGridDS(oDataset, True, True, False, True, 0, True)
-                'End If
+                If oDataset.TotalRegistros > 0 Then
+                    lvlConsultaFixa.PreencheGridDS(oDataset, True, True, False, True, 0, True)
+                    txtLetreiroFixa.TextoLetreiro = oDataset.InfoPesquisa.ToString
+                End If
             Else
+                If CDec(cbAno.ObterChaveCombo) <> 0 Then
+                    ano = CDec(cbAno.ObterDescricaoCombo)
+                Else
+                    ano = 0
+                End If
                 oDataset = pDespesa.PesquisarDespesa(CType(cbStatusFiltro.ObterChaveCombo(), eStatusDespesa),
                                                  CDec(cbMes.ObterChaveCombo()),
-                                                 CDec(cbAno.ObterDescricaoCombo()))
+                                                 ano)
                 If oDataset.TotalRegistros > 0 Then
+
+                    txtLetreiroDespesa.TextoLetreiro = oDataset.InfoPesquisa.ToString
 
                     Dim x As String = oDataset("total", 0, 1).ToString
 
@@ -154,16 +164,16 @@ Public Class frmDespesa
             col.Add(New DuplaCombo(eStatusDespesa.Pago, "Pago"))
             col.Add(New DuplaCombo(eStatusDespesa.Atrasado, "Atrasado"))
 
-            cbStatusFiltro.PreencheComboColl(col, PrimeiroValor.Nada)
-            cbStatusFiltro.PosicionaRegistroCombo(eStatusDespesa.Pago)
+            cbStatusFiltro.PreencheComboColl(col, PrimeiroValor.Todos)
+
             col.Clear()
 
             For i = 1 To 12
                 col.Add(New DuplaCombo(i, data.AddMonths(i - 1).ToString("MMMM").ToUpperInvariant))
             Next
 
-            cbMes.PreencheComboColl(col, PrimeiroValor.Nada)
-            cbMesFixa.PreencheComboColl(col, PrimeiroValor.Selecione)
+            cbMes.PreencheComboColl(col, PrimeiroValor.Todos)
+            cbMesFixa.PreencheComboColl(col, PrimeiroValor.Todos)
 
             col.Clear()
 
@@ -415,15 +425,18 @@ Public Class frmDespesa
 
 
             If btn = eAcao.Novo Then
+                btn = 0
                 Despesa = New frmNovaDespesa(cDespesa)
                 Despesa.ShowDialog()
                 If Not tabCtrlDespesa.SelectedIndex = 0 Then
                     Pesquisar()
                     tabCtrlDespesa.SelectedIndex = 0
+                    Exit Sub
                 Else
                     Pesquisar()
+                    Exit Sub
                 End If
-                btn = 0
+                'btn = 0
             End If
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)

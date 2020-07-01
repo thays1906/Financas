@@ -64,6 +64,7 @@ Public Class frmNovaDespesa
 
                 If cDespesa = 0 Then
                     'Nova despesa
+
                     logErro = Now & " - Inclusão de Despesa."
 
                     If chkParcela.Checked = True Then
@@ -118,20 +119,16 @@ Public Class frmNovaDespesa
                 Else
                     'Então é alteração
 
-                    'Verificando se ja era Despesa Fixa ou se vai virar fixa...
+                    'Verificando se é Despesa Fixa ...
                     If chkDespesaFixa.Checked Then
 
                         If cbDespesaFixa.SelectedIndex <> 0 Then
 
                             If cDespesaFixa <> 0 Then
-                                pDespesaFixa.Alterar(cDespesaFixa,
-                                                    CType(cbDespesaFixa.ObterChaveCombo(), eDespesaFixa),
-                                                    txtDescricao.Text,
-                                                    cValor,
-                                                    CDec(cbCategoria.ObterChaveCombo()),
-                                                    CDec(cbPagamento.ObterChaveCombo()),
-                                                    CDec(cbConta.ObterChaveCombo()),
-                                                    dtRegistro)
+
+
+                                erro = AlterarDespesa()
+
                             Else
                                 pDespesaFixa.Inserir(CType(cbDespesaFixa.ObterChaveCombo(), eDespesaFixa),
                                                     txtDescricao.Text,
@@ -351,6 +348,7 @@ Public Class frmNovaDespesa
 
                 chkDespesaFixa.Visible = True
                 chkDespesaFixa.Checked = True
+                chkDespesaFixa.Enabled = False
                 chkDespesaFixa.SetBounds(9, 16, 136, 22)
 
                 cbDespesaFixa.Visible = True
@@ -408,7 +406,7 @@ Public Class frmNovaDespesa
             For i = 0 To rsDespesaConta.TotalRegistros - 1
 
                 If CDec(rsDespesaConta("cPrincipal", i)) = 1 Then
-                    cbConta.PosicionaRegistroCombo(rsDespesaConta("cPrincipal", i))
+                    cbConta.PosicionaRegistroCombo(rsDespesaConta("cPrincipal"))
                 End If
             Next
 

@@ -21,7 +21,6 @@ Public Class frmPrincipal
     End Sub
 
     Private Sub frmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         txtCaptionHora.Text = ""
         InicializaTelas()
         Cor(CType(StatusStrip1, Control), Collor.Preto)
@@ -79,5 +78,11 @@ Public Class frmPrincipal
         Else
             gbPricnipal.Visible = True
         End If
+    End Sub
+
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+        Dim oForm As Form
+        oForm = New Form1
+        controleFormulario(Me, oForm, eTela.nova_Receita)
     End Sub
 End Class

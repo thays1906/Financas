@@ -56,18 +56,24 @@ Public Class frmReceita
         End Try
     End Sub
     Public Sub Pesquisar()
+        Dim TOTAL As String
         Try
 
             oDataset = pReceita.PesquisarReceita(CDec(cbMes.ObterChaveCombo()))
 
-            Dim TOTAL As String = oDataset("total", 0, 1).ToString
+            If oDataset.TotalRegistros > 0 Then
 
-            txtTotalReceita.Text = TOTAL
+                TOTAL = oDataset("total", 0, 1).ToString
 
-            txtTotalReceita.Text = Convert.ToDouble(txtTotalReceita.Text).ToString("C")
+                txtTotalReceita.Text = TOTAL
+                If CDec(TOTAL) <> 0 Then
+                    txtTotalReceita.Text = Convert.ToDouble(txtTotalReceita.Text).ToString("C")
+                End If
 
+                lvConsulta.PreencheGridDS(oDataset, True, True, False, True, 0, True)
 
-            lvConsulta.PreencheGridDS(oDataset, True, True, False, True, 0, True)
+                txtLetreiroReceita.TextoLetreiro = oDataset.InfoPesquisa.ToString
+            End If
             For i = 0 To oDataset.TotalRegistros - 1
 
                 lvConsulta.Items(i).SubItems(2).ForeColor = Color.Green
@@ -134,5 +140,10 @@ Public Class frmReceita
         Catch ex As Exception
 
         End Try
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim form = New Form1
+        form.Show()
     End Sub
 End Class
