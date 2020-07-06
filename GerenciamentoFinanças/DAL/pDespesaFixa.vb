@@ -13,6 +13,8 @@ Public Class pDespesaFixa
         Public Shared cCategoria As Campo = New Campo("cCategoria", DbType.Decimal, 10, 0)
         Public Shared cPagamento As Campo = New Campo("cPagamento", DbType.Decimal, 10, 0)
         Public Shared dtRegistro As Campo = New Campo("dtRegistro", DbType.DateTime, 10)
+        Public Shared dtFim As Campo = New Campo("DATAFIM", DbType.DateTime, 10)
+
     End Class
 
     Shared Function Inserir(ByVal _cPeriodo As eDespesaFixa,
@@ -156,7 +158,7 @@ Public Class pDespesaFixa
 
             bDados.LimpaParametros()
             bDados.AdicionaParametro(pDespesaFixa.cDespesaFixa, _cDespesaFixa)
-            bDados.AdicionaParametro(pDespesaFixa.dtRegistro, Now.AddYears(10))
+            bDados.AdicionaParametro(pDespesaFixa.dtFim, Now.AddYears(10))
 
             If bDados.Executar("pLancamento_Futuro") Then
                 Return True

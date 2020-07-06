@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Classes\SubUtil.vb" />
     <Compile Include="DAL\pCategoriaDespesa.vb" />
+    <Compile Include="DAL\pCobrancaPagamento.vb" />
     <Compile Include="DAL\pConsulta.vb" />
     <Compile Include="DAL\pContaBancaria.vb" />
     <Compile Include="DAL\pControleParcelamento.vb" />
@@ -91,10 +92,28 @@
     <Compile Include="DAL\pParcelamento.vb" />
     <Compile Include="DAL\pReceita.vb" />
     <Compile Include="DAL\pTipoReceita.vb" />
-    <Compile Include="Formulários\Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="Formulários\frmAbout.Designer.vb">
+      <DependentUpon>frmAbout.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\Form1.vb">
+    <Compile Include="Formulários\frmAbout.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\frmAddCobranca.Designer.vb">
+      <DependentUpon>frmAddCobranca.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmAddCobranca.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\frmCobranca.Designer.vb">
+      <DependentUpon>frmCobranca.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmCobranca.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\frmDespesaFixa.Designer.vb">
+      <DependentUpon>frmDespesaFixa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmDespesaFixa.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formulários\frmConfiguracao.Designer.vb">
@@ -188,8 +207,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Formulários\Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="Formulários\frmAbout.resx">
+      <DependentUpon>frmAbout.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmAddCobranca.resx">
+      <DependentUpon>frmAddCobranca.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmCobranca.resx">
+      <DependentUpon>frmCobranca.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmDespesaFixa.resx">
+      <DependentUpon>frmDespesaFixa.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmConfiguracao.resx">
       <DependentUpon>frmConfiguracao.vb</DependentUpon>
@@ -252,10 +280,19 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="iconFinanceiro4.ico" />
+    <None Include="Resources\LOGO 2.0.png" />
+    <None Include="Resources\unnamed.png" />
+    <None Include="Resources\iconPicPay.png" />
+    <None Include="Resources\iconSantander.fw.png" />
+    <None Include="Resources\iconRefresh.png" />
+    <None Include="Resources\icon_BankConta.png" />
+    <None Include="Resources\icon_Despesa.png" />
+    <None Include="Resources\icon_Receita.png" />
     <None Include="Resources\iconAddReceita1.png" />
     <None Include="Resources\iconAddDespesa.png" />
     <None Include="Resources\iconAddBlue.png" />
     <None Include="Resources\iconAbout.png" />
+    <None Include="Resources\Bank2.png" />
     <Content Include="Resources\iconAtrasado.bmp" />
     <None Include="Resources\icon_MAxWhite.png" />
     <None Include="Resources\iconPago.png" />
@@ -265,6 +302,13 @@
     <None Include="Resources\iconEditarFile.png" />
     <None Include="Resources\iconDeletarFile.png" />
     <None Include="Resources\iconFechar48.png" />
+    <None Include="Resources\iconeInvest.png" />
+    <None Include="Resources\iconItau.fw.png" />
+    <None Include="Resources\iconMP.fw.png" />
+    <None Include="Resources\iconBradesco.png" />
+    <None Include="Resources\iconNubank.fw.png" />
+    <None Include="Resources\iconMercadoPago.fw.png" />
+    <None Include="Resources\iconEnvioEmail.png" />
     <Content Include="Resources\iconPendente.png" />
     <None Include="Resources\iconExtract.png" />
     <None Include="Resources\iconDetalheFiles.png" />

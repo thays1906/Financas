@@ -1,6 +1,8 @@
 ﻿Imports GFT.Util
 Imports GFT.Util.SuperComboBox
 Imports GFT.Util.clsMsgBox
+Imports System.Data.Common
+
 Public Class frmDespesa
     Public oDataset As SuperDataSet
     Public Despesa As frmNovaDespesa
@@ -95,9 +97,12 @@ Public Class frmDespesa
     Private Sub Pesquisar()
         Dim ano As Decimal
         Try
+
             If tabCtrlDespesa.SelectedIndex = 1 Then
 
                 oDataset = pDespesaFixa.Pesquisar
+
+                lvlConsultaFixa.Clear()
 
                 If oDataset.TotalRegistros > 0 Then
                     lvlConsultaFixa.PreencheGridDS(oDataset, True, True, False, True, 0, True)
@@ -125,19 +130,21 @@ Public Class frmDespesa
                     End If
 
 
-                    lvConsulta.PreencheGridDS(oDataset, True, True, False, True, 0, True)
+                    dgDespesa.DataSource = oDataset.Tables(0)
 
-                    CorList(lvConsulta)
-                    For i = 0 To oDataset.TotalRegistros - 1
+                    'lvConsulta.PreencheGridDS(oDataset, True, True, False, True, 0, True)
 
-                        If CStr(oDataset("as_Status#100", i)) = "PAGO" Then
-                            lvConsulta.Items(i).SubItems(1).ForeColor = Color.Green
-                        ElseIf CStr(oDataset("as_Status#100", i)) = "ATRASADO" Then
-                            lvConsulta.Items(i).SubItems(1).ForeColor = Color.Red
-                        End If
+                    'CorList(lvConsulta)
+                    'For i = 0 To oDataset.TotalRegistros - 1
 
-                        lvConsulta.Items(i).SubItems(3).ForeColor = Color.Red
-                    Next
+                    '    If CStr(oDataset("as_Status#100", i)) = "PAGO" Then
+                    '        lvConsulta.Items(i).SubItems(1).ForeColor = Color.Green
+                    '    ElseIf CStr(oDataset("as_Status#100", i)) = "ATRASADO" Then
+                    '        lvConsulta.Items(i).SubItems(1).ForeColor = Color.Red
+                    '    End If
+
+                    '    lvConsulta.Items(i).SubItems(3).ForeColor = Color.Red
+                    'Next
                 Else
                     lvConsulta.PreencheGridDS(oDataset, True, True, False, True)
 
@@ -153,11 +160,12 @@ Public Class frmDespesa
             S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
         End Try
     End Sub
+
+
     Private Sub CarregarCombo()
         Dim col As Collection
         Dim data As DateTime
         Dim rs As SuperDataSet
-        Dim ano As Decimal
         Try
             col = New Collection
             col.Add(New DuplaCombo(eStatusDespesa.Pendente, "Pendente"))
@@ -318,7 +326,7 @@ Public Class frmDespesa
 
             If tabCtrlDespesa.SelectedIndex = 1 Then
                 btnFechar.Text = " &Voltar"
-
+                btnPesquisar.Enabled = True
                 If lvlConsultaFixa.CheckedItems.Count = 1 Then
                     btnEditar.Enabled = True
                     btnExcluir.Enabled = True
@@ -350,18 +358,27 @@ Public Class frmDespesa
                     btnExcluir.Enabled = True
                 End If
             End If
+
             If btn = eAcao.Editar Then
 
+                btn = 0
+
                 If tabCtrlDespesa.SelectedIndex = 0 Then
+
                     If lvConsulta.CheckedItems.Count = 1 Then
                         cDespesa = lvConsulta.ObterChave()
                     End If
+
                 ElseIf tabCtrlDespesa.SelectedIndex = 1 Then
+
                     If lvlConsultaFixa.CheckedItems.Count = 1 Then
                         cDespesa = lvlConsultaFixa.ObterChave()
                     End If
+
                 End If
+
                 If cDespesa <> 0 Then
+
                     Despesa = New frmNovaDespesa(cDespesa)
                     Despesa.ShowDialog()
                     cDespesa = 0
@@ -376,7 +393,6 @@ Public Class frmDespesa
                     S_MsgBox("Erro ao carregar registro.", eBotoes.Ok,,, eImagens.Cancel)
                 End If
 
-                btn = 0
             End If
 
             If btn = eAcao.Excluir Then
@@ -465,9 +481,7 @@ Public Class frmDespesa
         Return Nothing
     End Function
     Private Sub lvConsulta_ItemChecked(sender As Object, e As ItemCheckedEventArgs) Handles lvConsulta.ItemChecked
-        If e.Item.Checked Then
-            ControleFormulario()
-        End If
+        ControleFormulario()
     End Sub
     Private Sub DetalharParcelamento()
         Dim rs As SuperDataSet
@@ -712,6 +726,34 @@ Public Class frmDespesa
 
             End If
         Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub btnLancamentoFuturo_Click(sender As Object, e As EventArgs) Handles btnLancamentoFuturo.Click
+        Dim cDepesaFixa As Decimal
+        Try
+            If lvlConsultaFixa.SelectedItems.Count > 0 Then
+                cDepesaFixa = lvlConsultaFixa.ObterChave()
+
+                If cDepesaFixa <> 0 Then
+
+                    If pDespesaFixa.InserirLancamentoFuturo(cDepesaFixa) Then
+                        S_MsgBox("Lançamentos adicionados com sucesso!", eBotoes.Ok, "Despesa Fixa",, eImagens.FileOK)
+                    Else
+                        S_MsgBox("não foi possível gerar lançamentos desta despesa fixa.", eBotoes.Ok, "Despesa Fixa",, eImagens.Cancel)
+                    End If
+
+                    oDataset = pDespesaFixa.Pesquisar
+
+                    If oDataset.TotalRegistros > 0 Then
+                        lvlConsultaFixa.PreencheGridDS(oDataset, True, True, False, True, 0, True)
+                        txtLetreiroFixa.TextoLetreiro = oDataset.InfoPesquisa.ToString
+                    End If
+                End If
+            End If
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro ::. Despesa Fixa",, eImagens.Cancel)
 
         End Try
     End Sub

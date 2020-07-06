@@ -44,17 +44,16 @@ Partial Class frmNovaConta
         'btnFechar
         '
         Me.btnFechar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnFechar.BackColor = System.Drawing.Color.FromArgb(CType(CType(96, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(143, Byte), Integer))
-        Me.btnFechar.FlatAppearance.BorderSize = 0
+        Me.btnFechar.BackColor = System.Drawing.Color.WhiteSmoke
         Me.btnFechar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DodgerBlue
         Me.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(113, Byte), Integer), CType(CType(143, Byte), Integer), CType(CType(168, Byte), Integer))
         Me.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFechar.ForeColor = System.Drawing.Color.White
         Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
-        Me.btnFechar.Location = New System.Drawing.Point(628, 1)
+        Me.btnFechar.Location = New System.Drawing.Point(615, -2)
         Me.btnFechar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnFechar.Name = "btnFechar"
-        Me.btnFechar.Size = New System.Drawing.Size(56, 44)
+        Me.btnFechar.Size = New System.Drawing.Size(71, 52)
         Me.btnFechar.TabIndex = 2
         Me.btnFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -62,7 +61,8 @@ Partial Class frmNovaConta
         '
         'btnSalvar
         '
-        Me.btnSalvar.BackColor = System.Drawing.Color.DarkSlateGray
+        Me.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnSalvar.BackColor = System.Drawing.Color.DimGray
         Me.btnSalvar.FlatAppearance.BorderSize = 0
         Me.btnSalvar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DodgerBlue
         Me.btnSalvar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(113, Byte), Integer), CType(CType(143, Byte), Integer), CType(CType(168, Byte), Integer))
@@ -72,7 +72,7 @@ Partial Class frmNovaConta
         Me.btnSalvar.Location = New System.Drawing.Point(224, 373)
         Me.btnSalvar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSalvar.Name = "btnSalvar"
-        Me.btnSalvar.Size = New System.Drawing.Size(203, 54)
+        Me.btnSalvar.Size = New System.Drawing.Size(203, 42)
         Me.btnSalvar.TabIndex = 1
         Me.btnSalvar.Text = " &Salvar"
         Me.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -90,7 +90,7 @@ Partial Class frmNovaConta
         Me.cbTipoConta.Location = New System.Drawing.Point(305, 76)
         Me.cbTipoConta.Margin = New System.Windows.Forms.Padding(0)
         Me.cbTipoConta.Name = "cbTipoConta"
-        Me.cbTipoConta.Size = New System.Drawing.Size(275, 32)
+        Me.cbTipoConta.Size = New System.Drawing.Size(275, 27)
         Me.cbTipoConta.SuperObrigatorio = True
         Me.cbTipoConta.SuperTxtObrigatorio = "Tipo de Conta"
         Me.cbTipoConta.TabIndex = 55
@@ -102,7 +102,7 @@ Partial Class frmNovaConta
         Me.lblAgencia.Location = New System.Drawing.Point(12, 182)
         Me.lblAgencia.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.lblAgencia.Name = "lblAgencia"
-        Me.lblAgencia.Size = New System.Drawing.Size(87, 24)
+        Me.lblAgencia.Size = New System.Drawing.Size(71, 19)
         Me.lblAgencia.TabIndex = 48
         Me.lblAgencia.Text = "Agência:"
         '
@@ -113,7 +113,7 @@ Partial Class frmNovaConta
         Me.lblConta.Location = New System.Drawing.Point(149, 182)
         Me.lblConta.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.lblConta.Name = "lblConta"
-        Me.lblConta.Size = New System.Drawing.Size(69, 24)
+        Me.lblConta.Size = New System.Drawing.Size(56, 19)
         Me.lblConta.TabIndex = 51
         Me.lblConta.Text = "Conta:"
         '
@@ -125,7 +125,7 @@ Partial Class frmNovaConta
         Me.txtConta.Location = New System.Drawing.Point(153, 206)
         Me.txtConta.Margin = New System.Windows.Forms.Padding(0)
         Me.txtConta.Name = "txtConta"
-        Me.txtConta.Size = New System.Drawing.Size(184, 32)
+        Me.txtConta.Size = New System.Drawing.Size(184, 27)
         Me.txtConta.SuperMascara = ""
         Me.txtConta.SuperObrigatorio = False
         Me.txtConta.SuperTravaErrors = False
@@ -142,7 +142,7 @@ Partial Class frmNovaConta
         Me.txtAgencia.Location = New System.Drawing.Point(16, 206)
         Me.txtAgencia.Margin = New System.Windows.Forms.Padding(0)
         Me.txtAgencia.Name = "txtAgencia"
-        Me.txtAgencia.Size = New System.Drawing.Size(114, 32)
+        Me.txtAgencia.Size = New System.Drawing.Size(114, 27)
         Me.txtAgencia.SuperMascara = ""
         Me.txtAgencia.SuperObrigatorio = False
         Me.txtAgencia.SuperTravaErrors = False
@@ -156,7 +156,7 @@ Partial Class frmNovaConta
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(16, 111)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(64, 24)
+        Me.Label1.Size = New System.Drawing.Size(51, 19)
         Me.Label1.TabIndex = 56
         Me.Label1.Text = "Banco"
         '
@@ -165,7 +165,7 @@ Partial Class frmNovaConta
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(301, 49)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(62, 24)
+        Me.Label2.Size = New System.Drawing.Size(50, 19)
         Me.Label2.TabIndex = 57
         Me.Label2.Text = "Conta"
         '
@@ -192,10 +192,10 @@ Partial Class frmNovaConta
         Me.TabPage1.Controls.Add(Me.Label1)
         Me.TabPage1.Controls.Add(Me.lblConta)
         Me.TabPage1.Controls.Add(Me.lblAgencia)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 47)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 42)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(596, 254)
+        Me.TabPage1.Size = New System.Drawing.Size(596, 259)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Conta Báncaria"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -205,7 +205,7 @@ Partial Class frmNovaConta
         Me.chkPrincipalConta.AutoSize = True
         Me.chkPrincipalConta.Location = New System.Drawing.Point(20, 18)
         Me.chkPrincipalConta.Name = "chkPrincipalConta"
-        Me.chkPrincipalConta.Size = New System.Drawing.Size(172, 28)
+        Me.chkPrincipalConta.Size = New System.Drawing.Size(141, 23)
         Me.chkPrincipalConta.TabIndex = 61
         Me.chkPrincipalConta.Text = "Tornar Principal"
         Me.chkPrincipalConta.UseVisualStyleBackColor = True
@@ -215,7 +215,7 @@ Partial Class frmNovaConta
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(14, 49)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(59, 24)
+        Me.Label3.Size = New System.Drawing.Size(48, 19)
         Me.Label3.TabIndex = 60
         Me.Label3.Text = "Saldo"
         '
@@ -226,7 +226,7 @@ Partial Class frmNovaConta
         Me.txtSaldo.CorFundoSelecionado = System.Drawing.SystemColors.Control
         Me.txtSaldo.Location = New System.Drawing.Point(20, 76)
         Me.txtSaldo.Name = "txtSaldo"
-        Me.txtSaldo.Size = New System.Drawing.Size(275, 32)
+        Me.txtSaldo.Size = New System.Drawing.Size(275, 27)
         Me.txtSaldo.SuperMascara = ""
         Me.txtSaldo.SuperObrigatorio = True
         Me.txtSaldo.SuperTravaErrors = False
@@ -242,7 +242,7 @@ Partial Class frmNovaConta
         Me.txtBanco.CorFundoSelecionado = System.Drawing.SystemColors.Control
         Me.txtBanco.Location = New System.Drawing.Point(18, 138)
         Me.txtBanco.Name = "txtBanco"
-        Me.txtBanco.Size = New System.Drawing.Size(277, 32)
+        Me.txtBanco.Size = New System.Drawing.Size(277, 27)
         Me.txtBanco.SuperMascara = ""
         Me.txtBanco.SuperObrigatorio = False
         Me.txtBanco.SuperTravaErrors = False

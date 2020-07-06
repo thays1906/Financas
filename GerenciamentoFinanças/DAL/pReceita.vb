@@ -132,4 +132,26 @@ Public Class pReceita
             Return Nothing
         End Try
     End Function
+
+    Shared Function ObterTotal() As SuperDataSet
+        Dim bDados As BancoDados
+        Dim oDataset As SuperDataSet
+
+        Try
+            bDados = New BancoDados()
+
+            bDados.LimpaParametros()
+            bDados.AdicionaParametro(OPERACAO, "SOMA")
+
+
+            oDataset = bDados.Obter(PROCEDURE)
+
+            Return oDataset
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+            Return Nothing
+        End Try
+    End Function
+
 End Class

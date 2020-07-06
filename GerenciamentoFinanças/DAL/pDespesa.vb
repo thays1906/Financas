@@ -1,8 +1,11 @@
 ﻿Imports GFT.Util.BancoDados
 Imports GFT.Util
+Imports System.Data.Common
+
 Public Class pDespesa
     Public Shared OPERACAO As Campo = New Campo("OPERACAO", DbType.String, 4)
     Public Const PROCEDURE As String = "pDespesa"
+    Public Shared bDados As BancoDados
 
     Class pDespesa
         Public Shared cDespesa As Campo = New Campo("cDespesa", DbType.Decimal, 10, 0)
@@ -21,6 +24,7 @@ Public Class pDespesa
         Public Shared dtYear As Campo = New Campo("dtYear", DbType.Decimal, 4, 0)
         Public Shared cDespesaFixa As Campo = New Campo("cDespesaFixa", DbType.Decimal, 10, 0)
         Public Shared rLog As Campo = New Campo("rLog", DbType.String, -1)
+        Public Shared Retorno As Campo = New Campo("Retorno", DbType.Decimal, 1, 0)
 
     End Class
 
@@ -35,7 +39,6 @@ Public Class pDespesa
                                    ByVal _cNumeroParcela As Decimal,
                                    ByVal _cDespesaFixa As Decimal,
                                    ByVal _rLog As String) As Boolean
-        Dim bDados As BancoDados
         Try
             bDados = New BancoDados
 
@@ -66,15 +69,14 @@ Public Class pDespesa
         End Try
     End Function
     Shared Function AlterarDespesa(ByVal _cDespesa As Decimal,
-                              ByVal _rDescricao As String,
-                              ByVal _cValor As Decimal,
-                              ByVal _cConta As Decimal,
-                              ByVal _cCategoria As Decimal,
-                              ByVal _cPagamento As Decimal,
-                              ByVal _dtRegistro As Date,
-                              ByVal _cStatus As eStatusDespesa,
-                              ByVal _rLog As String) As Boolean
-        Dim bDados As BancoDados
+                                   ByVal _rDescricao As String,
+                                   ByVal _cValor As Decimal,
+                                   ByVal _cConta As Decimal,
+                                   ByVal _cCategoria As Decimal,
+                                   ByVal _cPagamento As Decimal,
+                                   ByVal _dtRegistro As Date,
+                                   ByVal _cStatus As eStatusDespesa,
+                                   ByVal _rLog As String) As Boolean
         Try
             bDados = New BancoDados()
 
@@ -105,7 +107,6 @@ Public Class pDespesa
         End Try
     End Function
     Shared Function DeletarDespesa(ByVal _cDespesa As Decimal) As Boolean
-        Dim bDados As BancoDados
         Try
             bDados = New BancoDados()
 
@@ -127,7 +128,6 @@ Public Class pDespesa
     Shared Function PesquisarDespesa(ByVal _cStatus As eStatusDespesa,
                                      ByVal _dtMes As Decimal,
                                      ByVal _dtYear As Decimal) As SuperDataSet
-        Dim bDados As BancoDados
         Dim oDataset As SuperDataSet
         Try
             bDados = New BancoDados()
@@ -145,7 +145,6 @@ Public Class pDespesa
                 bDados.AdicionaParametro(pDespesa.dtYear, _dtYear)
             End If
 
-
             oDataset = bDados.Obter(PROCEDURE)
 
             If oDataset IsNot Nothing Then
@@ -160,7 +159,6 @@ Public Class pDespesa
         End Try
     End Function
     Shared Function ObterDespesa(ByVal _cDespesa As Decimal) As SuperDataSet
-        Dim bDados As BancoDados
         Dim oDataset As SuperDataSet
 
         Try
@@ -183,7 +181,6 @@ Public Class pDespesa
         End Try
     End Function
     Shared Function Pagar(ByVal _cDespesa As Decimal) As Boolean
-        Dim bDados As BancoDados
         Try
             bDados = New BancoDados()
 
@@ -203,5 +200,91 @@ Public Class pDespesa
             Return False
         End Try
     End Function
+
+    Shared Function DeletarDespesaFixa(ByVal _cDespesaFixa As Decimal,
+                                       ByVal _retorno As Decimal,
+                                       ByVal _dtReg As Date) As Boolean
+        Try
+            bDados = New BancoDados()
+
+            bDados.LimpaParametros()
+            bDados.AdicionaParametro(OPERACAO, "DELF")
+            bDados.AdicionaParametro(pDespesa.cDespesaFixa, _cDespesaFixa)
+            bDados.AdicionaParametro(pDespesa.Retorno, _retorno)
+            bDados.AdicionaParametro(pDespesa.dtRegistro, _dtReg)
+
+            If bDados.Executar(PROCEDURE) Then
+                Return True
+            Else
+                Return False
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+            Return False
+        End Try
+    End Function
+
+    Shared Function ObterTotal() As SuperDataSet
+        Dim oDataset As SuperDataSet
+        Try
+            bDados = New BancoDados()
+
+            bDados.LimpaParametros()
+            bDados.AdicionaParametro(OPERACAO, "SOMA")
+
+
+            oDataset = bDados.Obter(PROCEDURE)
+
+            Return oDataset
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+            Return Nothing
+        End Try
+    End Function
+    Shared Function AlterarDespesaFixa(ByVal _cDespesaFixa As Decimal,
+                                       ByVal _retorno As Decimal,
+                                       ByVal _rDescricao As String,
+                                       ByVal _cValor As Decimal,
+                                       ByVal _cConta As Decimal,
+                                       ByVal _cCategoria As Decimal,
+                                       ByVal _cPagamento As Decimal,
+                                       ByVal _dtNova As Date,
+                                       ByVal _cStatus As eStatusDespesa,
+                                       ByVal _rLog As String,
+                                       ByVal dataRegistro As Date) As Boolean
+
+
+        Try
+            bDados = New BancoDados()
+
+            bDados.LimpaParametros()
+            bDados.AdicionaParametro(OPERACAO, "ALTF")
+            bDados.AdicionaParametro(pDespesa.cDespesaFixa, _cDespesaFixa)
+            bDados.AdicionaParametro(pDespesa.Retorno, _retorno)
+            bDados.AdicionaParametro(pDespesa.rDescricao, _rDescricao)
+            bDados.AdicionaParametro(pDespesa.cValor, _cValor)
+            bDados.AdicionaParametro(pDespesa.cConta, _cConta)
+            bDados.AdicionaParametro(pDespesa.cCategoria, _cCategoria)
+            bDados.AdicionaParametro(pDespesa.cPagamento, _cPagamento)
+            bDados.AdicionaParametro(pDespesa.dtRegistro, _dtNova)
+            bDados.AdicionaParametro(pDespesa.cStatus, _cStatus)
+            bDados.AdicionaParametro(pDespesa.rLog, _rLog)
+            bDados.AdicionaParametro(pDespesa.dtUltAtua, dataRegistro)
+
+
+            If bDados.Executar(PROCEDURE) Then
+                Return True
+            Else
+                Return False
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+            Return False
+        End Try
+    End Function
+
 
 End Class

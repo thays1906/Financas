@@ -25,28 +25,6 @@ Public Class frmConsulta
             MessageBox.Show(ex.Message)
         End Try
     End Sub
-    Private Function MinHora(ByVal _date As Date) As Date
-        Dim data As Date
-        Try
-            data = New Date(_date.Year, _date.Month, _date.Day, 0, 0, 0)
-
-            Return data
-
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-            Return Nothing
-        End Try
-    End Function
-    Private Function MaxHora(ByVal _data As Date) As Date
-        Dim data As Date
-        Try
-            data = New Date(_data.Year, _data.Month, _data.Day, 23, 59, 59)
-            Return data
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-            Return Nothing
-        End Try
-    End Function
     Private Sub btnFechar_Click(sender As Object, e As EventArgs)
         Me.Close()
     End Sub

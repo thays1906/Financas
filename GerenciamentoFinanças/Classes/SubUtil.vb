@@ -12,9 +12,9 @@ Public Module SubUtil
         Despesa = 102
         Configuracao = 103
 
-        nova_Receita = 200
+        cobranca = 200
         conta_Bancaria = 201
-
+        about = 210
     End Enum
     Public Enum eCadastroCategoria
         FormaPagamento = 1
@@ -80,6 +80,14 @@ Public Module SubUtil
         Question = 2
         Erro = 3
     End Enum
+    Public Enum eBanco
+        Nubank
+        Santander
+        Bradesco
+        Itau
+        MercadoPago
+        PicPay
+    End Enum
     '=======================================
     'FIM --- Enums
     '=======================================
@@ -122,6 +130,9 @@ Public Module SubUtil
             Controle.BackColor = Color.FromArgb(248, 248, 255)
         ElseIf Cor = Collor.CinzaEscuro Then
             Controle.BackColor = Color.FromArgb(80, 87, 86)
+
+        ElseIf cor = Collor.Gelo Then
+            Controle.BackColor = Color.WhiteSmoke
         End If
     End Sub
     Public Sub CorButton(ByRef button As Button,
@@ -169,28 +180,54 @@ Public Module SubUtil
 
     End Sub
 
-    'Public Sub CorTab(ByRef tab As TabControl, ByVal Cor As Collor)
-    '    If Cor = Collor.Preto Then
-    '        tab.s
-    '        '    tab.SelectedTab.BackColor = Color.FromArgb(64, 62, 63)
+    Public Sub CorTab(ByRef tab As TabControl, ByVal Cor As Collor)
 
-    '        'ElseIf Cor = Collor.VerdeEscuro Then
-    '        '    tab.BackColor = Color.FromArgb(28, 89, 54)
+        If Cor = Collor.CinzaEscuro Then
+            tab.TabPages(0).BackColor = Color.FromArgb(80, 87, 86)
 
-    '        'ElseIf Cor = Collor.VerdeClaro Then
-    '        '    tab.BackColor = Color.FromArgb(3, 166, 74)
 
-    '        'ElseIf Cor = Collor.Amarelo Then
-    '        '    tab.BackColor = Color.FromArgb(242, 192, 41)
+            '    tab.SelectedTab.BackColor = Color.FromArgb(64, 62, 63)
 
-    '        'ElseIf Cor = Collor.Marrom Then
-    '        '    tab.BackColor = Color.FromArgb(115, 100, 56)
+            'ElseIf Cor = Collor.VerdeEscuro Then
+            '    tab.BackColor = Color.FromArgb(28, 89, 54)
 
-    '    End If
-    'End Sub
+            'ElseIf Cor = Collor.VerdeClaro Then
+            '    tab.BackColor = Color.FromArgb(3, 166, 74)
+
+            'ElseIf Cor = Collor.Amarelo Then
+            '    tab.BackColor = Color.FromArgb(242, 192, 41)
+
+            'ElseIf Cor = Collor.Marrom Then
+            '    tab.BackColor = Color.FromArgb(115, 100, 56)
+
+        End If
+    End Sub
+
     '=======================================
     'FIM------Cores
     '=======================================
+    Public Function MinHora(ByVal _date As Date) As Date
+        Dim data As Date
+        Try
+            data = New Date(_date.Year, _date.Month, _date.Day, 0, 0, 0)
+
+            Return data
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+            Return Nothing
+        End Try
+    End Function
+    Public Function MaxHora(ByVal _data As Date) As Date
+        Dim data As Date
+        Try
+            data = New Date(_data.Year, _data.Month, _data.Day, 23, 59, 59)
+            Return data
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+            Return Nothing
+        End Try
+    End Function
 
 
     Public Sub restaurarMDI()
@@ -256,14 +293,15 @@ Public Module SubUtil
 
             collNomeTela = New Collection()
 
-            collNomeTela.Add(New String() {"frmConsulta", "Consulta"}, Int(eTela.Consulta).ToString)
-            collNomeTela.Add(New String() {"frmReceita", "Receitas"}, Int(eTela.Receita).ToString)
-            collNomeTela.Add(New String() {"frmDespesa", "Despesas"}, Int(eTela.Despesa).ToString)
-            collNomeTela.Add(New String() {"frmConfiguracao", "Configurações"}, Int(eTela.Configuracao).ToString)
+            collNomeTela.Add(New String() {" ", "Consulta"}, Int(eTela.Consulta).ToString)
+            collNomeTela.Add(New String() {" ", "Receitas"}, Int(eTela.Receita).ToString)
+            collNomeTela.Add(New String() {" ", "Despesas"}, Int(eTela.Despesa).ToString)
+            collNomeTela.Add(New String() {" ", "Configurações"}, Int(eTela.Configuracao).ToString)
 
-            collNomeTela.Add(New String() {"frmNovaReceita", "Nova receita"}, Int(eTela.nova_Receita).ToString)
-            collNomeTela.Add(New String() {"frmContaBancaria", "Contas"}, Int(eTela.conta_Bancaria).ToString)
+            collNomeTela.Add(New String() {" ", "Cobrança"}, Int(eTela.cobranca).ToString)
+            collNomeTela.Add(New String() {" ", "Contas"}, Int(eTela.conta_Bancaria).ToString)
 
+            collNomeTela.Add(New String() {" ", "Sobre"}, Int(eTela.about).ToString)
 
         Catch ex As Exception
             LogaErro("Erro em " & NomeMetodo("Util") & ": " & ex.Message)

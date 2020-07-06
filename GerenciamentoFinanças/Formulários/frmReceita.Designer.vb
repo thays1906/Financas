@@ -34,6 +34,7 @@ Partial Class frmReceita
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.tbConsulta = New GFT.Util.SuperTabControl()
         Me.tpPesquisa = New System.Windows.Forms.TabPage()
+        Me.txtLetreiroReceita = New GFT.Util.SuperLetreiro()
         Me.chkList = New System.Windows.Forms.CheckBox()
         Me.gbFiltro = New System.Windows.Forms.GroupBox()
         Me.lblAno = New System.Windows.Forms.Label()
@@ -45,8 +46,6 @@ Partial Class frmReceita
         Me.lblContaFiltro = New System.Windows.Forms.Label()
         Me.cbContaFiltro = New GFT.Util.SuperComboBox()
         Me.lvConsulta = New GFT.Util.SuperLV()
-        Me.txtLetreiroReceita = New GFT.Util.SuperLetreiro()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.gbBotoes.SuspendLayout()
         Me.tbConsulta.SuspendLayout()
         Me.tpPesquisa.SuspendLayout()
@@ -195,6 +194,18 @@ Partial Class frmReceita
         Me.tpPesquisa.TabIndex = 0
         Me.tpPesquisa.Text = "Receitas"
         '
+        'txtLetreiroReceita
+        '
+        Me.txtLetreiroReceita.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.txtLetreiroReceita.CorSombraTexto = System.Drawing.Color.White
+        Me.txtLetreiroReceita.Location = New System.Drawing.Point(81, 488)
+        Me.txtLetreiroReceita.Name = "txtLetreiroReceita"
+        Me.txtLetreiroReceita.RolagemLetreiro = GFT.Util.SuperLetreiro.Direcao.Direita
+        Me.txtLetreiroReceita.Size = New System.Drawing.Size(377, 18)
+        Me.txtLetreiroReceita.TabIndex = 14
+        Me.txtLetreiroReceita.TextoLetreiro = "0,00 Registros"
+        Me.txtLetreiroReceita.VelocidadeRolagem = 1
+        '
         'chkList
         '
         Me.chkList.AutoSize = True
@@ -210,7 +221,6 @@ Partial Class frmReceita
         Me.gbFiltro.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gbFiltro.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.gbFiltro.Controls.Add(Me.Button1)
         Me.gbFiltro.Controls.Add(Me.lblAno)
         Me.gbFiltro.Controls.Add(Me.cbAno)
         Me.gbFiltro.Controls.Add(Me.lblTotalReceita)
@@ -238,10 +248,11 @@ Partial Class frmReceita
         'cbAno
         '
         Me.cbAno.Alterado = False
+        Me.cbAno.BackColor = System.Drawing.Color.Gainsboro
         Me.cbAno.CorFundo = System.Drawing.Color.White
         Me.cbAno.CorFundoSelecionado = System.Drawing.Color.White
         Me.cbAno.CorTexto = System.Drawing.Color.Black
-        Me.cbAno.CorTextoSelecionado = System.Drawing.Color.Black
+        Me.cbAno.CorTextoSelecionado = System.Drawing.Color.White
         Me.cbAno.FormattingEnabled = True
         Me.cbAno.Location = New System.Drawing.Point(631, 42)
         Me.cbAno.Name = "cbAno"
@@ -277,12 +288,12 @@ Partial Class frmReceita
         Me.txtTotalReceita.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.txtTotalReceita.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtTotalReceita.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
-        Me.txtTotalReceita.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTotalReceita.Font = New System.Drawing.Font("Verdana", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTotalReceita.ForeColor = System.Drawing.Color.Green
         Me.txtTotalReceita.Location = New System.Drawing.Point(1104, 42)
         Me.txtTotalReceita.Name = "txtTotalReceita"
         Me.txtTotalReceita.ReadOnly = True
-        Me.txtTotalReceita.Size = New System.Drawing.Size(166, 25)
+        Me.txtTotalReceita.Size = New System.Drawing.Size(166, 26)
         Me.txtTotalReceita.SuperMascara = ""
         Me.txtTotalReceita.SuperObrigatorio = False
         Me.txtTotalReceita.SuperTravaErrors = False
@@ -295,13 +306,13 @@ Partial Class frmReceita
         'cbMes
         '
         Me.cbMes.Alterado = False
-        Me.cbMes.BackColor = System.Drawing.Color.LightGray
+        Me.cbMes.BackColor = System.Drawing.Color.Gainsboro
         Me.cbMes.CorFundo = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(86, Byte), Integer), CType(CType(87, Byte), Integer))
         Me.cbMes.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(86, Byte), Integer), CType(CType(87, Byte), Integer))
         Me.cbMes.CorTexto = System.Drawing.Color.WhiteSmoke
         Me.cbMes.CorTextoSelecionado = System.Drawing.Color.White
         Me.cbMes.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.cbMes.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbMes.Font = New System.Drawing.Font("Verdana", 12.0!)
         Me.cbMes.ForeColor = System.Drawing.Color.Black
         Me.cbMes.FormattingEnabled = True
         Me.cbMes.Location = New System.Drawing.Point(369, 42)
@@ -327,11 +338,11 @@ Partial Class frmReceita
         Me.cbContaFiltro.CorFundo = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(86, Byte), Integer), CType(CType(87, Byte), Integer))
         Me.cbContaFiltro.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(86, Byte), Integer), CType(CType(87, Byte), Integer))
         Me.cbContaFiltro.CorTexto = System.Drawing.Color.White
-        Me.cbContaFiltro.CorTextoSelecionado = System.Drawing.Color.WhiteSmoke
+        Me.cbContaFiltro.CorTextoSelecionado = System.Drawing.Color.White
         Me.cbContaFiltro.DropDownHeight = 150
         Me.cbContaFiltro.DropDownWidth = 200
         Me.cbContaFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.cbContaFiltro.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbContaFiltro.Font = New System.Drawing.Font("Verdana", 12.0!)
         Me.cbContaFiltro.ForeColor = System.Drawing.Color.Black
         Me.cbContaFiltro.FormattingEnabled = True
         Me.cbContaFiltro.IntegralHeight = False
@@ -362,27 +373,6 @@ Partial Class frmReceita
         Me.lvConsulta.UseCompatibleStateImageBehavior = False
         Me.lvConsulta.View = System.Windows.Forms.View.Tile
         '
-        'txtLetreiroReceita
-        '
-        Me.txtLetreiroReceita.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.txtLetreiroReceita.CorSombraTexto = System.Drawing.Color.White
-        Me.txtLetreiroReceita.Location = New System.Drawing.Point(81, 488)
-        Me.txtLetreiroReceita.Name = "txtLetreiroReceita"
-        Me.txtLetreiroReceita.RolagemLetreiro = GFT.Util.SuperLetreiro.Direcao.Direita
-        Me.txtLetreiroReceita.Size = New System.Drawing.Size(377, 18)
-        Me.txtLetreiroReceita.TabIndex = 14
-        Me.txtLetreiroReceita.TextoLetreiro = "0,00 Registros"
-        Me.txtLetreiroReceita.VelocidadeRolagem = 1
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(954, 50)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 16
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'frmReceita
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -396,7 +386,6 @@ Partial Class frmReceita
         Me.Name = "frmReceita"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "frmReceita"
         Me.gbBotoes.ResumeLayout(False)
         Me.tbConsulta.ResumeLayout(False)
         Me.tpPesquisa.ResumeLayout(False)
@@ -429,5 +418,4 @@ Partial Class frmReceita
     Friend WithEvents lblAno As Label
     Friend WithEvents cbAno As GFT.Util.SuperComboBox
     Friend WithEvents txtLetreiroReceita As GFT.Util.SuperLetreiro
-    Friend WithEvents Button1 As Button
 End Class
