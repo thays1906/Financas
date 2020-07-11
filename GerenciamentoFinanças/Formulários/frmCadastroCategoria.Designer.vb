@@ -51,7 +51,6 @@ Partial Class frmCadastroCategoria
         'btnSalvar
         '
         Me.btnSalvar.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSalvar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.icon_Salvar_png
         Me.btnSalvar.Location = New System.Drawing.Point(165, 134)
         Me.btnSalvar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSalvar.Name = "btnSalvar"

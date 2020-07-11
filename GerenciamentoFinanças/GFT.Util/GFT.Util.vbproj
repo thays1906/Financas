@@ -88,6 +88,7 @@
     <Compile Include="Classes\SuperDataTable.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Classes\SuperXLS.vb" />
     <Compile Include="Classes\Zip.vb" />
     <Compile Include="Controles\SuperGroupBox.vb">
       <SubType>Component</SubType>
@@ -235,7 +236,6 @@
     <None Include="Imagens\m_like_icon.gif" />
     <None Include="Imagens\m_dislike_icon.gif" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\EPPlus\EPPlus.csproj">
       <Project>{7b288026-5502-4a39-bf41-77e086f3e4a3}</Project>

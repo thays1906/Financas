@@ -1,8 +1,22 @@
 ﻿Imports GFT.Util
 Imports GFT.Util.clsMsgBox
 Public Class frmPrincipal
+
     Public oDataSet As SuperDataSet
     Public oform As Form
+    Public splash As SplashScreen
+    Public Verifica As Boolean
+    Public cLoga As DialogResult
+    Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+        Me.Visible = False
+
+        ' Add any initialization after the InitializeComponent() call.
+
+    End Sub
+
 
     Private Sub ConsultaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultaToolStripMenuItem.Click
 
@@ -12,6 +26,8 @@ Public Class frmPrincipal
 
     Private Sub ReceitasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReceitasToolStripMenuItem.Click
         AbrirReceita()
+
+
     End Sub
 
     Private Sub DespesasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DespesasToolStripMenuItem.Click
@@ -19,11 +35,40 @@ Public Class frmPrincipal
     End Sub
 
     Private Sub frmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+#If DEBUG Then
+        Verifica = False
+#Else
+        Verifica = TRUE
+#End If
+        'Me.Visible = False
+        'If cLoga = DialogResult.None Then
+        '    splash = New SplashScreen
+        '    splash.ShowDialog()
+        'ElseIf cLoga = DialogResult.OK Then
+        '    Me.Visible = True
+        'End If
+
+
+        'If splash.DialogResult = DialogResult.Yes Then
+        '    oform = New frmLogin
+        '    cLoga = oform.ShowDialog()
+        '    Me.Visible = True
+        'Else
+        '    Me.Visible = True
+        'End If
+
+        If Verifica Then
+            pInicializacao.Iniciar()
+        End If
+
         txtCaptionHora.Text = ""
         InicializaTelas()
-        Cor(CType(StatusStrip1, Control), Collor.Preto)
+        Cor(CType(StatusStrip1, Control), Collor.CinzaEscuro)
         gbPricnipal.Visible = True
         CarregaTabHome()
+
+
+
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -36,15 +81,15 @@ Public Class frmPrincipal
         End If
     End Sub
 
-    Private Sub btnFechar_Click(sender As Object, e As EventArgs) Handles btnFechar.Click
+    Private Sub btnFechar_Click(sender As Object, e As EventArgs) 
         Me.Close()
     End Sub
 
-    Private Sub btnMinimizar_Click(sender As Object, e As EventArgs) Handles btnMinimizar.Click
+    Private Sub btnMinimizar_Click(sender As Object, e As EventArgs) 
         Me.WindowState = FormWindowState.Minimized
     End Sub
 
-    Private Sub btnMaximizar_Click(sender As Object, e As EventArgs) Handles btnMaximizar.Click
+    Private Sub btnMaximizar_Click(sender As Object, e As EventArgs) 
 
         If WindowState = FormWindowState.Normal = True Then
             Me.WindowState = FormWindowState.Maximized
@@ -259,7 +304,7 @@ Public Class frmPrincipal
 
             ElseIf oDataSet("rBanco", i).ToString = "Santander" Then
 
-                button.Image = My.Resources.unnamed
+                button.Image = My.Resources.iconSantander
 
             ElseIf oDataSet("rBanco", i).ToString = "Pic Pay" Then
 
@@ -269,7 +314,7 @@ Public Class frmPrincipal
 
                 button.Image = My.Resources.iconMercadoPago_fw
             Else
-                button.Image = My.Resources.icon_BankConta
+                button.Image = My.Resources.iconBank
             End If
 
             tabCtrlSaldo.TabPages(0).Controls.Add(button)
@@ -303,5 +348,21 @@ Public Class frmPrincipal
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         oform = New frmAbout()
         oform.ShowDialog()
+    End Sub
+
+
+
+    Private Sub VerificaInstall()
+        Try
+            pInicializacao.Iniciar()
+
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro.",, eImagens.Cancel)
+        End Try
+    End Sub
+
+    Private Sub UsuárioSenhaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuárioSenhaToolStripMenuItem.Click
+        oform = New frmUsuario
+        controleFormulario(Me, oform, eTela.Usuario)
     End Sub
 End Class

@@ -14,6 +14,21 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -38,6 +53,8 @@
     <NoWarn>
     </NoWarn>
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <DefineConstants>
+    </DefineConstants>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -89,9 +106,11 @@
     <Compile Include="DAL\pDespesa.vb" />
     <Compile Include="DAL\pDespesaFixa.vb" />
     <Compile Include="DAL\pFormaPagamento.vb" />
+    <Compile Include="DAL\pInicializacao.vb" />
     <Compile Include="DAL\pParcelamento.vb" />
     <Compile Include="DAL\pReceita.vb" />
     <Compile Include="DAL\pTipoReceita.vb" />
+    <Compile Include="DAL\pUsuario.vb" />
     <Compile Include="Formulários\frmAbout.Designer.vb">
       <DependentUpon>frmAbout.vb</DependentUpon>
     </Compile>
@@ -189,6 +208,24 @@
     <Compile Include="Formulários\frmReceita.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formulários\frmRecuperacaoSenha.Designer.vb">
+      <DependentUpon>frmRecuperacaoSenha.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmRecuperacaoSenha.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\frmUsuario.Designer.vb">
+      <DependentUpon>frmUsuario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmUsuario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\SplashScreen.Designer.vb">
+      <DependentUpon>SplashScreen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\SplashScreen.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -256,6 +293,15 @@
     <EmbeddedResource Include="Formulários\frmReceita.resx">
       <DependentUpon>frmReceita.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmRecuperacaoSenha.resx">
+      <DependentUpon>frmRecuperacaoSenha.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmUsuario.resx">
+      <DependentUpon>frmUsuario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\SplashScreen.resx">
+      <DependentUpon>SplashScreen.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
@@ -280,35 +326,34 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="iconFinanceiro4.ico" />
+    <None Include="Resources\imgFINANCES_MANAGEMENT_principal.png" />
+    <None Include="Resources\iconUsuario95x75.png" />
+    <None Include="Resources\iconUsuar.png" />
+    <None Include="Resources\iconReceita.png" />
+    <None Include="Resources\imgLogoFsM_About.png" />
+    <None Include="Resources\iconSalvar.png" />
     <None Include="Resources\LOGO 2.0.png" />
     <None Include="Resources\unnamed.png" />
     <None Include="Resources\iconPicPay.png" />
-    <None Include="Resources\iconSantander.fw.png" />
     <None Include="Resources\iconRefresh.png" />
-    <None Include="Resources\icon_BankConta.png" />
-    <None Include="Resources\icon_Despesa.png" />
-    <None Include="Resources\icon_Receita.png" />
     <None Include="Resources\iconAddReceita1.png" />
     <None Include="Resources\iconAddDespesa.png" />
     <None Include="Resources\iconAddBlue.png" />
     <None Include="Resources\iconAbout.png" />
-    <None Include="Resources\Bank2.png" />
     <Content Include="Resources\iconAtrasado.bmp" />
-    <None Include="Resources\icon_MAxWhite.png" />
     <None Include="Resources\iconPago.png" />
-    <None Include="Resources\iconCloseWhite.fw.png" />
-    <None Include="Resources\iconCloseWhite.fw1.png" />
     <None Include="Resources\iconePesquisar.png" />
     <None Include="Resources\iconEditarFile.png" />
     <None Include="Resources\iconDeletarFile.png" />
     <None Include="Resources\iconFechar48.png" />
     <None Include="Resources\iconeInvest.png" />
     <None Include="Resources\iconItau.fw.png" />
-    <None Include="Resources\iconMP.fw.png" />
     <None Include="Resources\iconBradesco.png" />
     <None Include="Resources\iconNubank.fw.png" />
     <None Include="Resources\iconMercadoPago.fw.png" />
     <None Include="Resources\iconEnvioEmail.png" />
+    <None Include="Resources\iconDespesa.png" />
+    <None Include="Resources\iconBank.png" />
     <Content Include="Resources\iconPendente.png" />
     <None Include="Resources\iconExtract.png" />
     <None Include="Resources\iconDetalheFiles.png" />
@@ -318,17 +363,9 @@
     <None Include="Resources\iconOk.png" />
     <None Include="Resources\iconLogin32.png" />
     <None Include="Resources\iconJanelas.png" />
-    <None Include="Resources\icon_Salvar.png.png" />
-    <None Include="Resources\iconAddReceita.png" />
-    <None Include="Resources\iconCartao1.png" />
-    <None Include="Resources\User.png" />
-    <None Include="Resources\iconUser.png" />
-    <None Include="Resources\iconCartao.png" />
     <None Include="Resources\iconEngrenagem32x.png" />
     <None Include="Resources\iconEngrenagem.png" />
     <None Include="Resources\LOGO1.2.fw.png" />
-    <None Include="Resources\iconMOneyGreen.png" />
-    <None Include="Resources\iconMoneyRed.fw.png" />
     <None Include="Resources\iconExplorer.png" />
     <None Include="Resources\iconLogout_48.png" />
     <None Include="Resources\iconLogout.png" />
@@ -336,8 +373,6 @@
     <None Include="Resources\iconClose.png" />
     <None Include="Resources\iconEditar.png" />
     <None Include="Resources\iconExcel.png" />
-    <None Include="Resources\iconReceita.fw.png" />
-    <None Include="Resources\iconDespesa.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Imagens\" />
@@ -351,6 +386,18 @@
       <Project>{c66b31c1-df9d-4b76-9675-2f54b72378cb}</Project>
       <Name>GFT.Util</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

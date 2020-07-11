@@ -2,9 +2,9 @@
 Option Strict On
 
 Imports System.IO
-'Imports OfficeOpenXml
-'Imports OfficeOpenXml.Drawing 'use to load image inside excel document
-'Imports OfficeOpenXml.Style
+Imports OfficeOpenXml
+Imports OfficeOpenXml.Drawing 'use to load image inside excel document
+Imports OfficeOpenXml.Style
 Imports System.Drawing
 Imports GFT.Util.clsMsgBox
 
@@ -59,7 +59,7 @@ Public Class SuperXLS
     End Structure
 
     Private strArquivoXLS As String = ""
-    Private strAba As String = "BRADESCO"
+    Private strAba As String = "Finance$Management"
     Private strTitulo As String = "RPAD - Relatório"
     Private strAutor As String = "DOC"
     Private strComentario As String = "Garantia de Veículo - Boleto de Sinistro"
@@ -159,7 +159,7 @@ Public Class SuperXLS
 
             Me.Arquivo = Me.Arquivo & "." & Format(Now, "yyyy.MM.dd-hh.mm.ss") & ".xlsx"
 
-            sCaminhoRelat = Path.Combine(Environment.GetEnvironmentVariable("Temp"), "_AcordoDescumprido_PRINT")
+            sCaminhoRelat = Path.Combine(Environment.GetEnvironmentVariable("Temp"), "FinancesManagement")
             ChecaCriaDiretorio(sCaminhoRelat)
             Me.Arquivo = Path.Combine(sCaminhoRelat, Me.Arquivo)
 
@@ -191,18 +191,19 @@ Public Class SuperXLS
             ''#############################################
             For i = 0 To oDataset.TotalColunas() - 1 'FieldCount() - 1
                 strCampo = oDataset.NomeColuna(i)
-                If (strCampo.Substring(0, 3) = "as_") Or
-                   (strCampo.Substring(0, 3) = "me_") Or
-                   (strCampo.Substring(0, 3) = "nu_") Then
-                    strCampo = FormataColuna(strCampo)
-                    Planilha.Cells(LINHA_CABECALHO_TABELA, iCol).Value = strCampo
+                ''If (Not strCampo.Substring(0, 3).Contains("id_")) Or
+                ''   (strCampo.Substring(0, 3) = "me_") Or
+                ''   (strCampo.Substring(0, 3) = "nu_") Then
+
+                Planilha.Cells(LINHA_CABECALHO_TABELA, iCol).Value = strCampo
                     Planilha.Cells(LINHA_CABECALHO_TABELA, iCol).Style.Font.Bold = True
                     Planilha.Cells(LINHA_CABECALHO_TABELA, iCol).Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
                     Planilha.Cells(LINHA_CABECALHO_TABELA, iCol).Style.Fill.BackgroundColor.SetColor(Color.LightGray)
                     Planilha.Cells(LINHA_CABECALHO_TABELA, iCol).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center
                     iCol = iCol + 1
                     iTotalColunasDetalhe += 1
-                End If
+
+                'End If
             Next i
 
             If bAutoFiltro = True Then
@@ -224,11 +225,11 @@ Public Class SuperXLS
 
                     strCampo = oDataset.NomeColuna(i)
 
-                    If (strCampo.Substring(0, 3) = "as_") Or
-                       (strCampo.Substring(0, 3) = "me_") Or
-                       (strCampo.Substring(0, 3) = "nu_") Then
+                    ''If (Not strCampo.Substring(0, 3).Contains("id_")) Or
+                    ''   (strCampo.Substring(0, 3) = "me_") Or
+                    ''   (strCampo.Substring(0, 3) = "nu_") Then
 
-                        ValorCampo = oDataset.ValorCampo(i, posReg)
+                    ValorCampo = oDataset.ValorCampo(i, posReg)
 
                         Planilha.Cells(iRow, iCol).Value = ValorCampo
 
@@ -253,21 +254,24 @@ Public Class SuperXLS
                         End If
 
                         iCol = iCol + 1
-                    End If
+                    'End If
                 Next i
                 iRow = iRow + 1
             Next posReg
             '################################################
             '#####  FIM FOR pra Preencher as colunas.   #####
             '################################################
-
+            If iTotalColunasDetalhe < 20 Then
+                iTotalColunasDetalhe = 18
+            End If
             'Autoajuste das colunas
-            For iCol = COLUNA_INICIAL_DADOS To COLUNA_INICIAL_DADOS + iTotalColunasDetalhe - 1
+            For iCol = COLUNA_INICIAL_DADOS To iTotalColunasDetalhe - 1
                 Planilha.Column(iCol).AutoFit()
             Next
 
             'Coloca o cabeçalho do Bradesco
-            Planilha.Cells(LINHA_CABECALHO_BRADESCO, COLUNA_INICIAL_DADOS).Value = "BRADESCO"
+            Planilha.Cells(LINHA_CABECALHO_BRADESCO, COLUNA_INICIAL_DADOS).Value = "Finance $ Management"
+            Planilha.Cells(LINHA_CABECALHO_BRADESCO, COLUNA_INICIAL_DADOS).Style.VerticalAlignment = ExcelVerticalAlignment.Center
             Planilha.Cells(LINHA_CABECALHO_BRADESCO, COLUNA_INICIAL_DADOS).Style.Font.Color.SetColor(Color.White)
             Planilha.Cells(LINHA_CABECALHO_BRADESCO, COLUNA_INICIAL_DADOS).Style.Font.Bold = True
             Planilha.Cells(LINHA_CABECALHO_BRADESCO, COLUNA_INICIAL_DADOS).Style.Font.Size = 22
@@ -275,7 +279,7 @@ Public Class SuperXLS
             'Ajuste da Cor da linha de cabeçalho bradesco das colunas
             For iCol = COLUNA_INICIAL_DADOS To COLUNA_INICIAL_DADOS + iTotalColunasDetalhe - 1
                 Planilha.Cells(LINHA_CABECALHO_BRADESCO, iCol).Style.Fill.PatternType = Style.ExcelFillStyle.Solid
-                Planilha.Cells(LINHA_CABECALHO_BRADESCO, iCol).Style.Fill.BackgroundColor.SetColor(Color.DarkRed)
+                Planilha.Cells(LINHA_CABECALHO_BRADESCO, iCol).Style.Fill.BackgroundColor.SetColor(SystemColors.ControlDarkDark)
             Next iCol
 
             'Coloca o cabeçalho do relatório
@@ -2034,12 +2038,13 @@ Public Class SuperXLS
         Try
             Dim nCerquilha As Integer
             Dim sstring2 As String
-
-            If id = 0 Then
-                sstring2 = Replace(xRight(sString, Len(sString) - 3), "_", " ")
-            Else
-                sstring2 = xRight(sString, Len(sString) - 3)
-            End If
+            sstring2 = sString
+            'If sString.Contains(" ") Then
+            '    'sstring2 = Replace(xRight(sString, Len(sString) - 3), "_", " ")
+            '    sstring2 = xRight(sString, Len(sString) - 3)
+            'Else
+            '    sstring2 = xRight(sString, Len(sString) - 3)
+            'End If
 
             nCerquilha = InStr(sstring2, "#")
 

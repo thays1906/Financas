@@ -1,5 +1,8 @@
 ﻿Public Class frmAbout
     Private Sub frmAbout_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Cor(CType(SScima, Control), Collor.CinzaEscuro)
+        Cor(CType(SSbaixo, Control), Collor.CinzaEscuro)
+
         txtLei.Text = "Aviso: Este programa de computador é protegido por leis de direitos autorais e tratados internacionais." & vbNewLine &
                       "A reprodução ou distribuição não-autorizada " &
                       "deste programa, ou qualquer parte dele, " &
@@ -18,5 +21,9 @@
 
     Private Sub btnInfo_Click(sender As Object, e As EventArgs) Handles btnInfo.Click
 
+    End Sub
+
+    Private Sub frmAbout_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
+        alterarCaptionFormPrincipal(eTela.about)
     End Sub
 End Class

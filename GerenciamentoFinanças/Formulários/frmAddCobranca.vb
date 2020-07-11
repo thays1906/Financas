@@ -3,6 +3,7 @@ Imports GFT.Util.clsMsgBox
 Imports GFT.Util.SuperComboBox
 Public Class frmAddCobranca
     Public cCobranca As Decimal
+    Public bAlterado As Boolean = False
 
     Sub New(ByVal _cCobranca As Decimal)
 
@@ -64,10 +65,11 @@ Public Class frmAddCobranca
                                            txtNome.Text, CType(cbStatus.ObterChaveCombo, eStatusDespesa),
                                            CDec(cbConta.ObterChaveCombo)) Then
 
-                        S_MsgBox("Lançamento de Empréstimo efetuado com sucesso!",
+                        S_MsgBox("Lançamento efetuado com sucesso!",
                                  eBotoes.Ok,
                                  "Cobrança de empréstimos",,
                                  eImagens.FileOK)
+                        bAlterado = True
                     Else
                         S_MsgBox("Desculpe, não foi possível salvar novo lançamento.",
                                  eBotoes.Ok,
@@ -88,6 +90,7 @@ Public Class frmAddCobranca
                                  eBotoes.Ok,
                                  "Cobrança de empréstimos",,
                                  eImagens.FileOK)
+                        bAlterado = True
                     Else
                         S_MsgBox("Desculpe, não foi possível alterar registro.",
                                  eBotoes.Ok,
@@ -97,6 +100,7 @@ Public Class frmAddCobranca
                     End If
                 End If
                 LimparCampos()
+                Me.bAlterado.ToString()
                 Me.Close()
             End If
         Catch ex As Exception

@@ -14,7 +14,9 @@ Public Module SubUtil
 
         cobranca = 200
         conta_Bancaria = 201
+        Usuario = 202
         about = 210
+
     End Enum
     Public Enum eCadastroCategoria
         FormaPagamento = 1
@@ -160,13 +162,15 @@ Public Module SubUtil
         ElseIf Cor = Collor.Preto Then
             button.BackColor = Color.Black
         ElseIf Cor = Collor.CinzaMedio Then
-            button.BackColor = Color.FromArgb(96, 122, 143)
+            button.BackColor = Color.DarkGray
         ElseIf Cor = Collor.CinzaAzulado Then
             button.BackColor = Color.FromArgb(113, 143, 168)
         ElseIf Cor = Collor.Gelo Then
             button.BackColor = Color.WhiteSmoke
         ElseIf Cor = collor.Branco Then
             button.BackColor = Color.White
+        ElseIf Cor = Collor.CinzaEscuro Then
+            button.BackColor = Color.FromArgb(80, 87, 86)
         ElseIf Cor = Collor.Nenhuma Then
             button.BackColor = Color.Transparent
         End If
@@ -300,6 +304,7 @@ Public Module SubUtil
 
             collNomeTela.Add(New String() {" ", "Cobrança"}, Int(eTela.cobranca).ToString)
             collNomeTela.Add(New String() {" ", "Contas"}, Int(eTela.conta_Bancaria).ToString)
+            collNomeTela.Add(New String() {" ", "Usuário"}, Int(eTela.Usuario).ToString)
 
             collNomeTela.Add(New String() {" ", "Sobre"}, Int(eTela.about).ToString)
 

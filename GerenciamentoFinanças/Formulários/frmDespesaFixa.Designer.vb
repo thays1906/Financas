@@ -28,8 +28,8 @@ Partial Class frmDespesaFixa
         Me.rbProximos = New System.Windows.Forms.RadioButton()
         Me.SuperLetreiro1 = New GFT.Util.SuperLetreiro()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.btnFechar = New System.Windows.Forms.Button()
         Me.txtInformativo = New System.Windows.Forms.TextBox()
+        Me.btnFechar = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -37,7 +37,7 @@ Partial Class frmDespesaFixa
         '
         Me.btnAlteraDespesaFixa.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnAlteraDespesaFixa.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconPago
-        Me.btnAlteraDespesaFixa.Location = New System.Drawing.Point(137, 243)
+        Me.btnAlteraDespesaFixa.Location = New System.Drawing.Point(132, 253)
         Me.btnAlteraDespesaFixa.Name = "btnAlteraDespesaFixa"
         Me.btnAlteraDespesaFixa.Size = New System.Drawing.Size(203, 42)
         Me.btnAlteraDespesaFixa.TabIndex = 1
@@ -53,7 +53,7 @@ Partial Class frmDespesaFixa
         Me.rbTodos.Location = New System.Drawing.Point(178, 102)
         Me.rbTodos.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
         Me.rbTodos.Name = "rbTodos"
-        Me.rbTodos.Size = New System.Drawing.Size(217, 22)
+        Me.rbTodos.Size = New System.Drawing.Size(266, 29)
         Me.rbTodos.TabIndex = 4
         Me.rbTodos.TabStop = True
         Me.rbTodos.Text = "Alterar todos registros."
@@ -66,7 +66,7 @@ Partial Class frmDespesaFixa
         Me.rbSomenteEste.Location = New System.Drawing.Point(178, 27)
         Me.rbSomenteEste.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
         Me.rbSomenteEste.Name = "rbSomenteEste"
-        Me.rbSomenteEste.Size = New System.Drawing.Size(275, 22)
+        Me.rbSomenteEste.Size = New System.Drawing.Size(337, 29)
         Me.rbSomenteEste.TabIndex = 6
         Me.rbSomenteEste.TabStop = True
         Me.rbSomenteEste.Text = "Alterar somente este registro."
@@ -79,7 +79,7 @@ Partial Class frmDespesaFixa
         Me.rbProximos.Location = New System.Drawing.Point(178, 64)
         Me.rbProximos.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
         Me.rbProximos.Name = "rbProximos"
-        Me.rbProximos.Size = New System.Drawing.Size(328, 22)
+        Me.rbProximos.Size = New System.Drawing.Size(401, 29)
         Me.rbProximos.TabIndex = 5
         Me.rbProximos.TabStop = True
         Me.rbProximos.Text = "Alterar este e os próximos registros."
@@ -109,15 +109,29 @@ Partial Class frmDespesaFixa
         Me.GroupBox1.Controls.Add(Me.rbProximos)
         Me.GroupBox1.Location = New System.Drawing.Point(1, 54)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(694, 177)
+        Me.GroupBox1.Size = New System.Drawing.Size(694, 193)
         Me.GroupBox1.TabIndex = 7
         Me.GroupBox1.TabStop = False
+        '
+        'txtInformativo
+        '
+        Me.txtInformativo.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.txtInformativo.Font = New System.Drawing.Font("Verdana", 10.0!)
+        Me.txtInformativo.Location = New System.Drawing.Point(0, 143)
+        Me.txtInformativo.Multiline = True
+        Me.txtInformativo.Name = "txtInformativo"
+        Me.txtInformativo.ReadOnly = True
+        Me.txtInformativo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtInformativo.Size = New System.Drawing.Size(694, 50)
+        Me.txtInformativo.TabIndex = 10
+        Me.txtInformativo.Text = "Não será modificada a data de Despesa Fixa que se repete :  Diariamente, Semanalm" &
+    "ente e Quinzenal."
         '
         'btnFechar
         '
         Me.btnFechar.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
-        Me.btnFechar.Location = New System.Drawing.Point(387, 243)
+        Me.btnFechar.Location = New System.Drawing.Point(387, 253)
         Me.btnFechar.Name = "btnFechar"
         Me.btnFechar.Size = New System.Drawing.Size(203, 42)
         Me.btnFechar.TabIndex = 8
@@ -126,26 +140,11 @@ Partial Class frmDespesaFixa
         Me.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnFechar.UseVisualStyleBackColor = True
         '
-        'txtInformativo
-        '
-        Me.txtInformativo.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.txtInformativo.Font = New System.Drawing.Font("Verdana", 10.0!)
-        Me.txtInformativo.Location = New System.Drawing.Point(0, 137)
-        Me.txtInformativo.Multiline = True
-        Me.txtInformativo.Name = "txtInformativo"
-        Me.txtInformativo.ReadOnly = True
-        Me.txtInformativo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtInformativo.Size = New System.Drawing.Size(464, 40)
-        Me.txtInformativo.TabIndex = 10
-        Me.txtInformativo.Text = "Não será modificada a data de Despesa Fixa que se repete :  Diariamente, Semanalm" &
-    "ente e Quinzenal."
-        '
         'frmDespesaFixa
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 18.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.DimGray
-        Me.ClientSize = New System.Drawing.Size(695, 298)
+        Me.ClientSize = New System.Drawing.Size(695, 307)
         Me.Controls.Add(Me.btnFechar)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.SuperLetreiro1)

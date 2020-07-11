@@ -142,6 +142,7 @@ Partial Class frmCobranca
         Me.dgCobranca.Location = New System.Drawing.Point(64, 216)
         Me.dgCobranca.Margin = New System.Windows.Forms.Padding(4)
         Me.dgCobranca.Name = "dgCobranca"
+        Me.dgCobranca.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.Color.OrangeRed
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Verdana", 12.0!)
@@ -162,16 +163,19 @@ Partial Class frmCobranca
         '
         'chkDataGrid
         '
+        Me.chkDataGrid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.chkDataGrid.HeaderText = "Selecionar"
         Me.chkDataGrid.MinimumWidth = 6
         Me.chkDataGrid.Name = "chkDataGrid"
+        Me.chkDataGrid.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.chkDataGrid.TrueValue = "true"
+        Me.chkDataGrid.Width = 122
         '
         'gbCobrancaFiltro
         '
         Me.gbCobrancaFiltro.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.gbCobrancaFiltro.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.gbCobrancaFiltro.BackColor = System.Drawing.Color.LightSlateGray
         Me.gbCobrancaFiltro.Controls.Add(Me.chkPeriodo)
         Me.gbCobrancaFiltro.Controls.Add(Me.cbAno)
         Me.gbCobrancaFiltro.Controls.Add(Me.lblDataFim)
@@ -370,7 +374,7 @@ Partial Class frmCobranca
         '
         Me.ImgListCobranca.ImageStream = CType(resources.GetObject("ImgListCobranca.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImgListCobranca.TransparentColor = System.Drawing.Color.Black
-        Me.ImgListCobranca.Images.SetKeyName(0, "corança_emprestimo.png")
+        Me.ImgListCobranca.Images.SetKeyName(0, "iconeCObr.png")
         '
         'gbBotoes
         '

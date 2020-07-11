@@ -22,7 +22,7 @@ Public Class frmDespesa
 
         Me.tabCtrlDespesa.TabPages(2).Enabled = False
 
-        Cor(Me, Collor.CinzaEscuro)
+        Cor(Me, Collor.CinzaClaro)
         CorButton(btnPesquisar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnAddDespesa, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnEditar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
@@ -756,5 +756,13 @@ Public Class frmDespesa
             S_MsgBox(ex.Message, eBotoes.Ok, "Erro ::. Despesa Fixa",, eImagens.Cancel)
 
         End Try
+    End Sub
+
+    Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
+        Dim oXls As SuperXLS
+
+        oXls = New SuperXLS("Despesa")
+
+        oXls.Imprimir(oDataset, "Despesas", True)
     End Sub
 End Class

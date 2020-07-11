@@ -22,16 +22,15 @@ Partial Class frmAbout
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAbout))
         Me.SScima = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SSbaixo = New System.Windows.Forms.StatusStrip()
         Me.lblCopyright = New System.Windows.Forms.Label()
-        Me.btnLogo = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnInfo = New System.Windows.Forms.Button()
         Me.txtLei = New System.Windows.Forms.TextBox()
         Me.btnFechar = New System.Windows.Forms.Button()
+        Me.btnLogo = New System.Windows.Forms.Button()
         Me.SScima.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -44,7 +43,8 @@ Partial Class frmAbout
         Me.SScima.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
         Me.SScima.Location = New System.Drawing.Point(0, 0)
         Me.SScima.Name = "SScima"
-        Me.SScima.Size = New System.Drawing.Size(709, 52)
+        Me.SScima.Size = New System.Drawing.Size(715, 52)
+        Me.SScima.SizingGrip = False
         Me.SScima.TabIndex = 0
         Me.SScima.Text = "StatusStrip1"
         '
@@ -63,7 +63,7 @@ Partial Class frmAbout
         Me.SSbaixo.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.SSbaixo.Location = New System.Drawing.Point(0, 448)
         Me.SSbaixo.Name = "SSbaixo"
-        Me.SSbaixo.Size = New System.Drawing.Size(709, 50)
+        Me.SSbaixo.Size = New System.Drawing.Size(715, 50)
         Me.SSbaixo.TabIndex = 1
         Me.SSbaixo.Text = "StatusStrip2"
         '
@@ -72,29 +72,18 @@ Partial Class frmAbout
         Me.lblCopyright.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.lblCopyright.AutoSize = True
         Me.lblCopyright.Font = New System.Drawing.Font("Verdana", 12.0!)
-        Me.lblCopyright.Location = New System.Drawing.Point(32, 423)
+        Me.lblCopyright.Location = New System.Drawing.Point(35, 423)
         Me.lblCopyright.Name = "lblCopyright"
         Me.lblCopyright.Size = New System.Drawing.Size(619, 25)
         Me.lblCopyright.TabIndex = 2
         Me.lblCopyright.Text = "© 2020 Finances Management. Todos os direitos resevados."
         '
-        'btnLogo
-        '
-        Me.btnLogo.FlatAppearance.BorderSize = 0
-        Me.btnLogo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke
-        Me.btnLogo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnLogo.Image = CType(resources.GetObject("btnLogo.Image"), System.Drawing.Image)
-        Me.btnLogo.Location = New System.Drawing.Point(107, 69)
-        Me.btnLogo.Name = "btnLogo"
-        Me.btnLogo.Size = New System.Drawing.Size(480, 91)
-        Me.btnLogo.TabIndex = 4
-        Me.btnLogo.UseVisualStyleBackColor = True
-        '
         'Label1
         '
+        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Verdana", 11.0!)
-        Me.Label1.Location = New System.Drawing.Point(528, 163)
+        Me.Label1.Location = New System.Drawing.Point(626, 142)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(59, 23)
         Me.Label1.TabIndex = 5
@@ -102,9 +91,10 @@ Partial Class frmAbout
         '
         'btnInfo
         '
+        Me.btnInfo.Font = New System.Drawing.Font("Verdana", 10.0!)
         Me.btnInfo.Location = New System.Drawing.Point(37, 267)
         Me.btnInfo.Name = "btnInfo"
-        Me.btnInfo.Size = New System.Drawing.Size(188, 30)
+        Me.btnInfo.Size = New System.Drawing.Size(259, 30)
         Me.btnInfo.TabIndex = 6
         Me.btnInfo.Text = "Informações do Sistema..."
         Me.btnInfo.UseVisualStyleBackColor = True
@@ -122,24 +112,39 @@ Partial Class frmAbout
         '
         'btnFechar
         '
+        Me.btnFechar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnFechar.BackColor = System.Drawing.Color.Transparent
+        Me.btnFechar.FlatAppearance.BorderSize = 0
         Me.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFechar.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
-        Me.btnFechar.Location = New System.Drawing.Point(646, 0)
+        Me.btnFechar.Location = New System.Drawing.Point(652, -5)
         Me.btnFechar.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnFechar.Name = "btnFechar"
-        Me.btnFechar.Size = New System.Drawing.Size(63, 52)
+        Me.btnFechar.Size = New System.Drawing.Size(63, 57)
         Me.btnFechar.TabIndex = 12
         Me.btnFechar.TextAlign = System.Drawing.ContentAlignment.TopRight
         Me.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnFechar.UseVisualStyleBackColor = False
         '
+        'btnLogo
+        '
+        Me.btnLogo.BackColor = System.Drawing.Color.Transparent
+        Me.btnLogo.FlatAppearance.BorderSize = 0
+        Me.btnLogo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke
+        Me.btnLogo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnLogo.Image = Global.GerenciamentoFinanças.My.Resources.Resources.imgLogoFsM_About
+        Me.btnLogo.Location = New System.Drawing.Point(0, 55)
+        Me.btnLogo.Name = "btnLogo"
+        Me.btnLogo.Size = New System.Drawing.Size(715, 121)
+        Me.btnLogo.TabIndex = 4
+        Me.btnLogo.UseVisualStyleBackColor = False
+        '
         'frmAbout
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(709, 498)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
+        Me.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.ClientSize = New System.Drawing.Size(715, 498)
         Me.Controls.Add(Me.btnFechar)
         Me.Controls.Add(Me.txtLei)
         Me.Controls.Add(Me.btnInfo)
