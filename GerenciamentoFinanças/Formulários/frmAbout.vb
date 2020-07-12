@@ -2,6 +2,7 @@
     Private Sub frmAbout_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cor(CType(SScima, Control), Collor.CinzaEscuro)
         Cor(CType(SSbaixo, Control), Collor.CinzaEscuro)
+        CorButton(btnInfo, Collor.CinzaEscuro, Color.White, Color.DarkSlateGray, Color.Gray)
 
         txtLei.Text = "Aviso: Este programa de computador é protegido por leis de direitos autorais e tratados internacionais." & vbNewLine &
                       "A reprodução ou distribuição não-autorizada " &
@@ -26,4 +27,6 @@
     Private Sub frmAbout_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
         alterarCaptionFormPrincipal(eTela.about)
     End Sub
+
+
 End Class

@@ -83,13 +83,158 @@ Public Module SubUtil
         Erro = 3
     End Enum
     Public Enum eBanco
-        Nubank
-        Santander
-        Bradesco
-        Itau
-        MercadoPago
-        PicPay
+        Nubank = 1
+        Santander = 2
+        Bradesco = 3
+        Itau = 4
+        MercadoPago = 5
+        PicPay = 6
+        Stone = 7
+        HSBC = 8
+        Citibank = 9
+        CaixaEconomica = 10
+        Safra = 11
+        original = 12
+        Neon = 13
+        Pan = 14
+        Mercantil = 15
+        Brasil = 16
+        Daycoval = 17
+        Crefisa = 18
+        Cetelem = 19
+        Bs2 = 20
+        Bovespa = 21
+        Agibank = 22
+        [Next] = 23
+        Inter = 24
+        PagBank = 25
+        Ame = 26
+        PayPal = 27
     End Enum
+    Public Function Banco(ByVal rBanco As String) As Bitmap
+        Dim img As Bitmap = Nothing
+
+        Try
+
+            If rBanco = "Nubank" Then
+
+                img = My.Resources.iconNubank_fw
+
+            ElseIf rBanco = "Bradesco" Then
+
+                img = My.Resources.iconBradesco
+
+            ElseIf rBanco = "Itau" Then
+
+                img = My.Resources.iconItau_fw
+
+            ElseIf rBanco = "Santander" Then
+
+                img = My.Resources.iconSantander
+
+            ElseIf rBanco = "Caixa Economica" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "Ame" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "PicPay" Then
+
+                img = My.Resources.iconPicPay
+
+            ElseIf rBanco = "Mercado Pago" Then
+
+                img = My.Resources.iconMercadoPago_fw
+
+            ElseIf rBanco = "Inter" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "HSBC" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "Agibank" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "Bovespa" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "Safra" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "Stone" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "Original" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "Brasil" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "Citibank" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "Cetelem" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "Neon" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "Next" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "Bs2" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "Daycoval" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "PagBank" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "Mercantil" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "PayPal" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "Crefisa" Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco = "Pan" Then
+
+                img = My.Resources.iconBank
+
+            End If
+
+
+
+            Return img
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+            Return Nothing
+        End Try
+    End Function
     '=======================================
     'FIM --- Enums
     '=======================================
@@ -107,29 +252,40 @@ Public Module SubUtil
             Controle.BackColor = Color.FromArgb(3, 166, 74)
 
         ElseIf Cor = Collor.Amarelo Then
-            Controle.BackColor = Color.FromArgb(242, 192, 41)
+
+            'Controle.BackColor = Color.FromArgb(242, 192, 41)
             Controle.BackColor = Color.Goldenrod
 
         ElseIf Cor = Collor.Marrom Then
             Controle.BackColor = Color.FromArgb(115, 100, 56)
+
         ElseIf Cor = Collor.Branco Then
-            Controle.BackColor = Color.WhiteSmoke
+            Controle.BackColor = Color.White
+
         ElseIf Cor = Collor.DarkTurquoise Then
             Controle.BackColor = Color.DarkTurquoise
+
         ElseIf Cor = Collor.DarkSlateGray Then
             Controle.BackColor = Color.DarkSlateGray
+
         ElseIf Cor = Collor.CinzaMedio Then
             Controle.BackColor = Color.FromArgb(96, 122, 143)
+
         ElseIf Cor = Collor.CinzaAzulado Then
             Controle.BackColor = Color.FromArgb(113, 143, 168)
+
         ElseIf Cor = Collor.Azul Then
             Controle.BackColor = Color.FromArgb(0, 55, 105)
+
         ElseIf Cor = Collor.Azul4 Then
             Controle.BackColor = Color.Teal
+
         ElseIf Cor = Collor.CinzaClaro Then
             Controle.BackColor = Color.FromArgb(223, 223, 223)
+
         ElseIf Cor = Collor.CinzaBranco Then
             Controle.BackColor = Color.FromArgb(248, 248, 255)
+
         ElseIf Cor = Collor.CinzaEscuro Then
             Controle.BackColor = Color.FromArgb(80, 87, 86)
 
@@ -151,26 +307,37 @@ Public Module SubUtil
 
         If Cor = Collor.DarkSlateGray Then
             button.BackColor = Color.DarkSlateGray
+
         ElseIf Cor = Collor.DarkTurquoise Then
             button.BackColor = Color.DarkTurquoise
+
         ElseIf Cor = Collor.VerdeEscuro Then
             button.BackColor = Color.FromArgb(28, 89, 54)
+
         ElseIf Cor = Collor.Amarelo Then
             button.BackColor = Color.FromArgb(242, 192, 41)
+
         ElseIf Cor = Collor.DimGray Then
             button.BackColor = Color.DimGray
+
         ElseIf Cor = Collor.Preto Then
             button.BackColor = Color.Black
+
         ElseIf Cor = Collor.CinzaMedio Then
             button.BackColor = Color.DarkGray
+
         ElseIf Cor = Collor.CinzaAzulado Then
             button.BackColor = Color.FromArgb(113, 143, 168)
+
         ElseIf Cor = Collor.Gelo Then
             button.BackColor = Color.WhiteSmoke
+
         ElseIf Cor = collor.Branco Then
             button.BackColor = Color.White
+
         ElseIf Cor = Collor.CinzaEscuro Then
             button.BackColor = Color.FromArgb(80, 87, 86)
+
         ElseIf Cor = Collor.Nenhuma Then
             button.BackColor = Color.Transparent
         End If
@@ -184,22 +351,31 @@ Public Module SubUtil
 
     End Sub
 
-    Public Sub CorTab(ByRef tab As TabControl, ByVal Cor As Collor)
+    Public Sub CorTab(ByRef tab As SuperTabControl, ByVal Cor As Collor)
+
 
         If Cor = Collor.CinzaEscuro Then
-            tab.TabPages(0).BackColor = Color.FromArgb(80, 87, 86)
+            For Each tabPage As TabPage In tab.TabPages
 
+                tabPage.BackColor = Color.FromArgb(80, 87, 86)
 
-            '    tab.SelectedTab.BackColor = Color.FromArgb(64, 62, 63)
+            Next
 
-            'ElseIf Cor = Collor.VerdeEscuro Then
-            '    tab.BackColor = Color.FromArgb(28, 89, 54)
+            tab.SelectedTab.BackColor = Color.FromArgb(64, 62, 63)
 
-            'ElseIf Cor = Collor.VerdeClaro Then
-            '    tab.BackColor = Color.FromArgb(3, 166, 74)
+        ElseIf Cor = Collor.CinzaAzulado Then
+            For Each tabPage As TabPage In tab.TabPages
 
+                tab.BackColor = SystemColors.InactiveBorder
+            Next
+
+        ElseIf Cor = Collor.CinzaClaro Then
+            For Each tabPage As TabPage In tab.TabPages
+
+                tab.BackColor = SystemColors.Control
+            Next
             'ElseIf Cor = Collor.Amarelo Then
-            '    tab.BackColor = Color.FromArgb(242, 192, 41)
+            'tab.BackColor = Color.FromArgb(242, 192, 41)
 
             'ElseIf Cor = Collor.Marrom Then
             '    tab.BackColor = Color.FromArgb(115, 100, 56)
@@ -233,7 +409,22 @@ Public Module SubUtil
         End Try
     End Function
 
+    Public Sub AdicionaImgColumn(ByVal oDataset As SuperDataSet, ByVal column As String)
+        Dim image As ImageConverter
+        Try
+            image = New ImageConverter()
 
+            For Each linha As DataRow In oDataset.Tables(0).Rows
+
+                linha(column) = image.ConvertTo(Banco(linha.ItemArray(5).ToString),
+                                                System.Type.GetType("System.Byte[]"))
+
+            Next
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+    End Sub
     Public Sub restaurarMDI()
         Lixeiro()
         frmPrincipal.txtCaption.Text = "Home"

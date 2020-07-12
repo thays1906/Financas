@@ -55,6 +55,7 @@ Partial Class frmCobranca
         Me.btnEditar = New System.Windows.Forms.Button()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnPesquisar = New System.Windows.Forms.Button()
+        Me.chkSelecionaTodos = New System.Windows.Forms.CheckBox()
         Me.tabCtrlCobranca.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.dgCobranca, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -79,6 +80,7 @@ Partial Class frmCobranca
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.TabPage1.Controls.Add(Me.chkSelecionaTodos)
         Me.TabPage1.Controls.Add(Me.txtLetreiroCobr)
         Me.TabPage1.Controls.Add(Me.dgCobranca)
         Me.TabPage1.Controls.Add(Me.gbCobrancaFiltro)
@@ -164,18 +166,18 @@ Partial Class frmCobranca
         'chkDataGrid
         '
         Me.chkDataGrid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.chkDataGrid.HeaderText = "Selecionar"
+        Me.chkDataGrid.HeaderText = ""
         Me.chkDataGrid.MinimumWidth = 6
         Me.chkDataGrid.Name = "chkDataGrid"
         Me.chkDataGrid.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.chkDataGrid.TrueValue = "true"
-        Me.chkDataGrid.Width = 122
+        Me.chkDataGrid.Width = 6
         '
         'gbCobrancaFiltro
         '
         Me.gbCobrancaFiltro.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.gbCobrancaFiltro.BackColor = System.Drawing.Color.LightSlateGray
+        Me.gbCobrancaFiltro.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.gbCobrancaFiltro.Controls.Add(Me.chkPeriodo)
         Me.gbCobrancaFiltro.Controls.Add(Me.cbAno)
         Me.gbCobrancaFiltro.Controls.Add(Me.lblDataFim)
@@ -189,7 +191,7 @@ Partial Class frmCobranca
         Me.gbCobrancaFiltro.Controls.Add(Me.lblStatus)
         Me.gbCobrancaFiltro.Controls.Add(Me.cbDevedor)
         Me.gbCobrancaFiltro.Controls.Add(Me.lblDevedor)
-        Me.gbCobrancaFiltro.ForeColor = System.Drawing.Color.White
+        Me.gbCobrancaFiltro.ForeColor = System.Drawing.Color.Black
         Me.gbCobrancaFiltro.Location = New System.Drawing.Point(64, 25)
         Me.gbCobrancaFiltro.Margin = New System.Windows.Forms.Padding(4)
         Me.gbCobrancaFiltro.Name = "gbCobrancaFiltro"
@@ -487,6 +489,17 @@ Partial Class frmCobranca
         Me.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnPesquisar.UseVisualStyleBackColor = True
         '
+        'chkSelecionaTodos
+        '
+        Me.chkSelecionaTodos.AutoSize = True
+        Me.chkSelecionaTodos.ForeColor = System.Drawing.SystemColors.InactiveCaptionText
+        Me.chkSelecionaTodos.Location = New System.Drawing.Point(66, 186)
+        Me.chkSelecionaTodos.Name = "chkSelecionaTodos"
+        Me.chkSelecionaTodos.Size = New System.Drawing.Size(297, 29)
+        Me.chkSelecionaTodos.TabIndex = 3
+        Me.chkSelecionaTodos.Text = "Marcar / Desmarcar Todos"
+        Me.chkSelecionaTodos.UseVisualStyleBackColor = True
+        '
         'frmCobranca
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -499,6 +512,7 @@ Partial Class frmCobranca
         Me.Name = "frmCobranca"
         Me.tabCtrlCobranca.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
+        Me.TabPage1.PerformLayout()
         CType(Me.dgCobranca, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbCobrancaFiltro.ResumeLayout(False)
         Me.gbCobrancaFiltro.PerformLayout()
@@ -534,4 +548,5 @@ Partial Class frmCobranca
     Friend WithEvents cbMes As GFT.Util.SuperComboBox
     Friend WithEvents Label2 As Label
     Friend WithEvents chkDataGrid As DataGridViewCheckBoxColumn
+    Friend WithEvents chkSelecionaTodos As CheckBox
 End Class

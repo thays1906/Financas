@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmAbout
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,8 +20,9 @@ Partial Class frmAbout
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAbout))
         Me.SScima = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SSbaixo = New System.Windows.Forms.StatusStrip()
@@ -43,7 +44,7 @@ Partial Class frmAbout
         Me.SScima.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
         Me.SScima.Location = New System.Drawing.Point(0, 0)
         Me.SScima.Name = "SScima"
-        Me.SScima.Size = New System.Drawing.Size(715, 52)
+        Me.SScima.Size = New System.Drawing.Size(795, 52)
         Me.SScima.SizingGrip = False
         Me.SScima.TabIndex = 0
         Me.SScima.Text = "StatusStrip1"
@@ -61,9 +62,9 @@ Partial Class frmAbout
         Me.SSbaixo.AutoSize = False
         Me.SSbaixo.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(62, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.SSbaixo.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.SSbaixo.Location = New System.Drawing.Point(0, 448)
+        Me.SSbaixo.Location = New System.Drawing.Point(0, 453)
         Me.SSbaixo.Name = "SSbaixo"
-        Me.SSbaixo.Size = New System.Drawing.Size(715, 50)
+        Me.SSbaixo.Size = New System.Drawing.Size(795, 50)
         Me.SSbaixo.TabIndex = 1
         Me.SSbaixo.Text = "StatusStrip2"
         '
@@ -72,7 +73,7 @@ Partial Class frmAbout
         Me.lblCopyright.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.lblCopyright.AutoSize = True
         Me.lblCopyright.Font = New System.Drawing.Font("Verdana", 12.0!)
-        Me.lblCopyright.Location = New System.Drawing.Point(35, 423)
+        Me.lblCopyright.Location = New System.Drawing.Point(75, 423)
         Me.lblCopyright.Name = "lblCopyright"
         Me.lblCopyright.Size = New System.Drawing.Size(619, 25)
         Me.lblCopyright.TabIndex = 2
@@ -83,7 +84,7 @@ Partial Class frmAbout
         Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Verdana", 11.0!)
-        Me.Label1.Location = New System.Drawing.Point(626, 142)
+        Me.Label1.Location = New System.Drawing.Point(736, 259)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(59, 23)
         Me.Label1.TabIndex = 5
@@ -92,9 +93,9 @@ Partial Class frmAbout
         'btnInfo
         '
         Me.btnInfo.Font = New System.Drawing.Font("Verdana", 10.0!)
-        Me.btnInfo.Location = New System.Drawing.Point(37, 267)
+        Me.btnInfo.Location = New System.Drawing.Point(50, 274)
         Me.btnInfo.Name = "btnInfo"
-        Me.btnInfo.Size = New System.Drawing.Size(259, 30)
+        Me.btnInfo.Size = New System.Drawing.Size(248, 34)
         Me.btnInfo.TabIndex = 6
         Me.btnInfo.Text = "Informações do Sistema..."
         Me.btnInfo.UseVisualStyleBackColor = True
@@ -103,7 +104,7 @@ Partial Class frmAbout
         '
         Me.txtLei.BackColor = System.Drawing.Color.WhiteSmoke
         Me.txtLei.Font = New System.Drawing.Font("Verdana", 10.0!)
-        Me.txtLei.Location = New System.Drawing.Point(37, 303)
+        Me.txtLei.Location = New System.Drawing.Point(50, 314)
         Me.txtLei.Multiline = True
         Me.txtLei.Name = "txtLei"
         Me.txtLei.ScrollBars = System.Windows.Forms.ScrollBars.Both
@@ -118,10 +119,10 @@ Partial Class frmAbout
         Me.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFechar.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
-        Me.btnFechar.Location = New System.Drawing.Point(652, -5)
+        Me.btnFechar.Location = New System.Drawing.Point(739, 0)
         Me.btnFechar.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnFechar.Name = "btnFechar"
-        Me.btnFechar.Size = New System.Drawing.Size(63, 57)
+        Me.btnFechar.Size = New System.Drawing.Size(56, 52)
         Me.btnFechar.TabIndex = 12
         Me.btnFechar.TextAlign = System.Drawing.ContentAlignment.TopRight
         Me.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -133,10 +134,10 @@ Partial Class frmAbout
         Me.btnLogo.FlatAppearance.BorderSize = 0
         Me.btnLogo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke
         Me.btnLogo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnLogo.Image = Global.GerenciamentoFinanças.My.Resources.Resources.imgLogoFsM_About
+        Me.btnLogo.Image = CType(resources.GetObject("btnLogo.Image"), System.Drawing.Image)
         Me.btnLogo.Location = New System.Drawing.Point(0, 55)
         Me.btnLogo.Name = "btnLogo"
-        Me.btnLogo.Size = New System.Drawing.Size(715, 121)
+        Me.btnLogo.Size = New System.Drawing.Size(795, 201)
         Me.btnLogo.TabIndex = 4
         Me.btnLogo.UseVisualStyleBackColor = False
         '
@@ -144,7 +145,7 @@ Partial Class frmAbout
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.ClientSize = New System.Drawing.Size(715, 498)
+        Me.ClientSize = New System.Drawing.Size(795, 503)
         Me.Controls.Add(Me.btnFechar)
         Me.Controls.Add(Me.txtLei)
         Me.Controls.Add(Me.btnInfo)

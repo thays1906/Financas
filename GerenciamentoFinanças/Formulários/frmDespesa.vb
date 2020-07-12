@@ -22,7 +22,8 @@ Public Class frmDespesa
 
         Me.tabCtrlDespesa.TabPages(2).Enabled = False
 
-        Cor(Me, Collor.CinzaClaro)
+        Cor(Me, Collor.Branco)
+
         CorButton(btnPesquisar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnAddDespesa, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnEditar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
@@ -30,6 +31,8 @@ Public Class frmDespesa
         CorButton(btnStatusPago, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnExportar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnFechar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
+
+        CorTab(tabCtrlDespesa, Collor.CinzaAzulado)
 
         centralizarGrupoBotoes(gbBotoes)
         centralizarGrupoTab(tabCtrlDespesa)
@@ -132,19 +135,19 @@ Public Class frmDespesa
 
                     dgDespesa.DataSource = oDataset.Tables(0)
 
-                    'lvConsulta.PreencheGridDS(oDataset, True, True, False, True, 0, True)
+                    lvConsulta.PreencheGridDS(oDataset, True, True, False, True, 0, True)
 
-                    'CorList(lvConsulta)
-                    'For i = 0 To oDataset.TotalRegistros - 1
+                    CorList(lvConsulta)
+                    For i = 0 To oDataset.TotalRegistros - 1
 
-                    '    If CStr(oDataset("as_Status#100", i)) = "PAGO" Then
-                    '        lvConsulta.Items(i).SubItems(1).ForeColor = Color.Green
-                    '    ElseIf CStr(oDataset("as_Status#100", i)) = "ATRASADO" Then
-                    '        lvConsulta.Items(i).SubItems(1).ForeColor = Color.Red
-                    '    End If
+                        If CStr(oDataset("as_Status#100", i)) = "PAGO" Then
+                            lvConsulta.Items(i).SubItems(1).ForeColor = Color.Green
+                        ElseIf CStr(oDataset("as_Status#100", i)) = "ATRASADO" Then
+                            lvConsulta.Items(i).SubItems(1).ForeColor = Color.Red
+                        End If
 
-                    '    lvConsulta.Items(i).SubItems(3).ForeColor = Color.Red
-                    'Next
+                        lvConsulta.Items(i).SubItems(3).ForeColor = Color.Red
+                    Next
                 Else
                     lvConsulta.PreencheGridDS(oDataset, True, True, False, True)
 

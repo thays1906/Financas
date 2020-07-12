@@ -255,16 +255,17 @@ Partial Class frmDespesa
         Me.dgDespesa.RowHeadersWidth = 51
         Me.dgDespesa.Size = New System.Drawing.Size(1831, 403)
         Me.dgDespesa.TabIndex = 10
+        Me.dgDespesa.Visible = False
         '
         'txtLetreiroDespesa
         '
         Me.txtLetreiroDespesa.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.txtLetreiroDespesa.CorSombraTexto = System.Drawing.Color.White
-        Me.txtLetreiroDespesa.Location = New System.Drawing.Point(44, 540)
+        Me.txtLetreiroDespesa.Location = New System.Drawing.Point(277, 569)
         Me.txtLetreiroDespesa.Margin = New System.Windows.Forms.Padding(4)
         Me.txtLetreiroDespesa.Name = "txtLetreiroDespesa"
         Me.txtLetreiroDespesa.RolagemLetreiro = GFT.Util.SuperLetreiro.Direcao.Direita
-        Me.txtLetreiroDespesa.Size = New System.Drawing.Size(503, 22)
+        Me.txtLetreiroDespesa.Size = New System.Drawing.Size(503, 24)
         Me.txtLetreiroDespesa.TabIndex = 9
         Me.txtLetreiroDespesa.TextoLetreiro = "0,00 Registros"
         Me.txtLetreiroDespesa.VelocidadeRolagem = 1
@@ -294,12 +295,12 @@ Partial Class frmDespesa
         Me.lvConsulta.Size = New System.Drawing.Size(1829, 406)
         Me.lvConsulta.TabIndex = 0
         Me.lvConsulta.UseCompatibleStateImageBehavior = False
-        Me.lvConsulta.Visible = False
         '
         'gbFiltro
         '
         Me.gbFiltro.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.gbFiltro.BackColor = System.Drawing.SystemColors.InactiveBorder
         Me.gbFiltro.Controls.Add(Me.lblAno)
         Me.gbFiltro.Controls.Add(Me.cbAno)
         Me.gbFiltro.Controls.Add(Me.lblMes)

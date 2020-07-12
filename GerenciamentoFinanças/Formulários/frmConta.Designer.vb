@@ -29,6 +29,7 @@ Partial Class frmConta
         Me.gbListConta = New System.Windows.Forms.GroupBox()
         Me.lvConsulta = New GFT.Util.SuperLV()
         Me.gbDadosConta = New System.Windows.Forms.GroupBox()
+        Me.picBank = New System.Windows.Forms.PictureBox()
         Me.lblTipoPrincipal = New System.Windows.Forms.Label()
         Me.txtPrincipalTipo = New System.Windows.Forms.TextBox()
         Me.lblContaPrincipal = New System.Windows.Forms.Label()
@@ -41,19 +42,18 @@ Partial Class frmConta
         Me.btnAddConta = New System.Windows.Forms.Button()
         Me.btnEditar = New System.Windows.Forms.Button()
         Me.btnPesquisar = New System.Windows.Forms.Button()
-        Me.picBank = New System.Windows.Forms.PictureBox()
         Me.tabCtrlConta.SuspendLayout()
         Me.tabConta.SuspendLayout()
         Me.gbListConta.SuspendLayout()
         Me.gbDadosConta.SuspendLayout()
-        Me.gbBotoes.SuspendLayout()
         CType(Me.picBank, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gbBotoes.SuspendLayout()
         Me.SuspendLayout()
         '
         'tabCtrlConta
         '
+        Me.tabCtrlConta.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.tabCtrlConta.Controls.Add(Me.tabConta)
-        Me.tabCtrlConta.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tabCtrlConta.Font = New System.Drawing.Font("Verdana", 12.0!)
         Me.tabCtrlConta.ImageList = Me.ImgContaBancaria
         Me.tabCtrlConta.Location = New System.Drawing.Point(0, 0)
@@ -61,7 +61,7 @@ Partial Class frmConta
         Me.tabCtrlConta.Name = "tabCtrlConta"
         Me.tabCtrlConta.Padding = New System.Drawing.Point(30, 10)
         Me.tabCtrlConta.SelectedIndex = 0
-        Me.tabCtrlConta.Size = New System.Drawing.Size(1892, 746)
+        Me.tabCtrlConta.Size = New System.Drawing.Size(1893, 746)
         Me.tabCtrlConta.TabIndex = 0
         '
         'tabConta
@@ -74,7 +74,7 @@ Partial Class frmConta
         Me.tabConta.Margin = New System.Windows.Forms.Padding(4)
         Me.tabConta.Name = "tabConta"
         Me.tabConta.Padding = New System.Windows.Forms.Padding(4)
-        Me.tabConta.Size = New System.Drawing.Size(1884, 673)
+        Me.tabConta.Size = New System.Drawing.Size(1885, 673)
         Me.tabConta.TabIndex = 0
         Me.tabConta.Text = "Conta Báncaria"
         '
@@ -84,11 +84,11 @@ Partial Class frmConta
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gbListConta.Controls.Add(Me.lvConsulta)
-        Me.gbListConta.Location = New System.Drawing.Point(56, 202)
+        Me.gbListConta.Location = New System.Drawing.Point(56, 210)
         Me.gbListConta.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.gbListConta.Name = "gbListConta"
         Me.gbListConta.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.gbListConta.Size = New System.Drawing.Size(1752, 451)
+        Me.gbListConta.Size = New System.Drawing.Size(1753, 443)
         Me.gbListConta.TabIndex = 29
         Me.gbListConta.TabStop = False
         Me.gbListConta.Text = "Todas as contas"
@@ -104,7 +104,7 @@ Partial Class frmConta
         Me.lvConsulta.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.lvConsulta.Name = "lvConsulta"
         Me.lvConsulta.SelecionaVarios = False
-        Me.lvConsulta.Size = New System.Drawing.Size(1740, 417)
+        Me.lvConsulta.Size = New System.Drawing.Size(1741, 409)
         Me.lvConsulta.TabIndex = 27
         Me.lvConsulta.UseCompatibleStateImageBehavior = False
         '
@@ -123,10 +123,19 @@ Partial Class frmConta
         Me.gbDadosConta.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.gbDadosConta.Name = "gbDadosConta"
         Me.gbDadosConta.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.gbDadosConta.Size = New System.Drawing.Size(1752, 178)
+        Me.gbDadosConta.Size = New System.Drawing.Size(1753, 178)
         Me.gbDadosConta.TabIndex = 25
         Me.gbDadosConta.TabStop = False
         Me.gbDadosConta.Text = "Conta Principal"
+        '
+        'picBank
+        '
+        Me.picBank.Location = New System.Drawing.Point(14, 82)
+        Me.picBank.Name = "picBank"
+        Me.picBank.Size = New System.Drawing.Size(48, 48)
+        Me.picBank.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.picBank.TabIndex = 4
+        Me.picBank.TabStop = False
         '
         'lblTipoPrincipal
         '
@@ -279,15 +288,6 @@ Partial Class frmConta
         Me.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnPesquisar.UseVisualStyleBackColor = True
         '
-        'picBank
-        '
-        Me.picBank.Location = New System.Drawing.Point(14, 82)
-        Me.picBank.Name = "picBank"
-        Me.picBank.Size = New System.Drawing.Size(48, 48)
-        Me.picBank.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.picBank.TabIndex = 4
-        Me.picBank.TabStop = False
-        '
         'frmConta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -304,8 +304,8 @@ Partial Class frmConta
         Me.gbListConta.ResumeLayout(False)
         Me.gbDadosConta.ResumeLayout(False)
         Me.gbDadosConta.PerformLayout()
-        Me.gbBotoes.ResumeLayout(False)
         CType(Me.picBank, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbBotoes.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

@@ -1,20 +1,17 @@
 ﻿Imports GFT.Util
 Imports GFT.Util.clsMsgBox
 Public Class frmPrincipal
-
+    Public button As Button
     Public oDataSet As SuperDataSet
     Public oform As Form
     Public splash As SplashScreen
     Public Verifica As Boolean
     Public cLoga As DialogResult
     Sub New()
-
         ' This call is required by the designer.
         InitializeComponent()
         Me.Visible = False
-
         ' Add any initialization after the InitializeComponent() call.
-
     End Sub
 
 
@@ -35,11 +32,22 @@ Public Class frmPrincipal
     End Sub
 
     Private Sub frmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
 #If DEBUG Then
         Verifica = False
 #Else
         Verifica = TRUE
 #End If
+        'If Verifica Then
+        '    pInicializacao.Iniciar()
+        'End If
+
+        InicializaTelas()
+        Cor(CType(SScima, Control), Collor.CinzaEscuro)
+        Cor(CType(SsBaixo, Control), Collor.CinzaEscuro)
+        Cor(CType(ssTituloTela, Control), Collor.CinzaEscuro)
+        gbPricnipal.Visible = True
+
         'Me.Visible = False
         'If cLoga = DialogResult.None Then
         '    splash = New SplashScreen
@@ -57,14 +65,8 @@ Public Class frmPrincipal
         '    Me.Visible = True
         'End If
 
-        If Verifica Then
-            pInicializacao.Iniciar()
-        End If
 
-        txtCaptionHora.Text = ""
-        InicializaTelas()
-        Cor(CType(StatusStrip1, Control), Collor.CinzaEscuro)
-        gbPricnipal.Visible = True
+
         CarregaTabHome()
 
 
@@ -81,30 +83,13 @@ Public Class frmPrincipal
         End If
     End Sub
 
-    Private Sub btnFechar_Click(sender As Object, e As EventArgs) 
-        Me.Close()
-    End Sub
-
-    Private Sub btnMinimizar_Click(sender As Object, e As EventArgs) 
-        Me.WindowState = FormWindowState.Minimized
-    End Sub
-
-    Private Sub btnMaximizar_Click(sender As Object, e As EventArgs) 
-
-        If WindowState = FormWindowState.Normal = True Then
-            Me.WindowState = FormWindowState.Maximized
-        Else
-            Me.WindowState = FormWindowState.Normal
-        End If
-    End Sub
-
     Private Sub LoginToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LoginToolStripMenuItem1.Click
         Dim log As frmLogin
         log = New frmLogin
         log.Show()
     End Sub
 
-    Private Sub CategoriasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CategoriasToolStripMenuItem.Click
+    Private Sub CategoriasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PersonalizacaoToolStripMenuItem.Click
         Dim oForm As Form
         oForm = New frmConfiguracao
         controleFormulario(Me, oForm, eTela.Configuracao)
@@ -156,15 +141,18 @@ Public Class frmPrincipal
                                Optional despesa As Decimal = 0)
         Try
             If saldo = 0 And receita = 0 And despesa = 0 Then
+
                 oDataSet = pDespesa.ObterTotal
                 If oDataSet.TotalRegistros <> Nothing Then
                     btnDespesa.Text = oDataSet("TOTAL").ToString
+                    tabCtrlDespesa.Refresh()
                 End If
 
                 oDataSet = pReceita.ObterTotal
 
                 If oDataSet("TOTAL").ToString <> "" Then
                     btnReceita.Text = oDataSet("TOTAL").ToString
+                    tabCtrlPrincReceita.Refresh()
                 Else
                     btnReceita.Text = "R$ 0,00"
                 End If
@@ -196,7 +184,7 @@ Public Class frmPrincipal
                 End If
             End If
 
-
+            oDataSet.Dispose()
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Erro",, eImagens.Cancel)
         End Try
@@ -232,11 +220,11 @@ Public Class frmPrincipal
         CarregaTabHome(0, 0, 1)
     End Sub
     Private Sub AtualizarSaldo()
-        Dim button As Button
         Dim text As String
         Try
-            oDataSet = pContaBancaria.ObterTotal
             button = New Button
+            oDataSet = pContaBancaria.ObterTotal
+
             If oDataSet.TotalRegistros > 1 Then
 
                 For i = 0 To oDataSet.TotalRegistros - 1
@@ -260,9 +248,11 @@ Public Class frmPrincipal
                 End If
                 GeraButton(button, 0, text)
             End If
+
+            button.Dispose()
+
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Erro",, eImagens.Cancel)
-
         End Try
     End Sub
     Private Sub GeraButton(ByVal button As Button,
@@ -319,6 +309,7 @@ Public Class frmPrincipal
 
             tabCtrlSaldo.TabPages(0).Controls.Add(button)
 
+            tabCtrlSaldo.Refresh()
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Erro",, eImagens.Cancel)
         End Try
@@ -341,7 +332,7 @@ Public Class frmPrincipal
         controleFormulario(Me, oform, eTela.cobranca)
     End Sub
 
-    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ContaToolStripMenuItem.Click
         AbrirConta()
     End Sub
 
@@ -350,18 +341,16 @@ Public Class frmPrincipal
         oform.ShowDialog()
     End Sub
 
-
-
     Private Sub VerificaInstall()
         Try
             pInicializacao.Iniciar()
-
+            Dispose()
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro.",, eImagens.Cancel)
         End Try
     End Sub
 
-    Private Sub UsuárioSenhaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuárioSenhaToolStripMenuItem.Click
+    Private Sub UsuárioSenhaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConfigLoginToolStripMenuItem.Click
         oform = New frmUsuario
         controleFormulario(Me, oform, eTela.Usuario)
     End Sub

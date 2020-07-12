@@ -26,11 +26,8 @@ Partial Class frmAddCobranca
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAddCobranca))
         Me.tabCtrlNovaCobranca = New System.Windows.Forms.TabControl()
         Me.tabNovaCobranca = New System.Windows.Forms.TabPage()
-        Me.SuperLetreiro1 = New GFT.Util.SuperLetreiro()
-        Me.btnSalvar = New System.Windows.Forms.Button()
-        Me.btnFechar = New System.Windows.Forms.Button()
-        Me.ImgNewCobr = New System.Windows.Forms.ImageList(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.lblConta = New System.Windows.Forms.Label()
         Me.cbConta = New GFT.Util.SuperComboBox()
         Me.lblData = New System.Windows.Forms.Label()
@@ -41,7 +38,10 @@ Partial Class frmAddCobranca
         Me.cbStatus = New GFT.Util.SuperComboBox()
         Me.txtNome = New GFT.Util.SuperTextBox()
         Me.dtregistro = New System.Windows.Forms.DateTimePicker()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.SuperLetreiro1 = New GFT.Util.SuperLetreiro()
+        Me.ImgNewCobr = New System.Windows.Forms.ImageList(Me.components)
+        Me.btnSalvar = New System.Windows.Forms.Button()
+        Me.btnFechar = New System.Windows.Forms.Button()
         Me.tabCtrlNovaCobranca.SuspendLayout()
         Me.tabNovaCobranca.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -53,7 +53,7 @@ Partial Class frmAddCobranca
         Me.tabCtrlNovaCobranca.Font = New System.Drawing.Font("Verdana", 12.0!)
         Me.tabCtrlNovaCobranca.ImageList = Me.ImgNewCobr
         Me.tabCtrlNovaCobranca.Location = New System.Drawing.Point(65, 43)
-        Me.tabCtrlNovaCobranca.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabCtrlNovaCobranca.Margin = New System.Windows.Forms.Padding(4)
         Me.tabCtrlNovaCobranca.Name = "tabCtrlNovaCobranca"
         Me.tabCtrlNovaCobranca.Padding = New System.Drawing.Point(50, 10)
         Me.tabCtrlNovaCobranca.SelectedIndex = 0
@@ -67,59 +67,12 @@ Partial Class frmAddCobranca
         Me.tabNovaCobranca.Controls.Add(Me.SuperLetreiro1)
         Me.tabNovaCobranca.ImageIndex = 1
         Me.tabNovaCobranca.Location = New System.Drawing.Point(4, 69)
-        Me.tabNovaCobranca.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabNovaCobranca.Margin = New System.Windows.Forms.Padding(4)
         Me.tabNovaCobranca.Name = "tabNovaCobranca"
-        Me.tabNovaCobranca.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabNovaCobranca.Padding = New System.Windows.Forms.Padding(4)
         Me.tabNovaCobranca.Size = New System.Drawing.Size(769, 402)
         Me.tabNovaCobranca.TabIndex = 0
         Me.tabNovaCobranca.Text = "Nova Cobrança"
-        '
-        'SuperLetreiro1
-        '
-        Me.SuperLetreiro1.CorSombraTexto = System.Drawing.Color.White
-        Me.SuperLetreiro1.Location = New System.Drawing.Point(59, 364)
-        Me.SuperLetreiro1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.SuperLetreiro1.Name = "SuperLetreiro1"
-        Me.SuperLetreiro1.RolagemLetreiro = GFT.Util.SuperLetreiro.Direcao.Esquerda
-        Me.SuperLetreiro1.Size = New System.Drawing.Size(649, 34)
-        Me.SuperLetreiro1.TabIndex = 1
-        Me.SuperLetreiro1.TextoLetreiro = "Se você fez empréstimo para alguém, faça o lançamento para o sistema te lembrar!"
-        Me.SuperLetreiro1.VelocidadeRolagem = 1
-        '
-        'btnSalvar
-        '
-        Me.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnSalvar.Font = New System.Drawing.Font("Verdana", 12.0!)
-        Me.btnSalvar.Image = CType(resources.GetObject("btnSalvar.Image"), System.Drawing.Image)
-        Me.btnSalvar.Location = New System.Drawing.Point(307, 535)
-        Me.btnSalvar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.btnSalvar.Name = "btnSalvar"
-        Me.btnSalvar.Size = New System.Drawing.Size(271, 52)
-        Me.btnSalvar.TabIndex = 5
-        Me.btnSalvar.Text = " &Salvar"
-        Me.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnSalvar.UseVisualStyleBackColor = True
-        '
-        'btnFechar
-        '
-        Me.btnFechar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
-        Me.btnFechar.Location = New System.Drawing.Point(832, -2)
-        Me.btnFechar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.btnFechar.Name = "btnFechar"
-        Me.btnFechar.Size = New System.Drawing.Size(75, 57)
-        Me.btnFechar.TabIndex = 6
-        Me.btnFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnFechar.UseVisualStyleBackColor = True
-        '
-        'ImgNewCobr
-        '
-        Me.ImgNewCobr.ImageStream = CType(resources.GetObject("ImgNewCobr.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImgNewCobr.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImgNewCobr.Images.SetKeyName(0, "iconCobr.png")
-        Me.ImgNewCobr.Images.SetKeyName(1, "iconeCObr.png")
         '
         'Panel1
         '
@@ -139,6 +92,16 @@ Partial Class frmAddCobranca
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(674, 311)
         Me.Panel1.TabIndex = 2
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(427, 195)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(235, 29)
+        Me.CheckBox1.TabIndex = 20
+        Me.CheckBox1.Text = "Quero ser lembrado"
+        Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'lblConta
         '
@@ -265,26 +228,62 @@ Partial Class frmAddCobranca
         Me.dtregistro.Size = New System.Drawing.Size(209, 32)
         Me.dtregistro.TabIndex = 10
         '
-        'CheckBox1
+        'SuperLetreiro1
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(427, 195)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(235, 29)
-        Me.CheckBox1.TabIndex = 20
-        Me.CheckBox1.Text = "Quero ser lembrado"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.SuperLetreiro1.CorSombraTexto = System.Drawing.Color.White
+        Me.SuperLetreiro1.Location = New System.Drawing.Point(59, 364)
+        Me.SuperLetreiro1.Margin = New System.Windows.Forms.Padding(4)
+        Me.SuperLetreiro1.Name = "SuperLetreiro1"
+        Me.SuperLetreiro1.RolagemLetreiro = GFT.Util.SuperLetreiro.Direcao.Esquerda
+        Me.SuperLetreiro1.Size = New System.Drawing.Size(649, 34)
+        Me.SuperLetreiro1.TabIndex = 1
+        Me.SuperLetreiro1.TextoLetreiro = "Se você fez empréstimo para alguém, faça o lançamento para o sistema te lembrar!"
+        Me.SuperLetreiro1.VelocidadeRolagem = 1
+        '
+        'ImgNewCobr
+        '
+        Me.ImgNewCobr.ImageStream = CType(resources.GetObject("ImgNewCobr.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImgNewCobr.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImgNewCobr.Images.SetKeyName(0, "iconCobr.png")
+        Me.ImgNewCobr.Images.SetKeyName(1, "iconeCObr.png")
+        '
+        'btnSalvar
+        '
+        Me.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnSalvar.Font = New System.Drawing.Font("Verdana", 12.0!)
+        Me.btnSalvar.Image = CType(resources.GetObject("btnSalvar.Image"), System.Drawing.Image)
+        Me.btnSalvar.Location = New System.Drawing.Point(307, 535)
+        Me.btnSalvar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnSalvar.Name = "btnSalvar"
+        Me.btnSalvar.Size = New System.Drawing.Size(271, 52)
+        Me.btnSalvar.TabIndex = 5
+        Me.btnSalvar.Text = " &Salvar"
+        Me.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnSalvar.UseVisualStyleBackColor = True
+        '
+        'btnFechar
+        '
+        Me.btnFechar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
+        Me.btnFechar.Location = New System.Drawing.Point(832, -2)
+        Me.btnFechar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnFechar.Name = "btnFechar"
+        Me.btnFechar.Size = New System.Drawing.Size(75, 57)
+        Me.btnFechar.TabIndex = 6
+        Me.btnFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnFechar.UseVisualStyleBackColor = True
         '
         'frmAddCobranca
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(905, 624)
         Me.Controls.Add(Me.btnFechar)
         Me.Controls.Add(Me.btnSalvar)
         Me.Controls.Add(Me.tabCtrlNovaCobranca)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmAddCobranca"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.tabCtrlNovaCobranca.ResumeLayout(False)

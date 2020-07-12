@@ -9,17 +9,20 @@ Public Class frmConta
 
     Private Sub frmConta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cor(Me, Collor.CinzaClaro)
+        Cor(CType(gbBotoes, Control), Collor.CinzaEscuro)
+
         CorButton(btnPesquisar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnAddConta, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnEditar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnExcluir, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnExportar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnFechar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
-        Cor(CType(gbBotoes, Control), Collor.CinzaEscuro)
+
         centralizarGrupoBotoes(gbBotoes)
         centralizarGrupoTab(tabCtrlConta)
         centralizarGrupoBotoes(gbDadosConta)
         centralizarGrupoBotoes(gbListConta)
+
         PesquisarConta()
     End Sub
     Private Sub frmConta_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
@@ -30,7 +33,7 @@ Public Class frmConta
     End Sub
 
     Private Sub PesquisarConta()
-        Dim rs As SuperDataSet
+        Dim rs As SuperDataSet = Nothing
         Try
             rs = pContaBancaria.PesquisarConta()
 
@@ -56,33 +59,10 @@ Public Class frmConta
 
                     txtPrincipalTipo.Text = rs("as_TIPO_DE_CONTA", i).ToString
 
-                    If rs("as_BANCO#200", i).ToString = "Nubank" Then
+                    picBank.Image = Banco(rs("as_BANCO#200", i).ToString)
 
-                        picBank.Image = My.Resources.iconNubank_fw
-
-                    ElseIf rs("as_BANCO#200", i).ToString = "Bradesco" Then
-
-                        picBank.Image = My.Resources.iconBradesco
-
-                    ElseIf rs("as_BANCO#200", i).ToString = "Itau" Then
-
-                        picBank.Image = My.Resources.iconItau_fw
-
-                    ElseIf rs("as_BANCO#200", i).ToString = "Santander" Then
-
-                        picBank.Image = My.Resources.iconSantander
-
-                    ElseIf rs("as_BANCO#200", i).ToString = "Pic Pay" Then
-
-                        picBank.Image = My.Resources.iconPicPay
-
-                    ElseIf rs("as_BANCO#200", i).ToString = "MercadoPago" Then
-
-                        picBank.Image = My.Resources.iconMercadoPago_fw
-                    Else
-                        picBank.Image = My.Resources.iconBank
-                    End If
                 End If
+
                 If lvConsulta.Items(i).SubItems(4).Text.Contains(CChar("-")) Then
 
                     lvConsulta.Items(i).SubItems(4).ForeColor = Color.Red
@@ -91,8 +71,11 @@ Public Class frmConta
                 End If
                 lvConsulta.Items(i).SubItems(4).Font = New Font(FontFamily.GenericSansSerif, 12, FontStyle.Bold)
             Next
+            lvConsulta.Refresh()
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
+        Finally
+            rs.Dispose()
         End Try
     End Sub
     Private Sub btnEditar_Click_1(sender As Object, e As EventArgs) Handles btnEditar.Click
