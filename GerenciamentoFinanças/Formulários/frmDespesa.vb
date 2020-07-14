@@ -9,9 +9,9 @@ Public Class frmDespesa
     Public gbParcela As GroupBox
     Public cDespesa As Decimal
     Public btn As Decimal
-    Public erro As Decimal
-    Public ok As Decimal
-    Public tot As Decimal
+    Public erro As Integer
+    Public ok As Integer
+    Public tot As Integer
     Public cControleParcelamento As Decimal
     Sub New(Optional ByVal _cControle As Decimal = 0)
 
@@ -404,7 +404,7 @@ Public Class frmDespesa
 
                     tot = lvConsulta.ObterTotalChecados
 
-                    If Mensagem(eTipoMensagem.Question) = eRet.Sim Then
+                    If Mensagem(eTipoMensagem.Question, tot) = eRet.Sim Then
 
                         rDespesa = lvConsulta.ObterCSVChaves()
 
@@ -420,10 +420,10 @@ Public Class frmDespesa
                         Next
 
                         If erro = 0 Then
-                            Mensagem(eTipoMensagem.OK)
+                            Mensagem(eTipoMensagem.OK,, ok)
                             Pesquisar()
                         Else
-                            Mensagem(eTipoMensagem.Erro)
+                            Mensagem(eTipoMensagem.Erro, tot, ok, erro)
                         End If
                     End If
                 Else
@@ -461,28 +461,6 @@ Public Class frmDespesa
             S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
         End Try
     End Sub
-    Private Function Mensagem(ByVal tipoMsg As eTipoMensagem) As eRet
-        If tipoMsg = eTipoMensagem.Question Then
-            If S_MsgBox("Deseja excluir " & tot & " despesas?",
-                                eBotoes.SimNao,,,
-                                eImagens.Interrogacao) = eRet.Sim Then
-                Return eRet.Sim
-            Else
-                Return eRet.Nao
-            End If
-        ElseIf tipoMsg = eTipoMensagem.OK Then
-            S_MsgBox("Despesa(s) excluída(s) com sucesso!",
-                    eBotoes.Ok, "Exclusão de registro.",
-                    eImagens.Ok)
-        ElseIf tipoMsg = eTipoMensagem.Erro Then
-            S_MsgBox("Registro(s) excluído(s): " & ok & vbNewLine &
-                    "Registro(s) não excluído(s): " & erro & vbNewLine &
-                    "Total de Registros:" & tot,
-                    eBotoes.Ok, "Atenção: Alguns registros podem não ter sido excluídos.",
-                    eImagens.Atencao)
-        End If
-        Return Nothing
-    End Function
     Private Sub lvConsulta_ItemChecked(sender As Object, e As ItemCheckedEventArgs) Handles lvConsulta.ItemChecked
         ControleFormulario()
     End Sub

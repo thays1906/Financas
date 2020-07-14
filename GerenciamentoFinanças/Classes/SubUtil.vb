@@ -1,7 +1,8 @@
 ﻿Imports GFT.Util
+Imports GFT.Util.clsMsgBox
 Public Module SubUtil
     Private Declare Auto Function SetProcessWorkingSetSize Lib "kernel32.dll" (ByVal procHandle As IntPtr, ByVal min As Int32, byvalMax As Int32) As Boolean
-
+#Region "Enums"
     '=======================================
     'Enums
     '=======================================
@@ -15,6 +16,8 @@ Public Module SubUtil
         cobranca = 200
         conta_Bancaria = 201
         Usuario = 202
+        Email = 203
+
         about = 210
 
     End Enum
@@ -111,133 +114,11 @@ Public Module SubUtil
         Ame = 26
         PayPal = 27
     End Enum
-    Public Function Banco(ByVal rBanco As String) As Bitmap
-        Dim img As Bitmap = Nothing
-
-        Try
-
-            If rBanco = "Nubank" Then
-
-                img = My.Resources.iconNubank_fw
-
-            ElseIf rBanco = "Bradesco" Then
-
-                img = My.Resources.iconBradesco
-
-            ElseIf rBanco = "Itau" Then
-
-                img = My.Resources.iconItau_fw
-
-            ElseIf rBanco = "Santander" Then
-
-                img = My.Resources.iconSantander
-
-            ElseIf rBanco = "Caixa Economica" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "Ame" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "PicPay" Then
-
-                img = My.Resources.iconPicPay
-
-            ElseIf rBanco = "Mercado Pago" Then
-
-                img = My.Resources.iconMercadoPago_fw
-
-            ElseIf rBanco = "Inter" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "HSBC" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "Agibank" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "Bovespa" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "Safra" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "Stone" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "Original" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "Brasil" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "Citibank" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "Cetelem" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "Neon" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "Next" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "Bs2" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "Daycoval" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "PagBank" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "Mercantil" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "PayPal" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "Crefisa" Then
-
-                img = My.Resources.iconBank
-
-            ElseIf rBanco = "Pan" Then
-
-                img = My.Resources.iconBank
-
-            End If
-
-
-
-            Return img
-
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-            Return Nothing
-        End Try
-    End Function
     '=======================================
     'FIM --- Enums
     '=======================================
+#End Region
+#Region "Cores de Controles"
     '=======================================
     'Cores
     Public Sub Cor(ByRef Controle As Control, ByVal Cor As Collor)
@@ -386,6 +267,7 @@ Public Module SubUtil
     '=======================================
     'FIM------Cores
     '=======================================
+#End Region
     Public Function MinHora(ByVal _date As Date) As Date
         Dim data As Date
         Try
@@ -408,6 +290,130 @@ Public Module SubUtil
             Return Nothing
         End Try
     End Function
+    Public Function Banco(ByVal rBanco As String) As Bitmap
+        Dim img As Bitmap = Nothing
+
+        Try
+            rBanco = rBanco.Replace(" ", "").ToUpper()
+
+            If rBanco.Contains("NUBANK") Then
+
+                img = My.Resources.iconNubank_fw
+
+            ElseIf rBanco.Contains("BRADESCO") Then
+
+                img = My.Resources.iconBradesco
+
+            ElseIf rBanco.Contains("ITAU") Then
+
+                img = My.Resources.iconItau_fw
+
+            ElseIf rBanco.Contains("SANTANDER") Then
+
+                img = My.Resources.iconSantander
+
+            ElseIf rBanco.Contains("CAIXA") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("AME") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("PICPAY") Then
+
+                img = My.Resources.iconPicPay
+
+            ElseIf rBanco.Contains("MERCADOPAGO") Then
+
+                img = My.Resources.iconMercadoPago_fw
+
+            ElseIf rBanco.Contains("INTER") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("HSBC") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("AGIBANK") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("BOVESPA") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("SAFRA") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("STONE") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("ORIGINAL") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("BRASIL") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("CITIBANK") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("CETELEM") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("NEON") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("NEXT") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("BS2") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("DAYCOVAL") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("PAGBANK") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("MERCANTIL") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("PAYPAL") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("CREFISA") Then
+
+                img = My.Resources.iconBank
+
+            ElseIf rBanco.Contains("PAN") Then
+
+                img = My.Resources.iconBank
+            Else
+                img = My.Resources.iconBank
+            End If
+
+            Return img
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+            Return Nothing
+        End Try
+    End Function
 
     Public Sub AdicionaImgColumn(ByVal oDataset As SuperDataSet, ByVal column As String)
         Dim image As ImageConverter
@@ -425,6 +431,109 @@ Public Module SubUtil
             MessageBox.Show(ex.Message)
         End Try
     End Sub
+    Public Sub SelecionarDataGrid(ByRef dtGrid As DataGridView, ByVal row As Integer,
+                                  Optional ByVal _BackColor As Color = Nothing,
+                                  Optional ByVal _ForeColor As Color = Nothing)
+        Dim backColor As Color
+        Dim foreColor As Color
+
+        Try
+            If _BackColor = Nothing Then
+                backColor = SystemColors.ButtonFace
+            Else
+                backColor = _BackColor
+            End If
+            If _ForeColor = Nothing Then
+                _ForeColor = Color.Black
+            Else
+                foreColor = _ForeColor
+            End If
+
+            If dtGrid.Rows(row).Index <> -1 Then
+
+                If Control.ModifierKeys = Keys.Control Or Control.ModifierKeys = Keys.None Then
+
+                    If CBool(dtGrid.Rows(row).Cells(0).Value) = False Then
+
+                        dtGrid.Rows(row).Cells(0).Value = True
+
+                        dtGrid.Rows(row).Selected = True
+                        dtGrid.Refresh()
+
+                    ElseIf CBool(dtGrid.Rows(row).Cells(0).Value) = True Then
+
+                        dtGrid.Rows(row).Selected = False
+                        dtGrid.Rows(row).Cells(0).Value = False
+                        dtGrid.Rows(row).DefaultCellStyle.BackColor = backColor
+                        dtGrid.Rows(row).DefaultCellStyle.ForeColor = foreColor
+
+                    End If
+                End If
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+    End Sub
+    Public Function Mensagem(ByVal tipoMsg As eTipoMensagem,
+                             Optional checados As Integer = Nothing,
+                             Optional ok As Integer = Nothing,
+                             Optional erro As Integer = Nothing) As eRet
+        Try
+            If tipoMsg = eTipoMensagem.Question Then
+                If checados = Nothing Then
+                    If S_MsgBox("Deseja realmente deletar este registro?",
+                               eBotoes.SimNao, "Exclusão de Registro",,
+                               eImagens.Interrogacao) = eRet.Sim Then
+                        Return eRet.Sim
+                    Else
+                        Return eRet.Nao
+                    End If
+                Else
+                    If S_MsgBox("Deseja realmente deletar " & checados & " registros?",
+                               eBotoes.SimNao, "Exclusão de Registros",,
+                               eImagens.Interrogacao) = eRet.Sim Then
+                        Return eRet.Sim
+                    Else
+                        Return eRet.Nao
+                    End If
+                End If
+
+            ElseIf tipoMsg = eTipoMensagem.OK Then
+
+                If checados = Nothing Then
+
+                    S_MsgBox("Pronto, registro excluído com sucesso.",
+                             eBotoes.Ok, "Exclusão de Registro.",
+                             eImagens.Ok)
+                Else
+                    S_MsgBox("Pronto, registros excluídos com sucesso.",
+                            eBotoes.Ok, "Exclusão de Registros.",
+                            eImagens.Ok)
+                End If
+
+            ElseIf tipoMsg = eTipoMensagem.Erro Then
+                If checados = Nothing Then
+                    S_MsgBox("Desculpe, não foi possível deletar o registro.",
+                             eBotoes.Ok, "Atenção: Houve um erro e o registro podem não ter sido deletado.",
+                             eImagens.Cancel)
+                Else
+                    S_MsgBox("Registros excluídos: " & ok & vbNewLine &
+                             "Registros que não foram excluídos: " & erro & vbNewLine &
+                             "Total de Registros selecionados:" & checados,
+                             eBotoes.Ok, "Atenção: Houve um erro e alguns registros podem não ter sido deletados.",
+                             eImagens.Cancel)
+                End If
+                Return Nothing
+            End If
+
+            Return Nothing
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+            Return Nothing
+        End Try
+    End Function
     Public Sub restaurarMDI()
         Lixeiro()
         frmPrincipal.txtCaption.Text = "Home"
@@ -496,6 +605,7 @@ Public Module SubUtil
             collNomeTela.Add(New String() {" ", "Cobrança"}, Int(eTela.cobranca).ToString)
             collNomeTela.Add(New String() {" ", "Contas"}, Int(eTela.conta_Bancaria).ToString)
             collNomeTela.Add(New String() {" ", "Usuário"}, Int(eTela.Usuario).ToString)
+            collNomeTela.Add(New String() {" ", "Envio de Email"}, Int(eTela.Email).ToString)
 
             collNomeTela.Add(New String() {" ", "Sobre"}, Int(eTela.about).ToString)
 

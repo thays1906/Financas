@@ -153,6 +153,12 @@
     <Compile Include="Formulários\frmConta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formulários\frmEmail.Designer.vb">
+      <DependentUpon>frmEmail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmEmail.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formulários\frmLogin.Designer.vb">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
@@ -271,6 +277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmCadastroCategoria.resx">
       <DependentUpon>frmCadastroCategoria.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmEmail.resx">
+      <DependentUpon>frmEmail.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>

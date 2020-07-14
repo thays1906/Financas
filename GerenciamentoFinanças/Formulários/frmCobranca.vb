@@ -5,7 +5,7 @@ Public Class frmCobranca
     Public oForm As frmAddCobranca
     Public cCobranca As Decimal
     Public oDataSet As SuperDataSet
-    Public bDouble As Boolean = False
+    'Public bDouble As Boolean = False
     Public columnImg As String
     Private Sub frmCobranca_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -61,8 +61,22 @@ Public Class frmCobranca
     End Sub
 
     Private Sub btnPesquisar_Click(sender As Object, e As EventArgs) Handles btnPesquisar.Click
+        'Dim ANO As Decimal
+
         Try
             Pesquisar()
+            'If cbAno.ObterDescricaoCombo().Contains("Todos") Then
+            '    ANO = Nothing
+            'Else
+            '    ANO = CDec(cbAno.ObterDescricaoCombo())
+            'End If
+
+            'oDataSet = pCobrancaPagamento.Pesquisar(MinHora(dtInicial.Value), MaxHora(dtFinal.Value),
+            '                                        CDec(cbMes.ObterChaveCombo),
+            '                                        ANO,
+            '                                        cbDevedor.ObterDescricaoCombo,
+            '                                        CType(cbStatus.ObterChaveCombo, eStatusDespesa), chkPeriodo)
+            'SuperDataGridView1.PreencheDataGrid(oDataSet,,, txtLetreiroCobr)
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro",, eImagens.Cancel)
         End Try
@@ -85,17 +99,22 @@ Public Class frmCobranca
                                                     cbDevedor.ObterDescricaoCombo,
                                                     CType(cbStatus.ObterChaveCombo, eStatusDespesa), chkPeriodo)
 
-            columnImg = "Conta"
+            columnImg = " CONTA"
 
             oDataSet.Tables(0).Columns.Add(columnImg, System.Type.GetType("System.Byte[]"))
 
             AdicionaImgColumn(oDataSet, columnImg)
 
             dgCobranca.DataSource = oDataSet.Tables(0)
-            dgCobranca.Columns("Conta").HeaderText = ""
+
+            dgCobranca.Columns(" CONTA").DisplayIndex = 6
+            dgCobranca.Columns(" CONTA").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            dgCobranca.Columns("Conta Báncaria").HeaderText = "BÁNCARIA"
+
             dgCobranca.Columns(1).Visible = False
 
             txtLetreiroCobr.TextoLetreiro = oDataSet.InfoPesquisa
+            dgCobranca.AutoResizeColumns()
 
             Return oDataSet
 
@@ -121,38 +140,66 @@ Public Class frmCobranca
         Pesquisar()
         CarregarCombo(True)
     End Sub
-
+    'Excluindo somente um --Arrumar
     Private Sub btnExcluir_Click(sender As Object, e As EventArgs) Handles btnExcluir.Click
+        Dim rCobranca As String = Nothing
+        Dim checados As Integer = Nothing
+        Dim ok As Integer = Nothing
+        Dim erro As Integer = Nothing
         Try
-            If dgCobranca.SelectedRows.Count > 0 Then
+            checados = dgCobranca.SelectedRows.Count
 
+
+
+            For Each item As DataGridViewRow In dgCobranca.Rows
+                If CBool(item.Cells(0).Value) = True Then
+                    checados += 1
+                    rCobranca += String.Concat(item.Cells(1).Value.ToString, ";")
+                End If
+            Next
+
+            'Se for vários selecionados
+            If checados > 1 Then
+                If Mensagem(eTipoMensagem.Question, checados) = eRet.Sim Then
+
+                    For Each codigo In rCobranca.Split(CChar(";"))
+                        If codigo = "" OrElse CDec(codigo) <> 0 Then
+                            If pCobrancaPagamento.Deletar(CDec(codigo)) Then
+                                ok += 1
+                            Else
+                                erro += 1
+                            End If
+                        End If
+                    Next
+                    If erro = 0 Then
+                        Mensagem(eTipoMensagem.OK,, ok)
+                    Else
+                        Mensagem(eTipoMensagem.Erro, checados, ok, erro)
+                    End If
+                End If
+
+            Else
+                'Um Selecionado
                 cCobranca = CDec(dgCobranca.SelectedRows.Item(0).Cells(1).Value)
 
                 If cCobranca <> 0 Then
 
-                    If S_MsgBox("Deseja realmente deletar este registro?",
-                                 eBotoes.SimNao, "Exclusão de registro",,
-                                 eImagens.Interrogacao) = eRet.Sim Then
+                    If Mensagem(eTipoMensagem.Question) = eRet.Sim Then
 
                         If pCobrancaPagamento.Deletar(cCobranca) Then
 
-                            S_MsgBox("Registro excluído com sucesso!.",
-                                     eBotoes.Ok, "Exclusão de registro",,
-                                     eImagens.Ok)
+                            Mensagem(eTipoMensagem.OK)
 
                             Pesquisar()
                         End If
-
-
                     Else
-                        S_MsgBox("Desculpe, não foi possível deletar este registro.",
-                                 eBotoes.Ok, "Houve um erro",,
-                                 eImagens.Cancel)
-
+                        Mensagem(eTipoMensagem.Erro)
                     End If
-                    CarregarCombo(True)
                 End If
+
+                CarregarCombo(True)
             End If
+
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro",, eImagens.Cancel)
         End Try
@@ -260,11 +307,38 @@ Public Class frmCobranca
         End Try
     End Sub
     Private Sub dgCobranca_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles dgCobranca.DataBindingComplete
+        Dim cel As New DataGridViewCellStyle()
+        Dim cell As New DataGridViewCellStyle()
         Try
             For i = 0 To dgCobranca.Rows.Count - 1
+
                 If dgCobranca.Rows(i).Selected Then
+
                     dgCobranca.Rows(i).Cells(0).Value = False
                     dgCobranca.ClearSelection()
+
+                End If
+            Next
+
+            'For i = 0 To dgCobranca.Columns.Count - 1
+
+            '    If dgCobranca.Columns(i).Index <> dgCobranca.Columns(0).Index Then
+
+            '        dgCobranca.Columns(i).ReadOnly = True
+            '    End If
+            'Next
+
+            'Alinha imagem a outra coluna
+            cel.Alignment = DataGridViewContentAlignment.MiddleRight
+            cell.Alignment = DataGridViewContentAlignment.MiddleLeft
+
+            For i = 0 To dgCobranca.Rows.Count - 1
+
+                If CBool(dgCobranca.Columns(7).Index) Then
+                    Me.dgCobranca.Columns(7).HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft
+                    Me.dgCobranca.Columns(6).HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft
+                    Me.dgCobranca.Rows(i).Cells(7).Style = cel
+                    Me.dgCobranca.Rows(i).Cells(6).Style = cell
                 End If
             Next
 
@@ -274,6 +348,7 @@ Public Class frmCobranca
     End Sub
 
     Private Sub dgCobranca_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgCobranca.CellMouseClick
+        Dim rowIndex As Integer = 0
         Try
             'While (i <= 250000)
             '    Application.DoEvents()
@@ -281,55 +356,59 @@ Public Class frmCobranca
 
             'End While
 
-            If bDouble = False Then
+            'If bDouble = False Then
+            rowIndex = e.RowIndex
 
-                If CInt(dgCobranca.Rows(e.RowIndex).Index) <> -1 Then
+                SelecionarDataGrid(dgCobranca, rowIndex)
 
-                    If Control.ModifierKeys = Keys.Control Or Control.ModifierKeys = Keys.None Then
+                'If CInt(dgCobranca.Rows(e.RowIndex).Index) <> -1 Then
 
-                        If CBool(dgCobranca.Rows(e.RowIndex).Cells(0).Value) = False Then
+                '    If Control.ModifierKeys = Keys.Control Or Control.ModifierKeys = Keys.None Then
 
-                            dgCobranca.Rows(e.RowIndex).Cells(0).Value = True
-                            'dgCobranca.Rows(e.RowIndex).Selected = True
+                '        If CBool(dgCobranca.Rows(e.RowIndex).Cells(0).Value) = False Then
 
-                            dgCobranca.Refresh()
-                        ElseIf CBool(dgCobranca.Rows(e.RowIndex).Cells(0).Value) = True Then
+                '            dgCobranca.Rows(e.RowIndex).Cells(0).Value = True
+                '            'dgCobranca.Rows(e.RowIndex).Selected = True
 
-                            dgCobranca.Rows(e.RowIndex).Selected = False
-                            dgCobranca.Rows(e.RowIndex).Cells(0).Value = False
-                            dgCobranca.Rows(e.RowIndex).DefaultCellStyle.BackColor = SystemColors.ButtonFace
-                            dgCobranca.Rows(e.RowIndex).DefaultCellStyle.ForeColor = Color.Black
+                '            dgCobranca.Refresh()
+                '        ElseIf CBool(dgCobranca.Rows(e.RowIndex).Cells(0).Value) = True Then
+
+                '            dgCobranca.Rows(e.RowIndex).Selected = False
+                '            dgCobranca.Rows(e.RowIndex).Cells(0).Value = False
+                '            dgCobranca.Rows(e.RowIndex).DefaultCellStyle.BackColor = SystemColors.ButtonFace
+                '            dgCobranca.Rows(e.RowIndex).DefaultCellStyle.ForeColor = Color.Black
 
 
-                        End If
-                    End If
+                '        End If
+                '    End If
 
-                    'Desativa edição das células de todas as colunas, exceto a (0) = checkbox.
-                    For i = 0 To dgCobranca.Columns.Count - 1
+                'Desativa edição das células de todas as colunas, exceto a (0) = checkbox.
+                'For i = 0 To dgCobranca.Columns.Count - 1
 
-                        If CInt(dgCobranca.Columns(i).Index) <> dgCobranca.Columns(0).Index Then
-                            dgCobranca.Columns(i).ReadOnly = True
-                        End If
-                    Next
+                '    If CInt(dgCobranca.Columns(i).Index) <> dgCobranca.Columns(0).Index Then
+                '        dgCobranca.Columns(i).ReadOnly = True
+                '    End If
+                'Next
 
-                    ControleBotoes()
-                End If
-            End If
-            bDouble = False
+                ControleBotoes()
+                DataGridSelecao()
+            'End If
+            'bDouble = False
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro",, eImagens.Cancel)
         End Try
 
     End Sub
     Private Sub dgcobranca_rowleave(sender As Object, e As DataGridViewCellEventArgs) Handles dgCobranca.RowLeave
+        Dim row As DataGridViewRow = dgCobranca.Rows(e.RowIndex)
         Try
-            If CBool(dgCobranca.Rows(e.RowIndex).Cells(0).Value) = True Then
 
+            If CBool(dgCobranca.Rows(e.RowIndex).Cells(0).Value) = True Then
+                dgCobranca.Rows(e.RowIndex).Selected = True
                 dgCobranca.Rows(e.RowIndex).DefaultCellStyle.BackColor = SystemColors.ControlDarkDark
                 dgCobranca.Rows(e.RowIndex).DefaultCellStyle.ForeColor = Color.White
 
             End If
-
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "houve um erro",, eImagens.Cancel)
         End Try
@@ -337,7 +416,7 @@ Public Class frmCobranca
 
     Private Sub dgCobranca_CellMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgCobranca.CellMouseDoubleClick
         Try
-            bDouble = True
+            'bDouble = True
             Alterar()
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro",, eImagens.Cancel)
@@ -390,10 +469,36 @@ Public Class frmCobranca
                 Next
                 ControleBotoes()
             End If
-
+            Dim ii = dgCobranca.SelectedRows.Count
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro",, eImagens.Cancel)
-
         End Try
     End Sub
+
+
+    Private Sub DataGridSelecao()
+        Try
+
+
+            For i = 0 To dgCobranca.Rows.Count - 1
+                If CBool(dgCobranca.Rows(i).Cells(0).Value) = True Then
+                    dgCobranca.Rows(i).Selected = True
+                Else
+                    dgCobranca.Rows(i).Selected = False
+                End If
+            Next
+
+
+            Dim ii = dgCobranca.SelectedRows.Count
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro",, eImagens.Cancel)
+        End Try
+    End Sub
+
+
+
+    Private Sub dgCobranca_CurrentCellChanged(sender As Object, e As EventArgs) Handles dgCobranca.CurrentCellChanged
+        DataGridSelecao()
+    End Sub
+
 End Class

@@ -101,12 +101,11 @@ Partial Class frmPrincipal
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AjustesToolStripMenuItem, Me.ContaToolStripMenuItem, Me.ConsultaToolStripMenuItem, Me.ReceitasToolStripMenuItem, Me.DespesasToolStripMenuItem, Me.InvestimentosToolStripMenuItem, Me.CobrançaToolStripMenuItem, Me.RelatórioToolStripMenuItem, Me.JanelasToolStripMenuItem, Me.AboutToolStripMenuItem, Me.LoginToolStripMenuItem, Me.LoginToolStripMenuItem1})
         Me.MenuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 53)
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 43)
         Me.MenuStrip1.MdiWindowListItem = Me.JanelasToolStripMenuItem
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(8, 2, 0, 2)
         Me.MenuStrip1.ShowItemToolTips = True
-        Me.MenuStrip1.Size = New System.Drawing.Size(2229, 88)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1672, 72)
         Me.MenuStrip1.Stretch = False
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
@@ -128,7 +127,7 @@ Partial Class frmPrincipal
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(365, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(291, 6)
         '
         'ServiçoDeEmailToolStripMenuItem
         '
@@ -137,13 +136,13 @@ Partial Class frmPrincipal
         Me.ServiçoDeEmailToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.BottomRight
         Me.ServiçoDeEmailToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ServiçoDeEmailToolStripMenuItem.Name = "ServiçoDeEmailToolStripMenuItem"
-        Me.ServiçoDeEmailToolStripMenuItem.Size = New System.Drawing.Size(368, 54)
+        Me.ServiçoDeEmailToolStripMenuItem.Size = New System.Drawing.Size(294, 54)
         Me.ServiçoDeEmailToolStripMenuItem.Text = " &Envio de E-mail"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(365, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(291, 6)
         '
         'PersonalizacaoToolStripMenuItem
         '
@@ -151,27 +150,27 @@ Partial Class frmPrincipal
         Me.PersonalizacaoToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.PersonalizacaoToolStripMenuItem.Name = "PersonalizacaoToolStripMenuItem"
         Me.PersonalizacaoToolStripMenuItem.ShortcutKeyDisplayString = ""
-        Me.PersonalizacaoToolStripMenuItem.Size = New System.Drawing.Size(368, 54)
+        Me.PersonalizacaoToolStripMenuItem.Size = New System.Drawing.Size(294, 54)
         Me.PersonalizacaoToolStripMenuItem.Text = " &Personalização"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(365, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(291, 6)
         '
         'ConfigLoginToolStripMenuItem
         '
         Me.ConfigLoginToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconUsuar
         Me.ConfigLoginToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ConfigLoginToolStripMenuItem.Name = "ConfigLoginToolStripMenuItem"
-        Me.ConfigLoginToolStripMenuItem.Size = New System.Drawing.Size(368, 54)
+        Me.ConfigLoginToolStripMenuItem.Size = New System.Drawing.Size(294, 54)
         Me.ConfigLoginToolStripMenuItem.Text = " &Configurção de Login"
         Me.ConfigLoginToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(365, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(291, 6)
         '
         'ContaToolStripMenuItem
         '
@@ -179,7 +178,7 @@ Partial Class frmPrincipal
         Me.ContaToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconBank
         Me.ContaToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ContaToolStripMenuItem.Name = "ContaToolStripMenuItem"
-        Me.ContaToolStripMenuItem.Size = New System.Drawing.Size(259, 84)
+        Me.ContaToolStripMenuItem.Size = New System.Drawing.Size(214, 68)
         Me.ContaToolStripMenuItem.Text = "Conta Báncaria"
         '
         'ConsultaToolStripMenuItem
@@ -189,7 +188,7 @@ Partial Class frmPrincipal
         Me.ConsultaToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconExtract
         Me.ConsultaToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ConsultaToolStripMenuItem.Name = "ConsultaToolStripMenuItem"
-        Me.ConsultaToolStripMenuItem.Size = New System.Drawing.Size(151, 84)
+        Me.ConsultaToolStripMenuItem.Size = New System.Drawing.Size(129, 68)
         Me.ConsultaToolStripMenuItem.Text = "Extrato"
         '
         'ReceitasToolStripMenuItem
@@ -199,7 +198,7 @@ Partial Class frmPrincipal
         Me.ReceitasToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconReceita
         Me.ReceitasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ReceitasToolStripMenuItem.Name = "ReceitasToolStripMenuItem"
-        Me.ReceitasToolStripMenuItem.Size = New System.Drawing.Size(152, 84)
+        Me.ReceitasToolStripMenuItem.Size = New System.Drawing.Size(126, 68)
         Me.ReceitasToolStripMenuItem.Text = "Receitas"
         '
         'DespesasToolStripMenuItem
@@ -209,7 +208,7 @@ Partial Class frmPrincipal
         Me.DespesasToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconDespesa
         Me.DespesasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.DespesasToolStripMenuItem.Name = "DespesasToolStripMenuItem"
-        Me.DespesasToolStripMenuItem.Size = New System.Drawing.Size(161, 84)
+        Me.DespesasToolStripMenuItem.Size = New System.Drawing.Size(135, 68)
         Me.DespesasToolStripMenuItem.Text = "Despesas"
         '
         'InvestimentosToolStripMenuItem
@@ -218,7 +217,7 @@ Partial Class frmPrincipal
         Me.InvestimentosToolStripMenuItem.Image = CType(resources.GetObject("InvestimentosToolStripMenuItem.Image"), System.Drawing.Image)
         Me.InvestimentosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.InvestimentosToolStripMenuItem.Name = "InvestimentosToolStripMenuItem"
-        Me.InvestimentosToolStripMenuItem.Size = New System.Drawing.Size(228, 84)
+        Me.InvestimentosToolStripMenuItem.Size = New System.Drawing.Size(188, 68)
         Me.InvestimentosToolStripMenuItem.Text = "Investimentos"
         '
         'CobrançaToolStripMenuItem
@@ -226,15 +225,15 @@ Partial Class frmPrincipal
         Me.CobrançaToolStripMenuItem.Image = CType(resources.GetObject("CobrançaToolStripMenuItem.Image"), System.Drawing.Image)
         Me.CobrançaToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.CobrançaToolStripMenuItem.Name = "CobrançaToolStripMenuItem"
-        Me.CobrançaToolStripMenuItem.Size = New System.Drawing.Size(169, 84)
-        Me.CobrançaToolStripMenuItem.Text = "Cobrança"
+        Me.CobrançaToolStripMenuItem.Size = New System.Drawing.Size(164, 68)
+        Me.CobrançaToolStripMenuItem.Text = "Emprestou?"
         '
         'RelatórioToolStripMenuItem
         '
         Me.RelatórioToolStripMenuItem.Image = CType(resources.GetObject("RelatórioToolStripMenuItem.Image"), System.Drawing.Image)
         Me.RelatórioToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.RelatórioToolStripMenuItem.Name = "RelatórioToolStripMenuItem"
-        Me.RelatórioToolStripMenuItem.Size = New System.Drawing.Size(169, 84)
+        Me.RelatórioToolStripMenuItem.Size = New System.Drawing.Size(149, 68)
         Me.RelatórioToolStripMenuItem.Text = "Relatório"
         '
         'JanelasToolStripMenuItem
@@ -244,7 +243,7 @@ Partial Class frmPrincipal
         Me.JanelasToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconJanelas
         Me.JanelasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.JanelasToolStripMenuItem.Name = "JanelasToolStripMenuItem"
-        Me.JanelasToolStripMenuItem.Size = New System.Drawing.Size(154, 84)
+        Me.JanelasToolStripMenuItem.Size = New System.Drawing.Size(129, 68)
         Me.JanelasToolStripMenuItem.Text = "Janelas"
         '
         'AboutToolStripMenuItem
@@ -252,7 +251,7 @@ Partial Class frmPrincipal
         Me.AboutToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconAbout
         Me.AboutToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(129, 84)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(112, 68)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'LoginToolStripMenuItem
@@ -262,13 +261,13 @@ Partial Class frmPrincipal
         Me.LoginToolStripMenuItem.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconLogout
         Me.LoginToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.LoginToolStripMenuItem.Name = "LoginToolStripMenuItem"
-        Me.LoginToolStripMenuItem.Size = New System.Drawing.Size(130, 84)
+        Me.LoginToolStripMenuItem.Size = New System.Drawing.Size(109, 68)
         Me.LoginToolStripMenuItem.Text = "Logout"
         '
         'LoginToolStripMenuItem1
         '
         Me.LoginToolStripMenuItem1.Name = "LoginToolStripMenuItem1"
-        Me.LoginToolStripMenuItem1.Size = New System.Drawing.Size(75, 84)
+        Me.LoginToolStripMenuItem1.Size = New System.Drawing.Size(61, 68)
         Me.LoginToolStripMenuItem1.Text = "Login"
         '
         'SScima
@@ -281,9 +280,8 @@ Partial Class frmPrincipal
         Me.SScima.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
         Me.SScima.Location = New System.Drawing.Point(0, 0)
         Me.SScima.Name = "SScima"
-        Me.SScima.Padding = New System.Windows.Forms.Padding(1, 0, 19, 0)
         Me.SScima.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode
-        Me.SScima.Size = New System.Drawing.Size(2229, 53)
+        Me.SScima.Size = New System.Drawing.Size(1672, 43)
         Me.SScima.SizingGrip = False
         Me.SScima.TabIndex = 2
         Me.SScima.Text = "StatusStrip1"
@@ -295,7 +293,7 @@ Partial Class frmPrincipal
         Me.ToolStripStatusLabel1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripStatusLabel1.Margin = New System.Windows.Forms.Padding(0, 3, 20, 2)
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(164, 48)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(164, 38)
         Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'SsBaixo
@@ -305,10 +303,9 @@ Partial Class frmPrincipal
         Me.SsBaixo.Font = New System.Drawing.Font("Arial Black", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SsBaixo.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.SsBaixo.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.txtCaptionHora})
-        Me.SsBaixo.Location = New System.Drawing.Point(0, 930)
+        Me.SsBaixo.Location = New System.Drawing.Point(0, 756)
         Me.SsBaixo.Name = "SsBaixo"
-        Me.SsBaixo.Padding = New System.Windows.Forms.Padding(1, 0, 19, 0)
-        Me.SsBaixo.Size = New System.Drawing.Size(2229, 37)
+        Me.SsBaixo.Size = New System.Drawing.Size(1672, 30)
         Me.SsBaixo.SizingGrip = False
         Me.SsBaixo.TabIndex = 3
         Me.SsBaixo.Text = "StatusStrip2"
@@ -321,7 +318,7 @@ Partial Class frmPrincipal
         Me.txtCaptionHora.ForeColor = System.Drawing.Color.White
         Me.txtCaptionHora.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.txtCaptionHora.Name = "txtCaptionHora"
-        Me.txtCaptionHora.Size = New System.Drawing.Size(2209, 31)
+        Me.txtCaptionHora.Size = New System.Drawing.Size(1657, 25)
         Me.txtCaptionHora.Spring = True
         Me.txtCaptionHora.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.txtCaptionHora.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay
@@ -339,10 +336,9 @@ Partial Class frmPrincipal
         Me.ssTituloTela.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.ssTituloTela.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.ssTituloTela.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.txtCaption})
-        Me.ssTituloTela.Location = New System.Drawing.Point(0, 141)
+        Me.ssTituloTela.Location = New System.Drawing.Point(0, 115)
         Me.ssTituloTela.Name = "ssTituloTela"
-        Me.ssTituloTela.Padding = New System.Windows.Forms.Padding(1, 0, 19, 0)
-        Me.ssTituloTela.Size = New System.Drawing.Size(2229, 34)
+        Me.ssTituloTela.Size = New System.Drawing.Size(1672, 28)
         Me.ssTituloTela.SizingGrip = False
         Me.ssTituloTela.TabIndex = 6
         Me.ssTituloTela.Text = "StatusStrip1"
@@ -360,7 +356,7 @@ Partial Class frmPrincipal
         Me.txtCaption.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.txtCaption.Margin = New System.Windows.Forms.Padding(10, 3, 0, 2)
         Me.txtCaption.Name = "txtCaption"
-        Me.txtCaption.Size = New System.Drawing.Size(2160, 29)
+        Me.txtCaption.Size = New System.Drawing.Size(1647, 23)
         Me.txtCaption.Spring = True
         Me.txtCaption.Text = "HOME"
         Me.txtCaption.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -379,11 +375,9 @@ Partial Class frmPrincipal
         Me.gbPricnipal.Dock = System.Windows.Forms.DockStyle.Fill
         Me.gbPricnipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.gbPricnipal.Font = New System.Drawing.Font("Verdana", 12.0!)
-        Me.gbPricnipal.Location = New System.Drawing.Point(0, 175)
-        Me.gbPricnipal.Margin = New System.Windows.Forms.Padding(4)
+        Me.gbPricnipal.Location = New System.Drawing.Point(0, 143)
         Me.gbPricnipal.Name = "gbPricnipal"
-        Me.gbPricnipal.Padding = New System.Windows.Forms.Padding(4)
-        Me.gbPricnipal.Size = New System.Drawing.Size(2229, 755)
+        Me.gbPricnipal.Size = New System.Drawing.Size(1672, 613)
         Me.gbPricnipal.TabIndex = 11
         Me.gbPricnipal.TabStop = False
         '
@@ -391,30 +385,34 @@ Partial Class frmPrincipal
         '
         Me.tabCtrlAvisos.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.tabCtrlAvisos.Controls.Add(Me.tabCtrlPrincAvisos)
-        Me.tabCtrlAvisos.Location = New System.Drawing.Point(143, 463)
+        Me.tabCtrlAvisos.Location = New System.Drawing.Point(107, 376)
+        Me.tabCtrlAvisos.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.tabCtrlAvisos.Name = "tabCtrlAvisos"
         Me.tabCtrlAvisos.Padding = New System.Drawing.Point(100, 10)
         Me.tabCtrlAvisos.SelectedIndex = 0
-        Me.tabCtrlAvisos.Size = New System.Drawing.Size(974, 260)
+        Me.tabCtrlAvisos.Size = New System.Drawing.Size(730, 211)
         Me.tabCtrlAvisos.TabIndex = 6
         '
         'tabCtrlPrincAvisos
         '
         Me.tabCtrlPrincAvisos.AutoScroll = True
         Me.tabCtrlPrincAvisos.Controls.Add(Me.GroupBox1)
-        Me.tabCtrlPrincAvisos.Location = New System.Drawing.Point(4, 48)
+        Me.tabCtrlPrincAvisos.Location = New System.Drawing.Point(4, 41)
+        Me.tabCtrlPrincAvisos.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.tabCtrlPrincAvisos.Name = "tabCtrlPrincAvisos"
-        Me.tabCtrlPrincAvisos.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabCtrlPrincAvisos.Size = New System.Drawing.Size(966, 208)
+        Me.tabCtrlPrincAvisos.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tabCtrlPrincAvisos.Size = New System.Drawing.Size(722, 166)
         Me.tabCtrlPrincAvisos.TabIndex = 0
         Me.tabCtrlPrincAvisos.Text = "Lembretes"
         Me.tabCtrlPrincAvisos.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
-        Me.GroupBox1.Location = New System.Drawing.Point(39, 37)
+        Me.GroupBox1.Location = New System.Drawing.Point(29, 30)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(865, 151)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Size = New System.Drawing.Size(649, 123)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
@@ -428,11 +426,10 @@ Partial Class frmPrincipal
         Me.gbAcessoRapido.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.gbAcessoRapido.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold)
         Me.gbAcessoRapido.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.gbAcessoRapido.Location = New System.Drawing.Point(4, 29)
-        Me.gbAcessoRapido.Margin = New System.Windows.Forms.Padding(4)
+        Me.gbAcessoRapido.Location = New System.Drawing.Point(3, 23)
         Me.gbAcessoRapido.Name = "gbAcessoRapido"
-        Me.gbAcessoRapido.Padding = New System.Windows.Forms.Padding(133, 4, 4, 4)
-        Me.gbAcessoRapido.Size = New System.Drawing.Size(2221, 98)
+        Me.gbAcessoRapido.Padding = New System.Windows.Forms.Padding(100, 3, 3, 3)
+        Me.gbAcessoRapido.Size = New System.Drawing.Size(1666, 80)
         Me.gbAcessoRapido.TabIndex = 5
         Me.gbAcessoRapido.TabStop = False
         Me.gbAcessoRapido.Text = "Acesso Rápido"
@@ -448,10 +445,9 @@ Partial Class frmPrincipal
         Me.btnAddConta.Font = New System.Drawing.Font("Verdana", 11.0!)
         Me.btnAddConta.ForeColor = System.Drawing.Color.Black
         Me.btnAddConta.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconAddBlue
-        Me.btnAddConta.Location = New System.Drawing.Point(795, 32)
-        Me.btnAddConta.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnAddConta.Location = New System.Drawing.Point(596, 26)
         Me.btnAddConta.Name = "btnAddConta"
-        Me.btnAddConta.Size = New System.Drawing.Size(271, 52)
+        Me.btnAddConta.Size = New System.Drawing.Size(203, 42)
         Me.btnAddConta.TabIndex = 6
         Me.btnAddConta.Text = " &Conta"
         Me.btnAddConta.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -469,10 +465,9 @@ Partial Class frmPrincipal
         Me.btnAddDespesa.Font = New System.Drawing.Font("Verdana", 11.0!)
         Me.btnAddDespesa.ForeColor = System.Drawing.Color.Black
         Me.btnAddDespesa.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconAddDespesa
-        Me.btnAddDespesa.Location = New System.Drawing.Point(497, 32)
-        Me.btnAddDespesa.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnAddDespesa.Location = New System.Drawing.Point(373, 26)
         Me.btnAddDespesa.Name = "btnAddDespesa"
-        Me.btnAddDespesa.Size = New System.Drawing.Size(271, 52)
+        Me.btnAddDespesa.Size = New System.Drawing.Size(203, 42)
         Me.btnAddDespesa.TabIndex = 5
         Me.btnAddDespesa.Text = " &Despesa"
         Me.btnAddDespesa.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -490,10 +485,9 @@ Partial Class frmPrincipal
         Me.btnAddReceita.Font = New System.Drawing.Font("Verdana", 11.0!)
         Me.btnAddReceita.ForeColor = System.Drawing.Color.Black
         Me.btnAddReceita.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconAddReceita1
-        Me.btnAddReceita.Location = New System.Drawing.Point(200, 32)
-        Me.btnAddReceita.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnAddReceita.Location = New System.Drawing.Point(150, 26)
         Me.btnAddReceita.Name = "btnAddReceita"
-        Me.btnAddReceita.Size = New System.Drawing.Size(271, 52)
+        Me.btnAddReceita.Size = New System.Drawing.Size(203, 42)
         Me.btnAddReceita.TabIndex = 4
         Me.btnAddReceita.Text = " &Receita"
         Me.btnAddReceita.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -505,12 +499,11 @@ Partial Class frmPrincipal
         Me.tabCtrlSaldo.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.tabCtrlSaldo.Controls.Add(Me.tabSaldo)
         Me.tabCtrlSaldo.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tabCtrlSaldo.Location = New System.Drawing.Point(143, 204)
-        Me.tabCtrlSaldo.Margin = New System.Windows.Forms.Padding(4)
+        Me.tabCtrlSaldo.Location = New System.Drawing.Point(107, 166)
         Me.tabCtrlSaldo.Name = "tabCtrlSaldo"
         Me.tabCtrlSaldo.Padding = New System.Drawing.Point(107, 10)
         Me.tabCtrlSaldo.SelectedIndex = 0
-        Me.tabCtrlSaldo.Size = New System.Drawing.Size(467, 220)
+        Me.tabCtrlSaldo.Size = New System.Drawing.Size(350, 179)
         Me.tabCtrlSaldo.TabIndex = 3
         '
         'tabSaldo
@@ -518,11 +511,10 @@ Partial Class frmPrincipal
         Me.tabSaldo.AutoScroll = True
         Me.tabSaldo.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.tabSaldo.Controls.Add(Me.btnRefreshSaldo)
-        Me.tabSaldo.Location = New System.Drawing.Point(4, 48)
-        Me.tabSaldo.Margin = New System.Windows.Forms.Padding(4)
+        Me.tabSaldo.Location = New System.Drawing.Point(4, 41)
         Me.tabSaldo.Name = "tabSaldo"
-        Me.tabSaldo.Padding = New System.Windows.Forms.Padding(4)
-        Me.tabSaldo.Size = New System.Drawing.Size(459, 168)
+        Me.tabSaldo.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabSaldo.Size = New System.Drawing.Size(342, 134)
         Me.tabSaldo.TabIndex = 0
         Me.tabSaldo.Text = "Saldo na Conta"
         '
@@ -531,10 +523,9 @@ Partial Class frmPrincipal
         Me.btnRefreshSaldo.FlatAppearance.BorderSize = 0
         Me.btnRefreshSaldo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRefreshSaldo.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconRefresh
-        Me.btnRefreshSaldo.Location = New System.Drawing.Point(3, 4)
-        Me.btnRefreshSaldo.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnRefreshSaldo.Location = New System.Drawing.Point(2, 3)
         Me.btnRefreshSaldo.Name = "btnRefreshSaldo"
-        Me.btnRefreshSaldo.Size = New System.Drawing.Size(57, 42)
+        Me.btnRefreshSaldo.Size = New System.Drawing.Size(43, 34)
         Me.btnRefreshSaldo.TabIndex = 4
         Me.btnRefreshSaldo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.btnRefreshSaldo.UseVisualStyleBackColor = True
@@ -544,12 +535,11 @@ Partial Class frmPrincipal
         Me.tabCtrlInvest.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.tabCtrlInvest.Controls.Add(Me.tabInvest)
         Me.tabCtrlInvest.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tabCtrlInvest.Location = New System.Drawing.Point(1648, 204)
-        Me.tabCtrlInvest.Margin = New System.Windows.Forms.Padding(4)
+        Me.tabCtrlInvest.Location = New System.Drawing.Point(1236, 166)
         Me.tabCtrlInvest.Name = "tabCtrlInvest"
         Me.tabCtrlInvest.Padding = New System.Drawing.Point(110, 10)
         Me.tabCtrlInvest.SelectedIndex = 0
-        Me.tabCtrlInvest.Size = New System.Drawing.Size(459, 220)
+        Me.tabCtrlInvest.Size = New System.Drawing.Size(344, 179)
         Me.tabCtrlInvest.TabIndex = 2
         '
         'tabInvest
@@ -557,11 +547,10 @@ Partial Class frmPrincipal
         Me.tabInvest.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.tabInvest.Controls.Add(Me.btnRefreshInvest)
         Me.tabInvest.Controls.Add(Me.btnInvest)
-        Me.tabInvest.Location = New System.Drawing.Point(4, 48)
-        Me.tabInvest.Margin = New System.Windows.Forms.Padding(4)
+        Me.tabInvest.Location = New System.Drawing.Point(4, 41)
         Me.tabInvest.Name = "tabInvest"
-        Me.tabInvest.Padding = New System.Windows.Forms.Padding(4)
-        Me.tabInvest.Size = New System.Drawing.Size(451, 168)
+        Me.tabInvest.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabInvest.Size = New System.Drawing.Size(336, 134)
         Me.tabInvest.TabIndex = 0
         Me.tabInvest.Text = "Investimentos"
         '
@@ -570,10 +559,9 @@ Partial Class frmPrincipal
         Me.btnRefreshInvest.FlatAppearance.BorderSize = 0
         Me.btnRefreshInvest.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRefreshInvest.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconRefresh
-        Me.btnRefreshInvest.Location = New System.Drawing.Point(4, 4)
-        Me.btnRefreshInvest.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnRefreshInvest.Location = New System.Drawing.Point(3, 3)
         Me.btnRefreshInvest.Name = "btnRefreshInvest"
-        Me.btnRefreshInvest.Size = New System.Drawing.Size(57, 42)
+        Me.btnRefreshInvest.Size = New System.Drawing.Size(43, 34)
         Me.btnRefreshInvest.TabIndex = 7
         Me.btnRefreshInvest.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.btnRefreshInvest.UseVisualStyleBackColor = True
@@ -590,10 +578,9 @@ Partial Class frmPrincipal
         Me.btnInvest.ForeColor = System.Drawing.Color.SeaGreen
         Me.btnInvest.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconeInvest
         Me.btnInvest.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnInvest.Location = New System.Drawing.Point(109, 14)
-        Me.btnInvest.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnInvest.Location = New System.Drawing.Point(82, 11)
         Me.btnInvest.Name = "btnInvest"
-        Me.btnInvest.Size = New System.Drawing.Size(255, 127)
+        Me.btnInvest.Size = New System.Drawing.Size(191, 103)
         Me.btnInvest.TabIndex = 2
         Me.btnInvest.UseVisualStyleBackColor = False
         '
@@ -602,12 +589,11 @@ Partial Class frmPrincipal
         Me.tabCtrlDespesa.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.tabCtrlDespesa.Controls.Add(Me.tabTotDesp)
         Me.tabCtrlDespesa.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tabCtrlDespesa.Location = New System.Drawing.Point(1131, 204)
-        Me.tabCtrlDespesa.Margin = New System.Windows.Forms.Padding(4)
+        Me.tabCtrlDespesa.Location = New System.Drawing.Point(848, 166)
         Me.tabCtrlDespesa.Name = "tabCtrlDespesa"
         Me.tabCtrlDespesa.Padding = New System.Drawing.Point(107, 10)
         Me.tabCtrlDespesa.SelectedIndex = 0
-        Me.tabCtrlDespesa.Size = New System.Drawing.Size(505, 220)
+        Me.tabCtrlDespesa.Size = New System.Drawing.Size(379, 179)
         Me.tabCtrlDespesa.TabIndex = 1
         '
         'tabTotDesp
@@ -615,11 +601,10 @@ Partial Class frmPrincipal
         Me.tabTotDesp.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.tabTotDesp.Controls.Add(Me.btnRefreshDespesa)
         Me.tabTotDesp.Controls.Add(Me.btnDespesa)
-        Me.tabTotDesp.Location = New System.Drawing.Point(4, 48)
-        Me.tabTotDesp.Margin = New System.Windows.Forms.Padding(4)
+        Me.tabTotDesp.Location = New System.Drawing.Point(4, 41)
         Me.tabTotDesp.Name = "tabTotDesp"
-        Me.tabTotDesp.Padding = New System.Windows.Forms.Padding(4)
-        Me.tabTotDesp.Size = New System.Drawing.Size(497, 168)
+        Me.tabTotDesp.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabTotDesp.Size = New System.Drawing.Size(371, 134)
         Me.tabTotDesp.TabIndex = 0
         Me.tabTotDesp.Text = "Total de Despesas"
         '
@@ -628,10 +613,9 @@ Partial Class frmPrincipal
         Me.btnRefreshDespesa.FlatAppearance.BorderSize = 0
         Me.btnRefreshDespesa.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRefreshDespesa.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconRefresh
-        Me.btnRefreshDespesa.Location = New System.Drawing.Point(4, 4)
-        Me.btnRefreshDespesa.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnRefreshDespesa.Location = New System.Drawing.Point(3, 3)
         Me.btnRefreshDespesa.Name = "btnRefreshDespesa"
-        Me.btnRefreshDespesa.Size = New System.Drawing.Size(57, 42)
+        Me.btnRefreshDespesa.Size = New System.Drawing.Size(43, 34)
         Me.btnRefreshDespesa.TabIndex = 6
         Me.btnRefreshDespesa.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.btnRefreshDespesa.UseVisualStyleBackColor = True
@@ -648,10 +632,9 @@ Partial Class frmPrincipal
         Me.btnDespesa.ForeColor = System.Drawing.Color.Red
         Me.btnDespesa.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconDespesa
         Me.btnDespesa.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnDespesa.Location = New System.Drawing.Point(125, 14)
-        Me.btnDespesa.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnDespesa.Location = New System.Drawing.Point(94, 11)
         Me.btnDespesa.Name = "btnDespesa"
-        Me.btnDespesa.Size = New System.Drawing.Size(241, 127)
+        Me.btnDespesa.Size = New System.Drawing.Size(181, 103)
         Me.btnDespesa.TabIndex = 1
         Me.btnDespesa.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnDespesa.UseVisualStyleBackColor = False
@@ -662,12 +645,11 @@ Partial Class frmPrincipal
         Me.tabCtrlPrincReceita.Controls.Add(Me.TabPrinc)
         Me.tabCtrlPrincReceita.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabCtrlPrincReceita.HotTrack = True
-        Me.tabCtrlPrincReceita.Location = New System.Drawing.Point(624, 204)
-        Me.tabCtrlPrincReceita.Margin = New System.Windows.Forms.Padding(4)
+        Me.tabCtrlPrincReceita.Location = New System.Drawing.Point(468, 166)
         Me.tabCtrlPrincReceita.Name = "tabCtrlPrincReceita"
         Me.tabCtrlPrincReceita.Padding = New System.Drawing.Point(107, 10)
         Me.tabCtrlPrincReceita.SelectedIndex = 0
-        Me.tabCtrlPrincReceita.Size = New System.Drawing.Size(493, 220)
+        Me.tabCtrlPrincReceita.Size = New System.Drawing.Size(370, 179)
         Me.tabCtrlPrincReceita.TabIndex = 0
         '
         'TabPrinc
@@ -675,11 +657,10 @@ Partial Class frmPrincipal
         Me.TabPrinc.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.TabPrinc.Controls.Add(Me.btnRefreshReceita)
         Me.TabPrinc.Controls.Add(Me.btnReceita)
-        Me.TabPrinc.Location = New System.Drawing.Point(4, 48)
-        Me.TabPrinc.Margin = New System.Windows.Forms.Padding(4)
+        Me.TabPrinc.Location = New System.Drawing.Point(4, 41)
         Me.TabPrinc.Name = "TabPrinc"
-        Me.TabPrinc.Padding = New System.Windows.Forms.Padding(4)
-        Me.TabPrinc.Size = New System.Drawing.Size(485, 168)
+        Me.TabPrinc.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPrinc.Size = New System.Drawing.Size(362, 134)
         Me.TabPrinc.TabIndex = 0
         Me.TabPrinc.Text = "Total de Receitas"
         '
@@ -689,9 +670,8 @@ Partial Class frmPrincipal
         Me.btnRefreshReceita.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRefreshReceita.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconRefresh
         Me.btnRefreshReceita.Location = New System.Drawing.Point(1, 1)
-        Me.btnRefreshReceita.Margin = New System.Windows.Forms.Padding(4)
         Me.btnRefreshReceita.Name = "btnRefreshReceita"
-        Me.btnRefreshReceita.Size = New System.Drawing.Size(57, 42)
+        Me.btnRefreshReceita.Size = New System.Drawing.Size(43, 34)
         Me.btnRefreshReceita.TabIndex = 5
         Me.btnRefreshReceita.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.btnRefreshReceita.UseVisualStyleBackColor = True
@@ -708,19 +688,18 @@ Partial Class frmPrincipal
         Me.btnReceita.ForeColor = System.Drawing.Color.ForestGreen
         Me.btnReceita.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconReceita
         Me.btnReceita.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnReceita.Location = New System.Drawing.Point(107, 14)
-        Me.btnReceita.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnReceita.Location = New System.Drawing.Point(80, 11)
         Me.btnReceita.Name = "btnReceita"
-        Me.btnReceita.Size = New System.Drawing.Size(241, 127)
+        Me.btnReceita.Size = New System.Drawing.Size(181, 103)
         Me.btnReceita.TabIndex = 0
         Me.btnReceita.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnReceita.UseVisualStyleBackColor = False
         '
         'frmPrincipal
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(2229, 967)
+        Me.ClientSize = New System.Drawing.Size(1672, 786)
         Me.Controls.Add(Me.gbPricnipal)
         Me.Controls.Add(Me.ssTituloTela)
         Me.Controls.Add(Me.MenuStrip1)
@@ -729,7 +708,6 @@ Partial Class frmPrincipal
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmPrincipal"
         Me.Text = " Finance $ Management"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized

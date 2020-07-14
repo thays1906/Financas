@@ -26,13 +26,13 @@ Partial Class frmCobranca
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCobranca))
         Me.tabCtrlCobranca = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.txtLetreiroCobr = New GFT.Util.SuperLetreiro()
         Me.dgCobranca = New System.Windows.Forms.DataGridView()
         Me.chkDataGrid = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.chkSelecionaTodos = New System.Windows.Forms.CheckBox()
+        Me.txtLetreiroCobr = New GFT.Util.SuperLetreiro()
         Me.gbCobrancaFiltro = New System.Windows.Forms.GroupBox()
         Me.chkPeriodo = New System.Windows.Forms.CheckBox()
         Me.cbAno = New GFT.Util.SuperComboBox()
@@ -55,7 +55,6 @@ Partial Class frmCobranca
         Me.btnEditar = New System.Windows.Forms.Button()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnPesquisar = New System.Windows.Forms.Button()
-        Me.chkSelecionaTodos = New System.Windows.Forms.CheckBox()
         Me.tabCtrlCobranca.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.dgCobranca, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -80,9 +79,9 @@ Partial Class frmCobranca
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.TabPage1.Controls.Add(Me.dgCobranca)
         Me.TabPage1.Controls.Add(Me.chkSelecionaTodos)
         Me.TabPage1.Controls.Add(Me.txtLetreiroCobr)
-        Me.TabPage1.Controls.Add(Me.dgCobranca)
         Me.TabPage1.Controls.Add(Me.gbCobrancaFiltro)
         Me.TabPage1.ImageIndex = 0
         Me.TabPage1.Location = New System.Drawing.Point(4, 61)
@@ -92,6 +91,73 @@ Partial Class frmCobranca
         Me.TabPage1.Size = New System.Drawing.Size(1791, 688)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Empréstimos"
+        '
+        'dgCobranca
+        '
+        Me.dgCobranca.AllowUserToAddRows = False
+        Me.dgCobranca.AllowUserToDeleteRows = False
+        Me.dgCobranca.AllowUserToOrderColumns = True
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Gray
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
+        Me.dgCobranca.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgCobranca.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dgCobranca.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgCobranca.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
+        Me.dgCobranca.BackgroundColor = System.Drawing.Color.WhiteSmoke
+        Me.dgCobranca.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal
+        Me.dgCobranca.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSlateGray
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Verdana", 12.0!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgCobranca.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.dgCobranca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgCobranca.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.chkDataGrid})
+        Me.dgCobranca.EnableHeadersVisualStyles = False
+        Me.dgCobranca.GridColor = System.Drawing.Color.Black
+        Me.dgCobranca.Location = New System.Drawing.Point(64, 225)
+        Me.dgCobranca.Margin = New System.Windows.Forms.Padding(4)
+        Me.dgCobranca.Name = "dgCobranca"
+        Me.dgCobranca.ReadOnly = True
+        Me.dgCobranca.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
+        Me.dgCobranca.RowHeadersVisible = False
+        Me.dgCobranca.RowHeadersWidth = 51
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ButtonFace
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White
+        Me.dgCobranca.RowsDefaultCellStyle = DataGridViewCellStyle3
+        Me.dgCobranca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgCobranca.Size = New System.Drawing.Size(1661, 409)
+        Me.dgCobranca.TabIndex = 4
+        '
+        'chkDataGrid
+        '
+        Me.chkDataGrid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.chkDataGrid.HeaderText = ""
+        Me.chkDataGrid.MinimumWidth = 6
+        Me.chkDataGrid.Name = "chkDataGrid"
+        Me.chkDataGrid.ReadOnly = True
+        Me.chkDataGrid.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.chkDataGrid.Width = 6
+        '
+        'chkSelecionaTodos
+        '
+        Me.chkSelecionaTodos.AutoSize = True
+        Me.chkSelecionaTodos.ForeColor = System.Drawing.SystemColors.InactiveCaptionText
+        Me.chkSelecionaTodos.Location = New System.Drawing.Point(67, 186)
+        Me.chkSelecionaTodos.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.chkSelecionaTodos.Name = "chkSelecionaTodos"
+        Me.chkSelecionaTodos.Size = New System.Drawing.Size(297, 29)
+        Me.chkSelecionaTodos.TabIndex = 3
+        Me.chkSelecionaTodos.Text = "Marcar / Desmarcar Todos"
+        Me.chkSelecionaTodos.UseVisualStyleBackColor = True
         '
         'txtLetreiroCobr
         '
@@ -106,72 +172,6 @@ Partial Class frmCobranca
         Me.txtLetreiroCobr.TabIndex = 2
         Me.txtLetreiroCobr.TextoLetreiro = "0,0 Registros"
         Me.txtLetreiroCobr.VelocidadeRolagem = 1
-        '
-        'dgCobranca
-        '
-        Me.dgCobranca.AllowUserToAddRows = False
-        Me.dgCobranca.AllowUserToDeleteRows = False
-        Me.dgCobranca.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dgCobranca.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgCobranca.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.dgCobranca.BackgroundColor = System.Drawing.Color.WhiteSmoke
-        Me.dgCobranca.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.dgCobranca.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal
-        Me.dgCobranca.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText
-        Me.dgCobranca.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSlateGray
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Verdana", 12.0!)
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgCobranca.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.dgCobranca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgCobranca.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.chkDataGrid})
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkViolet
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Verdana", 12.0!)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgCobranca.DefaultCellStyle = DataGridViewCellStyle2
-        Me.dgCobranca.EnableHeadersVisualStyles = False
-        Me.dgCobranca.GridColor = System.Drawing.Color.Black
-        Me.dgCobranca.Location = New System.Drawing.Point(64, 216)
-        Me.dgCobranca.Margin = New System.Windows.Forms.Padding(4)
-        Me.dgCobranca.Name = "dgCobranca"
-        Me.dgCobranca.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.OrangeRed
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Verdana", 12.0!)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgCobranca.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
-        Me.dgCobranca.RowHeadersVisible = False
-        Me.dgCobranca.RowHeadersWidth = 51
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonFace
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        Me.dgCobranca.RowsDefaultCellStyle = DataGridViewCellStyle4
-        Me.dgCobranca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgCobranca.Size = New System.Drawing.Size(1661, 418)
-        Me.dgCobranca.TabIndex = 1
-        '
-        'chkDataGrid
-        '
-        Me.chkDataGrid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.chkDataGrid.HeaderText = ""
-        Me.chkDataGrid.MinimumWidth = 6
-        Me.chkDataGrid.Name = "chkDataGrid"
-        Me.chkDataGrid.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.chkDataGrid.TrueValue = "true"
-        Me.chkDataGrid.Width = 6
         '
         'gbCobrancaFiltro
         '
@@ -234,7 +234,7 @@ Partial Class frmCobranca
         'lblDataFim
         '
         Me.lblDataFim.AutoSize = True
-        Me.lblDataFim.Location = New System.Drawing.Point(1370, 53)
+        Me.lblDataFim.Location = New System.Drawing.Point(1371, 53)
         Me.lblDataFim.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDataFim.Name = "lblDataFim"
         Me.lblDataFim.Size = New System.Drawing.Size(55, 25)
@@ -402,7 +402,7 @@ Partial Class frmCobranca
         Me.btnExportar.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnExportar.Font = New System.Drawing.Font("Verdana", 11.0!)
         Me.btnExportar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconExcel
-        Me.btnExportar.Location = New System.Drawing.Point(1182, 16)
+        Me.btnExportar.Location = New System.Drawing.Point(1181, 16)
         Me.btnExportar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnExportar.Name = "btnExportar"
         Me.btnExportar.Size = New System.Drawing.Size(271, 52)
@@ -464,7 +464,7 @@ Partial Class frmCobranca
         Me.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnAdd.Font = New System.Drawing.Font("Verdana", 11.0!)
         Me.btnAdd.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconAddBlue
-        Me.btnAdd.Location = New System.Drawing.Point(346, 16)
+        Me.btnAdd.Location = New System.Drawing.Point(347, 16)
         Me.btnAdd.Margin = New System.Windows.Forms.Padding(4)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(271, 52)
@@ -479,7 +479,7 @@ Partial Class frmCobranca
         Me.btnPesquisar.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnPesquisar.Font = New System.Drawing.Font("Verdana", 11.0!)
         Me.btnPesquisar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconePesquisar
-        Me.btnPesquisar.Location = New System.Drawing.Point(62, 16)
+        Me.btnPesquisar.Location = New System.Drawing.Point(61, 16)
         Me.btnPesquisar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnPesquisar.Name = "btnPesquisar"
         Me.btnPesquisar.Size = New System.Drawing.Size(271, 52)
@@ -488,17 +488,6 @@ Partial Class frmCobranca
         Me.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnPesquisar.UseVisualStyleBackColor = True
-        '
-        'chkSelecionaTodos
-        '
-        Me.chkSelecionaTodos.AutoSize = True
-        Me.chkSelecionaTodos.ForeColor = System.Drawing.SystemColors.InactiveCaptionText
-        Me.chkSelecionaTodos.Location = New System.Drawing.Point(66, 186)
-        Me.chkSelecionaTodos.Name = "chkSelecionaTodos"
-        Me.chkSelecionaTodos.Size = New System.Drawing.Size(297, 29)
-        Me.chkSelecionaTodos.TabIndex = 3
-        Me.chkSelecionaTodos.Text = "Marcar / Desmarcar Todos"
-        Me.chkSelecionaTodos.UseVisualStyleBackColor = True
         '
         'frmCobranca
         '
@@ -526,7 +515,6 @@ Partial Class frmCobranca
     Friend WithEvents gbCobrancaFiltro As GroupBox
     Friend WithEvents gbBotoes As GroupBox
     Friend WithEvents txtLetreiroCobr As GFT.Util.SuperLetreiro
-    Friend WithEvents dgCobranca As DataGridView
     Friend WithEvents btnExportar As Button
     Friend WithEvents btnFechar As Button
     Friend WithEvents btnExcluir As Button
@@ -547,6 +535,7 @@ Partial Class frmCobranca
     Friend WithEvents Label1 As Label
     Friend WithEvents cbMes As GFT.Util.SuperComboBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents chkDataGrid As DataGridViewCheckBoxColumn
     Friend WithEvents chkSelecionaTodos As CheckBox
+    Friend WithEvents dgCobranca As DataGridView
+    Friend WithEvents chkDataGrid As DataGridViewCheckBoxColumn
 End Class

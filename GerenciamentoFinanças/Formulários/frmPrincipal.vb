@@ -354,4 +354,9 @@ Public Class frmPrincipal
         oform = New frmUsuario
         controleFormulario(Me, oform, eTela.Usuario)
     End Sub
+
+    Private Sub ServiçoDeEmailToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ServiçoDeEmailToolStripMenuItem.Click
+        oform = New frmEmail()
+        controleFormulario(Me, oform, eTela.Email)
+    End Sub
 End Class

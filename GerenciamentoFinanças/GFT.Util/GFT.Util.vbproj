@@ -90,6 +90,12 @@
     </Compile>
     <Compile Include="Classes\SuperXLS.vb" />
     <Compile Include="Classes\Zip.vb" />
+    <Compile Include="Controles\SuperDataGrid.Designer.vb">
+      <DependentUpon>SuperDataGrid.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\SuperDataGrid.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controles\SuperGroupBox.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -159,6 +165,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Controles\gLabel\DropdownColorBlender.resx">
       <DependentUpon>DropdownColorBlender.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\SuperDataGrid.resx">
+      <DependentUpon>SuperDataGrid.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controles\SuperLetreiro.resx">
       <DependentUpon>SuperLetreiro.vb</DependentUpon>
