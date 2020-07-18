@@ -13,9 +13,8 @@ Public Class frmEmail
         Try
             oDataSet = New SuperDataSet()
 
-            oDataSet = pContaBancaria.PesquisarConta()
-
-            dgConsulta.PreencheDataGrid(oDataSet,, 6)
+            oDataSet = pContaBancaria.PesquisarConta
+            dgConsulta.PreencheDataGrid(oDataSet)
         Catch ex As Exception
 
         End Try

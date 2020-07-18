@@ -182,5 +182,35 @@ Public Class pCobrancaPagamento
         End Try
     End Function
 
+    Shared Function PesquisarS() As SuperDataSet
+
+        Dim oDataSet As SuperDataSet
+        Try
+            bDados = New BancoDados()
+
+            bDados.LimpaParametros()
+            bDados.AdicionaParametro(OPERACAO, "GRID")
+
+
+            bDados.AdicionaParametro(pCobrancaPagamento.cMes, 0)
+            bDados.AdicionaParametro(pCobrancaPagamento.cAno, 12)
+
+
+
+
+
+            oDataSet = bDados.Obter(PROCEDURE)
+
+            If oDataSet IsNot Nothing Then
+                Return oDataSet
+            Else
+                Return Nothing
+            End If
+
+        Catch ex As Exception
+            Return Nothing
+            MessageBox.Show(ex.Message)
+        End Try
+    End Function
 
 End Class

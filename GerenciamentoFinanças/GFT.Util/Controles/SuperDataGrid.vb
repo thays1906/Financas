@@ -45,9 +45,11 @@ Public Class SuperDataGridView
 
     Sub New()
         Me.MultiSelect = True
-        Me.ReadOnly = True
+        'Me.ReadOnly = True
         Me.EnableHeadersVisualStyles = False
         Me.Anchor = (AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right Or AnchorStyles.Bottom)
+        Me.AllowUserToAddRows = False
+        Me.AllowUserToDeleteRows = False
 
         'Define a distribuição das colunas no DataGrid
         Me.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill     'Redimensiona as colunas para ocupar todo o DatGrid
@@ -71,10 +73,19 @@ Public Class SuperDataGridView
         Me.CellBorderStyle = DataGridViewCellBorderStyle.SunkenHorizontal
         Me.DefaultCellStyle.BackColor = SystemColors.ButtonFace
         Me.DefaultCellStyle.ForeColor = Color.Black
+        Me.DefaultCellStyle.Font = fontText
         Me.DefaultCellStyle.SelectionBackColor = SystemColors.ControlDarkDark
         Me.DefaultCellStyle.SelectionForeColor = Color.White
         Me.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
         Me.RowHeadersVisible = False
+
+        If Me.Columns.Count = 0 Then
+            checkbox = New DataGridViewCheckBoxColumn()
+            AdicionaCheckBoxColumn()
+        End If
+
+
+
 
     End Sub
 
@@ -91,14 +102,20 @@ Public Class SuperDataGridView
     'End Property
     Public Sub AdicionaCheckBoxColumn()
         Try
-            checkbox = New DataGridViewCheckBoxColumn()
-            checkbox.Name = "chkDataGrid"
-            checkbox.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-            checkbox.HeaderText = ""
-            checkbox.DisplayIndex = 0
-            Me.Columns.Add(checkbox)
-        Catch ex As Exception
+            If Me.Columns.Count = 0 Then
+                'If Me.Columns(0).Name = "Selecionar" Then
+                '    Exit Sub
+                'End If
+                checkbox.Name = "chkDataGrid"
+                checkbox.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+                checkbox.HeaderText = ""
+                checkbox.DisplayIndex = 0
+                Me.Columns.Add(checkbox)
+            End If
 
+
+        Catch ex As Exception
+            LogaErro("Erro em Util::AdicionaCheckBoxColumn: " & ex.ToString())
         End Try
     End Sub
     Public Sub PreencheDataGrid(ByVal oDataSet As SuperDataSet,
@@ -127,12 +144,18 @@ Public Class SuperDataGridView
                         End If
 
                     ElseIf column.Substring(0, 3) = "id_" Then
-                        ID = column.Substring(0, 3)
+                        ID = column
                     End If
-                Next
-                Me.DataSource = oDataSet.Tables(nTable)
+                    Me.DataSource = oDataSet.Tables(nTable)
 
-                If posicaoId <> Nothing Then
+                    Me.Columns(i + 1).HeaderText = column
+
+                Next
+                If posicaoId = Nothing Then
+                    Me.Columns(ID).Visible = False
+                    Me.Columns(ID).DisplayIndex = 1
+
+                Else
                     Me.Columns(posicaoId).Visible = False
                 End If
                 Me.AutoResizeColumns()
@@ -547,4 +570,43 @@ Public Class SuperDataGridView
             LogaErro("Erro em Util::SuperDataGridView_CurrentCellChanged: " & ex.ToString())
         End Try
     End Sub
+
+    Private Sub SuperDataGridView_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles Me.CellMouseClick
+        Try
+            'If _bgColorNaoSelecionado <> Nothing Then
+            '    bgCorNaoSelecionado = _bgColorNaoSelecionado
+            'End If
+
+            'If colorTxtNaoSelecionado <> Nothing Then
+            '    ColorTextNaoSelecionado = colorTxtNaoSelecionado
+            'End If
+
+            If Me.Rows(e.RowIndex).Index <> -1 Then
+
+                'Se o click for com Ctrl pressionado ou sem.
+
+                If Control.ModifierKeys = Keys.Control Or Control.ModifierKeys = Keys.None Then
+
+                    If CBool(Me.Rows(e.RowIndex).Cells(0).Value) = False Then
+
+                        Me.Rows(e.RowIndex).Cells(0).Value = True
+
+                        Me.Rows(e.RowIndex).Selected = True
+                        Me.Refresh()
+
+                    ElseIf CBool(Me.Rows(e.RowIndex).Cells(0).Value) = True Then
+
+                        Me.Rows(e.RowIndex).Selected = False
+                        Me.Rows(e.RowIndex).Cells(0).Value = False
+                        Me.Rows(e.RowIndex).DefaultCellStyle.BackColor = bgCorNaoSelecionado
+                        Me.Rows(e.RowIndex).DefaultCellStyle.ForeColor = ColorTextNaoSelecionado
+
+                    End If
+                End If
+            End If
+        Catch ex As Exception
+            LogaErro("Erro em Util::SelecionarCheckBoxDataGrid: " & ex.ToString())
+        End Try
+    End Sub
+
 End Class
