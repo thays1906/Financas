@@ -6,13 +6,13 @@
 	<Ambiente valor="Bradesco"/>
 
 	<EfetivaSGSS valor="Nao"/>
-	<Servidor valor="DESKTOP-VH369CI\SQLEXPRESS"/>
+	<!--<Servidor valor="DESKTOP-VH369CI\SQLEXPRESS"/>-->
 	<!--mynote-->
 	<!--<Servidor valor="DESKTOP-6K5LRMH\SQLEXPRESS"/> PC-->
-	<!--<Servidor valor="DESKTOP-LMN16D4\SQLEXPRESS"/> NOTE Alan-->
+	<Servidor valor="DESKTOP-LMN16D4\SQLEXPRESS"/> NOTE Alan
 	<Usuario valor="sa"/>
-	<Senha valor="tTctvYwv0Bc="/> mYnOTE
-	<!--<Senha valor="/06EDmpVT6k="/>-->
+	<!--<Senha valor="tTctvYwv0Bc="/> mYnOTE-->
+	<Senha valor="/06EDmpVT6k="/>
 	<Banco valor="GerenciamentoFinancas"/>
 
 	<ServidorSGSS valor="MZ-VV-BD-004\MSSQL2005A"/>

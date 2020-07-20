@@ -449,7 +449,7 @@ Public Module SubUtil
                 foreColor = _ForeColor
             End If
 
-            If dtGrid.Rows(row).Index <> -1 Then
+            If CInt(dtGrid.Rows(row).Index) <> -1 Then
 
                 If Control.ModifierKeys = Keys.Control Or Control.ModifierKeys = Keys.None Then
 
