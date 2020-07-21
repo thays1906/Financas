@@ -29,15 +29,16 @@ Public Class frmEmail
         Pesquisar()
     End Sub
 
-    Private Sub dgNormal_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgNormal.CellClick
-
-    End Sub
-
     Private Sub chkEMail_CheckedChanged(sender As Object, e As EventArgs) Handles chkEMail.CheckedChanged
-        dgConsulta.SelecionaTodos(chkEMail)
+        dgConsulta.MarcaDesmarcaTodos(chkEMail)
     End Sub
 
     Private Sub btnObter_Click(sender As Object, e As EventArgs) Handles btnObter.Click
-        txtObter.Text = dgConsulta.ObterTodosChecados().ToString
+        txtObter.Text = dgConsulta.ObterTodasChaves().ToString
     End Sub
+
+    Private Sub btnChave_Click(sender As Object, e As EventArgs) Handles btnChave.Click
+        txtObter.Text = dgConsulta.ObterChave.ToString
+    End Sub
+
 End Class

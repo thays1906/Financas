@@ -24,7 +24,7 @@ Public Class frmCobranca
 
         Pesquisar()
 
-        ControleBotoes()
+        'ControleBotoes()
     End Sub
 
     Private Sub ControleBotoes()
@@ -101,12 +101,16 @@ Public Class frmCobranca
 
             columnImg = " CONTA"
 
-            oDataSet.Tables(0).Columns.Add(columnImg, System.Type.GetType("System.Byte[]"))
+            'oDataSet.Tables(0).Columns.Add(columnImg, System.Type.GetType("System.Byte[]"))
 
-            AdicionaImgColumn(oDataSet, columnImg)
+            'AdicionaImgColumn(oDataSet, columnImg)
+
+            For i = 0 To oDataSet.TotalRegistros - 1
+                DataGrid.AdicionaImageColumn(oDataSet, columnImg, Banco(oDataSet("Conta Báncaria", i).ToString), False)
+            Next
 
             dgCobranca.DataSource = oDataSet.Tables(0)
-
+            DataGrid.PreencheDataGrid(oDataSet)
             dgCobranca.Columns(" CONTA").DisplayIndex = 6
             dgCobranca.Columns(" CONTA").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             dgCobranca.Columns("Conta Báncaria").HeaderText = "BÁNCARIA"
@@ -149,56 +153,57 @@ Public Class frmCobranca
         Try
             checados = dgCobranca.SelectedRows.Count
 
+            rCobranca = DataGrid.ObterTodasChaves
 
 
-            For Each item As DataGridViewRow In dgCobranca.Rows
-                If CBool(item.Cells(0).Value) = True Then
-                    checados += 1
-                    rCobranca += String.Concat(item.Cells(1).Value.ToString, ";")
-                End If
-            Next
+            'For Each item As DataGridViewRow In dgCobranca.Rows
+            '    If CBool(item.Cells(0).Value) = True Then
+            '        checados += 1
+            '        rCobranca += String.Concat(item.Cells(1).Value.ToString, ";")
+            '    End If
+            'Next
 
-            'Se for vários selecionados
-            If checados > 1 Then
-                If Mensagem(eTipoMensagem.Question, checados) = eRet.Sim Then
+            ''Se for vários selecionados
+            'If checados > 1 Then
+            '    If Mensagem(eTipoMensagem.Question, checados) = eRet.Sim Then
 
-                    For Each codigo In rCobranca.Split(CChar(";"))
-                        If codigo = "" OrElse CDec(codigo) <> 0 Then
-                            If pCobrancaPagamento.Deletar(CDec(codigo)) Then
-                                ok += 1
-                            Else
-                                erro += 1
-                            End If
-                        End If
-                    Next
-                    If erro = 0 Then
-                        Mensagem(eTipoMensagem.OK,, ok)
-                    Else
-                        Mensagem(eTipoMensagem.Erro, checados, ok, erro)
-                    End If
-                End If
+            '        For Each codigo In rCobranca.Split(CChar(";"))
+            '            If codigo = "" OrElse CDec(codigo) <> 0 Then
+            '                If pCobrancaPagamento.Deletar(CDec(codigo)) Then
+            '                    ok += 1
+            '                Else
+            '                    erro += 1
+            '                End If
+            '            End If
+            '        Next
+            '        If erro = 0 Then
+            '            Mensagem(eTipoMensagem.OK,, ok)
+            '        Else
+            '            Mensagem(eTipoMensagem.Erro, checados, ok, erro)
+            '        End If
+            '    End If
 
-            Else
-                'Um Selecionado
-                cCobranca = CDec(dgCobranca.SelectedRows.Item(0).Cells(1).Value)
+            'Else
+            '    'Um Selecionado
+            '    cCobranca = CDec(dgCobranca.SelectedRows.Item(0).Cells(1).Value)
 
-                If cCobranca <> 0 Then
+            '    If cCobranca <> 0 Then
 
-                    If Mensagem(eTipoMensagem.Question) = eRet.Sim Then
+            '        If Mensagem(eTipoMensagem.Question) = eRet.Sim Then
 
-                        If pCobrancaPagamento.Deletar(cCobranca) Then
+            '            If pCobrancaPagamento.Deletar(cCobranca) Then
 
-                            Mensagem(eTipoMensagem.OK)
+            '                Mensagem(eTipoMensagem.OK)
 
-                            Pesquisar()
-                        End If
-                    Else
-                        Mensagem(eTipoMensagem.Erro)
-                    End If
-                End If
+            '                Pesquisar()
+            '            End If
+            '        Else
+            '            Mensagem(eTipoMensagem.Erro)
+            '        End If
+            '    End If
 
-                CarregarCombo(True)
-            End If
+            '    CarregarCombo(True)
+            'End If
 
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro",, eImagens.Cancel)
@@ -361,37 +366,37 @@ Public Class frmCobranca
 
                 SelecionarDataGrid(dgCobranca, rowIndex)
 
-                'If CInt(dgCobranca.Rows(e.RowIndex).Index) <> -1 Then
+            'If CInt(dgCobranca.Rows(e.RowIndex).Index) <> -1 Then
 
-                '    If Control.ModifierKeys = Keys.Control Or Control.ModifierKeys = Keys.None Then
+            '    If Control.ModifierKeys = Keys.Control Or Control.ModifierKeys = Keys.None Then
 
-                '        If CBool(dgCobranca.Rows(e.RowIndex).Cells(0).Value) = False Then
+            '        If CBool(dgCobranca.Rows(e.RowIndex).Cells(0).Value) = False Then
 
-                '            dgCobranca.Rows(e.RowIndex).Cells(0).Value = True
-                '            'dgCobranca.Rows(e.RowIndex).Selected = True
+            '            dgCobranca.Rows(e.RowIndex).Cells(0).Value = True
+            '            'dgCobranca.Rows(e.RowIndex).Selected = True
 
-                '            dgCobranca.Refresh()
-                '        ElseIf CBool(dgCobranca.Rows(e.RowIndex).Cells(0).Value) = True Then
+            '            dgCobranca.Refresh()
+            '        ElseIf CBool(dgCobranca.Rows(e.RowIndex).Cells(0).Value) = True Then
 
-                '            dgCobranca.Rows(e.RowIndex).Selected = False
-                '            dgCobranca.Rows(e.RowIndex).Cells(0).Value = False
-                '            dgCobranca.Rows(e.RowIndex).DefaultCellStyle.BackColor = SystemColors.ButtonFace
-                '            dgCobranca.Rows(e.RowIndex).DefaultCellStyle.ForeColor = Color.Black
+            '            dgCobranca.Rows(e.RowIndex).Selected = False
+            '            dgCobranca.Rows(e.RowIndex).Cells(0).Value = False
+            '            dgCobranca.Rows(e.RowIndex).DefaultCellStyle.BackColor = SystemColors.ButtonFace
+            '            dgCobranca.Rows(e.RowIndex).DefaultCellStyle.ForeColor = Color.Black
 
 
-                '        End If
-                '    End If
+            '        End If
+            '    End If
 
-                'Desativa edição das células de todas as colunas, exceto a (0) = checkbox.
-                'For i = 0 To dgCobranca.Columns.Count - 1
+            'Desativa edição das células de todas as colunas, exceto a (0) = checkbox.
+            'For i = 0 To dgCobranca.Columns.Count - 1
 
-                '    If CInt(dgCobranca.Columns(i).Index) <> dgCobranca.Columns(0).Index Then
-                '        dgCobranca.Columns(i).ReadOnly = True
-                '    End If
-                'Next
+            '    If CInt(dgCobranca.Columns(i).Index) <> dgCobranca.Columns(0).Index Then
+            '        dgCobranca.Columns(i).ReadOnly = True
+            '    End If
+            'Next
 
-                ControleBotoes()
-                DataGridSelecao()
+            'ControleBotoes()
+            DataGridSelecao()
             'End If
             'bDouble = False
         Catch ex As Exception
@@ -424,6 +429,10 @@ Public Class frmCobranca
     End Sub
     Private Sub Alterar()
         Try
+            cCobranca = DataGrid.ObterChave
+            oForm = New frmAddCobranca(cCobranca)
+            oForm.ShowDialog()
+
             If dgCobranca.SelectedRows.Count = 1 Then
 
                 cCobranca = CDec(dgCobranca.SelectedRows.Item(0).Cells(1).Value)
@@ -467,7 +476,7 @@ Public Class frmCobranca
                         dgCobranca.ClearSelection()
                     End If
                 Next
-                ControleBotoes()
+                'ControleBotoes()
             End If
             Dim ii = dgCobranca.SelectedRows.Count
         Catch ex As Exception
