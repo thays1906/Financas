@@ -117,10 +117,10 @@
     <Compile Include="Formulários\frmAbout.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\frmAddCobranca.Designer.vb">
-      <DependentUpon>frmAddCobranca.vb</DependentUpon>
+    <Compile Include="Formulários\frmNovaCobranca.Designer.vb">
+      <DependentUpon>frmNovaCobranca.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\frmAddCobranca.vb">
+    <Compile Include="Formulários\frmNovaCobranca.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formulários\frmCobranca.Designer.vb">
@@ -253,8 +253,8 @@
     <EmbeddedResource Include="Formulários\frmAbout.resx">
       <DependentUpon>frmAbout.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\frmAddCobranca.resx">
-      <DependentUpon>frmAddCobranca.vb</DependentUpon>
+    <EmbeddedResource Include="Formulários\frmNovaCobranca.resx">
+      <DependentUpon>frmNovaCobranca.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmCobranca.resx">
       <DependentUpon>frmCobranca.vb</DependentUpon>

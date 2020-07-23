@@ -7,7 +7,10 @@ Imports System.Windows.Forms
 
 Public Class SuperDataGridView
     Inherits DataGridView
-    Private ok As Boolean = False
+
+    Public ultimaRow As Integer = 0
+
+    Private bCarregado As Boolean = False
     Private ID As String = Nothing
     Private btnEditar As Boolean = False
     Private btnExcluir As Boolean = False
@@ -30,6 +33,9 @@ Public Class SuperDataGridView
     Private bgColorHeader As Color = Color.LightSlateGray
     Private fontText As Font = New Font("Verdana", 12)
     Private colorText As Color = Color.White
+
+#Region "Propriedades"
+
     Public Property CorDoFundoCabeçalho As Color
         Get
             Return bgColorHeader
@@ -60,9 +66,10 @@ Public Class SuperDataGridView
             AdicionaCheckBoxColumn()
         End Set
     End Property
-
+#End Region
 
     Sub New()
+        Me.DoubleBuffered = True
         Me.MultiSelect = True
 
         Me.EnableHeadersVisualStyles = False
@@ -101,22 +108,23 @@ Public Class SuperDataGridView
 
     End Sub
 
-    Public Sub AdicionaCheckBoxColumn(Optional remove As Boolean = False) 'OK ACHO
-        Try
+    Public Sub AdicionaCheckBoxColumn(Optional remove As Boolean = False)
+        Dim list = New List(Of DataGridViewCheckBoxColumn)
 
+        Try
+            'Adiciona uma coluna de checkbox no DataGrid.
             If bChkBox = True Then
 
                 If remove Then
-
-                    Dim list = New List(Of DataGridViewCheckBoxColumn)
+                    'Tratamento de erro (caso gere mais de uma column)
 
                     For Each check As DataGridViewCheckBoxColumn In Me.Columns.OfType(Of System.Windows.Forms.DataGridViewCheckBoxColumn)
 
-                        list.Add(check)
+                        List.Add(check)
 
                     Next
 
-                    For Each chk In list
+                    For Each chk In List
 
                         Me.Columns.Remove(chk)
 
@@ -128,17 +136,16 @@ Public Class SuperDataGridView
                 checkbox.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
                 checkbox.HeaderText = "Selecionar"
                 checkbox.DisplayIndex = 0
+
                 Me.Columns.Add(checkbox)
 
             ElseIf bChkBox = False Then
+                'Remove column checkbox quando altera a propriedade no Design
 
                 If Me.Columns.Count <> 0 Then
                     Me.Columns.Remove(checkbox)
                 End If
-
             End If
-
-
 
         Catch ex As Exception
             LogaErro("Erro em Util::AdicionaCheckBoxColumn: " & ex.ToString())
@@ -149,9 +156,11 @@ Public Class SuperDataGridView
                                 Optional ByVal posicaoId As Integer = Nothing,
                                 Optional ByRef letreiro As SuperLetreiro = Nothing,
                                 Optional removeTxtColumnImg As Boolean = False)
+
         Dim column As String = Nothing
         Try
-            If oDataSet.TotalRegistros <> Nothing Then
+
+            Me.DoubleBuffered = True
 
                 For i = 0 To oDataSet.TotalColunas - 1
 
@@ -172,12 +181,15 @@ Public Class SuperDataGridView
                     ElseIf column.Substring(0, 3) = "id_" Then
                         ID = column
                     End If
+
                     Me.DataSource = oDataSet.Tables(0)
 
-
-
                     If bChkBox Then
+
+                        'Se escolheu adicionar coluna com checkbox, ignora o text do cabeçalho primeira coluna.
+
                         If column <> Nothing Then
+
                             Me.Columns(i + 1).HeaderText = column
 
                         End If
@@ -186,19 +198,20 @@ Public Class SuperDataGridView
                         If column <> Nothing Then
                             Me.Columns(i).HeaderText = column
                         End If
-
                     End If
-                    ok = False
+
+                    bCarregado = False
                 Next
 
                 If ID Is Nothing Then
+                    'Se não encontrou coluna 'id_' no dataSet.
+                    'Verifica se foi informado no parâmetro.
 
                     If posicaoId <> Nothing Then
 
                         ID = posicaoId.ToString
-                        Me.Columns(ID).DisplayIndex = 1
-                        Me.Columns(ID).Visible = False
 
+                        Me.Columns(ID).Visible = False
                     End If
 
                 Else
@@ -207,20 +220,34 @@ Public Class SuperDataGridView
                 End If
 
                 If bChkBox Then
+                    'Removendo texto da coluna checkbox
                     Me.Columns(0).HeaderText = ""
                 End If
+
                 If removeTxtColumnImg Then
 
+                    'Remove text da coluna de imagens
+
+                    For Each col As DataGridViewImageColumn In Me.Columns.OfType(Of DataGridViewImageColumn)
+
+                        col.HeaderText = ""
+                    Next
+
                 End If
-                ok = True
+
+                'Chamando o evento DataBindingComplete (DataGrid está carregado)
+                bCarregado = True
+
                 Me.AutoResizeColumns()
                 Me.Refresh()
 
-            Else
-                Me.Dispose()
+            If oDataSet Is Nothing Then
+                Me.AutoResizeColumns()
                 LogaErro("SuperLV::PreencheDataGrid [" & Me.Name & "] - ATENÇÃO: RecordSet=Nothing, por favor, verifique.")
                 Exit Sub
             End If
+
+            'Se informou por parâmetro o SuperLetreiro, add text.
             If Not letreiro Is Nothing Then
                 letreiro.TextoLetreiro = oDataSet.InfoPesquisa
             End If
@@ -230,14 +257,16 @@ Public Class SuperDataGridView
         End Try
     End Sub
 
-    Public Function ObterTodasChaves() As String 'OK
+    Public Function ObterTodasChaves() As String 'bCarregado
         Dim rChave As String = Nothing
         Try
 
             For i = 0 To Me.SelectedRows.Count - 1
 
                 If i - (Me.SelectedRows.Count - 1) = 0 Then
+
                     rChave += Me.Rows(i).Cells(ID).Value.ToString
+
                 Else
                     rChave += String.Concat(Me.Rows(i).Cells(ID).Value.ToString, ";")
 
@@ -252,14 +281,18 @@ Public Class SuperDataGridView
         End Try
 
     End Function
-    Public Function ObterChave() As Decimal 'OK
+    Public Function ObterChave() As Decimal 'bCarregado
         Dim cChave As Decimal = Nothing
         Try
 
             For Each item As DataGridViewRow In Me.Rows
+
                 If CBool(item.Selected) = True Then
+
                     cChave = CDec(item.Cells(ID).Value)
+
                     Exit For
+
                 End If
             Next
 
@@ -269,7 +302,6 @@ Public Class SuperDataGridView
             LogaErro("Erro em Util::ObterChave: " & ex.ToString())
             Return Nothing
         End Try
-
     End Function
 
     Public Sub AdicionaImageColumn(ByRef oDataset As SuperDataSet,
@@ -279,7 +311,6 @@ Public Class SuperDataGridView
 
         Dim image As ImageConverter
         Dim dataRow As DataRow
-        Static Dim ultimaRow As Integer
         Try
             image = New ImageConverter()
 
@@ -294,7 +325,7 @@ Public Class SuperDataGridView
             If imgIgual Then
                 For Each linha As DataRow In oDataset.Tables(0).Rows
 
-                    'Seta a Imagem na coluna.
+                    'Seta a mesma Imagem em todas colunas.
 
                     linha(column) = image.ConvertTo(img, System.Type.GetType("System.Byte[]"))
 
@@ -303,16 +334,18 @@ Public Class SuperDataGridView
             Else
 
                 For i = ultimaRow To oDataset.TotalRegistros - 1
+                    'Seta uma Image por linha.
 
                     dataRow = oDataset.Tables(0).Rows(i)
+
                     dataRow(column) = image.ConvertTo(img, System.Type.GetType("System.Byte[]"))
+
+
                     ultimaRow = i + 1
                     Exit For
                 Next
 
             End If
-
-
 
 
         Catch ex As Exception
@@ -321,47 +354,68 @@ Public Class SuperDataGridView
     End Sub
 
 
-    Public Sub MarcaDesmarcaTodos(ByRef chkTodos As CheckBox) 'ok
+    Public Sub MarcaDesmarcaTodos(ByRef chkTodos As CheckBox) 'bCarregado
         Try
             'Seleciona/ Desmarca todos os CheckBox do DataGRid
             If Me.MultiSelect Then
 
                 If Me.Rows.Count > 0 Then
 
-                    For i = 0 To Me.Rows.Count - 1
 
-                        If chkTodos.Checked Then
+                    If chkTodos.Checked Then
 
-                            Me.Rows(i).Selected = True
-                            If bChkBox Then
-                                Me.Rows(i).Cells(0).Value = True
-                            End If
+                        If Me.SelectedRows.Count = Me.Rows.Count Then
 
+                            For i = 0 To Rows.Count - 1
+
+                                Me.Rows(i).Selected = False
+                                Me.Rows(i).DefaultCellStyle.BackColor = bgCorNaoSelecionado
+                                Me.Rows(i).DefaultCellStyle.ForeColor = ColorTextNaoSelecionado
+
+                                If bChkBox Then
+                                    Me.Rows(i).Cells(0).Value = False
+                                End If
+
+                            Next
+                            chkTodos.Checked = False
                         Else
+
+                            For i = 0 To Me.Rows.Count - 1
+
+                                Me.Rows(i).Selected = True
+
+                                If bChkBox Then
+                                    Me.Rows(i).Cells(0).Value = True
+                                End If
+                            Next
+                        End If
+
+                    Else
+                        For i = 0 To Me.Rows.Count - 1
                             Me.Rows(i).Selected = False
                             Me.Rows(i).DefaultCellStyle.BackColor = bgCorNaoSelecionado
                             Me.Rows(i).DefaultCellStyle.ForeColor = ColorTextNaoSelecionado
+
                             If bChkBox Then
                                 Me.Rows(i).Cells(0).Value = False
                             End If
-                            Me.ClearSelection()
-                        End If
-                    Next
+                        Next
+
+
+                        Me.ClearSelection()
+                    End If
                 End If
             End If
-
-
 
         Catch ex As Exception
             LogaErro("Erro em Util::SelecionaTodosCheck: " & ex.ToString())
         End Try
     End Sub
 
-    Private Sub SelectRowLeave_CheckBox(sender As Object, e As DataGridViewCellEventArgs) Handles Me.RowLeave 'OK
+    Private Sub SelectRowLeave_CheckBox(sender As Object, e As DataGridViewCellEventArgs) Handles Me.RowLeave 'bCarregado
 
         Try
             'Mantém a linha selecionada, quando clicar em outra linha.
-
 
             If bChkBox Then
 
@@ -391,7 +445,7 @@ Public Class SuperDataGridView
         End Try
     End Sub
 
-    Public Function ObterTodosChecados() As Decimal 'OK
+    Public Function ObterTodosChecados() As Decimal
         Dim total As Decimal = 0
         Try
             For Each row As DataGridViewRow In Me.Rows
@@ -491,19 +545,17 @@ Public Class SuperDataGridView
         End Try
     End Sub
 
-    Private Sub SuperDataGridView_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles Me.DataBindingComplete 'OK
+    Private Sub SuperDataGridView_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles Me.DataBindingComplete 'bCarregado
         Try
             'Quando o DataGrid estiver carregado, desmarca a linha que estiver selecionada.
-            If ok Then
+            If bCarregado Then
                 For i = 0 To Me.Rows.Count - 1
 
                     If Me.Rows(i).Selected Then
 
-                        If Me.AdicionarCheckBox Then
+                        If bChkBox Then
 
                             Me.Rows(i).Cells("chkDataGrid").Value = False
-
-                            'Me.Rows(i).Cells(0).Value = False
 
                             If CInt(Me.Columns.OfType(Of System.Windows.Forms.DataGridViewCheckBoxColumn).Count) > 1 Then
                                 AdicionaCheckBoxColumn(True)
@@ -525,14 +577,14 @@ Public Class SuperDataGridView
                         Next
                     End If
                 Next
-
+                ultimarow = 0
             End If
         Catch ex As Exception
             LogaErro("Erro em Util::SuperDataGridView_DataBindingComplete: " & ex.ToString())
         End Try
     End Sub
 
-    Private Sub SuperDataGridView_CurrentCellChanged(sender As Object, e As EventArgs) Handles Me.CurrentCellChanged 'OK
+    Private Sub SuperDataGridView_CurrentCellChanged(sender As Object, e As EventArgs) Handles Me.CurrentCellChanged 'bCarregado
         Try
             'Caso tenha checkbox no DataGrid, ativa o select na linha que estiver selecionada.
 
@@ -552,13 +604,14 @@ Public Class SuperDataGridView
         End Try
     End Sub
 
-    Private Sub SuperDataGridView_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles Me.CellMouseClick 'OK
+    Private Sub SuperDataGridView_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles Me.CellMouseClick 'bCarregado
         Try
             'Seleciona a linha, checkbox, e altera cor da linha selecionada.
 
             If e.RowIndex <> -1 Then
 
                 'Se o click for com Ctrl pressionado ou sem.
+
 
                 If Control.ModifierKeys = Keys.Control Or Control.ModifierKeys = Keys.None Then
 
@@ -586,7 +639,20 @@ Public Class SuperDataGridView
             LogaErro("Erro em Util::SelecionarCheckBoxDataGrid: " & ex.ToString())
         End Try
     End Sub
+    Protected Overrides Sub OnGotFocus(ByVal e As System.EventArgs)
+        Try
+            MyBase.OnGotFocus(e)
+        Catch ex As Exception
+            LogaErro("Erro em SuperLV::OnGotFocus: " & CStr(ex.ToString()))
+        End Try
+    End Sub
 
-
+    Protected Overrides Sub OnLostFocus(ByVal e As System.EventArgs)
+        Try
+            MyBase.OnLostFocus(e)
+        Catch ex As Exception
+            LogaErro("Erro em SuperLV::OnLostFocus: " & CStr(ex.ToString()))
+        End Try
+    End Sub
 
 End Class

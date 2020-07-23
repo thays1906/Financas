@@ -501,7 +501,7 @@ Public Module SubUtil
 
             ElseIf tipoMsg = eTipoMensagem.OK Then
 
-                If checados = Nothing Then
+                If checados = Nothing Or checados = 0 Then
 
                     S_MsgBox("Pronto, registro excluído com sucesso.",
                              eBotoes.Ok, "Exclusão de Registro.",
@@ -515,7 +515,7 @@ Public Module SubUtil
             ElseIf tipoMsg = eTipoMensagem.Erro Then
                 If checados = Nothing Then
                     S_MsgBox("Desculpe, não foi possível deletar o registro.",
-                             eBotoes.Ok, "Atenção: Houve um erro e o registro podem não ter sido deletado.",
+                             eBotoes.Ok, "Atenção: Houve um erro e o registro pode não ter sido deletado.",
                              eImagens.Cancel)
                 Else
                     S_MsgBox("Registros excluídos: " & ok & vbNewLine &

@@ -61,6 +61,12 @@ Public Class frmConta
 
                     picBank.Image = Banco(rs("as_BANCO#200", i).ToString)
 
+                    If picBank.Image.Width = 71 Then
+                        picBank.Left = 5
+                    Else
+                        picBank.Location = New Point(27, 70)
+                    End If
+
                 End If
 
                 If lvConsulta.Items(i).SubItems(4).Text.Contains(CChar("-")) Then
