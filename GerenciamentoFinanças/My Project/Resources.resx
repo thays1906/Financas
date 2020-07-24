@@ -118,14 +118,20 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="iconAddDespesa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconAddDespesa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconItau_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconItau.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="iconAddBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconAddBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="imgFINANCES_MANAGEMENT_principal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgFINANCES_MANAGEMENT_principal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="iconBank" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconBank.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="iconeInvest" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconeInvest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconDetalheFiles" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconDetalheFiles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,6 +145,9 @@
   <data name="iconExcluir" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconExcluir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="iconLogout_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconLogout_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="iconEditar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconEditar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -151,8 +160,8 @@
   <data name="iconPendente" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\iconpendente.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconSantander" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\unnamed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconEngrenagem32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconEngrenagem32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconSalvar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconSalvar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,8 +169,8 @@
   <data name="iconSearchFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconSearchFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconExcel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconExcel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconPicPay" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconPicPay.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconReceita" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconReceita.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,8 +184,11 @@
   <data name="iconExtract" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconExtract.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconEngrenagem32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconEngrenagem32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconeInvest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconeInvest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bankmini_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bankmini.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconLogin32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconLogin32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,17 +196,11 @@
   <data name="iconOk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconOk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconUsuario95x75" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconUsuario95x75.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="iconDeletarFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconDeletarFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconAddDespesa" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconAddDespesa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="iconFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconExcel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconExcel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconDespesa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconDespesa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -202,20 +208,20 @@
   <data name="iconEditarFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconEditarFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconItau_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconItau.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconSantander" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\unnamed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LOGO1.2.fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LOGO1.2.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconAtrasado" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconAtrasado.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconBankmini_fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconBankmini.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconePesquisar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconePesquisar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconUsuar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconUsuar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconAtrasado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconAtrasado.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconEnvioEmail" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconEnvioEmail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -229,8 +235,8 @@
   <data name="iconFechar48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconFechar48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconEngrenagem" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconEngrenagem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconExplorer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconExplorer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -241,11 +247,14 @@
   <data name="iconRefresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconRefresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconLogout_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconLogout_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconUsuario95x75" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconUsuario95x75.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconPago" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconPago.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconEngrenagem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconEngrenagem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconBradesco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconBradesco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -253,10 +262,10 @@
   <data name="iconClose" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconClose.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconPicPay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconPicPay.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconUsuar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconUsuar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgFINANCES_MANAGEMENT_principal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imgFINANCES_MANAGEMENT_principal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconHome" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconHome.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -26,7 +26,7 @@ Public Class SuperDataGridView
 
     'ColumnCheckBox
     Private checkbox As DataGridViewCheckBoxColumn
-    Private bChkBox As Boolean
+    Public bChkBox As Boolean
 
 
     'Cabeçalho
@@ -64,12 +64,12 @@ Public Class SuperDataGridView
         Set(value As Boolean)
             bChkBox = value
             AdicionaCheckBoxColumn()
+            Me.Invalidate()
         End Set
     End Property
 #End Region
 
     Sub New()
-        Me.DoubleBuffered = True
         Me.MultiSelect = True
 
         Me.EnableHeadersVisualStyles = False
@@ -79,7 +79,7 @@ Public Class SuperDataGridView
 
         'Define a distribuição das colunas no DataGrid
         Me.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill     'Redimensiona as colunas para ocupar todo o DatGrid
-        Me.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells 'Redimensiona as rows
+        Me.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells 'Redimensiona as rows
         Me.SelectionMode = DataGridViewSelectionMode.FullRowSelect        'Select row inteira
 
         'Define a borda/grade das colunas
@@ -106,6 +106,13 @@ Public Class SuperDataGridView
         Me.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
         Me.RowHeadersVisible = False
 
+
+        'If Me.bChkBox Then
+        '    If Me.Columns.Count = 0 Then
+        '        bChkBox = False
+        '    End If
+        'End If
+
     End Sub
 
     Public Sub AdicionaCheckBoxColumn(Optional remove As Boolean = False)
@@ -120,24 +127,28 @@ Public Class SuperDataGridView
 
                     For Each check As DataGridViewCheckBoxColumn In Me.Columns.OfType(Of System.Windows.Forms.DataGridViewCheckBoxColumn)
 
-                        List.Add(check)
+                        If check.Name <> "chkDataGrid" Then
+                            list.Add(check)
+                        End If
 
                     Next
 
-                    For Each chk In List
+                    For Each chk In list
 
                         Me.Columns.Remove(chk)
 
                     Next
                 End If
+                If Not Me.Columns.Contains(checkbox) Then
+                    checkbox = New DataGridViewCheckBoxColumn()
+                    checkbox.Name = "chkDataGrid"
+                    checkbox.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+                    checkbox.HeaderText = "Selecionar"
+                    checkbox.DisplayIndex = 0
 
-                checkbox = New DataGridViewCheckBoxColumn()
-                checkbox.Name = "chkDataGrid"
-                checkbox.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-                checkbox.HeaderText = "Selecionar"
-                checkbox.DisplayIndex = 0
+                    Me.Columns.Add(checkbox)
 
-                Me.Columns.Add(checkbox)
+                End If
 
             ElseIf bChkBox = False Then
                 'Remove column checkbox quando altera a propriedade no Design
@@ -146,6 +157,7 @@ Public Class SuperDataGridView
                     Me.Columns.Remove(checkbox)
                 End If
             End If
+
 
         Catch ex As Exception
             LogaErro("Erro em Util::AdicionaCheckBoxColumn: " & ex.ToString())
@@ -186,22 +198,26 @@ Public Class SuperDataGridView
 
                     If bChkBox Then
 
-                        'Se escolheu adicionar coluna com checkbox, ignora o text do cabeçalho primeira coluna.
+                    'Se escolheu adicionar coluna com checkbox, ignora o text do cabeçalho primeira coluna.
+                    If CInt(Me.Columns.OfType(Of System.Windows.Forms.DataGridViewCheckBoxColumn).Count) > 1 Then
+                        AdicionaCheckBoxColumn(True)
+                    End If
 
-                        If column <> Nothing Then
+                    If column <> Nothing Then
 
-                            Me.Columns(i + 1).HeaderText = column
+                        Me.Columns(i + 1).HeaderText = column
 
-                        End If
+                    End If
 
-                    Else
+                Else
                         If column <> Nothing Then
                             Me.Columns(i).HeaderText = column
                         End If
                     End If
 
-                    bCarregado = False
-                Next
+                bCarregado = False
+
+            Next
 
                 If ID Is Nothing Then
                     'Se não encontrou coluna 'id_' no dataSet.
@@ -238,11 +254,9 @@ Public Class SuperDataGridView
                 'Chamando o evento DataBindingComplete (DataGrid está carregado)
                 bCarregado = True
 
-                Me.AutoResizeColumns()
-                Me.Refresh()
+            Me.Refresh()
 
-            If oDataSet Is Nothing Then
-                Me.AutoResizeColumns()
+            If oDataSet.TotalRegistros = 0 Then
                 LogaErro("SuperLV::PreencheDataGrid [" & Me.Name & "] - ATENÇÃO: RecordSet=Nothing, por favor, verifique.")
                 Exit Sub
             End If
@@ -554,13 +568,13 @@ Public Class SuperDataGridView
                     If Me.Rows(i).Selected Then
 
                         If bChkBox Then
+                            'If CInt(Me.Columns.OfType(Of System.Windows.Forms.DataGridViewCheckBoxColumn).Count) > 1 Then
 
                             Me.Rows(i).Cells("chkDataGrid").Value = False
 
-                            If CInt(Me.Columns.OfType(Of System.Windows.Forms.DataGridViewCheckBoxColumn).Count) > 1 Then
-                                AdicionaCheckBoxColumn(True)
+                                '    AdicionaCheckBoxColumn(True)
+                                'End If
                             End If
-                        End If
 
                         Me.ClearSelection()
 
@@ -577,7 +591,10 @@ Public Class SuperDataGridView
                         Next
                     End If
                 Next
-                ultimarow = 0
+
+                'Me.AutoResizeColumns()
+
+                ultimaRow = 0
             End If
         Catch ex As Exception
             LogaErro("Erro em Util::SuperDataGridView_DataBindingComplete: " & ex.ToString())

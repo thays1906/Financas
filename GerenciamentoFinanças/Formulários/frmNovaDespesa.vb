@@ -47,21 +47,24 @@ Public Class frmNovaDespesa
         CorButton(btnDetalhe, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnExcluir, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
 
-        btnDetalhe.Visible = False
         CarregarCombo()
 
         If cDespesa > 0 Then
 
             rsDespesa = pDespesa.ObterDespesa(cDespesa)
             PreencheCampo()
+            pnlNovaDespesa.Height = 350
         Else
             tabDespesa.TabPages(0).Text = "Adicionar Despesa"
             cbParcelamento.Enabled = False
             cbDespesaFixa.Enabled = False
             txtParcela.Visible = False
             lblParcela.Visible = False
-            btnSalvar.SetBounds(128, 449, 203, 42)
-            btnExcluir.SetBounds(363, 449, 203, 42)
+            btnDetalhe.Visible = False
+            pnlNovaDespesa.Height = 366
+            btnSalvar.Location = New Point(200, 564)
+            btnExcluir.Location = New Point(480, 564)
+
         End If
     End Sub
 
@@ -406,6 +409,7 @@ Public Class frmNovaDespesa
     End Function
     Private Sub PreencheCampo()
         Try
+
             tabDespesa.TabPages(0).Text = "Alterar Despesa"
             chkParcela.Visible = False
             chkDespesaFixa.Visible = False
@@ -418,15 +422,14 @@ Public Class frmNovaDespesa
             txtMesReferente.Visible = True
             lblMesReferente.Visible = True
             btnDetalhe.Enabled = False
-            btnSalvar.SetBounds(128, 449, 203, 42)
-            btnExcluir.SetBounds(363, 449, 203, 42)
+            'btnSalvar.Location = New Point(178, 564)
+            'btnExcluir.Location = New Point(437, 564)
+            cValor = CDec(rsDespesa("cValor"))
 
             If CDec(rsDespesa("cControleParcelamento")) <> 0 Then
 
                 cControleParcelamento = CDec(rsDespesa("cControleParcelamento"))
 
-                btnSalvar.SetBounds(248, 449, 203, 42)
-                btnExcluir.SetBounds(465, 449, 203, 42)
 
                 lblValor.SetBounds(8, 35, 102, 18)
                 txtValorTotal.SetBounds(8, 61, 151, 27)
@@ -443,11 +446,9 @@ Public Class frmNovaDespesa
                 lblValorParcela.SetBounds(161, 35, 147, 18)
 
                 btnDetalhe.Enabled = True
-                btnDetalhe.Visible = True
 
                 cQtdeParcela = CDec(rsDespesa("cNumeroParcela"))
                 cNumeroParcela = CDec(rsDespesa("cQtdeParcela"))
-                cValor = CDec(rsDespesa("cValor"))
 
                 txtParcela.Text = cQtdeParcela.ToString & "/" & cNumeroParcela.ToString
 
@@ -455,7 +456,8 @@ Public Class frmNovaDespesa
 
                 txtValorTotal.Text = Convert.ToDouble(cNumeroParcela * cValor).ToString("C")
 
-
+                lblFormaPagamento.Location = New Point(415, 35)
+                cbPagamento.Location = New Point(415, 62)
             ElseIf CDec(rsDespesa("cDespesaFixa")) <> 0 Then
 
                 cDespesaFixa = CDec(rsDespesa("cDespesaFixa"))
@@ -465,26 +467,33 @@ Public Class frmNovaDespesa
                 chkDespesaFixa.Visible = True
                 chkDespesaFixa.Checked = True
                 chkDespesaFixa.Enabled = False
-                chkDespesaFixa.SetBounds(9, 16, 136, 22)
+                chkDespesaFixa.Location = New Point(10, 35)
 
                 cbDespesaFixa.Visible = True
                 cbDespesaFixa.Enabled = False
-                cbDespesaFixa.SetBounds(9, 40, 186, 25)
+                cbDespesaFixa.Location = New Point(10, 62)
                 cbDespesaFixa.PosicionaRegistroCombo(CType(rsDespesaFixa("cPeriodo"), eDespesaFixa))
 
-                lblValor.SetBounds(315, 16, 102, 18)
-                txtValorTotal.SetBounds(318, 40, 151, 27)
+                lblValor.Location = New Point(212, 35)
+                txtValorTotal.Location = New Point(215, 62)
 
-                lblFormaPagamento.SetBounds(6, 84, 189, 18)
-                cbPagamento.SetBounds(9, 108, 218, 25)
-
-                lblConta.SetBounds(315, 84, 139, 18)
-                cbConta.SetBounds(318, 108, 218, 25)
+                lblFormaPagamento.Location = New Point(415, 35)
+                cbPagamento.Location = New Point(415, 62)
 
 
+                txtValorTotal.Text = Convert.ToDouble(cValor).ToString("C2")
 
+
+            Else
+
+                txtValorTotal.Text = Convert.ToDouble(cValor).ToString("C2")
+                lblValor.Location = New Point(10, 27)
+                txtValorTotal.Location = New Point(10, 52)
             End If
-            txtValorTotal.Text = rsDespesa("cValor").ToString
+
+            gbDespesa2.Height = 100
+            gbDespesa1.Location = New Point(0, gbDespesa2.Location.Y - gbDespesa1.Height)
+
             txtMesReferente.Text = CDate(rsDespesa("dtRegistro")).ToString("MMMM").ToUpper
             dtDespesa.Value = CDate(rsDespesa("dtRegistro").ToString)
             cbConta.PosicionaRegistroCombo(rsDespesa("cConta"))
@@ -492,7 +501,7 @@ Public Class frmNovaDespesa
             txtDescricao.Text = rsDespesa("rDescricao").ToString
             cbPagamento.PosicionaRegistroCombo(rsDespesa("cPagamento"))
             cbStatus.PosicionaRegistroCombo(CType(rsDespesa("cStatus"), eStatusDespesa))
-
+            picNewDespesa.Image = Banco(cbConta.ObterDescricaoCombo())
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
@@ -574,7 +583,7 @@ Public Class frmNovaDespesa
         End Try
     End Sub
 
-    Private Sub txtValor_Leave(sender As Object, e As EventArgs) Handles txtValorTotal.Leave
+    Private Sub txtValor_Leave(sender As Object, e As EventArgs)
         Try
             txtValorTotal.Text = txtValorTotal.Text.Replace("R$", "").Trim.ToString
             If IsNumeric(txtValorTotal.Text) Then
@@ -601,6 +610,7 @@ Public Class frmNovaDespesa
         End Try
     End Sub
     Private Sub btnFechar_Click(sender As Object, e As EventArgs) Handles btnFechar.Click
+        cControleParcelamento = 0
         LimpaCampos()
         Me.Close()
     End Sub
@@ -659,13 +669,13 @@ Public Class frmNovaDespesa
         End If
     End Sub
 
-    Private Sub txtValorTotal_KeyDown(sender As Object, e As KeyEventArgs) Handles txtValorTotal.KeyDown
+    Private Sub txtValorTotal_KeyDown(sender As Object, e As KeyEventArgs)
         If e.KeyCode = Keys.Back Then
             txtValorParcela.Text = ""
         End If
     End Sub
 
-    Private Sub txtValorTotal_KeyUp(sender As Object, e As KeyEventArgs) Handles txtValorTotal.KeyUp
+    Private Sub txtValorTotal_KeyUp(sender As Object, e As KeyEventArgs)
         Try
             If chkParcela.Checked Then
                 If cbParcelamento.SelectedIndex <> 0 Then
@@ -687,7 +697,7 @@ Public Class frmNovaDespesa
             S_MsgBox(ex.Message, eBotoes.Ok, "Erro inesperado",, eImagens.Cancel)
         End Try
     End Sub
-    Private Sub cbParcelamento_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbParcelamento.SelectedIndexChanged
+    Private Sub cbParcelamento_SelectedIndexChanged(sender As Object, e As EventArgs)
         Try
             If chkParcela.Checked Then
 
@@ -817,4 +827,44 @@ Public Class frmNovaDespesa
             S_MsgBox(ex.Message, eBotoes.Ok, "Erro",, eImagens.Cancel)
         End Try
     End Sub
+
+    Private Sub cbConta_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbConta.SelectedIndexChanged
+        Try
+            picNewDespesa.Image = Banco(cbConta.ObterDescricaoCombo())
+
+            If cbConta.SelectedIndex = 0 Then
+                picNewDespesa.Image = Nothing
+                picNewDespesa.Refresh()
+
+                'ElseIf picNewDespesa.Image.Width = 71 Then
+                '    picNewDespesa.Location = New Point(341, 154)
+                'Else
+                '    picNewDespesa.Location = New Point(361, 154)
+            End If
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro",, eImagens.Cancel)
+            LogaErro(ex.Message & "Evento: cbConta_SelectedIndexChanged - Form: NovaDespesa")
+        End Try
+    End Sub
+
+    Private Sub cbStatus_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbStatus.SelectedIndexChanged
+        If cbStatus.SelectedIndex <> 0 Then
+            If cbStatus.SelectedIndex = 1 Then
+
+                picStatus.Image = My.Resources.iconPendente
+
+            ElseIf cbStatus.SelectedIndex = 2 Then
+
+                picStatus.Image = My.Resources.iconPago
+
+            Else
+                picStatus.Image = My.Resources.iconAtrasado
+
+            End If
+        Else
+            picStatus.Image = Nothing
+            picStatus.Refresh()
+        End If
+    End Sub
+
 End Class

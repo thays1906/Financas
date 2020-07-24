@@ -349,6 +349,8 @@
     <None Include="Resources\iconAddDespesa.png" />
     <None Include="Resources\iconAddBlue.png" />
     <None Include="Resources\iconAbout.png" />
+    <None Include="Resources\Bank.png" />
+    <None Include="Resources\Bankmini.fw.png" />
     <Content Include="Resources\iconAtrasado.bmp" />
     <None Include="Resources\iconPago.png" />
     <None Include="Resources\iconePesquisar.png" />
@@ -363,6 +365,9 @@
     <None Include="Resources\iconEnvioEmail.png" />
     <None Include="Resources\iconDespesa.png" />
     <None Include="Resources\iconBank.png" />
+    <None Include="Resources\iconBank_mini.png" />
+    <None Include="Resources\iconBankmini.fw.png" />
+    <None Include="Resources\iconHome.png" />
     <Content Include="Resources\iconPendente.png" />
     <None Include="Resources\iconExtract.png" />
     <None Include="Resources\iconDetalheFiles.png" />

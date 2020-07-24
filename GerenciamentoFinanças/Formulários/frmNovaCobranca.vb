@@ -123,24 +123,24 @@ Public Class frmNovaCobranca
     Private Function VerificarCampos() As Boolean
         Try
             If txtValor.VerificaObrigatorio = False Then
-                S_MsgBox("Informe um valor.", eBotoes.Ok, "Lançamento de empréstimos",, eImagens.Atencao)
+                lblValorAviso.Text = "Informe um valor."
+                lblValorAviso.Visible = True
                 Return False
             End If
 
-            If txtNome.Text = "" Then
-                S_MsgBox("Informe um nome do devedor.", eBotoes.Ok, "Lançamento de empréstimos",, eImagens.Atencao)
+            If txtNome.VerificaObrigatorio = False Then
+                lblDevedorAviso.Text = "Informe um nome do devedor."
+                lblDevedorAviso.Visible = True
                 Return False
             End If
             If cbStatus.SelectedIndex = 0 Then
-                S_MsgBox("Por favor, selecione um status. ('Pendente','Pago','Atrasado')",
-                         eBotoes.Ok, "Lançamento de empréstimos",,
-                         eImagens.Atencao)
+                lblStatusAviso.Text = "Por favor, selecione um status."
+                lblStatusAviso.Visible = True
                 Return False
             End If
             If cbConta.SelectedIndex = 0 Then
-                S_MsgBox("Por favor, selecione uma conta báncaria, referente ao dinheiro emprestado",
-                         eBotoes.Ok, "Lançamento de empréstimos",,
-                         eImagens.Atencao)
+                lblContaAviso.Text = "Por favor, selecione a conta báncaria, que foi retirado o dinheiro emprestado"
+                lblContaAviso.Visible = True
                 Return False
             End If
 
@@ -151,30 +151,47 @@ Public Class frmNovaCobranca
         End Try
     End Function
 
-    Private Sub CarregarCombo()
+    Private Sub CarregarCombo(Optional ByVal todos As Boolean = True)
         Dim col As Collection
         Dim rs As SuperDataSet
         Try
             rs = New SuperDataSet
             col = New Collection
+            If todos Then
+                col.Add(New DuplaCombo(eStatusDespesa.Pendente, "Pendente"))
+                col.Add(New DuplaCombo(eStatusDespesa.Pago, "Pago"))
+                col.Add(New DuplaCombo(eStatusDespesa.Atrasado, "Atrasado"))
 
-            col.Add(New DuplaCombo(eStatusDespesa.Pendente, "Pendente"))
-            col.Add(New DuplaCombo(eStatusDespesa.Pago, "Pago"))
-            col.Add(New DuplaCombo(eStatusDespesa.Atrasado, "Atrasado"))
+                cbStatus.PreencheComboColl(col, PrimeiroValor.Selecione)
 
-            cbStatus.PreencheComboColl(col, PrimeiroValor.Selecione)
 
-            col.Clear()
+                rs = pContaBancaria.CarregarConta()
 
-            rs = pContaBancaria.CarregarConta()
+                If rs.TotalRegistros > 0 Then
+                    cbConta.PreencheComboDS(rs, "rBanco", "cConta", PrimeiroValor.Selecione)
+                End If
+            Else
+                col.Clear()
+                col.Add(New DuplaCombo(eDespesaFixa.Diario, "Diariamente"))
+                col.Add(New DuplaCombo(eDespesaFixa.Semanal, "Semanal"))
+                col.Add(New DuplaCombo(eDespesaFixa.Quinzenal, "Quinzenal"))
+                col.Add(New DuplaCombo(eDespesaFixa.Mensal, "Mensal"))
+                col.Add(New DuplaCombo(eDespesaFixa.Bimestral, "Bimestral"))
+                col.Add(New DuplaCombo(eDespesaFixa.Trimestral, "Trimestral"))
+                col.Add(New DuplaCombo(eDespesaFixa.Semestral, "Semestral"))
+                col.Add(New DuplaCombo(eDespesaFixa.Anual, "Anual"))
 
-            If rs.TotalRegistros > 0 Then
-                cbConta.PreencheComboDS(rs, "rBanco", "cConta", PrimeiroValor.Selecione)
+                cbfrquencia.PreencheComboColl(col, PrimeiroValor.Selecione)
+
             End If
+
 
 
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro",, eImagens.Cancel)
+        Finally
+            col.Clear()
+            rs.Dispose()
         End Try
     End Sub
 
@@ -207,6 +224,57 @@ Public Class frmNovaCobranca
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro",, eImagens.Cancel)
             LogaErro(ex.Message & "Evento:txtValor_KeyUp - Form: AddCobrança")
+        End Try
+    End Sub
+
+    Private Sub chkLembrete_CheckedChanged(sender As Object, e As EventArgs) Handles chkLembrete.CheckedChanged
+        Try
+            CarregarCombo(False)
+
+            If chkLembrete.Checked Then
+
+                gbFrequencia.Visible = True
+                gbData.Visible = True
+
+
+                pnlNovaCobranca.ScrollControlIntoView(dtLembrete)
+            Else
+                gbFrequencia.Visible = False
+                gbData.Visible = False
+
+                pnlNovaCobranca.ScrollControlIntoView(cbStatus)
+
+
+            End If
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro",, eImagens.Cancel)
+            LogaErro(ex.Message & "Evento:chkLembrete_CheckedChanged - Form: AddCobrança")
+        End Try
+    End Sub
+
+    Private Sub rbFrequente_CheckedChanged(sender As Object, e As EventArgs) Handles rbFrequente.CheckedChanged
+        Try
+            If rbFrequente.Checked Then
+                rbData.Checked = False
+                cbfrquencia.Enabled = True
+            Else
+                cbfrquencia.Enabled = False
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub rbData_CheckedChanged(sender As Object, e As EventArgs) Handles rbData.CheckedChanged
+        Try
+            If rbData.Checked Then
+                rbFrequente.Checked = False
+                dtLembrete.Enabled = True
+            Else
+                dtLembrete.Enabled = False
+            End If
+        Catch ex As Exception
+
         End Try
     End Sub
 End Class

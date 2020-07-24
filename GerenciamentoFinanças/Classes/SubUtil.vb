@@ -346,7 +346,7 @@ Public Module SubUtil
 
             ElseIf rBanco.Contains("SAFRA") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.Bankmini_fw
 
             ElseIf rBanco.Contains("STONE") Then
 
@@ -390,7 +390,7 @@ Public Module SubUtil
 
             ElseIf rBanco.Contains("MERCANTIL") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("PAYPAL") Then
 
@@ -404,7 +404,8 @@ Public Module SubUtil
 
                 img = My.Resources.iconBank
             Else
-                img = My.Resources.iconBank
+                'img = My.Resources.iconBank
+                'img = My.Resources.iconBank_mini
             End If
 
             Return img
@@ -536,7 +537,7 @@ Public Module SubUtil
     End Function
     Public Sub restaurarMDI()
         Lixeiro()
-        frmPrincipal.txtCaption.Text = "Home"
+        frmPrincipal.txtCaption.Text = "Dashboard"
     End Sub
 
     Public Sub Lixeiro()
@@ -564,7 +565,7 @@ Public Module SubUtil
         Try
             arrstr = CType(collNomeTela(Int(n_nova_tela).ToString), String())
             strDescricaoForm = arrstr(1)
-            frmPrincipal.txtCaption.Text = strDescricaoForm
+            frmPrincipal.txtCaption.Text = frmPrincipal.txtCaption.Text & "  »  " & strDescricaoForm
         Catch ex As Exception
             LogaErro("Erro em " & NomeMetodo("Util") & ": " & ex.Message)
         End Try

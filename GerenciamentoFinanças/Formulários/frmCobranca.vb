@@ -30,12 +30,12 @@ Public Class frmCobranca
     Private Sub ControleBotoes()
         Dim linha As Integer = 0
         Try
-            For i = 0 To DataGrid.Rows.Count - 1
-                If CBool(DataGrid.Rows(i).Cells(0).Value) = True Then
+            For i = 0 To datagridCobranca.Rows.Count - 1
+                If CBool(datagridCobranca.Rows(i).Cells(0).Value) = True Then
                     linha += 1
                 End If
             Next
-            If DataGrid.SelectedRows.Count = 0 Then
+            If datagridCobranca.SelectedRows.Count = 0 Then
                 btnEditar.Enabled = False
                 btnExcluir.Enabled = False
             Else
@@ -117,13 +117,13 @@ Public Class frmCobranca
             'AdicionaImgColumn(oDataSet, columnImg)
 
             For i = 0 To oDataSet.TotalRegistros - 1
-                DataGrid.AdicionaImageColumn(oDataSet, columnImg, Banco(oDataSet("Conta Báncaria", i).ToString), False)
+                datagridCobranca.AdicionaImageColumn(oDataSet, columnImg, Banco(oDataSet("Conta Báncaria", i).ToString), False)
             Next
 
 
             'dgCobranca.DataSource = oDataSet.Tables(0)
 
-            DataGrid.PreencheDataGrid(oDataSet,,, txtLetreiroCobr)
+            datagridCobranca.PreencheDataGrid(oDataSet,,, txtLetreiroCobr)
 
             'dgCobranca.Columns(" CONTA").DisplayIndex = 6
             'dgCobranca.Columns(" CONTA").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
@@ -132,36 +132,30 @@ Public Class frmCobranca
             'dgCobranca.Columns(1).Visible = False
 
             'txtLetreiroCobr.TextoLetreiro = oDataSet.InfoPesquisa
-            'dgCobranca.AutoResizeColumns()
-            If oDataSet IsNot Nothing Then
-                cellCol.Alignment = DataGridViewContentAlignment.MiddleLeft
+            'dgCobranca.AutoResizeColumns                cellCol.Alignment = DataGridViewContentAlignment.MiddleLeft
+            If oDataSet.TotalRegistros > 0 Then
+
                 cellImg.Alignment = DataGridViewContentAlignment.MiddleCenter
+                cellCol.Alignment = DataGridViewContentAlignment.MiddleLeft
+                For i = 0 To datagridCobranca.Rows.Count - 1
 
-                For i = 0 To DataGrid.Rows.Count - 1
+                    datagridCobranca.Rows(i).Cells("CONTA BÁNCARIA").Style = cellCol
 
-                    DataGrid.Rows(i).Cells(7).Style = cellImg
-                    DataGrid.Columns(7).HeaderText = "CONTA"
-                    DataGrid.Columns(7).HeaderCell.Style = cellImg
-
-                    DataGrid.Rows(i).Cells(6).Style = cellCol
-                    DataGrid.Columns(6).HeaderText = "BÁNCARIA"
-                    DataGrid.Columns(6).HeaderCell.Style = cellCol
-                    DataGrid.Columns(7).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-                    DataGrid.Rows(i).Cells(5).Style = cellCol
-                    DataGrid.Columns(7).DisplayIndex = 6
-
+                    datagridCobranca.Rows(i).Cells("CONTA").Style = cellImg
 
                 Next
 
-                DataGrid.AutoResizeColumns()
+                datagridCobranca.Columns("CONTA").HeaderCell.Style = cellCol
+                datagridCobranca.Columns("CONTA").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+                datagridCobranca.Columns("CONTA").DisplayIndex = datagridCobranca.Columns.Count - 2
 
-                Return oDataSet
-
+                datagridCobranca.Columns("CONTA BÁNCARIA").HeaderCell.Style = cellCol
+                datagridCobranca.Columns("CONTA").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+                datagridCobranca.Columns("CONTA BÁNCARIA").HeaderText = "BÁNCARIA"
 
             End If
-            'dgCobranca.Refresh()
 
-
+            Return oDataSet
 
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro",, eImagens.Cancel)
@@ -192,10 +186,10 @@ Public Class frmCobranca
         Dim ok As Integer = Nothing
         Dim erro As Integer = Nothing
         Try
-            checados = DataGrid.SelectedRows.Count
+            checados = datagridCobranca.SelectedRows.Count
 
-            checados = CInt(DataGrid.ObterTodosChecados)
-            rCobranca = DataGrid.ObterTodasChaves
+            checados = CInt(datagridCobranca.ObterTodosChecados)
+            rCobranca = datagridCobranca.ObterTodasChaves
             If checados > 1 Then
                 If rCobranca <> "" Then
                     If Mensagem(eTipoMensagem.Question, checados) = eRet.Sim Then
@@ -513,7 +507,7 @@ Public Class frmCobranca
     End Sub
     Private Sub Alterar()
         Try
-            cCobranca = DataGrid.ObterChave
+            cCobranca = datagridCobranca.ObterChave
 
             If cCobranca <> 0 Then
                 oForm = New frmNovaCobranca(cCobranca)
@@ -523,7 +517,7 @@ Public Class frmCobranca
                 End If
             End If
 
-            DataGrid.HabilitarDesabilitarEdicao()
+            datagridCobranca.HabilitarDesabilitarEdicao()
             'If dgCobranca.SelectedRows.Count = 1 Then
 
             '    cCobranca = CDec(dgCobranca.SelectedRows.Item(0).Cells(1).Value)
@@ -556,7 +550,7 @@ Public Class frmCobranca
     Private Sub chkSelecionaTodos_CheckedChanged(sender As Object, e As EventArgs) Handles chkSelecionaTodos.CheckedChanged
 
         Try
-            DataGrid.MarcaDesmarcaTodos(chkSelecionaTodos)
+            datagridCobranca.MarcaDesmarcaTodos(chkSelecionaTodos)
 
             'If dgCobranca.Rows.Count > 0 Then
 
@@ -604,11 +598,11 @@ Public Class frmCobranca
         DataGridSelecao()
     End Sub
 
-    Private Sub DataGrid_CellMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DataGrid.CellMouseDoubleClick
+    Private Sub datagridCobranca_CellMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridCobranca.CellMouseDoubleClick
         Alterar()
     End Sub
 
-    Private Sub DataGrid_SelectionChanged(sender As Object, e As EventArgs) Handles DataGrid.SelectionChanged
+    Private Sub datagridCobranca_SelectionChanged(sender As Object, e As EventArgs) Handles datagridCobranca.SelectionChanged
         ControleBotoes()
     End Sub
 End Class
