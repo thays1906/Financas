@@ -120,14 +120,14 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="rbFrequente.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbo
-        vLKMAAABSElEQVQ4T53Uu0oDQRTG8U1iEbstbQRJY298ijxBDCjGQqxtFLTQwmDpg1h4CXgFrexFVKzE
-        QnwCCy+w/j93jp6MY5MDv2JOzn4MM9nNiqL4g5pED/d4wztusI6JaLaCPA4YwQaeoUbKI1bCfA27uPYh
-        Y7iCf0g+grh/ipOfdQipIw45wByawSz24Gd+haA113xF23YaoxbCXCwbx4trdFIBQo1CZ2KzXrbjFpep
-        AEMdutlY1oGuWpqpAEO1sY2tSDf5wDCSzWGoumF7nrb/780JNQU7kpYa6qb0UwGGunCzy2rYwtMV11MB
-        Qs2EOXlAjoEAs5gKEEo3pz+tzS6F/kCA18c8pqFXRK/LPvzMEWpx0DHO3dp8IvXSniF3O+UTUJ5J9XtV
-        vndPiB80+m0VVQuxIB1UJWo2oO/SHbQbfdxusYmGny0V2RcvhfjBW8fDdAAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAFISURBVDhP
+        ndS7SgNBFMbxTWIRuy1tBEljb3yKPEEMKMZCrG0UtNDCYOmDWHgJeAWt7EVUrMRCfAILL7D+P3eOnoxj
+        kwO/Yk7Ofgwz2c2KoviDmkQP93jDO26wjolotoI8DhjBBp6hRsojVsJ8Dbu49iFjuIJ/SD6CuH+Kk591
+        CKkjDjnAHJrBLPbgZ36FoDXXfEXbdhqjFsJcLBvHi2t0UgFCjUJnYrNetuMWl6kAQx262VjWga5amqkA
+        Q7Wxja1IN/nAMJLNYai6YXuetv/vzQk1BTuSlhrqpvRTAYa6cLPLatjC0xXXUwFCzYQ5eUCOgQCzmAoQ
+        SjenP63NLoX+QIDXxzymoVdEr8s+/MwRanHQMc7d2nwi9dKeIXc75RNQnkn1e1W+d0+IHzT6bRVVC7Eg
+        HVQlajag79IdtBt93G6xiYafLRXZFy+F+MFbx8N0AAAAAElFTkSuQmCC
 </value>
   </data>
   <metadata name="ImgNewCobr.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -138,7 +138,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADa
-        WgAAAk1TRnQBSQFMAgEBAgEAATgBAAE4AQABPAEAATABAAT/AREBAAj/AUIBTQE2BwABNgMAASgDAAHw
+        WgAAAk1TRnQBSQFMAgEBAgEAAVgBAAFYAQABPAEAATABAAT/AREBAAj/AUIBTQE2BwABNgMAASgDAAHw
         AwABMAMAAQEBAAEQBgABWhIAAf8BfwG+AWcBfgFHAX4BLwF+AS8BfgEvAX4BLwF+AS8BfgEvAX4BLwF+
         AS8BfgEvAX4BLwF+AS8BfgEvAX4BLwF+AS8BfgEvAX4BLwF+AS8BfgEvAX4BLwF+AS8BfgEvAX4BLwF+
         AS8BfgEvAX4BLwF+AS8BfgEvAX4BLwF+AS8BfgEvAX4BLwF+AS8BfgEvAX4BLwF+AS8BfgEvAX4BLwF+

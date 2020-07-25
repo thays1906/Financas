@@ -16,6 +16,9 @@ Public Class pCobrancaPagamento
         Public Shared dtFim As Campo = New Campo("dtFim", DbType.Date, 10, 0)
         Public Shared cMes As Campo = New Campo("cMes", DbType.Decimal, 2, 0)
         Public Shared cAno As Campo = New Campo("cAno", DbType.Decimal, 4, 0)
+        Public Shared cLembrete As Campo = New Campo("cLembrete", DbType.Decimal, 1, 0)
+        Public Shared dtLembrete As Campo = New Campo("dtLembrete", DbType.Date, 10, 0)
+        Public Shared cFrequencia As Campo = New Campo("cFrequencia", DbType.Decimal, 4, 0)
 
     End Class
 
@@ -23,7 +26,10 @@ Public Class pCobrancaPagamento
                             ByVal _cValor As Decimal,
                             ByVal _rNome As String,
                             ByVal _cStatus As eStatusDespesa,
-                            ByVal _cConta As Decimal) As Boolean
+                            ByVal _cConta As Decimal,
+                            ByVal _cLembrete As Decimal,
+                            ByVal _dtLembrete As Date,
+                            ByVal _cFrequencia As Decimal) As Boolean
         Try
             bDados = New BancoDados()
 
@@ -34,6 +40,9 @@ Public Class pCobrancaPagamento
             bDados.AdicionaParametro(pCobrancaPagamento.rTitular, _rNome)
             bDados.AdicionaParametro(pCobrancaPagamento.cStatus, _cStatus)
             bDados.AdicionaParametro(pCobrancaPagamento.cConta, _cConta)
+            bDados.AdicionaParametro(pCobrancaPagamento.cLembrete, _cLembrete)
+            bDados.AdicionaParametro(pCobrancaPagamento.dtLembrete, _dtLembrete)
+            bDados.AdicionaParametro(pCobrancaPagamento.cFrequencia, _cFrequencia)
 
             If bDados.Executar(PROCEDURE) Then
                 Return True
@@ -51,7 +60,10 @@ Public Class pCobrancaPagamento
                             ByVal _cValor As Decimal,
                             ByVal _rNome As String,
                             ByVal _cStatus As eStatusDespesa,
-                            ByVal _cConta As Decimal) As Boolean
+                            ByVal _cConta As Decimal,
+                            ByVal _cLembrete As Decimal,
+                            ByVal _dtLembrete As Date,
+                            ByVal _cFrequencia As Decimal) As Boolean
         Try
             bDados = New BancoDados()
 
@@ -63,6 +75,10 @@ Public Class pCobrancaPagamento
             bDados.AdicionaParametro(pCobrancaPagamento.rTitular, _rNome)
             bDados.AdicionaParametro(pCobrancaPagamento.cStatus, _cStatus)
             bDados.AdicionaParametro(pCobrancaPagamento.cConta, _cConta)
+            bDados.AdicionaParametro(pCobrancaPagamento.cLembrete, _cLembrete)
+            bDados.AdicionaParametro(pCobrancaPagamento.dtLembrete, _dtLembrete)
+            bDados.AdicionaParametro(pCobrancaPagamento.cFrequencia, _cFrequencia)
+
 
             If bDados.Executar(PROCEDURE) Then
                 Return True
@@ -182,35 +198,7 @@ Public Class pCobrancaPagamento
         End Try
     End Function
 
-    Shared Function PesquisarS() As SuperDataSet
-
-        Dim oDataSet As SuperDataSet
-        Try
-            bDados = New BancoDados()
-
-            bDados.LimpaParametros()
-            bDados.AdicionaParametro(OPERACAO, "GRID")
 
 
-            bDados.AdicionaParametro(pCobrancaPagamento.cMes, 0)
-            bDados.AdicionaParametro(pCobrancaPagamento.cAno, 12)
-
-
-
-
-
-            oDataSet = bDados.Obter(PROCEDURE)
-
-            If oDataSet IsNot Nothing Then
-                Return oDataSet
-            Else
-                Return Nothing
-            End If
-
-        Catch ex As Exception
-            Return Nothing
-            MessageBox.Show(ex.Message)
-        End Try
-    End Function
 
 End Class

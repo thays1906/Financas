@@ -335,6 +335,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="iconFinanceiro4.ico" />
+    <None Include="Resources\iconStatusAtrasado%28Alerta%29.png" />
     <None Include="Resources\imgFINANCES_MANAGEMENT_principal.png" />
     <None Include="Resources\iconUsuario95x75.png" />
     <None Include="Resources\iconUsuar.png" />
@@ -349,9 +350,6 @@
     <None Include="Resources\iconAddDespesa.png" />
     <None Include="Resources\iconAddBlue.png" />
     <None Include="Resources\iconAbout.png" />
-    <None Include="Resources\Bank.png" />
-    <None Include="Resources\Bankmini.fw.png" />
-    <Content Include="Resources\iconAtrasado.bmp" />
     <None Include="Resources\iconPago.png" />
     <None Include="Resources\iconePesquisar.png" />
     <None Include="Resources\iconEditarFile.png" />
@@ -365,7 +363,6 @@
     <None Include="Resources\iconEnvioEmail.png" />
     <None Include="Resources\iconDespesa.png" />
     <None Include="Resources\iconBank.png" />
-    <None Include="Resources\iconBank_mini.png" />
     <None Include="Resources\iconBankmini.fw.png" />
     <None Include="Resources\iconHome.png" />
     <Content Include="Resources\iconPendente.png" />

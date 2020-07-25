@@ -4,6 +4,9 @@ Imports GFT.Util.SuperComboBox
 Public Class frmNovaCobranca
     Public cCobranca As Decimal
     Public bAlterado As Boolean = False
+    Public cLembrete As Decimal = Nothing
+    Public dataLembrete As Date = Nothing
+    Public cFrequencia As Decimal = Nothing
 
     Sub New(ByVal _cCobranca As Decimal)
 
@@ -57,13 +60,17 @@ Public Class frmNovaCobranca
     Private Sub btnSalvar_Click(sender As Object, e As EventArgs) Handles btnSalvar.Click
         Try
             If VerificarCampos() Then
-
                 If cCobranca = 0 Then
+
+
 
                     If pCobrancaPagamento.Inserir(dtregistro.Value,
                                            CDec(txtValor.Text),
                                            txtNome.Text, CType(cbStatus.ObterChaveCombo, eStatusDespesa),
-                                           CDec(cbConta.ObterChaveCombo)) Then
+                                           CDec(cbConta.ObterChaveCombo),
+                                           cLembrete,
+                                           dataLembrete,
+                                           cFrequencia) Then
 
                         S_MsgBox("Lançamento efetuado com sucesso!",
                                  eBotoes.Ok,
@@ -84,17 +91,21 @@ Public Class frmNovaCobranca
                                                CDec(txtValor.Text),
                                                txtNome.Text,
                                                CType(cbStatus.ObterChaveCombo, eStatusDespesa),
-                                               CDec(cbConta.ObterChaveCombo)) Then
+                                               CDec(cbConta.ObterChaveCombo),
+                                               cLembrete,
+                                               dataLembrete,
+                                               cFrequencia) Then
 
                         S_MsgBox("Registro alterado com sucesso!",
                                  eBotoes.Ok,
                                  "Cobrança de empréstimos",,
                                  eImagens.FileOK)
+
                         bAlterado = True
                     Else
-                        S_MsgBox("Desculpe, não foi possível alterar registro.",
+                        S_MsgBox("Desculpe, não foi possível alterar o registro.",
                                  eBotoes.Ok,
-                                 "Cobrança de empréstimos",,
+                                 "Empréstimos e Cobranças",,
                                  eImagens.Cancel)
 
                     End If
@@ -189,9 +200,6 @@ Public Class frmNovaCobranca
 
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro",, eImagens.Cancel)
-        Finally
-            col.Clear()
-            rs.Dispose()
         End Try
     End Sub
 
@@ -232,6 +240,7 @@ Public Class frmNovaCobranca
             CarregarCombo(False)
 
             If chkLembrete.Checked Then
+                cLembrete = 1
 
                 gbFrequencia.Visible = True
                 gbData.Visible = True
@@ -239,6 +248,7 @@ Public Class frmNovaCobranca
 
                 pnlNovaCobranca.ScrollControlIntoView(dtLembrete)
             Else
+                cLembrete = 2
                 gbFrequencia.Visible = False
                 gbData.Visible = False
 
@@ -255,9 +265,11 @@ Public Class frmNovaCobranca
     Private Sub rbFrequente_CheckedChanged(sender As Object, e As EventArgs) Handles rbFrequente.CheckedChanged
         Try
             If rbFrequente.Checked Then
+                cFrequencia = CType(cbfrquencia.ObterChaveCombo, eDespesaFixa)
                 rbData.Checked = False
                 cbfrquencia.Enabled = True
             Else
+                cFrequencia = Nothing
                 cbfrquencia.Enabled = False
             End If
         Catch ex As Exception
@@ -268,6 +280,8 @@ Public Class frmNovaCobranca
     Private Sub rbData_CheckedChanged(sender As Object, e As EventArgs) Handles rbData.CheckedChanged
         Try
             If rbData.Checked Then
+                dataLembrete = dtLembrete.Value
+
                 rbFrequente.Checked = False
                 dtLembrete.Enabled = True
             Else

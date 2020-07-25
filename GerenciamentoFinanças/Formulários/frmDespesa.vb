@@ -535,7 +535,7 @@ Public Class frmDespesa
                         ElseIf cStatus = 2 Then
                             btn.Image = My.Resources.iconPendente
                         ElseIf cStatus = 3 Then
-                            btn.Image = My.Resources.iconAtrasado
+                            btn.Image = My.Resources.iconStatusAtrasado_Alerta_
                         End If
 
                         If i < 6 Then

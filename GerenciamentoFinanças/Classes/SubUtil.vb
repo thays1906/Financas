@@ -314,11 +314,11 @@ Public Module SubUtil
 
             ElseIf rBanco.Contains("CAIXA") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("AME") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("PICPAY") Then
 
@@ -330,63 +330,63 @@ Public Module SubUtil
 
             ElseIf rBanco.Contains("INTER") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("HSBC") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("AGIBANK") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("BOVESPA") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("SAFRA") Then
 
-                img = My.Resources.Bankmini_fw
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("STONE") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("ORIGINAL") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("BRASIL") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("CITIBANK") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("CETELEM") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("NEON") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("NEXT") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("BS2") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("DAYCOVAL") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("PAGBANK") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("MERCANTIL") Then
 
@@ -394,18 +394,17 @@ Public Module SubUtil
 
             ElseIf rBanco.Contains("PAYPAL") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("CREFISA") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
 
             ElseIf rBanco.Contains("PAN") Then
 
-                img = My.Resources.iconBank
+                img = My.Resources.iconBankmini_fw
             Else
-                'img = My.Resources.iconBank
-                'img = My.Resources.iconBank_mini
+                img = My.Resources.iconBankmini_fw
             End If
 
             Return img

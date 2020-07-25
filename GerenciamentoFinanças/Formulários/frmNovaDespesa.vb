@@ -858,7 +858,7 @@ Public Class frmNovaDespesa
                 picStatus.Image = My.Resources.iconPago
 
             Else
-                picStatus.Image = My.Resources.iconAtrasado
+                picStatus.Image = My.Resources.iconStatusAtrasado_Alerta_
 
             End If
         Else

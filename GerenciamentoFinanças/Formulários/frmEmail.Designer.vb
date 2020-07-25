@@ -26,52 +26,15 @@ Partial Class frmEmail
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewCheckBoxColumn3 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewCheckBoxColumn4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.dgNormal = New System.Windows.Forms.DataGridView()
         Me.chkEMail = New System.Windows.Forms.CheckBox()
         Me.txtObter = New System.Windows.Forms.TextBox()
         Me.btnObter = New System.Windows.Forms.Button()
         Me.btnChave = New System.Windows.Forms.Button()
-        Me.DataGridViewCheckBoxColumn5 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.dgConsulta = New GFT.Util.SuperDataGridView()
         CType(Me.dgNormal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgConsulta, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn1.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn1.MinimumWidth = 6
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        Me.DataGridViewCheckBoxColumn1.Width = 125
-        '
-        'DataGridViewCheckBoxColumn2
-        '
-        Me.DataGridViewCheckBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn2.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn2.MinimumWidth = 6
-        Me.DataGridViewCheckBoxColumn2.Name = "DataGridViewCheckBoxColumn2"
-        Me.DataGridViewCheckBoxColumn2.Width = 125
-        '
-        'DataGridViewCheckBoxColumn3
-        '
-        Me.DataGridViewCheckBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn3.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn3.MinimumWidth = 6
-        Me.DataGridViewCheckBoxColumn3.Name = "DataGridViewCheckBoxColumn3"
-        Me.DataGridViewCheckBoxColumn3.Width = 125
-        '
-        'DataGridViewCheckBoxColumn4
-        '
-        Me.DataGridViewCheckBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn4.HeaderText = ""
-        Me.DataGridViewCheckBoxColumn4.MinimumWidth = 6
-        Me.DataGridViewCheckBoxColumn4.Name = "DataGridViewCheckBoxColumn4"
-        Me.DataGridViewCheckBoxColumn4.Width = 125
         '
         'dgNormal
         '
@@ -87,7 +50,8 @@ Partial Class frmEmail
         Me.dgNormal.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.dgNormal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgNormal.GridColor = System.Drawing.Color.Crimson
-        Me.dgNormal.Location = New System.Drawing.Point(50, 12)
+        Me.dgNormal.Location = New System.Drawing.Point(38, 10)
+        Me.dgNormal.Margin = New System.Windows.Forms.Padding(2)
         Me.dgNormal.MultiSelect = False
         Me.dgNormal.Name = "dgNormal"
         Me.dgNormal.RowHeadersVisible = False
@@ -99,57 +63,51 @@ Partial Class frmEmail
         Me.dgNormal.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.dgNormal.RowTemplate.Height = 24
         Me.dgNormal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgNormal.Size = New System.Drawing.Size(1190, 247)
+        Me.dgNormal.Size = New System.Drawing.Size(892, 201)
         Me.dgNormal.TabIndex = 1
         '
         'chkEMail
         '
         Me.chkEMail.AutoSize = True
-        Me.chkEMail.Location = New System.Drawing.Point(50, 265)
+        Me.chkEMail.Location = New System.Drawing.Point(38, 215)
+        Me.chkEMail.Margin = New System.Windows.Forms.Padding(2)
         Me.chkEMail.Name = "chkEMail"
-        Me.chkEMail.Size = New System.Drawing.Size(142, 21)
+        Me.chkEMail.Size = New System.Drawing.Size(112, 17)
         Me.chkEMail.TabIndex = 3
         Me.chkEMail.Text = "Marca/Desmarcar"
         Me.chkEMail.UseVisualStyleBackColor = True
         '
         'txtObter
         '
-        Me.txtObter.Location = New System.Drawing.Point(231, 265)
+        Me.txtObter.Location = New System.Drawing.Point(173, 215)
+        Me.txtObter.Margin = New System.Windows.Forms.Padding(2)
         Me.txtObter.Name = "txtObter"
-        Me.txtObter.Size = New System.Drawing.Size(129, 22)
+        Me.txtObter.Size = New System.Drawing.Size(98, 20)
         Me.txtObter.TabIndex = 5
         '
         'btnObter
         '
-        Me.btnObter.Location = New System.Drawing.Point(402, 260)
+        Me.btnObter.Location = New System.Drawing.Point(302, 211)
+        Me.btnObter.Margin = New System.Windows.Forms.Padding(2)
         Me.btnObter.Name = "btnObter"
-        Me.btnObter.Size = New System.Drawing.Size(145, 27)
+        Me.btnObter.Size = New System.Drawing.Size(109, 22)
         Me.btnObter.TabIndex = 6
         Me.btnObter.Text = "Obter"
         Me.btnObter.UseVisualStyleBackColor = True
         '
         'btnChave
         '
-        Me.btnChave.Location = New System.Drawing.Point(571, 263)
+        Me.btnChave.Location = New System.Drawing.Point(428, 214)
+        Me.btnChave.Margin = New System.Windows.Forms.Padding(2)
         Me.btnChave.Name = "btnChave"
-        Me.btnChave.Size = New System.Drawing.Size(145, 27)
+        Me.btnChave.Size = New System.Drawing.Size(109, 22)
         Me.btnChave.TabIndex = 8
         Me.btnChave.Text = "Obter chave"
         Me.btnChave.UseVisualStyleBackColor = True
         '
-        'DataGridViewCheckBoxColumn5
-        '
-        Me.DataGridViewCheckBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn5.HeaderText = "Selecionar"
-        Me.DataGridViewCheckBoxColumn5.MinimumWidth = 6
-        Me.DataGridViewCheckBoxColumn5.Name = "DataGridViewCheckBoxColumn5"
-        Me.DataGridViewCheckBoxColumn5.Width = 125
-        '
         'dgConsulta
         '
-        Me.dgConsulta.AdicionarCheckBox = False
-        Me.dgConsulta.AllowUserToAddRows = False
-        Me.dgConsulta.AllowUserToDeleteRows = False
+        Me.dgConsulta.AdicionarCheckBox = True
         Me.dgConsulta.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -179,23 +137,20 @@ Partial Class frmEmail
         DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dgConsulta.DefaultCellStyle = DataGridViewCellStyle4
         Me.dgConsulta.EnableHeadersVisualStyles = False
-        Me.dgConsulta.Location = New System.Drawing.Point(48, 314)
-        Me.dgConsulta.MultiSelect = False
+        Me.dgConsulta.Location = New System.Drawing.Point(42, 250)
         Me.dgConsulta.Name = "dgConsulta"
         Me.dgConsulta.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
         Me.dgConsulta.RowHeadersVisible = False
-        Me.dgConsulta.RowHeadersWidth = 51
-        Me.dgConsulta.RowTemplate.Height = 24
         Me.dgConsulta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgConsulta.Size = New System.Drawing.Size(1191, 366)
+        Me.dgConsulta.Size = New System.Drawing.Size(887, 310)
         Me.dgConsulta.TabIndex = 9
         '
         'frmEmail
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(1281, 712)
+        Me.ClientSize = New System.Drawing.Size(961, 578)
         Me.Controls.Add(Me.dgConsulta)
         Me.Controls.Add(Me.btnChave)
         Me.Controls.Add(Me.btnObter)
@@ -203,7 +158,6 @@ Partial Class frmEmail
         Me.Controls.Add(Me.chkEMail)
         Me.Controls.Add(Me.dgNormal)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmEmail"
         Me.Text = "Envio de E-mail"
         CType(Me.dgNormal, System.ComponentModel.ISupportInitialize).EndInit()
@@ -213,15 +167,10 @@ Partial Class frmEmail
 
     End Sub
 
-    Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn2 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn3 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn4 As DataGridViewCheckBoxColumn
     Friend WithEvents dgNormal As DataGridView
     Friend WithEvents chkEMail As CheckBox
     Friend WithEvents txtObter As TextBox
     Friend WithEvents btnObter As Button
     Friend WithEvents btnChave As Button
     Friend WithEvents dgConsulta As GFT.Util.SuperDataGridView
-    Friend WithEvents DataGridViewCheckBoxColumn5 As DataGridViewCheckBoxColumn
 End Class

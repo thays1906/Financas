@@ -38,9 +38,9 @@ Public Class frmPrincipal
 #Else
         Verifica = TRUE
 #End If
-        'If Verifica Then
-        '    pInicializacao.Iniciar()
-        'End If
+        If Verifica Then
+            pInicializacao.Iniciar()
+        End If
 
         InicializaTelas()
         Cor(CType(SScima, Control), Collor.CinzaEscuro)

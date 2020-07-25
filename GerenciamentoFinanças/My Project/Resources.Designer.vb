@@ -63,16 +63,6 @@ Namespace My.Resources
         '''<summary>
         '''  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Bankmini_fw() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("Bankmini_fw", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        '''</summary>
         Friend ReadOnly Property iconAbout() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("iconAbout", resourceCulture)
@@ -106,16 +96,6 @@ Namespace My.Resources
         Friend ReadOnly Property iconAddReceita1() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("iconAddReceita1", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property iconAtrasado() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("iconAtrasado", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -496,6 +476,16 @@ Namespace My.Resources
         Friend ReadOnly Property iconSearchFile() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("iconSearchFile", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property iconStatusAtrasado_Alerta_() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("iconStatusAtrasado_Alerta_", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

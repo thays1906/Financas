@@ -27,7 +27,14 @@ Partial Class frmNovaCobranca
         Me.tabCtrlNovaCobranca = New System.Windows.Forms.TabControl()
         Me.tabNovaCobranca = New System.Windows.Forms.TabPage()
         Me.pnlNovaCobranca = New System.Windows.Forms.Panel()
-        Me.picBanco = New System.Windows.Forms.PictureBox()
+        Me.lblStatusAviso = New System.Windows.Forms.Label()
+        Me.lblDevedorAviso = New System.Windows.Forms.Label()
+        Me.lblValorAviso = New System.Windows.Forms.Label()
+        Me.gbFrequencia = New System.Windows.Forms.GroupBox()
+        Me.cbfrquencia = New GFT.Util.SuperComboBox()
+        Me.gbData = New System.Windows.Forms.GroupBox()
+        Me.dtLembrete = New System.Windows.Forms.DateTimePicker()
+        Me.rbData = New System.Windows.Forms.RadioButton()
         Me.chkLembrete = New System.Windows.Forms.CheckBox()
         Me.lblConta = New System.Windows.Forms.Label()
         Me.cbConta = New GFT.Util.SuperComboBox()
@@ -41,24 +48,17 @@ Partial Class frmNovaCobranca
         Me.dtregistro = New System.Windows.Forms.DateTimePicker()
         Me.letreiroCobranca = New GFT.Util.SuperLetreiro()
         Me.ImgNewCobr = New System.Windows.Forms.ImageList(Me.components)
-        Me.btnSalvar = New System.Windows.Forms.Button()
         Me.btnFechar = New System.Windows.Forms.Button()
-        Me.rbData = New System.Windows.Forms.RadioButton()
-        Me.rbFrequente = New System.Windows.Forms.RadioButton()
-        Me.gbData = New System.Windows.Forms.GroupBox()
-        Me.dtLembrete = New System.Windows.Forms.DateTimePicker()
-        Me.gbFrequencia = New System.Windows.Forms.GroupBox()
-        Me.cbfrquencia = New GFT.Util.SuperComboBox()
-        Me.lblValorAviso = New System.Windows.Forms.Label()
-        Me.lblDevedorAviso = New System.Windows.Forms.Label()
-        Me.lblStatusAviso = New System.Windows.Forms.Label()
+        Me.btnSalvar = New System.Windows.Forms.Button()
         Me.lblContaAviso = New System.Windows.Forms.Label()
+        Me.rbFrequente = New System.Windows.Forms.RadioButton()
+        Me.picBanco = New System.Windows.Forms.PictureBox()
         Me.tabCtrlNovaCobranca.SuspendLayout()
         Me.tabNovaCobranca.SuspendLayout()
         Me.pnlNovaCobranca.SuspendLayout()
-        CType(Me.picBanco, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gbData.SuspendLayout()
         Me.gbFrequencia.SuspendLayout()
+        Me.gbData.SuspendLayout()
+        CType(Me.picBanco, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tabCtrlNovaCobranca
@@ -116,21 +116,106 @@ Partial Class frmNovaCobranca
         Me.pnlNovaCobranca.Size = New System.Drawing.Size(701, 334)
         Me.pnlNovaCobranca.TabIndex = 2
         '
-        'picBanco
+        'lblStatusAviso
         '
-        Me.picBanco.Location = New System.Drawing.Point(317, 227)
-        Me.picBanco.Name = "picBanco"
-        Me.picBanco.Size = New System.Drawing.Size(48, 48)
-        Me.picBanco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.picBanco.TabIndex = 21
-        Me.picBanco.TabStop = False
+        Me.lblStatusAviso.AutoSize = True
+        Me.lblStatusAviso.Font = New System.Drawing.Font("Verdana", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.lblStatusAviso.ForeColor = System.Drawing.Color.Red
+        Me.lblStatusAviso.Location = New System.Drawing.Point(437, 65)
+        Me.lblStatusAviso.Name = "lblStatusAviso"
+        Me.lblStatusAviso.Size = New System.Drawing.Size(59, 17)
+        Me.lblStatusAviso.TabIndex = 28
+        Me.lblStatusAviso.Text = "Label1"
+        Me.lblStatusAviso.Visible = False
+        '
+        'lblDevedorAviso
+        '
+        Me.lblDevedorAviso.AutoSize = True
+        Me.lblDevedorAviso.Font = New System.Drawing.Font("Verdana", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.lblDevedorAviso.ForeColor = System.Drawing.Color.Red
+        Me.lblDevedorAviso.Location = New System.Drawing.Point(6, 168)
+        Me.lblDevedorAviso.Name = "lblDevedorAviso"
+        Me.lblDevedorAviso.Size = New System.Drawing.Size(59, 17)
+        Me.lblDevedorAviso.TabIndex = 27
+        Me.lblDevedorAviso.Text = "Label1"
+        Me.lblDevedorAviso.Visible = False
+        '
+        'lblValorAviso
+        '
+        Me.lblValorAviso.AutoSize = True
+        Me.lblValorAviso.Font = New System.Drawing.Font("Verdana", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.lblValorAviso.ForeColor = System.Drawing.Color.Red
+        Me.lblValorAviso.Location = New System.Drawing.Point(437, 168)
+        Me.lblValorAviso.Name = "lblValorAviso"
+        Me.lblValorAviso.Size = New System.Drawing.Size(59, 17)
+        Me.lblValorAviso.TabIndex = 26
+        Me.lblValorAviso.Text = "Label1"
+        Me.lblValorAviso.Visible = False
+        '
+        'gbFrequencia
+        '
+        Me.gbFrequencia.Controls.Add(Me.cbfrquencia)
+        Me.gbFrequencia.Controls.Add(Me.rbFrequente)
+        Me.gbFrequencia.Location = New System.Drawing.Point(401, 244)
+        Me.gbFrequencia.Name = "gbFrequencia"
+        Me.gbFrequencia.Size = New System.Drawing.Size(279, 100)
+        Me.gbFrequencia.TabIndex = 25
+        Me.gbFrequencia.TabStop = False
+        Me.gbFrequencia.Visible = False
+        '
+        'cbfrquencia
+        '
+        Me.cbfrquencia.Alterado = False
+        Me.cbfrquencia.CorFundo = System.Drawing.Color.White
+        Me.cbfrquencia.CorFundoSelecionado = System.Drawing.Color.White
+        Me.cbfrquencia.CorTexto = System.Drawing.Color.Black
+        Me.cbfrquencia.CorTextoSelecionado = System.Drawing.Color.Black
+        Me.cbfrquencia.Enabled = False
+        Me.cbfrquencia.FormattingEnabled = True
+        Me.cbfrquencia.Location = New System.Drawing.Point(6, 57)
+        Me.cbfrquencia.Name = "cbfrquencia"
+        Me.cbfrquencia.Size = New System.Drawing.Size(202, 26)
+        Me.cbfrquencia.SuperObrigatorio = False
+        Me.cbfrquencia.SuperTxtObrigatorio = ""
+        Me.cbfrquencia.TabIndex = 24
+        '
+        'gbData
+        '
+        Me.gbData.Controls.Add(Me.dtLembrete)
+        Me.gbData.Controls.Add(Me.rbData)
+        Me.gbData.Location = New System.Drawing.Point(401, 331)
+        Me.gbData.Name = "gbData"
+        Me.gbData.Size = New System.Drawing.Size(279, 111)
+        Me.gbData.TabIndex = 24
+        Me.gbData.TabStop = False
+        Me.gbData.Visible = False
+        '
+        'dtLembrete
+        '
+        Me.dtLembrete.Enabled = False
+        Me.dtLembrete.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtLembrete.Location = New System.Drawing.Point(6, 73)
+        Me.dtLembrete.Name = "dtLembrete"
+        Me.dtLembrete.Size = New System.Drawing.Size(200, 27)
+        Me.dtLembrete.TabIndex = 0
+        '
+        'rbData
+        '
+        Me.rbData.AutoSize = True
+        Me.rbData.Location = New System.Drawing.Point(6, 31)
+        Me.rbData.Name = "rbData"
+        Me.rbData.Size = New System.Drawing.Size(222, 22)
+        Me.rbData.TabIndex = 22
+        Me.rbData.TabStop = True
+        Me.rbData.Text = "Em uma data específica"
+        Me.rbData.UseVisualStyleBackColor = True
         '
         'chkLembrete
         '
         Me.chkLembrete.AutoSize = True
-        Me.chkLembrete.Location = New System.Drawing.Point(398, 227)
+        Me.chkLembrete.Location = New System.Drawing.Point(402, 217)
         Me.chkLembrete.Name = "chkLembrete"
-        Me.chkLembrete.Size = New System.Drawing.Size(235, 29)
+        Me.chkLembrete.Size = New System.Drawing.Size(189, 22)
         Me.chkLembrete.TabIndex = 20
         Me.chkLembrete.Text = "Quero ser lembrado"
         Me.chkLembrete.UseVisualStyleBackColor = True
@@ -138,10 +223,10 @@ Partial Class frmNovaCobranca
         'lblConta
         '
         Me.lblConta.AutoSize = True
-        Me.lblConta.Location = New System.Drawing.Point(0, 213)
+        Me.lblConta.Location = New System.Drawing.Point(4, 203)
         Me.lblConta.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblConta.Name = "lblConta"
-        Me.lblConta.Size = New System.Drawing.Size(179, 25)
+        Me.lblConta.Size = New System.Drawing.Size(142, 18)
         Me.lblConta.TabIndex = 19
         Me.lblConta.Text = "Conta Báncaria*"
         '
@@ -153,10 +238,10 @@ Partial Class frmNovaCobranca
         Me.cbConta.CorTexto = System.Drawing.Color.Black
         Me.cbConta.CorTextoSelecionado = System.Drawing.Color.Black
         Me.cbConta.FormattingEnabled = True
-        Me.cbConta.Location = New System.Drawing.Point(5, 242)
+        Me.cbConta.Location = New System.Drawing.Point(9, 232)
         Me.cbConta.Margin = New System.Windows.Forms.Padding(4)
         Me.cbConta.Name = "cbConta"
-        Me.cbConta.Size = New System.Drawing.Size(305, 33)
+        Me.cbConta.Size = New System.Drawing.Size(305, 26)
         Me.cbConta.SuperObrigatorio = True
         Me.cbConta.SuperTxtObrigatorio = "Conta Báncaria"
         Me.cbConta.TabIndex = 15
@@ -164,20 +249,20 @@ Partial Class frmNovaCobranca
         'lblData
         '
         Me.lblData.AutoSize = True
-        Me.lblData.Location = New System.Drawing.Point(0, 16)
+        Me.lblData.Location = New System.Drawing.Point(4, 6)
         Me.lblData.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblData.Name = "lblData"
-        Me.lblData.Size = New System.Drawing.Size(68, 25)
+        Me.lblData.Size = New System.Drawing.Size(54, 18)
         Me.lblData.TabIndex = 18
         Me.lblData.Text = "Data:"
         '
         'lblValor
         '
         Me.lblValor.AutoSize = True
-        Me.lblValor.Location = New System.Drawing.Point(431, 118)
+        Me.lblValor.Location = New System.Drawing.Point(435, 108)
         Me.lblValor.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblValor.Name = "lblValor"
-        Me.lblValor.Size = New System.Drawing.Size(202, 25)
+        Me.lblValor.Size = New System.Drawing.Size(162, 18)
         Me.lblValor.TabIndex = 17
         Me.lblValor.Text = "Valor emprestado*"
         '
@@ -186,10 +271,10 @@ Partial Class frmNovaCobranca
         Me.txtValor.Alterado = False
         Me.txtValor.BackColor = System.Drawing.Color.White
         Me.txtValor.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
-        Me.txtValor.Location = New System.Drawing.Point(436, 147)
+        Me.txtValor.Location = New System.Drawing.Point(440, 137)
         Me.txtValor.Margin = New System.Windows.Forms.Padding(4)
         Me.txtValor.Name = "txtValor"
-        Me.txtValor.Size = New System.Drawing.Size(227, 32)
+        Me.txtValor.Size = New System.Drawing.Size(227, 27)
         Me.txtValor.SuperMascara = ""
         Me.txtValor.SuperObrigatorio = True
         Me.txtValor.SuperTravaErrors = False
@@ -201,20 +286,20 @@ Partial Class frmNovaCobranca
         'lblNome
         '
         Me.lblNome.AutoSize = True
-        Me.lblNome.Location = New System.Drawing.Point(0, 118)
+        Me.lblNome.Location = New System.Drawing.Point(6, 115)
         Me.lblNome.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNome.Name = "lblNome"
-        Me.lblNome.Size = New System.Drawing.Size(226, 25)
+        Me.lblNome.Size = New System.Drawing.Size(183, 18)
         Me.lblNome.TabIndex = 16
         Me.lblNome.Text = "Quem está devendo*"
         '
         'lblStatus
         '
         Me.lblStatus.AutoSize = True
-        Me.lblStatus.Location = New System.Drawing.Point(431, 16)
+        Me.lblStatus.Location = New System.Drawing.Point(435, 6)
         Me.lblStatus.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(90, 25)
+        Me.lblStatus.Size = New System.Drawing.Size(71, 18)
         Me.lblStatus.TabIndex = 14
         Me.lblStatus.Text = "Status*"
         '
@@ -226,10 +311,10 @@ Partial Class frmNovaCobranca
         Me.cbStatus.CorTexto = System.Drawing.Color.Black
         Me.cbStatus.CorTextoSelecionado = System.Drawing.Color.Black
         Me.cbStatus.FormattingEnabled = True
-        Me.cbStatus.Location = New System.Drawing.Point(436, 45)
+        Me.cbStatus.Location = New System.Drawing.Point(440, 35)
         Me.cbStatus.Margin = New System.Windows.Forms.Padding(4)
         Me.cbStatus.Name = "cbStatus"
-        Me.cbStatus.Size = New System.Drawing.Size(227, 33)
+        Me.cbStatus.Size = New System.Drawing.Size(227, 26)
         Me.cbStatus.SuperObrigatorio = True
         Me.cbStatus.SuperTxtObrigatorio = "Status"
         Me.cbStatus.TabIndex = 11
@@ -239,10 +324,10 @@ Partial Class frmNovaCobranca
         Me.txtNome.Alterado = False
         Me.txtNome.BackColor = System.Drawing.Color.White
         Me.txtNome.CorFundoSelecionado = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(206, Byte), Integer))
-        Me.txtNome.Location = New System.Drawing.Point(5, 147)
+        Me.txtNome.Location = New System.Drawing.Point(9, 137)
         Me.txtNome.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNome.Name = "txtNome"
-        Me.txtNome.Size = New System.Drawing.Size(391, 32)
+        Me.txtNome.Size = New System.Drawing.Size(391, 27)
         Me.txtNome.SuperMascara = ""
         Me.txtNome.SuperObrigatorio = True
         Me.txtNome.SuperTravaErrors = False
@@ -254,10 +339,10 @@ Partial Class frmNovaCobranca
         'dtregistro
         '
         Me.dtregistro.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtregistro.Location = New System.Drawing.Point(5, 46)
+        Me.dtregistro.Location = New System.Drawing.Point(9, 36)
         Me.dtregistro.Margin = New System.Windows.Forms.Padding(4)
         Me.dtregistro.Name = "dtregistro"
-        Me.dtregistro.Size = New System.Drawing.Size(209, 32)
+        Me.dtregistro.Size = New System.Drawing.Size(209, 27)
         Me.dtregistro.TabIndex = 10
         '
         'letreiroCobranca
@@ -279,6 +364,19 @@ Partial Class frmNovaCobranca
         Me.ImgNewCobr.Images.SetKeyName(0, "iconCobr.png")
         Me.ImgNewCobr.Images.SetKeyName(1, "iconeCObr.png")
         '
+        'btnFechar
+        '
+        Me.btnFechar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
+        Me.btnFechar.Location = New System.Drawing.Point(832, -2)
+        Me.btnFechar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnFechar.Name = "btnFechar"
+        Me.btnFechar.Size = New System.Drawing.Size(75, 57)
+        Me.btnFechar.TabIndex = 6
+        Me.btnFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnFechar.UseVisualStyleBackColor = True
+        '
         'btnSalvar
         '
         Me.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.Top
@@ -294,140 +392,44 @@ Partial Class frmNovaCobranca
         Me.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnSalvar.UseVisualStyleBackColor = True
         '
-        'btnFechar
+        'lblContaAviso
         '
-        Me.btnFechar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
-        Me.btnFechar.Location = New System.Drawing.Point(832, -2)
-        Me.btnFechar.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnFechar.Name = "btnFechar"
-        Me.btnFechar.Size = New System.Drawing.Size(75, 57)
-        Me.btnFechar.TabIndex = 6
-        Me.btnFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnFechar.UseVisualStyleBackColor = True
-        '
-        'rbData
-        '
-        Me.rbData.AutoSize = True
-        Me.rbData.Location = New System.Drawing.Point(6, 31)
-        Me.rbData.Name = "rbData"
-        Me.rbData.Size = New System.Drawing.Size(271, 29)
-        Me.rbData.TabIndex = 22
-        Me.rbData.TabStop = True
-        Me.rbData.Text = "Em uma data específica"
-        Me.rbData.UseVisualStyleBackColor = True
+        Me.lblContaAviso.AutoEllipsis = True
+        Me.lblContaAviso.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.lblContaAviso.Font = New System.Drawing.Font("Verdana", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.lblContaAviso.ForeColor = System.Drawing.Color.Red
+        Me.lblContaAviso.ImageAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.lblContaAviso.Location = New System.Drawing.Point(6, 262)
+        Me.lblContaAviso.Name = "lblContaAviso"
+        Me.lblContaAviso.Size = New System.Drawing.Size(308, 55)
+        Me.lblContaAviso.TabIndex = 29
+        Me.lblContaAviso.Text = "Label1"
+        Me.lblContaAviso.Visible = False
         '
         'rbFrequente
         '
-        Me.rbFrequente.AutoSize = True
         Me.rbFrequente.FlatAppearance.BorderColor = System.Drawing.Color.Red
         Me.rbFrequente.FlatAppearance.BorderSize = 20
         Me.rbFrequente.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.rbFrequente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gold
-        Me.rbFrequente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.rbFrequente.Image = CType(resources.GetObject("rbFrequente.Image"), System.Drawing.Image)
-        Me.rbFrequente.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.rbFrequente.Location = New System.Drawing.Point(6, 22)
         Me.rbFrequente.Name = "rbFrequente"
-        Me.rbFrequente.Size = New System.Drawing.Size(150, 31)
+        Me.rbFrequente.Size = New System.Drawing.Size(132, 26)
         Me.rbFrequente.TabIndex = 23
         Me.rbFrequente.Text = "Frequente"
         Me.rbFrequente.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.rbFrequente.UseCompatibleTextRendering = True
         Me.rbFrequente.UseVisualStyleBackColor = True
         '
-        'gbData
+        'picBanco
         '
-        Me.gbData.Controls.Add(Me.dtLembrete)
-        Me.gbData.Controls.Add(Me.rbData)
-        Me.gbData.Location = New System.Drawing.Point(397, 341)
-        Me.gbData.Name = "gbData"
-        Me.gbData.Size = New System.Drawing.Size(279, 111)
-        Me.gbData.TabIndex = 24
-        Me.gbData.TabStop = False
-        Me.gbData.Visible = False
-        '
-        'dtLembrete
-        '
-        Me.dtLembrete.Enabled = False
-        Me.dtLembrete.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtLembrete.Location = New System.Drawing.Point(6, 73)
-        Me.dtLembrete.Name = "dtLembrete"
-        Me.dtLembrete.Size = New System.Drawing.Size(200, 32)
-        Me.dtLembrete.TabIndex = 0
-        '
-        'gbFrequencia
-        '
-        Me.gbFrequencia.Controls.Add(Me.cbfrquencia)
-        Me.gbFrequencia.Controls.Add(Me.rbFrequente)
-        Me.gbFrequencia.Location = New System.Drawing.Point(397, 254)
-        Me.gbFrequencia.Name = "gbFrequencia"
-        Me.gbFrequencia.Size = New System.Drawing.Size(279, 100)
-        Me.gbFrequencia.TabIndex = 25
-        Me.gbFrequencia.TabStop = False
-        Me.gbFrequencia.Visible = False
-        '
-        'cbfrquencia
-        '
-        Me.cbfrquencia.Alterado = False
-        Me.cbfrquencia.CorFundo = System.Drawing.Color.White
-        Me.cbfrquencia.CorFundoSelecionado = System.Drawing.Color.White
-        Me.cbfrquencia.CorTexto = System.Drawing.Color.Black
-        Me.cbfrquencia.CorTextoSelecionado = System.Drawing.Color.Black
-        Me.cbfrquencia.Enabled = False
-        Me.cbfrquencia.FormattingEnabled = True
-        Me.cbfrquencia.Location = New System.Drawing.Point(6, 57)
-        Me.cbfrquencia.Name = "cbfrquencia"
-        Me.cbfrquencia.Size = New System.Drawing.Size(202, 33)
-        Me.cbfrquencia.SuperObrigatorio = False
-        Me.cbfrquencia.SuperTxtObrigatorio = ""
-        Me.cbfrquencia.TabIndex = 24
-        '
-        'lblValorAviso
-        '
-        Me.lblValorAviso.AutoSize = True
-        Me.lblValorAviso.ForeColor = System.Drawing.Color.Red
-        Me.lblValorAviso.Location = New System.Drawing.Point(431, 183)
-        Me.lblValorAviso.Name = "lblValorAviso"
-        Me.lblValorAviso.Size = New System.Drawing.Size(78, 25)
-        Me.lblValorAviso.TabIndex = 26
-        Me.lblValorAviso.Text = "Label1"
-        Me.lblValorAviso.Visible = False
-        '
-        'lblDevedorAviso
-        '
-        Me.lblDevedorAviso.AutoSize = True
-        Me.lblDevedorAviso.ForeColor = System.Drawing.Color.Red
-        Me.lblDevedorAviso.Location = New System.Drawing.Point(3, 183)
-        Me.lblDevedorAviso.Name = "lblDevedorAviso"
-        Me.lblDevedorAviso.Size = New System.Drawing.Size(78, 25)
-        Me.lblDevedorAviso.TabIndex = 27
-        Me.lblDevedorAviso.Text = "Label1"
-        Me.lblDevedorAviso.Visible = False
-        '
-        'lblStatusAviso
-        '
-        Me.lblStatusAviso.AutoSize = True
-        Me.lblStatusAviso.ForeColor = System.Drawing.Color.Red
-        Me.lblStatusAviso.Location = New System.Drawing.Point(431, 82)
-        Me.lblStatusAviso.Name = "lblStatusAviso"
-        Me.lblStatusAviso.Size = New System.Drawing.Size(78, 25)
-        Me.lblStatusAviso.TabIndex = 28
-        Me.lblStatusAviso.Text = "Label1"
-        Me.lblStatusAviso.Visible = False
-        '
-        'lblContaAviso
-        '
-        Me.lblContaAviso.AutoEllipsis = True
-        Me.lblContaAviso.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.lblContaAviso.ForeColor = System.Drawing.Color.Red
-        Me.lblContaAviso.Location = New System.Drawing.Point(3, 280)
-        Me.lblContaAviso.Name = "lblContaAviso"
-        Me.lblContaAviso.Size = New System.Drawing.Size(300, 25)
-        Me.lblContaAviso.TabIndex = 29
-        Me.lblContaAviso.Text = "Label1"
-        Me.lblContaAviso.Visible = False
+        Me.picBanco.Location = New System.Drawing.Point(321, 217)
+        Me.picBanco.Name = "picBanco"
+        Me.picBanco.Size = New System.Drawing.Size(48, 48)
+        Me.picBanco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.picBanco.TabIndex = 21
+        Me.picBanco.TabStop = False
         '
         'frmNovaCobranca
         '
@@ -444,11 +446,10 @@ Partial Class frmNovaCobranca
         Me.tabNovaCobranca.ResumeLayout(False)
         Me.pnlNovaCobranca.ResumeLayout(False)
         Me.pnlNovaCobranca.PerformLayout()
-        CType(Me.picBanco, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbFrequencia.ResumeLayout(False)
         Me.gbData.ResumeLayout(False)
         Me.gbData.PerformLayout()
-        Me.gbFrequencia.ResumeLayout(False)
-        Me.gbFrequencia.PerformLayout()
+        CType(Me.picBanco, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

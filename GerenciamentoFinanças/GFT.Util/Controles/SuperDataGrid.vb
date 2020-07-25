@@ -25,8 +25,9 @@ Public Class SuperDataGridView
     Private bgColor As Color = Color.White
 
     'ColumnCheckBox
-    Private checkbox As DataGridViewCheckBoxColumn
+    Public Shared checkbox As DataGridViewCheckBoxColumn
     Public bChkBox As Boolean
+    Public adicionado As Integer = 0
 
 
     'Cabeçalho
@@ -63,23 +64,23 @@ Public Class SuperDataGridView
         End Get
         Set(value As Boolean)
             bChkBox = value
-            AdicionaCheckBoxColumn()
             Me.Invalidate()
+            AdicionaCheckBoxColumn()
+
         End Set
     End Property
 #End Region
 
     Sub New()
         Me.MultiSelect = True
+        Me.AllowUserToAddRows = False
 
         Me.EnableHeadersVisualStyles = False
         Me.Anchor = (AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right Or AnchorStyles.Bottom)
-        Me.AllowUserToAddRows = False
-        Me.AllowUserToDeleteRows = False
 
         'Define a distribuição das colunas no DataGrid
         Me.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill     'Redimensiona as colunas para ocupar todo o DatGrid
-        Me.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells 'Redimensiona as rows
+        Me.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells 'Redimensiona as rows
         Me.SelectionMode = DataGridViewSelectionMode.FullRowSelect        'Select row inteira
 
         'Define a borda/grade das colunas
@@ -117,17 +118,15 @@ Public Class SuperDataGridView
 
     Public Sub AdicionaCheckBoxColumn(Optional remove As Boolean = False)
         Dim list = New List(Of DataGridViewCheckBoxColumn)
-
         Try
             'Adiciona uma coluna de checkbox no DataGrid.
             If bChkBox = True Then
-
                 If remove Then
                     'Tratamento de erro (caso gere mais de uma column)
 
                     For Each check As DataGridViewCheckBoxColumn In Me.Columns.OfType(Of System.Windows.Forms.DataGridViewCheckBoxColumn)
 
-                        If check.Name <> "chkDataGrid" Then
+                        If check.Name <> "chkDataGrid" Or Me.Columns("chkDataGrid").Name.Count > 1 Then
                             list.Add(check)
                         End If
 
@@ -136,10 +135,12 @@ Public Class SuperDataGridView
                     For Each chk In list
 
                         Me.Columns.Remove(chk)
-
+                        checkbox.Dispose()
                     Next
                 End If
-                If Not Me.Columns.Contains(checkbox) Then
+                If adicionado = 0 Then
+                    adicionado += 1
+
                     checkbox = New DataGridViewCheckBoxColumn()
                     checkbox.Name = "chkDataGrid"
                     checkbox.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
@@ -147,14 +148,25 @@ Public Class SuperDataGridView
                     checkbox.DisplayIndex = 0
 
                     Me.Columns.Add(checkbox)
+                    Me.Rows.Add()
+                Else
+                    checkbox.Name = "chkDataGrid"
+                    checkbox.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+                    checkbox.HeaderText = "Selecionar"
+                    checkbox.DisplayIndex = 0
 
+                    Me.Columns.Add(checkbox)
                 End If
 
+
+
             ElseIf bChkBox = False Then
+                adicionado -= 1
                 'Remove column checkbox quando altera a propriedade no Design
 
                 If Me.Columns.Count <> 0 Then
                     Me.Columns.Remove(checkbox)
+                    checkbox.Dispose()
                 End If
             End If
 
@@ -173,8 +185,14 @@ Public Class SuperDataGridView
         Try
 
             Me.DoubleBuffered = True
+            Dim a = Me.Rows.Count
+            If a <> 0 Then
+                Dim linha = Me.Rows(0)
+                Me.Rows.Remove(linha)
+            End If
 
-                For i = 0 To oDataSet.TotalColunas - 1
+
+            For i = 0 To oDataSet.TotalColunas - 1
 
                     column = oDataSet.NomeColuna(i, nTable)
 
