@@ -262,20 +262,7 @@ Public Class frmNovaCobranca
         End Try
     End Sub
 
-    Private Sub rbFrequente_CheckedChanged(sender As Object, e As EventArgs) Handles rbFrequente.CheckedChanged
-        Try
-            If rbFrequente.Checked Then
-                cFrequencia = CType(cbfrquencia.ObterChaveCombo, eDespesaFixa)
-                rbData.Checked = False
-                cbfrquencia.Enabled = True
-            Else
-                cFrequencia = Nothing
-                cbfrquencia.Enabled = False
-            End If
-        Catch ex As Exception
 
-        End Try
-    End Sub
 
     Private Sub rbData_CheckedChanged(sender As Object, e As EventArgs) Handles rbData.CheckedChanged
         Try
@@ -288,7 +275,58 @@ Public Class frmNovaCobranca
                 dtLembrete.Enabled = False
             End If
         Catch ex As Exception
-
+            S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro",, eImagens.Cancel)
+            LogaErro(ex.Message & "Evento:rbData_CheckedChanged - Form: AddCobrança")
         End Try
     End Sub
+
+    Private Sub cbfrquencia_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbfrquencia.SelectedIndexChanged
+        Try
+            If rbFrequente.Checked Then
+                If cbfrquencia.SelectedIndex <> 0 Then
+                    cFrequencia = CType(cbfrquencia.ObterChaveCombo, eDespesaFixa)
+                    rbData.Checked = False
+                    cbfrquencia.Enabled = True
+                End If
+
+            Else
+                cFrequencia = Nothing
+                cbfrquencia.Enabled = False
+            End If
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro",, eImagens.Cancel)
+            LogaErro(ex.Message & "Evento:cbfrquencia_SelectedIndexChanged - Form: AddCobrança")
+        End Try
+    End Sub
+
+    Private Sub rbFrequente_CheckedChanged(sender As Object, e As EventArgs) Handles rbFrequente.CheckedChanged
+        Try
+            If rbFrequente.Checked Then
+                rbData.Checked = False
+                cbfrquencia.Enabled = True
+
+            Else
+                cFrequencia = Nothing
+                cbfrquencia.Enabled = False
+            End If
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro",, eImagens.Cancel)
+            LogaErro(ex.Message & "Evento:rbFrequente_CheckedChanged - Form: AddCobrança")
+        End Try
+
+    End Sub
+
+    Private Sub dtLembrete_ValueChanged(sender As Object, e As EventArgs) Handles dtLembrete.ValueChanged
+        Try
+            If rbData.Checked Then
+
+                dataLembrete = dtLembrete.Value
+
+            End If
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro",, eImagens.Cancel)
+            LogaErro(ex.Message & "Evento:dtLembrete_ValueChanged - Form: AddCobrança")
+        End Try
+    End Sub
+
 End Class

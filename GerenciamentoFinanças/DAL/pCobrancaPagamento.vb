@@ -41,7 +41,11 @@ Public Class pCobrancaPagamento
             bDados.AdicionaParametro(pCobrancaPagamento.cStatus, _cStatus)
             bDados.AdicionaParametro(pCobrancaPagamento.cConta, _cConta)
             bDados.AdicionaParametro(pCobrancaPagamento.cLembrete, _cLembrete)
-            bDados.AdicionaParametro(pCobrancaPagamento.dtLembrete, _dtLembrete)
+            If IsDate(_dtLembrete) Then
+                bDados.AdicionaParametro(pCobrancaPagamento.dtLembrete, _dtLembrete)
+            Else
+                bDados.AdicionaParametro(pCobrancaPagamento.dtLembrete, Nothing)
+            End If
             bDados.AdicionaParametro(pCobrancaPagamento.cFrequencia, _cFrequencia)
 
             If bDados.Executar(PROCEDURE) Then
@@ -193,11 +197,32 @@ Public Class pCobrancaPagamento
             End If
 
         Catch ex As Exception
-            Return Nothing
             MessageBox.Show(ex.Message)
+            Return Nothing
         End Try
     End Function
 
+    Shared Function BuscarLembrete() As SuperDataSet
+        Dim oDataSet As SuperDataSet
+        Try
+            bDados = New BancoDados()
+
+            bDados.LimpaParametros()
+            bDados.AdicionaParametro(OPERACAO, "LEMB")
+
+
+            oDataSet = bDados.Obter(PROCEDURE)
+
+            If Not oDataSet Is Nothing Then
+                Return oDataSet
+            Else
+                Return Nothing
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+            Return Nothing
+        End Try
+    End Function
 
 
 

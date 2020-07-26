@@ -23,22 +23,29 @@ Partial Class frmCobranca
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCobranca))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCobranca))
         Me.tabCtrlCobranca = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.datagridCobranca = New GFT.Util.SuperDataGridView()
         Me.chkSelecionaTodos = New System.Windows.Forms.CheckBox()
+        Me.txtLetreiroCobr = New GFT.Util.SuperLetreiro()
         Me.gbCobrancaFiltro = New System.Windows.Forms.GroupBox()
         Me.chkPeriodo = New System.Windows.Forms.CheckBox()
+        Me.cbAno = New GFT.Util.SuperComboBox()
         Me.lblDataFim = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dtInicial = New System.Windows.Forms.DateTimePicker()
         Me.lblDataInicio = New System.Windows.Forms.Label()
+        Me.cbMes = New GFT.Util.SuperComboBox()
         Me.dtFinal = New System.Windows.Forms.DateTimePicker()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.cbStatus = New GFT.Util.SuperComboBox()
         Me.lblStatus = New System.Windows.Forms.Label()
+        Me.cbDevedor = New GFT.Util.SuperComboBox()
         Me.lblDevedor = New System.Windows.Forms.Label()
+        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.ImgListCobranca = New System.Windows.Forms.ImageList(Me.components)
         Me.gbBotoes = New System.Windows.Forms.GroupBox()
         Me.btnExportar = New System.Windows.Forms.Button()
@@ -47,17 +54,11 @@ Partial Class frmCobranca
         Me.btnEditar = New System.Windows.Forms.Button()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnPesquisar = New System.Windows.Forms.Button()
-        Me.txtLetreiroCobr = New GFT.Util.SuperLetreiro()
-        Me.cbAno = New GFT.Util.SuperComboBox()
-        Me.cbMes = New GFT.Util.SuperComboBox()
-        Me.cbStatus = New GFT.Util.SuperComboBox()
-        Me.cbDevedor = New GFT.Util.SuperComboBox()
-        Me.datagridCobranca = New GFT.Util.SuperDataGridView()
         Me.tabCtrlCobranca.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        CType(Me.datagridCobranca, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbCobrancaFiltro.SuspendLayout()
         Me.gbBotoes.SuspendLayout()
-        CType(Me.datagridCobranca, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tabCtrlCobranca
@@ -88,6 +89,48 @@ Partial Class frmCobranca
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Empréstimos"
         '
+        'datagridCobranca
+        '
+        Me.datagridCobranca.AdicionarCheckBox = True
+        Me.datagridCobranca.AllowUserToAddRows = False
+        Me.datagridCobranca.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.datagridCobranca.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.datagridCobranca.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
+        Me.datagridCobranca.BackgroundColor = System.Drawing.Color.White
+        Me.datagridCobranca.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.datagridCobranca.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal
+        Me.datagridCobranca.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSlateGray
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Verdana", 12.0!)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagridCobranca.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.datagridCobranca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.datagridCobranca.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewCheckBoxColumn1})
+        Me.datagridCobranca.CorDoFundoCabeçalho = System.Drawing.Color.LightSlateGray
+        Me.datagridCobranca.CorTextoCabeçalho = System.Drawing.Color.White
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ButtonFace
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Verdana", 12.0!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.datagridCobranca.DefaultCellStyle = DataGridViewCellStyle2
+        Me.datagridCobranca.EnableHeadersVisualStyles = False
+        Me.datagridCobranca.Location = New System.Drawing.Point(48, 195)
+        Me.datagridCobranca.Name = "datagridCobranca"
+        Me.datagridCobranca.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
+        Me.datagridCobranca.RowHeadersVisible = False
+        Me.datagridCobranca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.datagridCobranca.Size = New System.Drawing.Size(1246, 321)
+        Me.datagridCobranca.TabIndex = 4
+        '
         'chkSelecionaTodos
         '
         Me.chkSelecionaTodos.AutoSize = True
@@ -99,6 +142,19 @@ Partial Class frmCobranca
         Me.chkSelecionaTodos.TabIndex = 3
         Me.chkSelecionaTodos.Text = "Marcar / Desmarcar Todos"
         Me.chkSelecionaTodos.UseVisualStyleBackColor = True
+        '
+        'txtLetreiroCobr
+        '
+        Me.txtLetreiroCobr.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.txtLetreiroCobr.CorSombraTexto = System.Drawing.Color.White
+        Me.txtLetreiroCobr.ForeColor = System.Drawing.Color.White
+        Me.txtLetreiroCobr.Location = New System.Drawing.Point(48, 522)
+        Me.txtLetreiroCobr.Name = "txtLetreiroCobr"
+        Me.txtLetreiroCobr.RolagemLetreiro = GFT.Util.SuperLetreiro.Direcao.Direita
+        Me.txtLetreiroCobr.Size = New System.Drawing.Size(312, 19)
+        Me.txtLetreiroCobr.TabIndex = 2
+        Me.txtLetreiroCobr.TextoLetreiro = ""
+        Me.txtLetreiroCobr.VelocidadeRolagem = 1
         '
         'gbCobrancaFiltro
         '
@@ -135,6 +191,24 @@ Partial Class frmCobranca
         Me.chkPeriodo.TabIndex = 12
         Me.chkPeriodo.Text = "Filtrar por Período"
         Me.chkPeriodo.UseVisualStyleBackColor = True
+        '
+        'cbAno
+        '
+        Me.cbAno.Alterado = False
+        Me.cbAno.BackColor = System.Drawing.SystemColors.Window
+        Me.cbAno.CorFundo = System.Drawing.SystemColors.Window
+        Me.cbAno.CorFundoSelecionado = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.cbAno.CorTexto = System.Drawing.Color.Black
+        Me.cbAno.CorTextoSelecionado = System.Drawing.Color.Black
+        Me.cbAno.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.cbAno.ForeColor = System.Drawing.Color.Black
+        Me.cbAno.FormattingEnabled = True
+        Me.cbAno.Location = New System.Drawing.Point(663, 66)
+        Me.cbAno.Name = "cbAno"
+        Me.cbAno.Size = New System.Drawing.Size(151, 26)
+        Me.cbAno.SuperObrigatorio = False
+        Me.cbAno.SuperTxtObrigatorio = ""
+        Me.cbAno.TabIndex = 10
         '
         'lblDataFim
         '
@@ -176,6 +250,24 @@ Partial Class frmCobranca
         Me.lblDataInicio.TabIndex = 5
         Me.lblDataInicio.Text = "De:"
         '
+        'cbMes
+        '
+        Me.cbMes.Alterado = False
+        Me.cbMes.BackColor = System.Drawing.SystemColors.Window
+        Me.cbMes.CorFundo = System.Drawing.SystemColors.Window
+        Me.cbMes.CorFundoSelecionado = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.cbMes.CorTexto = System.Drawing.Color.Black
+        Me.cbMes.CorTextoSelecionado = System.Drawing.Color.Black
+        Me.cbMes.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.cbMes.ForeColor = System.Drawing.Color.Black
+        Me.cbMes.FormattingEnabled = True
+        Me.cbMes.Location = New System.Drawing.Point(446, 66)
+        Me.cbMes.Name = "cbMes"
+        Me.cbMes.Size = New System.Drawing.Size(211, 26)
+        Me.cbMes.SuperObrigatorio = False
+        Me.cbMes.SuperTxtObrigatorio = ""
+        Me.cbMes.TabIndex = 8
+        '
         'dtFinal
         '
         Me.dtFinal.Enabled = False
@@ -194,6 +286,24 @@ Partial Class frmCobranca
         Me.Label2.TabIndex = 9
         Me.Label2.Text = "Mês:"
         '
+        'cbStatus
+        '
+        Me.cbStatus.Alterado = False
+        Me.cbStatus.BackColor = System.Drawing.SystemColors.Window
+        Me.cbStatus.CorFundo = System.Drawing.SystemColors.Window
+        Me.cbStatus.CorFundoSelecionado = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.cbStatus.CorTexto = System.Drawing.Color.Black
+        Me.cbStatus.CorTextoSelecionado = System.Drawing.Color.Black
+        Me.cbStatus.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.cbStatus.ForeColor = System.Drawing.Color.Black
+        Me.cbStatus.FormattingEnabled = True
+        Me.cbStatus.Location = New System.Drawing.Point(289, 66)
+        Me.cbStatus.Name = "cbStatus"
+        Me.cbStatus.Size = New System.Drawing.Size(151, 26)
+        Me.cbStatus.SuperObrigatorio = False
+        Me.cbStatus.SuperTxtObrigatorio = ""
+        Me.cbStatus.TabIndex = 4
+        '
         'lblStatus
         '
         Me.lblStatus.AutoSize = True
@@ -203,6 +313,24 @@ Partial Class frmCobranca
         Me.lblStatus.TabIndex = 7
         Me.lblStatus.Text = "Status:"
         '
+        'cbDevedor
+        '
+        Me.cbDevedor.Alterado = False
+        Me.cbDevedor.BackColor = System.Drawing.SystemColors.Window
+        Me.cbDevedor.CorFundo = System.Drawing.SystemColors.Window
+        Me.cbDevedor.CorFundoSelecionado = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.cbDevedor.CorTexto = System.Drawing.Color.Black
+        Me.cbDevedor.CorTextoSelecionado = System.Drawing.Color.Black
+        Me.cbDevedor.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.cbDevedor.ForeColor = System.Drawing.Color.Black
+        Me.cbDevedor.FormattingEnabled = True
+        Me.cbDevedor.Location = New System.Drawing.Point(26, 66)
+        Me.cbDevedor.Name = "cbDevedor"
+        Me.cbDevedor.Size = New System.Drawing.Size(257, 26)
+        Me.cbDevedor.SuperObrigatorio = False
+        Me.cbDevedor.SuperTxtObrigatorio = ""
+        Me.cbDevedor.TabIndex = 3
+        '
         'lblDevedor
         '
         Me.lblDevedor.AutoSize = True
@@ -211,6 +339,12 @@ Partial Class frmCobranca
         Me.lblDevedor.Size = New System.Drawing.Size(94, 18)
         Me.lblDevedor.TabIndex = 3
         Me.lblDevedor.Text = "Devedores"
+        '
+        'DataGridViewCheckBoxColumn1
+        '
+        Me.DataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.DataGridViewCheckBoxColumn1.HeaderText = "Selecionar"
+        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
         '
         'ImgListCobranca
         '
@@ -319,132 +453,6 @@ Partial Class frmCobranca
         Me.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnPesquisar.UseVisualStyleBackColor = True
         '
-        'txtLetreiroCobr
-        '
-        Me.txtLetreiroCobr.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.txtLetreiroCobr.CorSombraTexto = System.Drawing.Color.White
-        Me.txtLetreiroCobr.ForeColor = System.Drawing.Color.White
-        Me.txtLetreiroCobr.Location = New System.Drawing.Point(48, 522)
-        Me.txtLetreiroCobr.Name = "txtLetreiroCobr"
-        Me.txtLetreiroCobr.RolagemLetreiro = GFT.Util.SuperLetreiro.Direcao.Direita
-        Me.txtLetreiroCobr.Size = New System.Drawing.Size(312, 19)
-        Me.txtLetreiroCobr.TabIndex = 2
-        Me.txtLetreiroCobr.TextoLetreiro = "0,0 Registros"
-        Me.txtLetreiroCobr.VelocidadeRolagem = 1
-        '
-        'cbAno
-        '
-        Me.cbAno.Alterado = False
-        Me.cbAno.BackColor = System.Drawing.SystemColors.Window
-        Me.cbAno.CorFundo = System.Drawing.SystemColors.Window
-        Me.cbAno.CorFundoSelecionado = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.cbAno.CorTexto = System.Drawing.Color.Black
-        Me.cbAno.CorTextoSelecionado = System.Drawing.Color.Black
-        Me.cbAno.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.cbAno.ForeColor = System.Drawing.Color.Black
-        Me.cbAno.FormattingEnabled = True
-        Me.cbAno.Location = New System.Drawing.Point(663, 66)
-        Me.cbAno.Name = "cbAno"
-        Me.cbAno.Size = New System.Drawing.Size(151, 26)
-        Me.cbAno.SuperObrigatorio = False
-        Me.cbAno.SuperTxtObrigatorio = ""
-        Me.cbAno.TabIndex = 10
-        '
-        'cbMes
-        '
-        Me.cbMes.Alterado = False
-        Me.cbMes.BackColor = System.Drawing.SystemColors.Window
-        Me.cbMes.CorFundo = System.Drawing.SystemColors.Window
-        Me.cbMes.CorFundoSelecionado = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.cbMes.CorTexto = System.Drawing.Color.Black
-        Me.cbMes.CorTextoSelecionado = System.Drawing.Color.Black
-        Me.cbMes.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.cbMes.ForeColor = System.Drawing.Color.Black
-        Me.cbMes.FormattingEnabled = True
-        Me.cbMes.Location = New System.Drawing.Point(446, 66)
-        Me.cbMes.Name = "cbMes"
-        Me.cbMes.Size = New System.Drawing.Size(211, 26)
-        Me.cbMes.SuperObrigatorio = False
-        Me.cbMes.SuperTxtObrigatorio = ""
-        Me.cbMes.TabIndex = 8
-        '
-        'cbStatus
-        '
-        Me.cbStatus.Alterado = False
-        Me.cbStatus.BackColor = System.Drawing.SystemColors.Window
-        Me.cbStatus.CorFundo = System.Drawing.SystemColors.Window
-        Me.cbStatus.CorFundoSelecionado = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.cbStatus.CorTexto = System.Drawing.Color.Black
-        Me.cbStatus.CorTextoSelecionado = System.Drawing.Color.Black
-        Me.cbStatus.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.cbStatus.ForeColor = System.Drawing.Color.Black
-        Me.cbStatus.FormattingEnabled = True
-        Me.cbStatus.Location = New System.Drawing.Point(289, 66)
-        Me.cbStatus.Name = "cbStatus"
-        Me.cbStatus.Size = New System.Drawing.Size(151, 26)
-        Me.cbStatus.SuperObrigatorio = False
-        Me.cbStatus.SuperTxtObrigatorio = ""
-        Me.cbStatus.TabIndex = 4
-        '
-        'cbDevedor
-        '
-        Me.cbDevedor.Alterado = False
-        Me.cbDevedor.BackColor = System.Drawing.SystemColors.Window
-        Me.cbDevedor.CorFundo = System.Drawing.SystemColors.Window
-        Me.cbDevedor.CorFundoSelecionado = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.cbDevedor.CorTexto = System.Drawing.Color.Black
-        Me.cbDevedor.CorTextoSelecionado = System.Drawing.Color.Black
-        Me.cbDevedor.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.cbDevedor.ForeColor = System.Drawing.Color.Black
-        Me.cbDevedor.FormattingEnabled = True
-        Me.cbDevedor.Location = New System.Drawing.Point(26, 66)
-        Me.cbDevedor.Name = "cbDevedor"
-        Me.cbDevedor.Size = New System.Drawing.Size(257, 26)
-        Me.cbDevedor.SuperObrigatorio = False
-        Me.cbDevedor.SuperTxtObrigatorio = ""
-        Me.cbDevedor.TabIndex = 3
-        '
-        'datagridCobranca
-        '
-        Me.datagridCobranca.AdicionarCheckBox = True
-        Me.datagridCobranca.AllowUserToAddRows = False
-        Me.datagridCobranca.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.datagridCobranca.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.datagridCobranca.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
-        Me.datagridCobranca.BackgroundColor = System.Drawing.Color.White
-        Me.datagridCobranca.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.datagridCobranca.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal
-        Me.datagridCobranca.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSlateGray
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Verdana", 12.0!)
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagridCobranca.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.datagridCobranca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.datagridCobranca.CorDoFundoCabeçalho = System.Drawing.Color.LightSlateGray
-        Me.datagridCobranca.CorTextoCabeçalho = System.Drawing.Color.White
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ButtonFace
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Verdana", 12.0!)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.datagridCobranca.DefaultCellStyle = DataGridViewCellStyle2
-        Me.datagridCobranca.EnableHeadersVisualStyles = False
-        Me.datagridCobranca.Location = New System.Drawing.Point(48, 208)
-        Me.datagridCobranca.Name = "datagridCobranca"
-        Me.datagridCobranca.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
-        Me.datagridCobranca.RowHeadersVisible = False
-        Me.datagridCobranca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.datagridCobranca.Size = New System.Drawing.Size(1246, 305)
-        Me.datagridCobranca.TabIndex = 4
-        '
         'frmCobranca
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -457,10 +465,10 @@ Partial Class frmCobranca
         Me.tabCtrlCobranca.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
+        CType(Me.datagridCobranca, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbCobrancaFiltro.ResumeLayout(False)
         Me.gbCobrancaFiltro.PerformLayout()
         Me.gbBotoes.ResumeLayout(False)
-        CType(Me.datagridCobranca, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -492,4 +500,5 @@ Partial Class frmCobranca
     Friend WithEvents Label2 As Label
     Friend WithEvents chkSelecionaTodos As CheckBox
     Friend WithEvents datagridCobranca As GFT.Util.SuperDataGridView
+    Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
 End Class

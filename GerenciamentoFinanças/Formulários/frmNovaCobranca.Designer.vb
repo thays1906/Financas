@@ -27,14 +27,17 @@ Partial Class frmNovaCobranca
         Me.tabCtrlNovaCobranca = New System.Windows.Forms.TabControl()
         Me.tabNovaCobranca = New System.Windows.Forms.TabPage()
         Me.pnlNovaCobranca = New System.Windows.Forms.Panel()
+        Me.lblContaAviso = New System.Windows.Forms.Label()
         Me.lblStatusAviso = New System.Windows.Forms.Label()
         Me.lblDevedorAviso = New System.Windows.Forms.Label()
         Me.lblValorAviso = New System.Windows.Forms.Label()
         Me.gbFrequencia = New System.Windows.Forms.GroupBox()
         Me.cbfrquencia = New GFT.Util.SuperComboBox()
+        Me.rbFrequente = New System.Windows.Forms.RadioButton()
         Me.gbData = New System.Windows.Forms.GroupBox()
         Me.dtLembrete = New System.Windows.Forms.DateTimePicker()
         Me.rbData = New System.Windows.Forms.RadioButton()
+        Me.picBanco = New System.Windows.Forms.PictureBox()
         Me.chkLembrete = New System.Windows.Forms.CheckBox()
         Me.lblConta = New System.Windows.Forms.Label()
         Me.cbConta = New GFT.Util.SuperComboBox()
@@ -50,9 +53,6 @@ Partial Class frmNovaCobranca
         Me.ImgNewCobr = New System.Windows.Forms.ImageList(Me.components)
         Me.btnFechar = New System.Windows.Forms.Button()
         Me.btnSalvar = New System.Windows.Forms.Button()
-        Me.lblContaAviso = New System.Windows.Forms.Label()
-        Me.rbFrequente = New System.Windows.Forms.RadioButton()
-        Me.picBanco = New System.Windows.Forms.PictureBox()
         Me.tabCtrlNovaCobranca.SuspendLayout()
         Me.tabNovaCobranca.SuspendLayout()
         Me.pnlNovaCobranca.SuspendLayout()
@@ -115,6 +115,20 @@ Partial Class frmNovaCobranca
         Me.pnlNovaCobranca.Name = "pnlNovaCobranca"
         Me.pnlNovaCobranca.Size = New System.Drawing.Size(701, 334)
         Me.pnlNovaCobranca.TabIndex = 2
+        '
+        'lblContaAviso
+        '
+        Me.lblContaAviso.AutoEllipsis = True
+        Me.lblContaAviso.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.lblContaAviso.Font = New System.Drawing.Font("Verdana", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.lblContaAviso.ForeColor = System.Drawing.Color.Red
+        Me.lblContaAviso.ImageAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.lblContaAviso.Location = New System.Drawing.Point(6, 262)
+        Me.lblContaAviso.Name = "lblContaAviso"
+        Me.lblContaAviso.Size = New System.Drawing.Size(308, 55)
+        Me.lblContaAviso.TabIndex = 29
+        Me.lblContaAviso.Text = "Label1"
+        Me.lblContaAviso.Visible = False
         '
         'lblStatusAviso
         '
@@ -179,6 +193,22 @@ Partial Class frmNovaCobranca
         Me.cbfrquencia.SuperTxtObrigatorio = ""
         Me.cbfrquencia.TabIndex = 24
         '
+        'rbFrequente
+        '
+        Me.rbFrequente.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.rbFrequente.FlatAppearance.BorderSize = 20
+        Me.rbFrequente.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.rbFrequente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gold
+        Me.rbFrequente.Image = CType(resources.GetObject("rbFrequente.Image"), System.Drawing.Image)
+        Me.rbFrequente.Location = New System.Drawing.Point(6, 22)
+        Me.rbFrequente.Name = "rbFrequente"
+        Me.rbFrequente.Size = New System.Drawing.Size(132, 26)
+        Me.rbFrequente.TabIndex = 23
+        Me.rbFrequente.Text = "Frequente"
+        Me.rbFrequente.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.rbFrequente.UseCompatibleTextRendering = True
+        Me.rbFrequente.UseVisualStyleBackColor = True
+        '
         'gbData
         '
         Me.gbData.Controls.Add(Me.dtLembrete)
@@ -209,6 +239,15 @@ Partial Class frmNovaCobranca
         Me.rbData.TabStop = True
         Me.rbData.Text = "Em uma data específica"
         Me.rbData.UseVisualStyleBackColor = True
+        '
+        'picBanco
+        '
+        Me.picBanco.Location = New System.Drawing.Point(321, 217)
+        Me.picBanco.Name = "picBanco"
+        Me.picBanco.Size = New System.Drawing.Size(48, 48)
+        Me.picBanco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.picBanco.TabIndex = 21
+        Me.picBanco.TabStop = False
         '
         'chkLembrete
         '
@@ -391,45 +430,6 @@ Partial Class frmNovaCobranca
         Me.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnSalvar.UseVisualStyleBackColor = True
-        '
-        'lblContaAviso
-        '
-        Me.lblContaAviso.AutoEllipsis = True
-        Me.lblContaAviso.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.lblContaAviso.Font = New System.Drawing.Font("Verdana", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.lblContaAviso.ForeColor = System.Drawing.Color.Red
-        Me.lblContaAviso.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.lblContaAviso.Location = New System.Drawing.Point(6, 262)
-        Me.lblContaAviso.Name = "lblContaAviso"
-        Me.lblContaAviso.Size = New System.Drawing.Size(308, 55)
-        Me.lblContaAviso.TabIndex = 29
-        Me.lblContaAviso.Text = "Label1"
-        Me.lblContaAviso.Visible = False
-        '
-        'rbFrequente
-        '
-        Me.rbFrequente.FlatAppearance.BorderColor = System.Drawing.Color.Red
-        Me.rbFrequente.FlatAppearance.BorderSize = 20
-        Me.rbFrequente.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.rbFrequente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gold
-        Me.rbFrequente.Image = CType(resources.GetObject("rbFrequente.Image"), System.Drawing.Image)
-        Me.rbFrequente.Location = New System.Drawing.Point(6, 22)
-        Me.rbFrequente.Name = "rbFrequente"
-        Me.rbFrequente.Size = New System.Drawing.Size(132, 26)
-        Me.rbFrequente.TabIndex = 23
-        Me.rbFrequente.Text = "Frequente"
-        Me.rbFrequente.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.rbFrequente.UseCompatibleTextRendering = True
-        Me.rbFrequente.UseVisualStyleBackColor = True
-        '
-        'picBanco
-        '
-        Me.picBanco.Location = New System.Drawing.Point(321, 217)
-        Me.picBanco.Name = "picBanco"
-        Me.picBanco.Size = New System.Drawing.Size(48, 48)
-        Me.picBanco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.picBanco.TabIndex = 21
-        Me.picBanco.TabStop = False
         '
         'frmNovaCobranca
         '

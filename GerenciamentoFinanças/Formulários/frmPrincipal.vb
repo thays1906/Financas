@@ -184,9 +184,15 @@ Public Class frmPrincipal
                 End If
             End If
 
-            oDataSet.Dispose()
+            oDataSet = pCobrancaPagamento.BuscarLembrete
+            If Not oDataSet Is Nothing Then
+                dgPrincipal.PreencheDataGrid(oDataSet,,,, "Marcar como Lido")
+            End If
+
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Erro",, eImagens.Cancel)
+        Finally
+            oDataSet.Dispose()
         End Try
     End Sub
 
