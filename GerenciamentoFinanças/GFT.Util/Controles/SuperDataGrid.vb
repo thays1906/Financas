@@ -278,15 +278,17 @@ Public Class SuperDataGridView
 
             End If
 
+            If Not letreiro Is Nothing Then
+                letreiro.TextoLetreiro = oDataSet.InfoPesquisa
+            End If
+
             If oDataSet.TotalRegistros = 0 Then
                 LogaErro("SuperLV::PreencheDataGrid [" & Me.Name & "] - ATENÇÃO: RecordSet=Nothing, por favor, verifique.")
                 Exit Sub
             End If
 
             'Se informou por parâmetro o SuperLetreiro, add text.
-            If Not letreiro Is Nothing Then
-                letreiro.TextoLetreiro = oDataSet.InfoPesquisa
-            End If
+
             'Me.Refresh()
 
         Catch ex As Exception
@@ -306,7 +308,6 @@ Public Class SuperDataGridView
 
                 Else
                     rChave += String.Concat(Me.Rows(i).Cells(ID).Value.ToString, ";")
-
                 End If
             Next
 
@@ -612,7 +613,6 @@ Public Class SuperDataGridView
                     End If
                 Next
 
-                Me.AutoResizeColumns()
 
                 ultimaRow = 0
             End If

@@ -45,7 +45,6 @@ Partial Class frmCobranca
         Me.lblStatus = New System.Windows.Forms.Label()
         Me.cbDevedor = New GFT.Util.SuperComboBox()
         Me.lblDevedor = New System.Windows.Forms.Label()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.ImgListCobranca = New System.Windows.Forms.ImageList(Me.components)
         Me.gbBotoes = New System.Windows.Forms.GroupBox()
         Me.btnExportar = New System.Windows.Forms.Button()
@@ -111,7 +110,6 @@ Partial Class frmCobranca
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.datagridCobranca.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.datagridCobranca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.datagridCobranca.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewCheckBoxColumn1})
         Me.datagridCobranca.CorDoFundoCabeçalho = System.Drawing.Color.LightSlateGray
         Me.datagridCobranca.CorTextoCabeçalho = System.Drawing.Color.White
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -340,12 +338,6 @@ Partial Class frmCobranca
         Me.lblDevedor.TabIndex = 3
         Me.lblDevedor.Text = "Devedores"
         '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn1.HeaderText = "Selecionar"
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        '
         'ImgListCobranca
         '
         Me.ImgListCobranca.ImageStream = CType(resources.GetObject("ImgListCobranca.ImageStream"), System.Windows.Forms.ImageListStreamer)
@@ -500,5 +492,4 @@ Partial Class frmCobranca
     Friend WithEvents Label2 As Label
     Friend WithEvents chkSelecionaTodos As CheckBox
     Friend WithEvents datagridCobranca As GFT.Util.SuperDataGridView
-    Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
 End Class

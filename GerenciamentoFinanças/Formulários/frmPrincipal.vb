@@ -100,10 +100,11 @@ Public Class frmPrincipal
     End Sub
 
     Private Sub txtCaption_TextChanged(sender As Object, e As EventArgs) Handles txtCaption.TextChanged
-        If txtCaption.Text <> "Dashboard" Then
+        If txtCaption.Text <> "Dashboard" And Not txtCaption.Text.Contains("Sobre") Then
             gbPricnipal.Visible = False
         Else
             gbPricnipal.Visible = True
+            CarregaTabHome()
         End If
     End Sub
 
@@ -185,8 +186,12 @@ Public Class frmPrincipal
             End If
 
             oDataSet = pCobrancaPagamento.BuscarLembrete
-            If Not oDataSet Is Nothing Then
-                dgPrincipal.PreencheDataGrid(oDataSet,,,, "Marcar como Lido")
+
+            If oDataSet.TotalRegistros > 0 Then
+                dgPrincipal.PreencheDataGrid(oDataSet)
+            Else
+                gbLembreteCobranca.Visible = False
+                LetreiroLembrete.TextoLetreiro = "Você não possui nenhum lembrete."
             End If
 
         Catch ex As Exception
@@ -329,9 +334,6 @@ Public Class frmPrincipal
         End Try
     End Sub
 
-    Private Sub MenuStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
-
-    End Sub
 
     Private Sub CobrançaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CobrançaToolStripMenuItem.Click
         oform = New frmCobranca()

@@ -599,11 +599,11 @@ Public Class frmCobranca
     '    DataGridSelecao()
     'End Sub
 
-    Private Sub datagridCobranca_CellMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs)
+    Private Sub datagridCobranca_CellMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles datagridCobranca.CellMouseDoubleClick
         Alterar()
     End Sub
 
-    Private Sub datagridCobranca_SelectionChanged(sender As Object, e As EventArgs)
+    Private Sub datagridCobranca_SelectionChanged(sender As Object, e As EventArgs) Handles datagridCobranca.SelectionChanged
         ControleBotoes()
     End Sub
 End Class

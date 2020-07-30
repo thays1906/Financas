@@ -17,7 +17,7 @@ Public Class pCobrancaPagamento
         Public Shared cMes As Campo = New Campo("cMes", DbType.Decimal, 2, 0)
         Public Shared cAno As Campo = New Campo("cAno", DbType.Decimal, 4, 0)
         Public Shared cLembrete As Campo = New Campo("cLembrete", DbType.Decimal, 1, 0)
-        Public Shared dtLembrete As Campo = New Campo("dtLembrete", DbType.Date, 10, 0)
+        Public Shared dtEspecifica As Campo = New Campo("dtEspecifica", DbType.Date, 10, 0)
         Public Shared cFrequencia As Campo = New Campo("cFrequencia", DbType.Decimal, 4, 0)
 
     End Class
@@ -28,7 +28,7 @@ Public Class pCobrancaPagamento
                             ByVal _cStatus As eStatusDespesa,
                             ByVal _cConta As Decimal,
                             ByVal _cLembrete As Decimal,
-                            ByVal _dtLembrete As Date,
+                            ByVal _dtFixa As Date,
                             ByVal _cFrequencia As Decimal) As Boolean
         Try
             bDados = New BancoDados()
@@ -41,11 +41,17 @@ Public Class pCobrancaPagamento
             bDados.AdicionaParametro(pCobrancaPagamento.cStatus, _cStatus)
             bDados.AdicionaParametro(pCobrancaPagamento.cConta, _cConta)
             bDados.AdicionaParametro(pCobrancaPagamento.cLembrete, _cLembrete)
-            If IsDate(_dtLembrete) Then
-                bDados.AdicionaParametro(pCobrancaPagamento.dtLembrete, _dtLembrete)
+
+            If _cLembrete = 1 Then
+                If _cFrequencia <> 0 Then
+                    bDados.AdicionaParametro(pCobrancaPagamento.dtEspecifica, Nothing)
+                Else
+                    bDados.AdicionaParametro(pCobrancaPagamento.dtEspecifica, _dtFixa)
+                End If
             Else
-                bDados.AdicionaParametro(pCobrancaPagamento.dtLembrete, Nothing)
+                bDados.AdicionaParametro(pCobrancaPagamento.dtEspecifica, Nothing)
             End If
+
             bDados.AdicionaParametro(pCobrancaPagamento.cFrequencia, _cFrequencia)
 
             If bDados.Executar(PROCEDURE) Then
@@ -66,7 +72,7 @@ Public Class pCobrancaPagamento
                             ByVal _cStatus As eStatusDespesa,
                             ByVal _cConta As Decimal,
                             ByVal _cLembrete As Decimal,
-                            ByVal _dtLembrete As Date,
+                            ByVal _dtFixa As Date,
                             ByVal _cFrequencia As Decimal) As Boolean
         Try
             bDados = New BancoDados()
@@ -80,7 +86,7 @@ Public Class pCobrancaPagamento
             bDados.AdicionaParametro(pCobrancaPagamento.cStatus, _cStatus)
             bDados.AdicionaParametro(pCobrancaPagamento.cConta, _cConta)
             bDados.AdicionaParametro(pCobrancaPagamento.cLembrete, _cLembrete)
-            bDados.AdicionaParametro(pCobrancaPagamento.dtLembrete, _dtLembrete)
+            bDados.AdicionaParametro(pCobrancaPagamento.dtEspecifica, _dtFixa)
             bDados.AdicionaParametro(pCobrancaPagamento.cFrequencia, _cFrequencia)
 
 
