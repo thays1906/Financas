@@ -64,9 +64,8 @@ Public Class SuperDataGridView
         End Get
         Set(value As Boolean)
             bChkBox = value
-            Me.Invalidate()
             AdicionaCheckBoxColumn()
-
+            Me.Invalidate()
         End Set
     End Property
 #End Region
@@ -109,22 +108,22 @@ Public Class SuperDataGridView
 
 
         'If Me.bChkBox Then
-        '    If Me.Columns.Count = 0 Then
-        '        bChkBox = False
-        '    End If
+        '    AdicionaCheckBoxColumn()
         'End If
 
     End Sub
 
     Public Sub AdicionaCheckBoxColumn(Optional remove As Boolean = False)
         Dim list = New List(Of DataGridViewCheckBoxColumn)
+        Static adc As Integer = 0
         Try
             'Adiciona uma coluna de checkbox no DataGrid.
             If bChkBox = True Then
                 If remove Then
                     'Tratamento de erro (caso gere mais de uma column)
 
-                    For Each check As DataGridViewCheckBoxColumn In Me.Columns.OfType(Of System.Windows.Forms.DataGridViewCheckBoxColumn)
+                    For Each check As DataGridViewCheckBoxColumn In
+                        Me.Columns.OfType(Of System.Windows.Forms.DataGridViewCheckBoxColumn)
 
                         If check.Name <> "chkDataGrid" Or Me.Columns("chkDataGrid").Name.Count > 1 Then
                             list.Add(check)
@@ -135,9 +134,10 @@ Public Class SuperDataGridView
                     For Each chk In list
 
                         Me.Columns.Remove(chk)
-                        checkbox.Dispose()
+
                     Next
                 End If
+
                 If adicionado = 0 Then
                     adicionado += 1
 
@@ -149,32 +149,37 @@ Public Class SuperDataGridView
 
                     Me.Columns.Add(checkbox)
                     Me.Rows.Add()
-                Else
-                    checkbox.Name = "chkDataGrid"
-                    checkbox.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-                    checkbox.HeaderText = "Selecionar"
-                    checkbox.DisplayIndex = 0
 
-                    Me.Columns.Add(checkbox)
+                    'Else
+                    '    'Me.Columns.Remove(checkbox)
+                    '    checkbox.Name = "chkDataGrid"
+                    '    checkbox.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+                    '    checkbox.HeaderText = "Selecionar"
+                    '    checkbox.DisplayIndex = 0
+
+                    '    Me.Columns.Add(checkbox)
+
                 End If
-
-
 
             ElseIf bChkBox = False Then
-                adicionado -= 1
                 'Remove column checkbox quando altera a propriedade no Design
-
                 If Me.Columns.Count <> 0 Then
-                    Me.Columns.Remove(checkbox)
-                    checkbox.Dispose()
+                    For i = 0 To adicionado
+                        Me.Columns.Remove(checkbox)
+                    Next
+                    adicionado = 0
+
+                    Dispose(True)
                 End If
             End If
+
 
 
         Catch ex As Exception
             LogaErro("Erro em Util::AdicionaCheckBoxColumn: " & ex.ToString())
         End Try
     End Sub
+
     Public Sub PreencheDataGrid(ByVal oDataSet As SuperDataSet,
                                 Optional ByVal nTable As Integer = 0,
                                 Optional ByVal posicaoId As Integer = Nothing,
@@ -698,4 +703,11 @@ Public Class SuperDataGridView
         End Try
     End Sub
 
+    'Private Sub SuperDataGridView_Validated(sender As Object, e As EventArgs) Handles Me.Validated
+    '    Try
+    '        AdicionaCheckBoxColumn(True)
+    '    Catch ex As Exception
+
+    '    End Try
+    'End Sub
 End Class

@@ -24,8 +24,8 @@ Partial Class frmPrincipal
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPrincipal))
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.AjustesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
@@ -61,8 +61,10 @@ Partial Class frmPrincipal
         Me.pnlPrincipal = New System.Windows.Forms.Panel()
         Me.tabCtrlAvisos = New System.Windows.Forms.TabControl()
         Me.tabCtrlPrincAvisos = New System.Windows.Forms.TabPage()
+        Me.LetreiroLembrete = New GFT.Util.SuperLetreiro()
         Me.gbLembreteCobranca = New System.Windows.Forms.GroupBox()
         Me.dgPrincipal = New GFT.Util.SuperDataGridView()
+        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.tabCtrlSaldo = New System.Windows.Forms.TabControl()
         Me.tabSaldo = New System.Windows.Forms.TabPage()
         Me.btnRefreshSaldo = New System.Windows.Forms.Button()
@@ -78,7 +80,6 @@ Partial Class frmPrincipal
         Me.tabInvest = New System.Windows.Forms.TabPage()
         Me.btnRefreshInvest = New System.Windows.Forms.Button()
         Me.btnInvest = New System.Windows.Forms.Button()
-        Me.LetreiroLembrete = New GFT.Util.SuperLetreiro()
         Me.MenuStrip1.SuspendLayout()
         Me.SScima.SuspendLayout()
         Me.SsBaixo.SuspendLayout()
@@ -510,8 +511,8 @@ Partial Class frmPrincipal
         'tabCtrlPrincAvisos
         '
         Me.tabCtrlPrincAvisos.AutoScroll = True
-        Me.tabCtrlPrincAvisos.Controls.Add(Me.LetreiroLembrete)
         Me.tabCtrlPrincAvisos.Controls.Add(Me.gbLembreteCobranca)
+        Me.tabCtrlPrincAvisos.Controls.Add(Me.LetreiroLembrete)
         Me.tabCtrlPrincAvisos.Location = New System.Drawing.Point(4, 41)
         Me.tabCtrlPrincAvisos.Margin = New System.Windows.Forms.Padding(2)
         Me.tabCtrlPrincAvisos.Name = "tabCtrlPrincAvisos"
@@ -521,10 +522,22 @@ Partial Class frmPrincipal
         Me.tabCtrlPrincAvisos.Text = "Lembretes"
         Me.tabCtrlPrincAvisos.UseVisualStyleBackColor = True
         '
+        'LetreiroLembrete
+        '
+        Me.LetreiroLembrete.CorSombraTexto = System.Drawing.Color.White
+        Me.LetreiroLembrete.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LetreiroLembrete.Location = New System.Drawing.Point(69, 70)
+        Me.LetreiroLembrete.Name = "LetreiroLembrete"
+        Me.LetreiroLembrete.RolagemLetreiro = GFT.Util.SuperLetreiro.Direcao.Esquerda
+        Me.LetreiroLembrete.Size = New System.Drawing.Size(544, 36)
+        Me.LetreiroLembrete.TabIndex = 1
+        Me.LetreiroLembrete.TextoLetreiro = ""
+        Me.LetreiroLembrete.VelocidadeRolagem = 1
+        '
         'gbLembreteCobranca
         '
         Me.gbLembreteCobranca.Controls.Add(Me.dgPrincipal)
-        Me.gbLembreteCobranca.Location = New System.Drawing.Point(5, 5)
+        Me.gbLembreteCobranca.Location = New System.Drawing.Point(2, 7)
         Me.gbLembreteCobranca.Name = "gbLembreteCobranca"
         Me.gbLembreteCobranca.Size = New System.Drawing.Size(648, 160)
         Me.gbLembreteCobranca.TabIndex = 1
@@ -544,33 +557,40 @@ Partial Class frmPrincipal
         Me.dgPrincipal.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgPrincipal.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal
         Me.dgPrincipal.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.LightSlateGray
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Verdana", 12.0!)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgPrincipal.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSlateGray
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Verdana", 12.0!)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgPrincipal.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgPrincipal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgPrincipal.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewCheckBoxColumn1})
         Me.dgPrincipal.CorDoFundoCabeçalho = System.Drawing.Color.LightSlateGray
         Me.dgPrincipal.CorTextoCabeçalho = System.Drawing.Color.White
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ButtonFace
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Verdana", 12.0!)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgPrincipal.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ButtonFace
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Verdana", 12.0!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgPrincipal.DefaultCellStyle = DataGridViewCellStyle2
         Me.dgPrincipal.EnableHeadersVisualStyles = False
-        Me.dgPrincipal.Location = New System.Drawing.Point(0, 26)
+        Me.dgPrincipal.Location = New System.Drawing.Point(0, 23)
         Me.dgPrincipal.Name = "dgPrincipal"
         Me.dgPrincipal.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
         Me.dgPrincipal.RowHeadersVisible = False
         Me.dgPrincipal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgPrincipal.Size = New System.Drawing.Size(648, 137)
         Me.dgPrincipal.TabIndex = 0
+        '
+        'DataGridViewCheckBoxColumn1
+        '
+        Me.DataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.DataGridViewCheckBoxColumn1.HeaderText = "Selecionar"
+        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
         '
         'tabCtrlSaldo
         '
@@ -773,18 +793,6 @@ Partial Class frmPrincipal
         Me.btnInvest.TabIndex = 2
         Me.btnInvest.UseVisualStyleBackColor = False
         '
-        'LetreiroLembrete
-        '
-        Me.LetreiroLembrete.CorSombraTexto = System.Drawing.Color.White
-        Me.LetreiroLembrete.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LetreiroLembrete.Location = New System.Drawing.Point(55, 60)
-        Me.LetreiroLembrete.Name = "LetreiroLembrete"
-        Me.LetreiroLembrete.RolagemLetreiro = GFT.Util.SuperLetreiro.Direcao.Esquerda
-        Me.LetreiroLembrete.Size = New System.Drawing.Size(544, 36)
-        Me.LetreiroLembrete.TabIndex = 1
-        Me.LetreiroLembrete.TextoLetreiro = ""
-        Me.LetreiroLembrete.VelocidadeRolagem = 1
-        '
         'frmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -881,4 +889,5 @@ Partial Class frmPrincipal
     Friend WithEvents dgPrincipal As GFT.Util.SuperDataGridView
     Friend WithEvents gbLembreteCobranca As GroupBox
     Friend WithEvents LetreiroLembrete As GFT.Util.SuperLetreiro
+    Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
 End Class

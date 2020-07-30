@@ -85,7 +85,7 @@ Partial Class frmNovaDespesa
         '
         'tpAddDespesa
         '
-        Me.tpAddDespesa.BackColor = System.Drawing.SystemColors.Window
+        Me.tpAddDespesa.BackColor = System.Drawing.Color.WhiteSmoke
         Me.tpAddDespesa.Controls.Add(Me.pnlNovaDespesa)
         Me.tpAddDespesa.ImageIndex = 0
         Me.tpAddDespesa.Location = New System.Drawing.Point(4, 71)
