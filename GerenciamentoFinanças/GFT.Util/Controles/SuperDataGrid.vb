@@ -10,7 +10,7 @@ Public Class SuperDataGridView
 
     Public ultimaRow As Integer = 0
 
-    Private bCarregado As Boolean = False
+    Public bCarregado As Boolean = False
     Private ID As String = Nothing
     Private btnEditar As Boolean = False
     Private btnExcluir As Boolean = False
@@ -25,9 +25,8 @@ Public Class SuperDataGridView
     Private bgColor As Color = Color.White
 
     'ColumnCheckBox
-    Public Shared checkbox As DataGridViewCheckBoxColumn
+    Private checkbox As DataGridViewCheckBoxColumn
     Public bChkBox As Boolean
-    Public adicionado As Integer = 0
 
 
     'Cabeçalho
@@ -113,9 +112,8 @@ Public Class SuperDataGridView
 
     End Sub
 
-    Public Sub AdicionaCheckBoxColumn(Optional remove As Boolean = False)
+    Private Sub AdicionaCheckBoxColumn(Optional remove As Boolean = False)
         Dim list = New List(Of DataGridViewCheckBoxColumn)
-        Static adc As Integer = 0
         Try
             'Adiciona uma coluna de checkbox no DataGrid.
             If bChkBox = True Then
@@ -125,7 +123,7 @@ Public Class SuperDataGridView
                     For Each check As DataGridViewCheckBoxColumn In
                         Me.Columns.OfType(Of System.Windows.Forms.DataGridViewCheckBoxColumn)
 
-                        If check.Name <> "chkDataGrid" Or Me.Columns("chkDataGrid").Name.Count > 1 Then
+                        If check.Name <> "chkDataGrid" Then
                             list.Add(check)
                         End If
 
@@ -138,8 +136,7 @@ Public Class SuperDataGridView
                     Next
                 End If
 
-                If adicionado = 0 Then
-                    adicionado += 1
+                If Not Me.Columns.Contains(checkbox) Then
 
                     checkbox = New DataGridViewCheckBoxColumn()
                     checkbox.Name = "chkDataGrid"
@@ -148,35 +145,34 @@ Public Class SuperDataGridView
                     checkbox.DisplayIndex = 0
 
                     Me.Columns.Add(checkbox)
-                    Me.Rows.Add()
-
-                    'Else
-                    '    'Me.Columns.Remove(checkbox)
-                    '    checkbox.Name = "chkDataGrid"
-                    '    checkbox.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
-                    '    checkbox.HeaderText = "Selecionar"
-                    '    checkbox.DisplayIndex = 0
-
-                    '    Me.Columns.Add(checkbox)
 
                 End If
+
+                'Me.Rows.Add()
+
+                'Else
+                '    'Me.Columns.Remove(checkbox)
+                '    checkbox.Name = "chkDataGrid"
+                '    checkbox.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+                '    checkbox.HeaderText = "Selecionar"
+                '    checkbox.DisplayIndex = 0
+
+                '    Me.Columns.Add(checkbox)
+
 
             ElseIf bChkBox = False Then
                 'Remove column checkbox quando altera a propriedade no Design
-                If Me.Columns.Count <> 0 Then
-                    For i = 0 To adicionado
-                        Me.Columns.Remove(checkbox)
-                    Next
-                    adicionado = 0
-
-                    Dispose(True)
-                End If
+                Me.Columns.Remove(checkbox)
             End If
 
 
 
         Catch ex As Exception
             LogaErro("Erro em Util::AdicionaCheckBoxColumn: " & ex.ToString())
+        Finally
+            If Not checkbox Is Nothing Then
+                checkbox.Dispose()
+            End If
         End Try
     End Sub
 
@@ -217,7 +213,7 @@ Public Class SuperDataGridView
                 ElseIf column.Substring(0, 3) = "id_" Then
                     ID = column
                 End If
-
+                oDataSet.Tables(0).Columns(i).ColumnName = column
                 Me.DataSource = oDataSet.Tables(0)
 
                 If bChkBox Then
@@ -292,7 +288,6 @@ Public Class SuperDataGridView
                 Exit Sub
             End If
 
-            'Se informou por parâmetro o SuperLetreiro, add text.
 
             'Me.Refresh()
 
@@ -464,7 +459,7 @@ Public Class SuperDataGridView
 
                 If Me.MultiSelect Then
 
-                    If CBool(Me.Rows(e.RowIndex).Cells(0).Value) = True Then
+                    If CBool(Me.Rows(e.RowIndex).Cells("chkDatagrid").Value) = True Then
 
                         Me.Rows(e.RowIndex).Selected = True
                         Me.Rows(e.RowIndex).DefaultCellStyle.BackColor = bgCorSelecionado
@@ -472,14 +467,10 @@ Public Class SuperDataGridView
                     End If
 
                 Else
-                    If CBool(Me.Rows(e.RowIndex).Cells(0).Value) = True Then
+                    If CBool(Me.Rows(e.RowIndex).Cells("chkDatagrid").Value) = True Then
 
-                        Me.Rows(e.RowIndex).Selected = False
                         Me.Rows(e.RowIndex).Cells(0).Value = False
-                        Me.Rows(e.RowIndex).DefaultCellStyle.BackColor = bgCorNaoSelecionado
-                        Me.Rows(e.RowIndex).DefaultCellStyle.ForeColor = ColorTextNaoSelecionado
                     End If
-
                 End If
             End If
 
@@ -491,13 +482,19 @@ Public Class SuperDataGridView
     Public Function ObterTodosChecados() As Decimal
         Dim total As Decimal = 0
         Try
-            For Each row As DataGridViewRow In Me.Rows
-                If row.Selected = True Then
-                    total += 1
-                End If
-            Next
+            If bCarregado Then
+                OnCurrentCellChanged(EventArgs.Empty)
 
-            Return total
+                For Each row As DataGridViewRow In Me.Rows
+                    If row.Selected = True Then
+                        total += 1
+                    End If
+                Next
+
+                Return total
+
+            End If
+            Return Nothing
         Catch ex As Exception
             LogaErro("Erro em Util::ObterTodosChecados: " & ex.ToString())
             Return Nothing
@@ -632,17 +629,17 @@ Public Class SuperDataGridView
             If bCarregado = True Then
 
                 If bChkBox Then
+                    If Me.MultiSelect Then
+                        For i = 0 To Me.Rows.Count - 1
 
-                    For i = 0 To Me.Rows.Count - 1
+                            If CBool(Me.Rows(i).Cells("chkDataGrid").Value) = True Then
+                                Me.Rows(i).Selected = True
+                            Else
+                                Me.Rows(i).Selected = False
 
-                        If CBool(Me.Rows(i).Cells("chkDataGrid").Value) = True Then
-                            Me.Rows(i).Selected = True
-                        Else
-                            Me.Rows(i).Selected = False
-
-
-                        End If
-                    Next
+                            End If
+                        Next
+                    End If
                 End If
             End If
 
@@ -673,14 +670,17 @@ Public Class SuperDataGridView
                             Me.Refresh()
 
                         ElseIf CBool(Me.Rows(e.RowIndex).Cells("chkDataGrid").Value) = True Then
-
+                            Me.ClearSelection()
                             Me.Rows(e.RowIndex).Selected = False
                             Me.Rows(e.RowIndex).Cells("chkDataGrid").Value = False
                             Me.Rows(e.RowIndex).DefaultCellStyle.BackColor = bgCorNaoSelecionado
                             Me.Rows(e.RowIndex).DefaultCellStyle.ForeColor = ColorTextNaoSelecionado
-
+                            Me.Refresh()
                         End If
                     End If
+                End If
+                If MultiSelect Then
+                    SuperDataGridView_CurrentCellChanged(sender, e)
                 End If
             End If
         Catch ex As Exception

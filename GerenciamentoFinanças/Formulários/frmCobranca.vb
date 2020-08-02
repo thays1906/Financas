@@ -25,31 +25,31 @@ Public Class frmCobranca
     End Sub
 
     Private Sub ControleBotoes()
-        Dim linha As Integer = 0
+        Dim totalLinhas As Decimal = Nothing
         Try
-            linha = CInt(dgCobranca.ObterTodosChecados())
-            For i = 0 To dgCobranca.Rows.Count - 1
-                If CBool(dgCobranca.Rows(i).Cells(0).Value) = True Then
-                    linha += 1
-                End If
-            Next
-            If dgCobranca.SelectedRows.Count = 0 Then
-                btnEditar.Enabled = False
-                btnExcluir.Enabled = False
-            Else
-                If linha = 1 Then
-                    btnEditar.Enabled = True
-                    btnExcluir.Enabled = True
-                ElseIf linha > 1 Then
-                    btnExcluir.Enabled = True
+
+
+            totalLinhas = dgCobranca.ObterTodosChecados
+
+            If dgCobranca.bCarregado Then
+
+                If totalLinhas = 0 Then
                     btnEditar.Enabled = False
-                Else
                     btnExcluir.Enabled = False
-                    btnEditar.Enabled = False
+                Else
+                    If totalLinhas = 1 Then
+                        btnEditar.Enabled = True
+                        btnExcluir.Enabled = True
+
+                    ElseIf totalLinhas > 1 Then
+                        btnExcluir.Enabled = True
+                        btnEditar.Enabled = False
+                    End If
+
                 End If
+
 
             End If
-
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro",, eImagens.Cancel)
         End Try
@@ -188,8 +188,11 @@ Public Class frmCobranca
             End If
 
             If erro <> 0 Then
+
                 Mensagem(eTipoMensagem.Erro, checados, ok, erro)
+
             ElseIf ok <> 0 Then
+
                 Mensagem(eTipoMensagem.OK)
                 Pesquisar()
                 CarregarCombo(True)
@@ -348,21 +351,16 @@ Public Class frmCobranca
         Alterar()
     End Sub
 
-    'Private Sub dgCobranca_SelectionChanged(sender As Object, e As EventArgs) Handles dgCobranca.SelectionChanged
-    '    ControleBotoes()
-    'End Sub
+    Private Sub dgCobranca_SelectionChanged(sender As Object, e As EventArgs)
+        Try
+            If dgCobranca.bCarregado Then
 
-    'Private Sub dgCobranca_MouseClick(sender As Object, e As MouseEventArgs) Handles dgCobranca.MouseClick
-    '    ControleBotoes()
-    'End Sub
+                ControleBotoes()
 
-    Private Sub dgCobranca_CellClick(sender As Object, e As DataGridViewCellEventArgs)
-        ControleBotoes()
+            End If
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro",, eImagens.Cancel)
+        End Try
     End Sub
-
-    'Private Sub dgCobranca_RowEnter(sender As Object, e As DataGridViewCellEventArgs) Handles dgCobranca.RowEnter
-    '    ControleBotoes()
-    'End Sub
-
 
 End Class

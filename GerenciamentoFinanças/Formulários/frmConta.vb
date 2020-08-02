@@ -1,6 +1,7 @@
 ﻿Imports GFT.Util
 Imports GFT.Util.clsMsgBox
 Public Class frmConta
+    Public NovaConta As frmNovaConta
     Public codigo As Decimal
     Public agencia As Decimal
     Public conta As Decimal
@@ -22,7 +23,7 @@ Public Class frmConta
         centralizarGrupoTab(tabCtrlConta)
         centralizarGrupoBotoes(gbDadosConta)
         centralizarGrupoBotoes(gbListConta)
-
+        'ControleBotoes()
         PesquisarConta()
     End Sub
     Private Sub frmConta_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
@@ -39,45 +40,45 @@ Public Class frmConta
 
             If rs.TotalRegistros > 0 Then
 
-                lvConsulta.PreencheGridDS(rs, True, True, False, True, 0, True)
-
+                'lvConsulta.PreencheGridDS(rs, True, True, False, True, 0, True)
+                dgConta.PreencheDataGrid(rs)
                 CorList(lvConsulta)
 
             End If
 
-            For i = 0 To lvConsulta.ObterTotalLinhas - 1
+            'For i = 0 To lvConsulta.ObterTotalLinhas - 1
 
-                If rs("as_Principal", i).ToString = "SIM" Then
+            '    If rs("as_Principal", i).ToString = "SIM" Then
 
-                    txtPrincipalConta.Text =
-                                    (IIf(String.IsNullOrEmpty(rs("as_AGÊNCIA#150", i).ToString) And
-                                    String.IsNullOrEmpty(rs("as_CONTA#250", i).ToString),
-                                    rs("as_BANCO#200", i).ToString,
-                                    rs("as_BANCO#200", i).ToString & " - " &
-                                    rs("as_AGÊNCIA#150", i).ToString & " - " &
-                                    rs("as_CONTA#250", i).ToString)).ToString()
+            '        txtPrincipalConta.Text =
+            '                        (IIf(String.IsNullOrEmpty(rs("as_AGÊNCIA#150", i).ToString) And
+            '                        String.IsNullOrEmpty(rs("as_CONTA#250", i).ToString),
+            '                        rs("as_BANCO#200", i).ToString,
+            '                        rs("as_BANCO#200", i).ToString & " - " &
+            '                        rs("as_AGÊNCIA#150", i).ToString & " - " &
+            '                        rs("as_CONTA#250", i).ToString)).ToString()
 
-                    txtPrincipalTipo.Text = rs("as_TIPO_DE_CONTA", i).ToString
+            '        txtPrincipalTipo.Text = rs("as_TIPO_DE_CONTA", i).ToString
 
-                    picBank.Image = Banco(rs("as_BANCO#200", i).ToString)
+            '        picBank.Image = Banco(rs("as_BANCO#200", i).ToString)
 
-                    If picBank.Image.Width = 71 Then
-                        picBank.Left = 5
-                    Else
-                        picBank.Location = New Point(27, 70)
-                    End If
+            '        If picBank.Image.Width = 71 Then
+            '            picBank.Left = 5
+            '        Else
+            '            picBank.Location = New Point(27, 70)
+            '        End If
 
-                End If
+            '    End If
 
-                If lvConsulta.Items(i).SubItems(4).Text.Contains(CChar("-")) Then
+            '    If lvConsulta.Items(i).SubItems(4).Text.Contains(CChar("-")) Then
 
-                    lvConsulta.Items(i).SubItems(4).ForeColor = Color.Red
-                Else
-                    lvConsulta.Items(i).SubItems(4).ForeColor = Color.Green
-                End If
-                lvConsulta.Items(i).SubItems(4).Font = New Font(FontFamily.GenericSansSerif, 12, FontStyle.Bold)
-            Next
-            lvConsulta.Refresh()
+            '        lvConsulta.Items(i).SubItems(4).ForeColor = Color.Red
+            '    Else
+            '        lvConsulta.Items(i).SubItems(4).ForeColor = Color.Green
+            '    End If
+            '    lvConsulta.Items(i).SubItems(4).Font = New Font(FontFamily.GenericSansSerif, 12, FontStyle.Bold)
+            'Next
+            'lvConsulta.Refresh()
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
         Finally
@@ -85,15 +86,19 @@ Public Class frmConta
         End Try
     End Sub
     Private Sub btnEditar_Click_1(sender As Object, e As EventArgs) Handles btnEditar.Click
-        Dim conta As frmNovaConta
         Dim cConta As Decimal
         Try
-            cConta = lvConsulta.ObterChave
+            'cConta = lvConsulta.ObterChave
+            cConta = dgConta.ObterChave
 
-            conta = New frmNovaConta(cConta)
-            conta.ShowDialog()
+            NovaConta = New frmNovaConta(cConta)
+            NovaConta.ShowDialog()
 
-            PesquisarConta()
+            'Verificar se foi alterado
+            If NovaConta.bAlterado Then
+                PesquisarConta()
+            End If
+
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
         End Try
@@ -101,48 +106,42 @@ Public Class frmConta
 
     Private Sub btnExcluir_Click(sender As Object, e As EventArgs) Handles btnExcluir.Click
         Try
-            If lvConsulta.SelectedItems.Count > 0 Then
 
-                codigo = lvConsulta.ObterChave
+            If dgConta.ObterChave <> 0 Then
 
-                If codigo <> 0 Then
+                If Mensagem(eTipoMensagem.Question) = eRet.Sim Then
 
-                    If S_MsgBox("Deseja realmente excluir sua Conta Báncaria?" & vbNewLine &
-                            "Ao deletar esta conta, o saldo também será perdido.",
-                            eBotoes.SimNao, "Exclusão de Conta.",,
-                            eImagens.Ok) = eRet.Sim Then
+                    If pContaBancaria.DeletarConta(dgConta.ObterChave) Then
 
-                        If pContaBancaria.DeletarConta(codigo) Then
-                            S_MsgBox("Conta Báncaria excluída com sucesso!",
-                                 eBotoes.Ok, "Exclusão de Conta.",, eImagens.Ok)
-                        End If
+                        Mensagem(eTipoMensagem.OK)
+                        PesquisarConta()
+
+                    Else
+                        Mensagem(eTipoMensagem.Erro)
                     End If
-                Else
-                    S_MsgBox("Falha ao excluir conta báncaria.",
-                            eBotoes.Ok, "Exclusão de Conta.",, eImagens.Cancel)
                 End If
+
             Else
-                S_MsgBox("Selecione um registro.",
-                        eBotoes.Ok, "Exclusão de Conta.",, eImagens.Atencao)
+                S_MsgBox("Nenhum registro selecionado.",
+                        eBotoes.Ok, "Exclusão de Conta.",,
+                        eImagens.Atencao)
 
             End If
 
-            PesquisarConta()
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
         End Try
     End Sub
     Private Sub btnAddConta_Click(sender As Object, e As EventArgs) Handles btnAddConta.Click
-        Dim conta As frmNovaConta
         Try
-            'Dim teste = New Form1
-            'teste.Show()
             Me.Enabled = False
-            conta = New frmNovaConta(0)
-            conta.ShowDialog()
+            NovaConta = New frmNovaConta(0)
+            NovaConta.ShowDialog()
             Me.Enabled = True
 
-            PesquisarConta()
+            If NovaConta.bAlterado Then
+                PesquisarConta()
+            End If
 
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Erro",, eImagens.Cancel)
@@ -155,5 +154,28 @@ Public Class frmConta
 
     Private Sub btnFechar_Click(sender As Object, e As EventArgs) Handles btnFechar.Click
         Me.Close()
+    End Sub
+    Private Sub ControleBotoes()
+        Try
+            If dgConta.ObterTodosChecados = 0 Then
+                btnEditar.Enabled = False
+                btnExcluir.Enabled = False
+            Else
+                btnEditar.Enabled = True
+                btnExcluir.Enabled = True
+            End If
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro",, eImagens.Cancel)
+        End Try
+    End Sub
+
+    Private Sub dgConta_SelectionChanged(sender As Object, e As EventArgs) Handles dgConta.SelectionChanged
+        Try
+            If dgConta.bCarregado Then
+                ControleBotoes()
+            End If
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro",, eImagens.Cancel)
+        End Try
     End Sub
 End Class

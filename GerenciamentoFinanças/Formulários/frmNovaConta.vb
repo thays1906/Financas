@@ -8,7 +8,7 @@ Public Class frmNovaConta
     Public conta As Decimal
     Public saldo As Decimal
     Public cPrincipal As Decimal
-
+    Public Property bAlterado As Boolean
     Private Sub frmNovaConta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cor(Me, Collor.CinzaEscuro)
         CorButton(btnSalvar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
@@ -46,14 +46,34 @@ Public Class frmNovaConta
                 End If
                 If cCodigo = 0 Then
 
-                    If pContaBancaria.InserirConta(txtBanco.Text, agencia, conta, saldo, CDec(cbTipoConta.ObterChaveCombo()), cPrincipal) Then
+                    If pContaBancaria.InserirConta(txtBanco.Text,
+                                                   agencia,
+                                                   conta,
+                                                   saldo,
+                                                   CDec(cbTipoConta.ObterChaveCombo()),
+                                                   cPrincipal) Then
+
                         S_MsgBox("Conta Bancária cadastrada com sucesso.", eBotoes.Ok, "",, eImagens.Ok)
+
+                        bAlterado = True
                     End If
                 Else
-                    If pContaBancaria.AlterarConta(cCodigo, txtBanco.Text, agencia, conta, saldo, CDec(cbTipoConta.ObterChaveCombo()), cPrincipal) Then
-                        S_MsgBox("Dados da Conta Bancária alterados com sucesso.", eBotoes.Ok, "",, eImagens.Ok)
+                    If pContaBancaria.AlterarConta(cCodigo,
+                                                   txtBanco.Text,
+                                                   agencia,
+                                                   conta,
+                                                   saldo,
+                                                   CDec(cbTipoConta.ObterChaveCombo()),
+                                                   cPrincipal) Then
+
+                        S_MsgBox("Dados da Conta Bancária alterados com sucesso.",
+                                 eBotoes.Ok, "",,
+                                 eImagens.Ok)
+
+                        bAlterado = True
                     End If
                 End If
+                Me.bAlterado.ToString()
                 Me.Close()
             End If
 
