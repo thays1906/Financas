@@ -46,6 +46,8 @@ Public Module SubUtil
         Gelo = 12
         Azul = 13
         Azul4 = 16
+        Control
+        Claro
         CinzaClaro
         CinzaBranco
         CinzaEscuro
@@ -139,6 +141,12 @@ Public Module SubUtil
 
         ElseIf Cor = Collor.Marrom Then
             Controle.BackColor = Color.FromArgb(115, 100, 56)
+
+        ElseIf Cor = Collor.Claro Then
+            Controle.BackColor = Color.FromArgb(241, 241, 241)
+
+        ElseIf Cor = Collor.Control Then
+            Controle.BackColor = SystemColors.Control
 
         ElseIf Cor = Collor.Branco Then
             Controle.BackColor = Color.White
@@ -386,7 +394,7 @@ Public Module SubUtil
 
             ElseIf rBanco.Contains("PAGBANK") Then
 
-                img = My.Resources.iconBankmini_fw
+                img = My.Resources.iconBank
 
             ElseIf rBanco.Contains("MERCANTIL") Then
 

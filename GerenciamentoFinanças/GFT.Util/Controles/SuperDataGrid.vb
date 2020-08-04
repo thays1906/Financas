@@ -454,22 +454,24 @@ Public Class SuperDataGridView
 
         Try
             'Mantém a linha selecionada, quando clicar em outra linha.
+            If bCarregado Then
 
-            If bChkBox Then
+                If bChkBox Then
 
-                If Me.MultiSelect Then
+                    If Me.MultiSelect Then
 
-                    If CBool(Me.Rows(e.RowIndex).Cells("chkDatagrid").Value) = True Then
+                        If CBool(Me.Rows(e.RowIndex).Cells("chkDatagrid").Value) = True Then
 
-                        Me.Rows(e.RowIndex).Selected = True
-                        Me.Rows(e.RowIndex).DefaultCellStyle.BackColor = bgCorSelecionado
-                        Me.Rows(e.RowIndex).DefaultCellStyle.ForeColor = ColorTextSelecionado
-                    End If
+                            Me.Rows(e.RowIndex).Selected = True
+                            Me.Rows(e.RowIndex).DefaultCellStyle.BackColor = bgCorSelecionado
+                            Me.Rows(e.RowIndex).DefaultCellStyle.ForeColor = ColorTextSelecionado
+                        End If
 
-                Else
-                    If CBool(Me.Rows(e.RowIndex).Cells("chkDatagrid").Value) = True Then
+                    Else
+                        If CBool(Me.Rows(e.RowIndex).Cells("chkDatagrid").Value) = True Then
 
-                        Me.Rows(e.RowIndex).Cells(0).Value = False
+                            Me.Rows(e.RowIndex).Cells(0).Value = False
+                        End If
                     End If
                 End If
             End If
@@ -710,4 +712,13 @@ Public Class SuperDataGridView
 
     '    End Try
     'End Sub
+    Public Function ObterTotalLinhas() As Integer
+        Try
+            Return Me.Rows.Count
+
+        Catch ex As Exception
+            LogaErro("Erro em SuperDataGrid::ObterTotalLinhas: " & CStr(ex.ToString()))
+            Return Nothing
+        End Try
+    End Function
 End Class

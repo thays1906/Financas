@@ -98,7 +98,8 @@ Public Class frmDespesa
         End Try
     End Sub
     Private Sub Pesquisar()
-        Dim ano As Decimal
+        Dim ano As Decimal = Nothing
+        Dim valorTotal As String = Nothing
         Try
 
             If tabCtrlDespesa.SelectedIndex = 1 Then
@@ -111,43 +112,46 @@ Public Class frmDespesa
                     lvlConsultaFixa.PreencheGridDS(oDataset, True, True, False, True, 0, True)
                     txtLetreiroFixa.TextoLetreiro = oDataset.InfoPesquisa.ToString
                 End If
+
             Else
                 If CDec(cbAno.ObterChaveCombo) <> 0 Then
                     ano = CDec(cbAno.ObterDescricaoCombo)
                 Else
                     ano = 0
                 End If
+
                 oDataset = pDespesa.PesquisarDespesa(CType(cbStatusFiltro.ObterChaveCombo(), eStatusDespesa),
-                                                 CDec(cbMes.ObterChaveCombo()),
-                                                 ano)
+                                                     CDec(cbMes.ObterChaveCombo()),
+                                                     ano)
+
                 If oDataset.TotalRegistros > 0 Then
 
                     txtLetreiroDespesa.TextoLetreiro = oDataset.InfoPesquisa.ToString
 
-                    Dim x As String = oDataset("total", 0, 1).ToString
+                    valorTotal = oDataset("total", 0, 1).ToString
 
-                    txtTotalDespesa.Text = x
+                    txtTotalDespesa.Text = valorTotal
 
-                    If CDec(x) <> 0 Then
+                    If CDec(valorTotal) <> 0 Then
                         txtTotalDespesa.Text = Convert.ToDouble(txtTotalDespesa.Text).ToString("C")
                     End If
 
 
-                    dgDespesa.DataSource = oDataset.Tables(0)
+                    dgDespesa.PreencheDataGrid(oDataset,,, txtLetreiroDespesa)
 
-                    lvConsulta.PreencheGridDS(oDataset, True, True, False, True, 0, True)
+                    'lvConsulta.PreencheGridDS(oDataset, True, True, False, True, 0, True)
 
-                    CorList(lvConsulta)
-                    For i = 0 To oDataset.TotalRegistros - 1
+                    'CorList(lvConsulta)
+                    'For i = 0 To oDataset.TotalRegistros - 1
 
-                        If CStr(oDataset("as_Status#100", i)) = "PAGO" Then
-                            lvConsulta.Items(i).SubItems(1).ForeColor = Color.Green
-                        ElseIf CStr(oDataset("as_Status#100", i)) = "ATRASADO" Then
-                            lvConsulta.Items(i).SubItems(1).ForeColor = Color.Red
-                        End If
+                    '    If CStr(oDataset("as_Status#100", i)) = "PAGO" Then
+                    '        lvConsulta.Items(i).SubItems(1).ForeColor = Color.Green
+                    '    ElseIf CStr(oDataset("as_Status#100", i)) = "ATRASADO" Then
+                    '        lvConsulta.Items(i).SubItems(1).ForeColor = Color.Red
+                    '    End If
 
-                        lvConsulta.Items(i).SubItems(3).ForeColor = Color.Red
-                    Next
+                    '    lvConsulta.Items(i).SubItems(3).ForeColor = Color.Red
+                    'Next
                 Else
                     lvConsulta.PreencheGridDS(oDataset, True, True, False, True)
 
@@ -163,7 +167,6 @@ Public Class frmDespesa
             S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
         End Try
     End Sub
-
 
     Private Sub CarregarCombo()
         Dim col As Collection
@@ -330,6 +333,7 @@ Public Class frmDespesa
             If tabCtrlDespesa.SelectedIndex = 1 Then
                 btnFechar.Text = " &Voltar"
                 btnPesquisar.Enabled = True
+
                 If lvlConsultaFixa.CheckedItems.Count = 1 Then
                     btnEditar.Enabled = True
                     btnExcluir.Enabled = True

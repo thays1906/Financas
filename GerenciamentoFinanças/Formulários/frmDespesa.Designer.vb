@@ -24,6 +24,8 @@ Partial Class frmDespesa
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmDespesa))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.gbBotoes = New System.Windows.Forms.GroupBox()
         Me.btnFechar = New System.Windows.Forms.Button()
         Me.btnPesquisar = New System.Windows.Forms.Button()
@@ -34,7 +36,6 @@ Partial Class frmDespesa
         Me.btnExcluir = New System.Windows.Forms.Button()
         Me.tabCtrlDespesa = New GFT.Util.SuperTabControl()
         Me.tpPesquisa = New System.Windows.Forms.TabPage()
-        Me.dgDespesa = New System.Windows.Forms.DataGridView()
         Me.txtLetreiroDespesa = New GFT.Util.SuperLetreiro()
         Me.chkList = New System.Windows.Forms.CheckBox()
         Me.lvConsulta = New GFT.Util.SuperLV()
@@ -71,16 +72,17 @@ Partial Class frmDespesa
         Me.txtDescriaoDetalhe = New GFT.Util.SuperTextBox()
         Me.pnlDetalhe = New System.Windows.Forms.Panel()
         Me.ImgDespesa = New System.Windows.Forms.ImageList(Me.components)
+        Me.dgDespesa = New GFT.Util.SuperDataGridView()
         Me.gbBotoes.SuspendLayout()
         Me.tabCtrlDespesa.SuspendLayout()
         Me.tpPesquisa.SuspendLayout()
-        CType(Me.dgDespesa, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbFiltro.SuspendLayout()
         Me.tabDespesaFixa.SuspendLayout()
         Me.gbDespesaFixa.SuspendLayout()
         Me.tabDetalhe.SuspendLayout()
         Me.gbDetalhe.SuspendLayout()
         Me.gbDadosDetalhe.SuspendLayout()
+        CType(Me.dgDespesa, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'gbBotoes
@@ -240,23 +242,6 @@ Partial Class frmDespesa
         Me.tpPesquisa.Text = "Despesas"
         Me.tpPesquisa.UseVisualStyleBackColor = True
         '
-        'dgDespesa
-        '
-        Me.dgDespesa.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dgDespesa.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
-        Me.dgDespesa.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.dgDespesa.BackgroundColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.dgDespesa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgDespesa.Location = New System.Drawing.Point(44, 129)
-        Me.dgDespesa.Margin = New System.Windows.Forms.Padding(4)
-        Me.dgDespesa.Name = "dgDespesa"
-        Me.dgDespesa.RowHeadersWidth = 51
-        Me.dgDespesa.Size = New System.Drawing.Size(1831, 403)
-        Me.dgDespesa.TabIndex = 10
-        Me.dgDespesa.Visible = False
-        '
         'txtLetreiroDespesa
         '
         Me.txtLetreiroDespesa.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
@@ -265,7 +250,7 @@ Partial Class frmDespesa
         Me.txtLetreiroDespesa.Margin = New System.Windows.Forms.Padding(4)
         Me.txtLetreiroDespesa.Name = "txtLetreiroDespesa"
         Me.txtLetreiroDespesa.RolagemLetreiro = GFT.Util.SuperLetreiro.Direcao.Direita
-        Me.txtLetreiroDespesa.Size = New System.Drawing.Size(503, 24)
+        Me.txtLetreiroDespesa.Size = New System.Drawing.Size(503, 22)
         Me.txtLetreiroDespesa.TabIndex = 9
         Me.txtLetreiroDespesa.TextoLetreiro = "0,00 Registros"
         Me.txtLetreiroDespesa.VelocidadeRolagem = 1
@@ -288,11 +273,11 @@ Partial Class frmDespesa
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lvConsulta.HabilitaOrdem = True
         Me.lvConsulta.HideSelection = False
-        Me.lvConsulta.Location = New System.Drawing.Point(44, 126)
+        Me.lvConsulta.Location = New System.Drawing.Point(44, 519)
         Me.lvConsulta.Margin = New System.Windows.Forms.Padding(4)
         Me.lvConsulta.Name = "lvConsulta"
         Me.lvConsulta.SelecionaVarios = True
-        Me.lvConsulta.Size = New System.Drawing.Size(1829, 406)
+        Me.lvConsulta.Size = New System.Drawing.Size(1829, 42)
         Me.lvConsulta.TabIndex = 0
         Me.lvConsulta.UseCompatibleStateImageBehavior = False
         '
@@ -781,6 +766,49 @@ Partial Class frmDespesa
         Me.ImgDespesa.Images.SetKeyName(2, "icon_Despesa01.png")
         Me.ImgDespesa.Images.SetKeyName(3, "business_salesreport_salesreport_negocio_2353 (1).png")
         '
+        'dgDespesa
+        '
+        Me.dgDespesa.AdicionarCheckBox = True
+        Me.dgDespesa.AllowUserToAddRows = False
+        Me.dgDespesa.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dgDespesa.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgDespesa.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.dgDespesa.BackgroundColor = System.Drawing.Color.White
+        Me.dgDespesa.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgDespesa.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal
+        Me.dgDespesa.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSlateGray
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgDespesa.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgDespesa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgDespesa.CorDoFundoCabeçalho = System.Drawing.Color.LightSlateGray
+        Me.dgDespesa.CorTextoCabeçalho = System.Drawing.Color.White
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ButtonFace
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgDespesa.DefaultCellStyle = DataGridViewCellStyle2
+        Me.dgDespesa.EnableHeadersVisualStyles = False
+        Me.dgDespesa.Location = New System.Drawing.Point(44, 132)
+        Me.dgDespesa.Name = "dgDespesa"
+        Me.dgDespesa.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
+        Me.dgDespesa.RowHeadersVisible = False
+        Me.dgDespesa.RowHeadersWidth = 51
+        Me.dgDespesa.RowTemplate.Height = 24
+        Me.dgDespesa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgDespesa.Size = New System.Drawing.Size(1821, 370)
+        Me.dgDespesa.TabIndex = 10
+        '
         'frmDespesa
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -798,7 +826,6 @@ Partial Class frmDespesa
         Me.tabCtrlDespesa.ResumeLayout(False)
         Me.tpPesquisa.ResumeLayout(False)
         Me.tpPesquisa.PerformLayout()
-        CType(Me.dgDespesa, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbFiltro.ResumeLayout(False)
         Me.gbFiltro.PerformLayout()
         Me.tabDespesaFixa.ResumeLayout(False)
@@ -808,6 +835,7 @@ Partial Class frmDespesa
         Me.gbDetalhe.ResumeLayout(False)
         Me.gbDadosDetalhe.ResumeLayout(False)
         Me.gbDadosDetalhe.PerformLayout()
+        CType(Me.dgDespesa, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -858,5 +886,5 @@ Partial Class frmDespesa
     Friend WithEvents txtLetreiroFixa As GFT.Util.SuperLetreiro
     Friend WithEvents btnLancamentoFuturo As Button
     Friend WithEvents ImgDespesa As ImageList
-    Friend WithEvents dgDespesa As DataGridView
+    Friend WithEvents dgDespesa As GFT.Util.SuperDataGridView
 End Class

@@ -363,8 +363,8 @@
     <None Include="Resources\iconEnvioEmail.png" />
     <None Include="Resources\iconDespesa.png" />
     <None Include="Resources\iconBank.png" />
-    <None Include="Resources\iconBankmini.fw.png" />
     <None Include="Resources\iconHome.png" />
+    <None Include="Resources\iconBankmini.fw.png" />
     <Content Include="Resources\iconPendente.png" />
     <None Include="Resources\iconExtract.png" />
     <None Include="Resources\iconDetalheFiles.png" />

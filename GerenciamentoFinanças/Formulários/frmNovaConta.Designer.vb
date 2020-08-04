@@ -26,21 +26,24 @@ Partial Class frmNovaConta
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNovaConta))
         Me.btnFechar = New System.Windows.Forms.Button()
         Me.btnSalvar = New System.Windows.Forms.Button()
-        Me.cbTipoConta = New GFT.Util.SuperComboBox()
-        Me.lblAgencia = New System.Windows.Forms.Label()
-        Me.lblConta = New System.Windows.Forms.Label()
-        Me.txtConta = New GFT.Util.SuperTextBox()
-        Me.txtAgencia = New GFT.Util.SuperTextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.ImgAddConta = New System.Windows.Forms.ImageList(Me.components)
         Me.tabCtrlConta = New GFT.Util.SuperTabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.chkPrincipalConta = New System.Windows.Forms.CheckBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.txtSaldo = New GFT.Util.SuperTextBox()
-        Me.txtBanco = New GFT.Util.SuperTextBox()
-        Me.ImgAddConta = New System.Windows.Forms.ImageList(Me.components)
         Me.gbDados = New System.Windows.Forms.GroupBox()
+        Me.lblBancoAviso = New System.Windows.Forms.Label()
+        Me.lblContaAviso = New System.Windows.Forms.Label()
+        Me.lblSaldoAviso = New System.Windows.Forms.Label()
+        Me.chkPrincipalConta = New System.Windows.Forms.CheckBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtBanco = New GFT.Util.SuperTextBox()
+        Me.txtAgencia = New GFT.Util.SuperTextBox()
+        Me.txtSaldo = New GFT.Util.SuperTextBox()
+        Me.lblAgencia = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblConta = New System.Windows.Forms.Label()
+        Me.txtConta = New GFT.Util.SuperTextBox()
+        Me.cbTipoConta = New GFT.Util.SuperComboBox()
         Me.tabCtrlConta.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.gbDados.SuspendLayout()
@@ -85,95 +88,11 @@ Partial Class frmNovaConta
         Me.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnSalvar.UseVisualStyleBackColor = False
         '
-        'cbTipoConta
+        'ImgAddConta
         '
-        Me.cbTipoConta.Alterado = False
-        Me.cbTipoConta.CorFundo = System.Drawing.Color.White
-        Me.cbTipoConta.CorFundoSelecionado = System.Drawing.Color.White
-        Me.cbTipoConta.CorTexto = System.Drawing.Color.Black
-        Me.cbTipoConta.CorTextoSelecionado = System.Drawing.Color.Black
-        Me.cbTipoConta.FormattingEnabled = True
-        Me.cbTipoConta.Location = New System.Drawing.Point(169, 101)
-        Me.cbTipoConta.Margin = New System.Windows.Forms.Padding(0)
-        Me.cbTipoConta.Name = "cbTipoConta"
-        Me.cbTipoConta.Size = New System.Drawing.Size(275, 33)
-        Me.cbTipoConta.SuperObrigatorio = True
-        Me.cbTipoConta.SuperTxtObrigatorio = "Tipo de Conta"
-        Me.cbTipoConta.TabIndex = 2
-        '
-        'lblAgencia
-        '
-        Me.lblAgencia.AutoSize = True
-        Me.lblAgencia.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAgencia.Location = New System.Drawing.Point(80, 209)
-        Me.lblAgencia.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
-        Me.lblAgencia.Name = "lblAgencia"
-        Me.lblAgencia.Size = New System.Drawing.Size(87, 24)
-        Me.lblAgencia.TabIndex = 48
-        Me.lblAgencia.Text = "Agência:"
-        '
-        'lblConta
-        '
-        Me.lblConta.AutoSize = True
-        Me.lblConta.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblConta.Location = New System.Drawing.Point(80, 252)
-        Me.lblConta.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
-        Me.lblConta.Name = "lblConta"
-        Me.lblConta.Size = New System.Drawing.Size(69, 24)
-        Me.lblConta.TabIndex = 51
-        Me.lblConta.Text = "Conta:"
-        '
-        'txtConta
-        '
-        Me.txtConta.Alterado = False
-        Me.txtConta.BackColor = System.Drawing.Color.White
-        Me.txtConta.CorFundoSelecionado = System.Drawing.SystemColors.Control
-        Me.txtConta.Location = New System.Drawing.Point(169, 248)
-        Me.txtConta.Margin = New System.Windows.Forms.Padding(0)
-        Me.txtConta.Name = "txtConta"
-        Me.txtConta.Size = New System.Drawing.Size(184, 32)
-        Me.txtConta.SuperMascara = ""
-        Me.txtConta.SuperObrigatorio = False
-        Me.txtConta.SuperTravaErrors = False
-        Me.txtConta.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
-        Me.txtConta.SuperTxtObrigatorio = ""
-        Me.txtConta.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosInteiros
-        Me.txtConta.TabIndex = 5
-        '
-        'txtAgencia
-        '
-        Me.txtAgencia.Alterado = False
-        Me.txtAgencia.BackColor = System.Drawing.Color.White
-        Me.txtAgencia.CorFundoSelecionado = System.Drawing.SystemColors.Control
-        Me.txtAgencia.Location = New System.Drawing.Point(169, 205)
-        Me.txtAgencia.Margin = New System.Windows.Forms.Padding(0)
-        Me.txtAgencia.Name = "txtAgencia"
-        Me.txtAgencia.Size = New System.Drawing.Size(147, 32)
-        Me.txtAgencia.SuperMascara = ""
-        Me.txtAgencia.SuperObrigatorio = False
-        Me.txtAgencia.SuperTravaErrors = False
-        Me.txtAgencia.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
-        Me.txtAgencia.SuperTxtObrigatorio = ""
-        Me.txtAgencia.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosInteiros
-        Me.txtAgencia.TabIndex = 4
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(79, 157)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(73, 25)
-        Me.Label1.TabIndex = 56
-        Me.Label1.Text = "Banco"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(79, 104)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(71, 25)
-        Me.Label2.TabIndex = 57
-        Me.Label2.Text = "Conta"
+        Me.ImgAddConta.ImageStream = CType(resources.GetObject("ImgAddConta.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImgAddConta.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImgAddConta.Images.SetKeyName(0, "iconBank.png")
         '
         'tabCtrlConta
         '
@@ -199,65 +118,12 @@ Partial Class frmNovaConta
         Me.TabPage1.Text = "Conta Báncaria"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
-        'chkPrincipalConta
-        '
-        Me.chkPrincipalConta.AutoSize = True
-        Me.chkPrincipalConta.Location = New System.Drawing.Point(492, 16)
-        Me.chkPrincipalConta.Name = "chkPrincipalConta"
-        Me.chkPrincipalConta.Size = New System.Drawing.Size(192, 29)
-        Me.chkPrincipalConta.TabIndex = 0
-        Me.chkPrincipalConta.Text = "Tornar Principal"
-        Me.chkPrincipalConta.UseVisualStyleBackColor = True
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(79, 53)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(68, 25)
-        Me.Label3.TabIndex = 60
-        Me.Label3.Text = "Saldo"
-        '
-        'txtSaldo
-        '
-        Me.txtSaldo.Alterado = False
-        Me.txtSaldo.BackColor = System.Drawing.Color.White
-        Me.txtSaldo.CorFundoSelecionado = System.Drawing.SystemColors.Control
-        Me.txtSaldo.Location = New System.Drawing.Point(169, 50)
-        Me.txtSaldo.Name = "txtSaldo"
-        Me.txtSaldo.Size = New System.Drawing.Size(275, 32)
-        Me.txtSaldo.SuperMascara = ""
-        Me.txtSaldo.SuperObrigatorio = True
-        Me.txtSaldo.SuperTravaErrors = False
-        Me.txtSaldo.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
-        Me.txtSaldo.SuperTxtObrigatorio = ""
-        Me.txtSaldo.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosReais
-        Me.txtSaldo.TabIndex = 1
-        '
-        'txtBanco
-        '
-        Me.txtBanco.Alterado = False
-        Me.txtBanco.BackColor = System.Drawing.Color.White
-        Me.txtBanco.CorFundoSelecionado = System.Drawing.SystemColors.Control
-        Me.txtBanco.Location = New System.Drawing.Point(169, 154)
-        Me.txtBanco.Name = "txtBanco"
-        Me.txtBanco.Size = New System.Drawing.Size(319, 32)
-        Me.txtBanco.SuperMascara = ""
-        Me.txtBanco.SuperObrigatorio = False
-        Me.txtBanco.SuperTravaErrors = False
-        Me.txtBanco.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
-        Me.txtBanco.SuperTxtObrigatorio = ""
-        Me.txtBanco.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NENHUMA
-        Me.txtBanco.TabIndex = 3
-        '
-        'ImgAddConta
-        '
-        Me.ImgAddConta.ImageStream = CType(resources.GetObject("ImgAddConta.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImgAddConta.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImgAddConta.Images.SetKeyName(0, "iconBank.png")
-        '
         'gbDados
         '
+        Me.gbDados.BackColor = System.Drawing.Color.FromArgb(CType(CType(241, Byte), Integer), CType(CType(241, Byte), Integer), CType(CType(241, Byte), Integer))
+        Me.gbDados.Controls.Add(Me.lblBancoAviso)
+        Me.gbDados.Controls.Add(Me.lblContaAviso)
+        Me.gbDados.Controls.Add(Me.lblSaldoAviso)
         Me.gbDados.Controls.Add(Me.chkPrincipalConta)
         Me.gbDados.Controls.Add(Me.Label1)
         Me.gbDados.Controls.Add(Me.txtBanco)
@@ -274,7 +140,184 @@ Partial Class frmNovaConta
         Me.gbDados.Size = New System.Drawing.Size(684, 313)
         Me.gbDados.TabIndex = 62
         Me.gbDados.TabStop = False
-        Me.gbDados.Text = "Dados"
+        Me.gbDados.Text = "Dados da conta"
+        '
+        'lblBancoAviso
+        '
+        Me.lblBancoAviso.AutoSize = True
+        Me.lblBancoAviso.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblBancoAviso.ForeColor = System.Drawing.Color.Red
+        Me.lblBancoAviso.Location = New System.Drawing.Point(38, 166)
+        Me.lblBancoAviso.Name = "lblBancoAviso"
+        Me.lblBancoAviso.Size = New System.Drawing.Size(72, 20)
+        Me.lblBancoAviso.TabIndex = 63
+        Me.lblBancoAviso.Text = "Label6"
+        Me.lblBancoAviso.Visible = False
+        '
+        'lblContaAviso
+        '
+        Me.lblContaAviso.AutoSize = True
+        Me.lblContaAviso.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblContaAviso.ForeColor = System.Drawing.Color.Red
+        Me.lblContaAviso.Location = New System.Drawing.Point(381, 166)
+        Me.lblContaAviso.Name = "lblContaAviso"
+        Me.lblContaAviso.Size = New System.Drawing.Size(72, 20)
+        Me.lblContaAviso.TabIndex = 62
+        Me.lblContaAviso.Text = "Label5"
+        Me.lblContaAviso.Visible = False
+        '
+        'lblSaldoAviso
+        '
+        Me.lblSaldoAviso.AutoSize = True
+        Me.lblSaldoAviso.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSaldoAviso.ForeColor = System.Drawing.Color.Red
+        Me.lblSaldoAviso.Location = New System.Drawing.Point(38, 93)
+        Me.lblSaldoAviso.Name = "lblSaldoAviso"
+        Me.lblSaldoAviso.Size = New System.Drawing.Size(72, 20)
+        Me.lblSaldoAviso.TabIndex = 61
+        Me.lblSaldoAviso.Text = "Label4"
+        Me.lblSaldoAviso.Visible = False
+        '
+        'chkPrincipalConta
+        '
+        Me.chkPrincipalConta.AutoSize = True
+        Me.chkPrincipalConta.Location = New System.Drawing.Point(505, 26)
+        Me.chkPrincipalConta.Name = "chkPrincipalConta"
+        Me.chkPrincipalConta.Size = New System.Drawing.Size(192, 29)
+        Me.chkPrincipalConta.TabIndex = 0
+        Me.chkPrincipalConta.Text = "Tornar Principal"
+        Me.chkPrincipalConta.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(38, 115)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(86, 25)
+        Me.Label1.TabIndex = 56
+        Me.Label1.Text = "Banco*"
+        '
+        'txtBanco
+        '
+        Me.txtBanco.Alterado = False
+        Me.txtBanco.BackColor = System.Drawing.Color.White
+        Me.txtBanco.CorFundoSelecionado = System.Drawing.SystemColors.ControlLightLight
+        Me.txtBanco.Location = New System.Drawing.Point(41, 136)
+        Me.txtBanco.Name = "txtBanco"
+        Me.txtBanco.Size = New System.Drawing.Size(319, 32)
+        Me.txtBanco.SuperMascara = ""
+        Me.txtBanco.SuperObrigatorio = True
+        Me.txtBanco.SuperTravaErrors = False
+        Me.txtBanco.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
+        Me.txtBanco.SuperTxtObrigatorio = ""
+        Me.txtBanco.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NENHUMA
+        Me.txtBanco.TabIndex = 3
+        '
+        'txtAgencia
+        '
+        Me.txtAgencia.Alterado = False
+        Me.txtAgencia.BackColor = System.Drawing.Color.White
+        Me.txtAgencia.CorFundoSelecionado = System.Drawing.SystemColors.ControlLightLight
+        Me.txtAgencia.Location = New System.Drawing.Point(41, 208)
+        Me.txtAgencia.Margin = New System.Windows.Forms.Padding(0)
+        Me.txtAgencia.Name = "txtAgencia"
+        Me.txtAgencia.Size = New System.Drawing.Size(147, 32)
+        Me.txtAgencia.SuperMascara = ""
+        Me.txtAgencia.SuperObrigatorio = False
+        Me.txtAgencia.SuperTravaErrors = False
+        Me.txtAgencia.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
+        Me.txtAgencia.SuperTxtObrigatorio = ""
+        Me.txtAgencia.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosInteiros
+        Me.txtAgencia.TabIndex = 4
+        '
+        'txtSaldo
+        '
+        Me.txtSaldo.Alterado = False
+        Me.txtSaldo.BackColor = System.Drawing.Color.White
+        Me.txtSaldo.CorFundoSelecionado = System.Drawing.SystemColors.ControlLightLight
+        Me.txtSaldo.Location = New System.Drawing.Point(41, 63)
+        Me.txtSaldo.Name = "txtSaldo"
+        Me.txtSaldo.Size = New System.Drawing.Size(275, 32)
+        Me.txtSaldo.SuperMascara = ""
+        Me.txtSaldo.SuperObrigatorio = True
+        Me.txtSaldo.SuperTravaErrors = False
+        Me.txtSaldo.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
+        Me.txtSaldo.SuperTxtObrigatorio = ""
+        Me.txtSaldo.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosReais
+        Me.txtSaldo.TabIndex = 1
+        '
+        'lblAgencia
+        '
+        Me.lblAgencia.AutoSize = True
+        Me.lblAgencia.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAgencia.Location = New System.Drawing.Point(37, 189)
+        Me.lblAgencia.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lblAgencia.Name = "lblAgencia"
+        Me.lblAgencia.Size = New System.Drawing.Size(87, 24)
+        Me.lblAgencia.TabIndex = 48
+        Me.lblAgencia.Text = "Agência:"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(381, 115)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(84, 25)
+        Me.Label2.TabIndex = 57
+        Me.Label2.Text = "Conta*"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(38, 42)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(81, 25)
+        Me.Label3.TabIndex = 60
+        Me.Label3.Text = "Saldo*"
+        '
+        'lblConta
+        '
+        Me.lblConta.AutoSize = True
+        Me.lblConta.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblConta.Location = New System.Drawing.Point(232, 189)
+        Me.lblConta.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lblConta.Name = "lblConta"
+        Me.lblConta.Size = New System.Drawing.Size(69, 24)
+        Me.lblConta.TabIndex = 51
+        Me.lblConta.Text = "Conta:"
+        '
+        'txtConta
+        '
+        Me.txtConta.Alterado = False
+        Me.txtConta.BackColor = System.Drawing.Color.White
+        Me.txtConta.CorFundoSelecionado = System.Drawing.SystemColors.ControlLightLight
+        Me.txtConta.Location = New System.Drawing.Point(236, 208)
+        Me.txtConta.Margin = New System.Windows.Forms.Padding(0)
+        Me.txtConta.Name = "txtConta"
+        Me.txtConta.Size = New System.Drawing.Size(184, 32)
+        Me.txtConta.SuperMascara = ""
+        Me.txtConta.SuperObrigatorio = False
+        Me.txtConta.SuperTravaErrors = False
+        Me.txtConta.SuperTxtCorDesabilitado = System.Drawing.Color.Empty
+        Me.txtConta.SuperTxtObrigatorio = ""
+        Me.txtConta.SuperUsaMascara = GFT.Util.SuperTextBox.TipoMascara_.NumerosInteiros
+        Me.txtConta.TabIndex = 5
+        '
+        'cbTipoConta
+        '
+        Me.cbTipoConta.Alterado = False
+        Me.cbTipoConta.CorFundo = System.Drawing.Color.White
+        Me.cbTipoConta.CorFundoSelecionado = System.Drawing.Color.White
+        Me.cbTipoConta.CorTexto = System.Drawing.Color.Black
+        Me.cbTipoConta.CorTextoSelecionado = System.Drawing.Color.Black
+        Me.cbTipoConta.FormattingEnabled = True
+        Me.cbTipoConta.Location = New System.Drawing.Point(384, 136)
+        Me.cbTipoConta.Margin = New System.Windows.Forms.Padding(0)
+        Me.cbTipoConta.Name = "cbTipoConta"
+        Me.cbTipoConta.Size = New System.Drawing.Size(275, 33)
+        Me.cbTipoConta.SuperObrigatorio = True
+        Me.cbTipoConta.SuperTxtObrigatorio = "Tipo de Conta"
+        Me.cbTipoConta.TabIndex = 2
         '
         'frmNovaConta
         '
@@ -314,4 +357,7 @@ Partial Class frmNovaConta
     Friend WithEvents chkPrincipalConta As CheckBox
     Friend WithEvents gbDados As GroupBox
     Friend WithEvents ImgAddConta As ImageList
+    Friend WithEvents lblBancoAviso As Label
+    Friend WithEvents lblContaAviso As Label
+    Friend WithEvents lblSaldoAviso As Label
 End Class

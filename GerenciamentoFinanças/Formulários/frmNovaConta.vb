@@ -83,31 +83,29 @@ Public Class frmNovaConta
     End Sub
     Private Function DadosConta() As Boolean
 
-        'Removi pois acho que nao deve ser obrigatorio agencia e conta
-        'If IsNumeric(txtAgencia.Text) Then
-        '    agencia = CDec(txtAgencia.Text)
-        'Else
-        '    S_MsgBox("Verifique se o campo 'Agência' está correto.'", eBotoes.Ok,,, eImagens.Atencao)
-        '    Return False
-        'End If
-        'If IsNumeric(txtConta.Text) Then
-        '    conta = CDec(txtConta.Text)
-        'Else
-        '    clsMsgBox.S_MsgBox("Verifique se o campo 'Conta' está correto.'", eBotoes.Ok,,, eImagens.Atencao)
-        '    Return False
+        If txtSaldo.VerificaObrigatorio(, False) = False Then
 
-        'End If
-        If txtSaldo.VerificaObrigatorio = False Then
+            lblSaldoAviso.Text = "Por favor, informe o saldo."
+            lblSaldoAviso.Visible = True
+
             Return False
         Else
             saldo = CDec(txtSaldo.Text)
         End If
-        If cbTipoConta.VerificaObrigatorio = False Then
+
+        If cbTipoConta.VerificaObrigatorio(, ,, False) = False Then
+            lblContaAviso.Text = "Por favor, selecione o tipo de conta."
+            lblContaAviso.Visible = True
+
             Return False
         End If
-        If txtBanco.VerificaObrigatorio = False Then
+        If txtBanco.VerificaObrigatorio(, False) = False Then
+            lblBancoAviso.Text = "Por favor, informe o nome do banco."
+            lblBancoAviso.Visible = True
+
             Return False
         End If
+
         Return True
     End Function
     Private Sub txtSaldo_Leave(sender As Object, e As EventArgs) Handles txtSaldo.Leave
@@ -120,9 +118,10 @@ Public Class frmNovaConta
         Try
             oDataSet = pContaBancaria.ObterConta(cCodigo)
 
-            If oDataSet IsNot Nothing Then
+            If oDataSet.TotalRegistros > 0 Then
 
                 txtSaldo.Text = oDataSet("cSaldo").ToString
+
                 txtSaldo.Text = Convert.ToDouble(txtSaldo.Text).ToString("C")
 
                 txtBanco.Text = oDataSet("rBanco").ToString
@@ -136,6 +135,10 @@ Public Class frmNovaConta
                 End If
 
                 cbTipoConta.PosicionaRegistroCombo(CType(oDataSet("cTipo"), eTipoConta))
+
+                If CDec(oDataSet("cPrincipal")) = 1 Then
+                    chkPrincipalConta.Checked = True
+                End If
             End If
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
@@ -155,6 +158,33 @@ Public Class frmNovaConta
             col.Add(New DuplaCombo(eTipoConta.Digital, "Cateira Digital"))
 
             cbTipoConta.PreencheComboColl(col, PrimeiroValor.Selecione)
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
+        End Try
+    End Sub
+
+
+
+    Private Sub txtBanco_KeyDown(sender As Object, e As KeyEventArgs) Handles txtBanco.KeyDown
+        Try
+            lblBancoAviso.Visible = False
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
+        End Try
+    End Sub
+
+    Private Sub cbTipoConta_MouseClick(sender As Object, e As MouseEventArgs) Handles cbTipoConta.MouseClick
+        Try
+            lblContaAviso.Visible = False
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
+        End Try
+
+    End Sub
+
+    Private Sub txtSaldo_KeyDown(sender As Object, e As KeyEventArgs) Handles txtSaldo.KeyDown
+        Try
+            lblSaldoAviso.Visible = False
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
         End Try

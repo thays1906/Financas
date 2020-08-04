@@ -2,15 +2,18 @@
 Imports GFT.Util.clsMsgBox
 Public Class frmConta
     Public NovaConta As frmNovaConta
-    Public codigo As Decimal
+    Public cConta As Decimal
     Public agencia As Decimal
     Public conta As Decimal
     Public saldo As Decimal
+    Public rs As SuperDataSet = Nothing
 
 
     Private Sub frmConta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Cor(Me, Collor.CinzaClaro)
-        Cor(CType(gbBotoes, Control), Collor.CinzaEscuro)
+        Cor(Me, Collor.Control)
+        Cor(CType(gbBotoes, Control), Collor.CinzaMedio)
+        Cor(CType(gbDadosConta, Control), Collor.Claro)
+
 
         CorButton(btnPesquisar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnAddConta, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
@@ -23,8 +26,8 @@ Public Class frmConta
         centralizarGrupoTab(tabCtrlConta)
         centralizarGrupoBotoes(gbDadosConta)
         centralizarGrupoBotoes(gbListConta)
-        'ControleBotoes()
-        PesquisarConta()
+
+        ControleBotoes()
     End Sub
     Private Sub frmConta_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
         alterarCaptionFormPrincipal(eTela.conta_Bancaria)
@@ -34,67 +37,71 @@ Public Class frmConta
     End Sub
 
     Private Sub PesquisarConta()
-        Dim rs As SuperDataSet = Nothing
+        Dim rSaldo As String = Nothing
+        Dim column As String = Nothing
         Try
             rs = pContaBancaria.PesquisarConta()
 
+            column = "BANK"
+
+
             If rs.TotalRegistros > 0 Then
 
-                'lvConsulta.PreencheGridDS(rs, True, True, False, True, 0, True)
-                dgConta.PreencheDataGrid(rs)
-                CorList(lvConsulta)
+                For i = 0 To rs.TotalRegistros - 1
 
+                    dgConta.AdicionaImageColumn(rs, column, Banco(rs("AS_BANCO#200", i).ToString), False)
+
+                Next
             End If
 
-            'For i = 0 To lvConsulta.ObterTotalLinhas - 1
+            dgConta.PreencheDataGrid(rs,,,,, True)
 
-            '    If rs("as_Principal", i).ToString = "SIM" Then
+            dgConta.Columns(column).DisplayIndex = 2
+            dgConta.Columns(column).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
 
-            '        txtPrincipalConta.Text =
-            '                        (IIf(String.IsNullOrEmpty(rs("as_AGÊNCIA#150", i).ToString) And
-            '                        String.IsNullOrEmpty(rs("as_CONTA#250", i).ToString),
-            '                        rs("as_BANCO#200", i).ToString,
-            '                        rs("as_BANCO#200", i).ToString & " - " &
-            '                        rs("as_AGÊNCIA#150", i).ToString & " - " &
-            '                        rs("as_CONTA#250", i).ToString)).ToString()
+            dgConta.Columns(column).Width = 80
 
-            '        txtPrincipalTipo.Text = rs("as_TIPO_DE_CONTA", i).ToString
+            If dgConta.bCarregado Then
+                For i = 0 To dgConta.ObterTotalLinhas - 1
 
-            '        picBank.Image = Banco(rs("as_BANCO#200", i).ToString)
+                    If rs("Principal", i).ToString = "SIM" Then
 
-            '        If picBank.Image.Width = 71 Then
-            '            picBank.Left = 5
-            '        Else
-            '            picBank.Location = New Point(27, 70)
-            '        End If
+                        lblPrincipalConta.Text =
+                                    (IIf(String.IsNullOrEmpty(rs("AGÊNCIA", i).ToString) And
+                                    String.IsNullOrEmpty(rs("CONTA", i).ToString),
+                                    rs("BANCO", i).ToString & " • " & rs("TIPO DE CONTA", i).ToString,
+                                    rs("BANCO", i).ToString & " • " &
+                                    rs("AGÊNCIA", i).ToString & " • " &
+                                    rs("CONTA", i).ToString)).ToString() & " • " &
+                                    rs("TIPO DE CONTA", i).ToString
 
-            '    End If
+                        picBank.Image = Banco(rs("BANCO", i).ToString)
 
-            '    If lvConsulta.Items(i).SubItems(4).Text.Contains(CChar("-")) Then
 
-            '        lvConsulta.Items(i).SubItems(4).ForeColor = Color.Red
-            '    Else
-            '        lvConsulta.Items(i).SubItems(4).ForeColor = Color.Green
-            '    End If
-            '    lvConsulta.Items(i).SubItems(4).Font = New Font(FontFamily.GenericSansSerif, 12, FontStyle.Bold)
-            'Next
-            'lvConsulta.Refresh()
+                    End If
+
+                    rSaldo = dgConta.Rows(i).Cells("Saldo").Value.ToString
+
+                    If rSaldo.Contains("-") Then
+                        dgConta.Rows(i).Cells("Saldo").Style.ForeColor = Color.Red
+                    Else
+                        dgConta.Rows(i).Cells("Saldo").Style.ForeColor = Color.Green
+                    End If
+                    dgConta.Rows(i).Cells("Saldo").Style.Font = New Font("Verdana", 12, FontStyle.Bold)
+                Next
+            End If
+
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
-        Finally
-            rs.Dispose()
         End Try
     End Sub
     Private Sub btnEditar_Click_1(sender As Object, e As EventArgs) Handles btnEditar.Click
-        Dim cConta As Decimal
         Try
-            'cConta = lvConsulta.ObterChave
             cConta = dgConta.ObterChave
 
             NovaConta = New frmNovaConta(cConta)
             NovaConta.ShowDialog()
 
-            'Verificar se foi alterado
             If NovaConta.bAlterado Then
                 PesquisarConta()
             End If
@@ -106,12 +113,13 @@ Public Class frmConta
 
     Private Sub btnExcluir_Click(sender As Object, e As EventArgs) Handles btnExcluir.Click
         Try
+            cConta = dgConta.ObterChave
 
-            If dgConta.ObterChave <> 0 Then
+            If cConta <> 0 Then
 
                 If Mensagem(eTipoMensagem.Question) = eRet.Sim Then
 
-                    If pContaBancaria.DeletarConta(dgConta.ObterChave) Then
+                    If pContaBancaria.DeletarConta(cConta) Then
 
                         Mensagem(eTipoMensagem.OK)
                         PesquisarConta()
@@ -176,6 +184,34 @@ Public Class frmConta
             End If
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Erro",, eImagens.Cancel)
+        End Try
+    End Sub
+
+    Private Sub frmConta_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        PesquisarConta()
+    End Sub
+
+    Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
+        Dim oXls As SuperXLS
+        Try
+            oXls = New SuperXLS("Lista de Contas Báncaria")
+
+            If rs.TotalRegistros > 0 Then
+
+                rs.Tables(0).Columns.Remove("Bank")
+                rs.Tables(0).Columns.Remove("Id_cConta")
+
+                oXls.Imprimir(rs, "Lista de Contas Báncaria", True, False, True, False)
+
+            Else
+                S_MsgBox("Desculpe, nenhum registrado encontrado para exportar para a planilha.",
+                         eBotoes.Ok, "Finances Management",
+                         eImagens.Info)
+            End If
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro",, eImagens.Cancel)
+        Finally
+            rs.Dispose()
         End Try
     End Sub
 End Class

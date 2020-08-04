@@ -38,14 +38,10 @@ Partial Class frmConta
         Me.tabConta = New System.Windows.Forms.TabPage()
         Me.gbListConta = New System.Windows.Forms.GroupBox()
         Me.dgConta = New GFT.Util.SuperDataGridView()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.lvConsulta = New GFT.Util.SuperLV()
         Me.gbDadosConta = New System.Windows.Forms.GroupBox()
+        Me.lblPrincipalConta = New System.Windows.Forms.Label()
         Me.picBank = New System.Windows.Forms.PictureBox()
-        Me.lblTipoPrincipal = New System.Windows.Forms.Label()
-        Me.txtPrincipalTipo = New System.Windows.Forms.TextBox()
         Me.lblContaPrincipal = New System.Windows.Forms.Label()
-        Me.txtPrincipalConta = New System.Windows.Forms.TextBox()
         Me.gbBotoes.SuspendLayout()
         Me.tabCtrlConta.SuspendLayout()
         Me.tabConta.SuspendLayout()
@@ -72,9 +68,11 @@ Partial Class frmConta
         Me.gbBotoes.Controls.Add(Me.btnPesquisar)
         Me.gbBotoes.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.gbBotoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.gbBotoes.Location = New System.Drawing.Point(0, 606)
+        Me.gbBotoes.Location = New System.Drawing.Point(0, 746)
+        Me.gbBotoes.Margin = New System.Windows.Forms.Padding(4)
         Me.gbBotoes.Name = "gbBotoes"
-        Me.gbBotoes.Size = New System.Drawing.Size(1419, 73)
+        Me.gbBotoes.Padding = New System.Windows.Forms.Padding(4)
+        Me.gbBotoes.Size = New System.Drawing.Size(1892, 90)
         Me.gbBotoes.TabIndex = 26
         Me.gbBotoes.TabStop = False
         '
@@ -83,9 +81,10 @@ Partial Class frmConta
         Me.btnFechar.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnFechar.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
-        Me.btnFechar.Location = New System.Drawing.Point(1156, 19)
+        Me.btnFechar.Location = New System.Drawing.Point(1541, 23)
+        Me.btnFechar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnFechar.Name = "btnFechar"
-        Me.btnFechar.Size = New System.Drawing.Size(203, 42)
+        Me.btnFechar.Size = New System.Drawing.Size(271, 52)
         Me.btnFechar.TabIndex = 33
         Me.btnFechar.Text = " &Fechar"
         Me.btnFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -97,9 +96,10 @@ Partial Class frmConta
         Me.btnExportar.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnExportar.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnExportar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconExcel
-        Me.btnExportar.Location = New System.Drawing.Point(935, 19)
+        Me.btnExportar.Location = New System.Drawing.Point(1247, 23)
+        Me.btnExportar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnExportar.Name = "btnExportar"
-        Me.btnExportar.Size = New System.Drawing.Size(203, 42)
+        Me.btnExportar.Size = New System.Drawing.Size(271, 52)
         Me.btnExportar.TabIndex = 34
         Me.btnExportar.Text = " &Exportar"
         Me.btnExportar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -111,9 +111,10 @@ Partial Class frmConta
         Me.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnExcluir.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnExcluir.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconExcluir
-        Me.btnExcluir.Location = New System.Drawing.Point(716, 19)
+        Me.btnExcluir.Location = New System.Drawing.Point(955, 23)
+        Me.btnExcluir.Margin = New System.Windows.Forms.Padding(4)
         Me.btnExcluir.Name = "btnExcluir"
-        Me.btnExcluir.Size = New System.Drawing.Size(203, 42)
+        Me.btnExcluir.Size = New System.Drawing.Size(271, 52)
         Me.btnExcluir.TabIndex = 32
         Me.btnExcluir.Text = " &Excluir"
         Me.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -125,9 +126,10 @@ Partial Class frmConta
         Me.btnAddConta.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnAddConta.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAddConta.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconAddBlue
-        Me.btnAddConta.Location = New System.Drawing.Point(270, 19)
+        Me.btnAddConta.Location = New System.Drawing.Point(360, 23)
+        Me.btnAddConta.Margin = New System.Windows.Forms.Padding(4)
         Me.btnAddConta.Name = "btnAddConta"
-        Me.btnAddConta.Size = New System.Drawing.Size(203, 42)
+        Me.btnAddConta.Size = New System.Drawing.Size(271, 52)
         Me.btnAddConta.TabIndex = 31
         Me.btnAddConta.Text = " &Conta"
         Me.btnAddConta.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -139,9 +141,10 @@ Partial Class frmConta
         Me.btnEditar.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnEditar.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEditar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconEditar
-        Me.btnEditar.Location = New System.Drawing.Point(496, 19)
+        Me.btnEditar.Location = New System.Drawing.Point(661, 23)
+        Me.btnEditar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnEditar.Name = "btnEditar"
-        Me.btnEditar.Size = New System.Drawing.Size(203, 42)
+        Me.btnEditar.Size = New System.Drawing.Size(271, 52)
         Me.btnEditar.TabIndex = 30
         Me.btnEditar.Text = " &Editar"
         Me.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -153,9 +156,10 @@ Partial Class frmConta
         Me.btnPesquisar.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnPesquisar.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnPesquisar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconePesquisar
-        Me.btnPesquisar.Location = New System.Drawing.Point(45, 19)
+        Me.btnPesquisar.Location = New System.Drawing.Point(60, 23)
+        Me.btnPesquisar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnPesquisar.Name = "btnPesquisar"
-        Me.btnPesquisar.Size = New System.Drawing.Size(203, 42)
+        Me.btnPesquisar.Size = New System.Drawing.Size(271, 52)
         Me.btnPesquisar.TabIndex = 29
         Me.btnPesquisar.Text = "Pesquisar"
         Me.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -169,10 +173,11 @@ Partial Class frmConta
         Me.tabCtrlConta.Font = New System.Drawing.Font("Verdana", 12.0!)
         Me.tabCtrlConta.ImageList = Me.ImgContaBancaria
         Me.tabCtrlConta.Location = New System.Drawing.Point(0, 0)
+        Me.tabCtrlConta.Margin = New System.Windows.Forms.Padding(4)
         Me.tabCtrlConta.Name = "tabCtrlConta"
         Me.tabCtrlConta.Padding = New System.Drawing.Point(30, 10)
         Me.tabCtrlConta.SelectedIndex = 0
-        Me.tabCtrlConta.Size = New System.Drawing.Size(1419, 606)
+        Me.tabCtrlConta.Size = New System.Drawing.Size(1892, 746)
         Me.tabCtrlConta.TabIndex = 0
         '
         'tabConta
@@ -182,9 +187,10 @@ Partial Class frmConta
         Me.tabConta.Controls.Add(Me.gbDadosConta)
         Me.tabConta.ImageIndex = 0
         Me.tabConta.Location = New System.Drawing.Point(4, 69)
+        Me.tabConta.Margin = New System.Windows.Forms.Padding(4)
         Me.tabConta.Name = "tabConta"
-        Me.tabConta.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabConta.Size = New System.Drawing.Size(1411, 533)
+        Me.tabConta.Padding = New System.Windows.Forms.Padding(4)
+        Me.tabConta.Size = New System.Drawing.Size(1884, 673)
         Me.tabConta.TabIndex = 0
         Me.tabConta.Text = "Conta Báncaria"
         '
@@ -194,12 +200,11 @@ Partial Class frmConta
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gbListConta.Controls.Add(Me.dgConta)
-        Me.gbListConta.Controls.Add(Me.lvConsulta)
-        Me.gbListConta.Location = New System.Drawing.Point(42, 162)
-        Me.gbListConta.Margin = New System.Windows.Forms.Padding(2)
+        Me.gbListConta.Location = New System.Drawing.Point(56, 199)
+        Me.gbListConta.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.gbListConta.Name = "gbListConta"
-        Me.gbListConta.Padding = New System.Windows.Forms.Padding(2)
-        Me.gbListConta.Size = New System.Drawing.Size(1314, 360)
+        Me.gbListConta.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.gbListConta.Size = New System.Drawing.Size(1752, 453)
         Me.gbListConta.TabIndex = 29
         Me.gbListConta.TabStop = False
         Me.gbListConta.Text = "Todas as contas"
@@ -227,7 +232,6 @@ Partial Class frmConta
         Me.dgConta.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgConta.ColumnHeadersHeight = 50
         Me.dgConta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgConta.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewCheckBoxColumn1})
         Me.dgConta.CorDoFundoCabeçalho = System.Drawing.Color.LightSlateGray
         Me.dgConta.CorTextoCabeçalho = System.Drawing.Color.White
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -239,112 +243,77 @@ Partial Class frmConta
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dgConta.DefaultCellStyle = DataGridViewCellStyle2
         Me.dgConta.EnableHeadersVisualStyles = False
-        Me.dgConta.Location = New System.Drawing.Point(-1, 25)
+        Me.dgConta.Location = New System.Drawing.Point(-1, 31)
+        Me.dgConta.Margin = New System.Windows.Forms.Padding(4)
         Me.dgConta.MultiSelect = False
         Me.dgConta.Name = "dgConta"
         Me.dgConta.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
         Me.dgConta.RowHeadersVisible = False
+        Me.dgConta.RowHeadersWidth = 51
         Me.dgConta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgConta.Size = New System.Drawing.Size(1315, 290)
+        Me.dgConta.Size = New System.Drawing.Size(1753, 422)
         Me.dgConta.TabIndex = 28
-        '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.DataGridViewCheckBoxColumn1.HeaderText = "Selecionar"
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        '
-        'lvConsulta
-        '
-        Me.lvConsulta.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lvConsulta.HabilitaOrdem = True
-        Me.lvConsulta.HideSelection = False
-        Me.lvConsulta.Location = New System.Drawing.Point(121, 331)
-        Me.lvConsulta.Margin = New System.Windows.Forms.Padding(2)
-        Me.lvConsulta.Name = "lvConsulta"
-        Me.lvConsulta.SelecionaVarios = False
-        Me.lvConsulta.Size = New System.Drawing.Size(1188, 25)
-        Me.lvConsulta.TabIndex = 27
-        Me.lvConsulta.UseCompatibleStateImageBehavior = False
         '
         'gbDadosConta
         '
         Me.gbDadosConta.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.gbDadosConta.BackColor = System.Drawing.SystemColors.Control
+        Me.gbDadosConta.BackColor = System.Drawing.Color.White
+        Me.gbDadosConta.Controls.Add(Me.lblPrincipalConta)
         Me.gbDadosConta.Controls.Add(Me.picBank)
-        Me.gbDadosConta.Controls.Add(Me.lblTipoPrincipal)
-        Me.gbDadosConta.Controls.Add(Me.txtPrincipalTipo)
         Me.gbDadosConta.Controls.Add(Me.lblContaPrincipal)
-        Me.gbDadosConta.Controls.Add(Me.txtPrincipalConta)
-        Me.gbDadosConta.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.gbDadosConta.Location = New System.Drawing.Point(42, 15)
-        Me.gbDadosConta.Margin = New System.Windows.Forms.Padding(2)
+        Me.gbDadosConta.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.gbDadosConta.Location = New System.Drawing.Point(56, 18)
+        Me.gbDadosConta.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.gbDadosConta.Name = "gbDadosConta"
-        Me.gbDadosConta.Padding = New System.Windows.Forms.Padding(2)
-        Me.gbDadosConta.Size = New System.Drawing.Size(1314, 145)
+        Me.gbDadosConta.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.gbDadosConta.Size = New System.Drawing.Size(1752, 158)
         Me.gbDadosConta.TabIndex = 25
         Me.gbDadosConta.TabStop = False
         Me.gbDadosConta.Text = "Conta Principal"
         '
+        'lblPrincipalConta
+        '
+        Me.lblPrincipalConta.AutoSize = True
+        Me.lblPrincipalConta.BackColor = System.Drawing.Color.SlateGray
+        Me.lblPrincipalConta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblPrincipalConta.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.lblPrincipalConta.Location = New System.Drawing.Point(173, 103)
+        Me.lblPrincipalConta.Name = "lblPrincipalConta"
+        Me.lblPrincipalConta.Size = New System.Drawing.Size(89, 27)
+        Me.lblPrincipalConta.TabIndex = 5
+        Me.lblPrincipalConta.Text = "♣♣♣"
+        Me.lblPrincipalConta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'picBank
         '
-        Me.picBank.Location = New System.Drawing.Point(27, 70)
-        Me.picBank.Margin = New System.Windows.Forms.Padding(2)
+        Me.picBank.Location = New System.Drawing.Point(62, 82)
+        Me.picBank.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.picBank.Name = "picBank"
         Me.picBank.Size = New System.Drawing.Size(48, 48)
         Me.picBank.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.picBank.TabIndex = 4
         Me.picBank.TabStop = False
         '
-        'lblTipoPrincipal
-        '
-        Me.lblTipoPrincipal.AutoSize = True
-        Me.lblTipoPrincipal.Location = New System.Drawing.Point(493, 49)
-        Me.lblTipoPrincipal.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.lblTipoPrincipal.Name = "lblTipoPrincipal"
-        Me.lblTipoPrincipal.Size = New System.Drawing.Size(130, 18)
-        Me.lblTipoPrincipal.TabIndex = 3
-        Me.lblTipoPrincipal.Text = "Tipo de Conta:"
-        '
-        'txtPrincipalTipo
-        '
-        Me.txtPrincipalTipo.Location = New System.Drawing.Point(496, 80)
-        Me.txtPrincipalTipo.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtPrincipalTipo.Name = "txtPrincipalTipo"
-        Me.txtPrincipalTipo.ReadOnly = True
-        Me.txtPrincipalTipo.Size = New System.Drawing.Size(194, 27)
-        Me.txtPrincipalTipo.TabIndex = 2
-        '
         'lblContaPrincipal
         '
         Me.lblContaPrincipal.AutoSize = True
-        Me.lblContaPrincipal.Location = New System.Drawing.Point(76, 49)
-        Me.lblContaPrincipal.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblContaPrincipal.Font = New System.Drawing.Font("Verdana", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblContaPrincipal.Location = New System.Drawing.Point(169, 66)
         Me.lblContaPrincipal.Name = "lblContaPrincipal"
-        Me.lblContaPrincipal.Size = New System.Drawing.Size(207, 18)
+        Me.lblContaPrincipal.Size = New System.Drawing.Size(404, 23)
         Me.lblContaPrincipal.TabIndex = 1
-        Me.lblContaPrincipal.Text = "Banco / Agência / Conta"
-        '
-        'txtPrincipalConta
-        '
-        Me.txtPrincipalConta.Location = New System.Drawing.Point(79, 80)
-        Me.txtPrincipalConta.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtPrincipalConta.Name = "txtPrincipalConta"
-        Me.txtPrincipalConta.ReadOnly = True
-        Me.txtPrincipalConta.Size = New System.Drawing.Size(406, 27)
-        Me.txtPrincipalConta.TabIndex = 0
+        Me.lblContaPrincipal.Text = "Banco • Agência • Conta • Tipo de Conta"
         '
         'frmConta
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1419, 679)
+        Me.ClientSize = New System.Drawing.Size(1892, 836)
         Me.Controls.Add(Me.tabCtrlConta)
         Me.Controls.Add(Me.gbBotoes)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmConta"
         Me.Text = "frmConta"
         Me.gbBotoes.ResumeLayout(False)
@@ -361,7 +330,6 @@ Partial Class frmConta
 
     Friend WithEvents tabCtrlConta As GFT.Util.SuperTabControl
     Friend WithEvents tabConta As TabPage
-    Friend WithEvents lvConsulta As GFT.Util.SuperLV
     Friend WithEvents gbBotoes As GroupBox
     Friend WithEvents gbDadosConta As GroupBox
     Friend WithEvents btnAddConta As Button
@@ -372,11 +340,8 @@ Partial Class frmConta
     Friend WithEvents btnExcluir As Button
     Friend WithEvents ImgContaBancaria As ImageList
     Friend WithEvents lblContaPrincipal As Label
-    Friend WithEvents txtPrincipalConta As TextBox
-    Friend WithEvents lblTipoPrincipal As Label
-    Friend WithEvents txtPrincipalTipo As TextBox
     Friend WithEvents gbListConta As GroupBox
     Friend WithEvents picBank As PictureBox
     Friend WithEvents dgConta As GFT.Util.SuperDataGridView
-    Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
+    Friend WithEvents lblPrincipalConta As Label
 End Class
