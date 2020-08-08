@@ -10,8 +10,9 @@ Public Class frmLogin
         Cor(CType(ssBaixo, Control), Collor.CinzaEscuro)
 
         CorButton(btnAcessar, Collor.CinzaEscuro, Color.White, Color.DimGray, Color.DimGray)
-        CorButton(btnPrimeiroAcesso, Collor.CinzaMedio, Color.White, Color.Gray, Color.DimGray)
+        CorButton(btnPrimeiroAcesso, Collor.CinzaEscuro, Color.White, Color.DimGray, Color.DimGray)
         CorButton(btnFechar, Collor.CinzaEscuro, Color.Black, Color.DimGray, Color.DarkGray)
+
         VerificaSeExisteUsuario()
     End Sub
 
@@ -140,4 +141,7 @@ Public Class frmLogin
         End Try
     End Sub
 
+    Private Sub btnPrimeiroAcesso_Click(sender As Object, e As EventArgs) Handles btnPrimeiroAcesso.Click
+
+    End Sub
 End Class

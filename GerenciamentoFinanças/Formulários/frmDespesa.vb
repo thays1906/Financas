@@ -13,6 +13,8 @@ Public Class frmDespesa
     Public ok As Integer
     Public tot As Integer
     Public cControleParcelamento As Decimal
+    Public bchk As Boolean = Nothing
+
     Sub New(Optional ByVal _cControle As Decimal = 0)
 
         InitializeComponent()
@@ -22,7 +24,12 @@ Public Class frmDespesa
 
         Me.tabCtrlDespesa.TabPages(2).Enabled = False
 
-        Cor(Me, Collor.Branco)
+        Cor(Me, Collor.Control)
+
+        Cor(CType(gbBotoes, Control), Collor.CinzaMedio)
+        Cor(CType(gbFiltro, Control), Collor.Control)
+
+        CorTab(tabCtrlDespesa, Collor.Claro)
 
         CorButton(btnPesquisar, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
         CorButton(btnAddDespesa, Collor.Gelo, Color.Black, Color.White, Color.WhiteSmoke)
@@ -41,6 +48,7 @@ Public Class frmDespesa
 
         CarregarCombo()
         Pesquisar()
+        ControleBotoes()
         ControleFormulario()
     End Sub
     Private Sub btnFechar_Click(sender As Object, e As EventArgs) Handles btnFechar.Click
@@ -81,6 +89,8 @@ Public Class frmDespesa
 
     Private Sub btnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
         Try
+            tot = CInt(dgDespesa.ObterTodosChecados)
+
             btn = eAcao.Editar
             ControleFormulario()
 
@@ -91,6 +101,8 @@ Public Class frmDespesa
 
     Private Sub btnExcluir_Click(sender As Object, e As EventArgs) Handles btnExcluir.Click
         Try
+            tot = CInt(dgDespesa.ObterTodosChecados)
+
             btn = eAcao.Excluir
             ControleFormulario()
         Catch ex As Exception
@@ -126,7 +138,17 @@ Public Class frmDespesa
 
                 If oDataset.TotalRegistros > 0 Then
 
-                    txtLetreiroDespesa.TextoLetreiro = oDataset.InfoPesquisa.ToString
+                    For i = 0 To oDataset.TotalRegistros - 1
+
+                        dgDespesa.AdicionaImageColumn(oDataset, "imgStatus", StatusImage(CDec(oDataset("as_Status#80", i))), False, 4)
+
+                        dgDespesa.AdicionaImageColumn(oDataset, "DespesaFixa", SimNaoImage(oDataset("as_Despesa_Fixa#120", i).ToString), False, 4)
+
+                        dgDespesa.AdicionaImageColumn(oDataset, "imgParcelado", SimNaoImage(oDataset("as_Parcelado#100", i).ToString), False, 4)
+
+                        dgDespesa.AdicionaImageColumn(oDataset, "imgConta", Banco(oDataset("as_Conta#80", i).ToString), False, 4)
+                    Next
+
 
                     valorTotal = oDataset("total", 0, 1).ToString
 
@@ -136,30 +158,37 @@ Public Class frmDespesa
                         txtTotalDespesa.Text = Convert.ToDouble(txtTotalDespesa.Text).ToString("C")
                     End If
 
-
-                    dgDespesa.PreencheDataGrid(oDataset,,, txtLetreiroDespesa)
-
-                    'lvConsulta.PreencheGridDS(oDataset, True, True, False, True, 0, True)
-
-                    'CorList(lvConsulta)
-                    'For i = 0 To oDataset.TotalRegistros - 1
-
-                    '    If CStr(oDataset("as_Status#100", i)) = "PAGO" Then
-                    '        lvConsulta.Items(i).SubItems(1).ForeColor = Color.Green
-                    '    ElseIf CStr(oDataset("as_Status#100", i)) = "ATRASADO" Then
-                    '        lvConsulta.Items(i).SubItems(1).ForeColor = Color.Red
-                    '    End If
-
-                    '    lvConsulta.Items(i).SubItems(3).ForeColor = Color.Red
-                    'Next
                 Else
-                    lvConsulta.PreencheGridDS(oDataset, True, True, False, True)
 
                     S_MsgBox("Nenhum registro encontrado.",
                          eBotoes.Ok,
                          "Consulta de Dados", 1,
                          eImagens.Atencao)
                 End If
+
+                dgDespesa.PreencheDataGrid(oDataset,,, txtLetreiroDespesa)
+
+
+                dgDespesa.Columns("imgStatus").HeaderText = "Status"
+                dgDespesa.Columns("imgStatus").DisplayIndex = 2
+                dgDespesa.Columns(2).Visible = False
+                dgDespesa.Columns("imgStatus").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
+
+                dgDespesa.Columns("DespesaFixa").HeaderText = "Despesa Fixa"
+                dgDespesa.Columns("DespesaFixa").DisplayIndex = 6
+                dgDespesa.Columns(5).Visible = False
+                dgDespesa.Columns("DespesaFixa").MinimumWidth = 130
+                dgDespesa.Columns("DespesaFixa").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+
+                dgDespesa.Columns("imgParcelado").HeaderText = "Parcelado"
+                dgDespesa.Columns(6).Visible = False
+                dgDespesa.Columns("imgParcelado").DisplayIndex = 7
+                dgDespesa.Columns("imgParcelado").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+
+                dgDespesa.Columns("imgConta").HeaderText = "Conta"
+                dgDespesa.Columns(11).Visible = False
+                dgDespesa.Columns("imgConta").DisplayIndex = 14
+                dgDespesa.Columns("imgConta").MinimumWidth = 70
 
             End If
 
@@ -187,6 +216,7 @@ Public Class frmDespesa
             Next
 
             cbMes.PreencheComboColl(col, PrimeiroValor.Todos)
+            cbMes.PosicionaRegistroCombo(Month(Now))
             cbMesFixa.PreencheComboColl(col, PrimeiroValor.Todos)
 
             col.Clear()
@@ -236,6 +266,7 @@ Public Class frmDespesa
         Dim lista As List(Of GroupBox)
 
         Try
+
             If tabCtrlDespesa.SelectedIndex = 2 Then
                 lista = New List(Of GroupBox)
                 For Each item As Control In pnlDetalhe.Controls
@@ -284,37 +315,42 @@ Public Class frmDespesa
                          "Atenção: Alguns registros podem não ter sido alterados.",,
                          eImagens.Atencao)
                 End If
-            Else
-                If lvConsulta.SelectedItems.Count > 0 Then
 
-                    If S_MsgBox("Deseja atualizar o status do(s) Registro(s) selecionado(s)?",
+            Else
+                tot = dgDespesa.ObterTodosChecados
+
+                If tot > 0 Then
+
+                    If S_MsgBox("Confirmar atualização de status de " & tot & " Registro(s) ?",
                             eBotoes.SimNao,
                             "Pagamento das Despesas",,
                             eImagens.Interrogacao) = eRet.Sim Then
 
-                        If lvConsulta.ObterTotalChecados > 0 Then
+                        rDecimal = dgDespesa.ObterTodasChaves
 
-                            rDecimal = lvConsulta.ObterCSVChaves
+                        For Each dec In rDecimal.Split(CChar(";"))
 
-                            For Each dec In rDecimal.Split(CChar(";"))
-                                If pDespesa.Pagar(CDec(dec)) Then
-                                    ok += 1
-                                Else
-                                    erro += 1
-                                End If
-                            Next
-
-                            tot = lvConsulta.ObterTotalChecados
-
-                            If erro = 0 Then
-                                S_MsgBox("Status atualizado com sucesso!", eBotoes.Ok, "Pagamento de Despesa",, eImagens.Ok)
+                            If pDespesa.Pagar(CDec(dec)) Then
+                                ok += 1
                             Else
-                                S_MsgBox("Registros atualizados: " & ok &
-                                     vbNewLine & "Registros não atualizados: " & erro & vbNewLine &
-                                     "Total de Registros Selecionados: " & tot, eBotoes.Ok,
-                                     "Atenção: Alguns registros podem não ter sido alterados.",,
-                                     eImagens.Atencao)
+                                erro += 1
                             End If
+                        Next
+
+                        If erro = 0 Then
+
+                            S_MsgBox("Status atualizado com sucesso!",
+                                     eBotoes.Ok,
+                                     "Despesa atualizada.",,
+                                     eImagens.Ok)
+                            Pesquisar()
+                        Else
+                            S_MsgBox("Registros atualizados: " & ok &
+                                 vbNewLine & "Registros não atualizados: " & erro & vbNewLine &
+                                 "Total de Registros Selecionados: " & tot,
+                                 eBotoes.Ok,
+                                 "Atenção: Alguns registros podem não ter sido alterados.",,
+                                 eImagens.Atencao)
                         End If
                     End If
                 End If
@@ -326,45 +362,6 @@ Public Class frmDespesa
     Private Sub ControleFormulario()
         Dim rDespesa As String
         Try
-            btnStatusPago.Enabled = False
-            btnEditar.Enabled = False
-            btnExcluir.Enabled = False
-
-            If tabCtrlDespesa.SelectedIndex = 1 Then
-                btnFechar.Text = " &Voltar"
-                btnPesquisar.Enabled = True
-
-                If lvlConsultaFixa.CheckedItems.Count = 1 Then
-                    btnEditar.Enabled = True
-                    btnExcluir.Enabled = True
-
-                ElseIf lvConsulta.CheckedItems.Count > 1 Then
-                    btnExcluir.Enabled = True
-                End If
-
-
-            ElseIf tabCtrlDespesa.SelectedIndex = 2 Then
-                btnFechar.Text = " &Voltar"
-                btnPesquisar.Enabled = False
-                btnEditar.Enabled = False
-                btnExcluir.Enabled = False
-                btnStatusPago.Enabled = True
-
-            Else
-                tabCtrlDespesa.TabPages(2).Enabled = False
-                btnFechar.Text = " &Fechar"
-                btnPesquisar.Enabled = True
-
-                If lvConsulta.CheckedItems.Count = 1 Then
-                    btnStatusPago.Enabled = True
-                    btnEditar.Enabled = True
-                    btnExcluir.Enabled = True
-
-                ElseIf lvConsulta.CheckedItems.Count > 1 Then
-                    btnStatusPago.Enabled = True
-                    btnExcluir.Enabled = True
-                End If
-            End If
 
             If btn = eAcao.Editar Then
 
@@ -372,8 +369,8 @@ Public Class frmDespesa
 
                 If tabCtrlDespesa.SelectedIndex = 0 Then
 
-                    If lvConsulta.CheckedItems.Count = 1 Then
-                        cDespesa = lvConsulta.ObterChave()
+                    If tot = 1 Then
+                        cDespesa = dgDespesa.ObterChave
                     End If
 
                 ElseIf tabCtrlDespesa.SelectedIndex = 1 Then
@@ -394,7 +391,11 @@ Public Class frmDespesa
                     If cControleParcelamento <> 0 Then
                         DetalharParcelamento()
                     Else
-                        Pesquisar()
+                        Me.Refresh()
+
+                        If Despesa.bAlterado Then
+                            Pesquisar()
+                        End If
                     End If
                 Else
                     S_MsgBox("Erro ao carregar registro.", eBotoes.Ok,,, eImagens.Cancel)
@@ -404,13 +405,12 @@ Public Class frmDespesa
 
             If btn = eAcao.Excluir Then
 
-                If lvConsulta.CheckedItems.Count > 1 Then
-
-                    tot = lvConsulta.ObterTotalChecados
+                If tot > 1 Then
 
                     If Mensagem(eTipoMensagem.Question, tot) = eRet.Sim Then
 
-                        rDespesa = lvConsulta.ObterCSVChaves()
+                        'rDespesa = lvConsulta.ObterCSVChaves()
+                        rDespesa = dgDespesa.ObterTodasChaves
 
                         For Each cod In rDespesa.Split(CChar(";"))
 
@@ -424,7 +424,7 @@ Public Class frmDespesa
                         Next
 
                         If erro = 0 Then
-                            Mensagem(eTipoMensagem.OK,, ok)
+                            Mensagem(eTipoMensagem.OK, tot)
                             Pesquisar()
                         Else
                             Mensagem(eTipoMensagem.Erro, tot, ok, erro)
@@ -432,7 +432,9 @@ Public Class frmDespesa
                     End If
                 Else
                     If Mensagem(eTipoMensagem.Question) = eRet.Sim Then
-                        cDespesa = lvConsulta.ObterChave
+                        'cDespesa = lvConsulta.ObterChave
+                        cDespesa = dgDespesa.ObterChave
+
                         If cDespesa <> 0 Then
                             If pDespesa.DeletarDespesa(cDespesa) Then
                                 Mensagem(eTipoMensagem.OK)
@@ -446,26 +448,32 @@ Public Class frmDespesa
                 btn = 0
             End If
 
-
             If btn = eAcao.Novo Then
                 btn = 0
                 Despesa = New frmNovaDespesa(cDespesa)
                 Despesa.ShowDialog()
-                If Not tabCtrlDespesa.SelectedIndex = 0 Then
-                    Pesquisar()
-                    tabCtrlDespesa.SelectedIndex = 0
-                    Exit Sub
-                Else
-                    Pesquisar()
-                    Exit Sub
+
+                If Despesa.bAlterado Then
+                    If Not tabCtrlDespesa.SelectedIndex = 0 Then
+
+                        Pesquisar()
+                        tabCtrlDespesa.SelectedIndex = 0
+                        Exit Sub
+
+                    Else
+
+                        Pesquisar()
+                        Exit Sub
+                    End If
+
                 End If
-                'btn = 0
             End If
+
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
         End Try
     End Sub
-    Private Sub lvConsulta_ItemChecked(sender As Object, e As ItemCheckedEventArgs) Handles lvConsulta.ItemChecked
+    Private Sub lvConsulta_ItemChecked(sender As Object, e As ItemCheckedEventArgs)
         ControleFormulario()
     End Sub
     Private Sub DetalharParcelamento()
@@ -505,7 +513,9 @@ Public Class frmDespesa
                     Decimal.TryParse(rs("PAGO", 0, 1).ToString, cPago)
                     Decimal.TryParse(rs("NPAGO", 0, 1).ToString, cNpago)
 
+
                     Qtde = CInt(rs("cQtdeParcela"))
+
 
                     txtDescriaoDetalhe.Text = rs("rDescricao").ToString
                     txtTotalDespesaDetalhe.Text = Convert.ToDouble(cTotal).ToString("C")
@@ -516,7 +526,7 @@ Public Class frmDespesa
 
                     gbParcela = New GroupBox
 
-                    For i = 0 To Qtde - 1
+                    For i = 0 To rs.TotalRegistros - 1
 
                         cStatus = CInt(rs("cStatus", i))
                         cNumParcela = CInt(rs("cNumeroParcela", i))
@@ -700,18 +710,23 @@ Public Class frmDespesa
 
     Private Sub chkList_CheckedChanged(sender As Object, e As EventArgs) Handles chkList.CheckedChanged
         Try
-            If chkList.Checked Then
-                For i = 0 To lvConsulta.ObterTotalLinhas - 1
-                    lvConsulta.Items.Item(i).Checked = True
-                Next
-            Else
-                For i = 0 To lvConsulta.ObterTotalLinhas - 1
-                    lvConsulta.Items.Item(i).Checked = False
-                Next
+            dgDespesa.MarcaDesmarcaTodos(chkList)
 
-            End If
+            bchk = True
+
+            ControleBotoes()
+
+            'If chkList.Checked Then
+            '    For i = 0 To lvConsulta.ObterTotalLinhas - 1
+            '        lvConsulta.Items.Item(i).Checked = True
+            '    Next
+            'Else
+            '    For i = 0 To lvConsulta.ObterTotalLinhas - 1
+            '        lvConsulta.Items.Item(i).Checked = False
+            '    Next
+            'End If
         Catch ex As Exception
-
+            S_MsgBox(ex.Message, eBotoes.Ok, "Houve um erro ::.",, eImagens.Cancel)
         End Try
     End Sub
 
@@ -738,16 +753,122 @@ Public Class frmDespesa
                 End If
             End If
         Catch ex As Exception
-            S_MsgBox(ex.Message, eBotoes.Ok, "Erro ::. Despesa Fixa",, eImagens.Cancel)
-
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro",, eImagens.Cancel)
         End Try
     End Sub
 
     Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
         Dim oXls As SuperXLS
+        Try
+            oXls = New SuperXLS("Despesa")
 
-        oXls = New SuperXLS("Despesa")
 
-        oXls.Imprimir(oDataset, "Despesas", True)
+
+            If oDataset.TotalRegistros > 0 Then
+
+
+                oXls.Imprimir(oDataset, "Despesas", True)
+            End If
+
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro",, eImagens.Cancel)
+        End Try
     End Sub
+
+    Private Sub dgDespesa_SelectionChanged(sender As Object, e As EventArgs) Handles dgDespesa.SelectionChanged
+        Try
+
+            If dgDespesa.bCarregado Then
+
+                If chkList.Checked = False And bchk = False Then
+
+                    ControleBotoes()
+
+                End If
+            End If
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro",, eImagens.Cancel)
+        End Try
+    End Sub
+    Private Sub ControleBotoes()
+        Try
+            btnStatusPago.Enabled = False
+            btnEditar.Enabled = False
+            btnExcluir.Enabled = False
+
+            If tabCtrlDespesa.SelectedIndex = 1 Then
+
+                btnFechar.Text = " &Voltar"
+                btnPesquisar.Enabled = True
+
+
+                If lvlConsultaFixa.CheckedItems.Count = 1 Then
+                    btnEditar.Enabled = True
+                    btnExcluir.Enabled = True
+
+                ElseIf lvlConsultaFixa.CheckedItems.Count > 1 Then
+                    btnExcluir.Enabled = True
+                End If
+
+                'If tot = 1 Then
+                '    btnEditar.Enabled = True
+                '    btnExcluir.Enabled = True
+
+                '    If tot > 1 Then
+                '        btnEditar.Enabled = False
+                '        btnExcluir.Enabled = True
+                '    End If
+                'End If
+
+            ElseIf tabCtrlDespesa.SelectedIndex = 2 Then
+
+                btnFechar.Text = " &Voltar"
+                btnPesquisar.Enabled = False
+                btnEditar.Enabled = False
+                btnExcluir.Enabled = False
+                btnStatusPago.Enabled = True
+
+            Else
+
+                tabCtrlDespesa.TabPages(2).Enabled = False
+                btnFechar.Text = " &Fechar"
+                btnPesquisar.Enabled = True
+
+                tot = CInt(dgDespesa.ObterTodosChecados)
+                If chkList.CheckState = CheckState.Unchecked Then
+                    bchk = False
+                End If
+                If tot = 1 Then
+
+                    btnStatusPago.Enabled = True
+                    btnEditar.Enabled = True
+                    btnExcluir.Enabled = True
+
+                ElseIf tot > 1 Then
+
+                    btnStatusPago.Enabled = True
+
+                    btnEditar.Enabled = False
+                    btnExcluir.Enabled = True
+
+                End If
+
+                'If lvConsulta.CheckedItems.Count = 1 Then
+                '    btnStatusPago.Enabled = True
+                '    btnEditar.Enabled = True
+                '    btnExcluir.Enabled = True
+
+                'ElseIf lvConsulta.CheckedItems.Count > 1 Then
+                '    btnStatusPago.Enabled = True
+                '    btnExcluir.Enabled = True
+                'End If
+            End If
+
+
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro",, eImagens.Cancel)
+        End Try
+    End Sub
+
+
 End Class

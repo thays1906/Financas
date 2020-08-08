@@ -30,17 +30,17 @@ Partial Class frmLogin
         Me.ssCima = New System.Windows.Forms.StatusStrip()
         Me.ssBaixo = New System.Windows.Forms.StatusStrip()
         Me.gbDados = New System.Windows.Forms.GroupBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.lblSenhaInfo = New System.Windows.Forms.Label()
-        Me.lblUserInfo = New System.Windows.Forms.Label()
         Me.llEsqueceuSenha = New System.Windows.Forms.LinkLabel()
+        Me.lblUserInfo = New System.Windows.Forms.Label()
         Me.btnPrimeiroAcesso = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.btnFechar = New System.Windows.Forms.Button()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.btnAcessar = New System.Windows.Forms.Button()
         Me.gbDados.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblUsuario
@@ -149,6 +149,16 @@ Partial Class frmLogin
         Me.gbDados.TabStop = False
         Me.gbDados.Text = "Login"
         '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconUsuario95x75
+        Me.PictureBox2.Location = New System.Drawing.Point(17, 45)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(95, 95)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.PictureBox2.TabIndex = 14
+        Me.PictureBox2.TabStop = False
+        '
         'lblSenhaInfo
         '
         Me.lblSenhaInfo.AutoSize = True
@@ -159,17 +169,6 @@ Partial Class frmLogin
         Me.lblSenhaInfo.Name = "lblSenhaInfo"
         Me.lblSenhaInfo.Size = New System.Drawing.Size(0, 18)
         Me.lblSenhaInfo.TabIndex = 5
-        '
-        'lblUserInfo
-        '
-        Me.lblUserInfo.AutoSize = True
-        Me.lblUserInfo.BackColor = System.Drawing.Color.Transparent
-        Me.lblUserInfo.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.lblUserInfo.ForeColor = System.Drawing.Color.Red
-        Me.lblUserInfo.Location = New System.Drawing.Point(240, 80)
-        Me.lblUserInfo.Name = "lblUserInfo"
-        Me.lblUserInfo.Size = New System.Drawing.Size(0, 18)
-        Me.lblUserInfo.TabIndex = 4
         '
         'llEsqueceuSenha
         '
@@ -185,6 +184,17 @@ Partial Class frmLogin
         Me.llEsqueceuSenha.TabStop = True
         Me.llEsqueceuSenha.Text = "Esqueceu a senha?"
         Me.llEsqueceuSenha.VisitedLinkColor = System.Drawing.Color.Black
+        '
+        'lblUserInfo
+        '
+        Me.lblUserInfo.AutoSize = True
+        Me.lblUserInfo.BackColor = System.Drawing.Color.Transparent
+        Me.lblUserInfo.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.lblUserInfo.ForeColor = System.Drawing.Color.Red
+        Me.lblUserInfo.Location = New System.Drawing.Point(240, 80)
+        Me.lblUserInfo.Name = "lblUserInfo"
+        Me.lblUserInfo.Size = New System.Drawing.Size(0, 18)
+        Me.lblUserInfo.TabIndex = 4
         '
         'btnPrimeiroAcesso
         '
@@ -227,16 +237,6 @@ Partial Class frmLogin
         Me.btnFechar.TabIndex = 6
         Me.btnFechar.UseVisualStyleBackColor = False
         '
-        'PictureBox2
-        '
-        Me.PictureBox2.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconUsuario95x75
-        Me.PictureBox2.Location = New System.Drawing.Point(17, 45)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(95, 95)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.PictureBox2.TabIndex = 14
-        Me.PictureBox2.TabStop = False
-        '
         'btnAcessar
         '
         Me.btnAcessar.BackColor = System.Drawing.Color.DimGray
@@ -274,8 +274,8 @@ Partial Class frmLogin
         Me.Text = "Acesso ao sistema ::."
         Me.gbDados.ResumeLayout(False)
         Me.gbDados.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

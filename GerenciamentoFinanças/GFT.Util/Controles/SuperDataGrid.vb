@@ -11,6 +11,7 @@ Public Class SuperDataGridView
     Public ultimaRow As Integer = 0
 
     Public bCarregado As Boolean = False
+    Public bImage As Boolean = False
     Private ID As String = Nothing
     Private btnEditar As Boolean = False
     Private btnExcluir As Boolean = False
@@ -76,9 +77,10 @@ Public Class SuperDataGridView
         Me.EnableHeadersVisualStyles = False
         Me.Anchor = (AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right Or AnchorStyles.Bottom)
 
+
         'Define a distribuição das colunas no DataGrid
         Me.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill     'Redimensiona as colunas para ocupar todo o DatGrid
-        Me.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells 'Redimensiona as rows
+        Me.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells 'Redimensiona as rows
         Me.SelectionMode = DataGridViewSelectionMode.FullRowSelect        'Select row inteira
 
         'Define a borda/grade das colunas
@@ -142,8 +144,9 @@ Public Class SuperDataGridView
                     checkbox.Name = "chkDataGrid"
                     checkbox.AutoSizeMode = DataGridViewAutoSizeColumnMode.None
                     checkbox.HeaderText = "Selecionar"
+                    checkbox.Width = 50
                     checkbox.DisplayIndex = 0
-
+                    checkbox.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
                     Me.Columns.Add(checkbox)
 
                 End If
@@ -184,6 +187,7 @@ Public Class SuperDataGridView
                                 Optional removeTxtColumnImg As Boolean = False)
 
         Dim column As String = Nothing
+        Dim width As Integer = Nothing
         Try
 
             Me.DoubleBuffered = True
@@ -204,6 +208,7 @@ Public Class SuperDataGridView
 
                     column = column.Substring(3)
                     If column.Contains("#") Then
+                        width = CInt(column.Substring(column.IndexOf("#") + 1))
                         column = column.Substring(0, column.IndexOf("#"))
                     End If
                     If column.Contains("_") Then
@@ -213,8 +218,15 @@ Public Class SuperDataGridView
                 ElseIf column.Substring(0, 3) = "id_" Then
                     ID = column
                 End If
+
                 oDataSet.Tables(0).Columns(i).ColumnName = column
                 Me.DataSource = oDataSet.Tables(0)
+
+                If width <> Nothing Then
+                    Me.Columns(column).Width = width
+
+                    Me.Columns(column).FillWeight = width
+                End If
 
                 If bChkBox Then
 
@@ -242,6 +254,7 @@ Public Class SuperDataGridView
             'Chamando o evento DataBindingComplete (DataGrid está carregado)
             bCarregado = True
             SuperDataGridView_DataBindingComplete(New EventArgs(), New DataGridViewBindingCompleteEventArgs(ListChangedType.ItemChanged))
+
             If ID Is Nothing Then
                 'Se não encontrou coluna 'id_' no dataSet.
                 'Verifica se foi informado no parâmetro.
@@ -268,14 +281,18 @@ Public Class SuperDataGridView
                 End If
             End If
 
-            If removeTxtColumnImg Then
+            If bImage Then
 
-                'Remove text da coluna de imagens
+                If removeTxtColumnImg Then
 
-                For Each col As DataGridViewImageColumn In Me.Columns.OfType(Of DataGridViewImageColumn)
+                    'Remove text da coluna de imagens
 
-                    col.HeaderText = ""
-                Next
+                    For Each col As DataGridViewImageColumn In Me.Columns.OfType(Of DataGridViewImageColumn)
+
+                        col.HeaderText = ""
+                    Next
+
+                End If
 
             End If
 
@@ -300,16 +317,13 @@ Public Class SuperDataGridView
         Dim rChave As String = Nothing
         Try
 
-            For i = 0 To Me.SelectedRows.Count - 1
-
-                If i - (Me.SelectedRows.Count - 1) = 0 Then
-
-                    rChave += Me.Rows(i).Cells(ID).Value.ToString
-
-                Else
-                    rChave += String.Concat(Me.Rows(i).Cells(ID).Value.ToString, ";")
-                End If
+            For Each x As DataGridViewRow In Me.SelectedRows
+                rChave += String.Concat(x.Cells(ID).Value.ToString, ";")
             Next
+
+            rChave = rChave.Substring(0, rChave.LastIndexOf(";"))
+
+
 
             Return rChave
 
@@ -345,17 +359,21 @@ Public Class SuperDataGridView
     Public Sub AdicionaImageColumn(ByRef oDataset As SuperDataSet,
                                    ByVal column As String,
                                    ByVal img As Bitmap,
-                                   Optional imgIgual As Boolean = True)
+                                   Optional imgIgual As Boolean = True,
+                                   Optional totalCol As Integer = 1)
 
         Dim image As ImageConverter
         Dim dataRow As DataRow
+        Static col As Integer = Nothing
         Try
+            bImage = True
+
             image = New ImageConverter()
 
             'Adiciona uma coluna do tipo ImageColumn no DataSet (antes de carregar o DataGrid )
 
             If Not CBool(oDataset.Tables(0).Columns.Contains(column)) Then
-
+                ultimaRow = 0
                 oDataset.Tables(0).Columns.Add(column, System.Type.GetType("System.Byte[]"))
 
             End If
@@ -370,20 +388,40 @@ Public Class SuperDataGridView
                 Next
 
             Else
+                If totalCol = 1 Then
+                    For i = ultimaRow To oDataset.TotalRegistros - 1
+                        'Seta uma Image por linha.
 
-                For i = ultimaRow To oDataset.TotalRegistros - 1
-                    'Seta uma Image por linha.
+                        dataRow = oDataset.Tables(0).Rows(i)
 
-                    dataRow = oDataset.Tables(0).Rows(i)
+                        dataRow(column) = image.ConvertTo(img, System.Type.GetType("System.Byte[]"))
 
-                    dataRow(column) = image.ConvertTo(img, System.Type.GetType("System.Byte[]"))
+                        ultimaRow += 1
+
+                        Exit For
+                    Next
+                Else
+                    For i = ultimaRow To oDataset.TotalRegistros - 1
+                        'Seta uma Image por linha.
+                        col += 1
+                        If totalCol = col Then
+                            col = 0
+                            ultimaRow += 1
+
+                        Else
+                            ultimaRow = ultimaRow
+                        End If
+
+                        dataRow = oDataset.Tables(0).Rows(i)
+
+                        dataRow(column) = image.ConvertTo(img, System.Type.GetType("System.Byte[]"))
 
 
-                    ultimaRow = i + 1
-                    Exit For
-                Next
-
+                        Exit For
+                    Next
+                End If
             End If
+
 
 
         Catch ex As Exception
@@ -604,16 +642,16 @@ Public Class SuperDataGridView
                         Me.ClearSelection()
 
                         'Ativa ReadOnly para todas as células, exceto a coluna do checkbox.
-                        For l = 0 To Me.Columns.Count - 1
-                            If bChkBox Then
-                                If Not Me.Columns(l).Name = "chkDataGrid" Then
+                        'For l = 0 To Me.Columns.Count - 1
+                        '    If bChkBox Then
+                        '        If Not Me.Columns(l).Name = "chkDataGrid" Then
 
-                                    Me.Columns(l).ReadOnly = True
-                                End If
-                            Else
-                                Me.Columns(l).ReadOnly = True
-                            End If
-                        Next
+                        '            Me.Columns(l)..ReadOnly = True
+                        '        End If
+                        '    Else
+                        '        Me.Columns(l).ReadOnly = True
+                        '    End If
+                        'Next
                     End If
                 Next
 

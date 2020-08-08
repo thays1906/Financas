@@ -159,7 +159,7 @@ Partial Class frmNovaDespesa
         Me.lblFormaPagamento.AutoSize = True
         Me.lblFormaPagamento.Location = New System.Drawing.Point(412, 27)
         Me.lblFormaPagamento.Name = "lblFormaPagamento"
-        Me.lblFormaPagamento.Size = New System.Drawing.Size(189, 18)
+        Me.lblFormaPagamento.Size = New System.Drawing.Size(235, 25)
         Me.lblFormaPagamento.TabIndex = 13
         Me.lblFormaPagamento.Text = "Forma de Pagamento:"
         '
@@ -175,7 +175,7 @@ Partial Class frmNovaDespesa
         Me.cbDespesaFixa.FormattingEnabled = True
         Me.cbDespesaFixa.Location = New System.Drawing.Point(193, 54)
         Me.cbDespesaFixa.Name = "cbDespesaFixa"
-        Me.cbDespesaFixa.Size = New System.Drawing.Size(161, 26)
+        Me.cbDespesaFixa.Size = New System.Drawing.Size(161, 33)
         Me.cbDespesaFixa.SuperObrigatorio = False
         Me.cbDespesaFixa.SuperTxtObrigatorio = ""
         Me.cbDespesaFixa.TabIndex = 23
@@ -192,7 +192,7 @@ Partial Class frmNovaDespesa
         Me.cbPagamento.FormattingEnabled = True
         Me.cbPagamento.Location = New System.Drawing.Point(415, 52)
         Me.cbPagamento.Name = "cbPagamento"
-        Me.cbPagamento.Size = New System.Drawing.Size(232, 26)
+        Me.cbPagamento.Size = New System.Drawing.Size(232, 33)
         Me.cbPagamento.SuperObrigatorio = True
         Me.cbPagamento.SuperTxtObrigatorio = "Selecione a Forma de Pagamento"
         Me.cbPagamento.TabIndex = 12
@@ -202,7 +202,7 @@ Partial Class frmNovaDespesa
         Me.chkDespesaFixa.AutoSize = True
         Me.chkDespesaFixa.Location = New System.Drawing.Point(193, 26)
         Me.chkDespesaFixa.Name = "chkDespesaFixa"
-        Me.chkDespesaFixa.Size = New System.Drawing.Size(136, 22)
+        Me.chkDespesaFixa.Size = New System.Drawing.Size(166, 29)
         Me.chkDespesaFixa.TabIndex = 22
         Me.chkDespesaFixa.Text = "Despesa Fixa"
         Me.chkDespesaFixa.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -217,7 +217,7 @@ Partial Class frmNovaDespesa
         Me.txtParcela.Location = New System.Drawing.Point(415, 129)
         Me.txtParcela.Margin = New System.Windows.Forms.Padding(2)
         Me.txtParcela.Name = "txtParcela"
-        Me.txtParcela.Size = New System.Drawing.Size(81, 27)
+        Me.txtParcela.Size = New System.Drawing.Size(81, 32)
         Me.txtParcela.SuperMascara = ""
         Me.txtParcela.SuperObrigatorio = False
         Me.txtParcela.SuperTravaErrors = False
@@ -233,7 +233,7 @@ Partial Class frmNovaDespesa
         Me.lblValorParcela.Location = New System.Drawing.Point(190, 104)
         Me.lblValorParcela.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblValorParcela.Name = "lblValorParcela"
-        Me.lblValorParcela.Size = New System.Drawing.Size(147, 18)
+        Me.lblValorParcela.Size = New System.Drawing.Size(184, 25)
         Me.lblValorParcela.TabIndex = 21
         Me.lblValorParcela.Text = "Valor da parcela:"
         Me.lblValorParcela.Visible = False
@@ -247,7 +247,7 @@ Partial Class frmNovaDespesa
         Me.txtValorParcela.Location = New System.Drawing.Point(193, 129)
         Me.txtValorParcela.Margin = New System.Windows.Forms.Padding(2)
         Me.txtValorParcela.Name = "txtValorParcela"
-        Me.txtValorParcela.Size = New System.Drawing.Size(161, 27)
+        Me.txtValorParcela.Size = New System.Drawing.Size(161, 32)
         Me.txtValorParcela.SuperMascara = ""
         Me.txtValorParcela.SuperObrigatorio = False
         Me.txtValorParcela.SuperTravaErrors = False
@@ -262,7 +262,7 @@ Partial Class frmNovaDespesa
         Me.chkParcela.AutoSize = True
         Me.chkParcela.Location = New System.Drawing.Point(10, 26)
         Me.chkParcela.Name = "chkParcela"
-        Me.chkParcela.Size = New System.Drawing.Size(138, 22)
+        Me.chkParcela.Size = New System.Drawing.Size(171, 29)
         Me.chkParcela.TabIndex = 16
         Me.chkParcela.Text = "Parcelamento"
         Me.chkParcela.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -279,10 +279,10 @@ Partial Class frmNovaDespesa
         Me.cbParcelamento.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbParcelamento.FormattingEnabled = True
         Me.cbParcelamento.IntegralHeight = False
-        Me.cbParcelamento.ItemHeight = 18
+        Me.cbParcelamento.ItemHeight = 25
         Me.cbParcelamento.Location = New System.Drawing.Point(10, 54)
         Me.cbParcelamento.Name = "cbParcelamento"
-        Me.cbParcelamento.Size = New System.Drawing.Size(144, 26)
+        Me.cbParcelamento.Size = New System.Drawing.Size(144, 33)
         Me.cbParcelamento.SuperObrigatorio = False
         Me.cbParcelamento.SuperTxtObrigatorio = ""
         Me.cbParcelamento.TabIndex = 17
@@ -292,7 +292,7 @@ Partial Class frmNovaDespesa
         Me.lblValor.AutoSize = True
         Me.lblValor.Location = New System.Drawing.Point(7, 104)
         Me.lblValor.Name = "lblValor"
-        Me.lblValor.Size = New System.Drawing.Size(102, 18)
+        Me.lblValor.Size = New System.Drawing.Size(128, 25)
         Me.lblValor.TabIndex = 1
         Me.lblValor.Text = "Valor Total:"
         '
@@ -304,7 +304,7 @@ Partial Class frmNovaDespesa
         Me.txtValorTotal.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtValorTotal.Location = New System.Drawing.Point(10, 129)
         Me.txtValorTotal.Name = "txtValorTotal"
-        Me.txtValorTotal.Size = New System.Drawing.Size(161, 27)
+        Me.txtValorTotal.Size = New System.Drawing.Size(161, 32)
         Me.txtValorTotal.SuperMascara = "R$0.00"
         Me.txtValorTotal.SuperObrigatorio = True
         Me.txtValorTotal.SuperTravaErrors = False
@@ -319,7 +319,7 @@ Partial Class frmNovaDespesa
         Me.lblParcela.Location = New System.Drawing.Point(412, 104)
         Me.lblParcela.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblParcela.Name = "lblParcela"
-        Me.lblParcela.Size = New System.Drawing.Size(74, 18)
+        Me.lblParcela.Size = New System.Drawing.Size(94, 25)
         Me.lblParcela.TabIndex = 19
         Me.lblParcela.Text = "Parcela:"
         Me.lblParcela.Visible = False
@@ -373,7 +373,7 @@ Partial Class frmNovaDespesa
         Me.lblCategoria.AutoSize = True
         Me.lblCategoria.Location = New System.Drawing.Point(7, 145)
         Me.lblCategoria.Name = "lblCategoria"
-        Me.lblCategoria.Size = New System.Drawing.Size(94, 18)
+        Me.lblCategoria.Size = New System.Drawing.Size(118, 25)
         Me.lblCategoria.TabIndex = 7
         Me.lblCategoria.Text = "Categoria:"
         '
@@ -399,7 +399,7 @@ Partial Class frmNovaDespesa
         Me.lblStatus.AutoSize = True
         Me.lblStatus.Location = New System.Drawing.Point(402, 17)
         Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(68, 18)
+        Me.lblStatus.Size = New System.Drawing.Size(86, 25)
         Me.lblStatus.TabIndex = 15
         Me.lblStatus.Text = "Status:"
         '
@@ -415,7 +415,7 @@ Partial Class frmNovaDespesa
         Me.cbCategoria.FormattingEnabled = True
         Me.cbCategoria.Location = New System.Drawing.Point(10, 166)
         Me.cbCategoria.Name = "cbCategoria"
-        Me.cbCategoria.Size = New System.Drawing.Size(232, 26)
+        Me.cbCategoria.Size = New System.Drawing.Size(232, 33)
         Me.cbCategoria.SuperObrigatorio = False
         Me.cbCategoria.SuperTxtObrigatorio = ""
         Me.cbCategoria.TabIndex = 6
@@ -425,7 +425,7 @@ Partial Class frmNovaDespesa
         Me.lblDescricao.AutoSize = True
         Me.lblDescricao.Location = New System.Drawing.Point(8, 83)
         Me.lblDescricao.Name = "lblDescricao"
-        Me.lblDescricao.Size = New System.Drawing.Size(93, 18)
+        Me.lblDescricao.Size = New System.Drawing.Size(117, 25)
         Me.lblDescricao.TabIndex = 11
         Me.lblDescricao.Text = "Descrição:"
         '
@@ -434,7 +434,7 @@ Partial Class frmNovaDespesa
         Me.lblConta.AutoSize = True
         Me.lblConta.Location = New System.Drawing.Point(402, 145)
         Me.lblConta.Name = "lblConta"
-        Me.lblConta.Size = New System.Drawing.Size(139, 18)
+        Me.lblConta.Size = New System.Drawing.Size(175, 25)
         Me.lblConta.TabIndex = 5
         Me.lblConta.Text = "Conta Báncaria:"
         '
@@ -451,7 +451,7 @@ Partial Class frmNovaDespesa
         Me.cbStatus.FormattingEnabled = True
         Me.cbStatus.Location = New System.Drawing.Point(405, 41)
         Me.cbStatus.Name = "cbStatus"
-        Me.cbStatus.Size = New System.Drawing.Size(232, 26)
+        Me.cbStatus.Size = New System.Drawing.Size(232, 33)
         Me.cbStatus.SuperObrigatorio = True
         Me.cbStatus.SuperTxtObrigatorio = "Selecione um Status "
         Me.cbStatus.TabIndex = 14
@@ -463,7 +463,7 @@ Partial Class frmNovaDespesa
         Me.dtDespesa.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtDespesa.Location = New System.Drawing.Point(10, 38)
         Me.dtDespesa.Name = "dtDespesa"
-        Me.dtDespesa.Size = New System.Drawing.Size(144, 27)
+        Me.dtDespesa.Size = New System.Drawing.Size(144, 32)
         Me.dtDespesa.TabIndex = 2
         '
         'lblData
@@ -471,7 +471,7 @@ Partial Class frmNovaDespesa
         Me.lblData.AutoSize = True
         Me.lblData.Location = New System.Drawing.Point(6, 17)
         Me.lblData.Name = "lblData"
-        Me.lblData.Size = New System.Drawing.Size(54, 18)
+        Me.lblData.Size = New System.Drawing.Size(68, 25)
         Me.lblData.TabIndex = 3
         Me.lblData.Text = "Data:"
         '
@@ -487,7 +487,7 @@ Partial Class frmNovaDespesa
         Me.cbConta.FormattingEnabled = True
         Me.cbConta.Location = New System.Drawing.Point(405, 166)
         Me.cbConta.Name = "cbConta"
-        Me.cbConta.Size = New System.Drawing.Size(232, 26)
+        Me.cbConta.Size = New System.Drawing.Size(232, 33)
         Me.cbConta.SuperObrigatorio = True
         Me.cbConta.SuperTxtObrigatorio = "Conta Báncaria"
         Me.cbConta.TabIndex = 4
@@ -498,7 +498,7 @@ Partial Class frmNovaDespesa
         Me.lblMesReferente.Location = New System.Drawing.Point(-3, 10)
         Me.lblMesReferente.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblMesReferente.Name = "lblMesReferente"
-        Me.lblMesReferente.Size = New System.Drawing.Size(161, 18)
+        Me.lblMesReferente.Size = New System.Drawing.Size(199, 25)
         Me.lblMesReferente.TabIndex = 27
         Me.lblMesReferente.Text = "Referente ao mês:"
         Me.lblMesReferente.Visible = False

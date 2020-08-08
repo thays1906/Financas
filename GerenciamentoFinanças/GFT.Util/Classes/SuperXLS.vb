@@ -190,20 +190,29 @@ Public Class SuperXLS
             ''#####     FOR pra montar as colunas.    #####
             ''#############################################
             For i = 0 To oDataset.TotalColunas() - 1 'FieldCount() - 1
-                strCampo = oDataset.NomeColuna(i)
-                ''If (Not strCampo.Substring(0, 3).Contains("id_")) Or
-                ''   (strCampo.Substring(0, 3) = "me_") Or
-                ''   (strCampo.Substring(0, 3) = "nu_") Then
 
-                Planilha.Cells(LINHA_CABECALHO_TABELA, iCol).Value = strCampo
+                strCampo = oDataset.NomeColuna(i)
+
+                If (strCampo.Substring(0, 3) = "as_") Or
+                   (strCampo.Substring(0, 3) = "me_") Or
+                   (strCampo.Substring(0, 3) = "nu_") Then
+
+                    strCampo = FormataColuna(strCampo)
+                ElseIf Not (strCampo.Substring(0, 3) = "id_") Then
+
+                    Planilha.Cells(LINHA_CABECALHO_TABELA, iCol).Value = strCampo
                     Planilha.Cells(LINHA_CABECALHO_TABELA, iCol).Style.Font.Bold = True
                     Planilha.Cells(LINHA_CABECALHO_TABELA, iCol).Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
                     Planilha.Cells(LINHA_CABECALHO_TABELA, iCol).Style.Fill.BackgroundColor.SetColor(Color.LightGray)
                     Planilha.Cells(LINHA_CABECALHO_TABELA, iCol).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center
+
                     iCol = iCol + 1
                     iTotalColunasDetalhe += 1
+                End If
 
-                'End If
+
+
+
             Next i
 
             If bAutoFiltro = True Then
@@ -225,11 +234,15 @@ Public Class SuperXLS
 
                     strCampo = oDataset.NomeColuna(i)
 
-                    ''If (Not strCampo.Substring(0, 3).Contains("id_")) Or
-                    ''   (strCampo.Substring(0, 3) = "me_") Or
-                    ''   (strCampo.Substring(0, 3) = "nu_") Then
+                    If Not (strCampo.Substring(0, 3) = "id_") Then
+                        If (strCampo.Substring(0, 3) = "as_") Or
+                    (strCampo.Substring(0, 3) = "me_") Or
+                    (strCampo.Substring(0, 3) = "nu_") Then
 
-                    ValorCampo = oDataset.ValorCampo(i, posReg)
+
+                            strCampo = FormataColuna(strCampo)
+                        End If
+                        ValorCampo = oDataset.ValorCampo(i, posReg)
 
                         Planilha.Cells(iRow, iCol).Value = ValorCampo
 
@@ -244,7 +257,7 @@ Public Class SuperXLS
 
 
                         If (oDataset.TipoDadosColuna(i) Is GetType(Decimal)) Or
-                            (oDataset.TipoDadosColuna(i) Is GetType(Integer)) Then
+                        (oDataset.TipoDadosColuna(i) Is GetType(Integer)) Then
                             Planilha.Cells(iRow, iCol).Style.HorizontalAlignment = Style.ExcelHorizontalAlignment.Right
                         ElseIf (oDataset.TipoDadosColuna(i) Is GetType(DateTime)) Then
                             Planilha.Cells(iRow, iCol).Style.Numberformat.Format = "dd/MM/yyyy"
@@ -254,7 +267,9 @@ Public Class SuperXLS
                         End If
 
                         iCol = iCol + 1
-                    'End If
+                        'End If
+
+                    End If
                 Next i
                 iRow = iRow + 1
             Next posReg
@@ -289,9 +304,9 @@ Public Class SuperXLS
             Planilha.Cells(LINHA_CABECALHO_RELATORIO, COLUNA_INICIAL_DADOS).Style.Font.Color.SetColor(Color.DarkBlue)
             Planilha.Cells(LINHA_CABECALHO_RELATORIO, COLUNA_INICIAL_DADOS).Style.Font.Size = 16
 
-            'If bFundoBradesco = True Then
-            '   Planilha.BackgroundImage.Image = My.Resources.SuperLV
-            'End If
+            If bFundoBradesco = True Then
+                Planilha.BackgroundImage.Image = My.Resources.SuperLV
+            End If
 
             Planilha.View.ShowGridLines = bHabilitaGrade
             Pacote.Workbook.Properties.Title = Me.Titulo
@@ -2038,19 +2053,19 @@ Public Class SuperXLS
         Try
             Dim nCerquilha As Integer
             Dim sstring2 As String
-            sstring2 = sString
-            'If sString.Contains(" ") Then
-            '    'sstring2 = Replace(xRight(sString, Len(sString) - 3), "_", " ")
-            '    sstring2 = xRight(sString, Len(sString) - 3)
-            'Else
-            '    sstring2 = xRight(sString, Len(sString) - 3)
-            'End If
+
+            If id = 0 Then
+                sstring2 = Replace(xRight(sString, Len(sString) - 3), "_", " ")
+            Else
+                sstring2 = xRight(sString, Len(sString) - 3)
+            End If
 
             nCerquilha = InStr(sstring2, "#")
 
             If nCerquilha > 0 Then
                 sstring2 = xLeft(sstring2, nCerquilha - 1)
             End If
+
 
             Return sstring2
         Catch ex As Exception

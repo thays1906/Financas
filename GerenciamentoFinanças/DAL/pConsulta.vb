@@ -10,8 +10,12 @@ Public Class pConsulta
         Public Shared dtFim As Campo = New Campo("dtFim", DbType.DateTime, 10)
         Public Shared cValor As Campo = New Campo("cValor", DbType.Decimal, 18, 0)
         Public Shared cConta As Campo = New Campo("cConta", DbType.Decimal, 10, 0)
+        Public Shared cTipo As Campo = New Campo("Tipo", DbType.Decimal, 1, 0)
     End Class
-    Public Shared Function Pesquisar(ByVal _dtInicio As Date, ByVal _dtFim As Date, ByVal _cConta As Decimal) As SuperDataSet
+    Public Shared Function Pesquisar(ByVal _dtInicio As Date,
+                                     ByVal _dtFim As Date,
+                                     ByVal _cConta As Decimal,
+                                     ByVal _Tipo As Decimal) As SuperDataSet
         Dim bDados As BancoDados
         Dim oDataset As SuperDataSet
         Try
@@ -22,6 +26,7 @@ Public Class pConsulta
             bDados.AdicionaParametro(pConsulta.dtInicio, _dtInicio)
             bDados.AdicionaParametro(pConsulta.dtFim, _dtFim)
             bDados.AdicionaParametro(pConsulta.cConta, _cConta)
+            bDados.AdicionaParametro(pConsulta.cTipo, _Tipo)
 
             oDataset = bDados.Obter("pConsulta")
 

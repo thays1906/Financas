@@ -140,6 +140,7 @@ Public Class pDespesa
 
             If _dtMes > 0 Then
                 bDados.AdicionaParametro(pDespesa.dtMes, _dtMes)
+
             End If
             If _dtYear > 0 Then
                 bDados.AdicionaParametro(pDespesa.dtYear, _dtYear)

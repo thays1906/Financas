@@ -41,9 +41,9 @@ Partial Class frm_msgbox
         '
         Me.lblTexto.BackColor = System.Drawing.Color.Transparent
         Me.lblTexto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblTexto.Location = New System.Drawing.Point(3, 61)
+        Me.lblTexto.Location = New System.Drawing.Point(3, 62)
         Me.lblTexto.Name = "lblTexto"
-        Me.lblTexto.Size = New System.Drawing.Size(497, 123)
+        Me.lblTexto.Size = New System.Drawing.Size(497, 125)
         Me.lblTexto.TabIndex = 1
         Me.lblTexto.Text = "Texto label messagebox"
         Me.lblTexto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -86,7 +86,7 @@ Partial Class frm_msgbox
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(507, 55)
+        Me.Panel1.Size = New System.Drawing.Size(507, 56)
         Me.Panel1.TabIndex = 7
         '
         'btn3

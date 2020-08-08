@@ -25,6 +25,7 @@ Public Class frmNovaDespesa
     Public oForm As frmDespesaFixa
     Public choose As String
     Public data As Date
+    Public bAlterado As Boolean = False
     Public Property cControleParcelamento() As Decimal
 
 
@@ -149,6 +150,7 @@ Public Class frmNovaDespesa
                     'Despesa Fixa não permite alteração da Frequencia que se repete Ex:(diario/mensal/anual)
                     'Despesa Fixa não pode virar Normal.
                     'Alterações em DF: Data (somente dia para despesas Mensais/Bi/Tri/Anual),Valor,Descrição e etc.
+
                     dtRegistro = dtDespesa.Value
                     cValor = CDec(txtValorTotal.Text)
 
@@ -175,7 +177,7 @@ Public Class frmNovaDespesa
                         logErro = Now & " - " & "Despesa Parcelada modificada. "
 
                         oForm = New frmDespesaFixa("UPDP") 'UPDP = Update Despesa Parcelada
-                        oForm.Show()
+                        oForm.ShowDialog()
                         choose = oForm.retorno
 
                         cValor = CDec(txtValorParcela.Text)
@@ -195,12 +197,14 @@ Public Class frmNovaDespesa
                     End If
                 End If
                 LimpaCampos()
+                cControleParcelamento = 0
+                Me.bAlterado.ToString()
                 Me.Close()
             End If
 
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro inesperado",, eImagens.Cancel)
         End Try
     End Sub
 
@@ -224,6 +228,7 @@ Public Class frmNovaDespesa
                 If cDespesaFixa <> 0 Then
                     pDespesaFixa.InserirLancamentoFuturo(cDespesaFixa)
                     cErro = 0
+                    bAlterado = True
                 Else
                     cErro += 1
                 End If
@@ -250,6 +255,7 @@ Public Class frmNovaDespesa
                                            cDespesaFixa,
                                            logErro) = True Then
                     cErro = 0
+                    bAlterado = True
                 Else
                     cErro += 1
                 End If
@@ -258,7 +264,7 @@ Public Class frmNovaDespesa
             Return cErro
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro inesperado",, eImagens.Cancel)
             Return cErro
         End Try
     End Function
@@ -267,7 +273,7 @@ Public Class frmNovaDespesa
             If escolha <> "" Then
 
                 If escolha = "1*" Then
-
+                    'Alterar este e os proximos
                     If cDespesaFixa <> 0 Then
 
 
@@ -289,6 +295,7 @@ Public Class frmNovaDespesa
                     End If
 
                 ElseIf escolha = "*" Then
+                    'Alterar todos
                     If cDespesaFixa <> 0 Then
 
                         pDespesa.AlterarDespesaFixa(cDespesaFixa, 0,
@@ -316,7 +323,11 @@ Public Class frmNovaDespesa
                            dtDespesa.Value,
                            CType(cbStatus.ObterChaveCombo(), eStatusDespesa),
                            logErro) Then
+
+                        bAlterado = True
+
                         Return True
+
                     Else
                         Return False
                     End If
@@ -333,6 +344,9 @@ Public Class frmNovaDespesa
                                            dtDespesa.Value,
                                            CType(cbStatus.ObterChaveCombo(), eStatusDespesa),
                                            logErro) Then
+
+                    bAlterado = True
+
                     Return True
                 Else
                     Return False
@@ -351,7 +365,7 @@ Public Class frmNovaDespesa
             Return True
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro inesperado",, eImagens.Cancel)
             Return False
         End Try
     End Function
@@ -503,7 +517,7 @@ Public Class frmNovaDespesa
             cbStatus.PosicionaRegistroCombo(CType(rsDespesa("cStatus"), eStatusDespesa))
             picNewDespesa.Image = Banco(cbConta.ObterDescricaoCombo())
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro inesperado",, eImagens.Cancel)
         End Try
     End Sub
     Private Sub LimpaCampos()
@@ -517,7 +531,11 @@ Public Class frmNovaDespesa
         cbCategoria.SelectedIndex = 0
         cbPagamento.SelectedIndex = 0
         cbStatus.SelectedIndex = 0
-        cbParcelamento.SelectedIndex = 0
+
+        If cbParcelamento.Items.Count > 0 Then
+            cbParcelamento.SelectedIndex = 0
+        End If
+
         cbDespesaFixa.SelectedIndex = 0
 
     End Sub
@@ -543,12 +561,15 @@ Public Class frmNovaDespesa
 
             rsDespesaParcelamento = pParcelamento.CarregarCombo()
 
-            cQtdeParcela = CDec(rsDespesaParcelamento("cQtdeParcela"))
-            For i = 1 To cQtdeParcela - 1
-                qtde.Add(New DuplaCombo(i, i + 1 & "x"))
-            Next
+            If rsDespesaParcelamento.TotalRegistros > 0 Then
+                cQtdeParcela = CDec(rsDespesaParcelamento("cQtdeParcela"))
+                For i = 1 To cQtdeParcela - 1
+                    qtde.Add(New DuplaCombo(i, i + 1 & "x"))
+                Next
 
-            cbParcelamento.PreencheComboColl(qtde, SuperComboBox.PrimeiroValor.Selecione)
+                cbParcelamento.PreencheComboColl(qtde, SuperComboBox.PrimeiroValor.Selecione)
+
+            End If
 
             rsDespesaPagamento = pFormaPagamento.CarregarCombo()
 
@@ -578,14 +599,14 @@ Public Class frmNovaDespesa
             cbDespesaFixa.PreencheComboColl(col, PrimeiroValor.Selecione)
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
-
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro inesperado",, eImagens.Cancel)
         End Try
     End Sub
 
-    Private Sub txtValor_Leave(sender As Object, e As EventArgs)
+    Private Sub txtValor_Leave(sender As Object, e As EventArgs) Handles txtValorTotal.Leave
         Try
             txtValorTotal.Text = txtValorTotal.Text.Replace("R$", "").Trim.ToString
+
             If IsNumeric(txtValorTotal.Text) Then
 
                 txtValorTotal.Text = Convert.ToDouble(txtValorTotal.Text).ToString("C")
@@ -628,7 +649,12 @@ Public Class frmNovaDespesa
                 cbPagamento.PosicionaRegistroCombo(rsDespesaPagamento("cFormaPagamento", 1))
 
             ElseIf chkParcela.Checked = False Then
-                cbParcelamento.SelectedIndex = 0
+
+                If cbParcelamento.Items.Count > 0 Then
+                    cbParcelamento.SelectedIndex = 0
+
+                End If
+
                 txtValorParcela.Visible = False
                 lblValorParcela.Visible = False
 
@@ -655,7 +681,7 @@ Public Class frmNovaDespesa
                 Me.Close()
             End If
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro inesperado",, eImagens.Cancel)
         End Try
     End Sub
 
@@ -669,13 +695,13 @@ Public Class frmNovaDespesa
         End If
     End Sub
 
-    Private Sub txtValorTotal_KeyDown(sender As Object, e As KeyEventArgs)
+    Private Sub txtValorTotal_KeyDown(sender As Object, e As KeyEventArgs) Handles txtValorTotal.KeyDown
         If e.KeyCode = Keys.Back Then
             txtValorParcela.Text = ""
         End If
     End Sub
 
-    Private Sub txtValorTotal_KeyUp(sender As Object, e As KeyEventArgs)
+    Private Sub txtValorTotal_KeyUp(sender As Object, e As KeyEventArgs) Handles txtValorTotal.KeyUp
         Try
             If chkParcela.Checked Then
                 If cbParcelamento.SelectedIndex <> 0 Then
@@ -685,6 +711,7 @@ Public Class frmNovaDespesa
                     If IsNumeric(txtValorTotal.Text) Then
 
                         If CDec(txtValorTotal.Text) > 0 Then
+
                             cValor = CDec(txtValorTotal.Text.Replace("R$", "")) / cQtdeParcela
 
                             txtValorParcela.Text = Convert.ToDouble(cValor).ToString("C2")
@@ -697,7 +724,7 @@ Public Class frmNovaDespesa
             S_MsgBox(ex.Message, eBotoes.Ok, "Erro inesperado",, eImagens.Cancel)
         End Try
     End Sub
-    Private Sub cbParcelamento_SelectedIndexChanged(sender As Object, e As EventArgs)
+    Private Sub cbParcelamento_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbParcelamento.SelectedIndexChanged
         Try
             If chkParcela.Checked Then
 
@@ -717,7 +744,7 @@ Public Class frmNovaDespesa
                 End If
             End If
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro inesperado",, eImagens.Cancel)
         End Try
     End Sub
 
@@ -734,7 +761,7 @@ Public Class frmNovaDespesa
 
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro inesperado",, eImagens.Cancel)
             Return 0
         End Try
     End Function
@@ -848,23 +875,27 @@ Public Class frmNovaDespesa
     End Sub
 
     Private Sub cbStatus_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbStatus.SelectedIndexChanged
-        If cbStatus.SelectedIndex <> 0 Then
-            If cbStatus.SelectedIndex = 1 Then
+        Try
+            If cbStatus.SelectedIndex <> 0 Then
+                If cbStatus.SelectedIndex = 1 Then
 
-                picStatus.Image = My.Resources.iconPendente
+                    picStatus.Image = My.Resources.iconPendente
 
-            ElseIf cbStatus.SelectedIndex = 2 Then
+                ElseIf cbStatus.SelectedIndex = 2 Then
 
-                picStatus.Image = My.Resources.iconPago
+                    picStatus.Image = My.Resources.iconPago
 
+                Else
+                    picStatus.Image = My.Resources.iconStatusAtrasado_Alerta_
+
+                End If
             Else
-                picStatus.Image = My.Resources.iconStatusAtrasado_Alerta_
-
+                picStatus.Image = Nothing
+                picStatus.Refresh()
             End If
-        Else
-            picStatus.Image = Nothing
-            picStatus.Refresh()
-        End If
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro inesperado",, eImagens.Cancel)
+        End Try
     End Sub
 
 End Class

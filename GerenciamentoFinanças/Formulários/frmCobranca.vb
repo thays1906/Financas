@@ -75,8 +75,6 @@ Public Class frmCobranca
         Dim cellImg As New DataGridViewCellStyle()
         Dim cellCol As New DataGridViewCellStyle()
         Dim ANO As Decimal
-        Dim columnImg As String
-
         Try
             oDataSet = New SuperDataSet()
 
@@ -93,12 +91,16 @@ Public Class frmCobranca
                                                     cbDevedor.ObterDescricaoCombo,
                                                     CType(cbStatus.ObterChaveCombo, eStatusDespesa), chkPeriodo)
 
-            columnImg = "CONTA"
 
             'Adicionando uma coluna com Imagens no DataSet.
             For i = 0 To oDataSet.TotalRegistros - 1
-                dgCobranca.AdicionaImageColumn(oDataSet, columnImg, Banco(oDataSet("Conta Báncaria", i).ToString), False)
+                dgCobranca.AdicionaImageColumn(oDataSet, "CONTA", Banco(oDataSet("CONTA BÁNCARIA", i).ToString), False, 3)
+                dgCobranca.AdicionaImageColumn(oDataSet, "imgLembrete", SimNaoImage(oDataSet("LEMBRETE", i).ToString), False, 3)
+                dgCobranca.AdicionaImageColumn(oDataSet, "imgStatus", StatusImage(CDec(oDataSet("STATUS", i))), False, 3)
             Next
+
+            oDataSet.Tables(0).Columns("imgLembrete").SetOrdinal(6)
+            oDataSet.Tables(0).Columns("imgStatus").SetOrdinal(3)
 
             dgCobranca.PreencheDataGrid(oDataSet,,, txtLetreiroCobr)
 
@@ -115,14 +117,30 @@ Public Class frmCobranca
 
                 Next
 
+                dgCobranca.Columns("STATUS").Visible = False
+                dgCobranca.Columns("imgStatus").HeaderText = "STATUS"
+                dgCobranca.Columns("imgStatus").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+
+                dgCobranca.Columns("imgLembrete").HeaderCell.Style = cellImg
+                dgCobranca.Columns("imgLembrete").HeaderText = "LEMBRETE"
+                dgCobranca.Columns("imgLembrete").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+                dgCobranca.Columns("Lembrete").Visible = False
+
+                dgCobranca.Columns("CONTA").MinimumWidth = 60
                 dgCobranca.Columns("CONTA").HeaderCell.Style = cellCol
                 dgCobranca.Columns("CONTA").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-                dgCobranca.Columns("CONTA").DisplayIndex = dgCobranca.Columns.Count - 1
+                dgCobranca.Columns("CONTA").DisplayIndex = 11
 
+                dgCobranca.Columns("CONTA BÁNCARIA").Visible = True
                 dgCobranca.Columns("CONTA BÁNCARIA").HeaderCell.Style = cellCol
-                dgCobranca.Columns("CONTA").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-                dgCobranca.Columns("CONTA BÁNCARIA").DisplayIndex = dgCobranca.Columns.Count - 1
+                dgCobranca.Columns("CONTA BÁNCARIA").DisplayIndex = 12
                 dgCobranca.Columns("CONTA BÁNCARIA").HeaderText = "BÁNCARIA"
+                dgCobranca.Columns("CONTA BÁNCARIA").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+
+
+
+
+
 
             End If
 
@@ -363,4 +381,19 @@ Public Class frmCobranca
         End Try
     End Sub
 
+    Private Sub dgCobranca_ColumnDisplayIndexChanged(sender As Object, e As DataGridViewColumnEventArgs) Handles dgCobranca.ColumnDisplayIndexChanged
+        Try
+
+            'If dgCobranca.Columns("CONTA BÁNCARIA").DisplayIndex <> 11 Then
+            '    dgCobranca.Columns("CONTA BÁNCARIA").DisplayIndex = 11
+            'End If
+
+            dgCobranca.Invalidate()
+
+
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Erro",, eImagens.Cancel)
+        End Try
+
+    End Sub
 End Class

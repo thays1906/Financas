@@ -116,6 +116,7 @@ Public Module SubUtil
         Ame = 26
         PayPal = 27
     End Enum
+
     '=======================================
     'FIM --- Enums
     '=======================================
@@ -255,13 +256,20 @@ Public Module SubUtil
         ElseIf Cor = Collor.CinzaAzulado Then
             For Each tabPage As TabPage In tab.TabPages
 
-                tab.BackColor = SystemColors.InactiveBorder
+                tabPage.BackColor = SystemColors.InactiveBorder
             Next
 
         ElseIf Cor = Collor.CinzaClaro Then
             For Each tabPage As TabPage In tab.TabPages
 
                 tab.BackColor = SystemColors.Control
+            Next
+
+        ElseIf Cor = Collor.Claro Then
+
+            For Each tabpage As TabPage In tab.TabPages
+
+                tabpage.BackColor = Color.FromArgb(241, 241, 241)
             Next
             'ElseIf Cor = Collor.Amarelo Then
             'tab.BackColor = Color.FromArgb(242, 192, 41)
@@ -423,6 +431,49 @@ Public Module SubUtil
         End Try
     End Function
 
+    Public Function StatusImage(ByVal cStatus As Decimal) As Bitmap
+        Dim image As Bitmap = Nothing
+        Try
+
+            If cStatus = eStatusDespesa.Pendente Then
+
+                image = My.Resources.iconPendente
+
+            ElseIf cStatus = eStatusDespesa.Pago Then
+
+                image = My.Resources.iconPago
+
+            ElseIf cStatus = eStatusDespesa.Atrasado Then
+
+                image = My.Resources.iconStatusAtrasado_Alerta_
+
+            End If
+
+            Return image
+        Catch ex As Exception
+            LogaErro(ex.Message & "Metodo::. StatusImage - SUbUtil")
+            Return Nothing
+        End Try
+    End Function
+    Public Function SimNaoImage(ByVal rStatus As String) As Bitmap
+        Dim image As Bitmap = Nothing
+        Try
+
+            If CBool(rStatus.ToUpper.Contains("NÃO")) Then
+
+                image = My.Resources.iconNao
+
+            ElseIf CBool(rStatus.ToUpper.Contains("SIM")) Then
+
+                image = My.Resources.iconSim
+            End If
+
+            Return image
+        Catch ex As Exception
+            LogaErro(ex.Message & "Metodo::. SimNaoImage - SUbUtil")
+            Return Nothing
+        End Try
+    End Function
     Public Sub AdicionaImgColumn(ByVal oDataset As SuperDataSet, ByVal column As String)
         Dim image As ImageConverter
         Try
@@ -493,6 +544,7 @@ Public Module SubUtil
                     If S_MsgBox("Deseja realmente deletar este registro?",
                                eBotoes.SimNao, "Exclusão de Registro",,
                                eImagens.Interrogacao) = eRet.Sim Then
+
                         Return eRet.Sim
                     Else
                         Return eRet.Nao

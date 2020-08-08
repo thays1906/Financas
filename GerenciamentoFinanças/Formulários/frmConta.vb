@@ -58,8 +58,9 @@ Public Class frmConta
 
             dgConta.Columns(column).DisplayIndex = 2
             dgConta.Columns(column).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+            dgConta.Columns(column).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
 
-            dgConta.Columns(column).Width = 80
+            dgConta.Columns(column).MinimumWidth = 70
 
             If dgConta.bCarregado Then
                 For i = 0 To dgConta.ObterTotalLinhas - 1
