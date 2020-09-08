@@ -33,10 +33,7 @@ Public Module SubUtil
     End Enum
     Public Enum Collor
         Preto = 1
-        VerdeEscuro = 2
-        VerdeClaro = 3
-        Amarelo = 4
-        Marrom = 5
+        VerdeLogo = 3
         Branco = 6
         DarkTurquoise = 7
         DarkSlateGray = 8
@@ -129,19 +126,8 @@ Public Module SubUtil
         If Cor = Collor.Preto Then
             Controle.BackColor = Color.FromArgb(64, 62, 63)
 
-        ElseIf Cor = Collor.VerdeEscuro Then
-            Controle.BackColor = Color.FromArgb(28, 89, 54)
-
-        ElseIf Cor = Collor.VerdeClaro Then
-            Controle.BackColor = Color.FromArgb(3, 166, 74)
-
-        ElseIf Cor = Collor.Amarelo Then
-
-            'Controle.BackColor = Color.FromArgb(242, 192, 41)
-            Controle.BackColor = Color.Goldenrod
-
-        ElseIf Cor = Collor.Marrom Then
-            Controle.BackColor = Color.FromArgb(115, 100, 56)
+        ElseIf Cor = Collor.VerdeLogo Then
+            Controle.BackColor = Color.FromArgb(153, 204, 51)
 
         ElseIf Cor = Collor.Claro Then
             Controle.BackColor = Color.FromArgb(241, 241, 241)
@@ -200,12 +186,6 @@ Public Module SubUtil
 
         ElseIf Cor = Collor.DarkTurquoise Then
             button.BackColor = Color.DarkTurquoise
-
-        ElseIf Cor = Collor.VerdeEscuro Then
-            button.BackColor = Color.FromArgb(28, 89, 54)
-
-        ElseIf Cor = Collor.Amarelo Then
-            button.BackColor = Color.FromArgb(242, 192, 41)
 
         ElseIf Cor = Collor.DimGray Then
             button.BackColor = Color.DimGray
@@ -657,7 +637,7 @@ Public Module SubUtil
 
             collNomeTela = New Collection()
 
-            collNomeTela.Add(New String() {" ", "Consulta"}, Int(eTela.Consulta).ToString)
+            collNomeTela.Add(New String() {" ", "Extrato Báncario"}, Int(eTela.Consulta).ToString)
             collNomeTela.Add(New String() {" ", "Receitas"}, Int(eTela.Receita).ToString)
             collNomeTela.Add(New String() {" ", "Despesas"}, Int(eTela.Despesa).ToString)
             collNomeTela.Add(New String() {" ", "Configurações"}, Int(eTela.Configuracao).ToString)

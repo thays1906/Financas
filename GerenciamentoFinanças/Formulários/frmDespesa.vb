@@ -4,16 +4,16 @@ Imports GFT.Util.clsMsgBox
 Imports System.Data.Common
 
 Public Class frmDespesa
-    Public oDataset As SuperDataSet
+    Public oDataset As SuperDataSet = Nothing
     Public Despesa As frmNovaDespesa
     Public gbParcela As GroupBox
-    Public cDespesa As Decimal
-    Public btn As Decimal
-    Public erro As Integer
-    Public ok As Integer
-    Public tot As Integer
-    Public cControleParcelamento As Decimal
-    Public bchk As Boolean = Nothing
+    Public cDespesa As Decimal = Nothing
+    Public btn As Decimal = Nothing
+    Public erro As Integer = Nothing
+    Public ok As Integer = Nothing
+    Public cChecados As Integer = Nothing
+    Public cControleParcelamento As Decimal = Nothing
+    Public bchk As Boolean = False
 
     Sub New(Optional ByVal _cControle As Decimal = 0)
 
@@ -26,7 +26,7 @@ Public Class frmDespesa
 
         Cor(Me, Collor.Control)
 
-        Cor(CType(gbBotoes, Control), Collor.CinzaMedio)
+        Cor(CType(gbBotoes, Control), Collor.CinzaAzulado)
         Cor(CType(gbFiltro, Control), Collor.Control)
 
         CorTab(tabCtrlDespesa, Collor.Claro)
@@ -89,7 +89,11 @@ Public Class frmDespesa
 
     Private Sub btnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
         Try
-            tot = CInt(dgDespesa.ObterTodosChecados)
+            If tabCtrlDespesa.SelectedIndex = 0 Then
+                cChecados = CInt(dgDespesa.ObterTodosChecados)
+            ElseIf tabCtrlDespesa.SelectedIndex = 1 Then
+                cChecados = CInt(dgDespesaFixa.ObterTodosChecados)
+            End If
 
             btn = eAcao.Editar
             ControleFormulario()
@@ -101,10 +105,11 @@ Public Class frmDespesa
 
     Private Sub btnExcluir_Click(sender As Object, e As EventArgs) Handles btnExcluir.Click
         Try
-            tot = CInt(dgDespesa.ObterTodosChecados)
+            cChecados = CInt(dgDespesa.ObterTodosChecados)
 
             btn = eAcao.Excluir
             ControleFormulario()
+
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
         End Try
@@ -118,11 +123,10 @@ Public Class frmDespesa
 
                 oDataset = pDespesaFixa.Pesquisar
 
-                lvlConsultaFixa.Clear()
+                dgDespesaFixa.PreencheDataGrid(oDataset,,, txtLetreiroFixa)
 
-                If oDataset.TotalRegistros > 0 Then
-                    lvlConsultaFixa.PreencheGridDS(oDataset, True, True, False, True, 0, True)
-                    txtLetreiroFixa.TextoLetreiro = oDataset.InfoPesquisa.ToString
+                If oDataset Is Nothing Then
+                    S_MsgBox("Nenhum registro encontrado.", eBotoes.Ok, "",, eImagens.Info)
                 End If
 
             Else
@@ -140,7 +144,7 @@ Public Class frmDespesa
 
                     For i = 0 To oDataset.TotalRegistros - 1
 
-                        dgDespesa.AdicionaImageColumn(oDataset, "imgStatus", StatusImage(CDec(oDataset("as_Status#80", i))), False, 4)
+                        dgDespesa.AdicionaImageColumn(oDataset, "imgStatus", StatusImage(CDec(oDataset("as_Status#90", i))), False, 4)
 
                         dgDespesa.AdicionaImageColumn(oDataset, "DespesaFixa", SimNaoImage(oDataset("as_Despesa_Fixa#120", i).ToString), False, 4)
 
@@ -222,7 +226,7 @@ Public Class frmDespesa
             col.Clear()
 
             data = Now.AddYears(-3)
-            For i = 0 To 6
+            For i = 1 To 7
                 col.Add(New DuplaCombo(i, data.AddYears(i).ToString("yyyy")))
             Next
 
@@ -369,14 +373,14 @@ Public Class frmDespesa
 
                 If tabCtrlDespesa.SelectedIndex = 0 Then
 
-                    If tot = 1 Then
+                    If cChecados = 1 Then
                         cDespesa = dgDespesa.ObterChave
                     End If
 
                 ElseIf tabCtrlDespesa.SelectedIndex = 1 Then
 
-                    If lvlConsultaFixa.CheckedItems.Count = 1 Then
-                        cDespesa = lvlConsultaFixa.ObterChave()
+                    If dgDespesaFixa.ObterTodosChecados > 1 Then
+                        cDespesa = dgDespesaFixa.ObterChave()
                     End If
 
                 End If
@@ -704,7 +708,7 @@ Public Class frmDespesa
         ControleFormulario()
     End Sub
 
-    Private Sub lvlConsultaFixa_ItemChecked(sender As Object, e As ItemCheckedEventArgs) Handles lvlConsultaFixa.ItemChecked
+    Private Sub lvlConsultaFixa_ItemChecked(sender As Object, e As ItemCheckedEventArgs)
         ControleFormulario()
     End Sub
 
@@ -733,22 +737,22 @@ Public Class frmDespesa
     Private Sub btnLancamentoFuturo_Click(sender As Object, e As EventArgs) Handles btnLancamentoFuturo.Click
         Dim cDepesaFixa As Decimal
         Try
-            If lvlConsultaFixa.SelectedItems.Count > 0 Then
-                cDepesaFixa = lvlConsultaFixa.ObterChave()
+            If dgDespesaFixa.ObterTodosChecados > 0 Then
+                cDepesaFixa = dgDespesaFixa.ObterChave()
 
                 If cDepesaFixa <> 0 Then
 
                     If pDespesaFixa.InserirLancamentoFuturo(cDepesaFixa) Then
                         S_MsgBox("Lançamentos adicionados com sucesso!", eBotoes.Ok, "Despesa Fixa",, eImagens.FileOK)
+                        oDataset = New SuperDataSet()
                     Else
                         S_MsgBox("não foi possível gerar lançamentos desta despesa fixa.", eBotoes.Ok, "Despesa Fixa",, eImagens.Cancel)
                     End If
 
                     oDataset = pDespesaFixa.Pesquisar
 
-                    If oDataset.TotalRegistros > 0 Then
-                        lvlConsultaFixa.PreencheGridDS(oDataset, True, True, False, True, 0, True)
-                        txtLetreiroFixa.TextoLetreiro = oDataset.InfoPesquisa.ToString
+                    If oDataset IsNot Nothing Then
+                        dgDespesaFixa.PreencheDataGrid(oDataset,,, txtLetreiroFixa)
                     End If
                 End If
             End If
@@ -763,9 +767,7 @@ Public Class frmDespesa
             oXls = New SuperXLS("Despesa")
 
 
-
             If oDataset.TotalRegistros > 0 Then
-
 
                 oXls.Imprimir(oDataset, "Despesas", True)
             End If
@@ -792,9 +794,7 @@ Public Class frmDespesa
     End Sub
     Private Sub ControleBotoes()
         Try
-            btnStatusPago.Enabled = False
-            btnEditar.Enabled = False
-            btnExcluir.Enabled = False
+
 
             If tabCtrlDespesa.SelectedIndex = 1 Then
 
@@ -835,9 +835,11 @@ Public Class frmDespesa
                 btnPesquisar.Enabled = True
 
                 tot = CInt(dgDespesa.ObterTodosChecados)
+
                 If chkList.CheckState = CheckState.Unchecked Then
                     bchk = False
                 End If
+
                 If tot = 1 Then
 
                     btnStatusPago.Enabled = True

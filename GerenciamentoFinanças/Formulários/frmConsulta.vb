@@ -16,10 +16,11 @@ Public Class frmConsulta
 
         'CorTab(tbConsulta, Collor.Claro)
 
-        centralizarGrupoTab(tbConsulta)
+        centralizarGrupoTab(tabCtrlConsulta)
         centralizarGrupoBotoes(gbBotoes)
 
         CarregaCombo()
+        ResizeTab()
     End Sub
     Private Sub frmConsulta_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
         alterarCaptionFormPrincipal(eTela.Consulta)
@@ -131,21 +132,36 @@ Public Class frmConsulta
         Try
             oXls = New SuperXLS("Extrato")
 
-            oDataset = pConsulta.Pesquisar(MinHora(dtInicialFiltro.Value),
-                                           MaxHora(dtFinalFiltro.Value),
-                                           CDec(cbConta.ObterChaveCombo),
-                                           CDec(cbTipoFiltro.ObterChaveCombo))
+            If oDataset IsNot Nothing Then
+                oDataset.Tables(0).Columns.Remove("rTipo")
 
-            oDataset.Tables(0).Columns.Remove("rTipo")
+                oXls.Imprimir(oDataset, "Extrato Báncario", True, True, True, False)
 
-            oXls.Imprimir(oDataset, "Extrato Báncario", True, True, True, False)
+            End If
 
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
+        Finally
+            If oDataset IsNot Nothing Then
+                oDataset.Dispose()
+            End If
         End Try
     End Sub
 
     Private Sub btnFechar_Click_1(sender As Object, e As EventArgs) Handles btnFechar.Click
         Me.Close()
+    End Sub
+
+    Private Sub frmConsulta_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        ResizeTab
+    End Sub
+
+    Private Sub ResizeTab()
+        Try
+            tabCtrlConsulta.ItemSize = New Drawing.Size(tabCtrlConsulta.Size.Width, 57)
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Houve uma falha.",, eImagens.Cancel)
+            LogaErro("Erro em frmConta: " & ex.Message & "[frmConta_Resize]")
+        End Try
     End Sub
 End Class

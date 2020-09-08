@@ -76,6 +76,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -115,6 +116,12 @@
       <DependentUpon>frmAbout.vb</DependentUpon>
     </Compile>
     <Compile Include="Formulários\frmAbout.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\frmInfoSO.Designer.vb">
+      <DependentUpon>frmInfoSO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmInfoSO.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formulários\frmNovaCobranca.Designer.vb">
@@ -253,6 +260,9 @@
     <EmbeddedResource Include="Formulários\frmAbout.resx">
       <DependentUpon>frmAbout.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\frmInfoSO.resx">
+      <DependentUpon>frmInfoSO.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmNovaCobranca.resx">
       <DependentUpon>frmNovaCobranca.vb</DependentUpon>
     </EmbeddedResource>
@@ -335,6 +345,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="iconFinanceiro4.ico" />
+    <None Include="packages.config" />
     <None Include="Resources\iconStatusAtrasado20x20.png" />
     <None Include="Resources\iconStatusPago20x20.png" />
     <None Include="Resources\iconStatusPendente20x20.png" />
@@ -370,6 +381,7 @@
     <None Include="Resources\iconHome.png" />
     <None Include="Resources\iconBankmini.fw.png" />
     <None Include="Resources\iconNao.png" />
+    <None Include="Resources\iconeReceita48x.png" />
     <Content Include="Resources\iconPendente.png" />
     <None Include="Resources\iconExtract.png" />
     <None Include="Resources\iconDetalheFiles.png" />

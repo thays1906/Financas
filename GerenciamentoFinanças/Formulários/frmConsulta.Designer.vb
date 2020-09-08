@@ -28,8 +28,11 @@ Partial Class frmConsulta
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnPesquisar = New System.Windows.Forms.Button()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
-        Me.tbConsulta = New GFT.Util.SuperTabControl()
+        Me.tabCtrlConsulta = New GFT.Util.SuperTabControl()
         Me.tpPesquisa = New System.Windows.Forms.TabPage()
+        Me.txtLetreiro = New GFT.Util.SuperLetreiro()
+        Me.dgExtrato = New GFT.Util.SuperDataGridView()
+        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.gbFiltro = New System.Windows.Forms.GroupBox()
         Me.lblConta = New System.Windows.Forms.Label()
         Me.cbConta = New GFT.Util.SuperComboBox()
@@ -42,13 +45,11 @@ Partial Class frmConsulta
         Me.gbBotoes = New System.Windows.Forms.GroupBox()
         Me.btnFechar = New System.Windows.Forms.Button()
         Me.btnExportar = New System.Windows.Forms.Button()
-        Me.dgExtrato = New GFT.Util.SuperDataGridView()
-        Me.txtLetreiro = New GFT.Util.SuperLetreiro()
-        Me.tbConsulta.SuspendLayout()
+        Me.tabCtrlConsulta.SuspendLayout()
         Me.tpPesquisa.SuspendLayout()
+        CType(Me.dgExtrato, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbFiltro.SuspendLayout()
         Me.gbBotoes.SuspendLayout()
-        CType(Me.dgExtrato, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnPesquisar
@@ -58,9 +59,9 @@ Partial Class frmConsulta
         Me.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnPesquisar.Font = New System.Drawing.Font("Verdana", 12.0!)
         Me.btnPesquisar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconePesquisar
-        Me.btnPesquisar.Location = New System.Drawing.Point(113, 19)
+        Me.btnPesquisar.Location = New System.Drawing.Point(238, 19)
         Me.btnPesquisar.Name = "btnPesquisar"
-        Me.btnPesquisar.Size = New System.Drawing.Size(271, 52)
+        Me.btnPesquisar.Size = New System.Drawing.Size(203, 42)
         Me.btnPesquisar.TabIndex = 5
         Me.btnPesquisar.Text = " &Pesquisar"
         Me.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -72,19 +73,22 @@ Partial Class frmConsulta
         Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
         Me.ImageList1.Images.SetKeyName(0, "iconFileExplorer.png")
+        Me.ImageList1.Images.SetKeyName(1, "iconExtrato48x.png")
         '
-        'tbConsulta
+        'tabCtrlConsulta
         '
-        Me.tbConsulta.Controls.Add(Me.tpPesquisa)
-        Me.tbConsulta.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tbConsulta.Font = New System.Drawing.Font("Verdana", 12.0!)
-        Me.tbConsulta.ImageList = Me.ImageList1
-        Me.tbConsulta.Location = New System.Drawing.Point(0, 0)
-        Me.tbConsulta.Name = "tbConsulta"
-        Me.tbConsulta.Padding = New System.Drawing.Point(50, 6)
-        Me.tbConsulta.SelectedIndex = 0
-        Me.tbConsulta.Size = New System.Drawing.Size(1284, 569)
-        Me.tbConsulta.TabIndex = 3
+        Me.tabCtrlConsulta.Controls.Add(Me.tpPesquisa)
+        Me.tabCtrlConsulta.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tabCtrlConsulta.Font = New System.Drawing.Font("Verdana", 12.0!)
+        Me.tabCtrlConsulta.ImageList = Me.ImageList1
+        Me.tabCtrlConsulta.ItemSize = New System.Drawing.Size(1284, 57)
+        Me.tabCtrlConsulta.Location = New System.Drawing.Point(0, 0)
+        Me.tabCtrlConsulta.Name = "tabCtrlConsulta"
+        Me.tabCtrlConsulta.Padding = New System.Drawing.Point(5, 6)
+        Me.tabCtrlConsulta.SelectedIndex = 0
+        Me.tabCtrlConsulta.Size = New System.Drawing.Size(1284, 591)
+        Me.tabCtrlConsulta.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
+        Me.tabCtrlConsulta.TabIndex = 3
         '
         'tpPesquisa
         '
@@ -92,13 +96,77 @@ Partial Class frmConsulta
         Me.tpPesquisa.Controls.Add(Me.txtLetreiro)
         Me.tpPesquisa.Controls.Add(Me.dgExtrato)
         Me.tpPesquisa.Controls.Add(Me.gbFiltro)
-        Me.tpPesquisa.ImageIndex = 0
+        Me.tpPesquisa.ImageIndex = 1
         Me.tpPesquisa.Location = New System.Drawing.Point(4, 61)
         Me.tpPesquisa.Name = "tpPesquisa"
         Me.tpPesquisa.Padding = New System.Windows.Forms.Padding(5)
-        Me.tpPesquisa.Size = New System.Drawing.Size(1276, 504)
+        Me.tpPesquisa.Size = New System.Drawing.Size(1276, 526)
         Me.tpPesquisa.TabIndex = 0
-        Me.tpPesquisa.Text = "Consulta"
+        Me.tpPesquisa.Text = "Extrato Báncario"
+        '
+        'txtLetreiro
+        '
+        Me.txtLetreiro.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.txtLetreiro.CorSombraTexto = System.Drawing.Color.White
+        Me.txtLetreiro.Location = New System.Drawing.Point(42, 483)
+        Me.txtLetreiro.Name = "txtLetreiro"
+        Me.txtLetreiro.RolagemLetreiro = GFT.Util.SuperLetreiro.Direcao.Esquerda
+        Me.txtLetreiro.Size = New System.Drawing.Size(306, 30)
+        Me.txtLetreiro.TabIndex = 9
+        Me.txtLetreiro.TextoLetreiro = ""
+        Me.txtLetreiro.VelocidadeRolagem = 1
+        '
+        'dgExtrato
+        '
+        Me.dgExtrato.AdicionarCheckBox = True
+        Me.dgExtrato.AllowUserToAddRows = False
+        Me.dgExtrato.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dgExtrato.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgExtrato.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
+        Me.dgExtrato.BackgroundColor = System.Drawing.Color.White
+        Me.dgExtrato.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgExtrato.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal
+        Me.dgExtrato.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSlateGray
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Verdana", 12.0!)
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgExtrato.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        Me.dgExtrato.ColumnHeadersHeight = 50
+        Me.dgExtrato.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.dgExtrato.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewCheckBoxColumn1})
+        Me.dgExtrato.CorDoFundoCabeçalho = System.Drawing.Color.LightSlateGray
+        Me.dgExtrato.CorTextoCabeçalho = System.Drawing.Color.White
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonFace
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Verdana", 12.0!)
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgExtrato.DefaultCellStyle = DataGridViewCellStyle4
+        Me.dgExtrato.EnableHeadersVisualStyles = False
+        Me.dgExtrato.Location = New System.Drawing.Point(44, 128)
+        Me.dgExtrato.Name = "dgExtrato"
+        Me.dgExtrato.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
+        Me.dgExtrato.RowHeadersVisible = False
+        Me.dgExtrato.RowHeadersWidth = 51
+        Me.dgExtrato.RowTemplate.Height = 24
+        Me.dgExtrato.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgExtrato.Size = New System.Drawing.Size(1186, 335)
+        Me.dgExtrato.TabIndex = 8
+        '
+        'DataGridViewCheckBoxColumn1
+        '
+        Me.DataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.DataGridViewCheckBoxColumn1.HeaderText = "Selecionar"
+        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
+        Me.DataGridViewCheckBoxColumn1.Width = 50
         '
         'gbFiltro
         '
@@ -126,7 +194,7 @@ Partial Class frmConsulta
         Me.lblConta.AutoSize = True
         Me.lblConta.Location = New System.Drawing.Point(663, 32)
         Me.lblConta.Name = "lblConta"
-        Me.lblConta.Size = New System.Drawing.Size(175, 25)
+        Me.lblConta.Size = New System.Drawing.Size(139, 18)
         Me.lblConta.TabIndex = 12
         Me.lblConta.Text = "Conta Báncaria:"
         '
@@ -140,7 +208,7 @@ Partial Class frmConsulta
         Me.cbConta.FormattingEnabled = True
         Me.cbConta.Location = New System.Drawing.Point(668, 59)
         Me.cbConta.Name = "cbConta"
-        Me.cbConta.Size = New System.Drawing.Size(290, 33)
+        Me.cbConta.Size = New System.Drawing.Size(290, 26)
         Me.cbConta.SuperObrigatorio = False
         Me.cbConta.SuperTxtObrigatorio = ""
         Me.cbConta.TabIndex = 11
@@ -151,7 +219,7 @@ Partial Class frmConsulta
         Me.lblTipo.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTipo.Location = New System.Drawing.Point(358, 32)
         Me.lblTipo.Name = "lblTipo"
-        Me.lblTipo.Size = New System.Drawing.Size(194, 25)
+        Me.lblTipo.Size = New System.Drawing.Size(159, 18)
         Me.lblTipo.TabIndex = 10
         Me.lblTipo.Text = "Receita/ Despesa:"
         '
@@ -166,7 +234,7 @@ Partial Class frmConsulta
         Me.cbTipoFiltro.FormattingEnabled = True
         Me.cbTipoFiltro.Location = New System.Drawing.Point(362, 59)
         Me.cbTipoFiltro.Name = "cbTipoFiltro"
-        Me.cbTipoFiltro.Size = New System.Drawing.Size(253, 33)
+        Me.cbTipoFiltro.Size = New System.Drawing.Size(253, 26)
         Me.cbTipoFiltro.SuperObrigatorio = False
         Me.cbTipoFiltro.SuperTxtObrigatorio = ""
         Me.cbTipoFiltro.TabIndex = 9
@@ -177,7 +245,7 @@ Partial Class frmConsulta
         Me.Label1.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(15, 32)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(48, 25)
+        Me.Label1.Size = New System.Drawing.Size(37, 18)
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "De:"
         '
@@ -189,7 +257,7 @@ Partial Class frmConsulta
         Me.dtFinalFiltro.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtFinalFiltro.Location = New System.Drawing.Point(173, 63)
         Me.dtFinalFiltro.Name = "dtFinalFiltro"
-        Me.dtFinalFiltro.Size = New System.Drawing.Size(152, 29)
+        Me.dtFinalFiltro.Size = New System.Drawing.Size(152, 25)
         Me.dtFinalFiltro.TabIndex = 4
         '
         'Label2
@@ -198,7 +266,7 @@ Partial Class frmConsulta
         Me.Label2.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(169, 32)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(55, 25)
+        Me.Label2.Size = New System.Drawing.Size(43, 18)
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "Até:"
         '
@@ -210,7 +278,7 @@ Partial Class frmConsulta
         Me.dtInicialFiltro.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtInicialFiltro.Location = New System.Drawing.Point(19, 63)
         Me.dtInicialFiltro.Name = "dtInicialFiltro"
-        Me.dtInicialFiltro.Size = New System.Drawing.Size(134, 29)
+        Me.dtInicialFiltro.Size = New System.Drawing.Size(134, 25)
         Me.dtInicialFiltro.TabIndex = 3
         '
         'gbBotoes
@@ -221,11 +289,11 @@ Partial Class frmConsulta
         Me.gbBotoes.Controls.Add(Me.btnExportar)
         Me.gbBotoes.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.gbBotoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.gbBotoes.Location = New System.Drawing.Point(0, 569)
+        Me.gbBotoes.Location = New System.Drawing.Point(0, 591)
         Me.gbBotoes.Margin = New System.Windows.Forms.Padding(4)
         Me.gbBotoes.Name = "gbBotoes"
         Me.gbBotoes.Padding = New System.Windows.Forms.Padding(4)
-        Me.gbBotoes.Size = New System.Drawing.Size(1284, 90)
+        Me.gbBotoes.Size = New System.Drawing.Size(1284, 68)
         Me.gbBotoes.TabIndex = 27
         Me.gbBotoes.TabStop = False
         '
@@ -236,9 +304,9 @@ Partial Class frmConsulta
         Me.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFechar.Font = New System.Drawing.Font("Verdana", 12.0!)
         Me.btnFechar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconClose
-        Me.btnFechar.Location = New System.Drawing.Point(845, 19)
+        Me.btnFechar.Location = New System.Drawing.Point(737, 19)
         Me.btnFechar.Name = "btnFechar"
-        Me.btnFechar.Size = New System.Drawing.Size(271, 52)
+        Me.btnFechar.Size = New System.Drawing.Size(203, 42)
         Me.btnFechar.TabIndex = 7
         Me.btnFechar.Text = " &Fechar"
         Me.btnFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -254,75 +322,19 @@ Partial Class frmConsulta
         Me.btnExportar.Image = Global.GerenciamentoFinanças.My.Resources.Resources.iconExcel
         Me.btnExportar.Location = New System.Drawing.Point(489, 19)
         Me.btnExportar.Name = "btnExportar"
-        Me.btnExportar.Size = New System.Drawing.Size(271, 52)
+        Me.btnExportar.Size = New System.Drawing.Size(203, 42)
         Me.btnExportar.TabIndex = 6
         Me.btnExportar.Text = " &Exportar"
         Me.btnExportar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnExportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnExportar.UseVisualStyleBackColor = False
         '
-        'dgExtrato
-        '
-        Me.dgExtrato.AdicionarCheckBox = True
-        Me.dgExtrato.AllowUserToAddRows = False
-        Me.dgExtrato.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dgExtrato.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgExtrato.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
-        Me.dgExtrato.BackgroundColor = System.Drawing.Color.White
-        Me.dgExtrato.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgExtrato.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal
-        Me.dgExtrato.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSlateGray
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Verdana", 12.0!)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgExtrato.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
-        Me.dgExtrato.ColumnHeadersHeight = 50
-        Me.dgExtrato.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgExtrato.CorDoFundoCabeçalho = System.Drawing.Color.LightSlateGray
-        Me.dgExtrato.CorTextoCabeçalho = System.Drawing.Color.White
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonFace
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Verdana", 12.0!)
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgExtrato.DefaultCellStyle = DataGridViewCellStyle4
-        Me.dgExtrato.EnableHeadersVisualStyles = False
-        Me.dgExtrato.Location = New System.Drawing.Point(44, 128)
-        Me.dgExtrato.Name = "dgExtrato"
-        Me.dgExtrato.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
-        Me.dgExtrato.RowHeadersVisible = False
-        Me.dgExtrato.RowHeadersWidth = 51
-        Me.dgExtrato.RowTemplate.Height = 24
-        Me.dgExtrato.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgExtrato.Size = New System.Drawing.Size(1186, 313)
-        Me.dgExtrato.TabIndex = 8
-        '
-        'txtLetreiro
-        '
-        Me.txtLetreiro.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.txtLetreiro.CorSombraTexto = System.Drawing.Color.White
-        Me.txtLetreiro.Location = New System.Drawing.Point(42, 461)
-        Me.txtLetreiro.Name = "txtLetreiro"
-        Me.txtLetreiro.RolagemLetreiro = GFT.Util.SuperLetreiro.Direcao.Esquerda
-        Me.txtLetreiro.Size = New System.Drawing.Size(306, 30)
-        Me.txtLetreiro.TabIndex = 9
-        Me.txtLetreiro.TextoLetreiro = ""
-        Me.txtLetreiro.VelocidadeRolagem = 1
-        '
         'frmConsulta
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1284, 659)
         Me.ControlBox = False
-        Me.Controls.Add(Me.tbConsulta)
+        Me.Controls.Add(Me.tabCtrlConsulta)
         Me.Controls.Add(Me.gbBotoes)
         Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -332,17 +344,17 @@ Partial Class frmConsulta
         Me.ShowIcon = False
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds
-        Me.Text = "frmConsulta"
-        Me.tbConsulta.ResumeLayout(False)
+        Me.Text = "Extrato Báncario"
+        Me.tabCtrlConsulta.ResumeLayout(False)
         Me.tpPesquisa.ResumeLayout(False)
+        CType(Me.dgExtrato, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbFiltro.ResumeLayout(False)
         Me.gbFiltro.PerformLayout()
         Me.gbBotoes.ResumeLayout(False)
-        CType(Me.dgExtrato, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents tbConsulta As GFT.Util.SuperTabControl
+    Friend WithEvents tabCtrlConsulta As GFT.Util.SuperTabControl
     Friend WithEvents tpPesquisa As TabPage
     Friend WithEvents gbFiltro As GroupBox
     Friend WithEvents dtFinalFiltro As GFT.Util.SuperDatePicker
@@ -360,4 +372,5 @@ Partial Class frmConsulta
     Friend WithEvents gbBotoes As GroupBox
     Friend WithEvents txtLetreiro As GFT.Util.SuperLetreiro
     Friend WithEvents dgExtrato As GFT.Util.SuperDataGridView
+    Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
 End Class

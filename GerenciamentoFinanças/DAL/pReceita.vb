@@ -14,6 +14,7 @@ Public Class pReceita
         Public Shared cTipo As Campo = New Campo("cTipo", DbType.Decimal, 10, 0)
         Public Shared rLog As Campo = New Campo("rLog", DbType.String, -1)
         Public Shared dtMes As Campo = New Campo("dtMes", DbType.Decimal, 2, 0)
+        Public Shared cAno As Campo = New Campo("YEAR", DbType.Decimal, 4, 0)
     End Class
 
     Shared Function InserirReceita(ByVal _dtRec As Date,
@@ -45,12 +46,12 @@ Public Class pReceita
             Return False
         End Try
     End Function
-    Shared Sub AlterarReceita(ByVal _cReceita As Decimal,
+    Shared Function AlterarReceita(ByVal _cReceita As Decimal,
                               ByVal _rDescricao As String,
                               ByVal _cValor As Decimal,
                               ByVal _cConta As Decimal,
                               ByVal _cTipo As Decimal,
-                              ByVal _rLog As String)
+                              ByVal _rLog As String) As Boolean
         Dim bDados As BancoDados
         Try
             bDados = New BancoDados()
@@ -64,13 +65,18 @@ Public Class pReceita
             bDados.AdicionaParametro(pReceita.cTipo, _cTipo)
             bDados.AdicionaParametro(pReceita.rLog, _rLog)
 
-            bDados.Executar(PROCEDURE)
+            If bDados.Executar(PROCEDURE) Then
+                Return True
+            Else
+                Return False
+            End If
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
+            Return False
         End Try
-    End Sub
-    Shared Sub DeletarReceita(ByVal _cReceita As Decimal)
+    End Function
+    Shared Function DeletarReceita(ByVal _cReceita As Decimal) As Boolean
         Dim bDados As BancoDados
         Try
             bDados = New BancoDados()
@@ -79,13 +85,20 @@ Public Class pReceita
             bDados.AdicionaParametro(OPERACAO, "DELE")
             bDados.AdicionaParametro(pReceita.cReceita, _cReceita)
 
-            bDados.Executar(PROCEDURE)
+            If bDados.Executar(PROCEDURE) Then
+                Return True
+            Else
+                Return False
+            End If
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
+            Return False
         End Try
-    End Sub
-    Shared Function PesquisarReceita(ByVal _dtMes As Decimal) As SuperDataSet
+    End Function
+    Shared Function PesquisarReceita(ByVal _dtMes As Decimal,
+                                     ByVal _cAno As Decimal,
+                                     ByVal _cConta As Decimal) As SuperDataSet
         Dim bDados As BancoDados
         Dim oDataset As SuperDataSet
         Try
@@ -93,11 +106,22 @@ Public Class pReceita
 
             bDados.LimpaParametros()
             bDados.AdicionaParametro(OPERACAO, "GRID")
+
             If _dtMes > 0 Then
                 bDados.AdicionaParametro(pReceita.dtMes, _dtMes)
             End If
 
+            If _cAno <> 0 Then
+                bDados.AdicionaParametro(pReceita.cAno, _cAno)
+            End If
+
+            If _cConta > 0 Then
+                bDados.AdicionaParametro(pReceita.cConta, _cConta)
+            End If
+
+
             oDataset = bDados.Obter(PROCEDURE)
+
             If oDataset IsNot Nothing Then
                 Return oDataset
             Else

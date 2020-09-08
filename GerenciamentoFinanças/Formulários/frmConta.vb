@@ -11,7 +11,7 @@ Public Class frmConta
 
     Private Sub frmConta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cor(Me, Collor.Control)
-        Cor(CType(gbBotoes, Control), Collor.CinzaMedio)
+        Cor(CType(gbBotoes, Control), Collor.CinzaAzulado)
         Cor(CType(gbDadosConta, Control), Collor.Claro)
 
 
@@ -28,6 +28,7 @@ Public Class frmConta
         centralizarGrupoBotoes(gbListConta)
 
         ControleBotoes()
+        ResizeTab()
     End Sub
     Private Sub frmConta_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
         alterarCaptionFormPrincipal(eTela.conta_Bancaria)
@@ -213,6 +214,19 @@ Public Class frmConta
             S_MsgBox(ex.Message, eBotoes.Ok, "Erro",, eImagens.Cancel)
         Finally
             rs.Dispose()
+        End Try
+    End Sub
+
+    Private Sub frmConta_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        ResizeTab()
+    End Sub
+
+    Private Sub ResizeTab()
+        Try
+            tabCtrlConta.ItemSize = New Drawing.Size(tabCtrlConta.Size.Width, 65)
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Houve uma falha.",, eImagens.Cancel)
+            LogaErro("Erro em frmConta: " & ex.Message & "[frmConta_Resize]")
         End Try
     End Sub
 End Class

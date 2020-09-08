@@ -45,7 +45,8 @@ Public Class frmPrincipal
         InicializaTelas()
         Cor(CType(SScima, Control), Collor.CinzaEscuro)
         Cor(CType(SsBaixo, Control), Collor.CinzaEscuro)
-        Cor(CType(ssTituloTela, Control), Collor.CinzaEscuro)
+        Cor(CType(ssTituloTela, Control), Collor.VerdeLogo)
+
         gbPricnipal.Visible = True
 
         'Me.Visible = False
@@ -110,14 +111,14 @@ Public Class frmPrincipal
 
     Private Sub btnAddReceita_Click(sender As Object, e As EventArgs) Handles btnAddReceita.Click
         Dim oForm As frmNovaReceita
-        oForm = New frmNovaReceita
-        oForm.Show()
+        oForm = New frmNovaReceita(0)
+        oForm.ShowDialog()
     End Sub
 
     Private Sub btnAddDespesa_Click(sender As Object, e As EventArgs) Handles btnAddDespesa.Click
         Dim oForm As frmNovaDespesa
         oForm = New frmNovaDespesa(0)
-        oForm.Show()
+        oForm.ShowDialog()
 
     End Sub
 
@@ -366,5 +367,9 @@ Public Class frmPrincipal
     Private Sub ServiçoDeEmailToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ServiçoDeEmailToolStripMenuItem.Click
         oform = New frmEmail()
         controleFormulario(Me, oform, eTela.Email)
+    End Sub
+
+    Private Sub MenuStrip1_SizeChanged(sender As Object, e As EventArgs) Handles MenuStrip1.SizeChanged
+        MenuStrip1.CanOverflow = True
     End Sub
 End Class

@@ -1,4 +1,6 @@
-﻿Public Class frmAbout
+﻿Imports GFT.Util.clsMsgBox
+
+Public Class frmAbout
     Private Sub frmAbout_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cor(CType(SScima, Control), Collor.CinzaEscuro)
         Cor(CType(SSbaixo, Control), Collor.CinzaEscuro)
@@ -21,7 +23,14 @@
     End Sub
 
     Private Sub btnInfo_Click(sender As Object, e As EventArgs) Handles btnInfo.Click
+        Dim oForm As frmInfoSO
+        Try
+            oForm = New frmInfoSO()
+            oForm.ShowDialog()
 
+        Catch ex As Exception
+            S_MsgBox(ex.Message, eBotoes.Ok, "Aviso",, eImagens.Cancel)
+        End Try
     End Sub
 
     Private Sub frmAbout_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
