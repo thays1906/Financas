@@ -372,4 +372,10 @@ Public Class frmPrincipal
     Private Sub MenuStrip1_SizeChanged(sender As Object, e As EventArgs) Handles MenuStrip1.SizeChanged
         MenuStrip1.CanOverflow = True
     End Sub
+
+    Private Sub RelatórioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RelatórioToolStripMenuItem.Click
+        oform = New frmRelatorio()
+        controleFormulario(Me, oform, eTela.Email)
+
+    End Sub
 End Class

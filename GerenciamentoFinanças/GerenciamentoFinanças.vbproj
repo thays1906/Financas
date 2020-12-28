@@ -78,6 +78,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -110,54 +111,55 @@
     <Compile Include="DAL\pInicializacao.vb" />
     <Compile Include="DAL\pParcelamento.vb" />
     <Compile Include="DAL\pReceita.vb" />
+    <Compile Include="DAL\pRelatorio.vb" />
     <Compile Include="DAL\pTipoReceita.vb" />
     <Compile Include="DAL\pUsuario.vb" />
-    <Compile Include="Formulários\frmAbout.Designer.vb">
+    <Compile Include="Formulários\Inicialização\frmAbout.Designer.vb">
       <DependentUpon>frmAbout.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\frmAbout.vb">
+    <Compile Include="Formulários\Inicialização\frmAbout.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\frmInfoSO.Designer.vb">
+    <Compile Include="Formulários\Inicialização\frmInfoSO.Designer.vb">
       <DependentUpon>frmInfoSO.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\frmInfoSO.vb">
+    <Compile Include="Formulários\Inicialização\frmInfoSO.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\frmNovaCobranca.Designer.vb">
+    <Compile Include="Formulários\Emprestimos e Cobranças\frmNovaCobranca.Designer.vb">
       <DependentUpon>frmNovaCobranca.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\frmNovaCobranca.vb">
+    <Compile Include="Formulários\Emprestimos e Cobranças\frmNovaCobranca.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\frmCobranca.Designer.vb">
+    <Compile Include="Formulários\Emprestimos e Cobranças\frmCobranca.Designer.vb">
       <DependentUpon>frmCobranca.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\frmCobranca.vb">
+    <Compile Include="Formulários\Emprestimos e Cobranças\frmCobranca.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\frmDespesaFixa.Designer.vb">
+    <Compile Include="Formulários\Despesas\frmDespesaFixa.Designer.vb">
       <DependentUpon>frmDespesaFixa.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\frmDespesaFixa.vb">
+    <Compile Include="Formulários\Despesas\frmDespesaFixa.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\frmConfiguracao.Designer.vb">
+    <Compile Include="Formulários\Parametrizações\frmConfiguracao.Designer.vb">
       <DependentUpon>frmConfiguracao.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\frmConfiguracao.vb">
+    <Compile Include="Formulários\Parametrizações\frmConfiguracao.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\frmCadastroCategoria.Designer.vb">
+    <Compile Include="Formulários\Parametrizações\frmCadastroCategoria.Designer.vb">
       <DependentUpon>frmCadastroCategoria.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\frmCadastroCategoria.vb">
+    <Compile Include="Formulários\Parametrizações\frmCadastroCategoria.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\frmConta.Designer.vb">
+    <Compile Include="Formulários\Conta Báncaria\frmConta.Designer.vb">
       <DependentUpon>frmConta.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\frmConta.vb">
+    <Compile Include="Formulários\Conta Báncaria\frmConta.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formulários\frmEmail.Designer.vb">
@@ -166,28 +168,28 @@
     <Compile Include="Formulários\frmEmail.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\frmLogin.Designer.vb">
+    <Compile Include="Formulários\Inicialização\frmLogin.Designer.vb">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\frmLogin.vb">
+    <Compile Include="Formulários\Inicialização\frmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\frmNovaConta.Designer.vb">
+    <Compile Include="Formulários\Conta Báncaria\frmNovaConta.Designer.vb">
       <DependentUpon>frmNovaConta.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\frmNovaConta.vb">
+    <Compile Include="Formulários\Conta Báncaria\frmNovaConta.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\frmNovaDespesa.Designer.vb">
+    <Compile Include="Formulários\Despesas\frmNovaDespesa.Designer.vb">
       <DependentUpon>frmNovaDespesa.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\frmNovaDespesa.vb">
+    <Compile Include="Formulários\Despesas\frmNovaDespesa.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\frmNovaReceita.Designer.vb">
+    <Compile Include="Formulários\Receitas\frmNovaReceita.Designer.vb">
       <DependentUpon>frmNovaReceita.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\frmNovaReceita.vb">
+    <Compile Include="Formulários\Receitas\frmNovaReceita.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formulários\frmPrincipal.vb">
@@ -197,16 +199,16 @@
       <DependentUpon>frmPrincipal.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\frmConsulta.Designer.vb">
+    <Compile Include="Formulários\Conta Báncaria\frmConsulta.Designer.vb">
       <DependentUpon>frmConsulta.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\frmConsulta.vb">
+    <Compile Include="Formulários\Conta Báncaria\frmConsulta.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\frmDespesa.Designer.vb">
+    <Compile Include="Formulários\Despesas\frmDespesa.Designer.vb">
       <DependentUpon>frmDespesa.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\frmDespesa.vb">
+    <Compile Include="Formulários\Despesas\frmDespesa.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formulários\frmProc.designer.vb">
@@ -215,28 +217,34 @@
     <Compile Include="Formulários\frmProc.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\frmReceita.Designer.vb">
+    <Compile Include="Formulários\Receitas\frmReceita.Designer.vb">
       <DependentUpon>frmReceita.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\frmReceita.vb">
+    <Compile Include="Formulários\Receitas\frmReceita.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\frmRecuperacaoSenha.Designer.vb">
+    <Compile Include="Formulários\Inicialização\frmRecuperacaoSenha.Designer.vb">
       <DependentUpon>frmRecuperacaoSenha.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\frmRecuperacaoSenha.vb">
+    <Compile Include="Formulários\Inicialização\frmRecuperacaoSenha.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\frmUsuario.Designer.vb">
+    <Compile Include="Formulários\frmRelatorio.Designer.vb">
+      <DependentUpon>frmRelatorio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\frmRelatorio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\Inicialização\frmUsuario.Designer.vb">
       <DependentUpon>frmUsuario.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\frmUsuario.vb">
+    <Compile Include="Formulários\Inicialização\frmUsuario.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\SplashScreen.Designer.vb">
+    <Compile Include="Formulários\Inicialização\SplashScreen.Designer.vb">
       <DependentUpon>SplashScreen.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\SplashScreen.vb">
+    <Compile Include="Formulários\Inicialização\SplashScreen.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -257,50 +265,50 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Formulários\frmAbout.resx">
+    <EmbeddedResource Include="Formulários\Inicialização\frmAbout.resx">
       <DependentUpon>frmAbout.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\frmInfoSO.resx">
+    <EmbeddedResource Include="Formulários\Inicialização\frmInfoSO.resx">
       <DependentUpon>frmInfoSO.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\frmNovaCobranca.resx">
+    <EmbeddedResource Include="Formulários\Emprestimos e Cobranças\frmNovaCobranca.resx">
       <DependentUpon>frmNovaCobranca.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\frmCobranca.resx">
+    <EmbeddedResource Include="Formulários\Emprestimos e Cobranças\frmCobranca.resx">
       <DependentUpon>frmCobranca.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\frmDespesaFixa.resx">
+    <EmbeddedResource Include="Formulários\Despesas\frmDespesaFixa.resx">
       <DependentUpon>frmDespesaFixa.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\frmConfiguracao.resx">
+    <EmbeddedResource Include="Formulários\Parametrizações\frmConfiguracao.resx">
       <DependentUpon>frmConfiguracao.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\frmConsulta.resx">
+    <EmbeddedResource Include="Formulários\Conta Báncaria\frmConsulta.resx">
       <DependentUpon>frmConsulta.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\frmConta.resx">
+    <EmbeddedResource Include="Formulários\Conta Báncaria\frmConta.resx">
       <DependentUpon>frmConta.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\frmDespesa.resx">
+    <EmbeddedResource Include="Formulários\Despesas\frmDespesa.resx">
       <DependentUpon>frmDespesa.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\frmCadastroCategoria.resx">
+    <EmbeddedResource Include="Formulários\Parametrizações\frmCadastroCategoria.resx">
       <DependentUpon>frmCadastroCategoria.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmEmail.resx">
       <DependentUpon>frmEmail.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\frmLogin.resx">
+    <EmbeddedResource Include="Formulários\Inicialização\frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\frmNovaConta.resx">
+    <EmbeddedResource Include="Formulários\Conta Báncaria\frmNovaConta.resx">
       <DependentUpon>frmNovaConta.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\frmNovaDespesa.resx">
+    <EmbeddedResource Include="Formulários\Despesas\frmNovaDespesa.resx">
       <DependentUpon>frmNovaDespesa.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\frmNovaReceita.resx">
+    <EmbeddedResource Include="Formulários\Receitas\frmNovaReceita.resx">
       <DependentUpon>frmNovaReceita.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\frmPrincipal.resx">
@@ -309,16 +317,19 @@
     <EmbeddedResource Include="Formulários\frmProc.resx">
       <DependentUpon>frmProc.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\frmReceita.resx">
+    <EmbeddedResource Include="Formulários\Receitas\frmReceita.resx">
       <DependentUpon>frmReceita.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\frmRecuperacaoSenha.resx">
+    <EmbeddedResource Include="Formulários\Inicialização\frmRecuperacaoSenha.resx">
       <DependentUpon>frmRecuperacaoSenha.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\frmUsuario.resx">
+    <EmbeddedResource Include="Formulários\frmRelatorio.resx">
+      <DependentUpon>frmRelatorio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Inicialização\frmUsuario.resx">
       <DependentUpon>frmUsuario.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\SplashScreen.resx">
+    <EmbeddedResource Include="Formulários\Inicialização\SplashScreen.resx">
       <DependentUpon>SplashScreen.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">

@@ -19,11 +19,10 @@ Public Class frmNovaDespesa
     Public bDespesaFixa As Boolean = False
     Public cDespesaFixa As Decimal
     Public cPeriodo As Decimal
-    Public erro As Boolean = False
     Public cErro As Decimal
     Public logErro As String
     Public oForm As frmDespesaFixa
-    Public choose As String
+    Public eTipoAlteracao As eTipoAlteracaoDespesa
     Public data As Date
     Public bAlterado As Boolean = False
     Public Property cControleParcelamento() As Decimal
@@ -149,7 +148,7 @@ Public Class frmNovaDespesa
                     'No momento: Despesa normal Ñ vira Despesa Fixa nem Parcelada.  
                     'Despesa Fixa não permite alteração da Frequencia que se repete Ex:(diario/mensal/anual)
                     'Despesa Fixa não pode virar Normal.
-                    'Alterações em DF: Data (somente dia para despesas Mensais/Bi/Tri/Anual),Valor,Descrição e etc.
+                    'Alterações em DespesaFixa: Data (somente dia para despesas Mensais/Bi/Tri/Anual),Valor,Descrição e etc.
 
                     dtRegistro = dtDespesa.Value
                     cValor = CDec(txtValorTotal.Text)
@@ -162,12 +161,12 @@ Public Class frmNovaDespesa
 
                                 logErro = Now & " - " & "Despesa Fixa modificada. "
 
-                                oForm = New frmDespesaFixa("UPDF") 'UPDF = Update Despesa Fixa
+                                oForm = New frmDespesaFixa(eTipoOperacaoDespesa.AlterarDespesaFixa)
                                 oForm.ShowDialog()
-                                choose = oForm.retorno
+                                eTipoAlteracao = oForm.eTipoAlteracao
 
-                                If choose <> Nothing Then
-                                    erro = AlterarDespesa(choose)
+                                If eTipoAlteracao <> 0 Then
+                                    AlterarDespesaFixa(eTipoAlteracao)
                                 End If
                             End If
                         End If
@@ -176,30 +175,33 @@ Public Class frmNovaDespesa
 
                         logErro = Now & " - " & "Despesa Parcelada modificada. "
 
-                        oForm = New frmDespesaFixa("UPDP") 'UPDP = Update Despesa Parcelada
+                        oForm = New frmDespesaFixa(eTipoOperacaoDespesa.AlterarDespesaParcelada)
                         oForm.ShowDialog()
-                        choose = oForm.retorno
+
+                        eTipoAlteracao = oForm.eTipoAlteracao
 
                         cValor = CDec(txtValorParcela.Text)
 
-                        If choose <> Nothing Then
-                            erro = AlterarDespesa(choose)
+                        If eTipoAlteracao <> 0 Then
+                            AlterarDespesaParcelada()
                         End If
                     Else
-                        erro = AlterarDespesa(choose)
+                        AlterarDespesa()
                     End If
 
 
-                    If erro = True Then
+                    If bAlterado = True Then
                         S_MsgBox("Dados alterados com sucesso", eBotoes.Ok,, eImagens.FileOK)
                     Else
                         S_MsgBox("Não foi possível salvar as alterações.", eBotoes.Ok,, eImagens.Cancel)
                     End If
                 End If
+
                 LimpaCampos()
                 cControleParcelamento = 0
                 Me.bAlterado.ToString()
                 Me.Close()
+
             End If
 
 
@@ -208,10 +210,19 @@ Public Class frmNovaDespesa
         End Try
     End Sub
 
+    Private Function AlterarDespesaParcelada() As Boolean
+        Try
+            Return True
+        Catch ex As Exception
+            LogaErro("Erro ao Alterar Despesa Parcelada - " & ex.Message)
+            Return False
+        End Try
+    End Function
+
     Private Function IncluirDespesa() As Decimal
         Try
 
-            'Se é Despesa Fixa, insert registro na tDespesa_Fixa e depois...
+            'Se é Despesa Fixa, insere registro na tDespesa_Fixa e depois...
             If bDespesaFixa = True Then
 
 
@@ -239,9 +250,9 @@ Public Class frmNovaDespesa
                     cNumeroParcela = 0
                     dtRegistro = dtDespesa.Value
                     cValor = CDec(txtValorTotal.Text.Replace("R$", ""))
+                    cDespesaFixa = 0
                 End If
 
-                cDespesaFixa = 0
 
                 If pDespesa.InserirDespesa(txtDescricao.Text,
                                            cValor,
@@ -268,72 +279,11 @@ Public Class frmNovaDespesa
             Return cErro
         End Try
     End Function
-    Public Function AlterarDespesa(Optional ByVal escolha As String = "") As Boolean
+    Private Function AlterarDespesaFixa(ByVal _tipoAlteracao As eTipoAlteracaoDespesa) As Boolean
         Try
-            If escolha <> "" Then
+            logErro = Now & " - " & "Dados da Despesa alterado. "
 
-                If escolha = "1*" Then
-                    'Alterar este e os proximos
-                    If cDespesaFixa <> 0 Then
-
-
-                        pDespesa.AlterarDespesaFixa(cDespesaFixa, 1,
-                                                    txtDescricao.Text, cValor,
-                                                    CDec(cbConta.ObterChaveCombo),
-                                                    CDec(cbCategoria.ObterChaveCombo),
-                                                    CDec(cbPagamento.ObterChaveCombo),
-                                                    dtRegistro,
-                                                    CType(cbStatus.ObterChaveCombo(), eStatusDespesa),
-                                                    logErro, data)
-
-
-                    ElseIf cControleParcelamento <> 0 Then
-
-                        'pDespesa.AlterarDespesa()
-
-
-                    End If
-
-                ElseIf escolha = "*" Then
-                    'Alterar todos
-                    If cDespesaFixa <> 0 Then
-
-                        pDespesa.AlterarDespesaFixa(cDespesaFixa, 0,
-                                                   txtDescricao.Text, cValor,
-                                                   CDec(cbConta.ObterChaveCombo),
-                                                   CDec(cbCategoria.ObterChaveCombo),
-                                                   CDec(cbPagamento.ObterChaveCombo),
-                                                   dtRegistro,
-                                                   CType(cbStatus.ObterChaveCombo(), eStatusDespesa),
-                                                   logErro, data)
-
-
-                    ElseIf cControleParcelamento <> 0 Then
-
-                        'pDespesa.AlterarDespesa()
-
-                    End If
-                Else
-                    If pDespesa.AlterarDespesa(cDespesa,
-                           txtDescricao.Text,
-                           CDec(txtValorTotal.Text),
-                           CDec(cbConta.ObterChaveCombo()),
-                           CDec(cbCategoria.ObterChaveCombo()),
-                           CDec(cbPagamento.ObterChaveCombo()),
-                           dtDespesa.Value,
-                           CType(cbStatus.ObterChaveCombo(), eStatusDespesa),
-                           logErro) Then
-
-                        bAlterado = True
-
-                        Return True
-
-                    Else
-                        Return False
-                    End If
-                End If
-            Else
-                logErro = Now & " - " & "Dados da Despesa alterado. "
+            If _tipoAlteracao = eTipoAlteracaoDespesa.SomenteEsteRegistro Then
 
                 If pDespesa.AlterarDespesa(cDespesa,
                                            txtDescricao.Text,
@@ -347,12 +297,68 @@ Public Class frmNovaDespesa
 
                     bAlterado = True
 
-                    Return True
-                Else
-                    Return False
+                End If
+
+            ElseIf _tipoAlteracao = eTipoAlteracaoDespesa.DesteRegistroEmDiante Then
+
+                'Alterar este e os proximos
+
+                If pDespesa.AlterarDespesaFixa(cDespesaFixa, 1,
+                                                txtDescricao.Text, cValor,
+                                                CDec(cbConta.ObterChaveCombo),
+                                                CDec(cbCategoria.ObterChaveCombo),
+                                                CDec(cbPagamento.ObterChaveCombo),
+                                                dtRegistro,
+                                                CType(cbStatus.ObterChaveCombo(), eStatusDespesa),
+                                                logErro, data) Then
+                    bAlterado = True
+                End If
+
+            ElseIf _tipoAlteracao = eTipoAlteracaoDespesa.Todos Then
+
+                'Alterar todos
+
+                If pDespesa.AlterarDespesaFixa(cDespesaFixa, 0,
+                                                   txtDescricao.Text, cValor,
+                                                   CDec(cbConta.ObterChaveCombo),
+                                                   CDec(cbCategoria.ObterChaveCombo),
+                                                   CDec(cbPagamento.ObterChaveCombo),
+                                                   dtRegistro,
+                                                   CType(cbStatus.ObterChaveCombo(), eStatusDespesa),
+                                                   logErro, data) Then
+                    bAlterado = True
+
                 End If
             End If
 
+            Return bAlterado
+
+        Catch ex As Exception
+            LogaErro("Erro ao alterar Despesa Fixa - " & ex.Message)
+            Return False
+        End Try
+    End Function
+    Private Function AlterarDespesa() As Boolean
+        Try
+            If cDespesa <> 0 Then
+
+                If pDespesa.AlterarDespesa(cDespesa,
+                                           txtDescricao.Text,
+                                           CDec(txtValorTotal.Text),
+                                           CDec(cbConta.ObterChaveCombo()),
+                                           CDec(cbCategoria.ObterChaveCombo()),
+                                           CDec(cbPagamento.ObterChaveCombo()),
+                                           dtDespesa.Value,
+                                           CType(cbStatus.ObterChaveCombo(), eStatusDespesa),
+                                           logErro) Then
+
+                    bAlterado = True
+
+
+                End If
+            End If
+
+            Return bAlterado
 
             'SE FOR DESPESA FIXA :
             '- ALTERAÇÃO DE 1 REGISTRO: pDespesa.AlterarDespesa
@@ -362,7 +368,7 @@ Public Class frmNovaDespesa
             'SE FOR DESPESA FIXA OU PARCELADA:
             '--EXIBIR POPUP DE PERGUNTA: SOMENTE ESTE / TODOS / ESTE E PROXIMOS
 
-            Return True
+            'Return True
 
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Erro inesperado",, eImagens.Cancel)
@@ -769,7 +775,7 @@ Public Class frmNovaDespesa
     Private Sub btnExcluir_Click(sender As Object, e As EventArgs) Handles btnExcluir.Click
 
         Try
-            oForm = New frmDespesaFixa("Del")
+            oForm = New frmDespesaFixa(eTipoOperacaoDespesa.Deletar)
 
             If CDec(rsDespesa("cDespesaFixa")) <> 0 Then
 
@@ -781,75 +787,76 @@ Public Class frmNovaDespesa
                 oForm.ShowDialog()
                 Me.Enabled = True
 
-                choose = oForm.retorno
+                eTipoAlteracao = oForm.eTipoAlteracao
 
-                If choose <> Nothing Then
-                    If choose = "1" Then
 
-                        If S_MsgBox("Deseja realmente excluir este registro?",
+                If eTipoAlteracao = eTipoAlteracaoDespesa.SomenteEsteRegistro Then
+
+                    If S_MsgBox("Deseja realmente excluir este registro?",
                                     eBotoes.SimNao,
                                     "Atenção",,
                                     eImagens.Interrogacao) = eRet.Sim Then
 
-                            If pDespesa.DeletarDespesa(cDespesa) Then
+                        If pDespesa.DeletarDespesa(cDespesa) Then
 
-                                S_MsgBox("Despesa excluída com sucesso!",
+                            S_MsgBox("Despesa excluída com sucesso!",
                                          eBotoes.Ok,
                                          "Sucesso",,
                                          eImagens.Ok)
-                            Else
-                                S_MsgBox("Falha ao excluir registros.",
+                        Else
+                            S_MsgBox("Falha ao excluir registros.",
                                          eBotoes.Ok,
                                          "Houve um erro",,
                                          eImagens.Cancel)
-                            End If
-                        End If
-
-                    ElseIf choose = "1*" Then
-
-                        If S_MsgBox("Deseja realmente excluir este e os próximos registros?",
-                                    eBotoes.SimNao,
-                                    "Atenção",,
-                                    eImagens.Interrogacao) = eRet.Sim Then
-
-                            If pDespesa.DeletarDespesaFixa(cDespesaFixa, 1, dtRegistro) Then
-
-                                S_MsgBox("Registros excluídos com sucesso!",
-                                         eBotoes.Ok,
-                                         "Sucesso",,
-                                         eImagens.Ok)
-                            Else
-                                S_MsgBox("Falha ao excluir registros.",
-                                         eBotoes.Ok,
-                                         "Houve um erro",,
-                                         eImagens.Cancel)
-                            End If
-                        End If
-
-                    Else
-                        If S_MsgBox("Deseja realmente excluir todos registros?",
-                                    eBotoes.SimNao,
-                                    "Atenção",,
-                                    eImagens.Interrogacao) = eRet.Sim Then
-
-                            If pDespesa.DeletarDespesaFixa(cDespesaFixa, 0, dtRegistro) Then
-
-                                S_MsgBox("Todos registros excluídos com sucesso!",
-                                         eBotoes.Ok,
-                                         "Sucesso",,
-                                         eImagens.Ok)
-                            Else
-                                S_MsgBox("Falha ao excluir registros.",
-                                         eBotoes.Ok,
-                                         "Houve um erro",,
-                                         eImagens.Cancel)
-                            End If
                         End If
                     End If
-                    Me.Close()
-                End If
 
+                ElseIf eTipoAlteracao = eTipoAlteracaoDespesa.DesteRegistroEmDiante Then
+
+                    If S_MsgBox("Deseja realmente excluir este e os próximos registros?",
+                                    eBotoes.SimNao,
+                                    "Atenção",,
+                                    eImagens.Interrogacao) = eRet.Sim Then
+
+                        If pDespesa.DeletarDespesaFixa(cDespesaFixa, 1, dtRegistro) Then
+
+                            S_MsgBox("Registros excluídos com sucesso!",
+                                         eBotoes.Ok,
+                                         "Sucesso",,
+                                         eImagens.Ok)
+                        Else
+                            S_MsgBox("Falha ao excluir registros.",
+                                         eBotoes.Ok,
+                                         "Houve um erro",,
+                                         eImagens.Cancel)
+                        End If
+                    End If
+
+                ElseIf eTipoAlteracao = eTipoAlteracaoDespesa.Todos Then
+
+                    If S_MsgBox("Deseja realmente excluir todos registros?",
+                                    eBotoes.SimNao,
+                                    "Atenção",,
+                                    eImagens.Interrogacao) = eRet.Sim Then
+
+                        If pDespesa.DeletarDespesaFixa(cDespesaFixa, 0, dtRegistro) Then
+
+                            S_MsgBox("Todos registros excluídos com sucesso!",
+                                     eBotoes.Ok,
+                                     "Sucesso",,
+                                     eImagens.Ok)
+                        Else
+                            S_MsgBox("Falha ao excluir registros.",
+                                     eBotoes.Ok,
+                                     "Houve um erro",,
+                                     eImagens.Cancel)
+                        End If
+                    End If
+                End If
+                Me.Close()
             End If
+
+
         Catch ex As Exception
             S_MsgBox(ex.Message, eBotoes.Ok, "Erro",, eImagens.Cancel)
         End Try

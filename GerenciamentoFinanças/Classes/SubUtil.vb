@@ -13,12 +13,12 @@ Public Module SubUtil
         Despesa = 102
         Configuracao = 103
 
-        cobranca = 200
-        conta_Bancaria = 201
+        Cobranca = 200
+        Conta_Bancaria = 201
         Usuario = 202
         Email = 203
-
-        about = 210
+        Relatorio = 204
+        About = 210
 
     End Enum
     Public Enum eCadastroCategoria
@@ -75,6 +75,7 @@ Public Module SubUtil
         Digital = 3
     End Enum
     Public Enum eAcao
+        Nenhuma = 0
         Novo = 1
         Editar = 2
         Excluir = 3
@@ -83,6 +84,17 @@ Public Module SubUtil
         OK = 1
         Question = 2
         Erro = 3
+    End Enum
+    Public Enum eTipoOperacaoDespesa
+        AlterarDespesaNormal = 0
+        AlterarDespesaFixa = 1
+        AlterarDespesaParcelada = 2
+        Deletar = 3
+    End Enum
+    Public Enum eTipoAlteracaoDespesa
+        SomenteEsteRegistro = 1
+        DesteRegistroEmDiante = 2
+        Todos = 3
     End Enum
     Public Enum eBanco
         Nubank = 1
@@ -646,7 +658,7 @@ Public Module SubUtil
             collNomeTela.Add(New String() {" ", "Contas"}, Int(eTela.conta_Bancaria).ToString)
             collNomeTela.Add(New String() {" ", "Usuário"}, Int(eTela.Usuario).ToString)
             collNomeTela.Add(New String() {" ", "Envio de Email"}, Int(eTela.Email).ToString)
-
+            collNomeTela.Add(New String() {" ", "Relatório"}, Int(eTela.Relatorio).ToString)
             collNomeTela.Add(New String() {" ", "Sobre"}, Int(eTela.about).ToString)
 
         Catch ex As Exception

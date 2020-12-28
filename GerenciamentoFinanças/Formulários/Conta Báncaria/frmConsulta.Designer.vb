@@ -24,8 +24,8 @@ Partial Class frmConsulta
 	Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConsulta))
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnPesquisar = New System.Windows.Forms.Button()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.tabCtrlConsulta = New GFT.Util.SuperTabControl()
@@ -33,6 +33,7 @@ Partial Class frmConsulta
         Me.txtLetreiro = New GFT.Util.SuperLetreiro()
         Me.dgExtrato = New GFT.Util.SuperDataGridView()
         Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.gbFiltro = New System.Windows.Forms.GroupBox()
         Me.lblConta = New System.Windows.Forms.Label()
         Me.cbConta = New GFT.Util.SuperComboBox()
@@ -81,7 +82,7 @@ Partial Class frmConsulta
         Me.tabCtrlConsulta.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tabCtrlConsulta.Font = New System.Drawing.Font("Verdana", 12.0!)
         Me.tabCtrlConsulta.ImageList = Me.ImageList1
-        Me.tabCtrlConsulta.ItemSize = New System.Drawing.Size(1284, 57)
+        Me.tabCtrlConsulta.ItemSize = New System.Drawing.Size(1284, 30)
         Me.tabCtrlConsulta.Location = New System.Drawing.Point(0, 0)
         Me.tabCtrlConsulta.Name = "tabCtrlConsulta"
         Me.tabCtrlConsulta.Padding = New System.Drawing.Point(5, 6)
@@ -97,10 +98,10 @@ Partial Class frmConsulta
         Me.tpPesquisa.Controls.Add(Me.dgExtrato)
         Me.tpPesquisa.Controls.Add(Me.gbFiltro)
         Me.tpPesquisa.ImageIndex = 1
-        Me.tpPesquisa.Location = New System.Drawing.Point(4, 61)
+        Me.tpPesquisa.Location = New System.Drawing.Point(4, 34)
         Me.tpPesquisa.Name = "tpPesquisa"
         Me.tpPesquisa.Padding = New System.Windows.Forms.Padding(5)
-        Me.tpPesquisa.Size = New System.Drawing.Size(1276, 526)
+        Me.tpPesquisa.Size = New System.Drawing.Size(1276, 553)
         Me.tpPesquisa.TabIndex = 0
         Me.tpPesquisa.Text = "Extrato Báncario"
         '
@@ -108,7 +109,7 @@ Partial Class frmConsulta
         '
         Me.txtLetreiro.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.txtLetreiro.CorSombraTexto = System.Drawing.Color.White
-        Me.txtLetreiro.Location = New System.Drawing.Point(42, 483)
+        Me.txtLetreiro.Location = New System.Drawing.Point(42, 510)
         Me.txtLetreiro.Name = "txtLetreiro"
         Me.txtLetreiro.RolagemLetreiro = GFT.Util.SuperLetreiro.Direcao.Esquerda
         Me.txtLetreiro.Size = New System.Drawing.Size(306, 30)
@@ -129,27 +130,27 @@ Partial Class frmConsulta
         Me.dgExtrato.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgExtrato.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal
         Me.dgExtrato.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSlateGray
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Verdana", 12.0!)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SteelBlue
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgExtrato.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSlateGray
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Verdana", 12.0!)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SteelBlue
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgExtrato.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgExtrato.ColumnHeadersHeight = 50
         Me.dgExtrato.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgExtrato.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewCheckBoxColumn1})
+        Me.dgExtrato.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewCheckBoxColumn2, Me.DataGridViewCheckBoxColumn1})
         Me.dgExtrato.CorDoFundoCabeçalho = System.Drawing.Color.LightSlateGray
         Me.dgExtrato.CorTextoCabeçalho = System.Drawing.Color.White
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonFace
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Verdana", 12.0!)
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgExtrato.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ButtonFace
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Verdana", 12.0!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgExtrato.DefaultCellStyle = DataGridViewCellStyle2
         Me.dgExtrato.EnableHeadersVisualStyles = False
         Me.dgExtrato.Location = New System.Drawing.Point(44, 128)
         Me.dgExtrato.Name = "dgExtrato"
@@ -158,15 +159,24 @@ Partial Class frmConsulta
         Me.dgExtrato.RowHeadersWidth = 51
         Me.dgExtrato.RowTemplate.Height = 24
         Me.dgExtrato.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgExtrato.Size = New System.Drawing.Size(1186, 335)
+        Me.dgExtrato.Size = New System.Drawing.Size(1186, 362)
         Me.dgExtrato.TabIndex = 8
         '
         'DataGridViewCheckBoxColumn1
         '
         Me.DataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.DataGridViewCheckBoxColumn1.HeaderText = "Selecionar"
+        Me.DataGridViewCheckBoxColumn1.MinimumWidth = 6
         Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
         Me.DataGridViewCheckBoxColumn1.Width = 50
+        '
+        'DataGridViewCheckBoxColumn2
+        '
+        Me.DataGridViewCheckBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.DataGridViewCheckBoxColumn2.HeaderText = "Selecionar"
+        Me.DataGridViewCheckBoxColumn2.MinimumWidth = 6
+        Me.DataGridViewCheckBoxColumn2.Name = "DataGridViewCheckBoxColumn2"
+        Me.DataGridViewCheckBoxColumn2.Width = 50
         '
         'gbFiltro
         '
@@ -194,7 +204,7 @@ Partial Class frmConsulta
         Me.lblConta.AutoSize = True
         Me.lblConta.Location = New System.Drawing.Point(663, 32)
         Me.lblConta.Name = "lblConta"
-        Me.lblConta.Size = New System.Drawing.Size(139, 18)
+        Me.lblConta.Size = New System.Drawing.Size(175, 25)
         Me.lblConta.TabIndex = 12
         Me.lblConta.Text = "Conta Báncaria:"
         '
@@ -208,7 +218,7 @@ Partial Class frmConsulta
         Me.cbConta.FormattingEnabled = True
         Me.cbConta.Location = New System.Drawing.Point(668, 59)
         Me.cbConta.Name = "cbConta"
-        Me.cbConta.Size = New System.Drawing.Size(290, 26)
+        Me.cbConta.Size = New System.Drawing.Size(290, 33)
         Me.cbConta.SuperObrigatorio = False
         Me.cbConta.SuperTxtObrigatorio = ""
         Me.cbConta.TabIndex = 11
@@ -219,7 +229,7 @@ Partial Class frmConsulta
         Me.lblTipo.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTipo.Location = New System.Drawing.Point(358, 32)
         Me.lblTipo.Name = "lblTipo"
-        Me.lblTipo.Size = New System.Drawing.Size(159, 18)
+        Me.lblTipo.Size = New System.Drawing.Size(194, 25)
         Me.lblTipo.TabIndex = 10
         Me.lblTipo.Text = "Receita/ Despesa:"
         '
@@ -234,7 +244,7 @@ Partial Class frmConsulta
         Me.cbTipoFiltro.FormattingEnabled = True
         Me.cbTipoFiltro.Location = New System.Drawing.Point(362, 59)
         Me.cbTipoFiltro.Name = "cbTipoFiltro"
-        Me.cbTipoFiltro.Size = New System.Drawing.Size(253, 26)
+        Me.cbTipoFiltro.Size = New System.Drawing.Size(253, 33)
         Me.cbTipoFiltro.SuperObrigatorio = False
         Me.cbTipoFiltro.SuperTxtObrigatorio = ""
         Me.cbTipoFiltro.TabIndex = 9
@@ -245,7 +255,7 @@ Partial Class frmConsulta
         Me.Label1.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(15, 32)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(37, 18)
+        Me.Label1.Size = New System.Drawing.Size(48, 25)
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "De:"
         '
@@ -257,7 +267,7 @@ Partial Class frmConsulta
         Me.dtFinalFiltro.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtFinalFiltro.Location = New System.Drawing.Point(173, 63)
         Me.dtFinalFiltro.Name = "dtFinalFiltro"
-        Me.dtFinalFiltro.Size = New System.Drawing.Size(152, 25)
+        Me.dtFinalFiltro.Size = New System.Drawing.Size(152, 29)
         Me.dtFinalFiltro.TabIndex = 4
         '
         'Label2
@@ -266,7 +276,7 @@ Partial Class frmConsulta
         Me.Label2.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(169, 32)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(43, 18)
+        Me.Label2.Size = New System.Drawing.Size(55, 25)
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "Até:"
         '
@@ -278,7 +288,7 @@ Partial Class frmConsulta
         Me.dtInicialFiltro.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtInicialFiltro.Location = New System.Drawing.Point(19, 63)
         Me.dtInicialFiltro.Name = "dtInicialFiltro"
-        Me.dtInicialFiltro.Size = New System.Drawing.Size(134, 25)
+        Me.dtInicialFiltro.Size = New System.Drawing.Size(134, 29)
         Me.dtInicialFiltro.TabIndex = 3
         '
         'gbBotoes
@@ -373,4 +383,5 @@ Partial Class frmConsulta
     Friend WithEvents txtLetreiro As GFT.Util.SuperLetreiro
     Friend WithEvents dgExtrato As GFT.Util.SuperDataGridView
     Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewCheckBoxColumn2 As DataGridViewCheckBoxColumn
 End Class

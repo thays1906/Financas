@@ -7,7 +7,7 @@ Imports System.Windows.Forms
 
 Public Class SuperDataGridView
     Inherits DataGridView
-
+#Region "Variaveis"
     Public ultimaRow As Integer = 0
 
     Public bCarregado As Boolean = False
@@ -34,7 +34,7 @@ Public Class SuperDataGridView
     Private bgColorHeader As Color = Color.LightSlateGray
     Private fontText As Font = New Font("Verdana", 12)
     Private colorText As Color = Color.White
-
+#End Region
 #Region "Propriedades"
 
     Public Property CorDoFundoCabeçalho As Color
@@ -69,7 +69,7 @@ Public Class SuperDataGridView
         End Set
     End Property
 #End Region
-
+#Region "Construtor"
     Sub New()
         Me.MultiSelect = True
         Me.AllowUserToAddRows = False
@@ -113,13 +113,17 @@ Public Class SuperDataGridView
         'End If
 
     End Sub
-
+#End Region
     Private Sub AdicionaCheckBoxColumn(Optional remove As Boolean = False)
         Dim list = New List(Of DataGridViewCheckBoxColumn)
+
         Try
             'Adiciona uma coluna de checkbox no DataGrid.
+
             If bChkBox = True Then
+
                 If remove Then
+
                     'Tratamento de erro (caso gere mais de uma column)
 
                     For Each check As DataGridViewCheckBoxColumn In
@@ -128,13 +132,10 @@ Public Class SuperDataGridView
                         If check.Name <> "chkDataGrid" Then
                             list.Add(check)
                         End If
-
                     Next
 
                     For Each chk In list
-
                         Me.Columns.Remove(chk)
-
                     Next
                 End If
 
@@ -165,10 +166,9 @@ Public Class SuperDataGridView
 
             ElseIf bChkBox = False Then
                 'Remove column checkbox quando altera a propriedade no Design
+
                 Me.Columns.Remove(checkbox)
             End If
-
-
 
         Catch ex As Exception
             LogaErro("Erro em Util::AdicionaCheckBoxColumn: " & ex.ToString())
