@@ -15,6 +15,10 @@
 	<Senha valor="/06EDmpVT6k="/>
 	<Banco valor="GerenciamentoFinancas"/>
 
+		<Senha valor="/5l8ZW5p9UsUIvcuNtp3Wkg="/>
+
+	<!--"5l8ZW5p9UsUIvcuNtp3Wkg=="-->
+
 	<ServidorSGSS valor="MZ-VV-BD-004\MSSQL2005A"/>
 	<UsuarioSGSS valor="gestd000"/>
 	<SenhaSGSS valor="KVHbbydVbWQIvcuNtp3Wkg=="/>

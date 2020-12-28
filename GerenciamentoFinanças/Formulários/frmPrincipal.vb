@@ -38,6 +38,8 @@ Public Class frmPrincipal
 #Else
         Verifica = TRUE
 #End If
+
+
         If Verifica Then
             pInicializacao.Iniciar()
         End If
@@ -49,22 +51,22 @@ Public Class frmPrincipal
 
         gbPricnipal.Visible = True
 
-        'Me.Visible = False
-        'If cLoga = DialogResult.None Then
-        '    splash = New SplashScreen
-        '    splash.ShowDialog()
-        'ElseIf cLoga = DialogResult.OK Then
-        '    Me.Visible = True
-        'End If
+        Me.Visible = False
+        If cLoga = DialogResult.None Then
+            splash = New SplashScreen
+            splash.ShowDialog()
+        ElseIf cLoga = DialogResult.OK Then
+            Me.Visible = True
+        End If
 
 
-        'If splash.DialogResult = DialogResult.Yes Then
-        '    oform = New frmLogin
-        '    cLoga = oform.ShowDialog()
-        '    Me.Visible = True
-        'Else
-        '    Me.Visible = True
-        'End If
+        If splash.DialogResult = DialogResult.Yes Then
+            'oform = New frmLogin
+            'cLoga = oform.ShowDialog()
+            Me.Visible = True
+        Else
+            Me.Visible = True
+        End If
 
 
 
